@@ -1,0 +1,4 @@
+<?php
+  function wilmap_preprocess_page(&$variables) {
+    $variables['route_name'] = \Drupal::routeMatch()->getRouteName();
+  }

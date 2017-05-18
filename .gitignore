@@ -1,3 +1,17 @@
+# Vendors
+/node_modules
+/data
+/vendor
+
+# Logs
+*.log*
+
+# Generated
+/dist
+
+# data
+/themes/wilmap/csv
+
 # Ignore paths that contain user-generated content.
 sites/*/files
 sites/*/private

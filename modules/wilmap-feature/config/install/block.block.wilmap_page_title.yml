@@ -1,0 +1,17 @@
+langcode: en
+status: false
+dependencies:
+  theme:
+    - wilmap
+id: wilmap_page_title
+theme: wilmap
+region: '-1'
+weight: -3
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

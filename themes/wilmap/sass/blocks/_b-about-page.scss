@@ -1,0 +1,36 @@
+.b-about-page {
+
+  .main-information {
+    position: relative;
+    min-height: $height-image;
+
+    .image {
+      position: absolute;
+      top: -20px;
+      right: 0;
+      width: $width-image;
+      height: $height-image;
+      background-image: url('../images/home/intro-image.png');
+      background-size: cover;
+      z-index: -1;
+    }
+
+    .text {
+      padding-top: 75px;
+    }
+
+    .text-paragraph {
+      max-width: 620px;
+      margin: 0 auto;
+      margin-top: 60px;
+
+      p {
+        margin-top: 20px;
+
+        &:first-of-type {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}

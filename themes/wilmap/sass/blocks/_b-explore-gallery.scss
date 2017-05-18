@@ -1,0 +1,112 @@
+.b-explore-gallery {
+  .title-page {
+    position: relative;
+    min-height: 140px;
+    padding-top: 40px;
+
+    .image {
+      position: absolute;
+      top: -20px;
+      right: 0;
+      width: $width-image;
+      height: $height-image;
+      background-image: url('../images/home/intro-image.png');
+      background-size: cover;
+      z-index: -1;
+    }
+  }
+
+  .filters {
+    margin-top: 55px;
+
+    .text-subtitle {
+      font-weight: $font-weight-bold;
+    }
+
+    .contain-input {
+      display: flex;
+
+      .filter-contain {
+        display: flex;
+        position: relative;
+        align-items: flex-end;
+
+        &::after {
+          display: inline-block;
+          position: absolute;
+          right: -35px;
+          bottom: 0;
+          width: 3px;
+          height: 56px;
+          background-color: $third-color;
+          content: '';
+        }
+      }
+
+      .order-contain {
+        padding-left: 70px;
+        display: flex;
+        align-items: center;
+      }
+
+      select {
+        outline: 0;
+      }
+
+      .select2-container--wilmap-select-document,
+      .select2-container--wilmap-select-country,
+      .select2-container--wilmap-select-year {
+
+        .selection {
+          .select2-selection {
+            display: flex;
+            align-items: center;
+
+            .select2-selection__rendered {
+              padding-left: 0;
+
+              .select2-selection__placeholder {
+                color: $second-color;
+                font-size: $font-size-small;
+                letter-spacing: .5px;
+
+              }
+            }
+            .select2-selection__arrow {
+              b {
+                position: absolute;
+                top: 50%;
+                width: 0;
+                height: 0;
+                margin-top: -5px;
+                margin-left: -12px;
+                border-width: 8px 8px 0;
+                border-style: solid;
+                border-color: $third-color transparent transparent;
+              }
+            }
+          }
+        }
+
+        .dropdown-wrapper {
+
+        }
+      }
+
+      .select2-container--wilmap-select-document {
+        width: 140px !important;
+        margin-right: 50px;
+      }
+
+      .select2-container--wilmap-select-country {
+        width: 82px !important;
+        margin-right: 85px;
+      }
+
+      .select2-container--wilmap-select-year {
+        width: 60px !important;
+        margin-right: 70px;
+      }
+    }
+  }
+}

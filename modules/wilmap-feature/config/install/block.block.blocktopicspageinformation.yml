@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:66c2fb50-a27e-4ecf-aedd-69f8b867219a'
+  module:
+    - block_content
+  theme:
+    - wilmap
+id: blocktopicspageinformation
+theme: wilmap
+region: contentTopics
+weight: 0
+provider: null
+plugin: 'block_content:66c2fb50-a27e-4ecf-aedd-69f8b867219a'
+settings:
+  id: 'block_content:66c2fb50-a27e-4ecf-aedd-69f8b867219a'
+  label: 'Block TopicsPage Information'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

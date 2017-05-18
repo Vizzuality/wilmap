@@ -1,0 +1,345 @@
+/* Exceptions */
+#edit-menu .form-item{
+  margin: 10px 0;
+}
+
+#edit-submit {
+  box-sizing: border-box !important;
+  display: inline-block !important;
+  position: relative !important;
+  text-align: center !important;
+  line-height: normal !important;
+  cursor: pointer !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  padding: 10px 14px !important;
+  text-transform: uppercase !important;
+  color: #fff !important;
+  letter-spacing: 0.8px !important;
+  background-color: #b3001e !important;
+  border: 0 !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  background-image: none;
+  text-shadow: none;
+}
+
+#diff-inline-form select,
+div.filter-options select {
+  padding: 0;
+}
+
+#edit-advanced {
+  position: relative;
+  top: 70px;
+  background-color: transparent;
+  border: 0px;
+  box-shadow: none;
+}
+
+#edit-advanced .form-item {
+  margin: 15px 0;
+}
+
+#edit-advanced h3 {
+  color: #b3001e;
+  letter-spacing: 0.5px;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+#edit-advanced h4 {
+  color: #968f7e;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+#edit-advanced > .form-item{
+  color: #968f7e;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+#content-access-admin-settings #edit-submit {
+  top: 35px !important;
+}
+
+#edit-author--2 {
+  margin-bottom: 30px;
+}
+
+.entity-meta__header > .form-item {
+  color: #968f7e;
+}
+
+#edit-advanced > .entity-meta__header {
+  background-color: rgba(227, 222, 211, 0.3);
+  border: 0;
+}
+
+#edit-revision-information {
+}
+
+.form-type-textarea {
+  margin-top: 30px !important;
+}
+
+.form-type-textarea label {
+  color: #222 !important;
+  font-weight: bold !important;
+}
+
+.form-type-textarea .description {
+  color: #968f7e;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+#edit-revision-information label {
+    color: #968f7e;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+  }
+
+textarea.form-textarea  {
+  background-color: transparent;
+  background-color: transparent;
+  border: 1px solid #e3ded3;
+  box-shadow: none;
+}
+
+.layout-region-node-main  label {
+  letter-spacing: 0.5px;
+  color: #b3001e !important;
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 13px;
+}
+
+.layout-region-node-main .description {
+  color: #968f7e;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.form-item-field-body-entry-0-format label {
+  color: #968f7e;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  text-transform: none;
+}
+
+#edit-field-body-entry-0-format-help-about{
+  color: #b3001e !important;
+  letter-spacing: 0.5px;
+  font-weight: lighter;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+button.link {
+  color: #b3001e !important;
+  letter-spacing: 0.5px;
+  font-weight: lighter;
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: underline;
+}
+
+#edit-field-body-entry-0-format-help-about {
+  text-decoration: underline;
+}
+
+#edit-field-body-entry-0-format--2 {
+  border: 0px !important;
+}
+
+#edit-field-body-entry-0-format--2:hover {
+  box-shadow: none;
+}
+
+.filter-help a:after {
+  display: none;
+}
+
+.cke_chrome {
+  border: 0px !important;
+  box-shadow: none !important;
+}
+
+.cke_toolgroup {
+  border: 0px !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.cke_toolgroup span {
+  color: #968f7e !important;
+  cursor: pointer !important;
+}
+
+a.cke_button:hover {
+  background-color: #e3ded3 !important;
+}
+
+.cke_wysiwyg_frame {
+  border: 1px solid #e3ded3 !important;
+}
+
+.cke_editable {
+  font-size: 15px !important;
+  line-height: 1.88 !important;
+  color: #222 !important;
+
+}
+
+#cke_1_top {
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  border-bottom: 0;
+  background: transparent;
+}
+
+#cke_1_bottom {
+  opacity: 0.5;
+}
+
+.views-field-operations .dropbutton-toggle {
+  background-color: #f6f5f1 !important;
+  border: 0px;
+}
+.views-field-operations .dropbutton-action {
+  background-color: #f6f5f1 !important;
+  border: 0px;
+}
+
+#taxonomy-overview-vocabularies .dropbutton-action {
+  background-color: #f6f5f1 !important;
+  border: 0px;
+}
+
+#taxonomy-overview-vocabularies .dropbutton-toggle {
+  background-color: #f6f5f1 !important;
+  border: 0px;
+}
+
+.toolbar-item.is-active {
+  position: relative;
+  background-image: none !important;
+}
+
+.toolbar-item.is-active::after {
+  content: '';
+  display: block;
+  height: 5px;
+  width: 100%;
+  background-color: #b3001e;
+  bottom: 0px;
+  position: absolute;
+  left: 0;
+}
+
+.toolbar .toolbar-bar {
+  background-color: #222 !important;
+  box-shadow: none !important;
+  color: #fff !important;
+  font-size: 15px !important;
+  letter-spacing: 0.9px !important;
+  text-transform: uppercase !important;
+  padding-left: 40px;
+}
+
+.toolbar-tab a {
+  font-weight: 100;
+}
+
+toolbar-icon:first-of-type {
+  padding-left: 2.75em;
+}
+
+.toolbar-icon {
+  padding-left: 1.3333em !important;
+  line-height: 1.5 !important;
+}
+
+.toolbar-icon::before {
+  display: none !important;
+}
+
+.toolbar-lining {
+  padding-left: 40px;
+  background-color: #fff;
+}
+
+.toolbar-tray-vertical > .toolbar-lining {
+  padding-top: 30px !important;
+}
+
+.toolbar-toggle-orientation {
+  background-color: #fff !important;
+}
+
+.toolbar .toolbar-tray-vertical {
+  background-color: #fff;
+  box-shadow: none !important;
+  border-right: 5px #e3ded3 solid !important;
+}
+
+.menu-item {
+  border-top: 0px !important;
+  border-bottom: 0px !important;
+}
+
+.menu-item--active {
+  font-size: 15px !important;
+  letter-spacing: 0.5px !important;
+  font-weight: 800;
+  color: #b3001e !important;
+  font-family: 'Raleway', sans-serif !important;
+}
+
+.menu-item--collapsed > .toolbar-menu a{
+  font-size: 12px !important;
+  font-weight: 400 !important;
+}
+
+.menu-item--collapsed > .toolbar-menu{
+  padding-left: 20px;
+}
+
+.draggable td{
+  padding-left: 10px !important;
+}
+
+.delta-order {
+  padding-right: 10px !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+
+form .field-multiple-table .field-multiple-drag {
+  width: 0px !important;
+  padding: 0px !important;
+}
+
+th.is-active > a {
+  color: #b3001e !important;
+}
+
+th.is-active > a::after {
+  display: none;
+}
+
+th.is-active > a:hover {
+  color: #b3001e !important;
+}

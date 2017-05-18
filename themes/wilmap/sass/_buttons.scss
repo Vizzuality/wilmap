@@ -1,0 +1,29 @@
+.butn {
+  padding: 14px 16px;
+  font-size: $font-size-x-small;
+  font-weight: $font-weight-semi-bold;
+  letter-spacing: .8px;
+  text-align: center;
+  text-transform: uppercase;
+
+  &.-primary {
+    background-color: $main-color;
+    color: $white;
+  }
+
+  &.-secondary {
+    background-color: $third-color;
+    color: $black;
+  }
+
+  &.-tertiary-white {
+    background-color: $white;
+    color: $main-color;
+  }
+
+  &-tertiary-dark {
+    border: 1px solid $white;
+    background-color: $main-color;
+    color: $white;
+  }
+}

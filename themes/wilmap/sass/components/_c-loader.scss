@@ -1,0 +1,76 @@
+.c-loader {
+  max-width: 700px;
+  margin-bottom: 20px;
+  padding: 40px 50px;
+  transition: opacity .2s linear;
+  background-color: rgba($third-color, .3);
+  opacity: 1;
+
+  &.-hidden {
+    opacity: 0;
+  }
+
+  ul {
+    .title-loader {
+      display: block;
+      position: relative;
+      height: 35px;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, $box-loader-start 8%, $box-loader-end 18%, $box-loader-start 33%);
+      background-size: 1000px 70px;
+      animation-duration: .8s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+      animation-name: placeHolderShimmer;
+      animation-timing-function: linear;
+
+      &:first-of-type {
+        max-width: 400px;
+      }
+    }
+
+    .date-loader {
+      max-width: 100px;
+      height: 16px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      background: linear-gradient(to right, $box-loader-start 8%, $box-loader-end 18%, $box-loader-start 33%);
+      background-size: 1000px 32px;
+      animation-duration: .8s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+      animation-name: placeHolderShimmer;
+      animation-timing-function: linear;
+    }
+
+    .text-loader {
+      height: 14px;
+      margin-bottom: 12px;
+      background: linear-gradient(to right, $box-loader-start 8%, $box-loader-end 18%, $box-loader-start 33%);
+      background-size: 1000px 24px;
+      animation-duration: .8s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+      animation-name: placeHolderShimmer;
+      animation-timing-function: linear;
+
+      &.-short {
+        max-width: 350px;
+      }
+
+      &.-medium {
+        max-width: 500px;
+      }
+    }
+  }
+}
+
+@keyframes placeHolderShimmer {
+  0%{
+    background-position: -468px 0
+  }
+  100%{
+    background-position: 468px 0
+  }
+}
+

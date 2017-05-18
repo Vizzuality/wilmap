@@ -1,0 +1,25 @@
+#Basic information
+
+name: WILMap Theme Drupal
+type: theme
+description: WILMap Theme
+package: Custom
+core: 8.x
+
+libraries:
+  - wilmap/global-css
+  - wilmap/global-js
+
+regions:
+  header: 'Header'
+  content: 'Content'
+  homepage: 'HomePage'
+  contentMap: 'ContentMap'
+  contentExplore: 'contentExplore'
+  contentTopics: 'contentTopics'
+  contentNews: 'contentNews'
+  contentMap: 'contentMap'
+  contentAbout: 'contentAbout'
+  footer: 'Footer'
+
+features: true

@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  drupal:
+    build: .
+    container_name: drupal_wilmap
+    volumes:
+      - ./modules:/var/www/html/modules
+      - ./profiles:/var/www/html/profiles
+      - ./themes:/var/www/html/themes
+      - ./sites/:/var/www/html/sites
+      - ./data/private:/var/www/private
+    links:
+      - mysql
+    ports:
+      - 8090:80
+  mysql:
+    image: mysql:5.7
+    container_name: mysql-wilmap
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: wilmap
+      MYSQL_DATABASE: wilmap_db
+      MYSQL_PASSWORD: wilmap_root
+    restart: always
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./database:/database

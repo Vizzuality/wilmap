@@ -1,0 +1,49 @@
+.b-footer {
+  margin-top: 100px;
+  background-color: $black;
+
+  .wrap {
+    display: flex;
+    justify-content: space-between;
+    padding: 56px 0;
+
+    .box-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 220px;
+      height: 142px;
+      background-size: cover;
+      color: $white;
+      font-size: $font-size-mediun;
+      font-weight: $font-weight-light;
+      line-height: 1.04;
+      text-align: center;
+
+      &.-global {
+        background-image: url('../images/footer/footer-1.png');
+      }
+
+      &.-explore {
+        background-image: url('../images/footer/footer-2.png');
+      }
+
+      &.-topics {
+        background-image: url('../images/footer/footer-3.png');
+      }
+
+      &.-subscribe {
+        background-image: url('../images/footer/footer-4.png');
+      }
+    }
+  }
+
+  .sub-footer {
+    padding: 4px 50px;
+    border-top: 1px solid rgba($white, .2);
+
+    img {
+      width: 145px;
+    }
+  }
+}

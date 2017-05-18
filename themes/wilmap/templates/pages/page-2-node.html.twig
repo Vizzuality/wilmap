@@ -1,0 +1,76 @@
+<div id="page-wrapper">
+  <div id="page">
+    <header id="header" class="header" role="banner" aria-label="{{ 'Site header'|t}}">
+      <div class="section layout-container clearfix">
+        {{ page.header }}
+      </div>
+    </header>
+    <div id="main-wrapper" class="wrap">
+      <div id="main" class="layout-main clearfix">
+        <main id="content" class="column main-content" role="main">
+          <section class="section wrap node-pages">
+            <div class="title-page">
+              <div class="image">
+              </div>
+              <a class="text-subtitle -big back-text" href="/news">
+                back to news
+              </a>
+              <h1 class="text-main-header -black title-node"></h1>
+            </div>
+            <div class="content-page content-node">
+              <span class="date date-node"></span>
+            </div>
+            <hr>
+            <div class="related-news">
+              <h3 class="text-secondary-header -black">
+                Related news
+              </h3>
+              <div class="gallery-news-related">
+                <div class="news-info">
+                  <strong class="related-title">June 2016 updates report</strong>
+                  <span class="related-date">November 22, 2016</span>
+                  <div class="text">
+                    <p class="paragraph related-content">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                      reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                  </div>
+                  <div class="shadow"></div>
+                </div>
+                <div class="news-info">
+                  <strong class="related-title">June 2016 updates report</strong>
+                  <span class="related-date">November 22, 2016</span>
+                  <div class="text">
+                    <p class="paragraph related-content">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                      reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                  </div>
+                  <div class="shadow"></div>
+                </div>
+              </div>
+              <a class="butn -primary" href="#">
+                More news
+              </a>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <footer class="site-footer">
+      <div class="layout-container">
+        {% if page.footer %}
+          <div class="site-footer__top clearfix">
+            {{ page.footer }}
+          </div>
+        {% endif %}
+      </div>
+    </footer>
+  </div>
+</div>

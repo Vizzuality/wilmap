@@ -1,0 +1,70 @@
+/**
+ * Entity meta settings.
+ */
+.entity-meta {
+}
+
+.entity-meta label {
+  color: #222;
+}
+
+.entity-meta h4 {
+  color: #222 !important;
+}
+
+.entity-meta .description {
+  color: #968f7e !important;
+}
+
+.entity-meta .form-type-checkbox > label {
+  color: #968f7e !important;r
+}
+
+.entity-meta__header,
+.entity-meta details {
+  background-color: rgba(227, 222, 211, 0.3);
+  border: 0;
+  margin: 0;
+}
+.entity-meta__header {
+  padding: 1em 1.5em;
+}
+.entity-meta__title {
+  text-shadow: 0 1px 0 #fff;
+  margin: 0.25em 0;
+}
+.entity-meta__header .form-item {
+  margin: 0.25em 0;
+}
+.entity-meta__last-saved {
+  font-style: italic; /* As-designed, but really: why is this italic? */
+}
+.entity-meta details {
+  border-left: 0;
+  border-right: 0;
+  border-top: 1px solid #fff;
+  margin: 0;
+}
+.entity-meta details:first-child {
+  border-top-color: #bfbfbf;
+}
+.entity-meta details[open] {
+  background-color: rgba(227, 222, 211, 0.3);
+  border-top-width: 0;
+  padding-top: 1px;
+}
+.entity-meta details[open] + details[open] {
+  background-image: none;
+  border-top-width: 1px;
+  padding-top: 0;
+}
+.entity-meta details > .details-wrapper {
+  padding-top: 0;
+}
+.entity-meta details > summary {
+  padding: 0.85em 1.25em;
+  font-size: 15px;
+}
+.entity-meta details .summary {
+ display: none; /* Hide JS summaries. @todo Rethink summaries. */
+}

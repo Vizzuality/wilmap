@@ -3,7 +3,21 @@
 /**
  * Load services definition file.
  */
-$settings['container_yamls'][] = __DIR__ . '/services.yml';
+
+$databases = array();
+
+$config_directories = array();
+
+$settings['hash_salt'] = 'asdfasdfqwer23421';
+
+$settings['update_free_access'] = FALSE;
+
+$settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
+
+$settings['file_scan_ignore_directories'] = [
+    'node_modules',
+    'bower_components',
+];
 
 /**
  * Include the Pantheon-specific settings file.

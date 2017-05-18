@@ -1,0 +1,136 @@
+.b-home-page {
+  margin-top: -20px;
+
+  .intro-section {
+    position: relative;
+    min-height: 600px;
+
+    .image {
+      position: absolute;
+      right: -100px;
+      width: 840px;
+      height: 600px;
+      background-image: url('../images/home/intro-image.png');
+      background-size: cover;
+      z-index: -1;
+    }
+
+    .text {
+      position: relative;
+      top: 100px;
+
+      .paragraph {
+        display: block;
+        max-width: 500px;
+        margin-top: 15px;
+      }
+
+      .butn {
+        display: inline-block;
+        margin-top: 30px;
+      }
+    }
+  }
+
+  .map-section {
+    position: relative;
+    min-height: 590px;
+    margin-top: 120px;
+
+    .image {
+      position: absolute;
+      left: -110px;
+      width: 810px;
+      height: 590px;
+      background-image: url('../images/home/map-section.png');
+      background-size: cover;
+      z-index: -1;
+    }
+
+    .text {
+      position: absolute;
+      top: 75px;
+      right: 0;
+      max-width: 380px;
+
+      .paragraph {
+        display: block;
+        margin-top: 20px;
+      }
+
+      .butn {
+        display: inline-block;
+        margin-top: 30px;
+      }
+    }
+  }
+
+  .explore-section {
+    display: flex;
+    position: relative;
+    align-items: center;
+    height: 770px;
+    margin-top: 110px;
+    background-color: $main-color;
+
+    .wrap {
+      .text {
+        max-width: 380px;
+
+        .paragraph {
+          display: block;
+          margin-top: 20px;
+        }
+
+        .butn {
+          display: inline-block;
+          margin-top: 30px;
+        }
+      }
+
+      .image {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 630px;
+        height: 610px;
+        transform: translateY(-50%);
+        background-image: url('../images/home/explore-section.png');
+        background-size: cover;
+      }
+    }
+  }
+
+  .news-section {
+    position: relative;
+    min-height: 600px;
+    margin-top: 95px;
+
+    .image {
+      position: absolute;
+      left: -110px;
+      width: 810px;
+      height: 600px;
+      background-image: url('../images/home/news-section.png');
+      background-size: cover;
+      z-index: -1;
+    }
+
+    .text {
+      position: absolute;
+      top: 75px;
+      right: 0;
+      max-width: 380px;
+
+      .paragraph {
+        display: block;
+        margin-top: 20px;
+      }
+
+      .butn {
+        display: inline-block;
+        margin-top: 30px;
+      }
+    }
+  }
+}

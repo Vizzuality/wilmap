@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Installation and update functions for the Simple hierarchical select module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function shs_install() {
+  // Weight needs to be higher than taxonomy.module.
+  module_set_weight('shs', 1);
+}

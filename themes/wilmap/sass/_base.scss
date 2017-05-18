@@ -1,0 +1,54 @@
+// Base styles
+html,
+body {
+  font-family: $font-primary;
+  -webkit-font-smoothing: antialiased;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .hidden {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+.wrap {
+  width: 100%;
+  max-width: $wrap-width;
+  margin: 0 auto;
+}
+
+header {
+  min-height: 130px;
+}
+
+.back-menu-map {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  background-color: rgba($white, .8);
+  z-index: 2;
+}
+
+// Animation
+
+// 1.fadeInFromNone
+@keyframes fadeInFromNone {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+
+  1% {
+    display: block;
+    opacity: 0;
+  }
+
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}

@@ -1,0 +1,9 @@
+/**
+ * Content header.
+ */
+.content-header {
+  overflow: hidden;
+  background-color: #fff;
+  padding: 24px 0 0;
+  margin-bottom: 45px;
+}

@@ -1,0 +1,36 @@
+name: wilmap
+description: 'wilmap feature import/export'
+type: module
+core: 8.x
+dependencies:
+  - basic_auth
+  - block
+  - block_content
+  - ckeditor
+  - comment
+  - contact
+  - datetime
+  - editor
+  - features
+  - field
+  - file
+  - filter
+  - hal
+  - help
+  - image
+  - menu_ui
+  - node
+  - path
+  - rdf
+  - rest
+  - search
+  - serialization
+  - shortcut
+  - system
+  - taxonomy
+  - text
+  - tour
+  - user
+  - views
+  - views_ui
+version: 8.x

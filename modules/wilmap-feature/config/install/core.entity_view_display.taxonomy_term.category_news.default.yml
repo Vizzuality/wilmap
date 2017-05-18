@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.category_news.field_category_name
+    - taxonomy.vocabulary.category_news
+  module:
+    - text
+id: taxonomy_term.category_news.default
+targetEntityType: taxonomy_term
+bundle: category_news
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  field_category_name:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden: {  }

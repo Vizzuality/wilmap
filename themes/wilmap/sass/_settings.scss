@@ -1,0 +1,34 @@
+//Fonts
+@import url('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,400i,500,600,700,900');
+$font-primary: 'Raleway', sans-serif;
+
+//Font sizes
+$font-size-huge: 90px;
+$font-size-large: 50px;
+$font-size-mediun: 25px;
+$font-size-small: 15px;
+$font-size-x-small: 13px;
+
+// Font weight
+$font-weight-light: 200;
+$font-weight-semi-light: 400;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+
+// Colors
+$black: #222;
+$white: #fff;
+$main-color: #b3001e;
+$second-color: #968f7e;
+$third-color: #e3ded3;
+
+// Colors box loaders
+$box-loader-start: #ebe7e0;
+$box-loader-end: #f6f5f1;
+
+// Grid
+$wrap-width: 940px;
+
+// Images covers page
+$width-image: 780px;
+$height-image: 200px;

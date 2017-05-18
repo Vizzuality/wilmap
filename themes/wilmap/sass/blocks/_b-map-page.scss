@@ -1,0 +1,19 @@
+.b-map-page {
+  .map,
+  #map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    height: calc(100vh);
+  }
+  .search-map {
+    position: absolute;
+    right: 0;
+    width: 360px;
+    height: 100%;
+    background-color: $main-color;
+    z-index: 4;
+
+  }
+}

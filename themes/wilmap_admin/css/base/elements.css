@@ -1,0 +1,445 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,400i,500,600,700,900');
+
+/**
+ * Generic elements.
+ */
+body {
+  color: #333;
+  background: #fff;
+  font-family: 'Raleway', sans-serif;
+}
+a,
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover,
+.link:hover,
+a:focus,
+.link:focus {
+  text-decoration: underline;
+  outline: 0;
+}
+hr {
+  margin: 0;
+  padding: 0;
+  border: none;
+  height: 1px;
+  background: #cccccc;
+}
+summary,
+.fieldgroup:not(.form-composite) > legend {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.simpletest-results-form summary {
+  text-transform: none;
+}
+
+/**
+ * Reusable heading classes are included to help modules change the styling of
+ * headings on a page without affecting accessibility.
+ */
+h1,
+.heading-a {
+  font-weight: bold;
+  margin: 0;
+  font-size: 1.625em;
+  line-height: 1.875em;
+}
+h2,
+.heading-b {
+  font-weight: bold;
+  margin: 10px 0;
+  font-size: 1.385em;
+}
+h3,
+.heading-c {
+  font-weight: bold;
+  margin: 10px 0;
+  font-size: 1.231em;
+}
+h4,
+.heading-d {
+  font-weight: bold;
+  margin: 10px 0;
+  font-size: 1.154em;
+}
+h5,
+.heading-e {
+  font-weight: bold;
+  margin: 10px 0;
+  font-size: 1.077em;
+}
+h6,
+.heading-f {
+  font-weight: bold;
+  margin: 10px 0;
+  font-size: 1.077em;
+}
+p {
+  margin: 1em 0;
+}
+dl {
+  margin: 0 0 20px;
+}
+dl dd,
+dl dl {
+  margin-left: 20px; /* LTR */
+  margin-bottom: 10px;
+}
+[dir="rtl"] dl dd,
+[dir="rtl"] dl dl {
+  margin-right: 20px;
+}
+blockquote {
+  margin: 1em 40px;
+}
+address {
+  font-style: italic;
+}
+u,
+ins {
+  text-decoration: underline;
+}
+s,
+strike,
+del {
+  text-decoration: line-through;
+}
+big {
+  font-size: larger;
+}
+small {
+  font-size: smaller;
+}
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+  line-height: normal;
+}
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  line-height: normal;
+}
+nobr {
+  white-space: nowrap;
+}
+abbr,
+acronym {
+  border-bottom: dotted 1px;
+}
+ul {
+  list-style-type: disc;
+  list-style-image: none;
+  margin: 0.25em 0 0.25em 1.5em; /* LTR */
+}
+[dir="rtl"] ul {
+  margin-left: 0;
+  margin-right: 1.5em;
+}
+/* This is required to win over specificity of [dir="rtl"] ul */
+[dir="rtl"] .messages__list {
+  margin-right: 0;
+}
+ol {
+  list-style-type: decimal;
+  margin: 0.25em 0 0.25em 2em; /* LTR */
+  padding: 0;
+}
+[dir="rtl"] ol {
+  margin-left: 0;
+  margin-right: 2em;
+}
+quote,
+code {
+  margin: .5em 0;
+}
+pre {
+  margin: 0.5em 0;
+  white-space: pre-wrap;
+}
+details {
+  line-height: 1.295em;
+}
+details summary {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+details summary:focus {
+  outline: none;
+}
+details summary:focus,
+details summary:hover {
+  text-decoration: underline;
+}
+
+select {
+  padding: 10px 20px !important;
+  background: transparent !important;
+  border: 1px solid #e3ded3 !important;
+  font-size: 16px !important;
+}
+
+.js-form-type-checkbox {
+
+}
+
+#edit-advanced {
+  position: relative;
+  top:33px;
+  background-color: transparent;
+  border: 0px;
+  box-shadow: none;
+}
+
+#edit-advanced h3 {
+  color: #b3001e;
+  letter-spacing: 0.5px;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+#edit-advanced h4 {
+  color: #968f7e;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+#edit-advanced > .form-item{
+  color: #968f7e;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+#edit-author--2 {
+  margin-bottom: 30px;
+}
+
+.entity-meta__header > .form-item {
+  color: #968f7e;
+}
+
+#edit-advanced > .entity-meta__header {
+  background-color: rgba(227, 222, 211, 0.3);
+  border: 0;
+}
+
+#edit-revision-information {
+}
+
+.form-type-textarea {
+  margin-top: 30px !important;
+}
+
+.form-type-textarea label {
+  color: #222 !important;
+  font-weight: bold !important;
+}
+
+.form-type-textarea .description {
+  color: #968f7e;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+#edit-revision-information label {
+    color: #968f7e;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+  }
+
+textarea.form-textarea  {
+  background-color: transparent;
+  background-color: transparent;
+  border: 1px solid #e3ded3;
+  box-shadow: none;
+}
+
+.layout-region-node-main  label {
+  letter-spacing: 0.5px;
+  color: #b3001e !important;
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 13px;
+}
+
+.layout-region-node-main .description {
+  color: #968f7e;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.form-item-field-body-entry-0-format label {
+  color: #968f7e;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  text-transform: none;
+}
+
+#edit-field-body-entry-0-format-help-about{
+  color: #b3001e !important;
+  letter-spacing: 0.5px;
+  font-weight: lighter;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+button.link {
+  color: #b3001e !important;
+  letter-spacing: 0.5px;
+  font-weight: lighter;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.filter-help a:after {
+  display: none;
+}
+
+.cke_chrome {
+  border: 0px !important;
+  box-shadow: none !important;
+}
+
+.cke_toolgroup {
+  border: 0px !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.cke_toolgroup span {
+  color: #968f7e !important;
+  cursor: pointer !important;
+}
+
+a.cke_button:hover {
+  background-color: #e3ded3 !important;
+}
+
+.cke_wysiwyg_frame {
+  border: 1px solid #e3ded3 !important;
+}
+
+.cke_editable {
+  font-size: 15px !important;
+  line-height: 1.88 !important;
+  color: #222 !important;
+
+}
+
+#cke_1_top {
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  border-bottom: 0;
+  background: transparent;
+}
+
+#cke_1_bottom {
+  opacity: 0.5;
+}
+
+.views-field-operations .dropbutton-toggle {
+  background-color: #f6f5f1 !important;
+  border: 0px;
+}
+.views-field-operations .dropbutton-action {
+  background-color: #f6f5f1 !important;
+  border: 0px;
+}
+
+#taxonomy-overview-vocabularies .dropbutton-action {
+  background-color: #f6f5f1 !important;
+  border: 0px;
+}
+
+#taxonomy-overview-vocabularies .dropbutton-toggle {
+  background-color: #f6f5f1 !important;
+  border: 0px;
+}
+
+.toolbar-item.is-active {
+  position: relative;
+  background-image: none !important;
+}
+
+.toolbar-item.is-active::after {
+  content: '';
+  display: block;
+  height: 5px;
+  width: 100%;
+  background-color: #b3001e;
+  bottom: 0px;
+  position: absolute;
+  left: 0;
+}
+
+.toolbar .toolbar-bar {
+  background-color: #222 !important;
+  box-shadow: none !important;
+  color: #fff !important;
+  font-size: 15px !important;
+  letter-spacing: 0.9px !important;
+  text-transform: uppercase !important;
+  padding-left: 40px;
+}
+
+.toolbar-tab a {
+  font-weight: 100;
+}
+
+toolbar-icon:first-of-type {
+  padding-left: 2.75em;
+}
+
+.toolbar-icon {
+  padding-left: 1.3333em !important;
+}
+
+.toolbar-icon::before {
+  display: none !important;
+}
+
+.toolbar-lining {
+  padding-left: 40px;
+  background-color: #fff;
+}
+
+.toolbar-tray-vertical > .toolbar-lining {
+  padding-top: 30px !important;
+}
+
+.toolbar-toggle-orientation {
+  background-color: #fff !important;
+}
+
+.menu-item {
+  border-top: 0px !important;
+  border-bottom: 0px !important;
+}
+
+.menu-item--active {
+  font-size: 15px !important;
+  letter-spacing: 0.5px !important;
+  font-weight: 800;
+  color: #b3001e !important;
+  font-family: 'Raleway', sans-serif !important;
+}
+
+.menu-item--collapsed > .toolbar-menu a{
+  font-size: 12px !important;
+}
+
+.menu-item--collapsed > .toolbar-menu{
+  padding-left: 20px;
+}

@@ -1,0 +1,120 @@
+.l-news-detail {
+  .title-page {
+    position: relative;
+    min-height: 140px;
+    padding-top: 40px;
+
+    .back-text {
+      display: block;
+      color: $main-color;
+      font-weight: $font-weight-bold;
+      text-indent: 8px;
+    }
+
+    h1 {
+    }
+
+    .image {
+      position: absolute;
+      top: -20px;
+      right: 0;
+      width: $width-image;
+      height: $height-image;
+      background-image: url('../images/home/intro-image.png');
+      background-size: cover;
+      z-index: -1;
+    }
+  }
+
+  .content-page {
+    max-width: 620px;
+    margin: 20px auto 60px;
+    color: $black;
+    font-size: $font-size-small;
+    line-height: 1.88;
+
+    .date {
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      color: $second-color;
+      font-size: $font-size-small;
+      line-height: 1.88;
+    }
+
+    p {
+      margin-top: 20px;
+      color: $black;
+      font-size: $font-size-small;
+      line-height: 1.88;
+    }
+  }
+
+  hr {
+    width: 100%;
+    height: 5px;
+    border: 0;
+    background-color: rgba($third-color, .3);
+  }
+
+  .related-news {
+    margin-top: 35px;
+
+    .gallery-news-related {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 45px;
+
+      .news-info {
+        display: inline-block;
+        position: relative;
+        flex-basis: calc(50% - 60px);
+        height: 300px;
+        padding: 30px 25px;
+        background-color: rgba($third-color, .3);
+        cursor: pointer;
+
+        .related-date {
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+
+        .text {
+          max-height: 210px;
+          overflow: hidden;
+        }
+
+        .shadow {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 150px;
+          background: linear-gradient(to bottom, rgba(246, 245, 241, 0) , #f6f5f1 60%, #f6f5f1);
+        }
+
+        strong {
+          display: block;
+          font-weight: $font-weight-semi-bold;
+          line-height: 1.4;
+        }
+
+        span {
+          display: block;
+          margin-top: 10px;
+          color: $second-color;
+        }
+
+        .text {
+          margin-top: 10px;
+        }
+      }
+    }
+
+    .butn {
+      display: block;
+      width: 120px;
+      margin: 100px auto 0;
+    }
+  }
+}

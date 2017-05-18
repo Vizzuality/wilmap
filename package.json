@@ -1,0 +1,45 @@
+{
+  "name": "WILMap",
+  "version": "1.0.0",
+  "description": "WILMap",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "docker-compose up --build & gulp watch",
+    "watch": "npm run copy-vendor-deps && ./node_modules/.bin/gulp watch",
+    "build": "npm install && ./node_modules/.bin/gulp build",
+    "copy-vendor-deps": "./bin/copy-vendor-deps.sh",
+    "postinstall": "npm run copy-vendor-deps"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Vizzuality",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-env": "^1.1.8",
+    "babel-preset-latest": "^6.22.0",
+    "babel-preset-stage-3": "^6.22.0",
+    "del": "^2.2.2",
+    "eslint": "^3.13.1",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.9.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.0.2",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-livereload": "^3.8.0",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglifyjs": "^0.6.2",
+    "imagemin-pngquant": "^4.2.0"
+  },
+  "dependencies": {
+    "mapbox-gl": "^0.34.0",
+    "select2": "^4.0.3"
+  }
+}

@@ -1,0 +1,22 @@
+.b-topics-page {
+  .title-page {
+    position: relative;
+    min-height: 140px;
+    padding-top: 40px;
+
+    .image {
+      position: absolute;
+      top: -20px;
+      right: 0;
+      width: $width-image;
+      height: $height-image;
+      background-image: url('../images/home/intro-image.png');
+      background-size: cover;
+      z-index: -1;
+    }
+  }
+
+  .gallery-topics {
+    margin-top: 55px;
+  }
+}
