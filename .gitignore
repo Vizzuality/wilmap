@@ -1,13 +1,8 @@
 # Vendors
-/node_modules
 /data
-/vendor
 
 # Logs
 *.log*
-
-# Generated
-/dist
 
 # data
 /themes/wilmap/csv
