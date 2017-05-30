@@ -11,7 +11,8 @@
         "drupal/migrate_plus": "^2.0",
         "drupal/console": "~1.0",
         "drupal/migrate_tools": "^2.0",
-        "drupal/examples": "1.x-dev"
+        "drupal/examples": "1.x-dev",
+        "drupal/config_devel": "^1.0"
     },
     "require-dev": {
         "drupal/coder": "8.2.12",

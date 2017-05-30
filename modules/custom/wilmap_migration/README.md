@@ -1,10 +1,13 @@
 # INTRODUCTION
-WILMap migration instructions
+WILMap migration instructions.
 
 
 # MIGRATIONS 
 
-## MIGRATION: countries, regions and continents
+## MIGRATION: countries, regions and continents (wilmap_countries)
+
+### Preprocess
+Remove countries, continents and regions from drupal.
 
 ### Source
 Source: public://csv/wilmap_countries_regions_matrix.csv
@@ -44,3 +47,12 @@ Migration rollback:
 ```
 drush migrate-rollback [migration_id]
 ```
+
+Update migrations configuration file. Needs *config_devel* module:
+```
+# Configuration files added after install when developing as config files are only copied on module install
+# The run:
+drush cdi <module_name>
+drush cr
+```
+
