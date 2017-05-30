@@ -9,7 +9,14 @@
         "drush/drush": "^8.1",
         "drupal/migrate_source_csv": "^2.0",
         "drupal/migrate_plus": "^2.0",
-        "drupal/console": "~1.0"
+        "drupal/console": "~1.0",
+        "drupal/migrate_tools": "^2.0"
+    },
+    "require-dev": {
+        "drupal/coder": "8.2.12",
+        "phpunit/phpunit": ">=4.8.28 <5",
+        "symfony/browser-kit": ">=2.8.13 <3.0",
+        "symfony/css-selector": "~2.8"
     },
     "replace": {
         "drupal/core": "~8.3"
