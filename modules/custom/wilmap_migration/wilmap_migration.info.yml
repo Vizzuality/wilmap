@@ -1,0 +1,9 @@
+name: wilmap_migration
+type: module
+description: WILMAP migrations from drupal 7
+core: 8.x
+package: WILMap
+dependencies:
+  - migrate
+  - migrate_tools
+  - migrate_plus

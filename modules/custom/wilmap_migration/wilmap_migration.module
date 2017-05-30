@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains wilmap_migration.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function wilmap_migration_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the wilmap_migration module.
+    case 'help.page.wilmap_migration':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('WILMAP migrations from drupal 7') . '</p>';
+      return $output;
+
+    default:
+  }
+}

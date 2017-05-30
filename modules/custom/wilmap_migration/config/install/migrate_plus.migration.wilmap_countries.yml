@@ -1,0 +1,67 @@
+# Migration configuration for countries
+# List available plugins:
+#  drupal plugin:debug migrate.process
+#
+# Run this migration:
+#  drush migrate-import wilmap_countries
+# Migrations status:
+#  drush migrate-status
+#
+id: wilmap_countries
+label: Countries from Countries-Continents-Regions matrix in CSV file.
+migration_group: wilmap
+source:
+  plugin: csv
+  path: public://csv/wilmap_countries_regions_matrix.csv
+  header_row_count: 1
+  keys:
+    - country
+  # Here we identify the columns of interest in the source file. Each numeric
+  # key is the 0-based index of the column. For each column, the key below
+  # (e.g., "continent") is the field name assigned to the data on import, to
+  # be used in field mappings below. The value is a user-friendly string for
+  # display by the migration UI.
+  column_names:
+    # So, here we're saying that the first field (index 0) on each line will
+    # be stored in the start_date field in the Row object during migration, and
+    # that name can be used to map the value below. "Continent" will appear
+    # in the UI to describe this field.
+    0:
+      country: Country
+    1:
+      continent: Continent
+    2:
+      region: Region
+process:
+  # The content (node) type we are creating is 'country'.
+  type:
+    plugin: default_value
+    default_value: country
+  # Most fields can be mapped directly - we just specify the destination (D8)
+  # field and the corresponding field name from above, and the values will be
+  # copied in.
+  title: country
+  field_continent_country:
+    plugin: entity_generate
+    source: continent
+  # Region is a multivalue field, separated by '+'.
+  field_region:
+    -
+      plugin: explode
+      source: region
+      limit: 100
+      delimiter: '+'
+    -
+      plugin: entity_generate
+destination:
+  # Here we're saying that each row of data (line from the CSV file) will be
+  # used to create a node entity.
+  plugin: entity:node
+# List any optional or required migration dependencies.
+# Required means that 100% of the content must be migrated
+# Optional means that that the other dependency should be run first but if there
+# are items from the dependant migration that were not successful, it will still
+# run the migration.
+migration_dependencies:
+  required: {}
+  optional: {}
