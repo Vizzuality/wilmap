@@ -1,0 +1,49 @@
+// ----------------------------------------------------------------
+// Font & text useful Mixins
+// ----------------------------------------------------------------
+
+// Font-Size
+@mixin fs($font-size:$base-font-size, $lines:1) {
+  font-size: $font-size;
+  font-size: rem($font-size);
+}
+
+// Line-Height
+@mixin lh($lines:$base-line-increment, $font-size:$base-font-size) {
+  line-height: $font-size * $lines;
+  line-height: rem($font-size * $lines);
+}
+
+// Font-Weight
+@mixin fw($weight:$regular) {
+  font-weight: $weight;
+}
+
+// Font
+@mixin font($font-size:$base-font-size, $lines:$base-line-increment, $weight:$regular, $font-family: $base-font-family) {
+  @include fs($font-size);
+  @include lh($lines, $font-size);
+  @include fw($weight);
+  font-family: $font-family;
+}
+
+// Ligatures
+@mixin type-ligatures() {
+  @if $ligatures {
+    -moz-font-feature-settings: 'liga=1, dlig=1';
+    -ms-font-feature-settings: 'liga', 'dlig';
+    -webkit-font-feature-settings: 'liga', 'dlig';
+    -o-font-feature-settings: 'liga', 'dlig';
+    font-feature-settings: 'liga', 'dlig';
+  }
+}
+
+
+// Link pseudoclass styles
+@mixin link-pseudo {
+  &:hover,
+  &:focus,
+  &:active {
+    @content;
+  }
+}

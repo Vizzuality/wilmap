@@ -1,0 +1,153 @@
+// ============================================================================
+//
+//    SETTINGS THEME BASE
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Base Settings
+// -------------------------------------
+
+// Base Colors
+$global-bg-color:                       $global-bg-color; // From settings
+$primary-color:                         $third-color; // From settings
+$secondary-color:                       $fourth-color; // From settings
+$default-color:                         $default-color; // From settings
+$info-color:                            $info-color; // From settings
+$danger-color:                          $danger-color; // From settings
+$warning-color:                         $warning-color; // From settings
+$success-color:                         $success-color; // From settings
+
+$primary-hover-color:                   lighten($primary-color, 10%);
+$secondary-hover-color:                 lighten($secondary-color, 10%);
+$default-hover-color:                   lighten($default-color, 10%);
+$info-hover-color:                      lighten($info-color, 10%);
+$danger-hover-color:                    lighten($danger-color, 10%);
+$warning-hover-color:                   lighten($warning-color, 10%);
+$success-hover-color:                   lighten($success-color, 10%);
+
+$horizontal-rule-color:                 $hr-color;
+
+
+// Typography from settings
+$body-font:                             $body-font; // From settings
+$heading-font:                          $heading-font; // From settings
+$buttons-font:                          $buttons-font; // From settings
+$font-smoothing:                        antialiased; //antialiased
+$ligatures:                             false;
+$text-rendering:                        auto; //optimizeLegibility
+
+
+// Typography Colors from settings
+$heading-font-color:                     $heading-font-color; // From settings
+$heading-link-color:                     $heading-font-color; // From settings
+$heading-link-hover-color:               $heading-font-color; // From settings
+$body-font-color:                        $body-font-color; // From settings
+$body-link-color:                        $body-link-color; // From settings
+$body-link-hover-color:                  $body-link-hover-color; // From settings
+
+
+
+// -------------------------------------
+// Gumby settings overrides
+// -------------------------------------
+
+// Typography
+$font-family:                           $body-font; // From settings //"Open Sans"
+
+
+// Vertical Rhythm Spacing
+$base-line-height:                      $base-line-height; // From settings //26px
+$rhythm-spacing:                        0.168;
+$rhythm-height:                         0.711;
+
+
+// Modular Scale Settings
+$ms-ratio:                              0;
+$ms-base:                               16px 78px;
+
+
+// Borders
+$button-radius:                         $default-radius;  // From settings //4px
+$metro-radius:                          0; //0
+$bigger-radius:                         $default-radius * 2; // From settings //8px
+
+
+// Tabs
+$tab-height:                            42px; //42px
+$tabs-font-weight:                      $semibold; // From settings //600
+
+
+// Navigation
+$navbar-color:                          $secondary-color; //#4a4d50
+$navbar-link-color:                     $white; //#fff
+$navcontain-height:                     80px; // makes space at the top of a document for when using a fixed nav
+$nav-distance:                          0;  // Navigation distance from the top of the viewport
+$norm:                                  $normal; // From settings
+$larger:                                $large; // From settings
+
+
+// Buttons
+$button-font-weight:                    $semibold; // From settings
+$type-font-weight:                      $semibold; // From settings
+$xlarge-button-font-size:               $xlarge; // From settings
+$large-button-font-size:                $large; // From settings
+$medium-button-font-size:               $normal; // From settings
+$small-button-font-size:                $small; // From settings
+$default-button-padding:                $dp; // From settings
+$default-button-height:                 36px;
+
+// Drawers & Modals
+$modal-overlay-color:                   rgba($black, 0.8); //rgba(0, 0, 0, 0.8)
+$modal-window-color:                    $white; //$white
+$drawer-background-color:               $gray-10; //#3e4144
+$drawer-inner-shadow-x-offset:          0; //0
+$drawer-inner-shadow-y-offset:          0; //2px
+$drawer-inner-shadow-blur:              0; //5px
+$drawer-inner-shadow-color:             $gray-10; //#313436
+
+
+// Tables
+$table-bgcolor:                         #fff;
+$table-thead-bgcolor:                   $primary-color;
+$table-row-first-cell-font-weight:      $regular; //bold
+$table-border-size:                     1px; //1px
+$table-border-style:                    solid; //solid
+$table-border-color:                    $default-color; //#e5e5e5
+$table-cell-border-size:                1px; //1px
+$table-cell-border-color:               $default-color; //#e5e5e5
+$table-cell-border-style:               solid; //solid
+$table-border-radius:                   4px; //4px
+$table-stripe-bgcolor:                  $default-color; //#e5e5e5
+
+
+// Tooltips
+$tt-min-width:                          130px;
+$tt-bgcolor:                            $primary-color;
+$tt-position:                           top;					// position: top / bottom / left / right
+$tt-align:                              left;					// text and caret alignment: left / right
+$tt-pretty:                             no;					// yes = pretty / no = flat
+
+
+// Floats
+$default-float:                         $default-float; // From settings
+$switch-float:                          $switch-float; // From settings
+
+
+// Lists
+// UI Coloring List
+$ui-coloring:                           primary $primary-color $primary-hover-color,
+                                        secondary $secondary-color $secondary-hover-color,
+                                        default $default-color $default-hover-color,
+                                        info $info-color $info-hover-color,
+                                        danger $danger-color $danger-hover-color,
+                                        warning $warning-color $warning-hover-color,
+                                        success $success-color $success-hover-color;
+
+// UI Styling List
+$styling:                               metro $metro-radius, pretty $button-radius;
+
+// Form field types
+$field-types:                           text, email, password, numeric, search, combined, prepend, append, double;
+$field-sizes:                           xnarrow, narrow, normal, wide, xwide, xxwide;

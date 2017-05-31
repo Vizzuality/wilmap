@@ -1,0 +1,219 @@
+// ============================================================================
+//
+// LAYOUT: FORMS - Submit buttons in _layout.buttons.scss
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+
+$form-legend-color:                      $first-color;
+$form-legend-weight:                     $regular;
+$form-label-color:                       $fourth-color;
+$form-label-weight:                      $medium;
+$form-input-color:                       lighten($fourth-color, 20);
+$form-input-bg-color:                    $white;
+$form-input-weight:                      $regular;
+$form-input-stroke-size:                 2px;
+$form-input-stroke-color:                $gray-10;
+$form-input-radius:                      $default-radius;
+$form-picker-color:                      $form-input-color;
+$form-picker-bg-color:                   $form-input-bg-color;
+$form-picker-weight:                     $form-input-weight;
+$form-picker-stroke-size:                $form-input-stroke-size;
+$form-picker-stroke-color:               $form-input-stroke-color;
+$form-picker-radius:                     $form-input-radius;
+$form-radiocheckbox-color:               $form-input-color;
+$form-radiocheckbox-bg-color:            #f2f2f2;
+$form-radiocheckbox-weight:              $form-input-weight;
+$form-radiocheckbox-stroke-size:         1px;
+$form-radiocheckbox-stroke-color:        #dedede;
+$form-radiocheckbox-radius:              3px;
+$form-radiocheckbox-checked-color:       $fifth-color;
+
+
+// -------------------------------------
+// Scaffold
+// -------------------------------------
+
+// Fieldsets & legends
+form fieldset,
+fieldset {
+  @include trim();
+  @include margin($dp * 2 null);
+  border: 0;
+
+  legend {
+    @include trim();
+    @include margin(null null $dp * 2 null);
+    @include font($normal, 1, $form-legend-weight, $body-font);
+    display: block;
+    color: $form-legend-color;
+  }
+}
+
+
+// Labels
+form label,
+label {
+  @include trim();
+  @include margin(null null $dp - 2 null);
+  @include font($normal, 1, $form-label-weight, $body-font);
+  display: block;
+  color: $form-label-color;
+  cursor: initial;
+}
+
+
+// Form item
+.form-item.field {
+  @include trim();
+  @include margin(null null $dp * 2 null);
+}
+
+.description {
+  @include trim();
+  @include margin($dp / 2 null $dp null);
+  @include font($small + 2, 1, $regular, $body-font);
+  color: $first-color;
+  font-style: italic;
+}
+
+// Inputs
+.field {
+  .input {
+    @include trim();
+    @include position(relative);
+    @include padding(0 $dp);
+    @include font($normal - 2, 1, $form-input-weight, $body-font);
+    @include border-radius($form-input-radius);
+    @include box-shadow(none);
+    color: $form-input-color;
+    background: $form-input-bg-color;
+    border: $form-input-stroke-size solid $form-input-stroke-color;
+    outline: none;
+    resize: none;
+    -webkit-appearance: none;
+
+    &.file {
+      @include trim();
+      @include position(relative);
+      @include border-radius($metro-radius);
+      border: 0;
+    }
+
+    &.textarea {
+      @include padding($dp);
+      height: auto;
+    }
+  }
+}
+
+// Radio & Checkbox
+.js .field {
+  .radio,
+  .checkbox {
+    @include trim();
+    @include position(relative);
+    @include margin(null null $dp / 2 null);
+    @include font($normal - 2, 1, $form-radiocheckbox-weight, $body-font);
+    color: $form-radiocheckbox-color;
+    border: 0;
+    outline: none;
+    resize: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+  }
+
+  .radio {
+    span {
+      @include trim();
+      @include position(relative, 4px null null null);
+      @include margin(null $dp null null);
+      @include size($dp * 1.8);
+      @include border-radius($big-radius);
+      display: inline-block;
+      border: $form-radiocheckbox-stroke-size solid $form-radiocheckbox-stroke-color;
+      background: $form-radiocheckbox-bg-color;
+    }
+
+    &.checked {
+      i {
+        @include position(absolute, 0 null null -7px);
+        @include fs(60px);
+        color: $form-radiocheckbox-checked-color;
+      }
+    }
+  }
+
+  .checkbox {
+    span {
+      @include trim();
+      @include position(relative, 2px null null null);
+      @include margin(null $dp null null);
+      @include size($dp * 1.6);
+      @include border-radius($form-radiocheckbox-radius);
+      display: inline-block;
+      border: $form-radiocheckbox-stroke-size solid $form-radiocheckbox-stroke-color;
+      background: $form-radiocheckbox-bg-color;
+    }
+
+    &.checked {
+      i {
+        @include position(absolute, -3px null null -7px);
+        @include fs(22px);
+        color: $form-radiocheckbox-checked-color;
+      }
+    }
+  }
+}
+
+// Selects
+.picker {
+  @include trim();
+  @include position(relative);
+  @include padding($dp - 2 $dp * 3 $dp - 2 $dp - 2);
+  @include border-radius($form-picker-radius);
+  @include box-shadow(none);
+  color: $form-picker-color;
+  background: $form-picker-bg-color;
+  border: $form-picker-stroke-size solid $form-picker-stroke-color;
+  outline: none;
+  resize: none;
+  vertical-align: top;
+
+  @include icon-change('icon-down-open', after);
+  &::after {
+    @include trim();
+    @include padding($dp - 8 $dp / 2);
+    @include position(absolute, 4px 0% null null);
+    @include fs(17px);
+    color: darken($form-picker-stroke-color, 10);
+    border: 0;
+    border-left: 1px solid $form-picker-stroke-color;
+
+    @include respond(tablets) {
+      @include position(absolute, 2px 0% null null);
+    }
+
+    @include respond(all-phones) {
+      @include position(absolute, 2px 0% null null);
+    }
+  }
+
+  select {
+    @include trim();
+    @include font($normal - 2, 1, $form-picker-weight, $body-font);
+    @include size(140% auto);
+    color: $form-picker-color;
+    outline: none;
+    -webkit-appearance: none;
+  }
+}
+
+// Search fields
+.field .input.form-search {
+  width: auto;
+}

@@ -1,0 +1,32 @@
+// -------------------------------------
+// Config
+// -------------------------------------
+
+$output-bourbon-deprecation-warnings: false !default;
+@import '../node_modules/bourbon/app/assets/stylesheets/bourbon-deprecate';
+
+
+// -------------------------------------
+// Bourbon Useful Functions
+// -------------------------------------
+
+@import '../node_modules/bourbon/app/assets/stylesheets/functions/contains-falsy';
+@import '../node_modules/bourbon/app/assets/stylesheets/functions/contains';
+@import '../node_modules/bourbon/app/assets/stylesheets/helpers/directional-values';
+@import '../node_modules/bourbon/app/assets/stylesheets/functions/is-light';
+@import '../node_modules/bourbon/app/assets/stylesheets/functions/is-length';
+@import '../node_modules/bourbon/app/assets/stylesheets/functions/is-number';
+@import '../node_modules/bourbon/app/assets/stylesheets/functions/is-size';
+@import '../node_modules/bourbon/app/assets/stylesheets/functions/unpack';
+
+
+// -------------------------------------
+// Bourbon Useful Mixins
+// -------------------------------------
+
+@import '../node_modules/bourbon/app/assets/stylesheets/addons/margin';
+@import '../node_modules/bourbon/app/assets/stylesheets/addons/padding';
+@import '../node_modules/bourbon/app/assets/stylesheets/addons/position';
+@import '../node_modules/bourbon/app/assets/stylesheets/addons/size';
+@import '../node_modules/bourbon/app/assets/stylesheets/addons/timing-functions';
+@import '../node_modules/bourbon/app/assets/stylesheets/addons/triangle';

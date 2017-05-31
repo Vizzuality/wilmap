@@ -1,0 +1,73 @@
+// =================================================
+//
+// SHAME PARTIAL
+//
+// ==================================================
+
+// -------------------------------------
+// Browser Specific Hacks [ie,opera,...]
+// -------------------------------------
+
+
+
+// -------------------------------------
+// Drupal Specific hacks
+// -------------------------------------
+
+// Contextual admin links
+body.user-logged-in {
+  .contextual-links {
+    display: none !important;
+  }
+  .contextual.open .contextual-links {
+    display: block !important;
+    z-index: 9999 !important;
+  }
+  // .contextual-region {
+  //   border: 1px solid $red;
+  // }
+  .contextual-region .contextual .contextual-links {
+    background-color: #fff !important;
+    border: 1px solid #ccc !important;
+    border-radius: 4px 0 4px 4px !important; /* LTR */
+    clear: both !important;
+    float: right !important; /* LTR */
+    margin: 0 !important;
+    padding: 0.25em 0 !important;
+    position: relative !important;
+    right: 6px !important; /* LTR */
+    text-align: left !important; /* LTR */
+    top: -1px !important;
+    white-space: nowrap !important;
+  }
+  .contextual-region .contextual .contextual-links li {
+    background-color: #fff !important;
+    border: none !important;
+    list-style: none !important;
+    list-style-image: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 100% !important;
+    display: block !important;
+    height: auto !important;
+  }
+  .contextual-region .contextual .contextual-links a {
+    @include text-shadow(none !important);
+    background-color: #fff !important;
+    color: #333 !important;
+    display: block !important;
+    font-family: sans-serif !important;
+    font-size: small !important;
+    line-height: 0.8em !important;
+    margin: 0.25em 0 !important;
+    padding: 0.4em 0.6em !important;
+    display: block !important;
+    height: auto !important;
+    text-transform: capitalize !important;
+
+    &:hover {
+      color: #000 !important;
+      background: #f7fcff !important;
+    }
+  }
+}

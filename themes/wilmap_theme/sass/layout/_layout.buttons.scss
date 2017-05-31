@@ -1,0 +1,42 @@
+// ============================================================================
+//
+// LAYOUT: GENERAL BUTTONS
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Scaffold
+// -------------------------------------
+
+a.btn,
+button.btn {
+  @include default-button();
+  padding: $dp $dp * 2 !important;
+}
+
+.site-btn {
+  display: inline-block;
+
+  a,
+  input[type="submit"],
+  button {
+    @include default-button();
+
+    &.danger {
+      @include default-button($second-color, $danger-color);
+    }
+
+    &.warning {
+      @include default-button($black, $warning-color);
+    }
+
+    &.success {
+      @include default-button($second-color, $success-color);
+    }
+
+    &.rounded {
+      @include border-radius($default-radius);
+    }
+  }
+}

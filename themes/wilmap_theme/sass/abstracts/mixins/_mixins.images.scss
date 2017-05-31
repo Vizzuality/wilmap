@@ -1,0 +1,73 @@
+// --------
+// Images
+// --------
+
+// Insert background image + retina version
+// Usage: @include retina-image('image', '.png', 30px, 30px, 2x 3x);
+@mixin retina-image($image, $ext, $width, $height, $resources:2x) {
+  background-image: url($image + '.' + $ext);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: initial;
+
+
+  @if $ext != 'svg' {
+    // Retina files 2x 3x..
+    @for $i from 1 through length($resources) {
+      $res: nth($resources, $i);
+
+      @include retina-respond($res) {
+        background-image: url($image + '@' + $res + '.' + $ext);
+        background-size: $width $height;
+      }
+    }
+  }
+}
+
+// Responsive image
+@mixin responsive-img {
+  border: 0;
+  width: 100%;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// Crop image
+@mixin crop-image ($w:470px, $h:auto) {
+  width: $w;
+  height: $h;
+  text-align: center;
+  overflow: hidden;
+
+  img {
+    max-width: initial;
+    position: relative;
+    left: 100%;
+    margin-left: -200%;
+  }
+}
+
+// Image Overlay
+@mixin image-overlay($color, $opacity: 0.3) {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom right, $color, $color);
+    opacity: $opacity;
+  }
+}
+
+// Background image
+@mixin bg-image ($image, $width:100%, $height:auto) {
+  background-image: url($image);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: $width $height;
+}

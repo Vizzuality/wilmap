@@ -1,0 +1,79 @@
+// ----------------
+// Trims & Resets
+// ----------------
+
+
+// Margin and Padding 0
+@mixin trim() {
+  margin: 0;
+  padding: 0;
+}
+
+
+// Trim .field class
+@mixin trim-field {
+  .field {
+    @include trim();
+  }
+}
+
+
+// Reset list
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  list-style: none;
+}
+
+
+// Reset Drupal Display suite 2col
+@mixin reset-ds-2col {
+  .ds-2col-stacked > .group-left,
+  .ds-2col-stacked > .group-right,
+  .ds-2col > .group-left,
+  .ds-2col > .group-right {
+    float: none;
+    width: auto;
+  }
+}
+
+
+// Reset jqueryui default styles
+@mixin reset-jqueryui {
+  &.ui-widget-content,
+  .ui-widget,
+  .ui-widget-content,
+  .ui-corner-all,
+  .ui-widget-header,
+  .ui-state-default,
+  .ui-icon {
+    @include font($base-font-size, 1, $regular, $base-font-family);
+    @include border-radius(0);
+    background: none;
+    background-image: none;
+    text-indent: initial;
+    color: $body-font-color;
+    width: auto;
+    height: auto;
+    border: 0;
+    display: initial;
+    opacity: 1;
+    filter: none;
+
+    a,
+    a span {
+      color: $body-link-color;
+
+      &:hover {
+        color: $body-link-hover-color;
+      }
+    }
+  }
+
+  .ui-state-disabled {
+    color: $body-font-color;
+    opacity: 1;
+    filter: none;
+  }
+}

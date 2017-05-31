@@ -1,0 +1,12 @@
+global-styling:
+  version: VERSION
+  css:
+    theme:
+      dist/css/theme-base.css: {}
+      dist/css/theme-layout.css: {}
+      dist/css/theme-components.css: {}
+      dist/css/theme-pages.css: {}
+  js:
+  dependencies:
+    - core/drupal
+    - core/jquery

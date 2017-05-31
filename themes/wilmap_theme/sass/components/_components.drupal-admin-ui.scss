@@ -1,0 +1,60 @@
+// ============================================================================
+//
+// COMPONENTS: DRUPAL TABS
+//
+// ============================================================================
+
+.tabs {
+  @include row();
+  display: block;
+  background-color: #fff;
+  padding: 10px;
+  margin-top: $dp * 4;
+  margin-bottom: $dp * 2;
+
+  .tabs {
+    @include column(12, center, collapse, false);
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    margin: 0;
+    padding: 0;
+
+    li {
+      border-right: 1px solid #dddddd;
+      cursor: default;
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      top: 0;
+      width: auto;
+
+      a {
+        @include fw($regular);
+        @include fs(14px);
+        @include lh(1.59);
+        background: $white;
+        border: 1px solid $white;
+        border-width: 1px;
+        color: $gray-60;
+        cursor: pointer;
+        display: block;
+        font-family: $body-font;
+        margin: 0;
+        padding: $dp $dp * 2;
+        width: auto;
+
+        &:hover {
+          background: $gray-10;
+          color: $gray-90;
+          text-decoration: underline;
+        }
+
+        &.active {
+          background: $white;
+          color: $gray-90;
+        }
+      }
+    }
+  }
+}

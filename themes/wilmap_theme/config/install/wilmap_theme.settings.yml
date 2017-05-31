@@ -1,0 +1,11 @@
+features:
+  comment_user_picture: false
+  comment_user_verification: false
+  favicon: true
+  name: false
+  node_user_picture: false
+  slogan: false
+logo: false
+#  path: 'themes/wilmap_theme/logo.png'
+#  use_default: false
+developer_mode_css: false

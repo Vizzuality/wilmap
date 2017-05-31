@@ -1,0 +1,197 @@
+/*=============================================================================
+
+    BASE STYLES
+
+ ============================================================================*/
+
+@import 'compass/typography/vertical_rhythm';
+@include establish-baseline;
+
+* {
+  @include box-sizing(border-box);
+}
+
+body {
+  @include font($base-font-size, $base-line-increment, $regular, $base-font-family);
+
+  position: relative;
+  color: $first-color;
+  background-color: $global-bg-color;
+
+  -webkit-font-smoothing: $font-smoothing;
+  -moz-osx-font-smoothing: grayscale;
+
+  @include respond(all-phones) {
+    width: 100%;
+    min-width: 0;
+
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+  }
+}
+
+
+html,
+body {
+  height: 100%;
+}
+
+
+.hide {
+  display: none;
+}
+
+.hide.active,
+.show {
+  display: block;
+}
+
+
+.btn,
+.btn a,
+.btn input[type="submit"],
+.btn button {
+  border: 0 !important;
+  text-decoration: none !important;
+}
+
+.site-btn a,
+.site-btn input[type="submit"],
+.site-btn button
+a.btn,
+button.btn {
+  @include sassy-button('flat', 0, inherit, $default-color, darken($default-color, 20), $black, 'none');
+}
+
+
+/* Drupal Grippie */
+.grippie {
+  display: none;
+}
+
+/* Drupal Developer Mode CSS */
+body.developer-mode-css {
+  position: relative;
+
+  &:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    background-image: url($img-path + 'grid.png');
+    background-repeat: repeat-y;
+    background-position: 50% 0%;
+    background-size: initial;
+    pointer-events: none;
+    opacity: 0.4;
+
+    @include respond(tablets) {
+      display: none;
+    }
+
+    @include respond(all-phones) {
+      display: none;
+    }
+  }
+
+  .region {
+    padding: 10px;
+    margin: 5px auto;
+    border: 1px dotted $gray-70;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: yellow;
+      font-size: 10px;
+      z-index: 0;
+      opacity: 0.7;
+    }
+
+    &.region-header-sponsor::before {
+      content: 'region-header-sponsor';
+    }
+
+    &.region-header::before {
+      content: 'region-header';
+    }
+
+    &.region-primary-menu::before {
+      content: 'region-primary-menu';
+    }
+
+    &.region-secondary-menu::before {
+      content: 'region-secondary-menu';
+    }
+
+    &.region-highlighted::before {
+      content: 'region-highlighted';
+    }
+
+    &.region-featured-top-first::before {
+      content: 'region-featured-top-first';
+    }
+
+    &.region-featured-top-second::before {
+      content: 'region-featured-top-second';
+    }
+
+    &.region-featured-top-third::before {
+      content: 'region-featured-top-third';
+    }
+
+    &.region-breadcrumb::before {
+      content: 'region-breadcrumb';
+    }
+
+    &.region-content::before {
+      content: 'region-content';
+    }
+
+    &.region-sidebar-first::before {
+      content: 'region-sidebar-first';
+    }
+
+    &.region-sidebar-second::before {
+      content: 'region-sidebar-second';
+    }
+
+    &.region-featured-bottom-first::before {
+      content: 'region-featured-bottom-first';
+    }
+
+    &.region-featured-bottom-second::before {
+      content: 'region-featured-bottom-second';
+    }
+
+    &.region-featured-bottom-third::before {
+      content: 'region-featured-bottom-third';
+    }
+
+    &.region-footer-first::before {
+      content: 'region-footer-first';
+    }
+
+    &.region-footer-second::before {
+      content: 'region-footer-second';
+    }
+
+    &.region-footer-third::before {
+      content: 'region-footer-third';
+    }
+
+    &.region-footer-fourth::before {
+      content: 'region-footer-fourth';
+    }
+
+    &.region-footer-sponsor::before {
+      content: 'region-footer-sponsor';
+    }
+  }
+}

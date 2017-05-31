@@ -1,0 +1,36 @@
+name: Wilmap Theme
+type: theme
+base theme: classy
+description: 'Wilmap theme with many regions and a responsive, mobile-first layout.'
+package: Core
+version: VERSION
+core: 8.x
+libraries-override:
+  classy/base: false
+libraries:
+  - wilmap_theme/global-styling
+ckeditor_stylesheets:
+  - dist/css/theme-admin-ckeditor.css
+regions:
+  header: Header
+  primary_menu: 'Primary menu'
+  secondary_menu: 'Secondary menu'
+  search: 'Search'
+  highlighted: Highlighted
+  featured_top: 'Featured top'
+  breadcrumb: Breadcrumb
+  content: Content
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  featured_bottom: 'Featured bottom'
+  footer_first: 'Footer first'
+  footer_second: 'Footer second'
+settings:
+  features:
+    comment_user_picture: true
+    comment_user_verification: true
+    favicon: true
+    logo: false
+    name: true
+    node_user_picture: true
+    slogan: true

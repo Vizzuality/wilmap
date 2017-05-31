@@ -1,0 +1,74 @@
+// --------
+// Icons
+// --------
+
+// Insert Gumby Icons Manual
+@mixin insert-gumby-icon($icon,$position: before) {
+    font-family: 'entypo';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    position: relative;
+    zoom: 1;
+    // Better Font Rendering ===========
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @if $position==before {
+        &:before {
+            content: "#{match($entypo-icons, $icon)}";
+            text-decoration: none !important;
+            font-family: 'entypo';
+            padding: 0px 5px 5px 0px;
+            position: relative;
+            top: 1px;
+            left: 1px;
+        }
+    }
+    @else if $position==after {
+        &:after {
+            content: "#{match($entypo-icons, $icon)}";
+            text-decoration: none !important;
+            font-family: 'entypo';
+            padding: 0px 5px 5px 0px;
+            position: relative;
+            top: 1px;
+            left: 1px;
+        }
+    }
+}
+
+// Change Gumby Icons Manual
+@mixin change-gumby-icon($icon,$position: before) {
+    @if $position==before {
+        &:before {
+            content: "#{match($entypo-icons, $icon)}";
+        }
+    }
+    @else if $position==after {
+        &:after {
+            content: "#{match($entypo-icons, $icon)}";
+        }
+    }
+}
+
+// Icons Abstraction
+@mixin icon-insert($icon,$position: before,$source: gumby) {
+    @if $source==gumby {
+        @include insert-gumby-icon($icon,
+            $position);
+    }
+//    @else {
+//    }
+}
+
+@mixin icon-change($icon,$position: before,$source: gumby) {
+    @if $source==gumby {
+        @include change-gumby-icon($icon,
+            $position);
+    }
+//    @else {
+//    }
+}

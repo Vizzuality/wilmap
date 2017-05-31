@@ -1,0 +1,93 @@
+// ============================================================================
+//
+// COMPONENTS: DRUPAL PAGER
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+
+$paginator-color-text:                  lighten($fourth-color, 15);
+$paginator-bgcolor:                     $second-color;
+$paginator-border:                      1px solid $gray-20;
+$paginator-active-color-text:           $second-color;
+$paginator-active-bgcolor:              $third-color;
+$paginator-fontfamily:                  $base-font-family;
+$paginator-fontsize:                    15px;
+$paginator-fontweight:                  $medium;
+$paginator-itemspace:                   0 -3px;
+$paginator-inner-padding:               10px 13px;
+$paginator-radius:                      $metro-radius;
+
+@mixin pager(){
+  @include trim();
+  @include padding($dp * 2 0);
+  @include margin(null auto null auto);
+  @include clearfix();
+  display: table;
+
+  ul,
+  li {
+    @include trim();
+    @include reset-list();
+    display: inline-block;
+  }
+
+  .pager__item {
+    @include margin($paginator-itemspace);
+    @include font($paginator-fontsize, 1, $paginator-fontweight, $paginator-fontfamily);
+    @include border-radius($paginator-radius);
+    color: $paginator-color-text;
+    background-color: $paginator-bgcolor;
+    border: $paginator-border;
+    overflow: hidden;
+
+    a {
+      @include trim();
+      @include padding($paginator-inner-padding);
+      @include font($paginator-fontsize, 1, $paginator-fontweight, $paginator-fontfamily);
+      @include size(100%);
+      color: $paginator-color-text;
+      background-color: transparent;
+      display: block;
+      text-decoration: none;
+    }
+
+    &.is-active,
+    &:hover {
+      @include padding($paginator-inner-padding);
+      @include font($paginator-fontsize, 1, $paginator-fontweight, $paginator-fontfamily);
+      color: $paginator-active-color-text;
+      background-color: $paginator-active-bgcolor;
+
+      a {
+        @include padding(0);
+        color: $paginator-active-color-text;
+        background-color: transparent;
+        display: block;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+
+// -------------------------------------
+// Scaffold
+// -------------------------------------
+
+.pager {
+  @include pager();
+  @include padding(null null 0 null);
+
+  ul {
+    height: $dp * 3.4;
+
+    .pager__item--first,
+    .pager__item--last {
+      display: none;
+    }
+  }
+}

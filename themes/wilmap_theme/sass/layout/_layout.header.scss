@@ -1,0 +1,77 @@
+// ============================================================================
+//
+// LAYOUT: SITE HEADER
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+
+$header-title-color:                    $black;
+$header-text-color:                     lighten($black, 40%);
+$header-text-legal:                     $header-text-color;
+
+$header-bandcolor:                      $gray-10;
+$navbar-bandcolor:                      $black;
+$sponsor-bandcolor:                     $sponsor-bg-color;
+
+
+// -------------------------------------
+// Scaffold
+// -------------------------------------
+
+.site-header {
+  @include trim();
+
+  background-color: $header-bandcolor;
+}
+
+// Sponsor
+.header-sponsor {
+  @include padding($dp / 2 null null null);
+  @include box-shadow(rgba($black, 0.2) 0 -5px 7px 0px inset);
+  background-color: $sponsor-bandcolor;
+  color: $second-color;
+
+  .region {
+    @include trim();
+    @include row();
+  }
+
+  .sponsor-name {
+    @include column(10, false, collapse, false);
+    @include font(13px, 1.1, $regular, $sponsor-font-family);
+    @include padding($dp null null null);
+
+    @include respond(all-phones) {
+      width: 50%;
+    }
+  }
+
+  .sponsor-logo {
+    @include column(2);
+    @include retina-image($img-path + 'logo_madrid', 'png', 120px, 24px, 2x);
+    background-position: 100% 0%;
+    float: right;
+
+    @include respond(all-phones) {
+      width: 50%;
+    }
+  }
+}
+
+.main-header,
+.secondary-menu-wrap {
+  @include row();
+}
+
+.primary-menu-wrap {
+  @include margin($dp * 2 null 0 null);
+  background-color: $navbar-bandcolor;
+
+  .primary-menu {
+    @include row();
+  }
+}

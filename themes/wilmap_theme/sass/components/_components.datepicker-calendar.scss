@@ -1,0 +1,256 @@
+// ============================================================================
+//
+// COMPONENTS: DATEPICKER CALENDAR
+//
+// ============================================================================
+
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+
+$datepicker-inline-header-border:                1px solid $gray-10;
+$datepicker-inline-header-bgcolor:               darken($third-color, 5%);
+$datepicker-inline-header-radius:                $metro-radius;
+$datepicker-inline-header-fontfamily:            $base-font-family;
+$datepicker-inline-header-fontweight:            $semibold;
+$datepicker-inline-header-fontsize:              $med;
+$datepicker-inline-header-fontcolor:             $second-color;
+
+$datepicker-inline-thead-border:                 0;
+$datepicker-inline-thead-bgcolor:                $third-color;
+$datepicker-inline-thead-fontfamily:             $base-font-family;
+$datepicker-inline-thead-fontweight:             $semibold;
+$datepicker-inline-thead-fontsize:               $normal;
+$datepicker-inline-thead-fontcolor:              $second-color;
+
+$datepicker-inline-outtable-border:              1px solid $gray-10;
+
+$datepicker-inline-table-border:                 1px solid $gray-10;
+$datepicker-inline-table-bgcolor:                $second-color;
+$datepicker-inline-table-radius:                 $metro-radius;
+$datepicker-inline-table-fontfamily:             $base-font-family;
+$datepicker-inline-table-fontweight:             $regular;
+$datepicker-inline-table-fontsize:               $normal;
+$datepicker-inline-table-fontcolor:              $first-color;
+
+$datepicker-inline-table-inactive-bgcolor:       $datepicker-inline-table-bgcolor;
+$datepicker-inline-table-inactive-fontcolor:     $datepicker-inline-table-fontcolor;
+$datepicker-inline-table-inactive-fontweight:    $datepicker-inline-table-fontweight;
+
+$datepicker-inline-table-active-bgcolor:         $datepicker-inline-table-bgcolor;
+$datepicker-inline-table-active-fontcolor:       $datepicker-inline-table-fontcolor;
+$datepicker-inline-table-active-fontweight:      $regular;
+$datepicker-inline-table-active-hoverbgcolor:    $gray-10;
+
+$datepicker-inline-table-selected-bgcolor:       $third-color;
+$datepicker-inline-table-selected-fontcolor:     $white;
+$datepicker-inline-table-selected-fontweight:    $bold;
+
+$datepicker-inline-table-today-bgcolor:          rgba($third-color, 0.3);
+$datepicker-inline-table-today-fontcolor:        $datepicker-inline-table-fontcolor;
+$datepicker-inline-table-today-fontweight:       $bold;
+
+
+
+
+@mixin datepicker-inline() {
+  @include trim();
+  @include size(100% auto);
+  @include border-radius($datepicker-inline-table-radius);
+
+  .ui-datepicker-header {
+    @include trim();
+    @include position(relative, null null null null);
+    @include padding($dp);
+    @include size(100% auto);
+    @include border-radius($datepicker-inline-header-radius);
+    border: $datepicker-inline-header-border;
+    border-bottom: 0;
+    background: $datepicker-inline-header-bgcolor;
+    display: table;
+    overflow: hidden;
+
+    .ui-datepicker-prev,
+    .ui-datepicker-next {
+      @include trim();
+      @include size($dp * 3);
+      display: block;
+      opacity: 1;
+
+      span {
+        @include fs($dp * 3);
+        @include size(100%);
+        @include padding(null null null $dp - 4);
+        display: block;
+        color: $datepicker-inline-header-fontcolor;
+        overflow: hidden;
+        cursor: pointer;
+
+        &:hover {
+          color: rgba($datepicker-inline-header-fontcolor, 0.8);
+        }
+      }
+
+      &.ui-state-disabled {
+        opacity: 0.5;
+      }
+    }
+
+    .ui-datepicker-prev {
+      @include position(absolute, $dp / 2 null null $dp);
+
+      span {
+        @include icon-insert(icon-left-open);
+
+        &::before {
+          @include padding(null $dp * 10 null null);
+        }
+      }
+    }
+
+    .ui-datepicker-next {
+      @include position(absolute, $dp / 2 $dp null null);
+
+      span {
+        @include icon-insert(icon-right-open);
+
+        &::before {
+          @include padding(null $dp * 10 null null);
+        }
+      }
+    }
+
+    .ui-datepicker-title {
+      @include font($datepicker-inline-header-fontsize, 1, $datepicker-inline-header-fontweight, $datepicker-inline-header-fontfamily);
+      text-transform: capitalize;
+      color: $datepicker-inline-header-fontcolor;
+      width: 100%;
+      display: table;
+      text-align: center;
+    }
+
+  }
+
+  .ui-datepicker-calendar {
+    @include trim();
+    @include border-radius($datepicker-inline-table-radius);
+    border: $datepicker-inline-outtable-border;
+    border-top: 0;
+    overflow: hidden;
+
+    thead {
+      @include trim();
+      background: $datepicker-inline-thead-bgcolor;
+
+      th {
+        @include padding($dp * 1.2);
+        @include font($datepicker-inline-thead-fontsize, 1, $datepicker-inline-thead-fontweight, $datepicker-inline-thead-fontfamily);
+        border-top: $datepicker-inline-thead-border;
+        text-transform: uppercase;
+        color: $datepicker-inline-thead-fontcolor;
+        text-align: center;
+      }
+    }
+
+    tbody {
+      td {
+        @include padding($dp);
+        border-top: $datepicker-inline-table-border;
+        text-transform: uppercase;
+        background: $datepicker-inline-table-bgcolor;
+        text-align: center;
+
+        &:hover {
+          background: $datepicker-inline-table-active-hoverbgcolor;
+        }
+
+        span,
+        a {
+          @include font($datepicker-inline-table-fontsize, 1, $datepicker-inline-table-fontweight, $datepicker-inline-table-fontfamily);
+          color: $datepicker-inline-table-fontcolor;
+          text-decoration: none;
+
+          &.ui-state-hover {
+            text-decoration: none;
+            color: $datepicker-inline-table-fontcolor;
+          }
+        }
+
+        &.ui-datepicker-unselectable,
+        .ui-state-disabled {
+          background: $datepicker-inline-table-inactive-bgcolor;
+
+          span {
+            @include font($datepicker-inline-table-fontsize, 1, $datepicker-inline-table-inactive-fontweight, $datepicker-inline-table-fontfamily);
+            color: $datepicker-inline-table-inactive-fontcolor;
+          }
+        }
+
+        &.ui-datepicker-enabled {
+          background: $datepicker-inline-table-active-bgcolor;
+
+          &:hover {
+            background: $datepicker-inline-table-active-hoverbgcolor;
+          }
+
+          a {
+            @include font($datepicker-inline-table-fontsize, 1, $datepicker-inline-table-active-fontweight, $datepicker-inline-table-fontfamily);
+            color: $datepicker-inline-table-active-fontcolor;
+            text-decoration: none;
+
+            &.ui-state-hover {
+              text-decoration: none;
+            }
+          }
+        }
+
+        &.ui-datepicker-current-day,
+        &.ui-datepicker-today.ui-datepicker-current-day {
+          background: $datepicker-inline-table-selected-bgcolor;
+
+          &:hover {
+            background: $datepicker-inline-table-selected-bgcolor;
+          }
+
+          a {
+            @include font($datepicker-inline-table-fontsize, 1, $datepicker-inline-table-selected-fontweight, $datepicker-inline-table-fontfamily);
+            color: $datepicker-inline-table-selected-fontcolor;
+            text-decoration: none;
+
+            &.ui-state-hover {
+              text-decoration: none;
+            }
+          }
+        }
+
+        &.ui-datepicker-today {
+          background: $datepicker-inline-table-today-bgcolor;
+
+          &:hover {
+            background: $datepicker-inline-table-active-hoverbgcolor;
+          }
+
+          span,
+          a {
+            @include font($datepicker-inline-table-fontsize, 1, $datepicker-inline-table-today-fontweight, $datepicker-inline-table-fontfamily);
+            color: $datepicker-inline-table-today-fontcolor;
+            text-decoration: none;
+
+            &.ui-state-hover {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// -------------------------------------
+// Scaffold
+// -------------------------------------
+
+.ui-datepicker-inline {
+  @include reset-jqueryui();
+  @include datepicker-inline();
+}

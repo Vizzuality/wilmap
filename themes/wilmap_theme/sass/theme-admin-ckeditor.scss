@@ -1,0 +1,16 @@
+// ============================================================================
+//
+//    THEME ADMIN CKEDIT
+//
+// ============================================================================
+
+
+@charset 'UTF-8';
+
+@import 'theme-base';
+@import 'abstracts/helpers/all';
+
+// Override
+body {
+  @include wyswyg-textformat();
+}

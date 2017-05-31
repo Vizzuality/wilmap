@@ -1,0 +1,45 @@
+// --------------------------------
+// Retina images and Mediaqueries
+// --------------------------------
+
+// Retina Mediaquery
+@mixin retina-respond($resolution: 2x) {
+  //@2x (Pixel Ratio of 1.25+)
+  @if $resolution == 2x {
+    @media only screen and (min--moz-device-pixel-ratio: 1.25),
+           only screen and (-o-min-device-pixel-ratio: 5/4),
+           only screen and (-webkit-min-device-pixel-ratio: 1.25),
+           only screen and (min-device-pixel-ratio: 1.25),
+           only screen and (min-resolution: 1.25dppx) {
+
+      @content;
+
+    }
+  }
+
+  //@3x (Pixel Ratio of 2.25+)
+  @if $resolution == 3x {
+    @media only screen and (min--moz-device-pixel-ratio: 2.25),
+           only screen and (-o-min-device-pixel-ratio: 9/4),
+           only screen and (-webkit-min-device-pixel-ratio: 2.25),
+           only screen and (min-device-pixel-ratio: 2.25),
+           only screen and (min-resolution: 2.25dppx) {
+
+      @content;
+
+    }
+  }
+
+  //@4x (Pixel Ratio of 3.25+)
+  @if $resolution == 4x {
+    @media only screen and (min--moz-device-pixel-ratio: 3.25),
+           only screen and (-o-min-device-pixel-ratio: 13/4),
+           only screen and (-webkit-min-device-pixel-ratio: 3.25),
+           only screen and (min-device-pixel-ratio: 3.25),
+           only screen and (min-resolution: 3.25dppx) {
+
+      @content;
+
+    }
+  }
+}

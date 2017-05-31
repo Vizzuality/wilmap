@@ -1,0 +1,86 @@
+// ============================================================================
+//
+// LAYOUT: SITE TITLE SECTION + SUBNAV
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+
+$modal-overlay-color:                   $default-overlayer;
+$modal-window-color:                    $white;
+$modal-video-window-color:              $black;
+$modal-close-button:                    $second-color;
+$modal-close-bg-button:                 $fifth-color;
+
+
+// -------------------------------------
+// Scaffold
+// -------------------------------------
+
+// Modal Box
+.modal {
+  .content {
+    position: relative;
+    overflow: visible;
+    background: $modal-window-color;
+    z-index: 2;
+    top: 15%;
+    width: 50%;
+    min-height: 50%;
+    max-height: 65%;
+    margin: 0 auto;
+    padding: 30px;
+
+    @include respond(portrait-tablets) {
+      top: 20%;
+      width: 80%;
+      min-height: 0;
+      max-height: 80%;
+    }
+
+    @include respond(all-phones) {
+      top: 15%;
+      width: 80%;
+      min-height: 0;
+      max-height: 92.5%;
+    }
+
+    .row {
+      .youtube {
+        width: 100%;
+        height: 100%;
+
+        img,
+        embed,
+        iframe {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    .close {
+      position: absolute;
+      z-index: 3;
+      top: -23px;
+      right: 0;
+      cursor: pointer;
+      background: $modal-close-bg-button;
+
+      i {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        left: 0;
+        padding: 0 10px;
+
+        &::before {
+          color: $modal-close-button;
+        }
+      }
+    }
+  }
+}

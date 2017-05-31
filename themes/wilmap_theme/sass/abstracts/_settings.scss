@@ -1,0 +1,185 @@
+// ============================================================================
+//
+//    SETTINGS
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Main settings
+// -------------------------------------
+
+// Gumby - Grid Settings
+$row-max-width:                         1170px !default;
+$gutter-in-px:                          30px !default;
+$cols:                                  12 !default;
+$hybrid:                                16 !default;
+
+
+// Gumby - Responsive Settings
+$min-device-width:                      414px;
+$tablet-device-width:                   768px;
+$document-width:                        $row-max-width;
+$max-device-width:                      2880px;
+
+
+// Fonts Families
+$base-font-family:                      'Open Sans', sans-serif;
+$alt-font-family:                       'Open Sans', sans-serif;
+$sponsor-font-family:                   'Martel Sans', sans-serif;
+$blockquote-font-family:                Georgia, serif;
+$icons:                                 entypo;
+
+
+// Font sizes -
+$font-sizes: (
+                                        7px,
+                                        9px,
+                                        12px,
+                                        17px,  //$base-font-size
+                                        22px,
+                                        30px,
+                                        40px,
+                                        53px,
+                                        71px,
+                                        127px,
+                                        225px,
+                                        401px,
+);
+
+$tiny:                                  nth($font-sizes, 1);
+$xsmall:                                nth($font-sizes, 2);
+$small:                                 nth($font-sizes, 3);
+$normal:                                nth($font-sizes, 4);   // $base-font-size, h5, h5
+$med:                                   nth($font-sizes, 5);   // h4
+$large:                                 nth($font-sizes, 6);   // h3
+$xlarge:                                nth($font-sizes, 7);   // h2
+$xxlarge:                               nth($font-sizes, 8);   // h1
+$xxxlarge:                              nth($font-sizes, 9);   // h1.xlarge
+$reallybig:                             nth($font-sizes, 10);   // h1.xxlarge
+$tremendous:                            nth($font-sizes, 11);
+$absurd:                                nth($font-sizes, 12);   // h1.absurd
+
+
+// Font weights
+$type-weight: (
+  'thin':                               100,
+  'extra-light':                        200,
+  'light':                              300,
+  'regular':                            400,
+  'medium':                             500,
+  'semibold':                           600,
+  'bold':                               700,
+  'black':                              800,
+  'heavy':                              900
+);
+
+$thin:                                  map-get($type-weight, 'thin');
+$extra-light:                           map-get($type-weight, 'extra-light');
+$light:                                 map-get($type-weight, 'light');
+$regular:                               map-get($type-weight, 'regular');
+$medium:                                map-get($type-weight, 'medium');
+$semibold:                              map-get($type-weight, 'semibold');
+$bold:                                  map-get($type-weight, 'bold');
+$blackbold:                             map-get($type-weight, 'black');
+$heavy:                                 map-get($type-weight, 'heavy');
+
+
+// Compass - Vertical Rhythm setup
+$base-font-size:                        $normal;
+$base-line-increment:                   1.4;
+$base-line-height:                      $base-font-size * $base-line-increment;
+$rhythm-unit:                           'rem';
+$em-base:                               $base-font-size;
+
+
+// General GrayColors
+$black:                                 #000;
+$gray-90:                               #1a1a1a;
+$gray-80:                               #333;
+$gray-70:                               #4c4c4c;
+$gray-60:                               #666;
+$gray-50:                               #808080;
+$gray-40:                               #999;
+$gray-30:                               #b2b2b2;
+$gray-20:                               #ccc;
+$gray-15:                               #d9d9d9;
+$gray-10:                               #e6e6e6;
+$white:                                 #fff;
+
+
+// General Colors
+$blue:                                  #049cdb; //blue
+$green:                                 #46a546; //green
+$red:                                   #9d261d; //red
+$yellow:                                #ffc40d; //yellow
+$orange:                                #f89406; //orange
+$pink:                                  #c3325f; //pink
+$purple:                                #7a43b6; //purple
+
+
+// General UI & Status Colors
+$default-color:                         $gray-20;
+$info-color:                            $gray-70;
+$danger-color:                          $red;
+$warning-color:                         $yellow;
+$success-color:                         $green;
+$hr-color:                              $gray-10;
+$default-transparency:                  0.8;
+$default-overlayer:                     rgba($black, 0.8);
+
+
+// Files & Extensions
+$img-path:                              '../img/';
+$svgext:                                'svg';
+$pngext:                                'png';
+$jpgext:                                'jpg';
+$gifext:                                'gif';
+
+
+// Default Radius, Sizes, Spaces, floats
+$metro-radius:                          0;
+$default-radius:                        5px;
+$big-radius:                            8px;
+$default-padding:                       10px;
+$dp:                                    $default-padding;
+$default-float:                         left;
+$switch-float:                          right;
+
+
+// -------------------------------------
+// App settings
+// -------------------------------------
+
+// Main Colors Palette
+$first-color:                           $gray-80;  //Text
+$second-color:                          $white;   //Highlight Text
+$third-color:                           $blue;  //Buttons
+$fourth-color:                          $black;  //Titles
+$fifth-color:                           $blue;  //Links & BG
+
+
+// General Typography
+$heading-font:                          $alt-font-family;
+$body-font:                             $base-font-family;
+$buttons-font:                          $alt-font-family;
+
+
+// General Typography Colors
+$heading-font-color:                    $fourth-color;
+$body-font-color:                       $first-color;
+$body-strong-color:                     lighten($black, 40%);
+$body-em-color:                         lighten($black, 25%);
+$body-emstrong-color:                   $black;
+$body-s-color:                          lighten($body-font-color, 10%);
+$body-link-color:                       $fifth-color;
+$body-link-hover-color:                 lighten($body-link-color, 5%);
+
+
+// Site Colors
+$global-bg-color:                       $white;
+$global-bg-content:                     $white;
+
+$warning-bg-color:                      #fffac0;
+
+$sponsor-bg-color:                      #232323;

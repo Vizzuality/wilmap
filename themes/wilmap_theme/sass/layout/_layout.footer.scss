@@ -1,0 +1,85 @@
+// ============================================================================
+//
+// LAYOUT: SITE FOOTER
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+
+$footer-title-color:                    $black;
+$footer-text-color:                     lighten($black, 40%);
+$footer-text-legal:                     $footer-text-color;
+
+$footer-bandcolor:                      $gray-10;
+$sponsor-bandcolor:                     $sponsor-bg-color;
+
+
+// -------------------------------------
+// Scaffold
+// -------------------------------------
+
+.site-footer {
+  @include trim();
+  @include margin($dp * 3 null null null);
+  @include padding($dp * 4 null);
+
+  background-color: $footer-bandcolor;
+}
+
+// Sponsor
+.footer-sponsor {
+  @include padding($dp * 1.3 null $dp null);
+  background-color: $sponsor-bandcolor;
+  color: $second-color;
+
+  p {
+    @include trim();
+    @include font(14px, 1.1, $regular, $sponsor-font-family);
+    color: $second-color;
+  }
+
+  a {
+    @include trim();
+    color: $second-color;
+    @include font(14px, 1.1, $regular, $sponsor-font-family);
+    text-decoration: underline;
+
+    &:hover {
+      opacity: $default-transparency;
+    }
+  }
+
+  .region {
+    @include trim();
+    @include row();
+  }
+
+  .content {
+    @include padding($dp - 2 null null null);
+    @include column(6, false, collapse, false);
+  }
+
+  .block-menu {
+    @include column(6);
+    float: right;
+
+    ul {
+      @include trim();
+      width: auto;
+      text-align: right;
+
+      li {
+        @include trim();
+        @include margin(null null null $dp);
+        display: inline-block;
+      }
+    }
+
+    @include respond(all-phones) {
+      float: left;
+    }
+  }
+}

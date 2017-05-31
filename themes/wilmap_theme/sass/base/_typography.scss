@@ -1,0 +1,436 @@
+/*=============================================================================
+
+    GENERAL TYPOGRAPHY
+
+ ============================================================================*/
+
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include fw($bold);
+  @include margin-trailer(0.2);
+  @include type-ligatures();
+
+  font-family: $heading-font;
+  text-transform: uppercase;
+  color: $heading-font-color;
+  text-rendering: $text-rendering;
+
+  a {
+    color: $heading-link-color;
+
+    &:hover {
+      color: $heading-link-hover-color;
+    }
+  }
+}
+
+
+h1 {
+  @include font($xxlarge, 1, $bold, $heading-font);
+
+  &.xlarge {
+    @include font($xxxlarge, 1, $bold, $heading-font);
+  }
+
+  &.xxlarge {
+    @include font($reallybig, 1, $bold, $heading-font);
+  }
+
+  &.absurd {
+    @include font($absurd, 1, $bold, $heading-font);
+  }
+
+  @include respond(all-phones) {
+    @include font($xlarge, 1, $bold, $heading-font);
+    word-wrap: break-word;
+
+    &.xlarge {
+      @include font($xlarge, 1, $bold, $heading-font);
+    }
+
+    &.xxlarge {
+      @include font($xxxlarge, 1, $bold, $heading-font);
+    }
+
+    &.absurd {
+      @include font($reallybig, 1, $bold, $heading-font);
+    }
+  }
+}
+
+h2 {
+  @include font($xlarge, 1, $bold, $heading-font);
+
+  @include respond(all-phones) {
+    @include font($large, 1, $bold, $heading-font);
+    word-wrap: break-word;
+  }
+}
+
+h3 {
+  @include font($large, 1.2, $bold, $heading-font);
+
+  @include respond(all-phones) {
+    @include font($med, 1.2, $bold, $heading-font);
+    word-wrap: break-word;
+  }
+}
+
+h4 {
+  @include font($med, 1, $bold, $heading-font);
+
+  @include respond(all-phones) {
+    @include font($normal, 1, $bold, $heading-font);
+    word-wrap: break-word;
+  }
+}
+
+h5 {
+  @include font($normal, 1, $bold, $heading-font);
+
+  @include respond(all-phones) {
+    @include font($normal, 1, $bold, $heading-font);
+    word-wrap: break-word;
+  }
+}
+
+h6 {
+  @include font($normal, 1, $bold, $heading-font);
+
+  @include respond(all-phones) {
+    @include font($normal, 1, $bold, $heading-font);
+    word-wrap: break-word;
+  }
+} //Base
+
+
+/* Links & Paragraph styles */
+p {
+  @include font($normal, $base-line-increment, $regular, $base-font-family);
+  @include margin-trailer(1);
+  @include word-break(break-word);
+  @include hyphens(none);
+  @include type-ligatures();
+  color: $body-font-color;
+
+  &.lead {
+    @include font($med, $base-line-increment, $regular, $base-font-family);
+    @include margin-trailer(1);
+  }
+
+  @include respond(all-phones) {
+    @include font($normal, $base-line-increment, $regular, $base-font-family);
+  }
+}
+
+strong,
+b {
+  @include fw($bold);
+  color: $body-strong-color;
+}
+
+a {
+  line-height: inherit;
+  text-decoration: none;
+  color: $body-link-color;
+  outline: 0;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+    color: $body-link-hover-color;
+    outline: 0;
+  }
+
+  &:active {
+    color: $body-link-hover-color;
+    outline: 0;
+  }
+}
+
+em {
+  font-style: italic;
+  line-height: inherit;
+  color: $body-em-color;
+
+  strong {
+    @include fw($bold);
+    font-style: italic;
+    color: $body-emstrong-color;
+  }
+}
+
+s {
+  color: $body-s-color;
+}
+
+sup {
+  @include fs($small);
+  @include lh(1, $small);
+  position: relative;
+  top: -$dp;
+}
+
+sub {
+  @include fs($small);
+  @include lh(1, $small);
+  position: relative;
+  bottom: -$dp;
+}
+
+small {
+  @include fs($small);
+  @include lh(1, $small);
+}
+
+h1 small,
+h1.xlarge small,
+h1.xxlarge small,
+h1.absurd small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small {
+  color: $heading-font-color;
+}
+
+
+/* Lists */
+ul,
+ol,
+dl {
+  @include trim();
+  @include margin(0 0 $dp 0);
+  @include no-bullets();
+
+  li {
+    @include trim();
+  }
+}
+
+ul {
+  &.square,
+  &.circle,
+  &.disc,
+  &.blank,
+  &.default {
+    @include margin(0 0 $dp $dp * 3);
+
+    li {
+      @include unordered();
+    }
+  }
+
+  &.square li {
+    list-style-type: square;
+  }
+
+  &.circle li {
+    list-style-type: circle;
+  }
+
+  ul {
+    @include margin($dp / 2 0 $dp / 2 $dp * 3);
+  }
+}
+
+ol {
+  &.decimal,
+  &.lower-latin,
+  &.upper-latin,
+  &.lower-roman,
+  &.upper-roman,
+  &.default {
+    @include margin(0 0 $dp $dp * 3);
+
+    li {
+      @include ordered();
+    }
+  }
+
+  &.decimal li {
+    list-style-type: decimal;
+  }
+
+  &.lower-latin li {
+    list-style-type: lower-latin;
+  }
+
+  &.upper-latin li {
+    list-style-type: upper-latin;
+  }
+
+  &.lower-roman li {
+    list-style-type: lower-roman;
+  }
+
+  &.upper-roman li {
+    list-style-type: upper-roman;
+  }
+
+  ol {
+    @include margin($dp / 2 0 $dp / 2 $dp * 3);
+  }
+}
+
+@include respond(portrait-tablets) {
+  ul,
+  ol,
+  dl,
+  p {
+    text-align: left;
+  }
+}
+
+
+/*  Blockquotes  */
+blockquote {
+  @include margin($dp * 1.5 $dp);
+  @include padding($dp / 2 $dp);
+  background: $gray-10;
+  border-left: $dp solid $gray-30;
+
+  p {
+    display: inline;
+  }
+}
+
+cite {
+  @include padding($dp / 2);
+  font-style: italic;
+  line-height: inherit;
+  color: $body-em-color;
+  border: 1px solid $gray-10;
+
+  a {
+    color: $body-em-color;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+hr {
+  @include margin($dp * 3 0);
+  border: 1px solid $hr-color;
+  border-bottom: 1px solid $hr-color;
+  clear: both;
+  height: 0;
+}
+
+abbr,
+acronym {
+  text-transform: uppercase;
+  color: $body-em-color;
+  border-bottom: 1px solid $hr-color;
+  cursor: help;
+}
+
+abbr {
+  text-transform: none;
+}
+
+.badge,
+.label,
+.alert {
+  font-family: $body-font;
+}
+
+.btn,
+.btn a,
+.btn input[type="submit"],
+.btn button,
+.site-btn a,
+.site-btn input[type="submit"],
+.site-btn button
+a.btn,
+button.btn {
+  font-family: $buttons-font;
+}
+
+
+
+
+/**
+   * Print styles.
+ *
+ * Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
+ * Credit to Paul Irish and HTML5 Boilerplate (html5boilerplate.com)
+ */
+
+@media print {
+  * {
+    background: transparent !important;
+    color: $black !important;
+    text-shadow: none !important;
+    filter: none !important;
+    -ms-filter: none !important;
+  }
+
+  /* Black prints faster: sanbeiji.com/archives/953 */
+  p a {
+    color: $body-font-color !important;
+    text-decoration: underline;
+
+    &:visited {
+      color: $body-font-color !important;
+      text-decoration: underline;
+    }
+
+    &[href]::after {
+      content: ' (' attr(href) ')';
+    }
+  }
+
+  abbr[title]:after {
+    content: ' (' attr(title) ')';
+  }
+
+  a {
+    &[href^='javascript:']::after, &[href^='#']::after {
+      content: '';
+    }
+  }
+
+  /* Don't show links for images, or javascript/internal links */
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  /* css-discuss.incutio.com/wiki/Printing_Tables */
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  @page {
+    margin: 0.5cm;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}

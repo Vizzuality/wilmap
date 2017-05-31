@@ -1,0 +1,16 @@
+// ---------
+// Buttons
+// ---------
+
+
+@mixin default-button($text-color:$second-color, $bg-color:$third-color, $radius:$metro-radius) {
+  @include trim();
+  @include trim-field();
+  @include sassy-button('flat', 0, inherit, $bg-color, darken($bg-color, 20), $text-color, 'none');
+  @include border-radius($radius);
+  @include font($normal, 1, $bold, $buttons-font);
+  @include padding($dp $dp * 2);
+  @include appearance(none);
+  text-decoration: none;
+  text-transform: uppercase;
+}

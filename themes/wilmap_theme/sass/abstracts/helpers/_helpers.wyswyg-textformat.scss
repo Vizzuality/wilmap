@@ -1,0 +1,130 @@
+@mixin wyswyg-textformat() {
+  /* Base text & paragraphs */
+  &,
+  & p {
+    @include font($normal, $base-line-increment, $regular, $base-font-family);
+    @include margin(null null $dp * 2 null);
+    color: $body-font-color;
+  }
+
+  /* Headings */
+  h1,
+  h2,
+  h3 {
+    @include margin($dp * 4 null $dp * 2 null);
+    width: 100%;
+    left: 0;
+    white-space: normal;
+  }
+
+  h3 {
+    @include margin($dp * 4 null $dp * 2 null);
+    @include padding($dp / 2 null ($dp / 2 - 1) null);
+    @include fs(22px);
+    @include lh(1.1);
+    text-transform: inherit;
+  }
+
+  h4,
+  h5,
+  h6 {
+    @include margin($dp * 2 null $dp null);
+    @include fw($medium);
+    font-family: $base-font-family;
+    text-transform: inherit;
+  }
+
+  /* Lists */
+  ul,
+  ol {
+    @include trim();
+    @include margin(0 0 $dp * 2 0);
+    list-style-position: initial;
+    list-style-type: initial;
+
+    li {
+      @include trim();
+      @include margin(0 0 0 $dp * 2);
+      list-style-type: inherit;
+      list-style-position: inherit;
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  /* Blockquote / Cite */
+  blockquote,
+  blockquote p,
+  p blockquote {
+    @include trim();
+    @include font($normal, $base-line-increment, $regular, $blockquote-font-family);
+    @include position(relative, null null null null);
+    color: $body-em-color;
+    font-style: italic;
+    border: 0;
+    background: transparent;
+  }
+
+  blockquote {
+    @include padding(0 0 0 $dp * 4.5);
+    @include margin(0 0 $dp * 2 0);
+
+    &:before {
+      @include fs(80px);
+      @include position(absolute, $dp * 2 null null 0);
+      content: '\201C';
+      display: block;
+      color: $third-color;
+    }
+  }
+
+  cite {
+    @include font(14px, 1.2, $regular, $blockquote-font-family);
+    @include margin($dp / 2 0 $dp * 2 0);
+    color: $body-strong-color;
+    display: block;
+    border: 0;
+    background: transparent;
+
+    &:before {
+      content: '\2014 \2009';
+    }
+  }
+
+
+  /* Grid */
+  .row {
+    @include padding(null 0);
+  }
+
+  .columns {
+    @include margin(null null $dp * 2 null);
+
+    &.twelve {
+      @include trim();
+      @include margin(null null $dp * 2 null);
+    }
+  }
+
+  /* table */
+  table {
+    @include margin($dp * 2 null);
+    @include clearfix();
+    float: none;
+    clear: both;
+  }
+
+  table[align="center"] {
+    @include margin(null auto);
+  }
+
+  table[align="left"] {
+    @include margin(null auto null 0);
+  }
+
+  table[align="right"] {
+    @include margin(null 0 null auto);
+  }
+}

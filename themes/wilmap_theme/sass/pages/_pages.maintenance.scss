@@ -1,0 +1,62 @@
+// ============================================================================
+//
+// PAGES: MAINTENANCE
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+
+
+
+// -------------------------------------
+// Scaffold
+// -------------------------------------
+
+.maintenance-page {
+  height: auto;
+
+  #site-name {
+    @include margin(0 auto $dp * 4 auto);
+    width: auto;
+    display: table;
+
+    a {
+      @extend %is-shown-block;
+      @include hide-text();
+      @include size(200px 200px);
+      @include retina-image($img-path + '../logo', 'png', 200px, 200px);
+      background-position: 50% 50%;
+    }
+  }
+
+  #site-slogan {
+    display: none;
+  }
+
+  h1 {
+    @include margin(null null $dp * 2 null);
+    @include font(28px, 1, $medium, $base-font-family);
+    color: $white;
+  }
+
+
+  #page-wrapper {
+    @include row();
+    @include margin($dp * 24 null $dp null);
+
+    @include respond(all-phones) {
+      @include margin($dp * 6 null $dp * 5 null);
+    }
+
+    #page {
+      @include column(7, center, collapse, false);
+      @include padding($dp * 4 $dp * 2);
+      background: $default-overlayer;
+      color: $gray-40;
+      text-align: center;
+    }
+  }
+}
