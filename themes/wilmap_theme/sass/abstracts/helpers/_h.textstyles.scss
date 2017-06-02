@@ -1,0 +1,75 @@
+// ============================================================================
+//
+// TEXT STYLE SNIPPETS
+//
+// ============================================================================
+
+// ----------------------------------------------------------------
+// text-main-header
+// ----------------------------------------------------------------
+@mixin text-main-header ($text-color:$heading-font-color, $font-size:$xxxlarge) {
+  @include font($font-size, 1, $extra-light, $heading-font);
+  @include padding(null null $dp null);
+  @include margin(null null $dp * 2 null);
+  text-decoration: none;
+  text-transform: none;
+  color: $text-color;
+
+  @include respond(tablets) {
+    @include font($font-size / 1.5, 1, $extra-light, $heading-font);
+  }
+
+  @include respond(all-phones) {
+    @include font($font-size / 2, 1, $extra-light, $heading-font);
+  }
+}
+
+// ----------------------------------------------------------------
+// text-secondary-header
+// ----------------------------------------------------------------
+@mixin text-secondary-header ($text-color:$heading-font-color, $font-size:$large) {
+  @include font($font-size, 1, $extra-light, $heading-font);
+  @include padding(0);
+  @include margin(0);
+  display: block;
+  text-decoration: none;
+  text-transform: none;
+  color: $text-color;
+
+  @include respond(tablets) {
+    @include font($font-size / 1.5, 1, $extra-light, $heading-font);
+  }
+
+  @include respond(all-phones) {
+    $font-size: $xxxlarge;
+    @include font($font-size / 2, 1, $extra-light, $heading-font);
+  }
+}
+
+// ----------------------------------------------------------------
+// text-body
+// ----------------------------------------------------------------
+@mixin text-body ($text-color:$body-font-color) {
+  @include font($normal, $base-line-increment, $regular, $base-font-family);
+  @include margin-trailer(1);
+  @include word-break(break-word);
+  @include hyphens(none);
+  font-style: normal;
+  color: $text-color;
+
+  @include respond(all-phones) {
+    @include font($normal + 1, $base-line-increment, $regular, $base-font-family);
+  }
+}
+
+// ----------------------------------------------------------------
+// text-subtitle
+// ----------------------------------------------------------------
+@mixin text-subtitle ($text-color:$body-font-color) {
+  @include font($normal, $base-line-increment, $regular, $base-font-family);
+  @include margin-trailer(1);
+  @include word-break(break-word);
+  @include hyphens(none);
+  font-style: normal;
+  color: $text-color;
+}

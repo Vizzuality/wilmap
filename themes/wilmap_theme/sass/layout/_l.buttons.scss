@@ -12,7 +12,6 @@
 a.btn,
 button.btn {
   @include default-button();
-  padding: $dp $dp * 2 !important;
 }
 
 .site-btn {

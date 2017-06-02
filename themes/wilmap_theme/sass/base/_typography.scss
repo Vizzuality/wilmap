@@ -12,12 +12,12 @@ h3,
 h4,
 h5,
 h6 {
-  @include fw($bold);
+  @include fw($extra-light);
   @include margin-trailer(0.2);
   @include type-ligatures();
 
   font-family: $heading-font;
-  text-transform: uppercase;
+  text-transform: none;
   color: $heading-font-color;
   text-rendering: $text-rendering;
 
@@ -32,79 +32,79 @@ h6 {
 
 
 h1 {
-  @include font($xxlarge, 1, $bold, $heading-font);
+  @include font($xxlarge, 1, $extra-light, $heading-font);
 
   &.xlarge {
-    @include font($xxxlarge, 1, $bold, $heading-font);
+    @include font($xxxlarge, 1, $extra-light, $heading-font);
   }
 
   &.xxlarge {
-    @include font($reallybig, 1, $bold, $heading-font);
+    @include font($reallybig, 1, $extra-light, $heading-font);
   }
 
   &.absurd {
-    @include font($absurd, 1, $bold, $heading-font);
+    @include font($absurd, 1, $extra-light, $heading-font);
   }
 
   @include respond(all-phones) {
-    @include font($xlarge, 1, $bold, $heading-font);
+    @include font($xlarge, 1, $extra-light, $heading-font);
     word-wrap: break-word;
 
     &.xlarge {
-      @include font($xlarge, 1, $bold, $heading-font);
+      @include font($xlarge, 1, $extra-light, $heading-font);
     }
 
     &.xxlarge {
-      @include font($xxxlarge, 1, $bold, $heading-font);
+      @include font($xxxlarge, 1, $extra-light, $heading-font);
     }
 
     &.absurd {
-      @include font($reallybig, 1, $bold, $heading-font);
+      @include font($reallybig, 1, $extra-light, $heading-font);
     }
   }
 }
 
 h2 {
-  @include font($xlarge, 1, $bold, $heading-font);
+  @include font($xlarge, 1, $extra-light, $heading-font);
 
   @include respond(all-phones) {
-    @include font($large, 1, $bold, $heading-font);
+    @include font($large, 1, $extra-light, $heading-font);
     word-wrap: break-word;
   }
 }
 
 h3 {
-  @include font($large, 1.2, $bold, $heading-font);
+  @include font($large, 1.2, $extra-light, $heading-font);
 
   @include respond(all-phones) {
-    @include font($med, 1.2, $bold, $heading-font);
+    @include font($med, 1.2, $extra-light, $heading-font);
     word-wrap: break-word;
   }
 }
 
 h4 {
-  @include font($med, 1, $bold, $heading-font);
+  @include font($med, 1, $extra-light, $heading-font);
 
   @include respond(all-phones) {
-    @include font($normal, 1, $bold, $heading-font);
+    @include font($normal, 1, $extra-light, $heading-font);
     word-wrap: break-word;
   }
 }
 
 h5 {
-  @include font($normal, 1, $bold, $heading-font);
+  @include font($normal, 1, $extra-light, $heading-font);
 
   @include respond(all-phones) {
-    @include font($normal, 1, $bold, $heading-font);
+    @include font($normal, 1, $extra-light, $heading-font);
     word-wrap: break-word;
   }
 }
 
 h6 {
-  @include font($normal, 1, $bold, $heading-font);
+  @include font($normal, 1, $extra-light, $heading-font);
 
   @include respond(all-phones) {
-    @include font($normal, 1, $bold, $heading-font);
+    @include font($normal, 1, $extra-light, $heading-font);
     word-wrap: break-word;
   }
 } //Base
@@ -117,6 +117,7 @@ p {
   @include word-break(break-word);
   @include hyphens(none);
   @include type-ligatures();
+  font-style: normal;
   color: $body-font-color;
 
   &.lead {
@@ -137,9 +138,10 @@ b {
 
 a {
   line-height: inherit;
-  text-decoration: none;
+  text-decoration: underline;
   color: $body-link-color;
   outline: 0;
+  font-style: normal;
 
   &:hover,
   &:focus {

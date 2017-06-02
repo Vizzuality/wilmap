@@ -1,0 +1,58 @@
+<header id="header" class="site-header" aria-label="{{ 'Site header'|t }}">
+  <div class="site-header-inner clearfix">
+    <div class="main-header">
+      {% if page.header %}
+
+        {{ page.header }}
+
+      {% else %}
+
+        <div class="branding">
+          {% if site_name %}
+          <div class="site-name">
+            <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home">{{ site_name }}</a>
+          </div>
+          {% endif %}
+
+          {% if site_slogan %}
+          <div class="site-slogan">{{ site_slogan }}</div>
+          {% endif %}
+          </div>
+
+      {% endif %}
+
+      <div class="primary-menu-wrap">
+        <div class="primary-menu navbar">
+          <a class="toggle" gumby-trigger=".region.region-primary-menu" href="#"><span class="str">Menu</span><i class="icon-menu"></i></a>
+          {{ page.primary_menu }}
+        </div>
+      </div>
+    </div>
+
+
+    {% if (page.secondary_menu) %}
+    <div class="secondary-header">
+      {% if page.secondary_menu %}
+      <div class="secondary-menu-wrap">{{ page.secondary_menu }}</div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+  </div>
+</header>
+
+{% if page.highlighted %}
+  <div class="highlighted">
+    <section class="highlighted__inner layout-container clearfix" role="complementary">
+      {{ page.highlighted }}
+    </section>
+  </div>
+{% endif %}
+
+{% if page.breadcrumb %}
+  <div class="breadcrumb">
+    <section class="breadcrumb__inner layout-container clearfix" role="complementary">
+      {{ page.breadcrumb }}
+    </section>
+  </div>
+{% endif %}

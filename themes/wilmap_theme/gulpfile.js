@@ -49,16 +49,16 @@ gulp.task('clean', ['clean-js', 'clean-css']);
 
 gulp.task('watch', ['javascript', 'compass'], () => {
   gulp.watch('sass/*.scss', ['compass']);
-  gulp.watch('js/*.js', ['javascript']);
+  // gulp.watch('lib/*.js', ['javascript']);
 });
 
 gulp.task('javascript', function() {
   console.log('building js ...');
 
-  return gulp.src('js/*.js')
-    .pipe(concat('main.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('dist/js'));
+  // return gulp.src('lib/*.js')
+  //   .pipe(concat('main.js'))
+  //   .pipe(uglify())
+  //   .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('default', function() {

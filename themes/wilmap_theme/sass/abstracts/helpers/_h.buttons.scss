@@ -1,0 +1,36 @@
+// ---------
+// Buttons
+// ---------
+
+
+@mixin default-button($text-color:$second-color, $bg-color:$third-color, $radius:$metro-radius) {
+  @include trim();
+  @include trim-field();
+  @include sassy-button('flat', 0, inherit, $bg-color, darken($bg-color, 20), $text-color, 'none');
+  @include border-radius($radius);
+  @include font($normal - 2, 1, $semibold, $buttons-font);
+  @include padding($dp * 1.4 $dp * 1.6 !important);
+  @include appearance(none);
+  letter-spacing: 0.9px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+
+@mixin button-main {
+  @include default-button();
+}
+
+@mixin button-second {
+  @include default-button($first-color, $fifth-color);
+}
+
+@mixin button-white {
+  @include default-button($third-color, $second-color);
+}
+
+@mixin button-transparent-red {
+  @include default-button($second-color, $third-color);
+  border: 1px solid $second-color;
+}

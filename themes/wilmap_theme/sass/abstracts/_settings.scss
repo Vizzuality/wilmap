@@ -10,7 +10,7 @@
 // -------------------------------------
 
 // Gumby - Grid Settings
-$row-max-width:                         1120px !default;
+$row-max-width:                         1125px !default;
 $gutter-in-px:                          20px !default;
 $cols:                                  14 !default;
 $hybrid:                                16 !default;
@@ -24,9 +24,8 @@ $max-device-width:                      2880px;
 
 
 // Fonts Families
-$base-font-family:                      'Open Sans', sans-serif;
-$alt-font-family:                       'Open Sans', sans-serif;
-$sponsor-font-family:                   'Martel Sans', sans-serif;
+$base-font-family:                      'Raleway', sans-serif;
+$alt-font-family:                       'Raleway', sans-serif;
 $blockquote-font-family:                Georgia, serif;
 $icons:                                 entypo;
 
@@ -35,13 +34,13 @@ $icons:                                 entypo;
 $font-sizes: (
                                         7px,
                                         9px,
-                                        12px,
-                                        17px,  //$base-font-size
-                                        22px,
-                                        30px,
-                                        40px,
-                                        53px,
+                                        13px,
+                                        16px,  //$base-font-size
+                                        25px,
+                                        50px,
                                         71px,
+                                        80px,
+                                        91px,
                                         127px,
                                         225px,
                                         401px,
@@ -50,7 +49,7 @@ $font-sizes: (
 $tiny:                                  nth($font-sizes, 1);
 $xsmall:                                nth($font-sizes, 2);
 $small:                                 nth($font-sizes, 3);
-$normal:                                nth($font-sizes, 4);   // $base-font-size, h5, h5
+$normal:                                nth($font-sizes, 4);   // $base-font-size, h5, h6
 $med:                                   nth($font-sizes, 5);   // h4
 $large:                                 nth($font-sizes, 6);   // h3
 $xlarge:                                nth($font-sizes, 7);   // h2
@@ -87,7 +86,7 @@ $heavy:                                 map-get($type-weight, 'heavy');
 
 // Compass - Vertical Rhythm setup
 $base-font-size:                        $normal;
-$base-line-increment:                   1.4;
+$base-line-increment:                   1.5;
 $base-line-height:                      $base-font-size * $base-line-increment;
 $rhythm-unit:                           'rem';
 $em-base:                               $base-font-size;
@@ -130,7 +129,7 @@ $default-overlayer:                     rgba($black, 0.8);
 
 
 // Files & Extensions
-$img-path:                              '../img/';
+$img-path:                              '../../images/';
 $svgext:                                'svg';
 $pngext:                                'png';
 $jpgext:                                'jpg';
@@ -152,11 +151,11 @@ $switch-float:                          right;
 // -------------------------------------
 
 // Main Colors Palette
-$first-color:                           $gray-80;  //Text
+$first-color:                           #222;  //Text
 $second-color:                          $white;   //Highlight Text
-$third-color:                           $blue;  //Buttons
-$fourth-color:                          $black;  //Titles
-$fifth-color:                           $blue;  //Links & BG
+$third-color:                           #b3001e;  //Main color - Buttons
+$fourth-color:                          #968f7e;  //Second color
+$fifth-color:                           #e3ded3;  //third-color
 
 
 // General Typography
@@ -166,13 +165,13 @@ $buttons-font:                          $alt-font-family;
 
 
 // General Typography Colors
-$heading-font-color:                    $fourth-color;
+$heading-font-color:                    $first-color;
 $body-font-color:                       $first-color;
-$body-strong-color:                     lighten($black, 40%);
-$body-em-color:                         lighten($black, 25%);
-$body-emstrong-color:                   $black;
-$body-s-color:                          lighten($body-font-color, 10%);
-$body-link-color:                       $fifth-color;
+$body-strong-color:                     $first-color;
+$body-em-color:                         $fourth-color;
+$body-emstrong-color:                   $fourth-color;
+$body-s-color:                          $fourth-color;
+$body-link-color:                       $third-color;
 $body-link-hover-color:                 lighten($body-link-color, 5%);
 
 

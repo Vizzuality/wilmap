@@ -2,11 +2,15 @@ global-styling:
   version: VERSION
   css:
     theme:
-      dist/css/style.css: {}
+      dist/css/theme-base.css: {}
       dist/css/theme-layout.css: {}
       dist/css/theme-components.css: {}
       dist/css/theme-pages.css: {}
   js:
+    node_modules/npm-gumby/js/libs/jquery.mobile.custom.min.js: {}
+    node_modules/npm-gumby/js/libs/modernizr-2.6.2.min.js: {}
+    node_modules/npm-gumby/js/libs/gumby.min.js: {}
+    dist/js/main.js: {}
   dependencies:
     - core/drupal
     - core/jquery

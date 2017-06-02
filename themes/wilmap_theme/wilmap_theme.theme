@@ -30,12 +30,21 @@ function wilmap_theme_form_system_theme_settings_alter(&$form, \Drupal\Core\Form
  */
 function wilmap_theme_preprocess_html(&$variables) {
 
-  // Add node id to the body class.
+  // Add node id and title to the body class.
   if( $node = \Drupal::routeMatch()->getParameter('node') ) {
 
+    // Node ID
     if(gettype($node) != 'string') {
       $variables['attributes']['class'][] = 'node-' . $node->id();
     }
+
+    // Node Title
+    $node = $node->getTranslation('en');
+    $title = $node->label();
+    $title = str_replace(' ', '-', $title);
+    $title = str_replace('_', '-', $title);
+    $title = strtolower($title);
+    $variables['attributes']['class'][] = 'node-' . $title;
 
   }
 

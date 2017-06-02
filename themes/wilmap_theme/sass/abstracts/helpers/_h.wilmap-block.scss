@@ -1,0 +1,118 @@
+// ============================================================================
+//
+// HELPERS: WILMAP BLOCK
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+
+@mixin wilmap-block ($layout: leftovermap) {
+  $image-width:             $dp * 80;
+  $image-height:            $dp * 60;
+  $margin-bottom:           $dp * 10;
+  $padding-inner:           $dp * 8;
+
+  // default: leftovermap
+  $transx-image-desktop:    -32%;
+  $transx-image-tablets:    -30%;
+  $transx-image-phones:     -18%;
+  $push-text:               1;
+  $display-image-mobile:    block;
+
+  @if $layout==rightovermap {
+    $transx-image-desktop:    -57%;
+    $transx-image-tablets:    -70%;
+    $transx-image-phones:     -82%;
+    $push-text:               8;
+    $display-image-mobile:    block;
+  }
+  @else if $layout==left {
+    $transx-image-desktop:    20%;
+    $transx-image-tablets:    10%;
+    $transx-image-phones:     0;
+    $push-text:               1;
+    $display-image-mobile:    none;
+  }
+  @else if $layout==right {
+    $transx-image-desktop:    -120%;
+    $transx-image-tablets:    -110%;
+    $transx-image-phones:     0;
+    $push-text:               8;
+    $display-image-mobile:    none;
+  }
+
+
+  & {
+    @include position(relative, null null null null);
+    @include padding($padding-inner null);
+    margin-bottom: $margin-bottom;
+    min-height: $image-height;
+    overflow: hidden;
+
+    @include respond(tablets) {
+      @include padding($padding-inner / 2 null);
+      margin-bottom: $margin-bottom / 2;
+      min-height: $image-height - 130;
+    }
+
+    @include respond(all-phones) {
+      @include padding($dp null);
+      min-height: $image-height - 100;
+      margin-bottom: $margin-bottom / 3;
+    }
+
+    .content {
+      @include row();
+    }
+
+    .title-section {
+      @include text-main-header();
+
+      .secondary-title {
+        @include text-secondary-header();
+      }
+    }
+
+    .image {
+      @include position(absolute, 50% null null 50%);
+      @include translate($transx-image-desktop, -50%);
+      @include size($image-width $image-height);
+      display: block;
+      z-index: 0;
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      @include respond(tablets) {
+        @include size($image-width - 130 $image-height - 130);
+        @include translate($transx-image-tablets, -50%);
+        display: block;
+      }
+
+      @include respond(all-phones) {
+        @include size($image-width - 100 $image-height - 100);
+        @include translate($transx-image-phones, -50%);
+        display: $display-image-mobile;
+      }
+    }
+
+    .text {
+      @include column(5.5);
+      @include push($push-text);
+      @include padding($dp * 2 null null null);
+    }
+
+    .description {
+      .field--name-body,
+      .field--name-body p {
+        @include text-body();
+      }
+
+      a.btn {
+        @include button-main();
+      }
+    }
+  }
+}

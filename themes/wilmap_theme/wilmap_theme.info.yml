@@ -15,7 +15,6 @@ regions:
   header: Header
   primary_menu: 'Primary menu'
   secondary_menu: 'Secondary menu'
-  search: 'Search'
   highlighted: Highlighted
   featured_top: 'Featured top'
   breadcrumb: Breadcrumb

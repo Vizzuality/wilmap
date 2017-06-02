@@ -7,6 +7,9 @@
 
 @charset 'UTF-8';
 
+// Import gumby.css as base
+@import url("../../node_modules/npm-gumby/css/gumby.css");
+
 // Compass Framework
 @import 'compass';
 @import 'compass/reset';

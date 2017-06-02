@@ -1,0 +1,111 @@
+// ============================================================================
+//
+// PAGES: HOME
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+
+
+
+// -------------------------------------
+// Scaffold
+// -------------------------------------
+
+#block-wilmap-theme-blockwelcomehome {
+  @include wilmap-block(leftovermap);
+
+  // Override
+  & {
+    @include padding(0 null);
+
+    @include respond(tablets) {
+      @include padding($dp * 6 null);
+    }
+
+    .text {
+      @include column(12);
+      @include padding($dp * 7 null null null);
+
+      @include respond(tablets) {
+        @include padding($dp * 5 null null null);
+        width: columns(10);
+      }
+
+      @include respond(all-phones) {
+        @include padding($dp * 3 null null null);
+        width: columns(14);
+      }
+
+      .description {
+        @include column(7, false, collapse, false);
+
+        @include respond(tablets) {
+          width: columns(9);
+        }
+
+        @include respond(all-phones) {
+          width: columns(14);
+        }
+      }
+    }
+
+    .title-section {
+      .secondary-title {
+        @include respond(all-phones) {
+          @include font($large / 2, 1, $extra-light, $heading-font);
+        }
+      }
+    }
+  }
+}
+
+#block-wilmap-theme-blockmaphome {
+  @include wilmap-block(rightovermap);
+}
+
+#block-wilmap-theme-blockexplorehome {
+  @include wilmap-block(left);
+
+  // Override
+  & {
+    @include padding($dp * 14 null);
+    background-color: $third-color;
+
+    @include respond(tablets) {
+      @include padding($dp * 8 null);
+    }
+
+    @include respond(all-phones) {
+      @include padding($dp null);
+    }
+
+    .title-section {
+      @include text-main-header($second-color);
+
+      .secondary-title {
+        @include text-secondary-header($second-color);
+      }
+    }
+
+    .text {
+      .description {
+        .field--name-body,
+        .field--name-body p {
+          @include text-body($second-color);
+        }
+
+        a.btn {
+          @include button-white();
+        }
+      }
+    }
+  }
+}
+
+#block-wilmap-theme-blocknewshome {
+  @include wilmap-block(rightovermap);
+}

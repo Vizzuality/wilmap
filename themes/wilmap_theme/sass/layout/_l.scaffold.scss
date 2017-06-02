@@ -14,12 +14,39 @@
 // Scaffold
 // -------------------------------------
 body {
-  .layout-main-wrapper,
-  .featured-bottom-second,
-  .featured-top-second,
-  .breadcrumb {
+  .layout-main-wrapper {
     @include trim();
     @include row();
+    margin-top: -$dp * 3;
+
+    @include respond(all-phones) {
+      margin-top: $dp * 3;
+    }
+
+
+    .layout-main {
+      @include column(12, center, collapse, false);
+    }
+  }
+
+
+  // -------------------------------------
+  // Home 100% width
+  // -------------------------------------
+  &.path-frontpage {
+    .layout-main-wrapper {
+      @include trim();
+      @include row(nested);
+      margin-top: -$dp * 3;
+
+      @include respond(all-phones) {
+        margin-top: $dp * 3;
+      }
+
+
+    .layout-main {
+      @include column(14, false, collapse, false);
+    }
   }
 
 
@@ -79,4 +106,5 @@ body {
       @include clearfix();
     }
   }
+}
 }

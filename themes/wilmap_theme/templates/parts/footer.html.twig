@@ -1,0 +1,10 @@
+<footer id="footer" class="site-footer">
+  <div class="layout-container">
+    {% if page.footer_first %}
+    <div class="footer_first_wrap">{{ page.footer_first }}</div>
+    {% endif %}
+    {% if page.footer_second %}
+    <div class="footer_second_wrap">{{ page.footer_second }}</div>
+    {% endif %}
+  </div>
+</footer>

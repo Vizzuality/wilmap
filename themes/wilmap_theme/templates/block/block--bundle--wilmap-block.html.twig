@@ -38,16 +38,16 @@
     'block-' ~ plugin_id|clean_class,
   ]
 %}
-<section{{ attributes.addClass(classes) }}>
-  <div class="wrap">
+<article{{ attributes.addClass(classes) }}>
+  <div{{ content_attributes.addClass('content') }}>
     <div class="image" style="background-image:url('{{ content.field_image[0]['#markup'] }}');"></div>
     <div class="text">
       <h2 class="title-section">
-        {% if content.field_title %}
-          <span class="secondary-title">{{ content.field_title[0]['#context']['value'] }}</h2>
+        {% if content.field_secondary_title %}
+          <span class="secondary-title">{{ content.field_secondary_title[0]['#context']['value'] }}</span>
         {% endif %}
 
-        {{ content.field_secondary_title[0]['#context']['value'] }}
+        {{ content.field_title[0]['#context']['value'] }}
       </h2>
 
       <div class="description">
@@ -57,4 +57,4 @@
       </div>
     </div>
   </div>
-</section>
+</article>

@@ -8,17 +8,16 @@
 // Drupal specifics elements
 // ----------------------------------------------------------------
 
-// @import 'layout.drupal-highlighted'; //tmp
+@import 'l.drupal-highlighted'; //tmp
 
 // ----------------------------------------------------------------
 // App elements
 // ----------------------------------------------------------------
 
 //@import '';
-// @import 'layout.background';
-// @import 'layout.scaffold';
-// @import 'layout.forms';
-// @import 'layout.buttons';
-// @import 'layout.modals';
-// @import 'layout.header';
-// @import 'layout.footer';
+@import 'l.scaffold';
+@import 'l.forms';
+@import 'l.buttons';
+@import 'l.modals';
+@import 'l.header';
+@import 'l.footer';

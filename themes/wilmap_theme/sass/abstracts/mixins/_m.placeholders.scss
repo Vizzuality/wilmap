@@ -72,6 +72,12 @@
   margin-bottom: 0;
 }
 
+%hide-text {
+  text-indent: -9999px;
+  overflow: hidden;
+  text-align: left;
+}
+
 // Images
 %max-width {
   max-width: 100%;
