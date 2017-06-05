@@ -32,19 +32,36 @@
 {%
   set classes = [
     'block',
+    'block-wilmap-block',
+    'wilmap-block-layout-' ~ content.field_layout[0]['#markup'],
     'block-' ~ configuration.provider|clean_class,
     'block-' ~ plugin_id|clean_class,
   ]
 %}
-<div{{ attributes.addClass(classes) }}>
+<article{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {% if label %}
     <h2{{ title_attributes }}>{{ label }}</h2>
   {% endif %}
   {{ title_suffix }}
   {% block content %}
-    <div{{ content_attributes.addClass('content') }}>
-      {{ content }}
+  <div{{ content_attributes.addClass('content') }}>
+    <div class="image" style="background-image:url('{{ content.field_image[0]['#markup'] }}');"></div>
+    <div class="text">
+      <h1 class="title-section">
+        {% if content.field_secondary_title %}
+          <span class="secondary-title">{{ content.field_secondary_title[0]['#context']['value'] }}</span>
+        {% endif %}
+
+        {{ content.field_title[0]['#context']['value'] }}
+      </h1>
+
+      <div class="description">
+        {{ content.body }}
+
+        <a class="btn" href="{{ content.field_link[0]['#url_title'] }}">{{ content.field_link[0]['#title'] }}</a>
+      </div>
     </div>
+  </div>
   {% endblock %}
-</div>
+</article>

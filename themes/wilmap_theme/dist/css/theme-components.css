@@ -1,10 +1,10 @@
 @charset "UTF-8";
-.tabs {
+.tabs, .messages__wrapper {
   *zoom: 1; }
-  .tabs:before, .tabs:after {
+  .tabs:before, .messages__wrapper:before, .tabs:after, .messages__wrapper:after {
     content: "";
     display: table; }
-  .tabs:after {
+  .tabs:after, .messages__wrapper:after {
     clear: both; }
 
 .tabs .tabs {
@@ -154,6 +154,25 @@
         .tabs .tabs li a.active {
           background: #fff;
           color: #1a1a1a; }
+
+.messages__wrapper {
+  width: 100%;
+  max-width: 1165px;
+  min-width: 414px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px; }
+  .messages__wrapper > *:first-child {
+    margin-left: 0; }
+  @media only screen and (max-width: 767px) {
+    .messages__wrapper {
+      width: auto;
+      min-width: 0;
+      margin-left: 0;
+      margin-right: 0; } }
+  .messages__wrapper .messages {
+    margin-top: 50px;
+    margin-bottom: 50px; }
 
 .accordion-drawer.drawer.active {
   max-height: 6000px; }

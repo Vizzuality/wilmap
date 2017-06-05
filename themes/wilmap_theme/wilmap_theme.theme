@@ -41,9 +41,8 @@ function wilmap_theme_preprocess_html(&$variables) {
     // Node Title
     $node = $node->getTranslation('en');
     $title = $node->label();
-    $title = str_replace(' ', '-', $title);
-    $title = str_replace('_', '-', $title);
-    $title = strtolower($title);
+    $title = strtolower(preg_replace('/[^a-zA-Z0-9-]+/', '-', $title));
+
     $variables['attributes']['class'][] = 'node-' . $title;
 
   }
@@ -71,6 +70,46 @@ function wilmap_theme_preprocess_page(&$variables) {
  * Implements hook_preprocess_HOOK() for page title.
  */
 function wilmap_theme_preprocess_page_title(&$variables) {
+
+  // Default values
+  $variables['title'] = $variables['title'];
+  $variables['title_background'] = '/themes/wilmap_theme/images/home/intro-image.png';
+
+
+  // Load the node entity from current route
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+
+    $bundle = $node->bundle();
+
+    switch ($bundle) {
+      case 'wilmap_page':
+        $primary_title = ($node->get('field_normal_title')->getValue()) ? $node->get('field_normal_title')->getValue()[0]['value'] : '';
+        $secondary_title = ($node->get('field_secondary_title')->getValue()) ? '<span class="secondary-page-title">' . $node->get('field_secondary_title')->getValue()[0]['value'] . '</span>' : '';
+
+        $variables['title'] = $secondary_title . '' . $primary_title;
+        $variables['title_background'] = file_create_url($node->get('field_image')->entity->uri->value);
+
+        break;
+
+      case 'topics':
+        $variables['title'] = '<span class="secondary-page-title">' . $node->label() . '</span>';
+        $variables['title_background'] = file_create_url($node->get('field_thumbnail_topic')->entity->uri->value);
+
+        break;
+
+      case 'news':
+        $variables['title'] = $node->label();
+        $variables['title_background'] = '/themes/wilmap_theme/images/home/news-section.png';
+
+        break;
+
+      default:
+        $variables['title'] = $node->label();
+        $variables['title_background'] = '/themes/wilmap_theme/images/home/intro-image.png';
+
+        break;
+    }
+  }
 }
 
 /**

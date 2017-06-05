@@ -39,6 +39,12 @@
   ]
 %}
 <article{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes }}>{{ label }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+  {% block content %}
   <div{{ content_attributes.addClass('content') }}>
     <div class="image" style="background-image:url('{{ content.field_image[0]['#markup'] }}');"></div>
     <div class="text">
@@ -57,4 +63,5 @@
       </div>
     </div>
   </div>
+  {% endblock %}
 </article>

@@ -14,6 +14,7 @@
 #}
 {{ title_prefix }}
 {% if title %}
-  <h1{{ title_attributes.addClass('page-title') }}>{{ title }}</h1>
+  <h1{{ title_attributes.addClass('page-title') }}>{{ title|raw }}</h1>
+  <h6>{{ title_background }}</h6>
 {% endif %}
 {{ title_suffix }}
