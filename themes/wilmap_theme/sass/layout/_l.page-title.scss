@@ -25,16 +25,18 @@ $image-height:        $dp * 20;
 
   .page-title {
     @include column(12, false, collapse, false);
-    @include padding($gutter * 6 null null null);
+    @include padding($gutter * 5.7 null null null);
     @include text-main-header();
 
     @include respond(tablets) {
       @include padding($gutter * 5 null null null);
       @include font($xxlarge, 1, $extra-light, $heading-font);
+      width: columns(12);
     }
 
     @include respond(all-phones) {
       @include padding($gutter * 5 null null null);
+      width: columns(13);
     }
 
     .secondary-page-title {
@@ -61,6 +63,21 @@ $image-height:        $dp * 20;
 
     @include respond(all-phones) {
       @include size(columns(11) $image-height / 2.5);
+    }
+  }
+}
+
+
+// -------------------------------------
+// About page override
+// -------------------------------------
+
+body.node-about {
+  .block-page-title-block {
+    .image {
+      @include respond(all-phones) {
+        @include size(columns(11) $image-height / 1.5);
+      }
     }
   }
 }

@@ -1188,7 +1188,7 @@ button.btn {
       margin-bottom: 30px; } }
   .block-page-title-block .page-title {
     width: 85.46032%;
-    padding-top: 10.66667%;
+    padding-top: 10.13333%;
     font-size: 91px;
     font-size: 5.6875rem;
     line-height: 91px;
@@ -1228,10 +1228,12 @@ button.btn {
         line-height: 80px;
         line-height: 5rem;
         font-weight: 200;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", sans-serif;
+        width: 85.46032%; } }
     @media only screen and (max-width: 767px) {
       .block-page-title-block .page-title {
-        padding-top: 8.88889%; } }
+        padding-top: 8.88889%;
+        width: 92.73016%; } }
     .block-page-title-block .page-title .secondary-page-title {
       font-size: 50px;
       font-size: 3.125rem;
@@ -1288,6 +1290,11 @@ button.btn {
       .block-page-title-block .image {
         height: 80px;
         width: 78.19048%; } }
+
+@media only screen and (max-width: 767px) {
+  body.node-about .block-page-title-block .image {
+    height: 133.33333px;
+    width: 78.19048%; } }
 
 article.node--view-mode-full > .node__content > .text-formatted p {
   width: 70.92063%;
