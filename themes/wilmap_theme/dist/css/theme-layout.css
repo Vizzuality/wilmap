@@ -7,14 +7,14 @@ body .layout-main-wrapper, body.path-frontpage .layout-main-wrapper, .site-foote
   body .layout-main-wrapper:after, body.path-frontpage .layout-main-wrapper:after, .site-footer .footer_first_wrap .region-footer-first:after {
     clear: both; }
 
-body .layout-main-wrapper .layout-main, body.path-frontpage .layout-main-wrapper .layout-main, body.path-frontpage.no-sidebar .main-content, body.path-frontpage.sidebar-first #sidebar-first, body.path-frontpage.sidebar-first .main-content, body.path-frontpage.sidebar-second .main-content, body.path-frontpage.sidebar-second #sidebar-second, body.path-frontpage.both-sidebars #sidebar-first, body.path-frontpage.both-sidebars .main-content, body.path-frontpage.both-sidebars #sidebar-second, .site-footer .footer_first_wrap .region-footer-first .block-menu, .site-footer .footer_first_wrap .region-footer-first .block-menu .menu-item {
+body .layout-main-wrapper .layout-main, body.path-frontpage .layout-main-wrapper .layout-main, body.path-frontpage.no-sidebar .main-content, body.path-frontpage.sidebar-first #sidebar-first, body.path-frontpage.sidebar-first .main-content, body.path-frontpage.sidebar-second .main-content, body.path-frontpage.sidebar-second #sidebar-second, body.path-frontpage.both-sidebars #sidebar-first, body.path-frontpage.both-sidebars .main-content, body.path-frontpage.both-sidebars #sidebar-second, .site-footer .footer_first_wrap .region-footer-first .block-menu, .site-footer .footer_first_wrap .region-footer-first .block-menu .menu-item, .block-page-title-block .page-title, article.node--view-mode-full > .node__content > .text-formatted p {
   margin-left: 1.77778%;
   float: left;
   min-height: 1px;
   position: relative;
   box-sizing: border-box; }
 
-body.path-frontpage .layout-main-wrapper .layout-main, body.path-frontpage.no-sidebar .main-content, body.path-frontpage.sidebar-first #sidebar-first, body.path-frontpage.sidebar-second .main-content, body.path-frontpage.both-sidebars #sidebar-first {
+body.path-frontpage .layout-main-wrapper .layout-main, body.path-frontpage.no-sidebar .main-content, body.path-frontpage.sidebar-first #sidebar-first, body.path-frontpage.sidebar-second .main-content, body.path-frontpage.both-sidebars #sidebar-first, .block-page-title-block .page-title {
   margin-left: 0; }
 
 .site-header .main-header .site-slogan {
@@ -59,6 +59,8 @@ body .layout-main-wrapper {
         float: left;
         margin-left: 0;
         width: 100%; } }
+body.user-logged-in .layout-main-wrapper {
+  margin-top: 10px !important; }
 body.path-frontpage .layout-main-wrapper {
   margin: 0;
   padding: 0;
@@ -85,6 +87,8 @@ body.path-frontpage .layout-main-wrapper {
       body.path-frontpage .layout-main-wrapper .layout-main {
         float: left;
         width: 100%; } }
+  body.path-frontpage .layout-main-wrapper.user-logged-in .layout-main-wrapper {
+    margin-top: 10px !important; }
 body.path-frontpage.no-sidebar .main-content {
   width: 85.46032%;
   *zoom: 1; }
@@ -1168,5 +1172,139 @@ button.btn {
       height: 14px;
       width: 145px;
       display: block; }
+
+.block-page-title-block {
+  position: relative;
+  margin-bottom: 50px;
+  *zoom: 1;
+  min-height: 200px; }
+  .block-page-title-block:before, .block-page-title-block:after {
+    content: "";
+    display: table; }
+  .block-page-title-block:after {
+    clear: both; }
+  @media only screen and (max-width: 767px) {
+    .block-page-title-block {
+      margin-bottom: 30px; } }
+  .block-page-title-block .page-title {
+    width: 85.46032%;
+    padding-top: 10.66667%;
+    font-size: 91px;
+    font-size: 5.6875rem;
+    line-height: 91px;
+    line-height: 5.6875rem;
+    font-weight: 200;
+    font-family: "Raleway", sans-serif;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    text-transform: none;
+    color: #222; }
+    @media only screen and (max-width: 767px) {
+      .block-page-title-block .page-title {
+        float: left;
+        width: 100%; } }
+    @media only screen and (min-width: 768px) and (max-width: 1124px) {
+      .block-page-title-block .page-title {
+        font-size: 60.66667px;
+        font-size: 3.79167rem;
+        line-height: 60.66667px;
+        line-height: 3.79167rem;
+        font-weight: 200;
+        font-family: "Raleway", sans-serif; } }
+    @media only screen and (max-width: 767px) {
+      .block-page-title-block .page-title {
+        font-size: 45.5px;
+        font-size: 2.84375rem;
+        line-height: 45.5px;
+        line-height: 2.84375rem;
+        font-weight: 200;
+        font-family: "Raleway", sans-serif; } }
+    @media only screen and (min-width: 768px) and (max-width: 1124px) {
+      .block-page-title-block .page-title {
+        padding-top: 8.88889%;
+        font-size: 80px;
+        font-size: 5rem;
+        line-height: 80px;
+        line-height: 5rem;
+        font-weight: 200;
+        font-family: "Raleway", sans-serif; } }
+    @media only screen and (max-width: 767px) {
+      .block-page-title-block .page-title {
+        padding-top: 8.88889%; } }
+    .block-page-title-block .page-title .secondary-page-title {
+      font-size: 50px;
+      font-size: 3.125rem;
+      line-height: 50px;
+      line-height: 3.125rem;
+      font-weight: 200;
+      font-family: "Raleway", sans-serif;
+      padding: 0;
+      margin: 0;
+      display: block;
+      text-decoration: none;
+      text-transform: none;
+      color: #222; }
+      @media only screen and (min-width: 768px) and (max-width: 1124px) {
+        .block-page-title-block .page-title .secondary-page-title {
+          font-size: 33.33333px;
+          font-size: 2.08333rem;
+          line-height: 33.33333px;
+          line-height: 2.08333rem;
+          font-weight: 200;
+          font-family: "Raleway", sans-serif; } }
+      @media only screen and (max-width: 767px) {
+        .block-page-title-block .page-title .secondary-page-title {
+          font-size: 45.5px;
+          font-size: 2.84375rem;
+          line-height: 45.5px;
+          line-height: 2.84375rem;
+          font-weight: 200;
+          font-family: "Raleway", sans-serif; } }
+      @media only screen and (max-width: 767px) {
+        .block-page-title-block .page-title .secondary-page-title {
+          font-size: 25px;
+          font-size: 1.5625rem;
+          line-height: 25px;
+          line-height: 1.5625rem;
+          font-weight: 200;
+          font-family: "Raleway", sans-serif; } }
+  .block-page-title-block .image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 200px;
+    width: 84.00635%;
+    display: block;
+    z-index: -1;
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat; }
+    @media only screen and (min-width: 768px) and (max-width: 1124px) {
+      .block-page-title-block .image {
+        height: 166.66667px;
+        width: 81.8254%; } }
+    @media only screen and (max-width: 767px) {
+      .block-page-title-block .image {
+        height: 80px;
+        width: 78.19048%; } }
+
+article.node--view-mode-full > .node__content > .text-formatted p {
+  width: 70.92063%;
+  *zoom: 1;
+  margin-left: 16.03333%; }
+  @media only screen and (max-width: 767px) {
+    article.node--view-mode-full > .node__content > .text-formatted p {
+      float: left;
+      margin-left: 0;
+      width: 100%; } }
+  article.node--view-mode-full > .node__content > .text-formatted p:before, article.node--view-mode-full > .node__content > .text-formatted p:after {
+    content: "";
+    display: table; }
+  article.node--view-mode-full > .node__content > .text-formatted p:after {
+    clear: both; }
+  @media only screen and (min-width: 768px) and (max-width: 1124px) {
+    article.node--view-mode-full > .node__content > .text-formatted p {
+      margin-left: 18.57778%; } }
 
 /*# sourceMappingURL=theme-layout.css.map */

@@ -1,0 +1,66 @@
+// ============================================================================
+//
+// LAYOUT: PAGE TITLE
+//
+// ============================================================================
+
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+$image-height:        $dp * 20;
+
+// -------------------------------------
+// Scaffold
+// -------------------------------------
+
+.block-page-title-block {
+  @include position(relative);
+  @include margin(null null $dp * 5 null);
+  @include clearfix();
+  min-height: $image-height;
+
+  @include respond(all-phones) {
+    @include margin(null null $dp * 3 null);
+  }
+
+  .page-title {
+    @include column(12, false, collapse, false);
+    @include padding($gutter * 6 null null null);
+    @include text-main-header();
+
+    @include respond(tablets) {
+      @include padding($gutter * 5 null null null);
+      @include font($xxlarge, 1, $extra-light, $heading-font);
+    }
+
+    @include respond(all-phones) {
+      @include padding($gutter * 5 null null null);
+    }
+
+    .secondary-page-title {
+      @include text-secondary-header();
+
+      @include respond(all-phones) {
+        @include font($large / 2, 1, $extra-light, $heading-font);
+      }
+    }
+  }
+
+  .image {
+    @include position(absolute, 0 0 null null);
+    @include size(columns(11.8) $image-height);
+    display: block;
+    z-index: -1;
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+
+    @include respond(tablets) {
+      @include size(columns(11.5) $image-height / 1.2);
+    }
+
+    @include respond(all-phones) {
+      @include size(columns(11) $image-height / 2.5);
+    }
+  }
+}

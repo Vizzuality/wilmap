@@ -43,16 +43,24 @@
 
 {% if page.highlighted %}
   <div class="highlighted">
-    <section class="highlighted__inner layout-container clearfix" role="complementary">
+    <div class="highlighted__inner layout-container clearfix" role="complementary">
       {{ page.highlighted }}
-    </section>
+    </div>
+  </div>
+{% endif %}
+
+{% if page.help %}
+  <div class="help">
+    <div class="highlighted__inner layout-container clearfix" role="complementary">
+      {{ page.help }}
+    </div>
   </div>
 {% endif %}
 
 {% if page.breadcrumb %}
   <div class="breadcrumb">
-    <section class="breadcrumb__inner layout-container clearfix" role="complementary">
+    <div class="breadcrumb__inner layout-container clearfix" role="complementary">
       {{ page.breadcrumb }}
-    </section>
+    </div>
   </div>
 {% endif %}

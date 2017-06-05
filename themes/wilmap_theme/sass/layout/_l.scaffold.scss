@@ -23,9 +23,14 @@ body {
       margin-top: $dp * 3;
     }
 
-
     .layout-main {
       @include column(12, center, collapse, false);
+    }
+  }
+
+  &.user-logged-in {
+    .layout-main-wrapper {
+      margin-top: $dp !important;
     }
   }
 
@@ -39,13 +44,19 @@ body {
       @include row(nested);
       margin-top: -$dp;
 
+
       @include respond(all-phones) {
         margin-top: $dp * 3;
       }
 
-
     .layout-main {
       @include column(14, false, collapse, false);
+    }
+
+    &.user-logged-in {
+      .layout-main-wrapper {
+        margin-top: $dp !important;
+      }
     }
   }
 
