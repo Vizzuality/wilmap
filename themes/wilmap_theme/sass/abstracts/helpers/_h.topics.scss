@@ -1,0 +1,122 @@
+// ============================================================================
+//
+// HELPERS: TOPICS SNIPPETS
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+
+// -------------------------------------
+// Topic header
+// -------------------------------------
+@mixin topic--header() {
+  & {
+    @include trim();
+    @include position(relative);
+    @include font($med, 1.2, $light, $heading-font);
+    @include margin(null null $dp * 2 null);
+    background: none;
+
+    &::after {
+      @include size($dp * 14 $dp / 2);
+      @include margin($dp * 2 null null null);
+      content: '';
+      display: block;
+      border: 0;
+      background-color: rgba($fourth-color, 0.2);
+    }
+
+    a {
+      @include trim-field();
+      @include font($med, 1.3, $light, $heading-font);
+      font-style: normal;
+      color: $first-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      span {
+        @include font($med, 1.3, $light, $heading-font);
+      }
+    }
+  }
+}
+
+// -------------------------------------
+// Topics grid
+// -------------------------------------
+
+@mixin topics-grid($structure:'.views-row', $break-margin: '2n+1') {
+  // Structure wrapper
+  @include content-listings-wrapper($structure, $break-margin) {
+    @include column(7);
+    @include margin(null null $dp * 2 null);
+    @include clearfix();
+    max-height: $dp * 37;
+    overflow: hidden;
+
+    .node {
+      height: $dp * 37;
+      max-height: $dp * 37;
+    }
+  }
+}
+
+
+
+
+// -------------------------------------
+// Topics general entity
+// -------------------------------------
+@mixin topics($target, $structure:none, $break-margin: false) {
+  & {
+    .node {
+      @include trim-field();
+      @include margin(null null $dp * 2 null);
+      @include padding($dp * 2 $dp * 3 $dp $dp * 3);
+      @include image-overlay(rgba(lighten($fifth-color, 10), 0), rgba(lighten($fifth-color, 10), 1), 1, 180deg);
+      display: block;
+      background-color: lighten($fifth-color, 10);
+      cursor: pointer;
+
+      // gradient bottom
+      &::before {
+        @include position(absolute, auto auto 0 0);
+        @include size(150% $dp * 10);
+        z-index: 10;
+      }
+
+      &:hover {
+        background-color: $fifth-color;
+        @include image-overlay(rgba($fifth-color, 0), rgba($fifth-color, 1), 1, 180deg);
+
+        // gradient bottom
+        &::before {
+          @include position(absolute, auto auto 0 0);
+          @include size(150% $dp * 10);
+          z-index: 10;
+        }
+      }
+
+      //Default styles
+      header {
+        @include trim();
+
+        .node__title {
+          @include topic--header();
+        }
+      }
+    }
+  }
+
+  // Layouts
+  // Grid
+  @if $target == grid {
+    @include topics-grid($structure, '2n+1');
+  }
+}

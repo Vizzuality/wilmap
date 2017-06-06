@@ -73,3 +73,17 @@
   font-style: normal;
   color: $text-color;
 }
+
+// ----------------------------------------------------------------
+// header-block-separator
+// ----------------------------------------------------------------
+@mixin header-block-separator ($text-color:$body-font-color) {
+  @include text-secondary-header();
+  @include margin($dp * 5 null);
+  @include padding($dp * 5 null null null);
+  border-top: $dp / 2 solid rgba($fourth-color, 0.2);
+
+  @include respond(all-phones) {
+    @include font($large / 2, 1, $extra-light, $heading-font);
+  }
+}

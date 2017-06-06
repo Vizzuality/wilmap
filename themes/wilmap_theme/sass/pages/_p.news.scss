@@ -1,0 +1,19 @@
+// ============================================================================
+//
+// COMPONENTS: NEWS LISTS
+//
+// ============================================================================
+
+
+.block-views-blocknews-block-1 {
+  @include content-listings-wrapper('.views-row') {
+    @include size(columns(9) auto);
+    @include margin(null null $dp * 2 columns(5));
+    border: 1px solid red;
+    padding: $dp * 3;
+
+    .node__title {
+      @include topic--header();
+    }
+  }
+}

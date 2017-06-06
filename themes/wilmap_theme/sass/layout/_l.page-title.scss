@@ -19,8 +19,13 @@ $image-height:        $dp * 20;
   @include clearfix();
   min-height: $image-height;
 
+  @include respond(tablets) {
+    min-height: auto;
+  }
+
   @include respond(all-phones) {
     @include margin(null null $dp * 3 null);
+    min-height: auto;
   }
 
   .page-title {
@@ -29,7 +34,7 @@ $image-height:        $dp * 20;
     @include text-main-header();
 
     @include respond(tablets) {
-      @include padding($gutter * 5 null null null);
+      @include padding($gutter * 5.5 null null null);
       @include font($xxlarge, 1, $extra-light, $heading-font);
       width: columns(12);
     }
@@ -63,6 +68,23 @@ $image-height:        $dp * 20;
 
     @include respond(all-phones) {
       @include size(columns(11) $image-height / 2.5);
+    }
+  }
+
+  .backtolink {
+    @include position(absolute, $dp * 3 null null 0);
+    @include font($normal, 1, $bold, $heading-font);
+    text-transform: uppercase;
+    color: $third-color;
+    text-decoration: none;
+    z-index: 10;
+
+    @include respond(all-phones) {
+      @include position(absolute, $dp null null 0);
+    }
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

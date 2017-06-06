@@ -1,0 +1,14 @@
+// -------------------------------------
+// Contenedor
+// -------------------------------------
+@mixin content-listings-wrapper($structure:none, $break-margin: false) {
+  #{$structure} {
+    @content;
+
+    @if $break-margin {
+      &:nth-child(#{$break-margin}) {
+        @include margin(null null null 0);
+      }
+    }
+  }
+}

@@ -1183,9 +1183,13 @@ button.btn {
     display: table; }
   .block-page-title-block:after {
     clear: both; }
+  @media only screen and (min-width: 768px) and (max-width: 1124px) {
+    .block-page-title-block {
+      min-height: auto; } }
   @media only screen and (max-width: 767px) {
     .block-page-title-block {
-      margin-bottom: 30px; } }
+      margin-bottom: 30px;
+      min-height: auto; } }
   .block-page-title-block .page-title {
     width: 85.46032%;
     padding-top: 10.13333%;
@@ -1222,7 +1226,7 @@ button.btn {
         font-family: "Raleway", sans-serif; } }
     @media only screen and (min-width: 768px) and (max-width: 1124px) {
       .block-page-title-block .page-title {
-        padding-top: 8.88889%;
+        padding-top: 9.77778%;
         font-size: 80px;
         font-size: 5rem;
         line-height: 80px;
@@ -1290,6 +1294,27 @@ button.btn {
       .block-page-title-block .image {
         height: 80px;
         width: 78.19048%; } }
+  .block-page-title-block .backtolink {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 16px;
+    line-height: 1rem;
+    font-weight: 700;
+    font-family: "Raleway", sans-serif;
+    text-transform: uppercase;
+    color: #b3001e;
+    text-decoration: none;
+    z-index: 10; }
+    @media only screen and (max-width: 767px) {
+      .block-page-title-block .backtolink {
+        position: absolute;
+        top: 10px;
+        left: 0; } }
+    .block-page-title-block .backtolink:hover {
+      text-decoration: underline; }
 
 @media only screen and (max-width: 767px) {
   body.node-about .block-page-title-block .image {

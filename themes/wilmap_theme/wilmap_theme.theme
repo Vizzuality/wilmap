@@ -74,6 +74,7 @@ function wilmap_theme_preprocess_page_title(&$variables) {
   // Default values
   $variables['title'] = $variables['title'];
   $variables['title_background'] = '/themes/wilmap_theme/images/home/intro-image.png';
+  $variables['title_back_link'] = '';
 
 
   // Load the node entity from current route
@@ -81,7 +82,8 @@ function wilmap_theme_preprocess_page_title(&$variables) {
 
     $bundle = $node->bundle();
 
-// dump($node->get('field_thumbnail_topic'));
+// dump($node);
+// dsm($node->get('field_image')->getValue());
 
     switch ($bundle) {
       case 'wilmap_page':
@@ -90,25 +92,32 @@ function wilmap_theme_preprocess_page_title(&$variables) {
 
         $variables['title'] = $secondary_title . '' . $primary_title;
         $variables['title_background'] = file_create_url($node->get('field_image')->entity->uri->value);
+        $variables['title_back_link'] = '';
 
         break;
 
       case 'topics':
         $variables['title'] = '<span class="secondary-page-title">' . $node->label() . '</span>';
-        //$variables['title_background'] = file_create_url($node->get('field_thumbnail_topic')->entity->uri->value);
-        $variables['title_background'] = '/sites/default/files/default_images/topics-individual.png';
+        $variables['title_background'] = ($node->get('field_thumbnail_topic')->getValue()) ?
+                                         file_create_url($node->get('field_thumbnail_topic')->entity->uri->value) :
+                                         '/themes/wilmap_theme/images/title/topics-title-bg.png';
+        $variables['title_back_link'] = '<a href="/topics" class="backtolink">Back to topics</a>';
 
         break;
 
       case 'news':
         $variables['title'] = '<span class="secondary-page-title">' . $node->label() . '</span>';
-        $variables['title_background'] = '/themes/wilmap_theme/images/home/news-section.png';
+        $variables['title_background'] = ($node->get('field_image')->getValue()) ?
+                                         file_create_url($node->get('field_image')->entity->uri->value) :
+                                         '/themes/wilmap_theme/images/title/news-title-bg.png';
+        $variables['title_back_link'] = '<a href="/news" class="backtolink">Back to news</a>';
 
         break;
 
       default:
         $variables['title'] = $node->label();
-        $variables['title_background'] = '/themes/wilmap_theme/images/home/intro-image.png';
+        $variables['title_background'] = '/themes/wilmap_theme/images/title/default-title-bg.png';
+        $variables['title_back_link'] = '';
 
         break;
     }

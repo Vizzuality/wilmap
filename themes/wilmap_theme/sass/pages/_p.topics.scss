@@ -1,0 +1,41 @@
+// ============================================================================
+//
+// PAGES: TOPICS
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+
+
+// -------------------------------------
+// Scaffold
+// -------------------------------------
+
+// TOPICS List
+.block-views-blocktopics-block-1 {
+  @include topics(grid, '.views-row');
+}
+
+
+// TOPICS detail
+article.node--type-topics.node--view-mode-full {
+  .field--name-field-related-topics {
+
+    // Related separator
+    .field__label {
+      @include header-block-separator();
+    }
+
+    .field__items {
+      @include topics(grid, '> .field__item');
+    }
+  }
+
+  .action {
+    @include margin($dp * 4 null $dp * 3 null);
+    text-align: center;
+  }
+}
