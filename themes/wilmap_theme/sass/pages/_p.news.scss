@@ -15,7 +15,23 @@
 // -------------------------------------
 
 // NEWS List
+.block-views-blockcontinent-block-continents {
+  @include column(4, false, collapse, false);
+
+  .views-row {
+    @include trim();
+
+    a {
+      @include trim();
+      @include red-caps-link();
+      @include margin(null null $dp * 3 null);
+      display: block;
+    }
+  }
+}
+
 .block-views-blocknews-block-1 {
+  @include column(10);
   @include news(list);
 }
 

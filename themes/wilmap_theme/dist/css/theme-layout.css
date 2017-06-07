@@ -1310,9 +1310,6 @@ button.btn {
     z-index: 10; }
     @media only screen and (max-width: 767px) {
       .block-page-title-block .backtolink {
-        position: absolute;
-        top: 10px;
-        left: 10px;
         font-size: 14px;
         font-size: 0.875rem;
         line-height: 14px;
@@ -1321,6 +1318,11 @@ button.btn {
         font-family: "Raleway", sans-serif; } }
     .block-page-title-block .backtolink:hover {
       text-decoration: underline; }
+    @media only screen and (max-width: 767px) {
+      .block-page-title-block .backtolink {
+        position: absolute;
+        top: 10px;
+        left: 10px; } }
 
 @media only screen and (max-width: 767px) {
   body.node-about .block-page-title-block .image {

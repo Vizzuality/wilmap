@@ -75,6 +75,25 @@
 }
 
 // ----------------------------------------------------------------
+// red-caps-link
+// ----------------------------------------------------------------
+@mixin red-caps-link ($text-color:$third-color) {
+  @include font($normal, 1, $bold, $heading-font);
+  text-transform: uppercase;
+  color: $third-color;
+  text-decoration: none;
+  z-index: 10;
+
+  @include respond(all-phones) {
+    @include font($normal - 2, 1, $bold, $heading-font);
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// ----------------------------------------------------------------
 // header-block-separator
 // ----------------------------------------------------------------
 @mixin header-block-separator ($text-color:$body-font-color) {
