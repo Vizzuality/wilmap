@@ -36,6 +36,9 @@
 
   h2 {
     @include header-block-separator();
+    @include margin($dp * 3 null null null);
+    display: block;
+    clear:both;
   }
 
   /* Lists */
