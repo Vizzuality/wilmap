@@ -18,6 +18,10 @@
 .block-views-blockcontinent-block-continents {
   @include column(4, false, collapse, false);
 
+  @include respond(all-phones) {
+    display: none;
+  }
+
   .views-row {
     @include trim();
 

@@ -1399,6 +1399,9 @@ article.node--type-topics.node--view-mode-full .action {
     .block-views-blockcontinent-block-continents {
       float: left;
       width: 100%; } }
+  @media only screen and (max-width: 767px) {
+    .block-views-blockcontinent-block-continents {
+      display: none; } }
   .block-views-blockcontinent-block-continents .views-row {
     margin: 0;
     padding: 0; }
