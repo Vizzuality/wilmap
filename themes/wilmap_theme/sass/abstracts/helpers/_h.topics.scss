@@ -8,6 +8,42 @@
 // -------------------------------------
 // Specific Settings: Vars & Mixins
 // -------------------------------------
+$topic-color-base:       lighten($fifth-color, 10);
+$topic-color-hover:      $fifth-color;
+$topic-gradient-dir:     180deg;
+
+
+
+
+// -------------------------------------
+// Topic gradient
+// -------------------------------------
+@mixin topic--gradient($pos:relative, $hover:true) {
+  & {
+    @include image-overlay(rgba($topic-color-base, 0), rgba($topic-color-base, 1), 1, $topic-gradient-dir, $pos);
+
+    // gradient bottom
+    &::before {
+      @include position(absolute, auto auto 0 0);
+      @include size(150% $dp * 10);
+      z-index: 10;
+    }
+
+    @if $hover {
+      &:hover {
+        @include image-overlay(rgba($topic-color-hover, 0), rgba($topic-color-hover, 1), 1, $topic-gradient-dir, $pos);
+
+        // gradient bottom
+        &::before {
+          @include position(absolute, auto auto 0 0);
+          @include size(150% $dp * 10);
+          z-index: 10;
+        }
+      }
+    }
+  }
+}
+
 
 // -------------------------------------
 // Topic header
@@ -77,39 +113,39 @@
   & {
     .node {
       @include trim-field();
+      @include topic--gradient();
       @include margin(null null $dp * 2 null);
       @include padding($dp * 2 $dp * 3 $dp $dp * 3);
-      @include image-overlay(rgba(lighten($fifth-color, 10), 0), rgba(lighten($fifth-color, 10), 1), 1, 180deg);
+      background-color: $topic-color-base;
       display: block;
-      background-color: lighten($fifth-color, 10);
       cursor: pointer;
 
-      // gradient bottom
-      &::before {
-        @include position(absolute, auto auto 0 0);
-        @include size(150% $dp * 10);
-        z-index: 10;
-      }
-
       &:hover {
-        background-color: $fifth-color;
-        @include image-overlay(rgba($fifth-color, 0), rgba($fifth-color, 1), 1, 180deg);
+        background-color: $topic-color-hover;
 
-        // gradient bottom
-        &::before {
-          @include position(absolute, auto auto 0 0);
-          @include size(150% $dp * 10);
-          z-index: 10;
+        .bg-image {
+          &::before {
+            background-image: linear-gradient($topic-gradient-dir, rgba($topic-color-hover, 0), rgba($topic-color-hover, 1));
+          }
         }
       }
 
-      //Default styles
       header {
         @include trim();
 
         .node__title {
           @include topic--header();
         }
+      }
+
+      .bg-image {
+        @include topic--gradient(absolute);
+        @include position(absolute, 0 null null 0);
+        @include size(100% $dp * 20);
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: 0.7;
+        z-index: 0;
       }
     }
   }

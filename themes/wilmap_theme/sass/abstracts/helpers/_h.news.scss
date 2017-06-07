@@ -8,3 +8,173 @@
 // -------------------------------------
 // Specific Settings: Vars & Mixins
 // -------------------------------------
+$news-color-base:       lighten($fifth-color, 10);
+$news-color-hover:      $fifth-color;
+$news-gradient-dir:     180deg;
+
+
+// -------------------------------------
+// News header
+// -------------------------------------
+@mixin news--header($size:big) {
+  & {
+    @include trim();
+    @include position(relative);
+    @include padding(null null $dp null);
+    @include margin(null null $dp null);
+    background: none;
+
+    a {
+      @include trim-field();
+      text-decoration: none;
+
+      @if $size == big {
+        @include font($large, 1, $extra-light, $heading-font);
+
+        @include respond(tablets) {
+          @include font($large / 1.5, 1, $extra-light, $heading-font);
+        }
+
+        @include respond(all-phones) {
+          @include font($large / 2, 1, $extra-light, $heading-font);
+        }
+      }
+      @if $size == small {
+        @include font($normal, 1.1, $bold, $base-font-family);
+        color: $heading-font-color;
+      }
+
+      .field {
+        overflow: visible;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      span {
+        display: block;
+
+        @if $size == big {
+          @include font($large, 1, $extra-light, $heading-font);
+
+          @include respond(tablets) {
+            @include font($large / 1.5, 1, $extra-light, $heading-font);
+          }
+
+          @include respond(all-phones) {
+            @include font($large / 2, 1, $extra-light, $heading-font);
+          }
+        }
+        @if $size == small {
+          @include font($normal, 1.1, $bold, $base-font-family);
+          color: $heading-font-color;
+        }
+      }
+    }
+  }
+}
+
+// -------------------------------------
+// News date
+// -------------------------------------
+@mixin news--date() {
+  & {
+    @include margin(null null $dp * 3 null);
+    @include font($normal, $base-line-increment, $regular, $base-font-family);
+    color: $fourth-color;
+  }
+}
+
+
+
+// -------------------------------------
+// news list
+// -------------------------------------
+
+@mixin news-list($structure:'.views-row', $break-margin: false) {
+  // Structure wrapper
+  @include content-listings-wrapper($structure, $break-margin) {
+    @include margin(null null $dp * 2 null);
+    @include clearfix();
+    overflow: hidden;
+  }
+}
+
+// -------------------------------------
+// news grid
+// -------------------------------------
+
+@mixin news-grid($structure:'.views-row', $break-margin: '2n+1') {
+  // Structure wrapper
+  @include content-listings-wrapper($structure, $break-margin) {
+    @include column(7);
+    @include margin(null null $dp * 2 null);
+    @include clearfix();
+    max-height: $dp * 37;
+    overflow: hidden;
+
+    .node {
+      @include topic--gradient(relative, false);
+      height: $dp * 37;
+      max-height: $dp * 37;
+
+      header {
+        @include trim();
+
+        .node__title {
+          @include news--header(small);
+        }
+      }
+    }
+  }
+}
+
+
+
+
+// -------------------------------------
+// Topics general entity
+// -------------------------------------
+@mixin news($target, $structure:none, $break-margin: false) {
+  & {
+    .node {
+      @include trim-field();
+      @include margin(null null $dp * 2 null);
+      @include padding($dp * 3);
+      background-color: $topic-color-base;
+      display: block;
+      cursor: pointer;
+      overflow: hidden;
+
+      header {
+        @include trim();
+
+        .node__title {
+          @include news--header(big);
+        }
+      }
+
+      .field--name-field-date-published {
+        @include news--date();
+      }
+
+      .node__links {
+        a {
+          @include default-button();
+        }
+      }
+    }
+  }
+
+  // Layouts
+  // Grid
+  @if $target == grid {
+    @include news-grid($structure, '2n+1');
+  }
+
+  // List
+  @if $target == list {
+    @include news-list($structure, false);
+  }
+}

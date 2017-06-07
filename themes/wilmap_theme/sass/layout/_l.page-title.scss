@@ -72,7 +72,7 @@ $image-height:        $dp * 20;
   }
 
   .backtolink {
-    @include position(absolute, $dp * 3 null null 0);
+    @include position(absolute, $dp * 3 null null $dp);
     @include font($normal, 1, $bold, $heading-font);
     text-transform: uppercase;
     color: $third-color;
@@ -80,7 +80,8 @@ $image-height:        $dp * 20;
     z-index: 10;
 
     @include respond(all-phones) {
-      @include position(absolute, $dp null null 0);
+      @include position(absolute, $dp null null $dp);
+      @include font($normal - 2, 1, $bold, $heading-font);
     }
 
     &:hover {

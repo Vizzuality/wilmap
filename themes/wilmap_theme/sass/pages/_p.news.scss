@@ -1,19 +1,58 @@
 // ============================================================================
 //
-// COMPONENTS: NEWS LISTS
+// PAGES: NEWS
 //
 // ============================================================================
 
 
-.block-views-blocknews-block-1 {
-  @include content-listings-wrapper('.views-row') {
-    @include size(columns(9) auto);
-    @include margin(null null $dp * 2 columns(5));
-    border: 1px solid red;
-    padding: $dp * 3;
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
 
-    .node__title {
-      @include topic--header();
+
+// -------------------------------------
+// Scaffold
+// -------------------------------------
+
+// NEWS List
+.block-views-blocknews-block-1 {
+  @include news(list);
+}
+
+
+// NEWS detail
+article.node--type-news.node--view-mode-full {
+
+  .field--name-field-date-published {
+    @include news--date();
+    @include clearfix();
+    @include padding(null null null columns(2.45));
+
+    @include respond(tablets) {
+      @include padding(null null null columns(2.8));
     }
   }
+
+  // Related separator
+  .field__label {
+    @include header-block-separator();
+  }
+
+  .field--name-field-related-topics {
+    .field__items {
+      @include topics(grid, '> .field__item');
+    }
+  }
+
+  .field--name-field-related-news {
+    .field__items {
+      @include news(grid, '> .field__item');
+    }
+  }
+
+  .action {
+    @include margin($dp * 4 null $dp * 3 null);
+    text-align: center;
+  }
+
 }

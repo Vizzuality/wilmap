@@ -49,8 +49,8 @@
 }
 
 // Image Overlay
-@mixin image-overlay($color, $color2: $color, $opacity: 0.3, $dir:90deg) {
-  position: relative;
+@mixin image-overlay($color, $color2: $color, $opacity: 0.3, $dir:90deg, $pos:relative) {
+  position: $pos;
 
   &::before {
     @include position(absolute, 0 null null 0);
