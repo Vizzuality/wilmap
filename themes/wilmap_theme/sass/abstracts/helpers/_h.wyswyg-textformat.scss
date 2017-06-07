@@ -34,6 +34,10 @@
     text-transform: inherit;
   }
 
+  h2 {
+    @include header-block-separator();
+  }
+
   /* Lists */
   ul,
   ol {
