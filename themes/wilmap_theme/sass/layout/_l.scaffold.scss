@@ -25,6 +25,10 @@ body {
 
     .layout-main {
       @include column(12, center, collapse, false);
+
+      .text-formatted {
+        @include wyswyg-textformat();
+      }
     }
   }
 
@@ -51,6 +55,10 @@ body {
 
     .layout-main {
       @include column(14, false, collapse, false);
+
+      .text-formatted {
+        @include wyswyg-textformat();
+      }
     }
 
     &.user-logged-in {

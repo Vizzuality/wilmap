@@ -59,6 +59,176 @@ body .layout-main-wrapper {
         float: left;
         margin-left: 0;
         width: 100%; } }
+    body .layout-main-wrapper .layout-main .text-formatted {
+      /* Base text & paragraphs */
+      /* Headings */
+      /* Lists */
+      /* Blockquote / Cite */
+      /* Grid */
+      /* table */ }
+      body .layout-main-wrapper .layout-main .text-formatted, body .layout-main-wrapper .layout-main .text-formatted p {
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 27.2px;
+        line-height: 1.7rem;
+        font-weight: 400;
+        font-family: "Raleway", sans-serif;
+        margin-bottom: 20px;
+        color: #222; }
+      body .layout-main-wrapper .layout-main .text-formatted h1,
+      body .layout-main-wrapper .layout-main .text-formatted h2,
+      body .layout-main-wrapper .layout-main .text-formatted h3 {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        width: 100%;
+        left: 0;
+        white-space: normal; }
+      body .layout-main-wrapper .layout-main .text-formatted h3 {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        padding-top: 5px;
+        padding-bottom: 4px;
+        font-size: 22px;
+        font-size: 1.375rem;
+        line-height: 17.6px;
+        line-height: 1.1rem;
+        text-transform: inherit; }
+      body .layout-main-wrapper .layout-main .text-formatted h4,
+      body .layout-main-wrapper .layout-main .text-formatted h5,
+      body .layout-main-wrapper .layout-main .text-formatted h6 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-weight: 500;
+        font-family: "Raleway", sans-serif;
+        text-transform: inherit; }
+      body .layout-main-wrapper .layout-main .text-formatted h2 {
+        font-size: 50px;
+        font-size: 3.125rem;
+        line-height: 50px;
+        line-height: 3.125rem;
+        font-weight: 200;
+        font-family: "Raleway", sans-serif;
+        padding: 0;
+        margin: 0;
+        display: block;
+        text-decoration: none;
+        text-transform: none;
+        color: #222;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        padding-top: 50px;
+        border-top: 5px solid rgba(150, 143, 126, 0.2); }
+        @media only screen and (min-width: 768px) and (max-width: 1124px) {
+          body .layout-main-wrapper .layout-main .text-formatted h2 {
+            font-size: 33.33333px;
+            font-size: 2.08333rem;
+            line-height: 33.33333px;
+            line-height: 2.08333rem;
+            font-weight: 200;
+            font-family: "Raleway", sans-serif; } }
+        @media only screen and (max-width: 767px) {
+          body .layout-main-wrapper .layout-main .text-formatted h2 {
+            font-size: 45.5px;
+            font-size: 2.84375rem;
+            line-height: 45.5px;
+            line-height: 2.84375rem;
+            font-weight: 200;
+            font-family: "Raleway", sans-serif; } }
+        @media only screen and (max-width: 767px) {
+          body .layout-main-wrapper .layout-main .text-formatted h2 {
+            font-size: 25px;
+            font-size: 1.5625rem;
+            line-height: 25px;
+            line-height: 1.5625rem;
+            font-weight: 200;
+            font-family: "Raleway", sans-serif; } }
+      body .layout-main-wrapper .layout-main .text-formatted ul,
+      body .layout-main-wrapper .layout-main .text-formatted ol {
+        margin: 0;
+        padding: 0;
+        margin: 0 0 20px;
+        list-style-position: initial;
+        list-style-type: initial; }
+        body .layout-main-wrapper .layout-main .text-formatted ul li,
+        body .layout-main-wrapper .layout-main .text-formatted ol li {
+          margin: 0;
+          padding: 0;
+          margin: 0 0 0 20px;
+          list-style-type: inherit;
+          list-style-position: inherit; }
+      body .layout-main-wrapper .layout-main .text-formatted ol {
+        list-style-type: decimal; }
+      body .layout-main-wrapper .layout-main .text-formatted blockquote,
+      body .layout-main-wrapper .layout-main .text-formatted blockquote p,
+      body .layout-main-wrapper .layout-main .text-formatted p blockquote {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 27.2px;
+        line-height: 1.7rem;
+        font-weight: 400;
+        font-family: Georgia, serif;
+        position: relative;
+        color: #968f7e;
+        font-style: italic;
+        border: 0;
+        background: transparent; }
+      body .layout-main-wrapper .layout-main .text-formatted blockquote {
+        padding: 0 0 0 45px;
+        margin: 0 0 20px; }
+        body .layout-main-wrapper .layout-main .text-formatted blockquote:before {
+          font-size: 80px;
+          font-size: 5rem;
+          position: absolute;
+          top: 20px;
+          left: 0;
+          content: '\201C';
+          display: block;
+          color: #b3001e; }
+      body .layout-main-wrapper .layout-main .text-formatted cite {
+        font-size: 14px;
+        font-size: 0.875rem;
+        line-height: 16.8px;
+        line-height: 1.05rem;
+        font-weight: 400;
+        font-family: Georgia, serif;
+        margin: 5px 0 20px;
+        color: #222;
+        display: block;
+        border: 0;
+        background: transparent; }
+        body .layout-main-wrapper .layout-main .text-formatted cite:before {
+          content: '\2014 \2009'; }
+      body .layout-main-wrapper .layout-main .text-formatted .row {
+        padding-right: 0;
+        padding-left: 0; }
+      body .layout-main-wrapper .layout-main .text-formatted .columns {
+        margin-bottom: 20px; }
+        body .layout-main-wrapper .layout-main .text-formatted .columns.twelve {
+          margin: 0;
+          padding: 0;
+          margin-bottom: 20px; }
+      body .layout-main-wrapper .layout-main .text-formatted table {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        *zoom: 1;
+        float: none;
+        clear: both; }
+        body .layout-main-wrapper .layout-main .text-formatted table:before, body .layout-main-wrapper .layout-main .text-formatted table:after {
+          content: "";
+          display: table; }
+        body .layout-main-wrapper .layout-main .text-formatted table:after {
+          clear: both; }
+      body .layout-main-wrapper .layout-main .text-formatted table[align="center"] {
+        margin-right: auto;
+        margin-left: auto; }
+      body .layout-main-wrapper .layout-main .text-formatted table[align="left"] {
+        margin-right: auto;
+        margin-left: 0; }
+      body .layout-main-wrapper .layout-main .text-formatted table[align="right"] {
+        margin-right: 0;
+        margin-left: auto; }
 body.user-logged-in .layout-main-wrapper {
   margin-top: 10px !important; }
 body.path-frontpage .layout-main-wrapper {
@@ -87,6 +257,176 @@ body.path-frontpage .layout-main-wrapper {
       body.path-frontpage .layout-main-wrapper .layout-main {
         float: left;
         width: 100%; } }
+    body.path-frontpage .layout-main-wrapper .layout-main .text-formatted {
+      /* Base text & paragraphs */
+      /* Headings */
+      /* Lists */
+      /* Blockquote / Cite */
+      /* Grid */
+      /* table */ }
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted, body.path-frontpage .layout-main-wrapper .layout-main .text-formatted p {
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 27.2px;
+        line-height: 1.7rem;
+        font-weight: 400;
+        font-family: "Raleway", sans-serif;
+        margin-bottom: 20px;
+        color: #222; }
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted h1,
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted h2,
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted h3 {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        width: 100%;
+        left: 0;
+        white-space: normal; }
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted h3 {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        padding-top: 5px;
+        padding-bottom: 4px;
+        font-size: 22px;
+        font-size: 1.375rem;
+        line-height: 17.6px;
+        line-height: 1.1rem;
+        text-transform: inherit; }
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted h4,
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted h5,
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted h6 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-weight: 500;
+        font-family: "Raleway", sans-serif;
+        text-transform: inherit; }
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted h2 {
+        font-size: 50px;
+        font-size: 3.125rem;
+        line-height: 50px;
+        line-height: 3.125rem;
+        font-weight: 200;
+        font-family: "Raleway", sans-serif;
+        padding: 0;
+        margin: 0;
+        display: block;
+        text-decoration: none;
+        text-transform: none;
+        color: #222;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        padding-top: 50px;
+        border-top: 5px solid rgba(150, 143, 126, 0.2); }
+        @media only screen and (min-width: 768px) and (max-width: 1124px) {
+          body.path-frontpage .layout-main-wrapper .layout-main .text-formatted h2 {
+            font-size: 33.33333px;
+            font-size: 2.08333rem;
+            line-height: 33.33333px;
+            line-height: 2.08333rem;
+            font-weight: 200;
+            font-family: "Raleway", sans-serif; } }
+        @media only screen and (max-width: 767px) {
+          body.path-frontpage .layout-main-wrapper .layout-main .text-formatted h2 {
+            font-size: 45.5px;
+            font-size: 2.84375rem;
+            line-height: 45.5px;
+            line-height: 2.84375rem;
+            font-weight: 200;
+            font-family: "Raleway", sans-serif; } }
+        @media only screen and (max-width: 767px) {
+          body.path-frontpage .layout-main-wrapper .layout-main .text-formatted h2 {
+            font-size: 25px;
+            font-size: 1.5625rem;
+            line-height: 25px;
+            line-height: 1.5625rem;
+            font-weight: 200;
+            font-family: "Raleway", sans-serif; } }
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted ul,
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted ol {
+        margin: 0;
+        padding: 0;
+        margin: 0 0 20px;
+        list-style-position: initial;
+        list-style-type: initial; }
+        body.path-frontpage .layout-main-wrapper .layout-main .text-formatted ul li,
+        body.path-frontpage .layout-main-wrapper .layout-main .text-formatted ol li {
+          margin: 0;
+          padding: 0;
+          margin: 0 0 0 20px;
+          list-style-type: inherit;
+          list-style-position: inherit; }
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted ol {
+        list-style-type: decimal; }
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted blockquote,
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted blockquote p,
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted p blockquote {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 27.2px;
+        line-height: 1.7rem;
+        font-weight: 400;
+        font-family: Georgia, serif;
+        position: relative;
+        color: #968f7e;
+        font-style: italic;
+        border: 0;
+        background: transparent; }
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted blockquote {
+        padding: 0 0 0 45px;
+        margin: 0 0 20px; }
+        body.path-frontpage .layout-main-wrapper .layout-main .text-formatted blockquote:before {
+          font-size: 80px;
+          font-size: 5rem;
+          position: absolute;
+          top: 20px;
+          left: 0;
+          content: '\201C';
+          display: block;
+          color: #b3001e; }
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted cite {
+        font-size: 14px;
+        font-size: 0.875rem;
+        line-height: 16.8px;
+        line-height: 1.05rem;
+        font-weight: 400;
+        font-family: Georgia, serif;
+        margin: 5px 0 20px;
+        color: #222;
+        display: block;
+        border: 0;
+        background: transparent; }
+        body.path-frontpage .layout-main-wrapper .layout-main .text-formatted cite:before {
+          content: '\2014 \2009'; }
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted .row {
+        padding-right: 0;
+        padding-left: 0; }
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted .columns {
+        margin-bottom: 20px; }
+        body.path-frontpage .layout-main-wrapper .layout-main .text-formatted .columns.twelve {
+          margin: 0;
+          padding: 0;
+          margin-bottom: 20px; }
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted table {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        *zoom: 1;
+        float: none;
+        clear: both; }
+        body.path-frontpage .layout-main-wrapper .layout-main .text-formatted table:before, body.path-frontpage .layout-main-wrapper .layout-main .text-formatted table:after {
+          content: "";
+          display: table; }
+        body.path-frontpage .layout-main-wrapper .layout-main .text-formatted table:after {
+          clear: both; }
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted table[align="center"] {
+        margin-right: auto;
+        margin-left: auto; }
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted table[align="left"] {
+        margin-right: auto;
+        margin-left: 0; }
+      body.path-frontpage .layout-main-wrapper .layout-main .text-formatted table[align="right"] {
+        margin-right: 0;
+        margin-left: auto; }
   body.path-frontpage .layout-main-wrapper.user-logged-in .layout-main-wrapper {
     margin-top: 10px !important; }
 body.path-frontpage.no-sidebar .main-content {
