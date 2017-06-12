@@ -6261,7 +6261,7 @@
         "dist": {
             "type": "zip",
             "url": "https://ftp.drupal.org/files/projects/config_devel-8.x-1.0.zip",
-            "reference": null,
+            "reference": "8.x-1.0",
             "shasum": "148d408827c570e725b08d7e4c1c46d321dc1efa"
         },
         "require": {
@@ -6312,6 +6312,51 @@
         "homepage": "https://www.drupal.org/project/config_devel",
         "support": {
             "source": "http://cgit.drupalcode.org/config_devel"
+        }
+    },
+    {
+        "name": "drupal/contact_block",
+        "version": "1.4.0",
+        "version_normalized": "1.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/contact_block",
+            "reference": "8.x-1.4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/contact_block-8.x-1.4.zip",
+            "reference": null,
+            "shasum": "0e10326e33c02f821c0f20885a3662f8c3e34c64"
+        },
+        "require": {
+            "drupal/core": "*"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.4",
+                "datestamp": "1493036943"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Sutharsan",
+                "homepage": "https://www.drupal.org/user/73854"
+            }
+        ],
+        "description": "Provides blocks for Contact form module.",
+        "homepage": "https://www.drupal.org/project/contact_block",
+        "support": {
+            "source": "http://cgit.drupalcode.org/contact_block"
         }
     }
 ]
