@@ -57,20 +57,27 @@ class MapBrowsing extends ControllerBase
         $tree = array();
         $continents = $this->get_continents();
 
-        kint($continents);
-
-        foreach ($continents as $nid) {
-            $tree[$nid] = $this->set_tree_leaf($nid);
+        // Mount browsing tree
+        foreach ($continents as $continent_nid) {
+            $tree[$continent_nid] = $this->set_tree_leaf($continent_nid);
 
             // For each Continent get its regions
-            $continent['regions'] = $this->get_regions($nid);
+            $regions = $this->get_regions($continent_nid);
 
-//            // For each Continent get its countries
-//            $continent['countries'] = $this->get_countries($nid);
+            $tree[$continent_nid]['regions'] = array();
+            foreach ($regions as $region_nid) {
+                $tree[$continent_nid]['regions'][$region_nid] = $this->set_tree_leaf($region_nid);
+            }
+
+            // For each Continent get its countries
+            $countries = $this->get_countries($continent_nid);
+
+            $tree[$continent_nid]['countries'] = array();
+            foreach ($countries as $country_nid) {
+                $tree[$continent_nid]['countries'][$country_nid] = $this->set_tree_leaf($country_nid);
+            }
 
         }
-
-        // TODO: clean json data
 
         $response['data'] = $tree;
         $response['method'] = 'GET';
@@ -93,6 +100,7 @@ class MapBrowsing extends ControllerBase
         $continent_nids = $this->nodeStorage->getQuery()
           ->condition('status', \Drupal\node\NodeInterface::PUBLISHED)
           ->condition('type', 'continent')
+          ->sort('title', 'ASC')
           ->execute();
 
         return $continent_nids;
@@ -113,13 +121,14 @@ class MapBrowsing extends ControllerBase
     {
         $query = $this->nodeStorage->getQuery()
           ->condition('status', \Drupal\node\NodeInterface::PUBLISHED)
-          ->condition('type', 'region');
+          ->condition('type', 'region')
+          ->sort('title', 'ASC');
 
         if ($continent_nid) {
-            $query->condition('field_continent.entity.target', $continent_nid);
+            $query->condition('field_continent', $continent_nid);
         }
 
-        return $query->execute;
+        return $query->execute();
     }
 
     /**
@@ -134,9 +143,16 @@ class MapBrowsing extends ControllerBase
      */
     public function get_countries($continent_nid)
     {
-        $countries = array();
+        $query = $this->nodeStorage->getQuery()
+          ->condition('status', \Drupal\node\NodeInterface::PUBLISHED)
+          ->condition('type', 'country')
+          ->sort('title', 'ASC');
 
-        return $countries;
+        if ($continent_nid) {
+            $query->condition('field_continent_country', $continent_nid);
+        }
+
+        return $query->execute();
 
     }
 
