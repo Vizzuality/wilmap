@@ -47,6 +47,7 @@ class RedirectUITest extends WebTestBase {
     $this->drupalCreateContentType(array('type' => 'article', 'name' => 'Article'));
     $this->adminUser = $this->drupalCreateUser(array(
       'administer redirects',
+      'administer redirect settings',
       'access site reports',
       'access content',
       'bypass node access',
@@ -396,7 +397,8 @@ class RedirectUITest extends WebTestBase {
     $headers = $this->drupalGetHeaders(TRUE);
     // Note, self::assertCacheTag() cannot be used here since it only looks at
     // the final set of headers.
-    $this->assertEqual(implode(' ', $redirect1->getCacheTags()), $headers[0]['x-drupal-cache-tags'], 'Redirect cache tags properly set.');
+    $expected = 'http_response ' . implode(' ', $redirect1->getCacheTags());
+    $this->assertEqual($expected, $headers[0]['x-drupal-cache-tags'], 'Redirect cache tags properly set.');
 
     // First request should be a cache MISS.
     $this->assertEqual($headers[0]['x-drupal-cache'], 'MISS', 'First request to the redirect was not cached.');
@@ -424,9 +426,6 @@ class RedirectUITest extends WebTestBase {
     $redirect->save();
     $this->assertRedirect('a-path', 'https://www.example.org');
     $this->drupalLogin($this->adminUser);
-    $this->drupalPostForm('admin/config/search/redirect/settings', ['redirect_deslash' => 1], t('Save configuration'));
-    $this->drupalGet('/2015/10/10/');
-    $this->assertResponse(404);
   }
 
 }

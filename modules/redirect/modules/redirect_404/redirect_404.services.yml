@@ -9,3 +9,8 @@ services:
     arguments: ['@database', '@config.factory']
     tags:
       - { name: backend_overridable }
+  logger.redirect_404:
+    public: false
+    class: \Drupal\redirect_404\Render\Redirect404LogSuppressor
+    decorates: logger.factory
+    arguments: ['@logger.redirect_404.inner', '@config.factory']

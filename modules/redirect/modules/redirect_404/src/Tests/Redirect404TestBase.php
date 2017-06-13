@@ -28,6 +28,7 @@ abstract class Redirect404TestBase extends WebTestBase {
    */
   protected $adminPermissions = [
     'administer redirects',
+    'administer redirect settings',
     'access site reports',
     'access content',
     'bypass node access',

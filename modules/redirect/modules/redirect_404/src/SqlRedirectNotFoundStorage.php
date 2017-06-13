@@ -9,20 +9,9 @@ use Drupal\Core\Database\Connection;
 /**
  * Provides an SQL implementation for redirect not found storage.
  *
- * To keep a limited amount of relevant records, we implement an exponential
- * decay similar to the radioactivity process decay (see radioactivity module).
- *
- * The relevancy:
- * - represents the relevancy for timestamp of each record
- * - is recalculated for an individual record on each hit for current time
- *
- * To clean the records, we calculate the effective relevancy for NOW(),
- * determine the relevancy cutoff value and drop the less relevant rows.
- * The half life of relevancy is (float) 86400.00 = 1 day
- * Each hit adds 1.
- *
- * Relevancy formula: $relevancy = 1 + $relevancy * $decay, where
- * $decay = POW(2, - (NOW() - timestamp) / $halflife)
+ * To keep a limited amount of relevant records, we compute a relevancy based
+ * on the amount of visits for each row, deleting the less visited record and
+ * sorted by timestamp.
  */
 class SqlRedirectNotFoundStorage implements RedirectNotFoundStorageInterface {
 
@@ -62,8 +51,6 @@ class SqlRedirectNotFoundStorage implements RedirectNotFoundStorageInterface {
    * {@inheritdoc}
    */
   public function logRequest($path, $langcode) {
-    // If the request is not new, update its relevancy for the time interval
-    // since the last hit.
     if (Unicode::strlen($path) > static::MAX_PATH_LENGTH) {
       // Don't attempt to log paths that would result in an exception. There is
       // no point in logging truncated paths, as they cannot be used to build a
@@ -75,16 +62,15 @@ class SqlRedirectNotFoundStorage implements RedirectNotFoundStorageInterface {
       return;
     }
 
+    // If the request is not new, update its count and timestamp.
     $this->database->merge('redirect_404')
       ->key('path', $path)
       ->key('langcode', $langcode)
       ->expression('count', 'count + 1')
-      ->expression('relevancy', 'relevancy * pow(2, -( UNIX_TIMESTAMP(NOW()) - IFNULL( timestamp, UNIX_TIMESTAMP(NOW()) ) )/86400.00) + 1')
       ->fields([
         'timestamp' => REQUEST_TIME,
         'count' => 1,
         'resolved' => 0,
-        'relevancy' => 1.00,
       ])
       ->execute();
   }
@@ -105,20 +91,43 @@ class SqlRedirectNotFoundStorage implements RedirectNotFoundStorageInterface {
    */
   public function purgeOldRequests() {
     $row_limit = $this->configFactory->get('redirect_404.settings')->get('row_limit');
-    $cutoff_exp = '(relevancy * pow(2, -(UNIX_TIMESTAMP(NOW()) - timestamp)/86400.00))';
 
-    // Determine cutoff level to get the current min relevancy we want to keep.
     $query = $this->database->select('redirect_404', 'r404');
-    $query->addExpression($cutoff_exp, 'cutoff');
-    $query->orderBy('cutoff', 'DESC');
-    $cutoff = $query->range($row_limit, 1)->execute()->fetchField();
+    $query->fields('r404', ['timestamp']);
+    // On databases known to support log(), use it to calculate a logarithmic
+    // scale of the count, to delete records with count of 1-9 first, then
+    // 10-99 and so on.
+    if ($this->database->driver() == 'mysql' || $this->database->driver() == 'pgsql') {
+      $query->addExpression('floor(log(10, count))', 'count_log');
+      $query->orderBy('count_log', 'DESC');
+    }
+    $query->orderBy('timestamp', 'DESC');
+    $cutoff = $query
+      ->range($row_limit, 1)
+      ->execute()
+      ->fetchAssoc();
 
-    // Delete records below cutoff value, if given. Otherwise skip the cleanup.
     if (!empty($cutoff)) {
-      $this->database
-        ->delete('redirect_404')
-        ->where( $cutoff_exp . ' < :cutoff', [':cutoff' => $cutoff])
-        ->execute();
+      // Delete records having older timestamp and less visits (on a logarithmic
+      // scale) than cutoff.
+      $delete_query = $this->database->delete('redirect_404');
+
+      if ($this->database->driver() == 'mysql' || $this->database->driver() == 'pgsql') {
+        // Delete rows with same count_log AND older timestamp than cutoff.
+        $and_condition = $delete_query->andConditionGroup()
+          ->where('floor(log(10, count)) = :count_log2', [':count_log2' => $cutoff['count_log']])
+          ->condition('timestamp', $cutoff['timestamp'], '<=');
+
+        // And delete all the rows with count_log less than the cutoff.
+        $condition = $delete_query->orConditionGroup()
+          ->where('floor(log(10, count)) < :count_log1', [':count_log1' => $cutoff['count_log']])
+          ->condition($and_condition);
+        $delete_query->condition($condition);
+      }
+      else {
+        $delete_query->condition('timestamp', $cutoff['timestamp'], '<=');
+      }
+      $delete_query->execute();
     }
   }
 
