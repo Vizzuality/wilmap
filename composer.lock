@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "77c4894ce58780f8e4afa15072e76102",
-    "content-hash": "4d712218ba431163c9e9874ed797a9c7",
+    "hash": "fa5f9b5973ab5145d915418f43fbe4af",
+    "content-hash": "9e34f88e32a839cfe9939300006daad7",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -662,6 +662,49 @@
             }
         },
         {
+            "name": "drupal/search_autocomplete",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/search_autocomplete",
+                "reference": "8.x-1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/search_autocomplete-8.x-1.1.zip",
+                "reference": null,
+                "shasum": "f80427ffefbe4b159db91442b6e32b11de448926"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.1",
+                    "datestamp": "1481975884"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Dom.",
+                    "homepage": "https://www.drupal.org/user/801982"
+                }
+            ],
+            "description": "Provides autocompletion feature for fields in your Drupal site. This module ships with pre-existing autocompletion configurations.",
+            "homepage": "https://www.drupal.org/project/search_autocomplete",
+            "support": {
+                "source": "http://cgit.drupalcode.org/search_autocomplete"
+            }
+        },
+        {
             "name": "drupal/social_media_links",
             "version": "2.4.0",
             "source": {
@@ -672,7 +715,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/social_media_links-8.x-2.4.zip",
-                "reference": null,
+                "reference": "8.x-2.4",
                 "shasum": "7ab7d058884335ec4431d49bbcb205a245ed1655"
             },
             "require": {
