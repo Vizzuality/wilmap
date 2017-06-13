@@ -84,6 +84,9 @@ class RedirectChecker {
       // Do not redirect in offline or maintenance mode.
       $can_redirect = FALSE;
     }
+    elseif ($request->query->has('destination')) {
+      $can_redirect = FALSE;
+    }
     elseif ($this->config->get('ignore_admin_path') && isset($route)) {
       // Do not redirect on admin paths.
       $can_redirect &= !(bool) $route->getOption('_admin_route');

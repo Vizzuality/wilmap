@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains wilmap_map.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function wilmap_map_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the wilmap_map module.
+    case 'help.page.wilmap_map':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('WILMap general map functionality') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function wilmap_map_theme() {
+  return [
+    'wilmap_map' => [
+      'render element' => 'children',
+    ],
+  ];
+}

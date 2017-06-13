@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "62f618d37d0ea2c202d3defd04723fee",
-    "content-hash": "ce3158eb9278fcaa89192e8f3cc5ee7e",
+    "hash": "fa5f9b5973ab5145d915418f43fbe4af",
+    "content-hash": "9e34f88e32a839cfe9939300006daad7",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -662,62 +662,6 @@
             }
         },
         {
-            "name": "drupal/search_api",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/search_api",
-                "reference": "8.x-1.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/search_api-8.x-1.1.zip",
-                "reference": null,
-                "shasum": "896d21a8b0dee0bea6e49fb0b2ac38315f4b52fe"
-            },
-            "require": {
-                "drupal/core": "^8.2"
-            },
-            "require-dev": {
-                "drupal/search_api_db": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.1",
-                    "datestamp": "1494495709"
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Thomas Seidl",
-                    "homepage": "https://www.drupal.org/u/drunken-monkey"
-                },
-                {
-                    "name": "Nick Veenhof",
-                    "homepage": "https://www.drupal.org/u/nick_vh"
-                },
-                {
-                    "name": "See other contributors",
-                    "homepage": "https://www.drupal.org/node/790418/committers"
-                }
-            ],
-            "description": "Provides a generic framework for modules offering search capabilities.",
-            "homepage": "https://www.drupal.org/project/search_api",
-            "support": {
-                "source": "http://git.drupal.org/project/search_api.git",
-                "issues": "https://www.drupal.org/project/issues/search_api",
-                "irc": "irc://irc.freenode.org/drupal-search-api"
-            }
-        },
-        {
             "name": "drupal/search_autocomplete",
             "version": "1.1.0",
             "source": {
@@ -728,7 +672,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/search_autocomplete-8.x-1.1.zip",
-                "reference": "8.x-1.1",
+                "reference": null,
                 "shasum": "f80427ffefbe4b159db91442b6e32b11de448926"
             },
             "require": {

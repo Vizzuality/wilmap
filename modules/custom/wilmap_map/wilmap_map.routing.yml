@@ -1,0 +1,9 @@
+
+wilmap_map.get_browsing:
+  path: '/api/map/browse'
+  defaults:
+    _controller: '\Drupal\wilmap_map\Controller\MapBrowsing::get'
+    _title: 'Map Countries & Regions'
+  methods:  [GET]
+  requirements:
+    _permission: 'access content'

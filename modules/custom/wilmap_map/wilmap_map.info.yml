@@ -1,0 +1,7 @@
+name: WILMap Map
+type: module
+description: WILMap general map functionality
+core: 8.x
+package: WILMap
+dependencies:
+  - rest

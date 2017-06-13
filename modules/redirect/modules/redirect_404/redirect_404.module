@@ -24,16 +24,18 @@ function redirect_404_cron() {
  * Implements hook_form_FORM_ID_alter() for system_logging_settings().
  */
 function redirect_404_form_redirect_settings_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $config = \Drupal::configFactory()->getEditable('redirect_404.settings');
+
   $row_limits = [100, 1000, 10000, 100000, 1000000];
   $form['row_limit'] = [
     '#type' => 'select',
     '#title' => t('404 error database logs to keep'),
-    '#default_value' => \Drupal::configFactory()->getEditable('redirect_404.settings')->get('row_limit'),
+    '#default_value' => $config->get('row_limit'),
     '#options' => [0 => t('All')] + array_combine($row_limits, $row_limits),
     '#description' => t('The maximum number of 404 error logs to keep in the database log. Requires a <a href=":cron">cron maintenance task</a>.', [':cron' => Url::fromRoute('system.status')->toString()])
   ];
 
-  $ignored_pages = \Drupal::configFactory()->getEditable('redirect_404.settings')->get('pages');
+  $ignored_pages = $config->get('pages');
   // Add a new path to be ignored, if there is an ignore argument in the query.
   if ($path_to_ignore = \Drupal::request()->query->get('ignore')) {
     $ignored_pages .= "\n" . $path_to_ignore;
@@ -47,6 +49,13 @@ function redirect_404_form_redirect_settings_form_alter(&$form, FormStateInterfa
       '%user-wildcard' => '/user/*',
       '%front' => '<front>',
     ]),
+  ];
+
+  $form['suppress_404'] = [
+    '#type' => 'checkbox',
+    '#title' => t("Suppress 'page not found' log messages"),
+    '#default_value' => $config->get('suppress_404'),
+    '#description' => t("Prevents logging 'page not found' events. Can be safely enabled when redirect_404 module is used, which stores them separately, nothing else relies on those messages."),
   ];
 
   $form['#submit'][] = 'redirect_404_logging_settings_submit';
@@ -71,6 +80,7 @@ function redirect_404_logging_settings_submit($form, FormStateInterface $form_st
     ->getEditable('redirect_404.settings')
     ->set('row_limit', $form_state->getValue('row_limit'))
     ->set('pages', $pages)
+    ->set('suppress_404', $form_state->getValue('suppress_404'))
     ->save();
 }
 

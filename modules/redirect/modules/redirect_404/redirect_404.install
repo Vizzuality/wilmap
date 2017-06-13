@@ -48,14 +48,15 @@ function redirect_404_schema() {
         'not null' => TRUE,
         'default' => 0,
       ],
-      'relevancy' => [
-        'description' => 'A float number that defines the relevancy of a record.',
-        'type' => 'float',
-        'not null' => TRUE,
-        'default' => 1.00,
-      ],
     ],
     'primary key' => ['path', 'langcode'],
   ];
   return $schema;
+}
+
+/**
+ * Remove relevancy field from the redirect_404 table.
+ */
+function redirect_404_update_8101() {
+  \Drupal::database()->schema()->dropField('redirect_404', 'relevancy');
 }

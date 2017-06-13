@@ -46,11 +46,14 @@ class Redirect404Operations extends FieldPluginBase {
    *   The entity type manager.
    * @param \Drupal\Core\Render\RendererInterface $renderer
    *   The renderer service.
+   * @param \Drupal\Core\Session\AccountInterface $current_user
+   *   The current user.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, RendererInterface $renderer) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, RendererInterface $renderer, AccountInterface $current_user) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityTypeManager = $entity_type_manager;
     $this->renderer = $renderer;
+    $this->currentUser = $current_user;
   }
 
   /**
@@ -62,7 +65,8 @@ class Redirect404Operations extends FieldPluginBase {
       $plugin_id,
       $plugin_definition,
       $container->get('entity_type.manager'),
-      $container->get('renderer')
+      $container->get('renderer'),
+      $container->get('current_user')
     );
   }
 
@@ -84,20 +88,22 @@ class Redirect404Operations extends FieldPluginBase {
         'source' => ltrim($this->getValue($values, 'path'), '/'),
         'language' => $this->getValue($values, 'langcode'),
         'destination' => $this->view->getPath(),
-      ]
+      ],
     ];
     $links['add'] = [
       'title' => $this->t('Add redirect'),
       'url' => Url::fromRoute('redirect.add', [], $query),
     ];
 
-    $links['ignore'] = [
-      'title' => $this->t('Ignore'),
-      'url' => Url::fromRoute('redirect_404.ignore_404', [
-        'path' => $this->getValue($values, 'path'),
-        'langcode' => $this->getValue($values, 'langcode'),
-      ]),
-    ];
+    if ($this->currentUser->hasPermission('administer redirect settings')) {
+      $links['ignore'] = [
+        'title' => $this->t('Ignore'),
+        'url' => Url::fromRoute('redirect_404.ignore_404', [
+          'path' => $this->getValue($values, 'path'),
+          'langcode' => $this->getValue($values, 'langcode'),
+        ]),
+      ];
+    }
 
     $operations['data'] = [
       '#type' => 'operations',

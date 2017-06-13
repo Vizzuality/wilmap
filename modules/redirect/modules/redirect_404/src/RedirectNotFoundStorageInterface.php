@@ -42,7 +42,6 @@ interface RedirectNotFoundStorageInterface {
    *   - timestamp
    *   - langcode
    *   - resolved
-   *   - relevancy
    */
   public function listRequests(array $header = [], $search = NULL);
 

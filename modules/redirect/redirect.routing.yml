@@ -51,7 +51,7 @@ redirect.settings:
     _form: '\Drupal\redirect\Form\RedirectSettingsForm'
     _title: 'Settings'
   requirements:
-    _permission: 'administer redirects'
+    _permission: 'administer redirect settings'
 
 #redirect.devel_generate:
 #  requirements:

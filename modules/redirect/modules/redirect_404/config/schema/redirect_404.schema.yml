@@ -9,3 +9,6 @@ redirect_404.settings:
       label: '404 error database logs to keep.'
     pages:
       type: string
+    suppress_404:
+      type: boolean
+      label: "Whether to log 'page not found' messages to the standard log or not."
