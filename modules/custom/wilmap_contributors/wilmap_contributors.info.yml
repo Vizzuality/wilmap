@@ -1,0 +1,7 @@
+name: WILMap Contributors
+type: module
+description: WILMap Contributors features
+core: 8.x
+package: WILMap
+dependencies:
+  - user
