@@ -1399,6 +1399,9 @@ article.node--type-topics.node--view-mode-full .action {
     .block-views-blockcontinent-block-continents {
       float: left;
       width: 100%; } }
+  @media only screen and (min-width: 768px) and (max-width: 1124px) {
+    .block-views-blockcontinent-block-continents {
+      width: 23.66667%; } }
   @media only screen and (max-width: 767px) {
     .block-views-blockcontinent-block-continents {
       display: none; } }
@@ -1419,20 +1422,43 @@ article.node--type-topics.node--view-mode-full .action {
       text-decoration: none;
       z-index: 10;
       margin-bottom: 30px;
-      display: block; }
+      display: block;
+      text-decoration: none;
+      color: #e3ded3;
+      border-right: 4px solid transparent; }
+      @media only screen and (min-width: 768px) and (max-width: 1124px) {
+        .block-views-blockcontinent-block-continents .views-row a {
+          font-size: 13px;
+          font-size: 0.8125rem;
+          line-height: 13px;
+          line-height: 0.8125rem;
+          font-weight: 600;
+          font-family: "Raleway", sans-serif; } }
       @media only screen and (max-width: 767px) {
         .block-views-blockcontinent-block-continents .views-row a {
-          font-size: 14px;
-          font-size: 0.875rem;
-          line-height: 14px;
-          line-height: 0.875rem;
+          font-size: 13px;
+          font-size: 0.8125rem;
+          line-height: 13px;
+          line-height: 0.8125rem;
           font-weight: 700;
           font-family: "Raleway", sans-serif; } }
       .block-views-blockcontinent-block-continents .views-row a:hover {
         text-decoration: underline; }
+      @media only screen and (min-width: 768px) and (max-width: 1124px) {
+        .block-views-blockcontinent-block-continents .views-row a {
+          margin-bottom: 18px; } }
+      .block-views-blockcontinent-block-continents .views-row a:hover {
+        color: #b3001e;
+        text-decoration: none;
+        border-right: 4px solid transparent; }
+      .block-views-blockcontinent-block-continents .views-row a.__active {
+        color: #b3001e;
+        text-decoration: none;
+        border-right: 4px solid #b3001e; }
 
 .block-views-blocknews-block-1 {
-  width: 70.92063%; }
+  width: 70.92063%;
+  position: relative; }
   @media only screen and (max-width: 767px) {
     .block-views-blocknews-block-1 {
       float: left;
@@ -1576,6 +1602,22 @@ article.node--type-topics.node--view-mode-full .action {
       display: table; }
     .block-views-blocknews-block-1 none:after {
       clear: both; }
+  @media only screen and (min-width: 768px) and (max-width: 1124px) {
+    .block-views-blocknews-block-1 {
+      width: 74.55556%; } }
+  .block-views-blocknews-block-1::before {
+    content: '';
+    display: block;
+    background-color: #f7f5f2;
+    width: 4px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: -3.05556%;
+    z-index: -1; }
+    @media only screen and (max-width: 767px) {
+      .block-views-blocknews-block-1::before {
+        display: none; } }
 
 article.node--type-news.node--view-mode-full .field--name-field-date-published {
   *zoom: 1;

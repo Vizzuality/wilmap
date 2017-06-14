@@ -20,6 +20,30 @@
             $(this).attr('target','_blank');
         });
 
+      },
+
+      /**
+       * News Navigation
+       */
+      newsNavigation: function() {
+
+        if ($( '.node-news .block-views-blockcontinent-block-continents' ).length > 0) {
+          var dom = '.node-news .block-views-blockcontinent-block-continents';
+          var default_item = 'continent=all';
+          var uri = location.href.split('/news?')[1];
+              uri = ( uri == undefined || ( uri.indexOf('continent') == -1 && uri.indexOf('transnational') == -1 ) ) ? default_item : uri;
+
+
+          $(dom + ' .views-row a').each(function(i, item) {
+              var target = $(item).attr('href').split('?')[1];
+
+              if ( target.indexOf(uri) != -1 ) {
+                $(item).addClass('__active');
+              }
+          });
+
+        }
+
       }
 
     },
