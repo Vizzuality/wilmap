@@ -1654,12 +1654,20 @@ button.btn {
     color: #b3001e;
     text-decoration: none;
     z-index: 10; }
+    @media only screen and (min-width: 768px) and (max-width: 1124px) {
+      .block-page-title-block .backtolink {
+        font-size: 13px;
+        font-size: 0.8125rem;
+        line-height: 13px;
+        line-height: 0.8125rem;
+        font-weight: 600;
+        font-family: "Raleway", sans-serif; } }
     @media only screen and (max-width: 767px) {
       .block-page-title-block .backtolink {
-        font-size: 14px;
-        font-size: 0.875rem;
-        line-height: 14px;
-        line-height: 0.875rem;
+        font-size: 13px;
+        font-size: 0.8125rem;
+        line-height: 13px;
+        line-height: 0.8125rem;
         font-weight: 700;
         font-family: "Raleway", sans-serif; } }
     .block-page-title-block .backtolink:hover {

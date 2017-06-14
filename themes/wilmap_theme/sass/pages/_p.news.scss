@@ -8,7 +8,8 @@
 // -------------------------------------
 // Specific Settings: Vars & Mixins
 // -------------------------------------
-
+$color-off: $fifth-color;
+$color-on: $third-color;
 
 // -------------------------------------
 // Scaffold
@@ -18,10 +19,15 @@
 .block-views-blockcontinent-block-continents {
   @include column(4, false, collapse, false);
 
+  @include respond(tablets) {
+    width: columns(3.5);
+  }
+
   @include respond(all-phones) {
     display: none;
   }
 
+  // Menu
   .views-row {
     @include trim();
 
@@ -30,13 +36,56 @@
       @include red-caps-link();
       @include margin(null null $dp * 3 null);
       display: block;
+      text-decoration: none;
+      color: $color-off;
+      border-right: 4px solid transparent;
+
+      @include respond(tablets) {
+        @include margin(null null $dp * 1.8 null);
+      }
+
+      &:hover {
+        color: $color-on;
+        text-decoration: none;
+        border-right: 4px solid transparent;
+      }
+
+      &.__active {
+        color: $color-on;
+        text-decoration: none;
+        border-right: 4px solid $color-on;
+      }
     }
   }
 }
 
 .block-views-blocknews-block-1 {
   @include column(10);
+  @include position(relative);
   @include news(list);
+
+  @include respond(tablets) {
+    width: columns(10.5);
+  }
+
+
+  // Vertical line menu
+  &::before {
+    content: '';
+    display: block;
+    background-color: lighten($color-off, 10);
+    width: 4px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: (-$gutter * 2) + 0.5;
+    z-index: -1;
+
+    @include respond(all-phones) {
+      display: none;
+    }
+
+  }
 }
 
 
