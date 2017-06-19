@@ -156,7 +156,11 @@ class CorrespondingReferenceForm extends EntityForm {
    *   The reference field map.
    */
   protected function getReferenceFieldMap() {
-    $map = $this->fieldManager->getFieldMapByFieldType('entity_reference');
+    $map = array_merge(
+      $this->fieldManager->getFieldMapByFieldType('entity_reference'),
+      $this->fieldManager->getFieldMapByFieldType('entity_reference_status')
+    )
+    ;
 
     return $map;
   }

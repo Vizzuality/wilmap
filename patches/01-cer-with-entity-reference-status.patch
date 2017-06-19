@@ -1,0 +1,17 @@
+diff --git a/modules/contrib/cer/src/Form/CorrespondingReferenceForm.php b/modules/contrib/cer/src/Form/CorrespondingReferenceForm.php
+index e89588a..7e50391 100644
+--- a/modules/contrib/cer/src/Form/CorrespondingReferenceForm.php
++++ b/modules/contrib/cer/src/Form/CorrespondingReferenceForm.php
+@@ -156,7 +156,11 @@ public function exists($id) {
+    *   The reference field map.
+    */
+   protected function getReferenceFieldMap() {
+-    $map = $this->fieldManager->getFieldMapByFieldType('entity_reference');
++    $map = array_merge(
++      $this->fieldManager->getFieldMapByFieldType('entity_reference'),
++      $this->fieldManager->getFieldMapByFieldType('entity_reference_status')
++    )
++    ;
+ 
+     return $map;
+   }
