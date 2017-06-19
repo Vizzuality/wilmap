@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fa5f9b5973ab5145d915418f43fbe4af",
-    "content-hash": "9e34f88e32a839cfe9939300006daad7",
+    "hash": "d67e936d7d1c6c45d2c7e8938d934775",
+    "content-hash": "a54737f96ee32b13e1093014fccf7032",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -619,6 +619,56 @@
             "time": "2014-09-09 13:34:57"
         },
         {
+            "name": "drupal/cer",
+            "version": "dev-4.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/cer",
+                "reference": "f6bfadaa2405df95f9ec498f6d442a531243312d"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-4.x": "4.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-4.0-alpha2+0-dev",
+                    "datestamp": "1493955789"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "bmcclure",
+                    "homepage": "https://www.drupal.org/user/278485"
+                },
+                {
+                    "name": "chertzog",
+                    "homepage": "https://www.drupal.org/user/806366"
+                },
+                {
+                    "name": "gregcube",
+                    "homepage": "https://www.drupal.org/user/336930"
+                },
+                {
+                    "name": "phenaproxima",
+                    "homepage": "https://www.drupal.org/user/205645"
+                }
+            ],
+            "description": "Allows user to create two-way references between entities.",
+            "homepage": "https://www.drupal.org/project/cer",
+            "support": {
+                "source": "http://cgit.drupalcode.org/cer"
+            },
+            "time": "2017-05-05 03:40:19"
+        },
+        {
             "name": "drupal/contact_block",
             "version": "1.4.0",
             "source": {
@@ -672,7 +722,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/search_autocomplete-8.x-1.1.zip",
-                "reference": null,
+                "reference": "8.x-1.1",
                 "shasum": "f80427ffefbe4b159db91442b6e32b11de448926"
             },
             "require": {
@@ -3908,7 +3958,8 @@
                 "source": "http://cgit.drupalcode.org/examples",
                 "issues": "https://www.drupal.org/project/issues/examples",
                 "documentation": "https://api.drupal.org/api/examples"
-            }
+            },
+            "time": "2017-03-15 19:39:11"
         },
         {
             "name": "drupal/migrate_plus",
@@ -6244,6 +6295,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "drupal/cer": 20,
         "behat/mink": 20
     },
     "prefer-stable": true,
