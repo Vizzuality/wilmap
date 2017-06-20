@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d67e936d7d1c6c45d2c7e8938d934775",
-    "content-hash": "a54737f96ee32b13e1093014fccf7032",
+    "hash": "03a68ae8c36913b9189b3b29b49a8ac4",
+    "content-hash": "fac13c9f1e5045b2e7229fc9a47a8619",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -619,6 +619,44 @@
             "time": "2014-09-09 13:34:57"
         },
         {
+            "name": "drupal/better_exposed_filters",
+            "version": "dev-3.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/better_exposed_filters",
+                "reference": "be043cea119f5356fc450fc27e4f97b2b2ee5c02"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-3.x": "3.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-3.0-alpha2+28-dev",
+                    "datestamp": "1497733442"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "mikeker",
+                    "homepage": "https://www.drupal.org/user/192273"
+                }
+            ],
+            "description": "Provides advanced options (such as links, checkboxes, or jQueryUI widgets) for exposed Views elements.",
+            "homepage": "https://www.drupal.org/project/better_exposed_filters",
+            "support": {
+                "source": "http://cgit.drupalcode.org/better_exposed_filters"
+            },
+            "time": "2017-06-18 01:04:09"
+        },
+        {
             "name": "drupal/cer",
             "version": "dev-4.x",
             "source": {
@@ -665,8 +703,7 @@
             "homepage": "https://www.drupal.org/project/cer",
             "support": {
                 "source": "http://cgit.drupalcode.org/cer"
-            },
-            "time": "2017-05-05 03:40:19"
+            }
         },
         {
             "name": "drupal/contact_block",
@@ -6296,6 +6333,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/cer": 20,
+        "drupal/better_exposed_filters": 20,
         "behat/mink": 20
     },
     "prefer-stable": true,

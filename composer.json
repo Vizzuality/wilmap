@@ -9,7 +9,8 @@
         "drupal/contact_block": "^1.4",
         "drupal/social_media_links": "^2.4",
         "drupal/search_autocomplete": "^1.1",
-        "drupal/cer": "4.x-dev"
+        "drupal/cer": "4.x-dev",
+        "drupal/better_exposed_filters": "3.x-dev"
     },
     "replace": {
         "drupal/core": "~8.3"
