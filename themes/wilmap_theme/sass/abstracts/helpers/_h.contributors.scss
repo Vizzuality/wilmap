@@ -11,6 +11,38 @@
 
 
 // -------------------------------------
+// contributors list name
+// -------------------------------------
+@mixin contributors--list--name() {
+  & {
+    @include font($normal, 1.1, $bold, $heading-font);
+    @include margin(null null $dp * 1.5 null);
+    text-decoration: none;
+    color: $black;
+
+    a {
+      text-decoration: none;
+      color: $black;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// -------------------------------------
+// contributors list position
+// -------------------------------------
+@mixin contributors--list--position() {
+  & {
+    @include font($normal, 1.1, $semibold, $heading-font);
+    text-decoration: none;
+    color: $fourth-color;
+  }
+}
+
+// -------------------------------------
 // contributors sheet labels
 // -------------------------------------
 @mixin contributors--sheet--labels() {
@@ -72,9 +104,30 @@
     @include margin(null null $dp * 2 null);
     @include clearfix();
     overflow: hidden;
-    min-height: 310px;
-
     background-color: rgba($fifth-color, 0.5);
+    min-height: 250px;
+
+    @include respond(tablets) {
+      width: columns(4.6);
+      min-height: 270px;
+    }
+
+    @include respond(all-phones) {
+      min-height: 400px;
+    }
+
+    &:nth-child(#{$break-margin}) {
+      @include respond(tablets) {
+        margin-left: $gutter !important;
+      }
+    }
+
+    // &:nth-child(3n+1) {
+    //   @include respond(tablets) {
+    //     @include margin(null null null 0);
+    //   }
+    // }
+
 
     .contributor-image-holder {
       @include position(relative);
@@ -87,10 +140,19 @@
       }
 
       .views-field-user-picture {
-        @include size(100% 200px);
+        @include size(100% 160px);
         display: block;
         background-repeat: no-repeat;
         background-size: cover;
+        background-position: 50% 50%;
+
+        @include respond(tablets) {
+          @include size(100% 170px);
+        }
+
+        @include respond(all-phones) {
+          @include size(100% 300px);
+        }
       }
     }
 
@@ -98,16 +160,11 @@
       @include padding($dp * 1.2);
 
       .views-field-name {
-        font-weight: $semibold;
-        color: $black;
-
-        a {
-          color: $black
-        }
+        @include contributors--list--name();
       }
 
       .views-field-field-profile-title {
-
+        @include contributors--list--position();
       }
     }
   }
