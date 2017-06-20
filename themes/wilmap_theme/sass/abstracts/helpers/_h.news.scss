@@ -83,6 +83,10 @@ $news-gradient-dir:     180deg;
     @include margin(null null $dp * 3 null);
     @include font($normal, $base-line-increment, $regular, $base-font-family);
     color: $fourth-color;
+
+    @include respond(all-phones) {
+      @include padding(null null null 0);
+    }
   }
 }
 
@@ -134,7 +138,7 @@ $news-gradient-dir:     180deg;
 
 
 // -------------------------------------
-// Topics general entity
+// News general entity
 // -------------------------------------
 @mixin news($target, $structure:none, $break-margin: false) {
   & {

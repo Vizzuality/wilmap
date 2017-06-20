@@ -36,8 +36,8 @@
 
   h2 {
     @include header-block-separator();
-    @include margin($dp * 3 null null null);
-    display: block;
+    @include margin($dp * 5 null null null);
+    display: inline-block;
     clear:both;
   }
 

@@ -1,0 +1,88 @@
+// ============================================================================
+//
+// PAGES: CONTRIBUTORS
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+
+
+// -------------------------------------
+// Scaffold
+// -------------------------------------
+
+// CONTRIBUTORS List page
+.block-views-blockcontributors-block-1 {
+  // Filters
+  .view-filters {
+    @include column(14, false, collapse, false);
+    @include margin(null null $dp * 8 null);
+    display: block;
+    clear: both;
+  }
+
+  // Content
+  .view-content {
+    @include column(14, false, collapse, false);
+    @include contributors(grid, '.views-row');
+    display: block;
+    clear: both;
+  }
+}
+
+
+// CONTRIBUTORS detail page
+.path-user {
+  #block-tabs {
+    display: none;
+  }
+
+  article.profile {
+    @include clearfix();
+    display: block;
+
+    .contributor-sheet {
+      @include column(3.5, false, collapse, false);
+
+      .field__label {
+        @include contributors--sheet--labels();
+      }
+
+      .field__items {
+        @include contributors--sheet--items();
+      }
+
+      // contact
+      .field--field-social-m {
+        @include social-media-links();
+      }
+    }
+
+    .contributor-info {
+      @include column(9);
+      @include push(1.5);
+
+      .field__label {
+        display: none;
+      }
+
+      .field--name-field-profile-title .field__item {
+        @include contributors--position--title();
+      }
+    }
+
+  }
+
+  .block-views-blockcontributions-block-1 {
+    > h2 {
+      @include header-block-separator();
+    }
+
+    .view-contributions {
+      @include news(grid, '.views-row');
+    }
+  }
+}

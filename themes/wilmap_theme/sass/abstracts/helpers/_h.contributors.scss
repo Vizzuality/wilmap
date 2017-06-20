@@ -1,0 +1,134 @@
+// ============================================================================
+//
+// HELPERS: CONTRIBUTORS SNIPPETS
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+
+
+// -------------------------------------
+// contributors sheet labels
+// -------------------------------------
+@mixin contributors--sheet--labels() {
+  & {
+    @include font($normal - 2, 1, $semibold, $heading-font);
+    @include padding($dp * 1.5 null null null);
+    @include margin(null null $dp * 1.5 null);
+    text-transform: uppercase;
+    border-top: 1px solid rgba($black, 0.1);
+    color: $black;
+  }
+}
+
+
+// -------------------------------------
+// contributors sheet items
+// -------------------------------------
+@mixin contributors--sheet--items() {
+  & {
+    @include font($normal - 2, 1.2, $regular, $heading-font);
+    @include margin(null null $dp * 2 null);
+    color: $black;
+
+    a {
+      color: $black;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+
+// -------------------------------------
+// contributors position title
+// -------------------------------------
+@mixin contributors--position--title() {
+  & {
+    @include trim();
+    @include font($normal - 2, 1.2, $semibold, $heading-font);
+    @include padding($dp * 1.5 null null null);
+    @include margin(null null $dp * 2 null);
+    text-transform: uppercase;
+    color: $fourth-color;
+  }
+}
+
+
+// -------------------------------------
+// contributors grid
+// -------------------------------------
+
+@mixin contributors-grid($structure:'.views-row', $break-margin: '4n+1') {
+  // Structure wrapper
+  @include content-listings-wrapper($structure, $break-margin) {
+    @include column(3.5);
+    @include margin(null null $dp * 2 null);
+    @include clearfix();
+    overflow: hidden;
+    min-height: 310px;
+
+    background-color: rgba($fifth-color, 0.5);
+
+    .contributor-image-holder {
+      @include position(relative);
+      background-color: $white;
+
+
+      .hover-text,
+      .contributions {
+        display:none;
+      }
+
+      .views-field-user-picture {
+        @include size(100% 200px);
+        display: block;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+
+    .contributor-info-holder {
+      @include padding($dp * 1.2);
+
+      .views-field-name {
+        font-weight: $semibold;
+        color: $black;
+
+        a {
+          color: $black
+        }
+      }
+
+      .views-field-field-profile-title {
+
+      }
+    }
+  }
+}
+
+
+
+
+// -------------------------------------
+// contributors general entity
+// -------------------------------------
+@mixin contributors($target, $structure:none, $break-margin: false) {
+  & {
+    @include trim();
+    @include trim-field();
+    @include margin(null null $dp * 2 null);
+  }
+
+  // Layouts
+  // Grid
+  @if $target == grid {
+    @include contributors-grid($structure, '4n+1');
+  }
+}

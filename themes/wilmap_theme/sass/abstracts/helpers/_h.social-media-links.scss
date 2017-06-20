@@ -1,0 +1,24 @@
+// ---------
+//
+// ---------
+
+
+@mixin social-media-links {
+  & {
+    li {
+      @include border-radius($big-radius * 2);
+      @include margin(null $dp * 2 $dp * 2 null);
+      @include size($dp * 3);
+      display: inline-block;
+      background-color: $fifth-color;
+
+      &:hover {
+        background-color: darken($fifth-color, 10);
+      }
+
+      span {
+        display: none;
+      }
+    }
+  }
+}

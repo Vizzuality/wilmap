@@ -76,12 +76,15 @@ function wilmap_theme_preprocess_page_title(&$variables) {
   $variables['title_background'] = '/themes/wilmap_theme/images/home/intro-image.png';
   $variables['title_back_link'] = '';
 
+// $user = \Drupal\user\Entity\User::load('peter-test');
+// dump($user);
 
   // Load the node entity from current route
   if ($node = \Drupal::routeMatch()->getParameter('node')) {
 
     $bundle = $node->bundle();
 
+// dump($bundle);
 // dump($node);
 // dsm($node->get('field_image')->getValue());
 

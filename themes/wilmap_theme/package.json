@@ -21,6 +21,7 @@
     "gulp-sourcemaps": "^2.6.0",
     "gulp-uglify": "^3.0.0",
     "npm-gumby": "github:chewuaka/gumby",
-    "sassy-buttons": "github:chewuaka/sassy-buttons"
+    "sassy-buttons": "github:chewuaka/sassy-buttons",
+    "slick-carousel": "^1.6.0"
   }
 }
