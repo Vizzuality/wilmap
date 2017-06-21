@@ -10,15 +10,30 @@ use Drupal\Core\Routing\RouteMatchInterface;
 /**
  * Implements hook_help().
  */
-function wilmap_contributors_help($route_name, RouteMatchInterface $route_match) {
-  switch ($route_name) {
-    // Main module help for the wilmap_contributors module.
-    case 'help.page.wilmap_contributors':
-      $output = '';
-      $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('WILMap Contributors features') . '</p>';
-      return $output;
+function wilmap_contributors_help($route_name, RouteMatchInterface $route_match)
+{
+    switch ($route_name) {
+        // Main module help for the wilmap_contributors module.
+        case 'help.page.wilmap_contributors':
+            $output = '';
+            $output .= '<h3>' . t('About') . '</h3>';
+            $output .= '<p>' . t('WILMap Contributors features') . '</p>';
+            return $output;
 
-    default:
-  }
+        default:
+    }
+}
+
+
+/**
+ * hook template_preprocess_user()
+ */
+function wilmap_contributors_preprocess_user(&$variables)
+{
+
+    $account = $variables['user'];
+
+    $ranking_service = \Drupal::service('wilmap_contributors.ranking');
+    $variables['ranking'] = $ranking_service->getUserRanking($account->id());
+
 }

@@ -1,0 +1,4 @@
+services:
+ wilmap_contributors.ranking:
+   class: Drupal\wilmap_contributors\Ranking
+   arguments: ['@database']
