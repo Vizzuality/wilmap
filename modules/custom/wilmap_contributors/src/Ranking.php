@@ -45,6 +45,24 @@ class Ranking
         return new static($container->get('database'));
     }
 
+    /**
+     * Get user contributions total
+     *
+     * @param uid user uid
+     *
+     * @return int user rank between 0..99
+     */
+    public function getUserContributions($uid)
+    {
+        // Get node revisions done by user
+        $result = $this->database->query(
+          'SELECT count(*) as total FROM {node_revision} WHERE revision_uid = :uid',
+          [':uid' => $uid]
+        )->fetchField()[0];
+
+        return (int) $result;
+
+    }
 
     /**
      * Get user rank
@@ -55,15 +73,7 @@ class Ranking
      */
     public function getUserRanking($uid)
     {
-
-        // Get node revisions done by user
-        $result = $this->database->query(
-          'SELECT count(*) as total FROM {node_revision} WHERE revision_uid = :uid',
-          [':uid' => $uid]
-        )->fetchField()[0];
-
-        return (int) floor(100 * $result / $this->getTopRanking());
-
+        return (int)floor(100 * $this->getUserContributions($uid) / $this->getTopRanking());
     }
 
     /**

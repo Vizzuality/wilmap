@@ -35,5 +35,8 @@ function wilmap_contributors_preprocess_user(&$variables)
 
     $ranking_service = \Drupal::service('wilmap_contributors.ranking');
     $variables['ranking'] = $ranking_service->getUserRanking($account->id());
+    $variables['contributions'] = $ranking_service->getUserContributions($account->id());
+
+    kint($variables);
 
 }
