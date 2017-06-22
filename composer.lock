@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "03a68ae8c36913b9189b3b29b49a8ac4",
-    "content-hash": "fac13c9f1e5045b2e7229fc9a47a8619",
+    "hash": "cf07b2374056cf1888142cb23a5953dc",
+    "content-hash": "eda23a2a463eddb6d5b8ec6881e067ad",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -653,8 +653,7 @@
             "homepage": "https://www.drupal.org/project/better_exposed_filters",
             "support": {
                 "source": "http://cgit.drupalcode.org/better_exposed_filters"
-            },
-            "time": "2017-06-18 01:04:09"
+            }
         },
         {
             "name": "drupal/cer",
@@ -789,6 +788,53 @@
             "homepage": "https://www.drupal.org/project/search_autocomplete",
             "support": {
                 "source": "http://cgit.drupalcode.org/search_autocomplete"
+            }
+        },
+        {
+            "name": "drupal/similarterms",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/similarterms",
+                "reference": "8.x-1.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/similarterms-8.x-1.3.zip",
+                "reference": null,
+                "shasum": "46f2c36340e3bb2c40a250ff3a3de29947cdd609"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.3",
+                    "datestamp": "1469824139"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "rmiddle",
+                    "homepage": "https://www.drupal.org/user/192183"
+                },
+                {
+                    "name": "takim",
+                    "homepage": "https://www.drupal.org/user/252386"
+                }
+            ],
+            "description": "Use Views to show similar content based on taxonomy terms",
+            "homepage": "https://www.drupal.org/project/similarterms",
+            "support": {
+                "source": "http://cgit.drupalcode.org/similarterms"
             }
         },
         {
@@ -3995,8 +4041,7 @@
                 "source": "http://cgit.drupalcode.org/examples",
                 "issues": "https://www.drupal.org/project/issues/examples",
                 "documentation": "https://api.drupal.org/api/examples"
-            },
-            "time": "2017-03-15 19:39:11"
+            }
         },
         {
             "name": "drupal/migrate_plus",
