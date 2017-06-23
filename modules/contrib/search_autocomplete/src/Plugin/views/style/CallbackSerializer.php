@@ -141,7 +141,7 @@ class CallbackSerializer extends StylePluginBase {
             // Extract group_id and transform it to machine name.
             $group_id = strtolower(Html::cleanCssIdentifier($this->getField($index, $group_field_name)));
             // Extract group displayed value.
-            $group_name = $this->getField($index, $group_field_name) . 's';
+            $group_name = $this->getField($index, $group_field_name);
           }
 
           // Create the group if it does not exist yet.
