@@ -1,0 +1,13 @@
+wilmap:
+  version: 1.x
+#  css:
+#    theme:
+#      css/wilmap.css: {}
+  js:
+    js/wilmap.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal.ajax
+    - core/drupal
+    - core/drupalSettings
+#    - core/jquery.once
