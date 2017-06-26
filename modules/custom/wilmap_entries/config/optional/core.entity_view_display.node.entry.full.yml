@@ -1,0 +1,62 @@
+uuid: f1783ff5-aa71-4617-b2d4-8283533d1eb5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.entry.field_attachments
+    - field.field.node.entry.field_body_entry
+    - field.field.node.entry.field_contributors
+    - field.field.node.entry.field_image_entry
+    - field.field.node.entry.field_location_entry
+    - field.field.node.entry.field_related_entries
+    - field.field.node.entry.field_related_topics_entry
+    - field.field.node.entry.field_transnational
+    - node.type.entry
+  module:
+    - image
+    - text
+    - user
+id: node.entry.full
+targetEntityType: node
+bundle: entry
+mode: full
+content:
+  field_body_entry:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_image_entry:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+    third_party_settings: {  }
+    type: image_url
+    region: content
+  field_location_entry:
+    weight: 1
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_related_entries:
+    weight: 4
+    label: above
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden:
+  field_attachments: true
+  field_contributors: true
+  field_related_topics_entry: true
+  field_transnational: true
+  links: true

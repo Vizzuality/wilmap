@@ -1,0 +1,7 @@
+name: WILMap Entries
+type: module
+description: WILMap entries functionallity
+core: 8.x
+package: WILMap
+dependencies:
+  - block

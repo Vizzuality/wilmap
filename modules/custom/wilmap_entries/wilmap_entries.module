@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ * Contains wilmap_entries.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function wilmap_entries_help($route_name, RouteMatchInterface $route_match)
+{
+    switch ($route_name) {
+        // Main module help for the wilmap_entries module.
+        case 'help.page.wilmap_entries':
+            $output = '';
+            $output .= '<h3>' . t('About') . '</h3>';
+            $output .= '<p>' . t('WILMap entries functionality') . '</p>';
+            return $output;
+
+        default:
+    }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function wilmap_entries_theme()
+{
+    return [
+      'wilmap_entries' => [
+        'render element' => 'children',
+      ],
+    ];
+}
+
+
+/**
+ * Implements hook_cron().
+ */
+function wilmap_entries_cron()
+{
+
+    $last_run = \Drupal::state()->get('wilmap_entries.last_run', 0);
+
+    // Check current time since last digest.
+    if ((\Drupal::time()->getRequestTime() - $last_run) > \Drupal::config('wilmap_entries.digest')->get('days')) {
+
+        // TODO: get entries since last run and publish it.
+        // digest = new Digest( $last_run );
+        // $digest.publish();
+
+        // Update last run.
+        \Drupal::state()
+          ->set('wilmap_entries.last_run', \Drupal::time()->getRequestTime());
+    }
+}

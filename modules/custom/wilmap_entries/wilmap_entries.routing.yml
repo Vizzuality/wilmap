@@ -1,0 +1,11 @@
+
+wilmap_entries.digest_form:
+  path: '/admin/config/wilmap_entries/digest'
+  defaults:
+    _form: '\Drupal\wilmap_entries\Form\DigestForm'
+    _title: 'DigestForm'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+

@@ -1,0 +1,14 @@
+{
+  "name": "drupal/wilmap_entries",
+  "type": "drupal-module",
+  "description": "WILMap entries functionallity",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/wilmap_entries",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/wilmap_entries",
+    "source": "http://cgit.drupalcode.org/wilmap_entries"
+  },
+  "require": { }
+}

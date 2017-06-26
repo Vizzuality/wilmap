@@ -1,0 +1,27 @@
+uuid: e5f83819-976f-418c-8acc-b1eb0b590a8e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related_entries
+    - node.type.entry
+id: node.entry.field_related_entries
+field_name: field_related_entries
+entity_type: node
+bundle: entry
+label: 'Related entries'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      entry: entry
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

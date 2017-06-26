@@ -1,0 +1,23 @@
+uuid: 7fb4acb1-15c6-4445-80cc-47654c80f04c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_transnational
+    - node.type.entry
+id: node.entry.field_transnational
+field_name: field_transnational
+entity_type: node
+bundle: entry
+label: Transnational
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

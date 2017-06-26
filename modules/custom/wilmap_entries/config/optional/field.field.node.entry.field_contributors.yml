@@ -1,0 +1,34 @@
+uuid: 20f87882-3bc3-4472-92db-f9c2ada49f0e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contributors
+    - node.type.entry
+  module:
+    - wilmap_contributors
+id: node.entry.field_contributors
+field_name: field_contributors
+entity_type: node
+bundle: entry
+label: Contributors
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: 1
+    filter:
+      type: role
+      role:
+        contributors: contributors
+        administrator: 0
+    target_bundles: null
+    sort:
+      field: name
+      direction: ASC
+    auto_create: 0
+field_type: entity_reference_status
