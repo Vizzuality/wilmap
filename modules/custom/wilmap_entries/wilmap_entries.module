@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\wilmap_entries\Digest;
 
 /**
  * Implements hook_help().
@@ -46,14 +47,17 @@ function wilmap_entries_cron()
     $last_run = \Drupal::state()->get('wilmap_entries.last_run', 0);
 
     // Check current time since last digest.
-    if ((\Drupal::time()->getRequestTime() - $last_run) > \Drupal::config('wilmap_entries.digest')->get('days')) {
+    //if ((\Drupal::time()->getRequestTime() - $last_run) > \Drupal::config('wilmap_entries.digest')->get('days')) {
 
-        // TODO: get entries since last run and publish it.
-        // digest = new Digest( $last_run );
-        // $digest.publish();
+    // Get entries since last run and publish it.
+    //$digest = new Digest($last_run);
+    $digest = new Digest(strtotime('-7 days',time()));
 
-        // Update last run.
-        \Drupal::state()
-          ->set('wilmap_entries.last_run', \Drupal::time()->getRequestTime());
-    }
+    $digest->getEntries();
+    $digest->publish();
+
+    // Update last run.
+    \Drupal::state()
+      ->set('wilmap_entries.last_run', \Drupal::time()->getRequestTime());
+    //}
 }
