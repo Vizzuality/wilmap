@@ -37,6 +37,11 @@ class DigestForm extends ConfigFormBase
     public function buildForm(array $form, FormStateInterface $form_state)
     {
         $config = $this->config('wilmap_entries.digest');
+        $form['enabled'] = array(
+          '#type' => 'checkbox',
+          '#title' => $this->t('Enable automatic digests'),
+          '#default_value' => $config->get('enabled'),
+        );
         $form['title'] = [
           '#type'          => 'textfield',
           '#title'         => $this->t('Digest title'),
@@ -68,6 +73,7 @@ class DigestForm extends ConfigFormBase
         parent::submitForm($form, $form_state);
 
         $this->config('wilmap_entries.digest')
+          ->set('enabled', $form_state->getValue('enabled'))
           ->set('title', $form_state->getValue('title'))
           ->set('days', $form_state->getValue('days'))
           ->save();
