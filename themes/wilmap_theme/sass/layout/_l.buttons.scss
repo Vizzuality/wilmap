@@ -15,6 +15,7 @@ button.btn {
 }
 
 .site-btn {
+  @include margin(null null $dp null);
   display: inline-block;
 
   a,

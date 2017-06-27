@@ -30,7 +30,7 @@
     $display-image-mobile:    block;
   }
   @else if $layout==left {
-    $transx-image-desktop:    20%;
+    $transx-image-desktop:    50%;
     $transx-image-tablets:    10%;
     $transx-image-phones:     0;
     $push-text:               1;

@@ -17,7 +17,11 @@ body {
   .layout-main-wrapper {
     @include trim();
     @include row();
-    margin-top: -$dp;
+    margin-top: $dp * 12;
+
+    @include respond(tablets) {
+      margin-top: $dp * 8;
+    }
 
     @include respond(all-phones) {
       margin-top: $dp * 3;
@@ -33,8 +37,12 @@ body {
   }
 
   &.user-logged-in {
+    .site-header {
+      top: $dp * 8 !important;
+    }
+
     .layout-main-wrapper {
-      margin-top: $dp !important;
+      margin-top: $dp * 8 !important;
     }
   }
 
@@ -46,8 +54,11 @@ body {
     .layout-main-wrapper {
       @include trim();
       @include row(nested);
-      margin-top: -$dp;
+      margin-top: $dp * 12;
 
+      @include respond(tablets) {
+        margin-top: $dp * 8;
+      }
 
       @include respond(all-phones) {
         margin-top: $dp * 3;
@@ -62,8 +73,12 @@ body {
     }
 
     &.user-logged-in {
+      .site-header {
+        top: $dp * 8 !important;
+      }
+
       .layout-main-wrapper {
-        margin-top: $dp !important;
+        margin-top: $dp * 8 !important;
       }
     }
   }

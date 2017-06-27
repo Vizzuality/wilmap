@@ -98,9 +98,34 @@
     {% endif %}
   </header>
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-    {{ content }}
-    <div class="action">
-      <a class="btn" href="#" data-action="share">Share this</a>
+    <div class="entry-top-links-hidden">
+      {{ content.field_location_entry }}
+      {{ content.field_tax_section }}
     </div>
+
+    <div class="top-entry-info">
+      {{ content.field_date_published }}
+      {{ content.field_external_link }}
+    </div>
+
+    {{ content.field_body_entry }}
+
+    <div class="user-actions">
+      <div class="attachments">
+        {% if content.field_attachments %}
+          <a class="toggle" gumby-trigger="#download-attachments" href="#">Download files</a>
+          <div class="drawer" id="download-attachments">
+            {{ content.field_attachments }}
+          </div>
+        {% endif %}
+      </div>
+      <div class="action">
+        <a class="btn" href="#" data-action="share">Share this</a>
+        <a class="btn gotocountry" href="#">Go to country page</a>
+      </div>
+    </div>
+
+    {{ content.field_related_entries }}
+
   </div>
 </article>

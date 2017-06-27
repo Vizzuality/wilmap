@@ -54,16 +54,8 @@ $topic-gradient-dir:     180deg;
     @include position(relative);
     @include font($med, 1.2, $light, $heading-font);
     @include margin(null null $dp * 2 null);
+    @include field-separator();
     background: none;
-
-    &::after {
-      @include size($dp * 14 $dp / 2);
-      @include margin($dp * 2 null null null);
-      content: '';
-      display: block;
-      border: 0;
-      background-color: rgba($fourth-color, 0.2);
-    }
 
     a {
       @include trim-field();

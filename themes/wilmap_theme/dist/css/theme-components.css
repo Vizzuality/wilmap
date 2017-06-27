@@ -21,6 +21,7 @@
   margin-right: auto;
   margin-left: auto;
   *zoom: 1;
+  clear: both;
   display: table;
   padding-bottom: 0; }
   .pager:before, .pager:after {
@@ -449,5 +450,18 @@
           .ui-datepicker-inline .ui-datepicker-calendar tbody td.ui-datepicker-today span.ui-state-hover,
           .ui-datepicker-inline .ui-datepicker-calendar tbody td.ui-datepicker-today a.ui-state-hover {
             text-decoration: none; }
+
+.ui-autocomplete.ui-widget.ui-widget-content {
+  width: 200px !important;
+  position: fixed !important;
+  height: 100% !important;
+  left: auto !important;
+  right: 0 !important;
+  top: 68 !important;
+  overflow: scroll; }
+  @media only screen and (max-width: 767px) {
+    .ui-autocomplete.ui-widget.ui-widget-content {
+      position: relative !important;
+      height: auto !important; } }
 
 /*# sourceMappingURL=theme-components.css.map */
