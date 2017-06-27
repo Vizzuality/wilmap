@@ -1,0 +1,21 @@
+// ============================================================================
+//
+// COMPONENTS: SEARCH
+//
+// ============================================================================
+
+.ui-autocomplete.ui-widget.ui-widget-content {
+  width: 200px !important;
+  position: fixed !important;
+  height: 100% !important;
+  left: auto !important;
+  right: 0 !important;
+  top: 68 !important;
+
+  overflow: scroll;
+
+  @include respond(all-phones) {
+    position: relative !important;
+    height: auto !important;
+  }
+}

@@ -142,13 +142,6 @@
 
       // Gumby Events
 
-      // Refresh slick slideshows in tab changes
-      $('.tabs').on('gumby.onChange', function(e, index) {
-
-        App.Slideshows.methods.espacioGalleries();
-
-      });
-
       // Gumby Init
       Gumby.init();
       Gumby.debugMode = true;

@@ -39,3 +39,7 @@ article.node--type-topics.node--view-mode-full {
     text-align: center;
   }
 }
+
+.block-views-blockentries-block-1 {
+  @include entry(list, '.views-row');
+}

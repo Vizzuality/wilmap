@@ -110,3 +110,19 @@
     @include font($large / 2, 1, $extra-light, $heading-font);
   }
 }
+
+// ----------------------------------------------------------------
+// field eparator
+// ----------------------------------------------------------------
+@mixin field-separator () {
+  & {
+    &::after {
+      @include size($dp * 14 $dp / 2);
+      @include margin($dp * 2 null null null);
+      content: '';
+      display: block;
+      border: 0;
+      background-color: rgba($fourth-color, 0.2);
+    }
+  }
+}

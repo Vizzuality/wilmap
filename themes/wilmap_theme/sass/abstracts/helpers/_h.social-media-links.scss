@@ -1,5 +1,5 @@
 // ---------
-//
+//   Social media links
 // ---------
 
 
@@ -7,7 +7,7 @@
   & {
     li {
       @include border-radius($big-radius * 2);
-      @include margin(null $dp * 2 $dp * 2 null);
+      @include margin(null $dp $dp null);
       @include size($dp * 3);
       display: inline-block;
       background-color: $fifth-color;

@@ -26,6 +26,7 @@ $paginator-radius:                      $metro-radius;
   @include padding($dp * 2 0);
   @include margin(null auto null auto);
   @include clearfix();
+  clear: both;
   display: table;
 
   ul,

@@ -1,0 +1,81 @@
+// ============================================================================
+//
+// PAGES: ENTRIES (Explore)
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+
+
+// -------------------------------------
+// Scaffold
+// -------------------------------------
+
+// ENTRY List
+.block-views-blocklist-entries-block-1 {
+  @include entry(grid, '.views-row');
+
+  &.mode-list {
+    @include entry(list, '.views-row');
+  }
+}
+
+// ENTRY detail
+article.node--type-entry.node--view-mode-full {
+  @include entry();
+
+  .entry-top-links-hidden {
+    display: none;
+  }
+
+
+  .field--name-field-related-entries {
+
+    // Related separator
+    .field__label {
+      @include header-block-separator();
+    }
+
+    .field__items {
+      @include entry(grid, '> .field__item');
+    }
+  }
+
+  .user-actions {
+    @include column(13);
+    @include clearfix();
+    @include margin(null null null columns(2.45));
+    clear: both;
+    float: none;
+
+    @include respond(tablets) {
+      @include margin(null null null columns(2.8));
+    }
+
+    .attachments {
+      @include column(5, false, collapse, false);
+
+      a.toggle {
+        @include button-second();
+        @include margin(null null $dp null);
+      }
+
+      .drawer {
+        @include margin(null null $dp * 2 null);
+        background: none;
+
+        .file {
+          background-position: 0% $dp / 2;
+        }
+      }
+    }
+
+    .action {
+      @include column(6);
+      @include push(1);
+    }
+  }
+}

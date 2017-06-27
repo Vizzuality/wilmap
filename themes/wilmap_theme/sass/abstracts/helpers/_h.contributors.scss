@@ -122,17 +122,29 @@
       }
     }
 
-    // &:nth-child(3n+1) {
-    //   @include respond(tablets) {
-    //     @include margin(null null null 0);
-    //   }
-    // }
-
+    &:nth-child(3n+1) {
+      @include respond(tablets) {
+        margin-left: 0 !important;
+      }
+    }
 
     .contributor-image-holder {
       @include position(relative);
+      @include image-overlay($third-color, $third-color, 0);
       background-color: $white;
+      overflow: hidden;
 
+      &::before {
+        @include transition(all .3s ease);
+        @include size(100% 100%);
+        z-index: 1;
+      }
+
+      &:hover {
+        &::before {
+          opacity: 0.5;
+        }
+      }
 
       .hover-text,
       .contributions {
@@ -140,7 +152,10 @@
       }
 
       .views-field-user-picture {
+        @include position(relative);
+        @include filter(grayscale(100%));
         @include size(100% 160px);
+
         display: block;
         background-repeat: no-repeat;
         background-size: cover;

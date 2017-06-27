@@ -117,6 +117,15 @@ function wilmap_theme_preprocess_page_title(&$variables) {
 
         break;
 
+      case 'entry':
+        $variables['title'] = $node->label();
+        $variables['title_background'] = ($node->get('field_image_entry')->getValue()) ?
+                                         file_create_url($node->get('field_image_entry')->entity->uri->value) :
+                                         '/themes/wilmap_theme/images/title/news-title-bg.png';
+        $variables['title_back_link'] = '<div class="entry-top-links"></div>';
+
+        break;
+
       default:
         $variables['title'] = $node->label();
         $variables['title_background'] = '/themes/wilmap_theme/images/title/default-title-bg.png';
