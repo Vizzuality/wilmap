@@ -33,6 +33,12 @@ $image-height:        $dp * 20;
     @include padding($gutter * 5.7 null null null);
     @include text-main-header();
 
+    // @include respond(portrait-tablets) {
+    //   @include padding($gutter * 7 null null null);
+    //   @include font($xxlarge, 1, $extra-light, $heading-font);
+    //   width: columns(12);
+    // }
+
     @include respond(tablets) {
       @include padding($gutter * 5.5 null null null);
       @include font($xxlarge, 1, $extra-light, $heading-font);
@@ -43,6 +49,7 @@ $image-height:        $dp * 20;
       @include padding($gutter * 5 null null null);
       width: columns(13);
     }
+
 
     .secondary-page-title {
       @include text-secondary-header();

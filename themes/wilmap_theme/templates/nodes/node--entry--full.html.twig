@@ -112,7 +112,7 @@
 
     <div class="user-actions">
       <div class="attachments">
-        {% if content.field_attachments %}
+        {% if content.field_attachments|length > 5 %}
           <a class="toggle" gumby-trigger="#download-attachments" href="#">Download files</a>
           <div class="drawer" id="download-attachments">
             {{ content.field_attachments }}

@@ -40,6 +40,27 @@ $entry-gradient-dir:     180deg;
 }
 
 // -------------------------------------
+// entry external link
+// -------------------------------------
+
+@mixin entry--external-link() {
+  & {
+    a {
+      // @include icon-insert(icon-right-open, after);
+      text-decoration: none;
+
+      // &:after {
+      //   border: 1px solid black;
+      // }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// -------------------------------------
 // entry taxonomy
 // -------------------------------------
 

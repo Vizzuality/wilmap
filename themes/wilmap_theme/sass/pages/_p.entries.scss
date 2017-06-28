@@ -24,13 +24,69 @@
 }
 
 // ENTRY detail
-article.node--type-entry.node--view-mode-full {
-  @include entry();
+.entry-top-links {
+  @include position(absolute, $dp * 3.4 null null 0);
+  z-index: 20;
 
+  @include respond(tablets) {
+    @include position(absolute, $dp * 3.4 null null 0);
+  }
+
+  @include respond(all-phones) {
+    @include position(absolute, $dp null null 0);
+  }
+
+  .field--name-field-location-entry {
+    @include entry--location();
+  }
+
+  .field--name-field-tax-section {
+    @include entry--taxonomy();
+    @include trim();
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+article.node--type-entry.node--view-mode-full {
   .entry-top-links-hidden {
     display: none;
   }
 
+  .top-entry-info {
+    @include column(10);
+    @include clearfix();
+    @include margin(null null null columns(2.45));
+    clear: both;
+    float: none;
+
+    @include respond(all-phones) {
+      clear: both;
+      float: none;
+    }
+
+    .field--name-field-date-published {
+      @include entry--date();
+      @include fancytiles(2,2,2);
+    }
+
+    .field--name-field-external-link {
+      @include entry--external-link();
+      @include fancytiles(2,2,2);
+      text-align: right;
+    }
+  }
+
+
+  .field--name-field-tax-section {
+    @include entry--taxonomy();
+  }
+
+  .field--name-field-location-entry {
+    @include entry--location();
+  }
 
   .field--name-field-related-entries {
 
@@ -45,22 +101,28 @@ article.node--type-entry.node--view-mode-full {
   }
 
   .user-actions {
-    @include column(13);
+    @include column(14);
     @include clearfix();
     @include margin(null null null columns(2.45));
     clear: both;
     float: none;
 
-    @include respond(tablets) {
-      @include margin(null null null columns(2.8));
+    @include respond(all-phones) {
+      clear: both;
+      float: none;
     }
 
     .attachments {
       @include column(5, false, collapse, false);
 
       a.toggle {
-        @include button-second();
+        @include default-button($first-color, $white);
         @include margin(null null $dp null);
+        border: 1px solid $fourth-color;
+
+        @include respond(all-phones) {
+          width: 100%;
+        }
       }
 
       .drawer {
@@ -76,6 +138,24 @@ article.node--type-entry.node--view-mode-full {
     .action {
       @include column(6);
       @include push(1);
+
+      @include respond(tablets) {
+        @include push(0);
+      }
+
+      .site-btn {
+        @include respond(all-phones) {
+          clear:both;
+          float: none;
+          width: 100%;
+        }
+
+        a {
+          @include respond(all-phones) {
+            width: 100%;
+          }
+        }
+      }
     }
   }
 }

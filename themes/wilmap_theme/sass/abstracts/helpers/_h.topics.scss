@@ -53,8 +53,8 @@ $topic-gradient-dir:     180deg;
     @include trim();
     @include position(relative);
     @include font($med, 1.2, $light, $heading-font);
-    @include margin(null null $dp * 2 null);
     @include field-separator();
+    @include margin(null null $dp * 2 null);
     background: none;
 
     a {

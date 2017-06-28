@@ -12,6 +12,32 @@
     methods: {
 
       /**
+       * Entry detail Page
+       */
+      entryDetailPage: function() {
+
+        var runON = 'body.page-node-type-entry';
+
+        if ($(runON).length > 0) {
+
+          // Set location and tax-section on title block
+          var toplinks = '.entry-top-links';
+          if ($(toplinks).length > 0) {
+            $(toplinks).append($(toplinks + '-hidden').remove().html());
+          }
+
+          // Link Go To Country Page
+          // var toplinks = '.entry-top-links';
+          // if ($(toplinks).length > 0) {
+          //   $(toplinks).append($(toplinks + '-hidden').html());
+          // }
+
+
+        }
+
+      },
+
+      /**
        * Adds lastchild class to all last elements
        */
       allLastChild: function() {
