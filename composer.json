@@ -66,5 +66,8 @@
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         }
-    ]
+    ],
+    "require-dev": {
+        "drupal/twig_xdebug": "^1.0"
+    }
 }
