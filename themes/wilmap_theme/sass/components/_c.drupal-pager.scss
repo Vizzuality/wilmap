@@ -11,14 +11,14 @@
 
 $paginator-color-text:                  lighten($fourth-color, 15);
 $paginator-bgcolor:                     $second-color;
-$paginator-border:                      1px solid $gray-20;
-$paginator-active-color-text:           $second-color;
-$paginator-active-bgcolor:              $third-color;
+$paginator-border:                      none;
+$paginator-active-color-text:           $third-color;
+$paginator-active-bgcolor:              $second-color;
 $paginator-fontfamily:                  $base-font-family;
-$paginator-fontsize:                    15px;
+$paginator-fontsize:                    16px;
 $paginator-fontweight:                  $medium;
-$paginator-itemspace:                   0 -3px;
-$paginator-inner-padding:               10px 13px;
+$paginator-itemspace:                   0 8px;
+$paginator-inner-padding:               10px 3px;
 $paginator-radius:                      $metro-radius;
 
 @mixin pager(){
@@ -38,6 +38,7 @@ $paginator-radius:                      $metro-radius;
 
   .pager__item {
     @include margin($paginator-itemspace);
+    @include padding($paginator-inner-padding);
     @include font($paginator-fontsize, 1, $paginator-fontweight, $paginator-fontfamily);
     @include border-radius($paginator-radius);
     color: $paginator-color-text;
@@ -54,6 +55,8 @@ $paginator-radius:                      $metro-radius;
       background-color: transparent;
       display: block;
       text-decoration: none;
+      padding: $paginator-inner-padding;
+      border-bottom: 4px solid transparent;
     }
 
     &.is-active,
@@ -69,6 +72,9 @@ $paginator-radius:                      $metro-radius;
         background-color: transparent;
         display: block;
         text-decoration: none;
+        padding: $paginator-inner-padding;
+        font-weight: $semibold;
+        border-bottom: 4px solid $paginator-active-color-text;
       }
     }
   }
@@ -89,6 +95,30 @@ $paginator-radius:                      $metro-radius;
     .pager__item--first,
     .pager__item--last {
       display: none;
+    }
+
+    .pager__item--previous,
+    .pager__item--next {
+      &:hover {
+        color: $white;
+        border-bottom: none !important;
+        background-color: transparent;
+
+        a {
+          @include default-button();
+        }
+      }
+
+      a {
+        @include default-button();
+        color: $white;
+        border-bottom: none;
+
+        &:hover {
+          color: $white;
+          border-bottom: none;
+        }
+      }
     }
   }
 }

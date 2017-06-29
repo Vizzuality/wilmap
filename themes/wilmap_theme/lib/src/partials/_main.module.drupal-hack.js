@@ -15,26 +15,37 @@
        * Entry detail Page
        */
       entryDetailPage: function() {
-
         var runON = 'body.page-node-type-entry';
 
         if ($(runON).length > 0) {
-
-          // Set location and tax-section on title block
           var toplinks = '.entry-top-links';
+
           if ($(toplinks).length > 0) {
+            // Link Go To Country Page
+            $('a.gotocountry').attr('href', $(toplinks + '-hidden .field--name-field-location-entry a').attr('href'));
+
+            // Set location and tax-section on title block
             $(toplinks).append($(toplinks + '-hidden').remove().html());
           }
-
-          // Link Go To Country Page
-          // var toplinks = '.entry-top-links';
-          // if ($(toplinks).length > 0) {
-          //   $(toplinks).append($(toplinks + '-hidden').html());
-          // }
-
-
         }
+      },
 
+      /**
+       * Entry detail Page
+       */
+      mainNavigationTrail: function() {
+        var runON = '#block-mainnavigation';
+
+        if ($(runON).length > 0) {
+          var segments = location.pathname.split('/');
+
+          $(runON + ' ul.menu li.menu-item').each(function(i, item) {
+            if($(item).find('a').attr('href') === '/' + segments[1]) {
+              $(item).find('a').addClass('is-active');
+              $(item).addClass('menu-item--active-trail');
+            }
+          });
+        }
       },
 
       /**

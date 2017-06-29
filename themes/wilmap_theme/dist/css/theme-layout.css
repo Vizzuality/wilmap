@@ -1699,6 +1699,13 @@ button.btn {
     height: 133.33333px;
     width: 78.19048%; } }
 
+@media only screen and (min-width: 768px) and (max-width: 1124px) {
+  .page-node-type-entry .block-page-title-block .page-title {
+    padding-top: 12.44444%; } }
+@media only screen and (max-width: 767px) {
+  .page-node-type-entry .block-page-title-block .page-title {
+    padding-top: 13.33333%; } }
+
 article.node--view-mode-full > .node__content > .text-formatted p {
   width: 70.92063%;
   *zoom: 1;

@@ -34,3 +34,11 @@
   @include default-button($second-color, $third-color);
   border: 1px solid $second-color;
 }
+
+@mixin button-download-files {
+  @include default-button($first-color, $white);
+  @include bg-image ($img-path + 'link_file.svg', 30px, 27px);
+  padding-left: $dp * 5 !important;
+  background-position: $dp 50%;
+  border: 1px solid $fourth-color;
+}

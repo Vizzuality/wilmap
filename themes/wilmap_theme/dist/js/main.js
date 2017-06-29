@@ -194,26 +194,37 @@
        * Entry detail Page
        */
       entryDetailPage: function() {
-
         var runON = 'body.page-node-type-entry';
 
         if ($(runON).length > 0) {
-
-          // Set location and tax-section on title block
           var toplinks = '.entry-top-links';
+
           if ($(toplinks).length > 0) {
+            // Link Go To Country Page
+            $('a.gotocountry').attr('href', $(toplinks + '-hidden .field--name-field-location-entry a').attr('href'));
+
+            // Set location and tax-section on title block
             $(toplinks).append($(toplinks + '-hidden').remove().html());
           }
-
-          // Link Go To Country Page
-          // var toplinks = '.entry-top-links';
-          // if ($(toplinks).length > 0) {
-          //   $(toplinks).append($(toplinks + '-hidden').html());
-          // }
-
-
         }
+      },
 
+      /**
+       * Entry detail Page
+       */
+      mainNavigationTrail: function() {
+        var runON = '#block-mainnavigation';
+
+        if ($(runON).length > 0) {
+          var segments = location.pathname.split('/');
+
+          $(runON + ' ul.menu li.menu-item').each(function(i, item) {
+            if($(item).find('a').attr('href') === '/' + segments[1]) {
+              $(item).find('a').addClass('is-active');
+              $(item).addClass('menu-item--active-trail');
+            }
+          });
+        }
       },
 
       /**
@@ -559,6 +570,46 @@
     methods: {
 
       /**
+       * Big Links Areas. List and grid items.
+       */
+      bigLinkAreas: function() {
+        var linkareas = [
+          {
+            bigitem: '.block-views-blocktopics-block-1 .views-row .node',
+            ref: '.node__title a'
+          },
+          {
+            bigitem: '.block-views-blocklist-entries-block-1 .views-row .node',
+            ref: '.node__title a'
+          },
+          {
+            bigitem: '.block-views-blockentries-block-1 .views-row .node',
+            ref: '.node__title a'
+          },
+          {
+            bigitem: '.field--name-field-related-entries .field__item .node',
+            ref: '.node__title a'
+          },
+          {
+            bigitem: '.block-views-blocknews-block-1 .node',
+            ref: '.node__title a'
+          },
+          {
+            bigitem: '.block-views-blockcontributors-block-1 .view-content .views-row',
+            ref: '.contributor-info-holder .views-field-name a'
+          },
+        ];
+
+        $.each(linkareas, function (index, value) {
+          if ($(value.bigitem).length > 0) {
+            $(value.bigitem).on('click', function (e) {
+              window.location.href = $(this).find(value.ref).attr('href');
+            });
+          }
+        });
+      },
+
+      /**
        * External links open in blank target
        */
       externalLinks: function() {
@@ -568,6 +619,64 @@
         });
 
       },
+
+      /**
+       * sticky items
+       */
+      // stickyItems: function() {
+      //
+      //   var elementsSticky = [
+      //     {
+      //       element: 'body.node-type-landing .group-intro-wrap',
+      //       off: '#footer',
+      //       offset: '0',
+      //       onFixed: function(e){
+      //         $('.group-header-wrap').css('margin-bottom', $('.group-intro-wrap').data( 'height' ) / 2);
+      //       },
+      //       onUnfixed: function(e){
+      //         $('.group-header-wrap').css('margin-bottom', 0);
+      //       },
+      //       mobile: false
+      //     },
+      //     {
+      //       element: 'body.node-type-landing .group-form-aside-fix',
+      //       off: '.webform-component--forma-de-pago',
+      //       offset: '150',
+      //       onFixed: '',
+      //       onUnfixed: '',
+      //       mobile: false
+      //     }
+      //   ];
+      //
+      //   var isPhone = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
+      //
+      //   $.each( elementsSticky, function( index, value ) {
+      //     var canFix = true;
+      //
+      //     if( isPhone && !value.mobile ) {
+      //       canFix = false;
+      //     }
+      //
+      //     if( canFix ) {
+      //       if ( $( value.element ).length > 0 && $( 'body.user-logged-in' ).length === 0 ) {
+      //         $( value.element ).attr( 'gumby-fixed', 'top' ).attr( 'gumby-pin', value.off ).attr( 'gumby-offset', value.offset ).data( 'height',  $( value.element ).height());
+      //       }
+      //
+      //       if ( value.onFixed !== '' ) {
+      //         $( value.element ).on('gumby.onFixed', function(e) {
+      //           value.onFixed(e);
+      //         });
+      //       }
+      //
+      //       if ( value.onUnfixed !== '' ) {
+      //         $( value.element ).on('gumby.onUnfixed', function(e) {
+      //           value.onUnfixed(e);
+      //         });
+      //       }
+      //     }
+      //   });
+      //
+      // },
 
       /**
        * Main search

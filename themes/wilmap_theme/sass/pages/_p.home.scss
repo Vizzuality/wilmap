@@ -98,7 +98,7 @@
           @include text-body($second-color);
         }
 
-        a.btn {
+        .site-btn a {
           @include button-white();
         }
       }

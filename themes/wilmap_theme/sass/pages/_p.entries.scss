@@ -33,7 +33,7 @@
   }
 
   @include respond(all-phones) {
-    @include position(absolute, $dp null null 0);
+    @include position(absolute, -$dp null null 0);
   }
 
   .field--name-field-location-entry {
@@ -58,7 +58,7 @@ article.node--type-entry.node--view-mode-full {
   .top-entry-info {
     @include column(10);
     @include clearfix();
-    @include margin(null null null columns(2.45));
+    @include margin(null null $dp * 4 columns(2.45));
     clear: both;
     float: none;
 
@@ -70,15 +70,22 @@ article.node--type-entry.node--view-mode-full {
     .field--name-field-date-published {
       @include entry--date();
       @include fancytiles(2,2,2);
+      @include trim();
     }
 
     .field--name-field-external-link {
       @include entry--external-link();
       @include fancytiles(2,2,2);
+      @include trim();
       text-align: right;
+
+      a {
+        @include bg-image ($img-path + 'link_arrow.svg', 19px, 15px);
+        padding-right: $dp * 3;
+        background-position: 100% 50%;
+      }
     }
   }
-
 
   .field--name-field-tax-section {
     @include entry--taxonomy();
@@ -103,7 +110,7 @@ article.node--type-entry.node--view-mode-full {
   .user-actions {
     @include column(14);
     @include clearfix();
-    @include margin(null null null columns(2.45));
+    @include margin($dp * 4 null null columns(2.45));
     clear: both;
     float: none;
 
@@ -116,9 +123,8 @@ article.node--type-entry.node--view-mode-full {
       @include column(5, false, collapse, false);
 
       a.toggle {
-        @include default-button($first-color, $white);
+        @include button-download-files();
         @include margin(null null $dp null);
-        border: 1px solid $fourth-color;
 
         @include respond(all-phones) {
           width: 100%;

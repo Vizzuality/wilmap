@@ -33,12 +33,6 @@ $image-height:        $dp * 20;
     @include padding($gutter * 5.7 null null null);
     @include text-main-header();
 
-    // @include respond(portrait-tablets) {
-    //   @include padding($gutter * 7 null null null);
-    //   @include font($xxlarge, 1, $extra-light, $heading-font);
-    //   width: columns(12);
-    // }
-
     @include respond(tablets) {
       @include padding($gutter * 5.5 null null null);
       @include font($xxlarge, 1, $extra-light, $heading-font);
@@ -98,6 +92,24 @@ body.node-about {
     .image {
       @include respond(all-phones) {
         @include size(columns(11) $image-height / 1.5);
+      }
+    }
+  }
+}
+
+// -------------------------------------
+// Entry detail page override
+// -------------------------------------
+
+.page-node-type-entry {
+  .block-page-title-block {
+    .page-title {
+      @include respond(tablets) {
+        @include padding($gutter * 7 null null null);
+      }
+
+      @include respond(all-phones) {
+        @include padding($gutter * 7.5 null null null);
       }
     }
   }

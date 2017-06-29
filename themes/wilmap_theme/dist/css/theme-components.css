@@ -39,26 +39,27 @@
     list-style: none;
     display: inline-block; }
   .pager .pager__item {
-    margin: 0 -3px;
-    font-size: 15px;
-    font-size: 0.9375rem;
-    line-height: 15px;
-    line-height: 0.9375rem;
+    margin: 0 8px;
+    padding: 10px 3px;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 16px;
+    line-height: 1rem;
     font-weight: 500;
     font-family: "Raleway", sans-serif;
     border-radius: 0;
     color: #b8b4a8;
     background-color: #fff;
-    border: 1px solid #ccc;
+    border: none;
     overflow: hidden; }
     .pager .pager__item a {
       margin: 0;
       padding: 0;
-      padding: 10px 13px;
-      font-size: 15px;
-      font-size: 0.9375rem;
-      line-height: 15px;
-      line-height: 0.9375rem;
+      padding: 10px 3px;
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 16px;
+      line-height: 1rem;
       font-weight: 500;
       font-family: "Raleway", sans-serif;
       height: 100%;
@@ -66,28 +67,150 @@
       color: #b8b4a8;
       background-color: transparent;
       display: block;
-      text-decoration: none; }
+      text-decoration: none;
+      padding: 10px 3px;
+      border-bottom: 4px solid transparent; }
     .pager .pager__item.is-active, .pager .pager__item:hover {
-      padding: 10px 13px;
-      font-size: 15px;
-      font-size: 0.9375rem;
-      line-height: 15px;
-      line-height: 0.9375rem;
+      padding: 10px 3px;
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 16px;
+      line-height: 1rem;
       font-weight: 500;
       font-family: "Raleway", sans-serif;
-      color: #fff;
-      background-color: #b3001e; }
+      color: #b3001e;
+      background-color: #fff; }
       .pager .pager__item.is-active a, .pager .pager__item:hover a {
         padding: 0;
-        color: #fff;
+        color: #b3001e;
         background-color: transparent;
         display: block;
-        text-decoration: none; }
+        text-decoration: none;
+        padding: 10px 3px;
+        font-weight: 600;
+        border-bottom: 4px solid #b3001e; }
   .pager ul {
     height: 34px; }
     .pager ul .pager__item--first,
     .pager ul .pager__item--last {
       display: none; }
+    .pager ul .pager__item--previous:hover,
+    .pager ul .pager__item--next:hover {
+      color: #fff;
+      border-bottom: none !important;
+      background-color: transparent; }
+      .pager ul .pager__item--previous:hover a,
+      .pager ul .pager__item--next:hover a {
+        margin: 0;
+        padding: 0;
+        font-size: inherit;
+        padding: 0.5em 1.5em;
+        display: inline-block;
+        cursor: pointer;
+        border-radius: 0;
+        *zoom: 1;
+        filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFB3001E', endColorstr='#FF4D000D');
+        background-color: #b3001e;
+        border: 0;
+        color: #fff;
+        border-radius: 0;
+        font-size: 14px;
+        font-size: 0.875rem;
+        line-height: 14px;
+        line-height: 0.875rem;
+        font-weight: 600;
+        font-family: "Raleway", sans-serif;
+        padding: 14px 16px !important;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        letter-spacing: 0.9px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-style: normal; }
+        .pager ul .pager__item--previous:hover a .field,
+        .pager ul .pager__item--next:hover a .field {
+          margin: 0;
+          padding: 0; }
+        .pager ul .pager__item--previous:hover a:hover,
+        .pager ul .pager__item--next:hover a:hover {
+          text-decoration: none; }
+        .pager ul .pager__item--previous:hover a:hover,
+        .pager ul .pager__item--next:hover a:hover {
+          background-color: #9a001a; }
+        .pager ul .pager__item--previous:hover a:active,
+        .pager ul .pager__item--next:hover a:active {
+          background-color: #8a0017; }
+        .pager ul .pager__item--previous:hover a.disabled, .pager ul .pager__item--previous:hover a[disabled],
+        .pager ul .pager__item--next:hover a.disabled,
+        .pager ul .pager__item--next:hover a[disabled] {
+          filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+          opacity: 0.6;
+          background: false;
+          cursor: default;
+          box-shadow: none; }
+        .pager ul .pager__item--previous:hover a::-moz-focus-inner,
+        .pager ul .pager__item--next:hover a::-moz-focus-inner {
+          padding: 0 !important;
+          margin: -1px !important; }
+    .pager ul .pager__item--previous a,
+    .pager ul .pager__item--next a {
+      margin: 0;
+      padding: 0;
+      font-size: inherit;
+      padding: 0.5em 1.5em;
+      display: inline-block;
+      cursor: pointer;
+      border-radius: 0;
+      *zoom: 1;
+      filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFB3001E', endColorstr='#FF4D000D');
+      background-color: #b3001e;
+      border: 0;
+      color: #fff;
+      border-radius: 0;
+      font-size: 14px;
+      font-size: 0.875rem;
+      line-height: 14px;
+      line-height: 0.875rem;
+      font-weight: 600;
+      font-family: "Raleway", sans-serif;
+      padding: 14px 16px !important;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      letter-spacing: 0.9px;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-style: normal;
+      color: #fff;
+      border-bottom: none; }
+      .pager ul .pager__item--previous a .field,
+      .pager ul .pager__item--next a .field {
+        margin: 0;
+        padding: 0; }
+      .pager ul .pager__item--previous a:hover,
+      .pager ul .pager__item--next a:hover {
+        text-decoration: none; }
+      .pager ul .pager__item--previous a:hover,
+      .pager ul .pager__item--next a:hover {
+        background-color: #9a001a; }
+      .pager ul .pager__item--previous a:active,
+      .pager ul .pager__item--next a:active {
+        background-color: #8a0017; }
+      .pager ul .pager__item--previous a.disabled, .pager ul .pager__item--previous a[disabled],
+      .pager ul .pager__item--next a.disabled,
+      .pager ul .pager__item--next a[disabled] {
+        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+        opacity: 0.6;
+        background: false;
+        cursor: default;
+        box-shadow: none; }
+      .pager ul .pager__item--previous a::-moz-focus-inner,
+      .pager ul .pager__item--next a::-moz-focus-inner {
+        padding: 0 !important;
+        margin: -1px !important; }
+      .pager ul .pager__item--previous a:hover,
+      .pager ul .pager__item--next a:hover {
+        color: #fff;
+        border-bottom: none; }
 
 .tabs {
   width: 100%;
