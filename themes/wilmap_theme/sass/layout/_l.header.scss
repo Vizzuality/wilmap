@@ -171,6 +171,8 @@ $nav-item-bgcolor-active:               $white;
       @include margin(null null null null);
       @include transition(all .3s ease);
       background-color: $header-bandcolor-active;
+      border: 1px solid rgba($white, 0.4);
+      border-top: none;
       z-index: 99;
 
       @include respond(tablets) {
@@ -181,6 +183,8 @@ $nav-item-bgcolor-active:               $white;
       @include respond(all-phones) {
         @include position(absolute, 0 null null $header-marginleft - $dp);
         @include size($header-w-logo-phones $header-height-phones);
+        border: none;
+        border-top: none;
       }
 
       a {
@@ -233,13 +237,26 @@ $nav-item-bgcolor-active:               $white;
 
   .block-search {
     @include trim();
-    @include position(absolute, 0 $dp * 3 null null);
     @include transition(all .3s ease);
-    @include padding($dp);
+    @include position(absolute, -$dp * 2 0 null null);
+    width: $dp * 35;
     z-index: 99;
+    overflow: hidden;
+    display: block;
+
+    @include respond(tablets) {
+      @include position(absolute, -$dp * 2 0 null null);
+      width: $dp * 30;
+    }
+
+    @include respond(portrait-tablets) {
+      @include position(absolute, $dp * 2.3 0 null null);
+      width: $dp * 30;
+    }
 
     @include respond(all-phones) {
       @include position(relative, 0 null null 0);
+      width: 100%;
     }
   }
 
@@ -257,6 +274,10 @@ $nav-item-bgcolor-active:               $white;
 
     @include respond(tablets) {
       @include padding($dp * 2 null $dp * 2 $header-w-logo-tablets + $header-marginleft + ($dp * 2));
+    }
+
+    @include respond(portrait-tablets) {
+      @include padding($dp * 2 null $dp * 6 $header-w-logo-tablets + $header-marginleft + ($dp * 2));
     }
 
     @include respond(all-phones) {
@@ -340,6 +361,11 @@ $nav-item-bgcolor-active:               $white;
 
           @include respond(tablets) {
             @include padding($dp / 2 0 $dp * 1.4 0);
+            @include margin(0 $dp - 3);
+          }
+
+          @include respond(portrait-tablets) {
+            @include padding($dp / 2 0 $dp / 2 0);
             @include margin(0 $dp - 3);
           }
 

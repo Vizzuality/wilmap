@@ -6,6 +6,7 @@
 @mixin social-media-links {
   & {
     li {
+      @include position(relative);
       @include border-radius($big-radius * 2);
       @include margin(null $dp $dp null);
       @include size($dp * 3);
@@ -14,6 +15,83 @@
 
       &:hover {
         background-color: darken($fifth-color, 10);
+      }
+
+      a {
+        @include position(absolute, 0 null null 0);
+        @include size(100% 100%);
+        display: block;
+
+        span.fa {
+          @include position(absolute, 0 null null 0);
+          @include size(100% 100%);
+          @include icon-insert('icon-share', after);
+          display: block;
+
+          &::after {
+            @include trim();
+            @include position(absolute, 2px null null 4px);
+            @include fs(18px);
+            @include size($dp * 2);
+            display: block;
+            color: $first-color;
+            border: none;
+          }
+
+          &.fa-facebook {
+            @include icon-change('icon-facebook', after);
+
+            &::after {
+              @include position(absolute, 6px null null 5px);
+              @include fs(18px);
+            }
+          }
+
+          &.fa-twitter {
+            @include icon-change('icon-twitter', after);
+
+            &::after {
+              @include position(absolute, 6px null null 5px);
+              @include fs(18px);
+            }
+          }
+
+          &.fa-instagram {
+            @include icon-change('icon-instagram', after);
+
+            &::after {
+              @include position(absolute, 6px null null 5px);
+              @include fs(18px);
+            }
+          }
+
+          &.fa-linkedin {
+            @include icon-change('icon-linkedin', after);
+
+            &::after {
+              @include position(absolute, 6px null null 5px);
+              @include fs(18px);
+            }
+          }
+
+          &.fa-youtube {
+            @include icon-change('icon-video', after);
+
+            &::after {
+              @include position(absolute, 6px null null 5px);
+              @include fs(18px);
+            }
+          }
+
+          &.fa-email {
+            @include icon-change('icon-mail', after);
+
+            &::after {
+              @include position(absolute, 6px null null 5px);
+              @include fs(18px);
+            }
+          }
+        }
       }
 
       span {

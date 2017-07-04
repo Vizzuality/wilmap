@@ -22,6 +22,10 @@ $modal-close-bg-button:                 $fifth-color;
 
 // Modal Box
 .modal {
+  h3 {
+    @include margin(null null $dp * 6 null);
+  }
+
   .content {
     position: relative;
     overflow: visible;
@@ -63,24 +67,12 @@ $modal-close-bg-button:                 $fifth-color;
     }
 
     .close {
+      @include button-second();
       position: absolute;
       z-index: 3;
-      top: -23px;
+      top: 0px;
       right: 0;
       cursor: pointer;
-      background: $modal-close-bg-button;
-
-      i {
-        margin: 0;
-        padding: 0;
-        position: relative;
-        left: 0;
-        padding: 0 10px;
-
-        &::before {
-          color: $modal-close-button;
-        }
-      }
     }
   }
 }

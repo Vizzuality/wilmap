@@ -4,18 +4,217 @@
 //
 // ============================================================================
 
-.ui-autocomplete.ui-widget.ui-widget-content {
-  width: 200px !important;
-  position: fixed !important;
-  height: 100% !important;
-  left: auto !important;
-  right: 0 !important;
-  top: 68 !important;
 
+.block-search {
+  @include icon-insert('icon-search', after);
+  padding: $dp $dp * 3 $dp - 2 $dp * 2 !important;
+  display: block;
+  background: none;
+
+  &::after {
+    @include trim();
+    @include position(absolute, $dp * 1.8 $dp * 3.5 null auto);
+    @include fs(20px);
+    @include size($dp * 2);
+    display: block;
+    color: $fourth-color;
+    border: none;
+  }
+
+  &.active {
+    background: $white;
+  }
+
+  .field {
+    .input {
+      @include font($normal, 1, $regular, $body-font);
+      @include border-radius($metro-radius);
+      @include position(relative);
+      background: none;
+      background-image: none;
+      border: none;
+      border-bottom: 1px solid $hr-color;
+      color: $first-color;
+      width: 90%;
+
+      &::placeholder {
+        color: $first-color;
+      }
+
+      &.form-autocomplete {
+        background-image: none;
+        background-position: 87% 50%;
+
+        &.ui-autocomplete-loading {
+          @include bg-image($img-path + 'spinner_small.gif', 16px, 16px);
+          background-position: 87% 50%;
+        }
+      }
+    }
+  }
+}
+
+.fake-modal {
+  @include transition(all .3s ease);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  background: $light-overlayer;
+  opacity: 0;
+  visibility: hidden;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.ui-autocomplete.ui-widget.ui-widget-content {
+  width: $dp * 35 !important;
+  min-width: auto !important;
+  position: fixed !important;
+  top: $dp * 5.2 !important;
+  right: 0 !important;
+  left: auto !important;
+  height: 100% !important;
+  z-index: 100;
   overflow: scroll;
+  border: none !important;
+  background: $second-color;
+  padding: $dp $dp * 3 $dp $dp * 2;
+
+  @include respond(tablets) {
+    width: $dp * 30 !important;
+    position: fixed !important;
+    top: $dp * 5.2 !important;
+    right: 0 !important;
+    left: auto !important;
+  }
+
+  @include respond(portrait-tablets) {
+    width: $dp * 30 !important;
+    position: fixed !important;
+    top: $dp * 8.9 !important;
+    right: 0 !important;
+    left: auto !important;
+  }
 
   @include respond(all-phones) {
-    position: relative !important;
+    width: 100% !important;
+    position: absolute !important;
+    top: $dp * 12 !important;
+    right: auto !important;
+    left: 0 !important;
     height: auto !important;
+    z-index: 999999;
+  }
+
+  .ui-autocomplete-field-group {
+    @include trim();
+    @include red-caps-link();
+    @include padding(null $dp / 2);
+    @include margin($dp * 3 null $dp null);
+    font-weight: $semibold;
+    text-decoration: none;
+    text-align: left;
+    opacity: 1 !important;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .ui-menu-divider {
+    display: none;
+  }
+
+  .ui-menu-item-,
+  .ui-menu-item-first {
+    @include trim();
+    @include padding($dp / 2);
+    @include margin(null null $dp / 2 null);
+
+    a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    &.ui-state-focus {
+      border: none;
+      background: $gray-10;
+    }
+
+    .ui-autocomplete-field-title {
+      @include font($normal - 2, 1.2, $regular, $heading-font);
+      text-decoration: none;
+      color: $fourth-color;
+
+      .ui-autocomplete-field-term {
+        color: $black;
+        font-weight: $semibold;
+      }
+    }
+
+    .ui-autocomplete-field-created {
+      display: none;
+    }
+  }
+
+  .ui-menu-item-first:last-child {
+    @include margin($dp * 2 null null null);
+    a {
+      @include default-button();
+    }
+
+    &.ui-state-focus {
+      background: none;
+    }
+  }
+}
+
+// -------------------------------------
+// Override
+// -------------------------------------
+
+body.node-map {
+  .block-search {
+    &,
+    &.active {
+      background: $third-color;
+
+      &::after {
+        color: $second-color;
+      }
+
+      .field {
+        .input {
+          border: none;
+          border-bottom: 1px solid $second-color;
+          color: $second-color;
+
+          &::placeholder {
+            color: $second-color;
+          }
+        }
+      }
+    }
+  }
+
+  .fake-modal {
+    &.active {
+      opacity: 0 !important;
+      visibility: hidden !important;
+    }
+  }
+
+  .ui-autocomplete.ui-widget.ui-widget-content {
+    display: block !important;
+    background: $third-color;
   }
 }

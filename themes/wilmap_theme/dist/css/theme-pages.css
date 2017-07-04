@@ -1,3 +1,4 @@
+@charset "UTF-8";
 #block-wilmap-theme-blockwelcomehome .content, #block-wilmap-theme-blockmaphome .content, #block-wilmap-theme-blockexplorehome .content, #block-wilmap-theme-blocknewshome .content {
   *zoom: 1; }
   #block-wilmap-theme-blockwelcomehome .content:before, #block-wilmap-theme-blockmaphome .content:before, #block-wilmap-theme-blockexplorehome .content:before, #block-wilmap-theme-blocknewshome .content:before, #block-wilmap-theme-blockwelcomehome .content:after, #block-wilmap-theme-blockmaphome .content:after, #block-wilmap-theme-blockexplorehome .content:after, #block-wilmap-theme-blocknewshome .content:after {
@@ -2466,6 +2467,7 @@ article.node--type-news.node--view-mode-full .action {
         .path-user article.profile .contributor-sheet .field__items a:hover {
           text-decoration: underline; }
     .path-user article.profile .contributor-sheet .field--field-social-m li {
+      position: relative;
       border-radius: 16px;
       margin-right: 10px;
       margin-bottom: 10px;
@@ -2475,6 +2477,100 @@ article.node--type-news.node--view-mode-full .action {
       background-color: #e3ded3; }
       .path-user article.profile .contributor-sheet .field--field-social-m li:hover {
         background-color: #cfc7b4; }
+      .path-user article.profile .contributor-sheet .field--field-social-m li a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: block; }
+        .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          font-family: 'entypo';
+          speak: none;
+          font-style: normal;
+          font-weight: normal;
+          font-variant: normal;
+          text-transform: none;
+          line-height: 1;
+          position: relative;
+          zoom: 1;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          display: block; }
+          .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa:after {
+            content: "";
+            text-decoration: none !important;
+            font-family: 'entypo';
+            padding: 0px 5px 5px 0px;
+            position: relative;
+            top: 1px;
+            left: 1px; }
+          .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa::after {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 2px;
+            left: 4px;
+            font-size: 18px;
+            font-size: 1.125rem;
+            height: 20px;
+            width: 20px;
+            display: block;
+            color: #222;
+            border: none; }
+          .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa.fa-facebook:after {
+            content: ""; }
+          .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa.fa-facebook::after {
+            position: absolute;
+            top: 6px;
+            left: 5px;
+            font-size: 18px;
+            font-size: 1.125rem; }
+          .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa.fa-twitter:after {
+            content: ""; }
+          .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa.fa-twitter::after {
+            position: absolute;
+            top: 6px;
+            left: 5px;
+            font-size: 18px;
+            font-size: 1.125rem; }
+          .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa.fa-instagram:after {
+            content: ""; }
+          .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa.fa-instagram::after {
+            position: absolute;
+            top: 6px;
+            left: 5px;
+            font-size: 18px;
+            font-size: 1.125rem; }
+          .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa.fa-linkedin:after {
+            content: ""; }
+          .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa.fa-linkedin::after {
+            position: absolute;
+            top: 6px;
+            left: 5px;
+            font-size: 18px;
+            font-size: 1.125rem; }
+          .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa.fa-youtube:after {
+            content: "🎬"; }
+          .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa.fa-youtube::after {
+            position: absolute;
+            top: 6px;
+            left: 5px;
+            font-size: 18px;
+            font-size: 1.125rem; }
+          .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa.fa-email:after {
+            content: "✉"; }
+          .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa.fa-email::after {
+            position: absolute;
+            top: 6px;
+            left: 5px;
+            font-size: 18px;
+            font-size: 1.125rem; }
       .path-user article.profile .contributor-sheet .field--field-social-m li span {
         display: none; }
   .path-user article.profile .contributor-info {
@@ -2754,6 +2850,46 @@ article.node--type-news.node--view-mode-full .action {
             color: #222; }
   .path-user .block-views-blockcontributions-block-1 .view-contributions .views-row:nth-child(2n+1) {
     margin-left: 0; }
+.path-user #block-contactblock label {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 16px;
+  line-height: 1rem;
+  font-weight: 700;
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  color: #b3001e;
+  text-decoration: none;
+  z-index: 10;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: left; }
+  @media only screen and (min-width: 768px) and (max-width: 1124px) {
+    .path-user #block-contactblock label {
+      font-size: 13px;
+      font-size: 0.8125rem;
+      line-height: 13px;
+      line-height: 0.8125rem;
+      font-weight: 600;
+      font-family: "Raleway", sans-serif; } }
+  @media only screen and (max-width: 767px) {
+    .path-user #block-contactblock label {
+      font-size: 13px;
+      font-size: 0.8125rem;
+      line-height: 13px;
+      line-height: 0.8125rem;
+      font-weight: 700;
+      font-family: "Raleway", sans-serif; } }
+  .path-user #block-contactblock label:hover {
+    text-decoration: underline; }
+  .path-user #block-contactblock label:hover {
+    text-decoration: none; }
+.path-user #block-contactblock .field .input {
+  border-radius: 0; }
+.path-user #block-contactblock .form-actions {
+  text-align: center; }
+  .path-user #block-contactblock .form-actions #edit-preview {
+    display: none; }
 
 .block-views-blocklist-entries-block-1 .node {
   margin-bottom: 20px;
@@ -3656,6 +3792,9 @@ article.node--type-entry.node--view-mode-full .user-actions {
     @media only screen and (max-width: 767px) {
       article.node--type-entry.node--view-mode-full .user-actions .action .site-btn a {
         width: 100%; } }
+
+body.node-map .footer_first_wrap {
+  display: none; }
 
 body.user-logged-in .contextual-links {
   display: none !important; }

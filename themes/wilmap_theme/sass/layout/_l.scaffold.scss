@@ -60,6 +60,10 @@ body {
         margin-top: $dp * 8;
       }
 
+      @include respond(portrait-tablets) {
+        margin-top: $dp * 3;
+      }
+
       @include respond(all-phones) {
         margin-top: $dp * 3;
       }

@@ -1,0 +1,28 @@
+// ============================================================================
+//
+// COMPONENTS: CONTRIBUTORS FIELD
+//
+// ============================================================================
+
+.field--name-field-contributors {
+  .field__item {
+    display: inline-block;
+    position: relative;
+    left: -5px;
+
+    &:first-child {
+      left: 12px;
+    }
+
+    .field--name-field-first-name,
+    .field--name-field-last-name {
+      display: none;
+    }
+
+    .field--name-user-picture {
+      @include border-radius($big-radius * 10);
+      @include size(47px 47px);
+      border: 2px solid $white;
+    }
+  }
+}

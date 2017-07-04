@@ -1,0 +1,75 @@
+// ============================================================================
+//
+// COMPONENTS: MODAL SHARE
+//
+// ============================================================================
+
+#modal-share {
+
+  h3 {
+    margin-bottom: $dp * 3;
+  }
+
+  .content {
+    min-height: 30%;
+  }
+
+  .tabs {
+    margin-top: 0 !important;
+  }
+
+  .tab-nav {
+    border-bottom: 5px solid lighten($fifth-color, 10);
+    margin-bottom: $dp * 3;
+
+    li {
+      @include box-shadow(none);
+      @include border-radius($metro-radius);
+      border: none;
+      position: relative;
+      top: 14px;
+
+      a {
+        @include trim();
+        @include red-caps-link();
+        @include margin(null null $dp null);
+        @include box-shadow(none);
+        @include border-radius($metro-radius);
+        @include text-shadow(none);
+        border: none;
+        color: $fourth-color;
+        font-weight: $semibold;
+        text-decoration: none;
+        text-align: left;
+        opacity: 1 !important;
+        border-bottom: 5px solid transparent;
+      }
+
+      &.active {
+        a {
+          border-bottom: 5px solid #b3001e;
+          height: $dp * 3.5;
+        }
+      }
+    }
+  }
+
+  .sharebutton {
+    width: 44%;
+    margin: $dp * 2 $dp * 3 $dp * 2 0 !important;
+
+    @include respond(all-phones) {
+      @include trim();
+      width: 100%;
+      margin: null null $dp * 2 null !important;
+    }
+
+    &.fb {
+      @include default-button($second-color, #3a589b);
+    }
+
+    &.twitter {
+      @include default-button($second-color, #598dca);
+    }
+  }
+}

@@ -12,6 +12,36 @@
     methods: {
 
       /**
+       * Contributor detail Page
+       */
+      contributorDetailPage: function() {
+        var runON = 'body.path-user';
+
+        if ($(runON).length > 0) {
+
+          // Add contact modal
+          var contactBlock = '#block-contactblock';
+          var socialBlock = '.social-media-links--platforms';
+          if ($(contactBlock).length > 0 && $(socialBlock).length > 0) {
+            var li_mail = '';
+            li_mail += '<li>';
+            li_mail += '<a href="#" class="switch" gumby-trigger="'+contactBlock+'">';
+            li_mail += '<span class="fa fa-email fa-2x"></span>';
+            li_mail += '</a>';
+            li_mail += '<br>';
+            li_mail += '<span><a href="#"></a></span>';
+            li_mail += '</li>';
+
+            if (!$('fa-email').length > 0) {
+              $(socialBlock).append(li_mail);
+            }
+          }
+
+          
+        }
+      },
+
+      /**
        * Entry detail Page
        */
       entryDetailPage: function() {
@@ -51,11 +81,11 @@
       /**
        * Adds lastchild class to all last elements
        */
-      allLastChild: function() {
-
-        $( ':last-child' ).not( 'pre :last-child' ).addClass( 'lastchild dph' );
-
-      },
+      // allLastChild: function() {
+      //
+      //   $( ':last-child' ).not( 'pre :last-child' ).addClass( 'lastchild dph' );
+      //
+      // },
 
       /**
        * Shortcodes in wysiwyg texts

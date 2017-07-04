@@ -191,6 +191,36 @@
     methods: {
 
       /**
+       * Contributor detail Page
+       */
+      contributorDetailPage: function() {
+        var runON = 'body.path-user';
+
+        if ($(runON).length > 0) {
+
+          // Add contact modal
+          var contactBlock = '#block-contactblock';
+          var socialBlock = '.social-media-links--platforms';
+          if ($(contactBlock).length > 0 && $(socialBlock).length > 0) {
+            var li_mail = '';
+            li_mail += '<li>';
+            li_mail += '<a href="#" class="switch" gumby-trigger="'+contactBlock+'">';
+            li_mail += '<span class="fa fa-email fa-2x"></span>';
+            li_mail += '</a>';
+            li_mail += '<br>';
+            li_mail += '<span><a href="#"></a></span>';
+            li_mail += '</li>';
+
+            if (!$('fa-email').length > 0) {
+              $(socialBlock).append(li_mail);
+            }
+          }
+
+          
+        }
+      },
+
+      /**
        * Entry detail Page
        */
       entryDetailPage: function() {
@@ -230,11 +260,11 @@
       /**
        * Adds lastchild class to all last elements
        */
-      allLastChild: function() {
-
-        $( ':last-child' ).not( 'pre :last-child' ).addClass( 'lastchild dph' );
-
-      },
+      // allLastChild: function() {
+      //
+      //   $( ':last-child' ).not( 'pre :last-child' ).addClass( 'lastchild dph' );
+      //
+      // },
 
       /**
        * Shortcodes in wysiwyg texts
@@ -683,15 +713,31 @@
        */
       mainSearch: function() {
         var dom = '.search-block-form';
+        var bgseparator = '.fake-modal';
 
         if ($(dom).length > 0) {
+          // Hide submit
           $(dom + ' .form-actions').hide();
 
+          // Generate bg separator
+          $('body').append('<div class="fake-modal"></div>');
+
+          // Events
           $(dom + ' input[type="search"]').attr('placeholder', 'Search').bind("keypress", function (e) {
             // prevent submit on press enter key
             if (e.keyCode == 13) {
               return false;
             }
+          });
+
+          $(dom + ' input[type="search"]').on('focus', function() {
+            $(dom).addClass('active');
+            $(bgseparator).addClass('active');
+          });
+
+          $(dom + ' input[type="search"]').on('blur', function() {
+            $(dom).removeClass('active');
+            $(bgseparator).removeClass('active');
           });
         }
       },
@@ -702,23 +748,28 @@
       shareThis: function() {
         var dom = 'a[data-action="share"]';
         var output = '';
+        var url_to_share = escape(window.location.href);
+        var title_to_share = document.title;
+
+        console.log(escape(window.location.href));
+        console.log(title_to_share);
 
         if ($(dom).length > 0) {
           output += '<div class="modal" id="modal-share">';
           output += '  <div class="content">';
-          output += '    <a class="close switch" gumby-trigger="|#modal-share"><i class="icon-cancel" /></i></a>';
+          output += '    <a class="close switch" gumby-trigger="|#modal-share">CLOSE</a>';
           output += '      <h3>Sharing</h3>';
           output += '      <div class="content-inner">';
           output += '         <section class="tabs">';
           output += '           <ul class="tab-nav">';
-          output += '             <!-- <li><a href="#">Share Page</a></li> -->';
+          output += '             <li class="active"><a href="#">Share Page</a></li>';
           output += '             <!-- <li><a href="#">Embed map</a></li> -->';
           output += '           </ul>';
           output += '           <div class="tab-content active">';
           //output += '               <script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.9";fjs.parentNode.insertBefore(js, fjs);}(document, \'script\', \'facebook-jssdk\'));</script>';
           //output += '               <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\'://platform.twitter.com/widgets.js\';fjs.parentNode.insertBefore(js,fjs);}}(document, \'script\', \'twitter-wjs\');</script>';
-          output += '             <a class="btn sharebutton fb" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share on facebook</a>';
-          output += '             <a class="btn sharebutton twitter" target="_blank" href="https://twitter.com/share?url=https%3A%2F%2Fdev.twitter.com%2Fweb%2Ftweet-button&via=twitterdev&related=twitterapi%2Ctwitter&hashtags=example%2Cdemo&text=custom%20share%20text">Share on twitter</a>';
+          output += '             <a class="btn sharebutton fb" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u='+url_to_share+'">Share on facebook</a>';
+          output += '             <a class="btn sharebutton twitter" target="_blank" href="https://twitter.com/share?url='+url_to_share+'">Share on twitter</a>';
           output += '           </div>';
           output += '           <div class="tab-content">';
           output += '             <p>Comparte mapa</p>';

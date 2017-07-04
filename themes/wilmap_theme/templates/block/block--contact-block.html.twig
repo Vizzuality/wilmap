@@ -37,17 +37,17 @@
     'block-' ~ plugin_id|clean_class,
   ]
 %}
-<section{{ attributes.addClass(classes) }} id="contributor-contact">
+<section{{ attributes.addClass(classes) }}>
   <div class="content">
-      <a class="close switch" gumby-trigger="|#contributor-contact"><i class="icon-cancel" /></i></a>
+      <a class="close switch" gumby-trigger="|#block-contactblock">CLOSE</a>
       <div class="row">
       {{ title_prefix }}
       {% if label %}
-        <h2{{ title_attributes }}>{{ label }}</h2>
+        <h3{{ title_attributes }}>{{ label }}</h3>
       {% endif %}
       {{ title_suffix }}
       {% block content %}
-        <div{{ content_attributes.addClass('content') }}>
+        <div{{ content_attributes.addClass('inner-content') }}>
           {{ content }}
         </div>
       {% endblock %}

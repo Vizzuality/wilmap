@@ -85,4 +85,32 @@
       @include news(grid, '.views-row');
     }
   }
+
+  #block-contactblock {
+    label {
+      @include red-caps-link();
+      font-weight: $semibold;
+      text-decoration: none;
+      text-align: left;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    .field {
+      .input {
+        @include border-radius($metro-radius);
+      }
+    }
+
+
+    .form-actions {
+      text-align: center;
+
+      #edit-preview {
+        display: none;
+      }
+    }
+  }
 }
