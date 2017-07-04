@@ -1016,5 +1016,8 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
     height: 47px;
     width: 47px;
     border: 2px solid #fff; }
+    .field--name-field-contributors .field__item .field--name-user-picture img {
+      -webkit-filter: grayscale(100%);
+      filter: grayscale(100%); }
 
 /*# sourceMappingURL=theme-components.css.map */

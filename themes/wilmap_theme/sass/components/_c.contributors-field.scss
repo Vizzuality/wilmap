@@ -23,6 +23,10 @@
       @include border-radius($big-radius * 10);
       @include size(47px 47px);
       border: 2px solid $white;
+
+      img {
+        @include filter(grayscale(100%));
+      }
     }
   }
 }
