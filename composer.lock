@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bd6876290c125feaa4a099846317e2f3",
-    "content-hash": "8aad7aa7b6df4200098d24382e96c63b",
+    "hash": "0b61cd2ca63b04f90c6cfe4fb0617cee",
+    "content-hash": "94acc6021c85b0a6c598ccca7a6dd912",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -746,6 +746,48 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/contact_block"
             }
+        },
+        {
+            "name": "drupal/link_css",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/link_css",
+                "reference": "2e53337457471db70629dd75a888ddee08583280"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.x-dev",
+                    "datestamp": "1478575440"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "gigabates",
+                    "homepage": "https://www.drupal.org/user/1257024"
+                },
+                {
+                    "name": "jorgegc",
+                    "homepage": "https://www.drupal.org/user/834154"
+                }
+            ],
+            "description": "Include CSS files using <link> element instead of @import.",
+            "homepage": "https://www.drupal.org/project/link_css",
+            "support": {
+                "source": "http://cgit.drupalcode.org/link_css"
+            },
+            "time": "2016-11-08 03:19:30"
         },
         {
             "name": "drupal/search_autocomplete",
@@ -6545,6 +6587,7 @@
     "stability-flags": {
         "drupal/cer": 20,
         "drupal/better_exposed_filters": 20,
+        "drupal/link_css": 20,
         "behat/mink": 20
     },
     "prefer-stable": true,
