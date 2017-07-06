@@ -22,6 +22,27 @@
 
 // TOPICS detail
 article.node--type-topics.node--view-mode-full {
+  > .node__content {
+    > .text-formatted {
+      p {
+        @include column(12);
+        @include margin(null null null columns(1.45));
+
+        @include respond(tablets) {
+          @include margin(null null null columns(1.8));
+        }
+      }
+    }
+  }
+
+  .field--name-field-contributors {
+    @include margin(null null null columns(1.45));
+
+    @include respond(tablets) {
+      @include margin(null null null columns(1.8));
+    }
+  }
+
   .field--name-field-related-topics {
 
     // Related separator
@@ -41,5 +62,15 @@ article.node--type-topics.node--view-mode-full {
 }
 
 .block-views-blockentries-block-1 {
+  > h2 {
+    @include text-secondary-header($first-color, 40px);
+    @include margin(null null $dp * 2 null);
+  }
+
+  h3 {
+    @include text-secondary-header(rgba($first-color, 0.8), 30px);
+    @include margin(null null $dp null);
+  }
+
   @include entry(list, '.views-row');
 }

@@ -194,3 +194,14 @@ function wilmap_theme_theme_suggestions_user_alter(&$suggestions, $vars, $hook) 
     // Create a theme hook suggestion which has the view mode name in it.
     $suggestions[] = 'user__' . $mode;
 }
+
+/**
+ * Implements hook_theme_suggestions_page_alter().
+ */
+function wilmap_theme_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $content_type = $node->bundle();
+    $suggestions[] = 'page__'.$content_type;
+  }
+}
