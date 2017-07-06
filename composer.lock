@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1f09c1f5f75a211ddfd91e876103804c",
-    "content-hash": "50da976db57f504b2348b406dc93a8c2",
+    "hash": "0b61cd2ca63b04f90c6cfe4fb0617cee",
+    "content-hash": "94acc6021c85b0a6c598ccca7a6dd912",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -890,7 +890,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/smart_trim-8.x-1.0.zip",
-                "reference": null,
+                "reference": "8.x-1.0",
                 "shasum": "14d8ec333c0c89367ac267eceef691417d537daf"
             },
             "require": {
