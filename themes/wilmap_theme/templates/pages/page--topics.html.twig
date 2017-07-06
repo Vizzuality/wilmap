@@ -68,16 +68,13 @@
             <a id="content-content" tabindex="-1"></a>
             {{ page.content_pagetitle }}
 
-
-            {% set with_nav = '' %}
-            {% if page.content_sidenav %}
-            {% set with_nav = ' with-sidenav' %}
             <aside class="content-sidenav">
-              {{ page.content_sidenav }}
+              {% if page.content_sidenav %}
+                {{ page.content_sidenav }}
+              {% endif %}
             </aside>
-            {% endif %}
 
-            <div id="content-content" class="content-content{{with_nav}}">
+            <div id="content-content" class="content-content with-sidenav">
               {{ page.content }}
             </div>
           </div>

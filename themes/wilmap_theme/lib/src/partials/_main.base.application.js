@@ -63,64 +63,6 @@
       },
 
       /**
-       * sticky items
-       */
-      // stickyItems: function() {
-      //
-      //   var elementsSticky = [
-      //     {
-      //       element: 'body.node-type-landing .group-intro-wrap',
-      //       off: '#footer',
-      //       offset: '0',
-      //       onFixed: function(e){
-      //         $('.group-header-wrap').css('margin-bottom', $('.group-intro-wrap').data( 'height' ) / 2);
-      //       },
-      //       onUnfixed: function(e){
-      //         $('.group-header-wrap').css('margin-bottom', 0);
-      //       },
-      //       mobile: false
-      //     },
-      //     {
-      //       element: 'body.node-type-landing .group-form-aside-fix',
-      //       off: '.webform-component--forma-de-pago',
-      //       offset: '150',
-      //       onFixed: '',
-      //       onUnfixed: '',
-      //       mobile: false
-      //     }
-      //   ];
-      //
-      //   var isPhone = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
-      //
-      //   $.each( elementsSticky, function( index, value ) {
-      //     var canFix = true;
-      //
-      //     if( isPhone && !value.mobile ) {
-      //       canFix = false;
-      //     }
-      //
-      //     if( canFix ) {
-      //       if ( $( value.element ).length > 0 && $( 'body.user-logged-in' ).length === 0 ) {
-      //         $( value.element ).attr( 'gumby-fixed', 'top' ).attr( 'gumby-pin', value.off ).attr( 'gumby-offset', value.offset ).data( 'height',  $( value.element ).height());
-      //       }
-      //
-      //       if ( value.onFixed !== '' ) {
-      //         $( value.element ).on('gumby.onFixed', function(e) {
-      //           value.onFixed(e);
-      //         });
-      //       }
-      //
-      //       if ( value.onUnfixed !== '' ) {
-      //         $( value.element ).on('gumby.onUnfixed', function(e) {
-      //           value.onUnfixed(e);
-      //         });
-      //       }
-      //     }
-      //   });
-      //
-      // },
-
-      /**
        * Main search
        */
       mainSearch: function() {
@@ -163,8 +105,8 @@
         var url_to_share = escape(window.location.href);
         var title_to_share = document.title;
 
-        console.log(escape(window.location.href));
-        console.log(title_to_share);
+        // console.log(escape(window.location.href));
+        // console.log(title_to_share);
 
         if ($(dom).length > 0) {
           output += '<div class="modal" id="modal-share">';
@@ -178,8 +120,6 @@
           output += '             <!-- <li><a href="#">Embed map</a></li> -->';
           output += '           </ul>';
           output += '           <div class="tab-content active">';
-          //output += '               <script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.9";fjs.parentNode.insertBefore(js, fjs);}(document, \'script\', \'facebook-jssdk\'));</script>';
-          //output += '               <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\'://platform.twitter.com/widgets.js\';fjs.parentNode.insertBefore(js,fjs);}}(document, \'script\', \'twitter-wjs\');</script>';
           output += '             <a class="btn sharebutton fb" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u='+url_to_share+'">Share on facebook</a>';
           output += '             <a class="btn sharebutton twitter" target="_blank" href="https://twitter.com/share?url='+url_to_share+'">Share on twitter</a>';
           output += '           </div>';
@@ -230,44 +170,55 @@
       },
 
       /**
+       * Sidenav mobile
+       */
+      sidenavMobile: function() {
+        var dom_sidemenu = '.content-sidenav .view-content';
+        var isPhone = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
+
+        // Mobile side navigation
+        if(isPhone) {
+          $(dom_sidemenu).slick({
+            dots: false,
+            arrows: false,
+            infinite: false,
+            speed: 300,
+            variableWidth: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            swipeToSlide: true,
+            centerMode: true,
+            focusOnSelect: true
+          });
+        }
+      },
+
+      /**
        * News Navigation
        */
       newsNavigation: function() {
+        var dom = '.node-news .block-views-blockcontinent-block-continents';
+        var isPhone = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
 
-        if ($( '.node-news .block-views-blockcontinent-block-continents' ).length > 0) {
-          var dom = '.node-news .block-views-blockcontinent-block-continents';
+        if ($(dom).length > 0) {
           var default_item = 'continent=all';
           var uri = location.href.split('/news?')[1];
               uri = ( uri == undefined || ( uri.indexOf('continent') == -1 && uri.indexOf('transnational') == -1 ) ) ? default_item : uri;
 
-
+          // Active current element
           $(dom + ' .views-row a').each(function(i, item) {
               var target = $(item).attr('href').split('?')[1];
 
-              if ( uri.indexOf(target) != -1 ) {
+              if (uri.indexOf(target) != -1) {
                 $(item).addClass('__active');
+
+                if(isPhone) {
+                  // Nav to active item
+                  var active = parseInt($(item).parents('.slick-slide').attr('data-slick-index'));
+                  $(dom + ' .view-content').slick('slickGoTo', active);
+                }
               }
           });
-
-          var isPhone = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
-          if(isPhone) {
-            $(dom + ' .view-content').slick({
-              dots: false,
-              arrows: false,
-              infinite: false,
-              speed: 300,
-              variableWidth: true,
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              swipeToSlide: true,
-              centerMode: true,
-              focusOnSelect: true
-            });
-
-            // Nav to active item
-            var active = parseInt($(dom + ' .views-row a.__active').parents('.slick-slide').attr('data-slick-index'));
-            $(dom + ' .view-content').slick('slickGoTo', active);
-          }
         }
       },
 
@@ -276,45 +227,133 @@
        */
       topicsNavigation: function() {
         var dom = '.page-node-type-topics';
-        var dom_content = dom + ' .block-system-main-block .content';
-        var dom_sidemenu = dom_content + ' .sidemenu .view-content';
+        var dom_sidemenu = '.content-sidenav';
         var dom_entries = dom + ' .block-views-blockentries-block-1';
         var isPhone = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
+        var uri = location.href.split('#')[1];
+            uri = (uri === undefined) ? false : uri;
 
         if ($(dom).length > 0) {
 
-          // Menu holder
-          $(dom_content).prepend('<div class="sidemenu"><div class="view-content"></div></div>');
-
           // Generate anchors and side menu
           var count = 0;
+          var sidemenu = '';
+          sidemenu += '<section class="views-element-container block block-views fake-view" id="custom-sidenav">';
+          sidemenu += '  <div class="content">';
+          sidemenu += '    <div>';
+          sidemenu += '      <div class="view view-continent">';
+          sidemenu += '        <div class="view-content">';
+
           $(dom_entries + ' h3').each(function(i, item) {
             var offset = (isPhone)?'-10':'-140';
-            $(this).addClass('country-block-title').attr('id','countr-block-' + count);
-            $(dom_sidemenu).append('<div class="views-row"><a class="skip" gumby-offset="' + offset + '" gumby-duration="600" gumby-goto="#countr-block-' + count + '" href="#countr-block-' + count + '">' + $(this).text() + '</a></div>')
+            var slug = App.Utils.Slugify($(this).text());
+
+            $(this).addClass('country-block-title').attr('id','entry-block-' + slug);
+            sidemenu += '          <div class="views-row"><a class="skip" gumby-offset="' + offset + '" gumby-duration="600" gumby-goto="#entry-block-' + slug + '" href="#entry-block-' + slug + '">' + $(this).text() + '</a></div>';
+
             count++;
           });
 
-          // Mobile side navigation
-          if(isPhone) {
-            $(dom_sidemenu).slick({
-              dots: false,
-              arrows: false,
-              infinite: false,
-              speed: 300,
-              variableWidth: true,
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              swipeToSlide: true,
-              centerMode: true,
-              focusOnSelect: true
-            });
+          sidemenu += '        </div>';
+          sidemenu += '      </div>';
+          sidemenu += '    </div>';
+          sidemenu += '  </div>';
+          sidemenu += '</section>';
 
-            // Nav to active item
-            // var active = parseInt($(dom + ' .views-row a.__active').parents('.slick-slide').attr('data-slick-index'));
-            // $(dom + ' .view-content').slick('slickGoTo', active);
+          // Print sidemenu
+          if(!$(dom_sidemenu + ' .view-content').length > 0) {
+            $(dom_sidemenu).append(sidemenu);
+            App.Application.methods.sidenavMobile();
           }
+
+          // Click Event
+          $(dom_sidemenu + ' .view-content .views-row a').on('click touchend', function() {
+            $(dom_sidemenu + ' .view-content .views-row a').removeClass('__active');
+            $(this).addClass('__active');
+
+            window.history.pushState($(this).attr('href'), document.title, $(this).attr('href'));
+          });
+
+          // Active current element when first load
+          $(dom_sidemenu + ' .view-content .views-row a').each(function(i, item) {
+              var target = $(item).attr('href').split('#')[1];
+
+              if (uri && uri.indexOf(target) != -1) {
+                $(item).addClass('__active');
+
+                //Scroll content
+                setTimeout(function(){
+                  $(item).click();
+                }, 1000);
+
+                if(isPhone) {
+                  // Nav to active item
+                  var active = parseInt($(item).parents('.slick-slide').attr('data-slick-index'));
+                  $(dom_sidemenu + ' .view-content').slick('slickGoTo', active);
+                }
+              }
+          });
         }
+      },
+
+      /**
+       * sticky items
+       */
+      stickyItems: function() {
+
+        var elementsSticky = [
+          // {
+          //   element: 'body.node-type-landing .group-intro-wrap',
+          //   off: '#footer',
+          //   offset: '0',
+          //   onFixed: function(e){
+          //     $('.group-header-wrap').css('margin-bottom', $('.group-intro-wrap').data( 'height' ) / 2);
+          //   },
+          //   onUnfixed: function(e){
+          //     $('.group-header-wrap').css('margin-bottom', 0);
+          //   },
+          //   mobile: false
+          // },
+          {
+            element: '.content-sidenav .block-views',
+            off: '#footer',
+            offset: '150',
+            pinoffset: '-700',
+            onFixed: '',
+            onUnfixed: '',
+            mobile: false
+          }
+        ];
+
+        var isPhone = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
+
+        $.each( elementsSticky, function( index, value ) {
+          var canFix = true;
+
+          if( isPhone && !value.mobile ) {
+            canFix = false;
+          }
+
+
+          if( canFix ) {
+            console.log($( value.element ).length);
+            if ( $( value.element ).length > 0 && $( 'body.user-logged-in' ).length === 0 ) {
+              $( value.element ).attr( 'gumby-fixed', 'top' ).attr( 'gumby-pin', value.off ).attr( 'gumby-offset', value.offset ).attr( 'gumby-pinoffset', value.pinoffset ).data( 'height',  $( value.element ).height());
+            }
+
+            if ( value.onFixed !== '' ) {
+              $( value.element ).on('gumby.onFixed', function(e) {
+                value.onFixed(e);
+              });
+            }
+
+            if ( value.onUnfixed !== '' ) {
+              $( value.element ).on('gumby.onUnfixed', function(e) {
+                value.onUnfixed(e);
+              });
+            }
+          }
+        });
       },
 
       /**
