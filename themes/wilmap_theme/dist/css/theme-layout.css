@@ -7,7 +7,7 @@ body .layout-main-wrapper, body.path-frontpage .layout-main-wrapper, .main-conte
   body .layout-main-wrapper:after, body.path-frontpage .layout-main-wrapper:after, .main-content-inner .content-sidenav .block-views.fixed:after, .site-footer .footer_first_wrap .region-footer-first:after {
     clear: both; }
 
-body .layout-main-wrapper .layout-main, body.path-frontpage .layout-main-wrapper .layout-main, body.path-frontpage.no-sidebar .main-content, body.path-frontpage.sidebar-first #sidebar-first, body.path-frontpage.sidebar-first .main-content, body.path-frontpage.sidebar-second .main-content, body.path-frontpage.sidebar-second #sidebar-second, body.path-frontpage.both-sidebars #sidebar-first, body.path-frontpage.both-sidebars .main-content, body.path-frontpage.both-sidebars #sidebar-second, .main-content-inner .content-sidenav, .main-content-inner .content-sidenav .block-views.fixed .content, .main-content-inner .content-sidenav .block-views.fixed .content .view-continent, .main-content-inner .content-content, .main-content-inner .content-content.with-sidenav, .site-footer .footer_first_wrap .region-footer-first .block-menu, .site-footer .footer_first_wrap .region-footer-first .block-menu .menu-item, .block-page-title-block .page-title, article.node--view-mode-full > .node__content > .text-formatted p {
+body .layout-main-wrapper .layout-main, body.path-frontpage .layout-main-wrapper .layout-main, body.path-frontpage.no-sidebar .main-content, body.path-frontpage.sidebar-first #sidebar-first, body.path-frontpage.sidebar-first .main-content, body.path-frontpage.sidebar-second .main-content, body.path-frontpage.sidebar-second #sidebar-second, body.path-frontpage.both-sidebars #sidebar-first, body.path-frontpage.both-sidebars .main-content, body.path-frontpage.both-sidebars #sidebar-second, .main-content-inner .content-sidenav, .main-content-inner .content-sidenav .block-views.fixed .content .view-continent, .main-content-inner .content-content, .main-content-inner .content-content.with-sidenav, .site-footer .footer_first_wrap .region-footer-first .block-menu, .site-footer .footer_first_wrap .region-footer-first .block-menu .menu-item, .block-page-title-block .page-title, article.node--view-mode-full > .node__content > .text-formatted p {
   margin-left: 1.77778%;
   float: left;
   min-height: 1px;
@@ -752,22 +752,12 @@ body.path-frontpage.both-sidebars #sidebar-second {
           min-width: 0;
           margin-left: 0;
           margin-right: 0; } }
-      .main-content-inner .content-sidenav .block-views.fixed .content {
-        float: none;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        width: 100%; }
+      .main-content-inner .content-sidenav .block-views.fixed .content .view-continent {
+        width: 27.30159%; }
         @media only screen and (max-width: 767px) {
-          .main-content-inner .content-sidenav .block-views.fixed .content {
+          .main-content-inner .content-sidenav .block-views.fixed .content .view-continent {
             float: left;
-            margin-left: 0;
             width: 100%; } }
-        .main-content-inner .content-sidenav .block-views.fixed .content .view-continent {
-          width: 27.30159%; }
-          @media only screen and (max-width: 767px) {
-            .main-content-inner .content-sidenav .block-views.fixed .content .view-continent {
-              float: left;
-              width: 100%; } }
   .main-content-inner .content-content {
     width: 100%;
     position: relative;

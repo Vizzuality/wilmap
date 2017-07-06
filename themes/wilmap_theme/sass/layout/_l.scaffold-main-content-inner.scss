@@ -183,7 +183,7 @@ $responsivenav-menuitem-height: $dp * 6;
         top: 150px !important;
 
         .content {
-          @include column(14, center, collapse, false);
+          //@include column(14, center, collapse, false);
 
           .view-continent {
             @include column(4, false, collapse, false);
