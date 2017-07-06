@@ -6,6 +6,10 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\node\NodeInterface;
+
 
 /**
  * Implements hook_help().
@@ -23,6 +27,72 @@ function wilmap_contributors_help($route_name, RouteMatchInterface $route_match)
         default:
     }
 }
+
+
+/**
+ * Implements hook_node_grants().
+ */
+function wilmap_contributors_node_grants(AccountInterface $account, $op)
+{
+    $grants = [];
+
+    kint($account);
+    if ($id = $account->id()) {
+        $grants['wilmap_contributors'] = array($id);
+    }
+
+    // Desconozco si estos controles se hacen aquí o en hook_node_access_records()
+    // TODO: Allow for News, Topics and Entries should check user Countries
+    // TODO: Also check Countries in user Regions
+
+    return $grants;
+}
+
+/**
+ * Implements hook_node_access_records().
+ */
+function wilmap_contributors_node_access_records(NodeInterface $node)
+{
+    $grants = [];
+
+kint($node);
+    if (!$field_info = FieldConfig::loadByName('node', $node->bundle(),
+      'field_contributors')
+    ) {
+        return $grants;
+    }
+
+    // Default, grant view
+    $grants[] = array(
+      'realm'        => 'all',
+      'gid'          => 0,
+      'grant_view'   => 1,
+      'grant_update' => 0,
+      'grant_delete' => 0,
+    );
+
+    if (!$node->isPublished()) {
+        return $grants;
+    }
+
+    // Allow "update" if in contributors list
+    // Add a realm for each associated user.
+    foreach ($node->field_contributors->getValue() as $delta => $item) {
+        $grants[] = [
+          'realm'        => 'wilmap_contributors',
+          'gid'          => $item['target_id'],
+          'grant_view'   => 1,
+          'grant_update' => 1,
+          'grant_delete' => 0,
+        ];
+    }
+
+    return $grants;
+}
+
+/******************************************************************************/
+/* PREPROCESS                                                                 */
+/******************************************************************************/
 
 
 /**
