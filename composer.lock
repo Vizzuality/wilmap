@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1f09c1f5f75a211ddfd91e876103804c",
-    "content-hash": "50da976db57f504b2348b406dc93a8c2",
+    "hash": "bd6876290c125feaa4a099846317e2f3",
+    "content-hash": "8aad7aa7b6df4200098d24382e96c63b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -748,48 +748,6 @@
             }
         },
         {
-            "name": "drupal/link_css",
-            "version": "dev-1.x",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/link_css",
-                "reference": "2e53337457471db70629dd75a888ddee08583280"
-            },
-            "require": {
-                "drupal/core": "~8.0"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.x-dev",
-                    "datestamp": "1478575440"
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "gigabates",
-                    "homepage": "https://www.drupal.org/user/1257024"
-                },
-                {
-                    "name": "jorgegc",
-                    "homepage": "https://www.drupal.org/user/834154"
-                }
-            ],
-            "description": "Include CSS files using <link> element instead of @import.",
-            "homepage": "https://www.drupal.org/project/link_css",
-            "support": {
-                "source": "http://cgit.drupalcode.org/link_css"
-            },
-            "time": "2016-11-08 03:19:30"
-        },
-        {
             "name": "drupal/search_autocomplete",
             "version": "1.1.0",
             "source": {
@@ -890,7 +848,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/smart_trim-8.x-1.0.zip",
-                "reference": null,
+                "reference": "8.x-1.0",
                 "shasum": "14d8ec333c0c89367ac267eceef691417d537daf"
             },
             "require": {
@@ -6587,7 +6545,6 @@
     "stability-flags": {
         "drupal/cer": 20,
         "drupal/better_exposed_filters": 20,
-        "drupal/link_css": 20,
         "behat/mink": 20
     },
     "prefer-stable": true,
