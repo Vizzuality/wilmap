@@ -7,6 +7,7 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\wilmap_entries\Digest;
+use Drupal\field\FieldStorageConfigInterface;
 
 /**
  * Implements hook_help().
@@ -35,6 +36,27 @@ function wilmap_entries_theme()
         'render element' => 'children',
       ],
     ];
+}
+
+
+/**
+ * Implements hook_field_views_data_alter().
+ *
+ * Views integration for entity reference fields which reference nodes.
+ * Adds a term relationship to the default field data.
+ *
+ * @see views_field_default_views_data()
+ */
+function wilmap_entries_field_views_data_alter(array &$data, FieldStorageConfigInterface $field_storage) {
+    if ($field_storage->getType() == 'entity_reference' && $field_storage->getSetting('target_type') == 'node') {
+        foreach ($data as $table_name => $table_data) {
+            foreach ($table_data as $field_name => $field_data) {
+                if (isset($field_data['filter']) && $field_name != 'delta') {
+                    $data[$table_name][$field_name]['filter']['id'] = 'node_index_nid';
+                }
+            }
+        }
+    }
 }
 
 

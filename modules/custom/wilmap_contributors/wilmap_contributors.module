@@ -36,7 +36,7 @@ function wilmap_contributors_node_grants(AccountInterface $account, $op)
 {
     $grants = [];
 
-    kint($account);
+    //kint($account);
     if ($id = $account->id()) {
         $grants['wilmap_contributors'] = array($id);
     }
@@ -55,7 +55,7 @@ function wilmap_contributors_node_access_records(NodeInterface $node)
 {
     $grants = [];
 
-kint($node);
+// kint($node);
     if (!$field_info = FieldConfig::loadByName('node', $node->bundle(),
       'field_contributors')
     ) {
