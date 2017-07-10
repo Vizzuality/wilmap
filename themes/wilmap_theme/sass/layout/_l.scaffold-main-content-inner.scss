@@ -11,6 +11,7 @@
 $color-off: $fourth-color;
 $color-on: $third-color;
 $color-line: $fifth-color;
+$line-weight: 5px;
 
 $responsivenav-bg-color: $white;
 $responsivenav-menuitem-height: $dp * 6;
@@ -43,7 +44,8 @@ $responsivenav-menuitem-height: $dp * 6;
       a {
         @include trim();
         @include red-caps-link();
-        @include margin(null null $dp * 3 null);
+        @include padding($dp * 1.2 null);
+        @include margin(null null $dp * 1.8 null);
         color: $color-off;
         font-weight: $regular;
         display: block;
@@ -53,7 +55,8 @@ $responsivenav-menuitem-height: $dp * 6;
         border-bottom: none;
 
         @include respond(tablets) {
-          @include margin(null null $dp * 1.8 null);
+          @include padding($dp null);
+          @include margin(null null $dp * 1.5 null);
           font-weight: $semibold;
           text-align: left;
           border-right: none;
@@ -66,7 +69,7 @@ $responsivenav-menuitem-height: $dp * 6;
           font-weight: $regular;
           text-align: center;
           border-right: none;
-          border-bottom: 4px solid transparent;
+          border-bottom: $line-weight solid transparent;
         }
 
         &:hover {
@@ -98,13 +101,13 @@ $responsivenav-menuitem-height: $dp * 6;
           color: $color-on;
           text-decoration: none;
           text-align: left;
-          border-right: 4px solid $color-on;
+          border-right: $line-weight solid $color-on;
           border-bottom: none;
 
           @include respond(tablets) {
             @include margin(null null $dp * 2 null);
             text-align: left;
-            border-right: 4px solid $color-on;
+            border-right: $line-weight solid $color-on;
             border-bottom: none;
           }
 
@@ -112,7 +115,7 @@ $responsivenav-menuitem-height: $dp * 6;
             @include margin(null null $dp * 2 null);
             text-align: center;
             border-right: none;
-            border-bottom: 4px solid $color-on;
+            border-bottom: $line-weight solid $color-on;
           }
         }
       }
@@ -127,17 +130,17 @@ $responsivenav-menuitem-height: $dp * 6;
       content: '';
       display: block;
       background-color: lighten($color-line, 10);
-      width: 4px;
+      width: $line-weight;
       height: 100%;
       position: absolute;
       top: 0;
-      left: (-$gutter * 2) + 0.5;
+      left: (-$gutter * 2) + 0.3;
       z-index: -1;
 
       @include respond(all-phones) {
         // Horizontal line
         width: 100%;
-        height: 4px;
+        height: $line-weight;
         top: (-$dp * 5.4);
         left: 0;
       }
@@ -153,13 +156,14 @@ $responsivenav-menuitem-height: $dp * 6;
   @include clearfix();
 
   .content-sidenav {
-    @include column(4, false, collapse, false);
+    @include clearfix();
     @include position(relative);
     @include sidebar-nav();
-    @include clearfix();
+    @include column(4, false, collapse, false);
+    width: 250px;
 
     @include respond(tablets) {
-      width: columns(3.5);
+      width: 150px;
     }
 
     @include respond(all-phones) {
@@ -176,19 +180,38 @@ $responsivenav-menuitem-height: $dp * 6;
 
     .block-views {
       &.fixed {
-        @include trim();
-        @include row();
-        @include padding(null 0);
-        @include transition(all .3s ease);
-        top: 150px !important;
+        position: fixed !important;
+        margin-top: 150px;
 
-        .content {
-          //@include column(14, center, collapse, false);
+        @include respond(tablets) {
+          top: 0 !important;
+        }
 
-          .view-continent {
-            @include column(4, false, collapse, false);
+        &.pinned {
+          margin-top: -360px;
+          position: absolute !important;
+
+          @include respond(tablets) {
+            // margin-top: 150px;
+            // position: fixed !important;
+            // top: 0 !important;
           }
         }
+
+        .content {
+          .view-continent {
+            width: 250px;
+
+            @include respond(tablets) {
+              width: 150px;
+            }
+          }
+        }
+      }
+
+      &.unfixed {
+        margin-top: 0px;
+        position: relative !important;
       }
     }
   }
@@ -203,7 +226,7 @@ $responsivenav-menuitem-height: $dp * 6;
       @include sidebar-nav-content-separator();
 
       @include respond(tablets) {
-        width: columns(10.5);
+        width: columns(10);
       }
     }
   }

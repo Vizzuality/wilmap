@@ -12,6 +12,52 @@
     methods: {
 
       /**
+       * Contributor Filter List
+       */
+      contributorFilterList: function() {
+        var runON = 'body.path-user';
+
+        if ($(runON).length > 0) {
+
+        }
+      },
+
+      /**
+       * Entries Filter List
+       */
+      entriesFilterList: function() {
+        var runON = '.view-list-entries .view-filters';
+
+        if ($(runON).length > 0) {
+
+          if(!$(runON + ' .form--inline .form--filter').length > 0) {
+            $(runON + ' .views-exposed-form .form--inline').append('<div class="form--filter"></div>');
+            $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-document').remove().wrap());
+            $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-country').remove().wrap());
+            $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-year').remove().wrap());
+            $(runON + ' .views-exposed-form .form--inline .form--filter').append('<a href="#" class="switch btn" gumby-trigger="#modal-advanced-filter">Advanced</a></p>');
+          }
+
+          if(!$(runON + ' .form--inline .form--sort').length > 0) {
+            $(runON + ' .views-exposed-form .form--inline').append('<div class="form--sort"></div>');
+            $(runON + ' .views-exposed-form .form--inline .form--sort').append($(runON + ' .views-exposed-form .js-form-item-sort-by').remove().wrap());
+          }
+
+          if(!$(runON + ' .form--modal').length > 0) {
+            $(runON + ' .views-exposed-form').append('<div id="modal-advanced-filter" class="form--modal modal"><div class="content"><a class="close switch" gumby-trigger="|#modal-advanced-filter">CLOSE</a><h3>Advanced - Search</h3><div class="content-inner"></div></div></div>');
+
+            $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' details.form-item').remove().wrap());
+          }
+
+          if(!$(runON + ' .form--bottom').length > 0) {
+            $(runON + ' .views-exposed-form').append('<div class="form--bottom"></div>');
+            $(runON + ' .views-exposed-form .form--bottom').append($(runON + ' .views-exposed-form .js-form-item-title').remove().wrap());
+            $(runON + ' .views-exposed-form .form--bottom').append($(runON + ' .views-exposed-form .form-actions').remove().wrap());
+          }
+        }
+      },
+
+      /**
        * Contributor detail Page
        */
       contributorDetailPage: function() {
@@ -37,7 +83,7 @@
             }
           }
 
-          
+
         }
       },
 
@@ -232,7 +278,7 @@
      */
      run: function() {
 
-      if ( !$( 'body' ).hasClass( 'theme-started' ) ) {
+      //if ( !$( 'body' ).hasClass( 'theme-started' ) ) {
         // Execute all functions
         var m = this.methods;
         for ( var key in this.methods ) {
@@ -240,7 +286,7 @@
          m[key]();
         }
 
-      }
+      //}
 
       // log
       console.log( 'App.DrupalHack Running' );

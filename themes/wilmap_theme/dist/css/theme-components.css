@@ -17,8 +17,10 @@
 .pager {
   margin: 0;
   padding: 0;
+  position: relative;
   padding: 20px 0;
   margin-right: auto;
+  margin-bottom: 70px;
   margin-left: auto;
   *zoom: 1;
   clear: both;
@@ -94,13 +96,77 @@
     .pager ul .pager__item--first,
     .pager ul .pager__item--last {
       display: none; }
-    .pager ul .pager__item--previous:hover,
-    .pager ul .pager__item--next:hover {
-      color: #fff;
-      border-bottom: none !important;
-      background-color: transparent; }
-      .pager ul .pager__item--previous:hover a,
-      .pager ul .pager__item--next:hover a {
+    .pager ul .pager__item--previous,
+    .pager ul .pager__item--next {
+      position: relative; }
+      @media only screen and (max-width: 767px) {
+        .pager ul .pager__item--previous,
+        .pager ul .pager__item--next {
+          position: absolute;
+          top: 80px;
+          width: 40%;
+          display: block;
+          text-align: center; } }
+      .pager ul .pager__item--previous:hover,
+      .pager ul .pager__item--next:hover {
+        color: #fff;
+        border-bottom: none !important;
+        background-color: transparent; }
+        .pager ul .pager__item--previous:hover a,
+        .pager ul .pager__item--next:hover a {
+          margin: 0;
+          padding: 0;
+          font-size: inherit;
+          padding: 0.5em 1.5em;
+          display: inline-block;
+          cursor: pointer;
+          border-radius: 0;
+          *zoom: 1;
+          filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFB3001E', endColorstr='#FF4D000D');
+          background-color: #b3001e;
+          border: 0;
+          color: #fff;
+          border-radius: 0;
+          font-size: 14px;
+          font-size: 0.875rem;
+          line-height: 14px;
+          line-height: 0.875rem;
+          font-weight: 600;
+          font-family: "Raleway", sans-serif;
+          padding: 14px 16px !important;
+          -moz-appearance: none;
+          -webkit-appearance: none;
+          letter-spacing: 0.9px;
+          text-decoration: none;
+          text-transform: uppercase;
+          font-style: normal; }
+          .pager ul .pager__item--previous:hover a .field,
+          .pager ul .pager__item--next:hover a .field {
+            margin: 0;
+            padding: 0; }
+          .pager ul .pager__item--previous:hover a:hover,
+          .pager ul .pager__item--next:hover a:hover {
+            text-decoration: none; }
+          .pager ul .pager__item--previous:hover a:hover,
+          .pager ul .pager__item--next:hover a:hover {
+            background-color: #9a001a; }
+          .pager ul .pager__item--previous:hover a:active,
+          .pager ul .pager__item--next:hover a:active {
+            background-color: #8a0017; }
+          .pager ul .pager__item--previous:hover a.disabled, .pager ul .pager__item--previous:hover a[disabled],
+          .pager ul .pager__item--next:hover a.disabled,
+          .pager ul .pager__item--next:hover a[disabled] {
+            filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+            opacity: 0.6;
+            background: false;
+            cursor: default;
+            box-shadow: none; }
+          .pager ul .pager__item--previous:hover a::-moz-focus-inner,
+          .pager ul .pager__item--next:hover a::-moz-focus-inner {
+            padding: 0 !important;
+            margin: -1px !important; }
+      .pager ul .pager__item--previous a,
+      .pager ul .pager__item--next a {
         margin: 0;
         padding: 0;
         font-size: inherit;
@@ -126,91 +192,49 @@
         letter-spacing: 0.9px;
         text-decoration: none;
         text-transform: uppercase;
-        font-style: normal; }
-        .pager ul .pager__item--previous:hover a .field,
-        .pager ul .pager__item--next:hover a .field {
+        font-style: normal;
+        color: #fff;
+        border-bottom: none; }
+        .pager ul .pager__item--previous a .field,
+        .pager ul .pager__item--next a .field {
           margin: 0;
           padding: 0; }
-        .pager ul .pager__item--previous:hover a:hover,
-        .pager ul .pager__item--next:hover a:hover {
+        .pager ul .pager__item--previous a:hover,
+        .pager ul .pager__item--next a:hover {
           text-decoration: none; }
-        .pager ul .pager__item--previous:hover a:hover,
-        .pager ul .pager__item--next:hover a:hover {
+        .pager ul .pager__item--previous a:hover,
+        .pager ul .pager__item--next a:hover {
           background-color: #9a001a; }
-        .pager ul .pager__item--previous:hover a:active,
-        .pager ul .pager__item--next:hover a:active {
+        .pager ul .pager__item--previous a:active,
+        .pager ul .pager__item--next a:active {
           background-color: #8a0017; }
-        .pager ul .pager__item--previous:hover a.disabled, .pager ul .pager__item--previous:hover a[disabled],
-        .pager ul .pager__item--next:hover a.disabled,
-        .pager ul .pager__item--next:hover a[disabled] {
+        .pager ul .pager__item--previous a.disabled, .pager ul .pager__item--previous a[disabled],
+        .pager ul .pager__item--next a.disabled,
+        .pager ul .pager__item--next a[disabled] {
           filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
           opacity: 0.6;
           background: false;
           cursor: default;
           box-shadow: none; }
-        .pager ul .pager__item--previous:hover a::-moz-focus-inner,
-        .pager ul .pager__item--next:hover a::-moz-focus-inner {
+        .pager ul .pager__item--previous a::-moz-focus-inner,
+        .pager ul .pager__item--next a::-moz-focus-inner {
           padding: 0 !important;
           margin: -1px !important; }
-    .pager ul .pager__item--previous a,
-    .pager ul .pager__item--next a {
-      margin: 0;
-      padding: 0;
-      font-size: inherit;
-      padding: 0.5em 1.5em;
-      display: inline-block;
-      cursor: pointer;
-      border-radius: 0;
-      *zoom: 1;
-      filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFB3001E', endColorstr='#FF4D000D');
-      background-color: #b3001e;
-      border: 0;
-      color: #fff;
-      border-radius: 0;
-      font-size: 14px;
-      font-size: 0.875rem;
-      line-height: 14px;
-      line-height: 0.875rem;
-      font-weight: 600;
-      font-family: "Raleway", sans-serif;
-      padding: 14px 16px !important;
-      -moz-appearance: none;
-      -webkit-appearance: none;
-      letter-spacing: 0.9px;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-style: normal;
-      color: #fff;
-      border-bottom: none; }
-      .pager ul .pager__item--previous a .field,
-      .pager ul .pager__item--next a .field {
-        margin: 0;
-        padding: 0; }
-      .pager ul .pager__item--previous a:hover,
-      .pager ul .pager__item--next a:hover {
-        text-decoration: none; }
-      .pager ul .pager__item--previous a:hover,
-      .pager ul .pager__item--next a:hover {
-        background-color: #9a001a; }
-      .pager ul .pager__item--previous a:active,
-      .pager ul .pager__item--next a:active {
-        background-color: #8a0017; }
-      .pager ul .pager__item--previous a.disabled, .pager ul .pager__item--previous a[disabled],
-      .pager ul .pager__item--next a.disabled,
-      .pager ul .pager__item--next a[disabled] {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
-        opacity: 0.6;
-        background: false;
-        cursor: default;
-        box-shadow: none; }
-      .pager ul .pager__item--previous a::-moz-focus-inner,
-      .pager ul .pager__item--next a::-moz-focus-inner {
-        padding: 0 !important;
-        margin: -1px !important; }
-      .pager ul .pager__item--previous a:hover,
-      .pager ul .pager__item--next a:hover {
-        color: #fff;
-        border-bottom: none; }
+        .pager ul .pager__item--previous a:hover,
+        .pager ul .pager__item--next a:hover {
+          color: #fff;
+          border-bottom: none; }
+    @media only screen and (max-width: 767px) {
+      .pager ul .pager__item--previous {
+        position: absolute;
+        top: 80px;
+        left: 0; } }
+    @media only screen and (max-width: 767px) {
+      .pager ul .pager__item--next {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        left: auto; } }
 
 .tabs {
   width: 100%;

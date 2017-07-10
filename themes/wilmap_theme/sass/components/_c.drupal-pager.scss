@@ -23,8 +23,9 @@ $paginator-radius:                      $metro-radius;
 
 @mixin pager(){
   @include trim();
+  @include position(relative);
   @include padding($dp * 2 0);
-  @include margin(null auto null auto);
+  @include margin(null auto $dp * 7 auto);
   @include clearfix();
   clear: both;
   display: table;
@@ -99,6 +100,15 @@ $paginator-radius:                      $metro-radius;
 
     .pager__item--previous,
     .pager__item--next {
+      @include position(relative);
+
+      @include respond(all-phones) {
+        @include position(absolute, $dp * 8 null null null);
+        width: 40%;
+        display: block;
+        text-align: center;
+      }
+
       &:hover {
         color: $white;
         border-bottom: none !important;
@@ -118,6 +128,18 @@ $paginator-radius:                      $metro-radius;
           color: $white;
           border-bottom: none;
         }
+      }
+    }
+
+    .pager__item--previous {
+      @include respond(all-phones) {
+        @include position(absolute, $dp * 8 null null 0);
+      }
+    }
+
+    .pager__item--next {
+      @include respond(all-phones) {
+        @include position(absolute, $dp * 8 0 null auto);
       }
     }
   }

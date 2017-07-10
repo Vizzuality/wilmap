@@ -49,7 +49,7 @@ $news-gradient-dir:     180deg;
       }
 
       &:hover {
-        text-decoration: underline;
+        text-decoration: none;
       }
 
       span {
@@ -119,7 +119,7 @@ $news-gradient-dir:     180deg;
     overflow: hidden;
 
     .node {
-      @include topic--gradient(relative, false);
+      @include topic--gradient(relative, true);
       height: $dp * 37;
       max-height: $dp * 37;
 
@@ -146,10 +146,14 @@ $news-gradient-dir:     180deg;
       @include trim-field();
       @include margin(null null $dp * 2 null);
       @include padding($dp * 3);
-      background-color: $topic-color-base;
+      background-color: $news-color-base;
       display: block;
       cursor: pointer;
       overflow: hidden;
+
+      &:hover {
+        background-color: $news-color-hover;
+      }
 
       header {
         @include trim();

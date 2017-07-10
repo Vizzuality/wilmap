@@ -302,23 +302,11 @@
       stickyItems: function() {
 
         var elementsSticky = [
-          // {
-          //   element: 'body.node-type-landing .group-intro-wrap',
-          //   off: '#footer',
-          //   offset: '0',
-          //   onFixed: function(e){
-          //     $('.group-header-wrap').css('margin-bottom', $('.group-intro-wrap').data( 'height' ) / 2);
-          //   },
-          //   onUnfixed: function(e){
-          //     $('.group-header-wrap').css('margin-bottom', 0);
-          //   },
-          //   mobile: false
-          // },
           {
             element: '.content-sidenav .block-views',
             off: '#footer',
             offset: '150',
-            pinoffset: '-700',
+            pinoffset: 'auto',
             onFixed: '',
             onUnfixed: '',
             mobile: false
@@ -336,9 +324,10 @@
 
 
           if( canFix ) {
-            console.log($( value.element ).length);
-            if ( $( value.element ).length > 0 && $( 'body.user-logged-in' ).length === 0 ) {
-              $( value.element ).attr( 'gumby-fixed', 'top' ).attr( 'gumby-pin', value.off ).attr( 'gumby-offset', value.offset ).attr( 'gumby-pinoffset', value.pinoffset ).data( 'height',  $( value.element ).height());
+            if ( $(value.element ).length > 0 && $( 'body.user-logged-in' ).length === 0 ) {
+              var pinoffset_value = (value.pinoffset === 'auto')?($(value.element).height() + $(value.off).height()) - 20:value.pinoffset;
+
+              $( value.element ).attr( 'gumby-fixed', 'top' ).attr( 'gumby-pin', value.off ).attr( 'gumby-offset', value.offset ).attr( 'gumby-pinoffset', pinoffset_value ).data( 'height',  $( value.element ).height());
             }
 
             if ( value.onFixed !== '' ) {
@@ -346,6 +335,11 @@
                 value.onFixed(e);
               });
             }
+
+            $( value.element ).on('gumby.onPinned', function(e) {
+              console. log(e.target.style.top + ' !important;');
+              $(value.element).attr('style', 'top: ' + e.target.style.top + ' !important;');
+            });
 
             if ( value.onUnfixed !== '' ) {
               $( value.element ).on('gumby.onUnfixed', function(e) {
