@@ -78,6 +78,14 @@ $paginator-radius:                      $metro-radius;
         border-bottom: 4px solid $paginator-active-color-text;
       }
     }
+
+    &.pager__item--ellipsis {
+      @include position(relative, -$dp * 1.2 null null null);
+
+      &:hover {
+        color: $paginator-color-text;
+      }
+    }
   }
 }
 

@@ -243,6 +243,7 @@
           sidemenu += '    <div>';
           sidemenu += '      <div class="view view-continent">';
           sidemenu += '        <div class="view-content">';
+          sidemenu += '          <div class="views-row"><a class="skip" gumby-duration="600" gumby-goto="top" href="#">Description</a></div>';
 
           $(dom_entries + ' h3').each(function(i, item) {
             var offset = (isPhone)?'-10':'-140';
@@ -278,6 +279,8 @@
           $(dom_sidemenu + ' .view-content .views-row a').each(function(i, item) {
               var target = $(item).attr('href').split('#')[1];
 
+console.log(uri && uri.indexOf(target));
+
               if (uri && uri.indexOf(target) != -1) {
                 $(item).addClass('__active');
 
@@ -291,7 +294,7 @@
                   var active = parseInt($(item).parents('.slick-slide').attr('data-slick-index'));
                   $(dom_sidemenu + ' .view-content').slick('slickGoTo', active);
                 }
-              }
+              };
           });
         }
       },

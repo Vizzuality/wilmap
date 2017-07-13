@@ -78,7 +78,7 @@
             li_mail += '<span><a href="#"></a></span>';
             li_mail += '</li>';
 
-            if (!$('fa-email').length > 0) {
+            if (!$('.fa-email').length > 0) {
               $(socialBlock).append(li_mail);
             }
           }

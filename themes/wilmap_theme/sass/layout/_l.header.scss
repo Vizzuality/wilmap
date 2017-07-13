@@ -11,7 +11,7 @@
 
 $header-title-color:                    $heading-font-color;
 $header-text-color:                     $header-title-color;
-$header-navbar:                         rgba($white, 0.9);
+$header-navbar:                         rgba($white, 0.95);
 $header-bandcolor:                      transparent;
 $header-bandcolor-active:               $third-color;
 
@@ -25,7 +25,7 @@ $header-marginleft:                     $dp * 3;
 
 // responsive vars
 $nav-hamburguer-color:                  $black;
-$nav-hamburguer-bgcolor:                transparent;;
+$nav-hamburguer-bgcolor:                transparent;
 $nav-hamburguer-color-active:           $white;
 $nav-hamburguer-bgcolor-active:         transparent;
 $nav-item-color:                        $black;
@@ -171,7 +171,7 @@ $nav-item-bgcolor-active:               $white;
       @include margin(null null null null);
       @include transition(all .3s ease);
       background-color: $header-bandcolor-active;
-      border: 1px solid rgba($white, 0.4);
+      border: 1px solid $white;
       border-top: none;
       z-index: 99;
 

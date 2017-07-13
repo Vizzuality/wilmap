@@ -60,6 +60,23 @@
         }
       }
     }
+
+    .site-btn {
+      a {
+        @include bg-image ($img-path + 'link_arrow.svg', 19px, 15px);
+        padding: $dp * 1.4 $dp * 3 $dp * 1.4 0 !important;
+        background-position: 100% 50%;
+        background-color: transparent !important;
+        color: $third-color;
+        text-decoration: none;
+
+        &:hover {
+          background-color: transparent !important;
+          color: $third-color;
+          text-decoration: underline;
+        }
+      }
+    }
   }
 }
 

@@ -76,17 +76,25 @@ function wilmap_theme_preprocess_page_title(&$variables) {
   $variables['title_background'] = '/themes/wilmap_theme/images/home/intro-image.png';
   $variables['title_back_link'] = '';
 
-// $user = \Drupal\user\Entity\User::load('peter-test');
-// dump($user);
+  // Contributor page
+  if ($user = \Drupal::routeMatch()->getParameter('user')){
+    $account = \Drupal\user\Entity\User::load($user->id());
 
-  // Load the node entity from current route
+    if ($file = $account->get('field_banner_image')->getValue()) {
+      $file = \Drupal\file\Entity\File::load($file[0]['target_id']);
+      $file_url = file_create_url($file->getFileUri());
+    } else {
+      $file_url = '/themes/wilmap_theme/images/title/default-title-bg.png';
+    }
+
+    $variables['title'] = $account->get('name')->value;
+    $variables['title_background'] = $file_url;
+    $variables['title_back_link'] = '<a href="/contributors" class="backtolink">Back to contributors</a>';
+  }
+
+  // Node pages
   if ($node = \Drupal::routeMatch()->getParameter('node')) {
-
     $bundle = $node->bundle();
-
-// dump($bundle);
-// dump($node);
-// dsm($node->get('field_image')->getValue());
 
     switch ($bundle) {
       case 'wilmap_page':
@@ -140,6 +148,25 @@ function wilmap_theme_preprocess_page_title(&$variables) {
  * Implements hook_preprocess_HOOK() for maintenance-page.html.twig.
  */
 function wilmap_theme_preprocess_maintenance_page(&$variables) {
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for views fields.
+ */
+function wilmap_theme_preprocess_views_view_fields(&$variables) {
+  $view = $variables['view'];
+
+  if($view->id() == 'contributors') {
+    $contributor_uid = intval(strip_tags($variables['fields']['uid']->content));
+    $account = \Drupal\user\Entity\User::load($contributor_uid);
+
+    $ranking_service = \Drupal::service('wilmap_contributors.ranking');
+    $contributors = intval($ranking_service->getUserContributions($account->id()));
+    $ranking = intval($ranking_service->getUserRanking($account->id()));
+
+    $variables['fields']['contributions'] = ($contributors < 10 && $contributors != 0)?'0'.$contributors:$contributors;
+    $variables['fields']['ranking'] = ($ranking < 10 && $ranking != 0)?'0'.$ranking:$ranking;
+  }
 }
 
 /**

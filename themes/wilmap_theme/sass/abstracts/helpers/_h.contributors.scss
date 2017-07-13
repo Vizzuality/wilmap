@@ -31,6 +31,7 @@
   }
 }
 
+
 // -------------------------------------
 // contributors list position
 // -------------------------------------
@@ -41,6 +42,24 @@
     color: $fourth-color;
   }
 }
+
+
+// -------------------------------------
+// contributors list go to profile
+// -------------------------------------
+@mixin contributors--list--goprofile() {
+  & {
+    @include button-transparent-red();
+    width: 80%;
+    background-color: transparent;
+    text-align: center;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
 
 // -------------------------------------
 // contributors sheet labels
@@ -74,6 +93,29 @@
         text-decoration: underline;
       }
     }
+  }
+}
+
+
+// -------------------------------------
+// contributors contributions/ranking
+// -------------------------------------
+@mixin contributors--list--contributions() {
+  & {
+    @include font($normal - 2, 1.2, $semibold, $heading-font);
+    color: $second-color;
+  }
+}
+
+@mixin contributors--list--ranking() {
+  & {
+    @include contributors--list--contributions();
+    @include size($dp * 3);
+    @include border-radius($big-radius * 3);
+    @include padding(6px null null null);
+    text-align: center;
+    display: block;
+    background-color: $third-color;
   }
 }
 
@@ -133,6 +175,7 @@
       @include image-overlay($third-color, $third-color, 0);
       background-color: $white;
       overflow: hidden;
+      cursor: default;
 
       &::before {
         @include transition(all .3s ease);
@@ -140,15 +183,41 @@
         z-index: 1;
       }
 
-      &:hover {
-        &::before {
-          opacity: 0.5;
-        }
+      .contributions {
+        @include contributors--list--contributions();
+        @include position(absolute, $dp null null $dp);
+        @include padding(0 null $dp 0);
+        width: 75%;
+        border-bottom: 1px solid $second-color;
+        z-index: 10;
       }
 
-      .hover-text,
-      .contributions {
-        display:none;
+      .ranking {
+        @include contributors--list--ranking();
+        @include position(absolute, $dp $dp null null);
+        z-index: 10;
+      }
+
+      .hover-text {
+        @include position(absolute, auto null -50px 50%);
+        @include transition(all .3s ease);
+        @include contributors--list--goprofile();
+        transform: translateX(-50%);
+        z-index: 10;
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        &::before {
+          opacity: 0.7;
+        }
+
+        .hover-text {
+          @include position(absolute, auto null 20px 50%);
+          transform: translateX(-50%);
+          z-index: 10;
+        }
       }
 
       .views-field-user-picture {

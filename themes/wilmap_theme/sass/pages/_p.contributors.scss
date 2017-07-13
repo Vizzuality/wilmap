@@ -59,6 +59,13 @@
       .field--field-social-m {
         @include social-media-links();
       }
+
+      // Ranking
+      .field--field-ranking {
+        .field__items {
+          @include contributors--list--ranking();
+        }
+      }
     }
 
     .contributor-info {
@@ -103,7 +110,6 @@
         @include border-radius($metro-radius);
       }
     }
-
 
     .form-actions {
       text-align: center;

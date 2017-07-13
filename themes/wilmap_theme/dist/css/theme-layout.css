@@ -1418,7 +1418,7 @@ button.btn {
       width: 179px;
       transition: all 0.3s ease;
       background-color: #b3001e;
-      border: 1px solid rgba(255, 255, 255, 0.4);
+      border: 1px solid #fff;
       border-top: none;
       z-index: 99; }
       @media only screen and (min-width: 768px) and (max-width: 1124px) {
@@ -1503,7 +1503,7 @@ button.btn {
     padding-bottom: 20px;
     padding-left: 229px;
     min-height: auto;
-    background-color: rgba(255, 255, 255, 0.9); }
+    background-color: rgba(255, 255, 255, 0.95); }
     @media only screen and (min-width: 768px) and (max-width: 1124px) {
       .site-header .navbar {
         padding-top: 20px;
