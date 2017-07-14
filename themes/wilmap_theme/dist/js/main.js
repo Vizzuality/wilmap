@@ -194,10 +194,23 @@
        * Contributor Filter List
        */
       contributorFilterList: function() {
-        var runON = 'body.path-user';
+        var runON = '.view-id-contributors .view-filters';
 
         if ($(runON).length > 0) {
+          if (!$(runON + ' .tit').length > 0) {
+            $(runON).prepend('<fieldset class="tit"><legend>Filter by:</legend></fieldset>');
+          }
 
+          // Selects
+          $(runON + ' .js-form-type-select').each(function(item, value){
+            var label = $(this).find('label').text();
+
+            $(this).find('select option:first').text(label);
+          });
+
+          // Name
+          var label_name = $(runON + ' .js-form-item-name label').text();
+          $(runON + ' .js-form-item-name input').attr('placeholder', label_name);
         }
       },
 
@@ -208,6 +221,7 @@
         var runON = '.view-list-entries .view-filters';
 
         if ($(runON).length > 0) {
+          $(runON).prepend('<fieldset><legend>Filter by:</legend></fieldset>');
 
           if(!$(runON + ' .form--inline .form--filter').length > 0) {
             $(runON + ' .views-exposed-form .form--inline').append('<div class="form--filter"></div>');
@@ -756,6 +770,12 @@
           output += '           <div class="tab-content active">';
           output += '             <a class="btn sharebutton fb" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u='+url_to_share+'">Share on facebook</a>';
           output += '             <a class="btn sharebutton twitter" target="_blank" href="https://twitter.com/share?url='+url_to_share+'">Share on twitter</a>';
+          output += '             <br /><br />';
+          output += '             <div class="copy-url append field">';
+          output += '               <input class="input" type="text" value="'+unescape(url_to_share)+'" />';
+          output += '               <a class="btn" href="#">COPY</a>';
+          output += '               <div class="result"></div>';
+          output += '             </div>';
           output += '           </div>';
           output += '           <div class="tab-content">';
           output += '             <p>Comparte mapa</p>';
@@ -771,6 +791,10 @@
           // Action in open modal button
           $(dom).addClass('switch').attr('gumby-trigger','#modal-share');
 
+          $(dom).on('click', function(){
+            $('.copy-url .result').text('').removeClass('success').removeClass('error');
+          });
+
           // Actions in share button
           $('a.sharebutton').on('click', function(e){
             var w = 360;
@@ -781,6 +805,20 @@
             window.open($(this).attr('href'), "wnd", "status = 1, height = " + h + ", width = " + w + ", top = " + top + ", left = " + left + ", resizable = 0");
             e.preventDefault();
           });
+
+          // Copy URL to clipboard
+          $('.copy-url a.btn').on('click', function(e){
+            try {
+              $('.copy-url .input').select();
+              document.execCommand("copy");
+              $('.copy-url .result').text('Page URL copied!').addClass('success');
+            } catch(err) {
+              $('.copy-url .result').text('Page URL not copied. Please select and copy with your keyboard.').addClass('error');
+            }
+
+            e.preventDefault();
+          });
+
         }
       },
 
@@ -844,6 +882,7 @@
               var target = $(item).attr('href').split('?')[1];
 
               if (uri.indexOf(target) != -1) {
+                $(dom + ' .views-row a').removeClass('__active');
                 $(item).addClass('__active');
 
                 if(isPhone) {
@@ -865,7 +904,7 @@
         var dom_entries = dom + ' .block-views-blockentries-block-1';
         var isPhone = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
         var uri = location.href.split('#')[1];
-            uri = (uri === undefined) ? false : uri;
+            uri = (uri === undefined) ? '' : uri;
 
         if ($(dom).length > 0) {
 
@@ -913,9 +952,8 @@
           $(dom_sidemenu + ' .view-content .views-row a').each(function(i, item) {
               var target = $(item).attr('href').split('#')[1];
 
-console.log(uri && uri.indexOf(target));
-
-              if (uri && uri.indexOf(target) != -1) {
+              if (uri.indexOf(target) != -1) {
+                $(dom_sidemenu + ' .view-content .views-row a').removeClass('__active');
                 $(item).addClass('__active');
 
                 //Scroll content

@@ -10,7 +10,8 @@
 // -------------------------------------
 
 a.btn,
-button.btn {
+button.btn,
+.append .btn {
   @include default-button();
 }
 

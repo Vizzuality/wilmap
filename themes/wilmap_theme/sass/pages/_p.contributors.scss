@@ -22,6 +22,72 @@
     @include margin(null null $dp * 8 null);
     display: block;
     clear: both;
+
+    fieldset {
+      @include margin(null null 0 null);
+    }
+
+    label {
+      display: none;
+    }
+
+    input.form-text {
+      @include padding($dp 0 !important);
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+
+    .picker {
+      padding-left: 0;
+    }
+
+    // Scaffold
+    .js-form-item-country {
+      @include column(2, false, collapse, false);
+
+      @include respond(tablets) {
+        width: columns(2);
+      }
+
+      @include respond(all-phones) {
+        width: columns(4.2);
+        margin-right: $dp * 1.2;
+      }
+    }
+
+    .js-form-item-expertise {
+      @include column(3);
+
+      @include respond(tablets) {
+        width: columns(4);
+      }
+
+      @include respond(all-phones) {
+        width: columns(9);
+      }
+    }
+
+    .js-form-item-name {
+      @include column(7);
+
+      @include respond(tablets) {
+        width: columns(6);
+      }
+
+      @include respond(all-phones) {
+        width: columns(10);
+        margin-right: $dp * 1.2;
+      }
+    }
+
+    .form-actions {
+      @include column(2);
+
+      @include respond(all-phones) {
+        width: columns(2);
+      }
+    }
   }
 
   // Content
@@ -94,23 +160,6 @@
   }
 
   #block-contactblock {
-    label {
-      @include red-caps-link();
-      font-weight: $semibold;
-      text-decoration: none;
-      text-align: left;
-
-      &:hover {
-        text-decoration: none;
-      }
-    }
-
-    .field {
-      .input {
-        @include border-radius($metro-radius);
-      }
-    }
-
     .form-actions {
       text-align: center;
 

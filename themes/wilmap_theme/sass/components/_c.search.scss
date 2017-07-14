@@ -16,6 +16,7 @@
     @include position(absolute, $dp * 1.8 $dp * 3.5 null auto);
     @include fs(20px);
     @include size($dp * 2);
+    @include padding(0 $dp !important);
     display: block;
     color: $fourth-color;
     border: none;

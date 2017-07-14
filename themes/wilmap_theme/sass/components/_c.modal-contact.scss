@@ -1,0 +1,40 @@
+// ============================================================================
+//
+// COMPONENTS: MODAL CONTACT
+//
+// ============================================================================
+
+.contact-message-personal-form.modal {
+
+  .content {
+    position: relative;
+    overflow: visible;
+    z-index: 2;
+    top: 15%;
+    width: 50%;
+    min-height: 50%;
+    max-height: 65%;
+    margin: 0 auto;
+    padding: 30px;
+
+    @include respond(portrait-tablets) {
+      top: 20%;
+      width: 80%;
+      min-height: 0;
+      max-height: 80%;
+    }
+
+    @include respond(all-phones) {
+      top: 10%;
+      width: 80%;
+      min-height: 0;
+      max-height: 92.5%;
+    }
+
+    .inner-content {
+      overflow-y: scroll;
+      min-height: 90%;
+      border: 1px solid red;
+    }
+  }
+}

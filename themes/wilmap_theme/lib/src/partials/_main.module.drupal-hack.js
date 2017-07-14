@@ -15,10 +15,23 @@
        * Contributor Filter List
        */
       contributorFilterList: function() {
-        var runON = 'body.path-user';
+        var runON = '.view-id-contributors .view-filters';
 
         if ($(runON).length > 0) {
+          if (!$(runON + ' .tit').length > 0) {
+            $(runON).prepend('<fieldset class="tit"><legend>Filter by:</legend></fieldset>');
+          }
 
+          // Selects
+          $(runON + ' .js-form-type-select').each(function(item, value){
+            var label = $(this).find('label').text();
+
+            $(this).find('select option:first').text(label);
+          });
+
+          // Name
+          var label_name = $(runON + ' .js-form-item-name label').text();
+          $(runON + ' .js-form-item-name input').attr('placeholder', label_name);
         }
       },
 
@@ -29,6 +42,7 @@
         var runON = '.view-list-entries .view-filters';
 
         if ($(runON).length > 0) {
+          $(runON).prepend('<fieldset><legend>Filter by:</legend></fieldset>');
 
           if(!$(runON + ' .form--inline .form--filter').length > 0) {
             $(runON + ' .views-exposed-form .form--inline').append('<div class="form--filter"></div>');

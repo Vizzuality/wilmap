@@ -117,7 +117,7 @@ $entry-gradient-dir:     180deg;
     overflow: hidden;
 
     .node {
-      @include topic--gradient(relative, false);
+      @include topic--gradient(relative, true);
     }
   }
 }
@@ -161,6 +161,10 @@ $entry-gradient-dir:     180deg;
       display: block;
       cursor: pointer;
       overflow: hidden;
+
+      &:hover {
+        background-color: $news-color-hover;
+      }
 
       .node__title {
         @include entry--title();

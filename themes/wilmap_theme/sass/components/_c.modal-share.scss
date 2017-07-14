@@ -11,7 +11,7 @@
   }
 
   .content {
-    min-height: 30%;
+    min-height: 48%;
   }
 
   .tabs {
@@ -21,6 +21,10 @@
   .tab-nav {
     border-bottom: 5px solid lighten($fifth-color, 10);
     margin-bottom: $dp * 3;
+
+    @include respond(all-phones) {
+      margin-bottom: $dp * 1.5;
+    }
 
     li {
       @include box-shadow(none);
@@ -54,14 +58,26 @@
     }
   }
 
+  .tab-content {
+    text-align: center;
+  }
+
   .sharebutton {
-    width: 44%;
-    margin: $dp * 2 $dp * 3 $dp * 2 0 !important;
+    width: 45%;
+    margin: $dp * 2 0 $dp * 2 $dp * 3 !important;
+
+    &:first-child {
+      margin: $dp * 2 0 $dp * 2 0 !important;
+    }
+
+    @include respond(tablets) {
+      width: 48%;
+      margin: $dp * 2 0 $dp * 2 $dp !important;
+    }
 
     @include respond(all-phones) {
-      @include trim();
       width: 100%;
-      margin: null null $dp * 2 null !important;
+      margin: 0 0 $dp * 2 0 !important;
     }
 
     &.fb {
@@ -70,6 +86,31 @@
 
     &.twitter {
       @include default-button($second-color, #598dca);
+    }
+  }
+
+  .copy-url {
+    @include trim();
+    
+    .input {
+      width: 80%;
+
+      @include respond(all-phones) {
+        width: 55%;
+      }
+    }
+
+    .result {
+      @include font($normal - 2, 1, $regular, $body-font);
+      @include padding($dp);
+
+      &.success {
+        color: $success-color;
+      }
+
+      &.error {
+        color: $danger-color;
+      }
     }
   }
 }

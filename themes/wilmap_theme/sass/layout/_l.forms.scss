@@ -9,20 +9,20 @@
 // Specific Settings: Vars & Mixins
 // -------------------------------------
 
-$form-legend-color:                      $first-color;
-$form-legend-weight:                     $regular;
-$form-label-color:                       $fourth-color;
-$form-label-weight:                      $medium;
-$form-input-color:                       lighten($fourth-color, 20);
+$form-legend-color:                      $third-color;
+$form-legend-weight:                     $bold;
+$form-label-color:                       $third-color;
+$form-label-weight:                      $bold;
+$form-input-color:                       $fourth-color;
 $form-input-bg-color:                    $white;
-$form-input-weight:                      $regular;
-$form-input-stroke-size:                 2px;
+$form-input-weight:                      $semibold;
+$form-input-stroke-size:                 1px;
 $form-input-stroke-color:                $gray-10;
-$form-input-radius:                      $default-radius;
+$form-input-radius:                      $metro-radius;
 $form-picker-color:                      $form-input-color;
 $form-picker-bg-color:                   $form-input-bg-color;
-$form-picker-weight:                     $form-input-weight;
-$form-picker-stroke-size:                $form-input-stroke-size;
+$form-picker-weight:                     $semibold;
+$form-picker-stroke-size:                0;
 $form-picker-stroke-color:               $form-input-stroke-color;
 $form-picker-radius:                     $form-input-radius;
 $form-radiocheckbox-color:               $form-input-color;
@@ -30,8 +30,8 @@ $form-radiocheckbox-bg-color:            #f2f2f2;
 $form-radiocheckbox-weight:              $form-input-weight;
 $form-radiocheckbox-stroke-size:         1px;
 $form-radiocheckbox-stroke-color:        #dedede;
-$form-radiocheckbox-radius:              3px;
-$form-radiocheckbox-checked-color:       $fifth-color;
+$form-radiocheckbox-radius:              $metro-radius;
+$form-radiocheckbox-checked-color:       $third-color;
 
 
 // -------------------------------------
@@ -48,7 +48,8 @@ fieldset {
   legend {
     @include trim();
     @include margin(null null $dp * 2 null);
-    @include font($normal, 1, $form-legend-weight, $body-font);
+    @include font($normal - 1, 1, $form-legend-weight, $heading-font);
+    text-transform: uppercase;
     display: block;
     color: $form-legend-color;
   }
@@ -60,7 +61,8 @@ form label,
 label {
   @include trim();
   @include margin(null null $dp - 2 null);
-  @include font($normal, 1, $form-label-weight, $body-font);
+  @include font($normal - 1, 1, $form-label-weight, $heading-font);
+  text-transform: uppercase;
   display: block;
   color: $form-label-color;
   cursor: initial;
@@ -86,8 +88,8 @@ label {
   .input {
     @include trim();
     @include position(relative);
-    @include padding(0 $dp);
-    @include font($normal - 2, 1, $form-input-weight, $body-font);
+    @include padding($dp * 2 $dp * 1.6 !important);
+    @include font($normal, 1, $form-input-weight, $body-font);
     @include border-radius($form-input-radius);
     @include box-shadow(none);
     color: $form-input-color;
@@ -96,6 +98,10 @@ label {
     outline: none;
     resize: none;
     -webkit-appearance: none;
+
+    &::placeholder {
+      color: $form-input-color;
+    }
 
     &.file {
       @include trim();
@@ -118,7 +124,7 @@ label {
     @include trim();
     @include position(relative);
     @include margin(null null $dp / 2 null);
-    @include font($normal - 2, 1, $form-radiocheckbox-weight, $body-font);
+    @include font($normal, 1, $form-radiocheckbox-weight, $body-font);
     color: $form-radiocheckbox-color;
     border: 0;
     outline: none;
@@ -184,28 +190,28 @@ label {
   resize: none;
   vertical-align: top;
 
-  @include icon-change('icon-down-open', after);
+  @include icon-change('icon-down-dir', after);
   &::after {
     @include trim();
-    @include padding($dp - 8 $dp / 2);
-    @include position(absolute, 4px 0% null null);
-    @include fs(17px);
+    @include padding(0 $dp / 2);
+    @include position(absolute, 3px 0 null null);
+    @include fs(20px);
     color: darken($form-picker-stroke-color, 10);
     border: 0;
-    border-left: 1px solid $form-picker-stroke-color;
+    border-left: $form-picker-stroke-size solid $form-picker-stroke-color;
 
     @include respond(tablets) {
-      @include position(absolute, 2px 0% null null);
+      @include position(absolute, 0 0 null null);
     }
 
     @include respond(all-phones) {
-      @include position(absolute, 2px 0% null null);
+      @include position(absolute, 0 0 null null);
     }
   }
 
   select {
     @include trim();
-    @include font($normal - 2, 1, $form-picker-weight, $body-font);
+    @include font($normal, 1, $form-picker-weight, $body-font);
     @include size(140% auto);
     color: $form-picker-color;
     outline: none;
@@ -215,5 +221,6 @@ label {
 
 // Search fields
 .field .input.form-search {
+  @include padding(0 $dp !important);
   width: auto;
 }
