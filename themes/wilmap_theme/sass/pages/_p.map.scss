@@ -15,6 +15,31 @@
 // -------------------------------------
 
 body.node-map {
+  .block-wilmap-map {
+    .wilmap {
+      display: block;
+      min-width: 250px;
+      min-height: 250px;
+      z-index: 0;
+    }
+  }
+
+  .layout-main-wrapper {
+    @include reset-grid();
+
+    @include respond(tablets) {
+      @include reset-grid();
+    }
+
+    @include respond(all-phones) {
+      @include reset-grid();
+    }
+
+    .layout-main {
+      @include reset-grid();
+    }
+  }
+
   .footer_first_wrap {
     display: none;
   }

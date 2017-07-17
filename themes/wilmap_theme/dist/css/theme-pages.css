@@ -3927,6 +3927,37 @@ article.node--type-entry.node--view-mode-full .user-actions {
       article.node--type-entry.node--view-mode-full .user-actions .action .site-btn a {
         width: 100%; } }
 
+body.node-map .block-wilmap-map .wilmap {
+  display: block;
+  min-width: 250px;
+  min-height: 250px;
+  z-index: 0; }
+body.node-map .layout-main-wrapper {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%; }
+  @media only screen and (min-width: 768px) and (max-width: 1124px) {
+    body.node-map .layout-main-wrapper {
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+      max-width: 100%;
+      width: 100%; } }
+  @media only screen and (max-width: 767px) {
+    body.node-map .layout-main-wrapper {
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+      max-width: 100%;
+      width: 100%; } }
+  body.node-map .layout-main-wrapper .layout-main {
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%; }
 body.node-map .footer_first_wrap {
   display: none; }
 

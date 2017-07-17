@@ -75,7 +75,7 @@
 
 .ui-autocomplete.ui-widget.ui-widget-content {
   width: $dp * 35 !important;
-  min-width: auto !important;
+  min-width: 300px !important;
   position: fixed !important;
   top: $dp * 5.2 !important;
   right: 0 !important;
@@ -89,6 +89,7 @@
 
   @include respond(tablets) {
     width: $dp * 30 !important;
+    min-width: 300px !important;
     position: fixed !important;
     top: $dp * 5.2 !important;
     right: 0 !important;
@@ -105,6 +106,7 @@
 
   @include respond(all-phones) {
     width: 100% !important;
+    min-width: 100% !important;
     position: absolute !important;
     top: $dp * 12 !important;
     right: auto !important;

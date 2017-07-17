@@ -3,6 +3,16 @@
 // ----------------
 
 
+// Reset grid
+@mixin reset-grid() {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%
+
+}
+
 // Margin and Padding 0
 @mixin trim() {
   margin: 0;

@@ -23,5 +23,8 @@
     "npm-gumby": "github:chewuaka/gumby",
     "sassy-buttons": "github:chewuaka/sassy-buttons",
     "slick-carousel": "^1.6.0"
+  },
+  "dependencies": {
+    "leaflet": "^1.1.0"
   }
 }

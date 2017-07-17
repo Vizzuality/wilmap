@@ -12,6 +12,28 @@
     methods: {
 
       /**
+       * Map
+       */
+      Map: function() {
+        var dom = '.block-wilmap-map .wilmap';
+
+        if ($(dom).length > 0) {
+          $(dom).attr('id','mapid');
+          $(dom).width($(window).width() - 300);
+          $(dom).height($(window).height() - 50);
+
+          var mymap = L.map('mapid').setView([51.505, -0.09], 8);
+          L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+              attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+              maxZoom: 5,
+              id: 'mapbox.streets',
+              accessToken: 'your.mapbox.access.token'
+          }).addTo(mymap);
+        }
+      },
+
+
+      /**
        * Big Links Areas. List and grid items.
        */
       bigLinkAreas: function() {

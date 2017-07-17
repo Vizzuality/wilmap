@@ -925,7 +925,7 @@
 
 .ui-autocomplete.ui-widget.ui-widget-content {
   width: 350px !important;
-  min-width: auto !important;
+  min-width: 300px !important;
   position: fixed !important;
   top: 52px !important;
   right: 0 !important;
@@ -939,6 +939,7 @@
   @media only screen and (min-width: 768px) and (max-width: 1124px) {
     .ui-autocomplete.ui-widget.ui-widget-content {
       width: 300px !important;
+      min-width: 300px !important;
       position: fixed !important;
       top: 52px !important;
       right: 0 !important;
@@ -953,6 +954,7 @@
   @media only screen and (max-width: 767px) {
     .ui-autocomplete.ui-widget.ui-widget-content {
       width: 100% !important;
+      min-width: 100% !important;
       position: absolute !important;
       top: 120px !important;
       right: auto !important;
