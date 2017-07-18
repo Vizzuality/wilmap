@@ -191,6 +191,38 @@
     methods: {
 
       /**
+       * Contributor/s Field profiles
+       */
+      contributorFieldProfile: function() {
+        var runON = '.field--name-field-contributors';
+
+        if ($(runON).length > 0) {
+          var text_output   = '';
+          var dom_output    = '';
+          var num_contrib   = $(runON + '> .field__item');
+          var date_on_page  = $('body .field--name-field-date-published:first');
+
+          // Num authors
+          if ( num_contrib.length > 1) {
+            text_output = '<div class="authors">' + num_contrib.length + ' Authors</div>';
+          } else {
+            text_output = '<div class="authors">' + $(runON + ' .field__item .field--name-field-first-name').text() + ' ' + $(runON + ' .field__item .field--name-field-last-name').text() + '</div>';
+          }
+
+          // Date
+          if (date_on_page.length > 0) {
+            text_output = text_output + date_on_page.wrap().html();
+            date_on_page.remove();
+          }
+
+          if(!$(runON + '.dph').lenght > 0) {
+            $(runON).empty().addClass('dph');
+            $(runON).append(dom_output).append(text_output);
+          }
+        }
+      },
+
+      /**
        * Contributor Filter List
        */
       contributorFilterList: function() {

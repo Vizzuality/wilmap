@@ -155,7 +155,7 @@
     }
 
     .view-contributions {
-      @include news(grid, '.views-row');
+      @include contributions(grid, '.views-row');
     }
   }
 

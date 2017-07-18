@@ -1,0 +1,132 @@
+// ============================================================================
+//
+// HELPERS: CONTRIBUTIONS SNIPPETS
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+$contributions-color-base:       lighten($fifth-color, 10);
+$contributions-color-hover:      $fifth-color;
+$contributions-gradient-dir:     180deg;
+
+
+// -------------------------------------
+// contributions list
+// -------------------------------------
+
+@mixin contributions-list($structure:'.views-row', $break-margin: false) {
+  // Structure wrapper
+  @include content-listings-wrapper($structure, $break-margin) {
+    @include margin(null null $dp * 2 null);
+    @include clearfix();
+    overflow: hidden;
+
+    .node {
+      @include topic--gradient(relative, true);
+    }
+  }
+}
+
+// -------------------------------------
+// contributions grid
+// -------------------------------------
+
+@mixin contributions-grid($structure:'.views-row', $break-margin: '2n+1') {
+  // Structure wrapper
+  @include content-listings-wrapper($structure, $break-margin) {
+    @include column(7);
+    @include margin(null null $dp * 2 null);
+    @include clearfix();
+    max-height: $dp * 37;
+    overflow: hidden;
+
+    .node {
+      @include topic--gradient(relative, true);
+      height: $dp * 37;
+      max-height: $dp * 37;
+
+      &:hover {
+        background-color: $contributions-color-hover;
+      }
+    }
+  }
+}
+
+
+// -------------------------------------
+// Contributions general entity
+// -------------------------------------
+@mixin contributions($target: false, $structure:none, $break-margin: false) {
+  & {
+    .node {
+      @include trim-field();
+      @include margin(null null $dp * 2 null);
+      @include padding($dp * 3);
+      background-color: $topic-color-base;
+      display: block;
+      cursor: pointer;
+      overflow: hidden;
+
+      &:hover {
+        background-color: $contributions-color-hover;
+      }
+
+      .post-type {
+        //@include contributions--type--post();
+        @include entry--taxonomy();
+        text-transform: none;
+      }
+
+      .node__title {
+        @include entry--title();
+      }
+
+      .field--name-field-date-published {
+        @include entry--date();
+      }
+
+      .field--name-field-tax-section {
+        @include entry--taxonomy();
+      }
+
+      .field--name-field-location-entry {
+        @include entry--location();
+      }
+
+      .text-formatted {
+        @include margin($dp * 3 null null null);
+      }
+
+      .action {
+        @include position(relative);
+        @include margin($dp * 2 null null null);
+        z-index: 10;
+
+        a {
+          @include font($normal - 2, 1, $bold, $buttons-font);
+          text-transform: uppercase;
+          text-decoration: none;
+          color: $fourth-color;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  // Layouts
+  // Grid
+  @if $target == grid {
+    @include contributions-grid($structure, '2n+1');
+  }
+
+  // List
+  @if $target == list {
+    @include contributions-list($structure, false);
+  }
+}
