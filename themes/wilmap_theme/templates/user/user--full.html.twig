@@ -19,12 +19,12 @@
 <article{{ attributes.addClass('profile') }}>
   {% if content %}
     <div class="contributor-sheet">
-      <div class="field field--field-ranking field--label-above">
+      <!-- <div class="field field--field-ranking field--label-above">
         <div class="field__label">Ranking puntuation</div>
         <div class="field__items">
           <span class="value">{{ ranking }}</span>
         </div>
-      </div>
+      </div> -->
       <div class="field field--field-contributions field--label-above">
         <div class="field__label">Contributions</div>
         <div class="field__items">
@@ -34,9 +34,13 @@
       {% if content.field_areas %}
         {{ content.field_areas }}
       {% endif %}
-      {% if content.field_region %}
-        {{ content.field_region }}
-      {% endif %}
+      <div class="field field--field-regions field--label-above">
+        <div class="field__label">Countries/Regions</div>
+        <div class="field__items">
+          {{ content.field_country }}
+          {{ content.field_region }}
+        </div>
+      </div>
       {% if content.field_social_m %}
       <div class="field field--field-social-m field--label-above">
         <div class="field__label">Contact</div>
