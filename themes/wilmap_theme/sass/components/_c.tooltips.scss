@@ -8,20 +8,20 @@
 
 .ttip {
   &:before {
-    @include box-shadow(rgba(0, 0, 0, 0.2) 0px 0px 10px);
+    @include box-shadow(rgba(0, 0, 0, 0.3) -3px -6px 7px);
     border-top: none !important;
     border-bottom: 14px solid $white !important;
     border-left: 0px solid transparent;
     border-right: 14px solid transparent;
     bottom: auto;
-    top: 90%;
+    top: 84%;
     z-index: 11;
     left: $dp * 2.2;
   }
 
   &:after {
     @include border-radius($metro-radius);
-    @include box-shadow(rgba(0, 0, 0, 0.2) 0px 0px 10px);
+    @include box-shadow(rgba(0, 0, 0, 0.3) 0px 0px 14px);
     @include font($normal, 1.1, $bold, $base-font-family);
     bottom: auto;
     top: 115%;

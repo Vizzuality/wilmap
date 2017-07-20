@@ -876,7 +876,7 @@
     font-weight: 600 !important;
     display: inline-block;
     position: relative;
-    top: -3px; }
+    top: -5px; }
     .field--name-field-contributors .info {
       margin-bottom: 30px;
       font-size: 16px;
@@ -1167,18 +1167,18 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
 
 /* Tooltips */
 .ttip:before {
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) -3px -6px 7px;
   border-top: none !important;
   border-bottom: 14px solid #fff !important;
   border-left: 0px solid transparent;
   border-right: 14px solid transparent;
   bottom: auto;
-  top: 90%;
+  top: 84%;
   z-index: 11;
   left: 22px; }
 .ttip:after {
   border-radius: 0;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 14px;
   font-size: 16px;
   font-size: 1rem;
   line-height: 17.6px;
@@ -1192,5 +1192,4 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
   background-color: #fff;
   color: #222;
   z-index: 10; }
-
 /*# sourceMappingURL=theme-components.css.map */
