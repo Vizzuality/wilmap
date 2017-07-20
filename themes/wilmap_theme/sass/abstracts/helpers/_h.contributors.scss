@@ -187,7 +187,7 @@
         @include contributors--list--contributions();
         @include position(absolute, $dp null null $dp);
         @include padding(0 null $dp 0);
-        width: 75%;
+        width: 90%;
         border-bottom: 1px solid $second-color;
         z-index: 10;
       }

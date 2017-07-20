@@ -1,0 +1,70 @@
+// ============================================================================
+//
+// COMPONENTS: USER ACTIONS
+//
+// ============================================================================
+
+.user-actions {
+  @include column(14);
+  @include clearfix();
+  @include margin($dp * 4 null null columns(2.45));
+  clear: both;
+  float: none;
+
+  @include respond(all-phones) {
+    clear: both;
+    float: none;
+  }
+
+  .attachments {
+    @include column(5, false, collapse, false);
+
+    a.toggle {
+      @include button-download-files();
+      @include margin(null null $dp null);
+
+      @include respond(all-phones) {
+        width: 100%;
+      }
+    }
+
+    .drawer {
+      @include margin(null null $dp * 2 null);
+      background: none;
+
+      .file {
+        background-position: 0% $dp / 2;
+      }
+    }
+  }
+
+  .action {
+    @include column(6);
+    @include push(1);
+
+    @include respond(tablets) {
+      @include push(0);
+    }
+
+    .site-btn {
+      @include respond(all-phones) {
+        clear:both;
+        float: none;
+        width: 100%;
+      }
+
+      a {
+        @include respond(all-phones) {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+//Topics
+.action {
+  @include column(14);
+  @include margin($dp null $dp * 5 null);
+  text-align: center;
+}

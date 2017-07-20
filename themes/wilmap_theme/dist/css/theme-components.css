@@ -819,23 +819,80 @@
     min-height: 90%;
     border: 1px solid red; }
 
-.field--name-field-contributors .field__item {
-  display: inline-block;
-  position: relative;
-  left: -5px; }
-  .field--name-field-contributors .field__item:first-child {
-    left: 12px; }
-  .field--name-field-contributors .field__item .field--name-field-first-name,
-  .field--name-field-contributors .field__item .field--name-field-last-name {
+.field--name-field-contributors {
+  margin: 0;
+  padding: 0;
+  overflow: visible; }
+  .field--name-field-contributors .field__item {
     display: none; }
-  .field--name-field-contributors .field__item .field--name-user-picture {
-    border-radius: 80px;
-    height: 47px;
-    width: 47px;
-    border: 2px solid #fff; }
-    .field--name-field-contributors .field__item .field--name-user-picture img {
-      -webkit-filter: grayscale(100%);
-      filter: grayscale(100%); }
+  .field--name-field-contributors .thumbnails {
+    margin-right: 3.33333px;
+    display: inline-block;
+    position: relative; }
+    .field--name-field-contributors .thumbnails.single {
+      margin-right: 10px; }
+    .field--name-field-contributors .thumbnails .profile {
+      display: inline-block;
+      position: relative;
+      left: -15px; }
+      .field--name-field-contributors .thumbnails .profile:first-child {
+        left: 0; }
+      .field--name-field-contributors .thumbnails .profile a {
+        display: block;
+        width: 100%;
+        height: 100%; }
+      .field--name-field-contributors .thumbnails .profile .profile-picture {
+        border-radius: 80px;
+        height: 47px;
+        width: 47px;
+        position: relative;
+        border: 2px solid #fff;
+        display: block;
+        overflow: hidden;
+        position: relative;
+        background-color: #fff;
+        z-index: 0; }
+        .field--name-field-contributors .thumbnails .profile .profile-picture::before {
+          position: absolute;
+          top: 0;
+          left: 0;
+          content: '';
+          background-image: linear-gradient(90deg, #b3001e, #b3001e);
+          opacity: 0; }
+        .field--name-field-contributors .thumbnails .profile .profile-picture::before {
+          height: 100%;
+          width: 100%;
+          z-index: 1; }
+        .field--name-field-contributors .thumbnails .profile .profile-picture:hover {
+          z-index: 10; }
+          .field--name-field-contributors .thumbnails .profile .profile-picture:hover::before {
+            opacity: 0.6; }
+        .field--name-field-contributors .thumbnails .profile .profile-picture img {
+          -webkit-filter: grayscale(100%);
+          filter: grayscale(100%); }
+  .field--name-field-contributors .info {
+    margin: 0;
+    padding: 0;
+    font-weight: 600 !important;
+    display: inline-block;
+    position: relative;
+    top: -3px; }
+    .field--name-field-contributors .info {
+      margin-bottom: 30px;
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 27.2px;
+      line-height: 1.7rem;
+      font-weight: 400;
+      font-family: "Raleway", sans-serif;
+      color: #968f7e; }
+      @media only screen and (max-width: 767px) {
+        .field--name-field-contributors .info {
+          padding-left: 0; } }
+    .field--name-field-contributors .info {
+      margin-bottom: 5px; }
+    .field--name-field-contributors .info .authors {
+      text-transform: uppercase; }
 
 .block-search {
   font-family: 'entypo';
@@ -1107,5 +1164,33 @@ body.node-map .fake-modal.active {
 body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
   display: block !important;
   background: #b3001e; }
+
+/* Tooltips */
+.ttip:before {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+  border-top: none !important;
+  border-bottom: 14px solid #fff !important;
+  border-left: 0px solid transparent;
+  border-right: 14px solid transparent;
+  bottom: auto;
+  top: 90%;
+  z-index: 11;
+  left: 22px; }
+.ttip:after {
+  border-radius: 0;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 17.6px;
+  line-height: 1.1rem;
+  font-weight: 700;
+  font-family: "Raleway", sans-serif;
+  bottom: auto;
+  top: 115%;
+  left: 22px;
+  border: 1px solid #fff;
+  background-color: #fff;
+  color: #222;
+  z-index: 10; }
 
 /*# sourceMappingURL=theme-components.css.map */

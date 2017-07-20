@@ -98,9 +98,39 @@
     {% endif %}
   </header>
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-    {{ content }}
-    <div class="action">
-      <a class="btn" href="/news">More news</a>
+    <div class="node-main">
+      <div class="node-header">
+        {{ content.field_contributors }}
+        <div class="node-date">{{ node.getCreatedTime()|date("F j, Y") }}</div>
+      </div>
+
+      <div class="node-body">
+        {{ content.field_summary }}
+      </div>
+
+      <div class="user-actions multi-blocks">
+        <div class="attachments">
+          {% if content.field_attachments|length > 5 %}
+            <a class="toggle" gumby-trigger="#download-attachments" href="#">Download files</a>
+            <div class="drawer" id="download-attachments">
+              {{ content.field_attachments }}
+            </div>
+          {% endif %}
+        </div>
+        <div class="action single-action">
+          <a class="btn" href="#" data-action="share">Share this</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="related">
+      {{ content.field_related_news }}
+    </div>
+
+    <div class="user-actions single-block">
+      <div class="action single-action">
+        <a class="btn" href="/news">More news</a>
+      </div>
     </div>
   </div>
 </article>

@@ -19,9 +19,11 @@
 
         if ($(runON).length > 0) {
           var text_output   = '';
-          var dom_output    = '';
+          var thumb_output  = '';
           var num_contrib   = $(runON + '> .field__item');
-          var date_on_page  = $('body .field--name-field-date-published:first');
+          var date_on_page  = $('body .node-date');
+          var class_ttip = (num_contrib.length > 1)?' ttip':'';
+          var class_single = (num_contrib.length > 1)?'':' single';
 
           // Num authors
           if ( num_contrib.length > 1) {
@@ -36,9 +38,19 @@
             date_on_page.remove();
           }
 
+          // Thumbnails
+          num_contrib.each(function(item, value){
+            thumb_output += '<div class="profile' + class_ttip + '" data-tooltip="' + $(value).find('.field--name-field-first-name').text() + ' ' + $(value).find('.field--name-field-last-name').text() + '">';
+            thumb_output += '  <a href="' + $(value).find('a').attr('href') + '">';
+            thumb_output += '   <div class="profile-picture"><img src="' + $(value).find('img').attr('src') + '" width="100" height="100" typeof="foaf:Image" class="image-style-thumbnail"></div>';
+            thumb_output += '  </a>';
+            thumb_output += '</div>';
+
+          });
+
           if(!$(runON + '.dph').lenght > 0) {
             $(runON).empty().addClass('dph');
-            $(runON).append(dom_output).append(text_output);
+            $(runON).append('<div class="thumbnails' + class_single + '">' + thumb_output + '</div><div class="info">' + text_output + '</div>');
           }
         }
       },
@@ -140,7 +152,7 @@
         var runON = 'body.page-node-type-entry';
 
         if ($(runON).length > 0) {
-          var toplinks = '.entry-top-links';
+          var toplinks = '.node-top';
 
           if ($(toplinks).length > 0) {
             // Link Go To Country Page

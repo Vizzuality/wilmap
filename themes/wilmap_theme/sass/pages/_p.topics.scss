@@ -23,25 +23,34 @@
 // TOPICS detail
 article.node--type-topics.node--view-mode-full {
   > .node__content {
-    > .text-formatted {
-      p {
-        @include column(12);
-        @include margin(null null null columns(1.45));
+      .node-body {
+      > .text-formatted {
+        p {
+          @include column(12);
+          @include margin(null null null columns(1.45));
 
-        @include respond(tablets) {
-          @include margin(null null null columns(1.8));
+          @include respond(tablets) {
+            @include margin(null null null columns(1.8));
+          }
         }
       }
     }
   }
 
-  .field--name-field-contributors {
-    @include margin(null null null columns(1.45));
+  .node-header {
+    @include column(12);
+    @include margin(null null $dp * 2 columns(1.45));
 
     @include respond(tablets) {
-      @include margin(null null null columns(1.8));
+      @include margin(null null $dp * 2 columns(1.8));
+    }
+
+    .node-date {
+      @include entry--date();
+      @include trim();
     }
   }
+
 
   .field--name-field-related-topics {
 
@@ -53,11 +62,6 @@ article.node--type-topics.node--view-mode-full {
     .field__items {
       @include topics(grid, '> .field__item');
     }
-  }
-
-  .action {
-    @include margin($dp * 4 null $dp * 3 null);
-    text-align: center;
   }
 }
 

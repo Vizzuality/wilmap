@@ -5,28 +5,79 @@
 // ============================================================================
 
 .field--name-field-contributors {
+  @include trim();
+  overflow: visible;
+
   .field__item {
+    display: none;
+  }
+
+  .thumbnails {
+    @include margin(null $dp / 3 null null);
     display: inline-block;
     position: relative;
-    left: -5px;
 
-    &:first-child {
-      left: 12px;
+    &.single {
+      @include margin(null $dp null null);
     }
 
-    .field--name-field-first-name,
-    .field--name-field-last-name {
-      display: none;
-    }
+    .profile {
+      display: inline-block;
+      position: relative;
+      left: -$dp * 1.5;
 
-    .field--name-user-picture {
-      @include border-radius($big-radius * 10);
-      @include size(47px 47px);
-      border: 2px solid $white;
-
-      img {
-        @include filter(grayscale(100%));
+      &:first-child {
+        left: 0;
       }
+
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .profile-picture {
+        @include border-radius($big-radius * 10);
+        @include size(47px 47px);
+        @include image-overlay($third-color, $third-color, 0);
+        border: 2px solid $white;
+        display: block;
+        overflow: hidden;
+        position: relative;
+        background-color: $white;
+        z-index: 0;
+
+        &::before {
+          // @include transition(all .2s ease);
+          @include size(100% 100%);
+          z-index: 1;
+        }
+
+        &:hover {
+          z-index: 10;
+
+          &::before {
+            opacity: 0.6;
+          }
+        }
+
+        img {
+          @include filter(grayscale(100%));
+        }
+      }
+    }
+  }
+
+  .info {
+    @include entry--date();
+    @include trim();
+    font-weight: $semibold !important;
+    display: inline-block;
+    position: relative;
+    top: -3px;
+
+    .authors {
+      text-transform: uppercase;
     }
   }
 }

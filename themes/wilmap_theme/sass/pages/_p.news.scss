@@ -22,13 +22,16 @@
 
 // NEWS detail
 article.node--type-news.node--view-mode-full {
-  .field--name-field-date-published {
-    @include news--date();
+  .node-header {
+    @include column(10);
     @include clearfix();
-    @include padding(null null null columns(2.45));
+    @include margin(null null $dp * 2 columns(2.45));
+    clear: both;
+    float: none;
 
-    @include respond(tablets) {
-      @include padding(null null null columns(2.8));
+    .node-date {
+      @include entry--date();
+      @include trim();
     }
   }
 
@@ -47,10 +50,5 @@ article.node--type-news.node--view-mode-full {
     .field__items {
       @include news(grid, '> .field__item');
     }
-  }
-
-  .action {
-    @include margin($dp * 4 null $dp * 3 null);
-    text-align: center;
   }
 }

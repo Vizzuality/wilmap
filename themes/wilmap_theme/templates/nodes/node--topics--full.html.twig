@@ -98,9 +98,21 @@
     {% endif %}
   </header>
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-    {{ content }}
-    <div class="action">
-      <a class="btn" href="#" data-action="share">Share this</a>
+    <div class="node-main">
+      <div class="node-header">
+        {{ content.field_contributors }}
+        <div class="node-date">{{ node.getChangedTime()|date("F j, Y") }}</div>
+      </div>
+
+      <div class="node-body">
+        {{ content.field_definition_topic }}
+      </div>
+
+      <div class="user-actions single-block">
+        <div class="action single-action">
+          <a class="btn" href="#" data-action="share">Share this</a>
+        </div>
+      </div>
     </div>
   </div>
 </article>

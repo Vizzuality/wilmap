@@ -98,35 +98,46 @@
     {% endif %}
   </header>
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-    <div class="entry-top-links-hidden">
-      {{ content.field_location_entry }}
-      {{ content.field_tax_section }}
-    </div>
-
-    <div class="top-entry-info">
-      {{ content.field_contributors }}
-      {{ content.field_date_published }}
-      {{ content.field_external_link }}
-    </div>
-
-    {{ content.field_body_entry }}
-
-    <div class="user-actions">
-      <div class="attachments">
-        {% if content.field_attachments|length > 5 %}
-          <a class="toggle" gumby-trigger="#download-attachments" href="#">Download files</a>
-          <div class="drawer" id="download-attachments">
-            {{ content.field_attachments }}
-          </div>
-        {% endif %}
+    <div class="node-main">
+      <div class="node-top-hidden">
+        {{ content.field_location_entry }}
+        {{ content.field_tax_section }}
       </div>
-      <div class="action">
-        <a class="btn" href="#" data-action="share">Share</a>
-        <a class="btn gotocountry" href="#">Go to country page</a>
+
+      <div class="node-header">
+        {{ content.field_contributors }}
+        <div class="node-date">{{ node.getChangedTime()|date("F j, Y") }}</div>
+        {{ content.field_external_link }}
+      </div>
+
+      <div class="node-body">
+        {{ content.field_body_entry }}
+      </div>
+
+      <div class="user-actions multi-blocks">
+        <div class="attachments">
+          {% if content.field_attachments|length > 5 %}
+            <a class="toggle" gumby-trigger="#download-attachments" href="#">Download files</a>
+            <div class="drawer" id="download-attachments">
+              {{ content.field_attachments }}
+            </div>
+          {% endif %}
+        </div>
+        <div class="action multi-action">
+          <a class="btn" href="#" data-action="share">Share</a>
+          <a class="btn gotocountry" href="#">Go to country page</a>
+        </div>
       </div>
     </div>
 
-    {{ content.field_related_entries }}
+    <div class="related">
+      {{ content.field_related_entries }}
+    </div>
 
+    <div class="user-actions single-block">
+      <div class="action single-action">
+        <a class="btn" href="/entries">More entries</a>
+      </div>
+    </div>
   </div>
 </article>

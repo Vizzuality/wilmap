@@ -24,7 +24,7 @@
 }
 
 // ENTRY detail
-.entry-top-links {
+.node-top{
   @include position(absolute, $dp * 3.4 null null 0);
   z-index: 20;
 
@@ -51,14 +51,14 @@
 }
 
 article.node--type-entry.node--view-mode-full {
-  .entry-top-links-hidden {
+  .node-top-hidden {
     display: none;
   }
 
-  .top-entry-info {
+  .node-header {
     @include column(10);
     @include clearfix();
-    @include margin(null null $dp * 4 columns(2.45));
+    @include margin(null null $dp * 2 columns(2.45));
     clear: both;
     float: none;
 
@@ -67,9 +67,13 @@ article.node--type-entry.node--view-mode-full {
       float: none;
     }
 
-    .field--name-field-date-published {
-      @include entry--date();
+    .field--name-field-contributors {
       @include fancytiles(2,2,2);
+      @include trim();
+    }
+
+    .node-date {
+      @include entry--date();
       @include trim();
     }
 
@@ -104,64 +108,6 @@ article.node--type-entry.node--view-mode-full {
 
     .field__items {
       @include entry(grid, '> .field__item');
-    }
-  }
-
-  .user-actions {
-    @include column(14);
-    @include clearfix();
-    @include margin($dp * 4 null null columns(2.45));
-    clear: both;
-    float: none;
-
-    @include respond(all-phones) {
-      clear: both;
-      float: none;
-    }
-
-    .attachments {
-      @include column(5, false, collapse, false);
-
-      a.toggle {
-        @include button-download-files();
-        @include margin(null null $dp null);
-
-        @include respond(all-phones) {
-          width: 100%;
-        }
-      }
-
-      .drawer {
-        @include margin(null null $dp * 2 null);
-        background: none;
-
-        .file {
-          background-position: 0% $dp / 2;
-        }
-      }
-    }
-
-    .action {
-      @include column(6);
-      @include push(1);
-
-      @include respond(tablets) {
-        @include push(0);
-      }
-
-      .site-btn {
-        @include respond(all-phones) {
-          clear:both;
-          float: none;
-          width: 100%;
-        }
-
-        a {
-          @include respond(all-phones) {
-            width: 100%;
-          }
-        }
-      }
     }
   }
 }
