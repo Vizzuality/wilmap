@@ -7,12 +7,15 @@
   .tabs:after, .messages__wrapper:after {
     clear: both; }
 
-.tabs .tabs {
+.tabs .tabs, .user-actions, .user-actions .attachments, .user-actions .action, .action {
   margin-left: 1.77778%;
   float: left;
   min-height: 1px;
   position: relative;
   box-sizing: border-box; }
+
+.user-actions .attachments {
+  margin-left: 0; }
 
 .pager {
   margin: 0;
@@ -1192,4 +1195,139 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
   background-color: #fff;
   color: #222;
   z-index: 10; }
+
+.user-actions {
+  width: 100%;
+  *zoom: 1;
+  margin-top: 40px;
+  margin-left: 16.03333%;
+  clear: both;
+  float: none; }
+  @media only screen and (max-width: 767px) {
+    .user-actions {
+      float: left;
+      margin-left: 0;
+      width: 100%; } }
+  .user-actions:before, .user-actions:after {
+    content: "";
+    display: table; }
+  .user-actions:after {
+    clear: both; }
+  @media only screen and (max-width: 767px) {
+    .user-actions {
+      clear: both;
+      float: none; } }
+  .user-actions .attachments {
+    width: 34.57143%; }
+    @media only screen and (max-width: 767px) {
+      .user-actions .attachments {
+        float: left;
+        width: 100%; } }
+    .user-actions .attachments a.toggle {
+      margin: 0;
+      padding: 0;
+      font-size: inherit;
+      padding: 0.5em 1.5em;
+      display: inline-block;
+      cursor: pointer;
+      border-radius: 0;
+      *zoom: 1;
+      filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFFFFFFF', endColorstr='#FFCCCCCC');
+      background-color: #fff;
+      border: 0;
+      color: #222;
+      border-radius: 0;
+      font-size: 14px;
+      font-size: 0.875rem;
+      line-height: 14px;
+      line-height: 0.875rem;
+      font-weight: 600;
+      font-family: "Raleway", sans-serif;
+      padding: 14px 16px !important;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      letter-spacing: 0.9px;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-style: normal;
+      background-image: url("../../images/link_file.svg");
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      background-size: 30px 27px;
+      padding-left: 50px !important;
+      background-position: 10px 50%;
+      border: 1px solid #968f7e;
+      margin-bottom: 10px; }
+      .user-actions .attachments a.toggle .field {
+        margin: 0;
+        padding: 0; }
+      .user-actions .attachments a.toggle:hover {
+        text-decoration: none; }
+      .user-actions .attachments a.toggle:hover {
+        background-color: #f2f2f2; }
+      .user-actions .attachments a.toggle:active {
+        background-color: #ebebeb; }
+      .user-actions .attachments a.toggle.disabled, .user-actions .attachments a.toggle[disabled] {
+        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+        opacity: 0.6;
+        background: false;
+        cursor: default;
+        box-shadow: none; }
+      .user-actions .attachments a.toggle::-moz-focus-inner {
+        padding: 0 !important;
+        margin: -1px !important; }
+      @media only screen and (max-width: 767px) {
+        .user-actions .attachments a.toggle {
+          width: 100%; } }
+    .user-actions .attachments .drawer {
+      margin-bottom: 20px;
+      background: none; }
+      .user-actions .attachments .drawer .file {
+        background-position: 0% 5px; }
+  .user-actions .action {
+    width: 41.84127%;
+    margin-left: 9.04762%; }
+    @media only screen and (max-width: 767px) {
+      .user-actions .action {
+        float: left;
+        margin-left: 0;
+        width: 100%; } }
+    .user-actions .action:first-child {
+      margin-left: 7.26984%; }
+    @media only screen and (max-width: 767px) {
+      .user-actions .action {
+        margin-left: 0; }
+        .user-actions .action:first-child {
+          margin-left: 0; } }
+    @media only screen and (min-width: 768px) and (max-width: 1124px) {
+      .user-actions .action {
+        margin-left: 1.77778%; }
+        .user-actions .action:first-child {
+          margin-left: 0%; } }
+  @media only screen and (min-width: 768px) and (max-width: 1124px) and (max-width: 767px) {
+    .user-actions .action {
+      margin-left: 0; }
+      .user-actions .action:first-child {
+        margin-left: 0; } }
+
+    @media only screen and (max-width: 767px) {
+      .user-actions .action .site-btn {
+        clear: both;
+        float: none;
+        width: 100%; } }
+    @media only screen and (max-width: 767px) {
+      .user-actions .action .site-btn a {
+        width: 100%; } }
+
+.action {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  text-align: center; }
+  @media only screen and (max-width: 767px) {
+    .action {
+      float: left;
+      margin-left: 0;
+      width: 100%; } }
+
 /*# sourceMappingURL=theme-components.css.map */

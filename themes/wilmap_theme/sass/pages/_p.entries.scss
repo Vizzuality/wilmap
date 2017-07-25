@@ -16,11 +16,16 @@
 
 // ENTRY List
 .block-views-blocklist-entries-block-1 {
-  @include entry(grid, '.views-row');
-
-  &.mode-list {
+  &.switch-on {
     @include entry(list, '.views-row');
   }
+
+  &.switch-off {
+    @include entry(grid, '.views-row');
+  }
+
+  // Filter
+
 }
 
 // ENTRY detail

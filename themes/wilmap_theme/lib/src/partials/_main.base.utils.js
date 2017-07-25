@@ -162,5 +162,20 @@
         .replace(/[úüùûū]/g,"u")
         .replace(/[ç,ć,č]/g,"c")
         .replace(/[^\w\-]+/g, "");
+    },
+
+    /**
+    * ScrollAnimate
+    */
+    scrollAnimate: function( target, offset ) {
+      offset = typeof offset !== 'undefined' ? offset : 0;
+
+      if( $(target).length > 0 ) {
+        setTimeout(function(){
+          $('html, body').animate({
+            scrollTop: ($(target).offset().top + offset)
+          }, 500);
+        }, 400);
+      }
     }
   };

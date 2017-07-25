@@ -173,6 +173,21 @@
         .replace(/[úüùûū]/g,"u")
         .replace(/[ç,ć,č]/g,"c")
         .replace(/[^\w\-]+/g, "");
+    },
+
+    /**
+    * ScrollAnimate
+    */
+    scrollAnimate: function( target, offset ) {
+      offset = typeof offset !== 'undefined' ? offset : 0;
+
+      if( $(target).length > 0 ) {
+        setTimeout(function(){
+          $('html, body').animate({
+            scrollTop: ($(target).offset().top + offset)
+          }, 500);
+        }, 400);
+      }
     }
   };
 
@@ -754,6 +769,10 @@
             bigitem: '.block-views-blockcontributors-block-1 .view-content .views-row',
             ref: '.contributor-info-holder .views-field-name a'
           },
+          {
+            bigitem: '.block-views-blockcontributions-block-1 .view-content .views-row',
+            ref: '.node__title a'
+          },
         ];
 
         $.each(linkareas, function (index, value) {
@@ -1035,6 +1054,97 @@
               };
           });
         }
+      },
+
+      /**
+       * Anchor pagination
+       */
+      anchorPagination: function() {
+
+        var anchor_str = 'anchor-content';
+        var elementsAnchors = [
+          {
+            el_content: '.path-user .block-views-blockcontributions-block-1',
+            el_pager: '.path-user .block-views-blockcontributions-block-1 .pager',
+            offset: -150,
+          }
+        ];
+
+        var isPhone = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
+
+        $.each( elementsAnchors, function( index, value ) {
+          if ( $(value.el_content).length > 0 && $(value.el_pager ).length > 0 ) {
+            // Anchor url?
+            var jump = ((window.location.href).indexOf('#' + anchor_str) !== -1)?true:false;
+
+            // Insert Anchor
+            $(value.el_content).addClass(anchor_str);
+
+            // Modify pager
+            $(value.el_pager + ' .pager__item--next a').attr('href', $(value.el_pager + ' .pager__item--next a').attr('href') + '#' + anchor_str);
+            $(value.el_pager + ' .pager__item--previous a').attr('href', $(value.el_pager + ' .pager__item--previous a').attr('href') + '#' + anchor_str);
+
+            // Scroll
+            if(jump){
+              App.Utils.scrollAnimate('.' + anchor_str, value.offset);
+            }
+          }
+        });
+      },
+
+      /**
+       * Lists Switch
+       */
+      listSwitch: function() {
+
+        var switch_class = 'listswitch';
+        var switch_onoff = 'switch-';
+        var outputHTML   = '';
+        var elementsSwitch = [
+          {
+            element: '.block-views-blocklist-entries-block-1',
+            insert_dom: '.block-views-blocklist-entries-block-1 .view-filters form .form--bottom',
+            insert_position: 'bottom', // top or bottom
+            strings: 'List|Grid',
+            default_active: 'off', //on is first position, off second position
+          }
+        ];
+
+        var isPhone = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
+
+        $.each( elementsSwitch, function( index, value ) {
+          if ( $(value.element).length > 0 && $(value.insert_dom).length > 0 ) {
+            var active_off = (value.default_active === 'off')? 'class="active" ' : '';
+            var active_on = (value.default_active === 'on')? 'class="active" ' : '';
+
+            outputHTML += '<div class="' + switch_class + '">';
+            outputHTML += '<a href="#" ' + active_on + 'data-switch="on" data-target="' + value.element + '">' + value.strings.split('|')[0] + '</a>';
+            outputHTML += ' / ';
+            outputHTML += '<a href="#" ' + active_off + 'data-switch="off" data-target="' + value.element + '">' + value.strings.split('|')[1] + '</a>';
+            outputHTML += '</div>';
+
+            if(value.insert_position === 'top') {
+              $(value.insert_dom).prepend(outputHTML);
+            } else {
+              $(value.insert_dom).append(outputHTML);
+            }
+
+            $(value.element).addClass(switch_onoff + value.default_active);
+          }
+        });
+
+        // Events
+        $('.' + switch_class + ' a').on('click', function(e) {
+          if(!$(this).hasClass('active')) {
+            $(this).parent().find('a').removeClass('active');
+            $(this).addClass('active');
+
+            $($(this).data('target')).removeClass(switch_onoff + 'on').removeClass(switch_onoff + 'off');
+            $($(this).data('target')).addClass(switch_onoff + $(this).data('switch'));
+          }
+
+          e.preventDefault();
+        });
       },
 
       /**
