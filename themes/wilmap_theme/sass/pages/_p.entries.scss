@@ -13,19 +13,133 @@
 // -------------------------------------
 // Scaffold
 // -------------------------------------
+.node-explore .messages__wrapper {
+  display: none;
+}
+
 
 // ENTRY List
 .block-views-blocklist-entries-block-1 {
-  &.switch-on {
+  &,
+  &._switch-on {
     @include entry(list, '.views-row');
   }
 
-  &.switch-off {
+  &._switch-off {
     @include entry(grid, '.views-row');
   }
 
-  // Filter
+  // Filters
+  .view-filters {
+    display: block;
+    clear: both;
 
+    .picker {
+      padding-left: 0;
+      top: 4px;
+    }
+
+    .form--filter {
+      @include column(12, false, collapse, false);
+
+      fieldset {
+        @include trim();
+        @include margin($dp null);
+
+        legend {
+          @include trim();
+        }
+      }
+
+      label {
+        display: none;
+      }
+
+      .js-form-type-select {
+        @include column(3.8);
+        margin-left: $gutter * 1.5;
+
+        &.js-form-item-claim {
+          margin-left: 0;
+        }
+      }
+
+      .site-btn {
+        @include column(2);
+        margin-left: $gutter * 1.5;
+      }
+    }
+
+    .form--sort {
+      @include column(2);
+      @include padding($dp 0 0 $dp * 2);
+      border-left: 1px solid $hr-color;
+
+      .picker {
+        top: 6px;
+      }
+    }
+
+    .form--bottom {
+      @include margin($dp * 3 null null null);
+
+      .js-form-type-textfield {
+        @include column(10, false, collapse, false);
+
+        label {
+          @include font($normal - 1, 1, $semibold, $heading-font);
+          @include position(relative, $dp null null null);
+          color: $fourth-color;
+          text-transform: capitalize;
+          display: inline-block;
+        }
+
+        .form-text {
+          display: inline-block;
+          width: 74%;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+        }
+      }
+
+      .form-actions {
+        @include column(2);
+      }
+
+      .listswitch {
+        @include column(2);
+        @include font($normal, 1, $semibold, $heading-font);
+        @include padding($dp * 2.4 null null null);
+        color: $fourth-color;
+        text-transform: none;
+
+        a {
+          color: $fourth-color;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+
+          &._active {
+            text-decoration: none;
+            border-bottom: 2px solid $third-color;
+          }
+        }
+      }
+    }
+  }
+
+  .view-content,
+  .view-empty {
+    display: block;
+    clear: both;
+
+    .views-row {
+      @include transition(all .3s ease);
+    }
+  }
 }
 
 // ENTRY detail

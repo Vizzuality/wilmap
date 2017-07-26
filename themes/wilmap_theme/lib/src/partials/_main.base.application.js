@@ -391,7 +391,7 @@
       listSwitch: function() {
 
         var switch_class = 'listswitch';
-        var switch_onoff = 'switch-';
+        var switch_onoff = '_switch-';
         var outputHTML   = '';
         var elementsSwitch = [
           {
@@ -407,8 +407,8 @@
 
         $.each( elementsSwitch, function( index, value ) {
           if ( $(value.element).length > 0 && $(value.insert_dom).length > 0 ) {
-            var active_off = (value.default_active === 'off')? 'class="active" ' : '';
-            var active_on = (value.default_active === 'on')? 'class="active" ' : '';
+            var active_off = (value.default_active === 'off')? 'class="_active" ' : '';
+            var active_on = (value.default_active === 'on')? 'class="_active" ' : '';
 
             outputHTML += '<div class="' + switch_class + '">';
             outputHTML += '<a href="#" ' + active_on + 'data-switch="on" data-target="' + value.element + '">' + value.strings.split('|')[0] + '</a>';
@@ -416,10 +416,12 @@
             outputHTML += '<a href="#" ' + active_off + 'data-switch="off" data-target="' + value.element + '">' + value.strings.split('|')[1] + '</a>';
             outputHTML += '</div>';
 
-            if(value.insert_position === 'top') {
-              $(value.insert_dom).prepend(outputHTML);
-            } else {
-              $(value.insert_dom).append(outputHTML);
+            if(!$(value.insert_dom + ' .' + switch_class).length > 0) {
+              if(value.insert_position === 'top') {
+                $(value.insert_dom).prepend(outputHTML);
+              } else {
+                $(value.insert_dom).append(outputHTML);
+              }
             }
 
             $(value.element).addClass(switch_onoff + value.default_active);
@@ -428,9 +430,9 @@
 
         // Events
         $('.' + switch_class + ' a').on('click', function(e) {
-          if(!$(this).hasClass('active')) {
-            $(this).parent().find('a').removeClass('active');
-            $(this).addClass('active');
+          if(!$(this).hasClass('_active')) {
+            $(this).parent().find('a').removeClass('_active');
+            $(this).addClass('_active');
 
             $($(this).data('target')).removeClass(switch_onoff + 'on').removeClass(switch_onoff + 'off');
             $($(this).data('target')).addClass(switch_onoff + $(this).data('switch'));

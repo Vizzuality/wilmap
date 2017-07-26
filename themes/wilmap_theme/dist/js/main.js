@@ -280,14 +280,19 @@
         var runON = '.view-list-entries .view-filters';
 
         if ($(runON).length > 0) {
-          $(runON).prepend('<fieldset><legend>Filter by:</legend></fieldset>');
-
           if(!$(runON + ' .form--inline .form--filter').length > 0) {
-            $(runON + ' .views-exposed-form .form--inline').append('<div class="form--filter"></div>');
+            $(runON + ' .views-exposed-form .form--inline').append('<div class="form--filter"><fieldset class="tit"><legend>Filter by:</legend></fieldset></div>');
+            $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-claim').remove().wrap());
             $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-document').remove().wrap());
             $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-country').remove().wrap());
-            $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-year').remove().wrap());
             $(runON + ' .views-exposed-form .form--inline .form--filter').append('<a href="#" class="switch btn" gumby-trigger="#modal-advanced-filter">Advanced</a></p>');
+
+            // Selects
+            $(runON + '  .views-exposed-form .form--inline .form--filter .js-form-type-select').each(function(item, value){
+              var label = $(this).find('label').text();
+
+              $(this).find('select option:first').text(label);
+            });
           }
 
           if(!$(runON + ' .form--inline .form--sort').length > 0) {
@@ -299,6 +304,11 @@
             $(runON + ' .views-exposed-form').append('<div id="modal-advanced-filter" class="form--modal modal"><div class="content"><a class="close switch" gumby-trigger="|#modal-advanced-filter">CLOSE</a><h3>Advanced - Search</h3><div class="content-inner"></div></div></div>');
 
             $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' details.form-item').remove().wrap());
+            $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .views-exposed-form .js-form-item-year').remove().wrap());
+          }
+
+          if(!$(runON + ' .form--advanced').length > 0) {
+            $(runON + ' .views-exposed-form').append('<div class="form--advanced" style="display: none;"><fieldset><legend>Advanced filters:</legend></fieldset><div class="content"></div></div>');
           }
 
           if(!$(runON + ' .form--bottom').length > 0) {
@@ -1098,7 +1108,7 @@
       listSwitch: function() {
 
         var switch_class = 'listswitch';
-        var switch_onoff = 'switch-';
+        var switch_onoff = '_switch-';
         var outputHTML   = '';
         var elementsSwitch = [
           {
@@ -1114,8 +1124,8 @@
 
         $.each( elementsSwitch, function( index, value ) {
           if ( $(value.element).length > 0 && $(value.insert_dom).length > 0 ) {
-            var active_off = (value.default_active === 'off')? 'class="active" ' : '';
-            var active_on = (value.default_active === 'on')? 'class="active" ' : '';
+            var active_off = (value.default_active === 'off')? 'class="_active" ' : '';
+            var active_on = (value.default_active === 'on')? 'class="_active" ' : '';
 
             outputHTML += '<div class="' + switch_class + '">';
             outputHTML += '<a href="#" ' + active_on + 'data-switch="on" data-target="' + value.element + '">' + value.strings.split('|')[0] + '</a>';
@@ -1123,10 +1133,12 @@
             outputHTML += '<a href="#" ' + active_off + 'data-switch="off" data-target="' + value.element + '">' + value.strings.split('|')[1] + '</a>';
             outputHTML += '</div>';
 
-            if(value.insert_position === 'top') {
-              $(value.insert_dom).prepend(outputHTML);
-            } else {
-              $(value.insert_dom).append(outputHTML);
+            if(!$(value.insert_dom + ' .' + switch_class).length > 0) {
+              if(value.insert_position === 'top') {
+                $(value.insert_dom).prepend(outputHTML);
+              } else {
+                $(value.insert_dom).append(outputHTML);
+              }
             }
 
             $(value.element).addClass(switch_onoff + value.default_active);
@@ -1135,9 +1147,9 @@
 
         // Events
         $('.' + switch_class + ' a').on('click', function(e) {
-          if(!$(this).hasClass('active')) {
-            $(this).parent().find('a').removeClass('active');
-            $(this).addClass('active');
+          if(!$(this).hasClass('_active')) {
+            $(this).parent().find('a').removeClass('_active');
+            $(this).addClass('_active');
 
             $($(this).data('target')).removeClass(switch_onoff + 'on').removeClass(switch_onoff + 'off');
             $($(this).data('target')).addClass(switch_onoff + $(this).data('switch'));

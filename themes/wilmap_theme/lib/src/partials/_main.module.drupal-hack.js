@@ -86,14 +86,19 @@
         var runON = '.view-list-entries .view-filters';
 
         if ($(runON).length > 0) {
-          $(runON).prepend('<fieldset><legend>Filter by:</legend></fieldset>');
-
           if(!$(runON + ' .form--inline .form--filter').length > 0) {
-            $(runON + ' .views-exposed-form .form--inline').append('<div class="form--filter"></div>');
+            $(runON + ' .views-exposed-form .form--inline').append('<div class="form--filter"><fieldset class="tit"><legend>Filter by:</legend></fieldset></div>');
+            $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-claim').remove().wrap());
             $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-document').remove().wrap());
             $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-country').remove().wrap());
-            $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-year').remove().wrap());
             $(runON + ' .views-exposed-form .form--inline .form--filter').append('<a href="#" class="switch btn" gumby-trigger="#modal-advanced-filter">Advanced</a></p>');
+
+            // Selects
+            $(runON + '  .views-exposed-form .form--inline .form--filter .js-form-type-select').each(function(item, value){
+              var label = $(this).find('label').text();
+
+              $(this).find('select option:first').text(label);
+            });
           }
 
           if(!$(runON + ' .form--inline .form--sort').length > 0) {
@@ -105,6 +110,11 @@
             $(runON + ' .views-exposed-form').append('<div id="modal-advanced-filter" class="form--modal modal"><div class="content"><a class="close switch" gumby-trigger="|#modal-advanced-filter">CLOSE</a><h3>Advanced - Search</h3><div class="content-inner"></div></div></div>');
 
             $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' details.form-item').remove().wrap());
+            $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .views-exposed-form .js-form-item-year').remove().wrap());
+          }
+
+          if(!$(runON + ' .form--advanced').length > 0) {
+            $(runON + ' .views-exposed-form').append('<div class="form--advanced" style="display: none;"><fieldset><legend>Advanced filters:</legend></fieldset><div class="content"></div></div>');
           }
 
           if(!$(runON + ' .form--bottom').length > 0) {
