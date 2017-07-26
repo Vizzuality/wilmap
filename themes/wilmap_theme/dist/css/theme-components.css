@@ -1196,6 +1196,24 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
   color: #222;
   z-index: 10; }
 
+.listswitch {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 16px;
+  line-height: 1rem;
+  font-weight: 600;
+  font-family: "Raleway", sans-serif;
+  color: #968f7e;
+  text-transform: none; }
+  .listswitch a {
+    color: #968f7e;
+    text-decoration: none; }
+    .listswitch a:hover {
+      text-decoration: underline; }
+    .listswitch a._active {
+      text-decoration: none;
+      border-bottom: 2px solid #b3001e; }
+
 .user-actions {
   width: 100%;
   *zoom: 1;

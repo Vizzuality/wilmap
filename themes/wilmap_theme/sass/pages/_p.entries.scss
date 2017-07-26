@@ -105,28 +105,20 @@
 
       .form-actions {
         @include column(2);
+
+        .site-btn {
+          width: 95%;
+
+          input {
+            width: 100%;
+          }
+        }
       }
 
       .listswitch {
         @include column(2);
-        @include font($normal, 1, $semibold, $heading-font);
         @include padding($dp * 2.4 null null null);
-        color: $fourth-color;
-        text-transform: none;
-
-        a {
-          color: $fourth-color;
-          text-decoration: none;
-
-          &:hover {
-            text-decoration: underline;
-          }
-
-          &._active {
-            text-decoration: none;
-            border-bottom: 2px solid $third-color;
-          }
-        }
+        text-align: right;
       }
     }
   }

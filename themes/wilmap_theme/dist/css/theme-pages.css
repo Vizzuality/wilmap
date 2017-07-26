@@ -3480,30 +3480,19 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
           float: left;
           margin-left: 0;
           width: 100%; } }
+      .block-views-blocklist-entries-block-1 .view-filters .form--bottom .form-actions .site-btn {
+        width: 95%; }
+        .block-views-blocklist-entries-block-1 .view-filters .form--bottom .form-actions .site-btn input {
+          width: 100%; }
     .block-views-blocklist-entries-block-1 .view-filters .form--bottom .listswitch {
       width: 12.7619%;
-      font-size: 16px;
-      font-size: 1rem;
-      line-height: 16px;
-      line-height: 1rem;
-      font-weight: 600;
-      font-family: "Raleway", sans-serif;
       padding-top: 24px;
-      color: #968f7e;
-      text-transform: none; }
+      text-align: right; }
       @media only screen and (max-width: 767px) {
         .block-views-blocklist-entries-block-1 .view-filters .form--bottom .listswitch {
           float: left;
           margin-left: 0;
           width: 100%; } }
-      .block-views-blocklist-entries-block-1 .view-filters .form--bottom .listswitch a {
-        color: #968f7e;
-        text-decoration: none; }
-        .block-views-blocklist-entries-block-1 .view-filters .form--bottom .listswitch a:hover {
-          text-decoration: underline; }
-        .block-views-blocklist-entries-block-1 .view-filters .form--bottom .listswitch a._active {
-          text-decoration: none;
-          border-bottom: 2px solid #b3001e; }
 .block-views-blocklist-entries-block-1 .view-content,
 .block-views-blocklist-entries-block-1 .view-empty {
   display: block;
