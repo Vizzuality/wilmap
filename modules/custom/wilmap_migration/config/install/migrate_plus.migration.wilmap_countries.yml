@@ -12,7 +12,7 @@ label: Countries from Countries-Continents-Regions matrix in CSV file.
 migration_group: wilmap
 source:
   plugin: csv
-  path: public://csv/wilmap_countries_regions_matrix.csv
+  path: modules/custom/wilmap_migration/data/wilmap_countries_regions_matrix.csv
   header_row_count: 1
   keys:
     - country

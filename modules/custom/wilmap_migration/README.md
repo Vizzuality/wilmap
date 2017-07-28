@@ -10,7 +10,7 @@ WILMap migration instructions.
 Remove countries, continents and regions from drupal.
 
 ### Source
-Source: public://csv/wilmap_countries_regions_matrix.csv
+Source: modules/custom/wilmap_migration/data/wilmap_countries.csv
 
 Preprocess CSV file:
 1. Rename and remove columns:
@@ -28,6 +28,26 @@ Region is a multivalue field separated by "+", the process explode it an generat
 Nothing.
 
 
+## MIGRATION: users (wilmap_users)
+
+### Preprocess
+- Remove countries, continents and regions from drupal.
+
+### Source
+Source: modules/custom/wilmap_migration/data/wilmap_users.csv
+
+Preprocess CSV file:
+1. Rename headers: name,firstname,lastname,position,affiliation,country,region,email,email2,uid,roles,active,access,twitter,linkedin,web,web2,contributor,role
+2. Generate *firstname* and *lastname* columns from *name*. Some need manual edition.
+3. Generate *role* column from *contributors* column
+4. Replace long strings in *name* column
+5. Join columns with multiple countries under same row separating countries with comma
+
+### Process
+*country* is a multivalue field separated by ",", the process explode it an looks up for needed entities.
+
+### After migration
+Nothing.
 
 
 

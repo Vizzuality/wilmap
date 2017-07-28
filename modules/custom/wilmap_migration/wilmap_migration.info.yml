@@ -1,9 +1,14 @@
 name: wilmap_migration
 type: module
-description: WILMAP migrations from drupal 7
+description: WILMAP migrations from CSV files
 core: 8.x
 package: WILMap
 dependencies:
   - migrate
   - migrate_tools
   - migrate_plus
+
+config_devel:
+ install:
+   - migrate_plus.migration.wilmap_countries
+   - migrate_plus.migration.wilmap_users

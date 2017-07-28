@@ -1,0 +1,88 @@
+# Migration configuration for countries
+# List available plugins:
+#  drupal plugin:debug migrate.process
+#
+# Run this migration:
+#  drush migrate-import wilmap_users
+# Migrations status:
+#  drush migrate-status
+#
+id: wilmap_users
+label: Users from CSV file.
+migration_group: wilmap
+
+source:
+  plugin: csv
+  path: modules/custom/wilmap_migration/data/wilmap_users.csv
+  header_row_count: 1
+  keys:
+    - name
+
+destination:
+  # Here we're saying that each row of data (line from the CSV file) will be
+  # used to create a user entity.
+  plugin: entity:user
+
+
+process:
+  # Most fields can be mapped directly - we just specify the destination (D8)
+  # field and the corresponding field name from above, and the values will be
+  # copied in.
+
+  name: name
+  mail: email
+  roles:
+   plugin: explode
+   source: role
+   limit: 10
+   delimiter: ','
+  status:
+    plugin: default_value
+    default_value: 0
+  field_first_name: firstname
+  field_last_name: lastname
+  field_email_alt: email2
+  field_profile_title: position
+  field_affiliation: affiliation
+  # TODO: hacer
+  # field_social_m:
+
+  field_country:
+    -
+      plugin: explode
+      limit: 10
+      delimiter: ','
+      source: country
+    -
+      plugin: entity_lookup
+      value_key: title
+      bundle: country
+      entity_type: node
+      ignore_case: true
+#      plugin: migration_lookup
+#      migration: wilmap_countries
+#      no_stub: true
+
+  field_region:
+      plugin: entity_lookup
+      bundle: region
+      entity_type: node
+      ignore_case: true
+      source: region
+      value_key: title
+
+  # Fields without data in origin
+  #  field_areas:
+  #  field_banner_image:
+  #  user_picture:
+  #  field_description_profile:
+
+# List any optional or required migration dependencies.
+# Required means that 100% of the content must be migrated
+# Optional means that that the other dependency should be run first but if there
+# are items from the dependant migration that were not successful, it will still
+# run the migration.
+migration_dependencies:
+  required:
+    - wilmap_countries
+  optional: {}
