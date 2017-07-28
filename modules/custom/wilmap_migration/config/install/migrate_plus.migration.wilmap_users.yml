@@ -44,8 +44,12 @@ process:
   field_email_alt: email2
   field_profile_title: position
   field_affiliation: affiliation
-  # TODO: hacer
+
+  # TODO: no sabemos cómo migrar en un campo de tipo social_media_link
   # field_social_m:
+#    source:
+#    - linkedin
+#    - web
 
   field_country:
     -
