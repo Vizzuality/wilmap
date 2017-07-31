@@ -46,8 +46,17 @@ process:
   field_affiliation: affiliation
 
   # TODO: no sabemos cómo migrar en un campo de tipo social_media_link
-  # field_social_m:
+  field_social_m:
+    plugin: social_links
+    source:
+    - twitter
+    - linkedin
+    - web
+
+#  field_social_m/platform_values:
+#    plugin: social_links
 #    source:
+#    - twitter
 #    - linkedin
 #    - web
 
