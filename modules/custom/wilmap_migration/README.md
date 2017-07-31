@@ -10,7 +10,7 @@ WILMap migration instructions.
 Remove countries, continents and regions from drupal.
 
 ### Source
-Source: modules/custom/wilmap_migration/data/wilmap_countries.csv
+Source: modules/custom/wilmap_migration/data/wilmap_countries_regions_matrix.csv
 
 Preprocess CSV file:
 1. Rename and remove columns:
@@ -19,6 +19,7 @@ Preprocess CSV file:
     - E -> region 
     - B -> remove
     - C -> remove
+2. Lookup for country iso 2 codes and check each one, as vlookup fails sometimes
 
 ### Process
 Process automatically generates Continents and Regions from CSV.
@@ -74,5 +75,9 @@ Update migrations configuration file. Needs *config_devel* module:
 # The run:
 drush cdi <module_name>
 drush cr
+```
+Delete all content of certain type with devel module:
+```
+drush genc 0 --types=article --kill
 ```
 

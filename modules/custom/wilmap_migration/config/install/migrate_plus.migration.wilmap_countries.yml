@@ -32,6 +32,8 @@ source:
       continent: Continent
     2:
       region: Region
+    3:
+      iso2: IDO Code
 process:
   # The content (node) type we are creating is 'country'.
   type:
@@ -40,7 +42,11 @@ process:
   # Most fields can be mapped directly - we just specify the destination (D8)
   # field and the corresponding field name from above, and the values will be
   # copied in.
+  uid:
+    plugin: default_value
+    default_value: 1
   title: country
+  field_iso2: iso2
   field_continent_country:
     plugin: entity_generate
     source: continent

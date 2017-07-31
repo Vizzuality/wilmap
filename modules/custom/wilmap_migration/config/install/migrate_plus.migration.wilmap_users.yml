@@ -28,7 +28,6 @@ process:
   # Most fields can be mapped directly - we just specify the destination (D8)
   # field and the corresponding field name from above, and the values will be
   # copied in.
-
   name: name
   mail: email
   roles:
