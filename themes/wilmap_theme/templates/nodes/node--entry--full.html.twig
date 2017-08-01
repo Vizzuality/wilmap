@@ -100,8 +100,8 @@
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
     <div class="node-main">
       <div class="node-top-hidden">
-        {{ content.field_location_entry }}
-        {{ content.field_tax_section }}
+        {{ content.group_datasheet.field_location_entry }}
+        {{ content.group_datasheet.field_tax_section }}
       </div>
 
       <div class="node-header">
@@ -130,11 +130,9 @@
       </div>
     </div>
     
-    <div class="fields-datasheet">
-      {{ content.field_location_entry }}
-      {{ content.field_tax_section.value }}
-      {{ content.group_datasheet }}
-    </div>
+    
+    {{ content.group_datasheet }}
+    
 
     <div class="related">
       {{ content.field_related_entries }}
