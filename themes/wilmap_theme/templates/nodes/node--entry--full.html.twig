@@ -131,8 +131,8 @@
     </div>
     
     <div class="fields-datasheet">
-      {{ content.field_location_entry}}
-      {{ content.field_tax_section}}
+      {{ content.field_location_entry|striptags }}
+      {{ content.field_tax_section|striptags }}
       {{ content.group_datasheet }}
     </div>
 
