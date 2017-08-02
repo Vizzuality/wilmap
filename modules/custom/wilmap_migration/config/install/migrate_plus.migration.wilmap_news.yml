@@ -104,11 +104,15 @@ process:
       entity_type: taxonomy_term
       ignore_case: true
 
-  field_original_source:
-    plugin: concat
+  'field_original_source/value':
+    plugin: news_referrer
     source:
-    - "Original source: "
     - title
+    - nid
+    - '@created'
+  'field_original_source/format':
+    plugin: default_value
+    default_value: "basic_html"
 
   # Fields without data in source:
   # - field_download_original
