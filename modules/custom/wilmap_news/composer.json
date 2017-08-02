@@ -1,0 +1,14 @@
+{
+  "name": "drupal/wilmap_news",
+  "type": "drupal-module",
+  "description": "WILMap News functionallity",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/wilmap_news",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/wilmap_news",
+    "source": "http://cgit.drupalcode.org/wilmap_news"
+  },
+  "require": { }
+}

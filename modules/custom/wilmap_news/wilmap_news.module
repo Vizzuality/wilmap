@@ -1,0 +1,80 @@
+<?php
+
+/**
+ * @file
+ * Contains wilmap_news.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\wilmap_news\Digest;
+
+/**
+ * Implements hook_help().
+ */
+function wilmap_news_help($route_name, RouteMatchInterface $route_match)
+{
+    switch ($route_name) {
+        // Main module help for the wilmap_news module.
+        case 'help.page.wilmap_news':
+            $output = '';
+            $output .= '<h3>' . t('About') . '</h3>';
+            $output .= '<p>' . t('WILMap News functionality') . '</p>';
+            return $output;
+
+        default:
+    }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function wilmap_news_theme()
+{
+    return [
+      'wilmap_digest' => [
+        'variables' => ['news' => NULL, 'topics' => NULL, 'entries'],
+      ],
+    ];
+}
+
+
+/**
+ * Implements hook_cron().
+ */
+function wilmap_news_cron()
+{
+
+    $config = \Drupal::config('wilmap_news.digest');
+    $last_run = \Drupal::state()->get('wilmap_news.last_run', 0);
+
+    // Check if auto-digest is enabled and current time since last digest.
+    if ($config->get('enabled') && (\Drupal::time()
+          ->getRequestTime() - $last_run) > $config->get('days')
+    ) {
+
+        // New digest from last run
+        $digest = new Digest($last_run);
+
+        // Get digest content created/updated from last run
+        $digest->get();
+
+        // If there are items, we publish the digest
+        if ($digest->count()) {
+            $digest->publish();
+            \Drupal::logger('wilmap_news')
+              ->notice('Digest published: @entries entries, @topics topics, @news news',
+                array(
+                  '@entries' => count($digest->entries),
+                  '@topics' => count($digest->topics),
+                  '@news' => count($digest->news)
+                ));
+        } else {
+            \Drupal::logger('wilmap_news')
+              ->notice('No new content found for Digest');
+        }
+
+        // Update last run.
+        \Drupal::state()
+          ->set('wilmap_news.last_run', \Drupal::time()->getRequestTime());
+    }
+}

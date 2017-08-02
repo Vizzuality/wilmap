@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\wilmap_entries\Form;
+namespace Drupal\wilmap_news\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -8,7 +8,7 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * Class DigestForm.
  *
- * @package Drupal\wilmap_entries\Form
+ * @package Drupal\wilmap_news\Form
  */
 class DigestForm extends ConfigFormBase
 {
@@ -19,7 +19,7 @@ class DigestForm extends ConfigFormBase
     protected function getEditableConfigNames()
     {
         return [
-          'wilmap_entries.digest',
+          'wilmap_news.digest',
         ];
     }
 
@@ -36,7 +36,7 @@ class DigestForm extends ConfigFormBase
      */
     public function buildForm(array $form, FormStateInterface $form_state)
     {
-        $config = $this->config('wilmap_entries.digest');
+        $config = $this->config('wilmap_news.digest');
         $form['enabled'] = array(
           '#type' => 'checkbox',
           '#title' => $this->t('Enable automatic digests'),
@@ -45,7 +45,7 @@ class DigestForm extends ConfigFormBase
         $form['title'] = [
           '#type'          => 'textfield',
           '#title'         => $this->t('Digest title'),
-          '#description'   => $this->t('Digest title. Ex "Monthly WILMap digest"'),
+          '#description'   => $this->t('To set current date use PHP date format between brackets. Ex: "[F Y] updates report"'),
           '#default_value' => $config->get('title'),
         ];
         $form['days'] = [
@@ -72,7 +72,7 @@ class DigestForm extends ConfigFormBase
     {
         parent::submitForm($form, $form_state);
 
-        $this->config('wilmap_entries.digest')
+        $this->config('wilmap_news.digest')
           ->set('enabled', $form_state->getValue('enabled'))
           ->set('title', $form_state->getValue('title'))
           ->set('days', $form_state->getValue('days'))

@@ -1,6 +1,6 @@
-wilmap_entries.digest_form:
+wilmap_news.digest_form:
   title: 'Digest settings'
-  route_name: wilmap_entries.digest_form
+  route_name: wilmap_news.digest_form
   description: 'Digest settings'
   parent: system.admin_config_system
   weight: 99

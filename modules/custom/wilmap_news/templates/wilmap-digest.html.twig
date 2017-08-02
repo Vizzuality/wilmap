@@ -1,0 +1,27 @@
+<!-- Add you custom twig html here -->
+{% if news %}
+<div class="digest-group">
+    <h3 class="digest-header">{{ 'Latest news'|t }}</h3>
+    <div class="digest-body">
+        {{ news }}
+    </div>
+</div>
+{% endif %}
+
+{% if entries %}
+<div class="digest-group">
+    <h3 class="digest-header">{{ 'Latest entries updates'|t }}</h3>
+    <div class="digest-body">
+        {{ entries }}
+    </div>
+</div>
+{% endif %}
+
+{% if topics %}
+<div class="digest-group">
+    <h3 class="digest-header">{{ 'Latest topics updates'|t }}</h3>
+    <div class="digest-body">
+        {{ topics }}
+    </div>
+</div>
+{% endif %}

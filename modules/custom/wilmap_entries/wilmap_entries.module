@@ -19,23 +19,11 @@ function wilmap_entries_help($route_name, RouteMatchInterface $route_match)
         case 'help.page.wilmap_entries':
             $output = '';
             $output .= '<h3>' . t('About') . '</h3>';
-            $output .= '<p>' . t('WILMap entries functionality') . '</p>';
+            $output .= '<p>' . t('WILMap Entries functionality') . '</p>';
             return $output;
 
         default:
     }
-}
-
-/**
- * Implements hook_theme().
- */
-function wilmap_entries_theme()
-{
-    return [
-      'wilmap_entries' => [
-        'render element' => 'children',
-      ],
-    ];
 }
 
 
@@ -56,42 +44,5 @@ function wilmap_entries_field_views_data_alter(array &$data, FieldStorageConfigI
                 }
             }
         }
-    }
-}
-
-
-/**
- * Implements hook_cron().
- */
-function wilmap_entries_cron()
-{
-
-    $config = \Drupal::config('wilmap_entries.digest');
-    $last_run = \Drupal::state()->get('wilmap_entries.last_run', 0);
-
-    // Check if auto-digest is enabled and current time since last digest.
-    if ($config->get('enabled') && (\Drupal::time()
-          ->getRequestTime() - $last_run) > $config->get('days')
-    ) {
-
-        // Get entries since last run
-        $digest = new Digest($last_run);
-
-        // If there are entries, we publish the digest
-        if ($digest->getEntries()) {
-            $digest->publish();
-            \Drupal::logger('wilmap_entries')
-              ->notice('Digest published: @count entries',
-                array(
-                  '@count' => count($digest->entries)
-                ));
-        } else {
-            \Drupal::logger('wilmap_entries')
-              ->notice('No entries found for Digest');
-        }
-
-        // Update last run.
-        \Drupal::state()
-          ->set('wilmap_entries.last_run', \Drupal::time()->getRequestTime());
     }
 }

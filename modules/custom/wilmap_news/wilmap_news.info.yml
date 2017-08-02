@@ -1,0 +1,7 @@
+name: WILMap News
+type: module
+description: WILMap News functionallity
+core: 8.x
+package: WILMap
+dependencies:
+  - block
