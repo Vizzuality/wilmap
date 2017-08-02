@@ -31,7 +31,7 @@
 
   // Filters
   .view-filters {
-    display: block;
+    display: none; // display block after dom manipulation with javascript
     clear: both;
 
     .picker {
@@ -67,6 +67,82 @@
       .site-btn {
         @include column(2);
         margin-left: $gutter * 1.5;
+      }
+    }
+
+    .form--modal {
+      &.modal.active {
+        > .content {
+          height: 90%;
+          max-height: 100%;
+          top: 1%;
+
+          .content-inner {
+            overflow: scroll;
+            height: 85%;
+          }
+        }
+      }
+
+      .form-item {
+        @include margin(null null $dp * 5 null);
+      }
+
+      details {
+        @include box-shadow(none);
+        @include icon-insert('icon-down-dir', after);
+        border: 1px solid $gray-10;
+
+        &::after {
+          @include trim();
+          @include position(absolute, 12px 10px null auto);
+          @include fs(20px);
+          color: $fourth-color;
+          border: 0;
+        }
+
+        &[open] {
+          @include box-shadow($gray-10 0px 2px 5px);
+          @include icon-change('icon-up-dir', after);
+
+          summary {
+            border-bottom: 1px solid $gray-10;
+          }
+        }
+
+        summary {
+          @include padding($dp + 3 $dp * 5 $dp + 3 $dp);
+          @include font($normal, 1.2, $semibold, $body-font);
+          color: $fourth-color;
+
+          outline: none;
+
+          &::-webkit-details-marker {
+            display:none;
+          }
+        }
+
+        .details-wrapper {
+          @include padding($dp 0);
+          @include clearfix();
+          display: block;
+          clear:both;
+
+          .form-type-checkbox {
+            @include column(6);
+            @include margin(null $dp * 2.5 $dp null);
+            min-height: 30px;
+
+            .checkbox {
+              @include padding(null null null $dp * 3);
+
+              span {
+                @include position(absolute, null null null 0);
+                display: block;
+              }
+            }
+          }
+        }
       }
     }
 

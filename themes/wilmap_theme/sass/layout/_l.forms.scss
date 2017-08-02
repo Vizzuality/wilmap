@@ -25,9 +25,9 @@ $form-picker-weight:                     $semibold;
 $form-picker-stroke-size:                0;
 $form-picker-stroke-color:               $form-input-stroke-color;
 $form-picker-radius:                     $form-input-radius;
-$form-radiocheckbox-color:               $form-input-color;
+$form-radiocheckbox-color:               $first-color;
 $form-radiocheckbox-bg-color:            #f2f2f2;
-$form-radiocheckbox-weight:              $form-input-weight;
+$form-radiocheckbox-weight:              $regular;
 $form-radiocheckbox-stroke-size:         1px;
 $form-radiocheckbox-stroke-color:        #dedede;
 $form-radiocheckbox-radius:              $metro-radius;
@@ -124,8 +124,9 @@ label {
     @include trim();
     @include position(relative);
     @include margin(null null $dp / 2 null);
-    @include font($normal, 1, $form-radiocheckbox-weight, $body-font);
+    @include font($normal, 1.1, $form-radiocheckbox-weight, $body-font);
     color: $form-radiocheckbox-color;
+    text-transform: none;
     border: 0;
     outline: none;
     resize: none;
@@ -167,10 +168,15 @@ label {
     }
 
     &.checked {
+      span {
+        background: $form-radiocheckbox-checked-color;
+      }
+
       i {
         @include position(absolute, -3px null null -7px);
         @include fs(22px);
         color: $form-radiocheckbox-checked-color;
+        display: none;
       }
     }
   }

@@ -893,11 +893,12 @@ label {
   margin-bottom: 5px;
   font-size: 16px;
   font-size: 1rem;
-  line-height: 16px;
-  line-height: 1rem;
-  font-weight: 600;
+  line-height: 17.6px;
+  line-height: 1.1rem;
+  font-weight: 400;
   font-family: "Raleway", sans-serif;
-  color: #968f7e;
+  color: #222;
+  text-transform: none;
   border: 0;
   outline: none;
   resize: none;
@@ -934,13 +935,16 @@ label {
   display: inline-block;
   border: 1px solid #dedede;
   background: #f2f2f2; }
+.js .field .checkbox.checked span {
+  background: #b3001e; }
 .js .field .checkbox.checked i {
   position: absolute;
   top: -3px;
   left: -7px;
   font-size: 22px;
   font-size: 1.375rem;
-  color: #b3001e; }
+  color: #b3001e;
+  display: none; }
 
 .picker {
   margin: 0;
