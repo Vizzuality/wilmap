@@ -1,0 +1,16 @@
+// ============================================================================
+//
+// COMPONENTS: VIEWS EMPTY
+//
+// ============================================================================
+
+.view {
+  .view-empty {
+    @include padding($dp * 3);
+    font-weight: $bold;
+    display: block;
+    clear: both;
+    float: none;
+    background-color: rgba($fifth-color, 0.4);
+  }
+}

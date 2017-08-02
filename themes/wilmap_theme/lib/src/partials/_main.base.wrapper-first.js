@@ -6,4 +6,4 @@
   'use strict';
 
   // Declare App Objetc
-  var App = {};
+  window.App = {};

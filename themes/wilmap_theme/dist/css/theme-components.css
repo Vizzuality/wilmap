@@ -1348,4 +1348,12 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
       margin-left: 0;
       width: 100%; } }
 
+.view .view-empty {
+  padding: 30px;
+  font-weight: 700;
+  display: block;
+  clear: both;
+  float: none;
+  background-color: rgba(227, 222, 211, 0.4); }
+
 /*# sourceMappingURL=theme-components.css.map */
