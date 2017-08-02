@@ -32,7 +32,7 @@ function wilmap_news_theme()
 {
     return [
       'wilmap_digest' => [
-        'variables' => ['news' => NULL, 'topics' => NULL, 'entries'],
+        'variables' => ['news' => NULL, 'topics' => NULL, 'entries' => NULL],
       ],
     ];
 }
