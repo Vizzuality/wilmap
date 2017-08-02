@@ -81,3 +81,9 @@ Delete all content of certain type with devel module:
 drush genc 0 --types=article --kill
 ```
 
+Delete all terms from vocabulary with devel module:
+```
+drush gent focus_area 0 --kill
+```
+
+

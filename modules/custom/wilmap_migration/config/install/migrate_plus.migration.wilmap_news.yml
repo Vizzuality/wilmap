@@ -1,0 +1,137 @@
+# Migration configuration for news
+# List available plugins:
+#  drupal plugin:debug migrate.process
+#
+# Run this migration:
+#  drush migrate-import wilmap_news
+# Migrations status:
+#  drush migrate-status
+#
+id: wilmap_news
+label: News from CSV file.
+migration_group: wilmap
+source:
+  plugin: csv
+  path: modules/custom/wilmap_migration/data/wilmap_news.csv
+  header_row_count: 1
+  keys:
+    - nid
+  # Here we identify the columns of interest in the source file. Each numeric
+  # key is the 0-based index of the column. For each column, the key below
+  # (e.g., "continent") is the field name assigned to the data on import, to
+  # be used in field mappings below. The value is a user-friendly string for
+  # display by the migration UI.
+
+process:
+  # The content (node) type we are creating is 'country'.
+  type:
+    plugin: default_value
+    default_value: news
+  # Most fields can be mapped directly - we just specify the destination (D8)
+  # field and the corresponding field name from above, and the values will be
+  # copied in.
+  uid:
+    plugin: migration_lookup
+    migration: wilmap_users
+    source: author
+    no_stub: true
+
+  # Another new process plugin - callback. This allows us to filter an incoming
+  # source value through an arbitrary PHP function. The function called must
+  # have one required argument.
+  created:
+    plugin: callback
+    # The 'registered' timestamp in the source data is a string of the form
+    # 'yyyy-mm-dd hh:mm:ss', but Drupal wants a UNIX timestamp for 'created'.
+    source: post_date
+    callable: strtotime
+  title: title
+  'field_summary/value': body
+  'field_summary/format':
+    plugin: default_value
+    default_value: "full_html"
+  field_transnational: transnational
+  field_date_published:
+        plugin: published_date
+        source: post_date
+  field_contributors: '@uid'
+  # field_location is a multivalue field, separated by '+'.
+  # Use entity_generate as entity_lookup does not process each source item separately
+  field_location:
+    -
+      plugin: explode
+      source: i_country
+      limit: 10
+      delimiter: '+'
+    -
+      plugin: entity_generate
+      bundle: country
+      entity_type: node
+      ignore_case: true
+      # value_key: title
+  # field_region is a multivalue field, separated by '+'.
+  # Use entity_generate as entity_lookup does not process each source item separately
+  field_region:
+    -
+      plugin: explode
+      source: i_region
+      limit: 10
+      delimiter: '+'
+    -
+      plugin: entity_generate
+      bundle: region
+      entity_type: node
+      ignore_case: true
+      # value_key: title
+  field_tax_focus_area:
+    -
+      plugin: explode
+      source: focus_area
+      limit: 10
+      delimiter: ', '
+    -
+      plugin: entity_generate
+  # Use entity_generate as entity_lookup does not process each source item separately
+  field_tax_topic_claim_defense:
+    -
+      plugin: explode
+      source: topic
+      limit: 10
+      delimiter: '+'
+    -
+      plugin: entity_generate
+      bundle: topic_claim_defense
+      entity_type: taxonomy_term
+      ignore_case: true
+
+  'field_original_source/value':
+    plugin: news_referrer
+    source:
+    - title
+    - nid
+    - '@created'
+  'field_original_source/format':
+    plugin: default_value
+    default_value: "basic_html"
+
+  # Fields without data in source:
+  # - field_download_original
+  # - field_image
+  # - field_attachments
+
+
+destination:
+  # Here we're saying that each row of data (line from the CSV file) will be
+  # used to create a node entity.
+  plugin: entity:node
+# List any optional or required migration dependencies.
+# Required means that 100% of the content must be migrated
+# Optional means that that the other dependency should be run first but if there
+# are items from the dependant migration that were not successful, it will still
+# run the migration.
+migration_dependencies:
+  required:
+  - wilmap_countries
+  - wilmap_users
+
+  optional: {}

@@ -12,3 +12,4 @@ config_devel:
  install:
    - migrate_plus.migration.wilmap_countries
    - migrate_plus.migration.wilmap_users
+   - migrate_plus.migration.wilmap_news
