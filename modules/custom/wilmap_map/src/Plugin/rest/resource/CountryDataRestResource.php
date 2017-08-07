@@ -12,13 +12,13 @@ use Psr\Log\LoggerInterface;
 use Drupal\node\Entity\Node;
 
 /**
- * Provides a resource to get view modes by entity and bundle.
+ * Provides a resource to get country data from nid.
  *
  * @RestResource(
  *   id = "country_data_rest_resource",
  *   label = @Translation("Country Data Rest Resource"),
  *   uri_paths = {
- *     "canonical" = "/api/country/data/{id}",
+ *     "canonical" = "/api/country/data/nid/{nid}",
  *   }
  * )
  */
@@ -117,12 +117,17 @@ class CountryDataRestResource extends ResourceBase
 
         $node = Node::load($nid);
 
-        // Only fields from node in "group_data_popup" plus id and title
+        if (!$node || $node->getType()!='country'){
+            throw new AccessDeniedHttpException();
+        }
+
+        // Only fields from node in "group_data_popup" plus id, title and iso2
         $data = array();
         $data['id'] = $node->id();
         $data['title'] = $node->getTitle();
+        $data['iso2'] = $node->get('field_iso2')->value;
         foreach ($field_group->children as $field_name) {
-            $data[$field_name] = $node->get($field_name)->getValue();
+            $data[$field_name] = $node->get($field_name)->value;
         }
 
         return new ResourceResponse($data);

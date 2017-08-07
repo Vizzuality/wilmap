@@ -1,0 +1,3 @@
+services:
+ wilmap_map.country_iso2:
+   class: Drupal\wilmap_map\CountryServices
