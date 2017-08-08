@@ -35,6 +35,25 @@ article.node--type-news.node--view-mode-full {
     }
   }
 
+  .field--name-field-original-source {
+    @include trim();
+    @include column(10);
+    @include clearfix();
+    @include margin(null null $dp * 2 columns(2.45));
+    @include padding($dp * 2);
+    display: block;
+    clear: both;
+    float: none;
+    background-color: $gray-10;
+
+    p,
+    a {
+      @include trim();
+      @include font($normal - 3, 1.6, $medium, $body-font);
+      font-style: italic;
+    }
+  }
+
   // Related separator
   .field__label {
     @include header-block-separator();
