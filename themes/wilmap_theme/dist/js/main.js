@@ -279,8 +279,26 @@
       entriesFilterList: function() {
         var runON = '.view-list-entries .view-filters';
 
-        this.holapremoh = function() {
-          console.log('esta es la función holapremoh');
+        this.updateAdvancedFilters = function() {
+          $(runON + ' .views-exposed-form .form--modal .content-inner .form-item input').each(function(item, value) {
+            switch ($(value).attr('type')) {
+              case 'text':
+                if($(value).val() !== '') {
+                  console.log($(value).val());
+                }
+
+                break;
+              case 'checkbox':
+                if($(value).is(':checked')) {
+                  console.log($(value).parents('label').text());
+                }
+
+                break;
+              default:
+                breakK
+
+            }
+          });
         };
 
 
@@ -308,7 +326,8 @@
           if(!$(runON + ' .form--modal').length > 0) {
             $(runON + ' .views-exposed-form').append('<div id="modal-advanced-filter" class="form--modal modal"><div class="content"><a class="close switch" gumby-trigger="|#modal-advanced-filter">CLOSE</a><h3>Advanced - Search</h3><div class="content-inner"></div></div></div>');
 
-            $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .views-exposed-form .js-form-item-year').remove().wrap());
+            $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .views-exposed-form .js-form-item-fromyear').remove().wrap());
+            $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .views-exposed-form .js-form-item-toyear').remove().wrap());
             $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' details.form-item').remove().wrap());
 
             $(runON + ' .views-exposed-form .form--modal .content-inner details.form-item').each(function (item, value) {
@@ -337,14 +356,15 @@
             var output = '';
 
             $(this).parent().find('.form-type-checkbox input:checked').each(function(i,value) {
-              var comma = (txt == '') ? '':', ';
+              var comma = (txt == '') ? '':' - ';
               txt +=  comma + $(value).parent().text();
             });
 
             output = (txt == '')?'NONE SELECTED':txt;
             $(this).parents('details.form-item').find('summary').text(output);
 
-            //App.DrupalHack.methods.holapremoh();
+            //
+            App.DrupalHack.methods.updateAdvancedFilters();
           });
 
         }

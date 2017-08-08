@@ -143,8 +143,25 @@
         display: none;
       }
 
-      .field--name-field-profile-title .field__item {
-        @include contributors--position--title();
+      .field--name-field-profile-title {
+        @include trim();
+
+        .field__item {
+          @include contributors--position--title();
+        }
+      }
+
+      .field--name-field-affiliation {
+        @include trim();
+
+        .field__item {
+          @include contributors--position--title();
+          text-transform: none !important;
+        }
+      }
+
+      .field--name-field-description-profile {
+        @include margin($dp * 2 null null null);
       }
     }
 

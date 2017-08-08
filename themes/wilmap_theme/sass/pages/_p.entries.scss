@@ -73,13 +73,23 @@
     .form--modal {
       &.modal.active {
         > .content {
+          width: $dp * 64;
           height: 90%;
           max-height: 100%;
           top: 1%;
 
+          @include respond(tablets) {
+            width: 70%;
+          }
+
+          @include respond(all-phones) {
+            width: 100%;
+          }
+
           .content-inner {
-            overflow: scroll;
-            height: 85%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            height: 84%;
           }
         }
       }
@@ -114,6 +124,7 @@
           @include padding($dp + 3 $dp * 5 $dp + 3 $dp);
           @include font($normal, 1.2, $semibold, $body-font);
           color: $fourth-color;
+          cursor: pointer;
 
           outline: none;
 
@@ -158,6 +169,7 @@
 
     .form--bottom {
       @include margin($dp * 3 null null null);
+      @include clearfix();
 
       .js-form-type-textfield {
         @include column(10, false, collapse, false);

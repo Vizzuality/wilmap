@@ -2741,19 +2741,40 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
           margin-left: 0; } }
     .path-user article.profile .contributor-info .field__label {
       display: none; }
-    .path-user article.profile .contributor-info .field--name-field-profile-title .field__item {
+    .path-user article.profile .contributor-info .field--name-field-profile-title {
       margin: 0;
-      padding: 0;
-      font-size: 14px;
-      font-size: 0.875rem;
-      line-height: 16.8px;
-      line-height: 1.05rem;
-      font-weight: 600;
-      font-family: "Raleway", sans-serif;
-      padding-top: 15px;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      color: #968f7e; }
+      padding: 0; }
+      .path-user article.profile .contributor-info .field--name-field-profile-title .field__item {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        font-size: 0.875rem;
+        line-height: 16.8px;
+        line-height: 1.05rem;
+        font-weight: 600;
+        font-family: "Raleway", sans-serif;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        color: #968f7e; }
+    .path-user article.profile .contributor-info .field--name-field-affiliation {
+      margin: 0;
+      padding: 0; }
+      .path-user article.profile .contributor-info .field--name-field-affiliation .field__item {
+        text-transform: none !important; }
+        .path-user article.profile .contributor-info .field--name-field-affiliation .field__item {
+          margin: 0;
+          padding: 0;
+          font-size: 14px;
+          font-size: 0.875rem;
+          line-height: 16.8px;
+          line-height: 1.05rem;
+          font-weight: 600;
+          font-family: "Raleway", sans-serif;
+          margin-bottom: 5px;
+          text-transform: uppercase;
+          color: #968f7e; }
+    .path-user article.profile .contributor-info .field--name-field-description-profile {
+      margin-top: 20px; }
 .path-user .block-views-blockcontributions-block-1 > h2 {
   font-size: 50px;
   font-size: 3.125rem;
@@ -3437,12 +3458,20 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
           margin-left: 0;
           width: 100%; } }
   .block-views-blocklist-entries-block-1 .view-filters .form--modal.modal.active > .content {
+    width: 640px;
     height: 90%;
     max-height: 100%;
     top: 1%; }
+    @media only screen and (min-width: 768px) and (max-width: 1124px) {
+      .block-views-blocklist-entries-block-1 .view-filters .form--modal.modal.active > .content {
+        width: 70%; } }
+    @media only screen and (max-width: 767px) {
+      .block-views-blocklist-entries-block-1 .view-filters .form--modal.modal.active > .content {
+        width: 100%; } }
     .block-views-blocklist-entries-block-1 .view-filters .form--modal.modal.active > .content .content-inner {
-      overflow: scroll;
-      height: 85%; }
+      overflow-x: hidden;
+      overflow-y: auto;
+      height: 84%; }
   .block-views-blocklist-entries-block-1 .view-filters .form--modal .form-item {
     margin-bottom: 50px; }
   .block-views-blocklist-entries-block-1 .view-filters .form--modal details {
@@ -3493,6 +3522,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       font-weight: 600;
       font-family: "Raleway", sans-serif;
       color: #968f7e;
+      cursor: pointer;
       outline: none; }
       .block-views-blocklist-entries-block-1 .view-filters .form--modal details summary::-webkit-details-marker {
         display: none; }
@@ -3534,7 +3564,13 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     .block-views-blocklist-entries-block-1 .view-filters .form--sort .picker {
       top: 6px; }
   .block-views-blocklist-entries-block-1 .view-filters .form--bottom {
-    margin-top: 30px; }
+    margin-top: 30px;
+    *zoom: 1; }
+    .block-views-blocklist-entries-block-1 .view-filters .form--bottom:before, .block-views-blocklist-entries-block-1 .view-filters .form--bottom:after {
+      content: "";
+      display: table; }
+    .block-views-blocklist-entries-block-1 .view-filters .form--bottom:after {
+      clear: both; }
     .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield {
       width: 70.92063%; }
       @media only screen and (max-width: 767px) {
@@ -4076,6 +4112,9 @@ body.node-map .layout-main-wrapper {
     width: 100%; }
 body.node-map .footer_first_wrap {
   display: none; }
+
+.path-contact form .form-actions {
+  text-align: right; }
 
 body.user-logged-in .contextual-links {
   display: none !important; }
