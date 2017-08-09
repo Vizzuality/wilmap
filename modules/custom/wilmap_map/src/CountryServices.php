@@ -18,11 +18,19 @@ class CountryServices
      */
     protected $entityQueryFactory;
 
-
+    /**
+     * Implements __construct().
+     *
+     * @param \Drupal\Core\Entity\Query\QueryFactory    $query_factory
+     *   Query Factory Service Object.
+     */
     public function __construct(QueryFactory $query_factory) {
         $this->entityQueryFactory = $query_factory;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public static function create(ContainerInterface $container) {
         return new static(
           $container->get('entity.query')
