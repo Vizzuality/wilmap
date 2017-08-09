@@ -35,7 +35,7 @@ class CountryDataIsoRestResource extends CountryDataRestResource
         // Get country nid from iso2 code
         // TODO: get nid from 'wilmap_map.country_iso2' service
 
-        $service = \Drupal::service('wilmap_map.country_iso2');
+        $service = \Drupal::service('wilmap_map.country');
         $nids = $service->getCountryFromIso($code);
 
         if (empty($nids)) {
