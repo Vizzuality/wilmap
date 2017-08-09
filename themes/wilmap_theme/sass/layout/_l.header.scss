@@ -145,7 +145,7 @@ $nav-item-bgcolor-active:               $white;
   height: $header-height-desktop;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 110;
 
   &.active {
     background-color: $header-bandcolor-active;
@@ -242,7 +242,6 @@ $nav-item-bgcolor-active:               $white;
     width: $dp * 35;
     z-index: 99;
     overflow: hidden;
-    display: block;
 
     @include respond(tablets) {
       @include position(absolute, -$dp * 2 0 null null);

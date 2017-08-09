@@ -7,7 +7,7 @@
   #block-wilmap-theme-blockwelcomehome .content:after, #block-wilmap-theme-blockmaphome .content:after, #block-wilmap-theme-blockexplorehome .content:after, #block-wilmap-theme-blocknewshome .content:after {
     clear: both; }
 
-#block-wilmap-theme-blockwelcomehome .text, #block-wilmap-theme-blockwelcomehome .text .description, #block-wilmap-theme-blockmaphome .text, #block-wilmap-theme-blockexplorehome .text, #block-wilmap-theme-blocknewshome .text, .block-views-blocktopics-block-1 .views-row, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p, article.node--type-topics.node--view-mode-full .node-header, article.node--type-topics.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .node-header, article.node--type-news.node--view-mode-full .field--name-field-original-source, article.node--type-news.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items > .field__item, .block-views-blockcontributors-block-1 .view-filters, .block-views-blockcontributors-block-1 .view-filters .js-form-item-country, .block-views-blockcontributors-block-1 .view-filters .js-form-item-expertise, .block-views-blockcontributors-block-1 .view-filters .js-form-item-name, .block-views-blockcontributors-block-1 .view-filters .form-actions, .block-views-blockcontributors-block-1 .view-content, .block-views-blockcontributors-block-1 .view-content .views-row, .path-user article.profile .contributor-sheet, .path-user article.profile .contributor-info, .path-user .block-views-blockcontributions-block-1 .view-contributions .views-row, .block-views-blocklist-entries-block-1._switch-off .views-row, .block-views-blocklist-entries-block-1 .view-filters .form--filter, .block-views-blocklist-entries-block-1 .view-filters .form--filter .js-form-type-select, .block-views-blocklist-entries-block-1 .view-filters .form--filter .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper .form-type-checkbox, .block-views-blocklist-entries-block-1 .view-filters .form--sort, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .form-actions, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .listswitch, article.node--type-entry.node--view-mode-full .node-header, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items > .field__item {
+#block-wilmap-theme-blockwelcomehome .text, #block-wilmap-theme-blockwelcomehome .text .description, #block-wilmap-theme-blockmaphome .text, #block-wilmap-theme-blockexplorehome .text, #block-wilmap-theme-blocknewshome .text, .block-views-blocktopics-block-1 .views-row, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p, article.node--type-topics.node--view-mode-full .node-header, article.node--type-topics.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .node-header, article.node--type-news.node--view-mode-full .field--name-field-original-source, article.node--type-news.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items > .field__item, .block-views-blockcontributors-block-1 .view-filters, .block-views-blockcontributors-block-1 .view-filters .js-form-item-country, .block-views-blockcontributors-block-1 .view-filters .js-form-item-expertise, .block-views-blockcontributors-block-1 .view-filters .js-form-item-name, .block-views-blockcontributors-block-1 .view-filters .form-actions, .block-views-blockcontributors-block-1 .view-content, .block-views-blockcontributors-block-1 .view-content .views-row, .path-user article.profile .contributor-sheet, .path-user article.profile .contributor-info, .path-user .block-views-blockcontributions-block-1 .view-contributions .views-row, .block-views-blocklist-entries-block-1._switch-off .views-row, .block-views-blocklist-entries-block-1 .view-filters .form--filter, .block-views-blocklist-entries-block-1 .view-filters .form--filter .js-form-type-select, .block-views-blocklist-entries-block-1 .view-filters .form--filter .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > .form-type-checkbox, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li, .block-views-blocklist-entries-block-1 .view-filters .form--sort, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .form-actions, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .listswitch, article.node--type-entry.node--view-mode-full .node-header, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items > .field__item {
   margin-left: 1.77778%;
   float: left;
   min-height: 1px;
@@ -1803,6 +1803,11 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
     display: table; }
   .block-views-blocknews-block-1 none:after {
     clear: both; }
+.block-views-blocknews-block-1 .content {
+  min-height: 700px; }
+  @media only screen and (max-width: 767px) {
+    .block-views-blocknews-block-1 .content {
+      min-height: initial; } }
 
 article.node--type-news.node--view-mode-full .node-header {
   width: 70.92063%;
@@ -2303,8 +2308,11 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
 .block-views-blockcontributors-block-1 .view-filters {
   width: 100%;
   margin-bottom: 80px;
-  display: block;
   clear: both; }
+  .block-views-blockcontributors-block-1 .view-filters {
+    display: none; }
+    .block-views-blockcontributors-block-1 .view-filters.__processed {
+      display: block; }
   @media only screen and (max-width: 767px) {
     .block-views-blockcontributors-block-1 .view-filters {
       float: left;
@@ -2318,6 +2326,10 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     border-top: none;
     border-left: none;
     border-right: none; }
+  .block-views-blockcontributors-block-1 .view-filters .field .field {
+    margin: 0;
+    padding: 0;
+    overflow: visible; }
   .block-views-blockcontributors-block-1 .view-filters .picker {
     padding-left: 0;
     top: 4px; }
@@ -2734,6 +2746,14 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
           .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa.fa-email:after {
             content: "✉"; }
           .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa.fa-email::after {
+            position: absolute;
+            top: 6px;
+            left: 5px;
+            font-size: 18px;
+            font-size: 1.125rem; }
+          .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa.fa-web:after {
+            content: "🌎"; }
+          .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa.fa-web::after {
             position: absolute;
             top: 6px;
             left: 5px;
@@ -3451,8 +3471,15 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
   .block-views-blocklist-entries-block-1._switch-off .views-row:nth-child(2n+1) {
     margin-left: 0; }
 .block-views-blocklist-entries-block-1 .view-filters {
-  display: none;
   clear: both; }
+  .block-views-blocklist-entries-block-1 .view-filters {
+    display: none; }
+    .block-views-blocklist-entries-block-1 .view-filters.__processed {
+      display: block; }
+  .block-views-blocklist-entries-block-1 .view-filters .field .field {
+    margin: 0;
+    padding: 0;
+    overflow: visible; }
   .block-views-blocklist-entries-block-1 .view-filters .picker {
     padding-left: 0;
     top: 4px; }
@@ -3505,6 +3532,8 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       overflow-x: hidden;
       overflow-y: auto;
       height: 84%; }
+      .block-views-blocklist-entries-block-1 .view-filters .form--modal.modal.active > .content .content-inner .picker {
+        width: 100%; }
   .block-views-blocklist-entries-block-1 .view-filters .form--modal .form-item {
     margin-bottom: 50px; }
   .block-views-blocklist-entries-block-1 .view-filters .form--modal details {
@@ -3569,22 +3598,41 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         display: table; }
       .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper:after {
         clear: both; }
-      .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper .form-type-checkbox {
+      .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes .checkbox {
+        padding-left: 30px; }
+        .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes .checkbox span {
+          position: absolute;
+          left: 0;
+          display: block; }
+      .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > .form-type-checkbox {
         width: 41.84127%;
         margin-right: 25px;
-        margin-bottom: 10px;
-        min-height: 30px; }
+        margin-bottom: 5px;
+        min-height: 50px; }
         @media only screen and (max-width: 767px) {
-          .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper .form-type-checkbox {
+          .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > .form-type-checkbox {
             float: left;
             margin-left: 0;
             width: 100%; } }
-        .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper .form-type-checkbox .checkbox {
-          padding-left: 30px; }
-          .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper .form-type-checkbox .checkbox span {
-            position: absolute;
-            left: 0;
-            display: block; }
+      .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li {
+        width: 41.84127%;
+        margin-right: 25px;
+        margin-bottom: 5px;
+        min-height: 320px; }
+        @media only screen and (max-width: 767px) {
+          .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li {
+            float: left;
+            margin-left: 0;
+            width: 100%; } }
+        .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li .form-item {
+          margin-bottom: 10px; }
+          .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li .form-item label {
+            font-weight: 600; }
+        .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li ul li .form-type-checkbox {
+          margin-bottom: 5px;
+          min-height: 40px; }
+          .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li ul li .form-type-checkbox label {
+            font-weight: 400; }
   .block-views-blocklist-entries-block-1 .view-filters .form--sort {
     width: 12.7619%;
     padding: 10px 0 0 20px;
@@ -3692,6 +3740,8 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       text-decoration: none; }
       .node-top .field--name-field-location-entry a:hover {
         text-decoration: underline; }
+  .node-top .field--name-field-location-entry .field__label {
+    display: none; }
   .node-top .field--name-field-tax-section {
     font-size: 16px;
     font-size: 1rem;
@@ -3736,6 +3786,8 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       text-decoration: none; }
       .node-top .field--name-field-tax-section:hover {
         text-decoration: none; }
+    .node-top .field--name-field-tax-section .field__label {
+      display: none; }
     .node-top .field--name-field-tax-section::after {
       display: none; }
 

@@ -17,6 +17,14 @@
 // NEWS List
 .block-views-blocknews-block-1 {
   @include news(list);
+
+  .content {
+    min-height: $dp * 70;
+
+    @include respond(all-phones) {
+      min-height: initial;
+    }
+  }
 }
 
 

@@ -100,7 +100,12 @@
           $(dom + ' .form-actions').hide();
 
           // Generate bg separator
-          $('body').append('<div class="fake-modal"></div>');
+          if (!$('.fake-modal').length > 0) {
+            $('body').append('<div class="fake-modal"></div>');
+          }
+
+          // DOM processed
+          $(dom).addClass('__processed');
 
           // Events
           $(dom + ' input[type="search"]').attr('placeholder', 'Search').bind("keypress", function (e) {

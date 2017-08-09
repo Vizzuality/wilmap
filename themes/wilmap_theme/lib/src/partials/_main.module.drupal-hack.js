@@ -41,7 +41,7 @@
           // Thumbnails
           num_contrib.each(function(item, value){
             thumb_output += '<div class="profile' + class_ttip + '" data-tooltip="' + $(value).find('.field--name-field-first-name').text() + ' ' + $(value).find('.field--name-field-last-name').text() + '">';
-            thumb_output += '  <a href="' + $(value).find('a').attr('href') + '">';
+            thumb_output += '  <a href="' + $(value).find('article').attr('about') + '">';
             thumb_output += '   <div class="profile-picture"><img src="' + $(value).find('img').attr('src') + '" width="100" height="100" typeof="foaf:Image" class="image-style-thumbnail"></div>';
             thumb_output += '  </a>';
             thumb_output += '</div>';
@@ -76,6 +76,9 @@
           // Name
           var label_name = $(runON + ' .js-form-item-name label').text();
           $(runON + ' .js-form-item-name input').attr('placeholder', label_name);
+
+          // DOM processed
+          $(runON).addClass('__processed');
         }
       },
 
@@ -102,13 +105,28 @@
                 break;
               default:
                 breakK
-
             }
           });
         };
 
-
         if ($(runON).length > 0) {
+          if(!$(runON + ' .form--modal').length > 0) {
+            $(runON + ' .views-exposed-form').append('<div id="modal-advanced-filter" class="form--modal modal"><div class="content"><a class="close switch" gumby-trigger="|#modal-advanced-filter">CLOSE</a><h3>Advanced - Search</h3><div class="content-inner"><div class="date-selectors"></div></div><div class="modal-actions"><a href="#" class="btn">DONE</a></div></div></div>');
+            $(runON + ' .views-exposed-form').append('<div class="form--advanced" style="display: none;"><fieldset><legend>Advanced filters:</legend></fieldset><div class="content"></div></div>');
+
+            // $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .views-exposed-form .js-form-item-fromyear').remove().wrap());
+            // $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .views-exposed-form .js-form-item-toyear').remove().wrap());
+
+            $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .form--inline > .js-form-item').remove().wrap());
+            $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .form--inline > details.form-item').remove().wrap());
+
+            $(runON + ' .views-exposed-form .form--modal .content-inner details.form-item').each(function (item, value) {
+              var summary_text = $(value).find('summary').text();
+              $(value).find('summary').text('NONE SELECTED');
+              $('<label>' + summary_text + '</label>').insertBefore(value);
+            });
+          }
+
           if(!$(runON + ' .form--inline .form--filter').length > 0) {
             $(runON + ' .views-exposed-form .form--inline').append('<div class="form--filter"><fieldset class="tit"><legend>Filter by:</legend></fieldset></div>');
             $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-claim').remove().wrap());
@@ -129,32 +147,14 @@
             $(runON + ' .views-exposed-form .form--inline .form--sort').append($(runON + ' .views-exposed-form .js-form-item-sort-by').remove().wrap());
           }
 
-          if(!$(runON + ' .form--modal').length > 0) {
-            $(runON + ' .views-exposed-form').append('<div id="modal-advanced-filter" class="form--modal modal"><div class="content"><a class="close switch" gumby-trigger="|#modal-advanced-filter">CLOSE</a><h3>Advanced - Search</h3><div class="content-inner"></div></div></div>');
-
-            $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .views-exposed-form .js-form-item-fromyear').remove().wrap());
-            $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .views-exposed-form .js-form-item-toyear').remove().wrap());
-            $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' details.form-item').remove().wrap());
-
-            $(runON + ' .views-exposed-form .form--modal .content-inner details.form-item').each(function (item, value) {
-              var summary_text = $(value).find('summary').text();
-              $(value).find('summary').text('NONE SELECTED');
-              $('<label>' + summary_text + '</label>').insertBefore(value);
-            });
-          }
-
-          if(!$(runON + ' .form--advanced').length > 0) {
-            $(runON + ' .views-exposed-form').append('<div class="form--advanced" style="display: none;"><fieldset><legend>Advanced filters:</legend></fieldset><div class="content"></div></div>');
-          }
-
           if(!$(runON + ' .form--bottom').length > 0) {
             $(runON + ' .views-exposed-form').append('<div class="form--bottom"></div>');
             $(runON + ' .views-exposed-form .form--bottom').append($(runON + ' .views-exposed-form .js-form-item-title').remove().wrap());
             $(runON + ' .views-exposed-form .form--bottom').append($(runON + ' .views-exposed-form .form-actions').remove().wrap());
           }
 
-          // show filters
-          $(runON).css('display','block');
+          // DOM processed
+          $(runON).addClass('__processed');
 
           // Events
           $(runON + ' .views-exposed-form .form--modal .content-inner details .form-type-checkbox').on('click', function(){

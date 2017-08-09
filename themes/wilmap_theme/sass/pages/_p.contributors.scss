@@ -18,9 +18,9 @@
 .block-views-blockcontributors-block-1 {
   // Filters
   .view-filters {
+    @include hide-before-dom-alter();
     @include column(14, false, collapse, false);
     @include margin(null null $dp * 8 null);
-    display: block;
     clear: both;
 
     fieldset {
@@ -36,6 +36,13 @@
       border-top: none;
       border-left: none;
       border-right: none;
+    }
+
+    .field {
+      .field {
+        @include trim();
+        overflow: visible;
+      }
     }
 
     .picker {

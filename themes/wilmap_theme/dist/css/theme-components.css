@@ -910,8 +910,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 10px 30px 8px 20px !important;
-  display: block;
   background: none; }
+  .block-search {
+    display: none; }
+    .block-search.__processed {
+      display: block; }
   .block-search:after {
     content: "🔍";
     text-decoration: none !important;
@@ -975,7 +978,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 20;
+  z-index: 100;
   background: rgba(0, 0, 0, 0.4);
   opacity: 0;
   visibility: hidden; }
@@ -991,7 +994,7 @@
   right: 0 !important;
   left: auto !important;
   height: 100% !important;
-  z-index: 100;
+  z-index: 104;
   overflow: scroll;
   border: none !important;
   background: #fff;

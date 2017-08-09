@@ -1413,7 +1413,7 @@ button.btn,
   height: 132px;
   top: 0;
   left: 0;
-  z-index: 100; }
+  z-index: 110; }
   .site-header:before, .site-header:after {
     content: "";
     display: table; }
@@ -1496,8 +1496,7 @@ button.btn,
     right: 0;
     width: 350px;
     z-index: 99;
-    overflow: hidden;
-    display: block; }
+    overflow: hidden; }
     @media only screen and (min-width: 768px) and (max-width: 1124px) {
       .site-header .block-search {
         position: absolute;

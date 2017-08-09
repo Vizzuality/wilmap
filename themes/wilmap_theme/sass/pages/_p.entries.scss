@@ -31,8 +31,15 @@
 
   // Filters
   .view-filters {
-    display: none; // display block after dom manipulation with javascript
+    @include hide-before-dom-alter();
     clear: both;
+
+    .field {
+      .field {
+        @include trim();
+        overflow: visible;
+      }
+    }
 
     .picker {
       padding-left: 0;
@@ -90,6 +97,10 @@
             overflow-x: hidden;
             overflow-y: auto;
             height: 84%;
+
+            .picker {
+              width: 100%;
+            }
           }
         }
       }
@@ -139,10 +150,7 @@
           display: block;
           clear:both;
 
-          .form-type-checkbox {
-            @include column(6);
-            @include margin(null $dp * 2.5 $dp null);
-            min-height: 30px;
+          >.form-checkboxes {
 
             .checkbox {
               @include padding(null null null $dp * 3);
@@ -150,6 +158,41 @@
               span {
                 @include position(absolute, null null null 0);
                 display: block;
+              }
+            }
+
+            >.form-type-checkbox {
+              @include column(6);
+              @include margin(null $dp * 2.5 $dp / 2 null);
+              min-height: $dp * 5;
+            }
+
+            >ul {
+              >li {
+                @include column(6);
+                @include margin(null $dp * 2.5 $dp / 2 null);
+                min-height: $dp * 32;
+
+                .form-item {
+                  @include margin(null null $dp null);
+
+                  label {
+                    font-weight: $semibold;
+                  }
+                }
+
+                ul {
+                  li {
+                    .form-type-checkbox {
+                      @include margin(null null $dp / 2 null);
+                      min-height: $dp * 4;
+
+                      label {
+                        font-weight: $regular;
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -237,11 +280,19 @@
 
   .field--name-field-location-entry {
     @include entry--location();
+
+    .field__label {
+      display: none;
+    }
   }
 
   .field--name-field-tax-section {
     @include entry--taxonomy();
     @include trim();
+
+    .field__label {
+      display: none;
+    }
 
     &::after {
       display: none;

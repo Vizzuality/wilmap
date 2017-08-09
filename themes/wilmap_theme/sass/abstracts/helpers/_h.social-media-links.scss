@@ -91,6 +91,15 @@
               @include fs(18px);
             }
           }
+
+          &.fa-web {
+            @include icon-change('icon-globe', after);
+
+            &::after {
+              @include position(absolute, 6px null null 5px);
+              @include fs(18px);
+            }
+          }
         }
       }
 
