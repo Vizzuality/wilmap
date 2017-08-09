@@ -7,7 +7,7 @@
   #block-wilmap-theme-blockwelcomehome .content:after, #block-wilmap-theme-blockmaphome .content:after, #block-wilmap-theme-blockexplorehome .content:after, #block-wilmap-theme-blocknewshome .content:after {
     clear: both; }
 
-#block-wilmap-theme-blockwelcomehome .text, #block-wilmap-theme-blockwelcomehome .text .description, #block-wilmap-theme-blockmaphome .text, #block-wilmap-theme-blockexplorehome .text, #block-wilmap-theme-blocknewshome .text, .block-views-blocktopics-block-1 .views-row, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p, article.node--type-topics.node--view-mode-full .node-header, article.node--type-topics.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .node-header, article.node--type-news.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items > .field__item, .block-views-blockcontributors-block-1 .view-filters, .block-views-blockcontributors-block-1 .view-filters .js-form-item-country, .block-views-blockcontributors-block-1 .view-filters .js-form-item-expertise, .block-views-blockcontributors-block-1 .view-filters .js-form-item-name, .block-views-blockcontributors-block-1 .view-filters .form-actions, .block-views-blockcontributors-block-1 .view-content, .block-views-blockcontributors-block-1 .view-content .views-row, .path-user article.profile .contributor-sheet, .path-user article.profile .contributor-info, .path-user .block-views-blockcontributions-block-1 .view-contributions .views-row, .block-views-blocklist-entries-block-1._switch-off .views-row, .block-views-blocklist-entries-block-1 .view-filters .form--filter, .block-views-blocklist-entries-block-1 .view-filters .form--filter .js-form-type-select, .block-views-blocklist-entries-block-1 .view-filters .form--filter .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper .form-type-checkbox, .block-views-blocklist-entries-block-1 .view-filters .form--sort, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .form-actions, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .listswitch, article.node--type-entry.node--view-mode-full .node-header, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items > .field__item {
+#block-wilmap-theme-blockwelcomehome .text, #block-wilmap-theme-blockwelcomehome .text .description, #block-wilmap-theme-blockmaphome .text, #block-wilmap-theme-blockexplorehome .text, #block-wilmap-theme-blocknewshome .text, .block-views-blocktopics-block-1 .views-row, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p, article.node--type-topics.node--view-mode-full .node-header, article.node--type-topics.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .node-header, article.node--type-news.node--view-mode-full .field--name-field-original-source, article.node--type-news.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items > .field__item, .block-views-blockcontributors-block-1 .view-filters, .block-views-blockcontributors-block-1 .view-filters .js-form-item-country, .block-views-blockcontributors-block-1 .view-filters .js-form-item-expertise, .block-views-blockcontributors-block-1 .view-filters .js-form-item-name, .block-views-blockcontributors-block-1 .view-filters .form-actions, .block-views-blockcontributors-block-1 .view-content, .block-views-blockcontributors-block-1 .view-content .views-row, .path-user article.profile .contributor-sheet, .path-user article.profile .contributor-info, .path-user .block-views-blockcontributions-block-1 .view-contributions .views-row, .block-views-blocklist-entries-block-1._switch-off .views-row, .block-views-blocklist-entries-block-1 .view-filters .form--filter, .block-views-blocklist-entries-block-1 .view-filters .form--filter .js-form-type-select, .block-views-blocklist-entries-block-1 .view-filters .form--filter .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > .form-type-checkbox, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li, .block-views-blocklist-entries-block-1 .view-filters .form--sort, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .form-actions, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .listswitch, article.node--type-entry.node--view-mode-full .node-header, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items > .field__item {
   margin-left: 1.77778%;
   float: left;
   min-height: 1px;
@@ -1220,7 +1220,7 @@ article.node--type-topics.node--view-mode-full .node-header {
       font-size: 1rem;
       line-height: 27.2px;
       line-height: 1.7rem;
-      font-weight: 400;
+      font-weight: 600;
       font-family: "Raleway", sans-serif;
       color: #968f7e; }
       @media only screen and (max-width: 767px) {
@@ -1543,7 +1543,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
     font-size: 1rem;
     line-height: 27.2px;
     line-height: 1.7rem;
-    font-weight: 400;
+    font-weight: 600;
     font-family: "Raleway", sans-serif;
     color: #968f7e; }
     @media only screen and (max-width: 767px) {
@@ -1743,7 +1743,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
     font-size: 1rem;
     line-height: 27.2px;
     line-height: 1.7rem;
-    font-weight: 400;
+    font-weight: 600;
     font-family: "Raleway", sans-serif;
     color: #968f7e; }
     @media only screen and (max-width: 767px) {
@@ -1803,6 +1803,11 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
     display: table; }
   .block-views-blocknews-block-1 none:after {
     clear: both; }
+.block-views-blocknews-block-1 .content {
+  min-height: 700px; }
+  @media only screen and (max-width: 767px) {
+    .block-views-blocknews-block-1 .content {
+      min-height: initial; } }
 
 article.node--type-news.node--view-mode-full .node-header {
   width: 70.92063%;
@@ -1830,7 +1835,7 @@ article.node--type-news.node--view-mode-full .node-header {
       font-size: 1rem;
       line-height: 27.2px;
       line-height: 1.7rem;
-      font-weight: 400;
+      font-weight: 600;
       font-family: "Raleway", sans-serif;
       color: #968f7e; }
       @media only screen and (max-width: 767px) {
@@ -1838,6 +1843,39 @@ article.node--type-news.node--view-mode-full .node-header {
           padding-left: 0; } }
     article.node--type-news.node--view-mode-full .node-header .node-date {
       margin-bottom: 5px; }
+article.node--type-news.node--view-mode-full .field--name-field-original-source {
+  margin: 0;
+  padding: 0;
+  width: 70.92063%;
+  *zoom: 1;
+  margin-bottom: 20px;
+  margin-left: 16.03333%;
+  padding: 20px;
+  display: block;
+  clear: both;
+  float: none;
+  background-color: #e6e6e6; }
+  @media only screen and (max-width: 767px) {
+    article.node--type-news.node--view-mode-full .field--name-field-original-source {
+      float: left;
+      margin-left: 0;
+      width: 100%; } }
+  article.node--type-news.node--view-mode-full .field--name-field-original-source:before, article.node--type-news.node--view-mode-full .field--name-field-original-source:after {
+    content: "";
+    display: table; }
+  article.node--type-news.node--view-mode-full .field--name-field-original-source:after {
+    clear: both; }
+  article.node--type-news.node--view-mode-full .field--name-field-original-source p,
+  article.node--type-news.node--view-mode-full .field--name-field-original-source a {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    font-size: 0.8125rem;
+    line-height: 20.8px;
+    line-height: 1.3rem;
+    font-weight: 500;
+    font-family: "Raleway", sans-serif;
+    font-style: italic; }
 article.node--type-news.node--view-mode-full .field__label {
   font-size: 50px;
   font-size: 3.125rem;
@@ -2123,7 +2161,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     font-size: 1rem;
     line-height: 27.2px;
     line-height: 1.7rem;
-    font-weight: 400;
+    font-weight: 600;
     font-family: "Raleway", sans-serif;
     color: #968f7e; }
     @media only screen and (max-width: 767px) {
@@ -2270,8 +2308,11 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
 .block-views-blockcontributors-block-1 .view-filters {
   width: 100%;
   margin-bottom: 80px;
-  display: block;
   clear: both; }
+  .block-views-blockcontributors-block-1 .view-filters {
+    display: none; }
+    .block-views-blockcontributors-block-1 .view-filters.__processed {
+      display: block; }
   @media only screen and (max-width: 767px) {
     .block-views-blockcontributors-block-1 .view-filters {
       float: left;
@@ -2285,6 +2326,10 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     border-top: none;
     border-left: none;
     border-right: none; }
+  .block-views-blockcontributors-block-1 .view-filters .field .field {
+    margin: 0;
+    padding: 0;
+    overflow: visible; }
   .block-views-blockcontributors-block-1 .view-filters .picker {
     padding-left: 0;
     top: 4px; }
@@ -2706,6 +2751,14 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
             left: 5px;
             font-size: 18px;
             font-size: 1.125rem; }
+          .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa.fa-web:after {
+            content: "🌎"; }
+          .path-user article.profile .contributor-sheet .field--field-social-m li a span.fa.fa-web::after {
+            position: absolute;
+            top: 6px;
+            left: 5px;
+            font-size: 18px;
+            font-size: 1.125rem; }
       .path-user article.profile .contributor-sheet .field--field-social-m li span {
         display: none; }
     .path-user article.profile .contributor-sheet .field--field-ranking .field__items {
@@ -2741,19 +2794,40 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
           margin-left: 0; } }
     .path-user article.profile .contributor-info .field__label {
       display: none; }
-    .path-user article.profile .contributor-info .field--name-field-profile-title .field__item {
+    .path-user article.profile .contributor-info .field--name-field-profile-title {
       margin: 0;
-      padding: 0;
-      font-size: 14px;
-      font-size: 0.875rem;
-      line-height: 16.8px;
-      line-height: 1.05rem;
-      font-weight: 600;
-      font-family: "Raleway", sans-serif;
-      padding-top: 15px;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      color: #968f7e; }
+      padding: 0; }
+      .path-user article.profile .contributor-info .field--name-field-profile-title .field__item {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        font-size: 0.875rem;
+        line-height: 16.8px;
+        line-height: 1.05rem;
+        font-weight: 600;
+        font-family: "Raleway", sans-serif;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        color: #968f7e; }
+    .path-user article.profile .contributor-info .field--name-field-affiliation {
+      margin: 0;
+      padding: 0; }
+      .path-user article.profile .contributor-info .field--name-field-affiliation .field__item {
+        text-transform: none !important; }
+        .path-user article.profile .contributor-info .field--name-field-affiliation .field__item {
+          margin: 0;
+          padding: 0;
+          font-size: 14px;
+          font-size: 0.875rem;
+          line-height: 16.8px;
+          line-height: 1.05rem;
+          font-weight: 600;
+          font-family: "Raleway", sans-serif;
+          margin-bottom: 5px;
+          text-transform: uppercase;
+          color: #968f7e; }
+    .path-user article.profile .contributor-info .field--name-field-description-profile {
+      margin-top: 20px; }
 .path-user .block-views-blockcontributions-block-1 > h2 {
   font-size: 50px;
   font-size: 3.125rem;
@@ -2890,7 +2964,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     font-size: 1rem;
     line-height: 27.2px;
     line-height: 1.7rem;
-    font-weight: 400;
+    font-weight: 600;
     font-family: "Raleway", sans-serif;
     color: #968f7e; }
     @media only screen and (max-width: 767px) {
@@ -3098,7 +3172,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     font-size: 1rem;
     line-height: 27.2px;
     line-height: 1.7rem;
-    font-weight: 400;
+    font-weight: 600;
     font-family: "Raleway", sans-serif;
     color: #968f7e; }
     @media only screen and (max-width: 767px) {
@@ -3266,7 +3340,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     font-size: 1rem;
     line-height: 27.2px;
     line-height: 1.7rem;
-    font-weight: 400;
+    font-weight: 600;
     font-family: "Raleway", sans-serif;
     color: #968f7e; }
     @media only screen and (max-width: 767px) {
@@ -3397,8 +3471,15 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
   .block-views-blocklist-entries-block-1._switch-off .views-row:nth-child(2n+1) {
     margin-left: 0; }
 .block-views-blocklist-entries-block-1 .view-filters {
-  display: none;
   clear: both; }
+  .block-views-blocklist-entries-block-1 .view-filters {
+    display: none; }
+    .block-views-blocklist-entries-block-1 .view-filters.__processed {
+      display: block; }
+  .block-views-blocklist-entries-block-1 .view-filters .field .field {
+    margin: 0;
+    padding: 0;
+    overflow: visible; }
   .block-views-blocklist-entries-block-1 .view-filters .picker {
     padding-left: 0;
     top: 4px; }
@@ -3437,12 +3518,22 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
           margin-left: 0;
           width: 100%; } }
   .block-views-blocklist-entries-block-1 .view-filters .form--modal.modal.active > .content {
+    width: 640px;
     height: 90%;
     max-height: 100%;
     top: 1%; }
+    @media only screen and (min-width: 768px) and (max-width: 1124px) {
+      .block-views-blocklist-entries-block-1 .view-filters .form--modal.modal.active > .content {
+        width: 70%; } }
+    @media only screen and (max-width: 767px) {
+      .block-views-blocklist-entries-block-1 .view-filters .form--modal.modal.active > .content {
+        width: 100%; } }
     .block-views-blocklist-entries-block-1 .view-filters .form--modal.modal.active > .content .content-inner {
-      overflow: scroll;
-      height: 85%; }
+      overflow-x: hidden;
+      overflow-y: auto;
+      height: 84%; }
+      .block-views-blocklist-entries-block-1 .view-filters .form--modal.modal.active > .content .content-inner .picker {
+        width: 100%; }
   .block-views-blocklist-entries-block-1 .view-filters .form--modal .form-item {
     margin-bottom: 50px; }
   .block-views-blocklist-entries-block-1 .view-filters .form--modal details {
@@ -3493,6 +3584,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       font-weight: 600;
       font-family: "Raleway", sans-serif;
       color: #968f7e;
+      cursor: pointer;
       outline: none; }
       .block-views-blocklist-entries-block-1 .view-filters .form--modal details summary::-webkit-details-marker {
         display: none; }
@@ -3506,22 +3598,41 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         display: table; }
       .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper:after {
         clear: both; }
-      .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper .form-type-checkbox {
+      .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes .checkbox {
+        padding-left: 30px; }
+        .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes .checkbox span {
+          position: absolute;
+          left: 0;
+          display: block; }
+      .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > .form-type-checkbox {
         width: 41.84127%;
         margin-right: 25px;
-        margin-bottom: 10px;
-        min-height: 30px; }
+        margin-bottom: 5px;
+        min-height: 50px; }
         @media only screen and (max-width: 767px) {
-          .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper .form-type-checkbox {
+          .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > .form-type-checkbox {
             float: left;
             margin-left: 0;
             width: 100%; } }
-        .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper .form-type-checkbox .checkbox {
-          padding-left: 30px; }
-          .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper .form-type-checkbox .checkbox span {
-            position: absolute;
-            left: 0;
-            display: block; }
+      .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li {
+        width: 41.84127%;
+        margin-right: 25px;
+        margin-bottom: 5px;
+        min-height: 320px; }
+        @media only screen and (max-width: 767px) {
+          .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li {
+            float: left;
+            margin-left: 0;
+            width: 100%; } }
+        .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li .form-item {
+          margin-bottom: 10px; }
+          .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li .form-item label {
+            font-weight: 600; }
+        .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li ul li .form-type-checkbox {
+          margin-bottom: 5px;
+          min-height: 40px; }
+          .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li ul li .form-type-checkbox label {
+            font-weight: 400; }
   .block-views-blocklist-entries-block-1 .view-filters .form--sort {
     width: 12.7619%;
     padding: 10px 0 0 20px;
@@ -3534,7 +3645,13 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     .block-views-blocklist-entries-block-1 .view-filters .form--sort .picker {
       top: 6px; }
   .block-views-blocklist-entries-block-1 .view-filters .form--bottom {
-    margin-top: 30px; }
+    margin-top: 30px;
+    *zoom: 1; }
+    .block-views-blocklist-entries-block-1 .view-filters .form--bottom:before, .block-views-blocklist-entries-block-1 .view-filters .form--bottom:after {
+      content: "";
+      display: table; }
+    .block-views-blocklist-entries-block-1 .view-filters .form--bottom:after {
+      clear: both; }
     .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield {
       width: 70.92063%; }
       @media only screen and (max-width: 767px) {
@@ -3623,6 +3740,8 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       text-decoration: none; }
       .node-top .field--name-field-location-entry a:hover {
         text-decoration: underline; }
+  .node-top .field--name-field-location-entry .field__label {
+    display: none; }
   .node-top .field--name-field-tax-section {
     font-size: 16px;
     font-size: 1rem;
@@ -3667,6 +3786,8 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       text-decoration: none; }
       .node-top .field--name-field-tax-section:hover {
         text-decoration: none; }
+    .node-top .field--name-field-tax-section .field__label {
+      display: none; }
     .node-top .field--name-field-tax-section::after {
       display: none; }
 
@@ -3719,7 +3840,7 @@ article.node--type-entry.node--view-mode-full .node-header {
       font-size: 1rem;
       line-height: 27.2px;
       line-height: 1.7rem;
-      font-weight: 400;
+      font-weight: 600;
       font-family: "Raleway", sans-serif;
       color: #968f7e; }
       @media only screen and (max-width: 767px) {
@@ -3912,7 +4033,7 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
     font-size: 1rem;
     line-height: 27.2px;
     line-height: 1.7rem;
-    font-weight: 400;
+    font-weight: 600;
     font-family: "Raleway", sans-serif;
     color: #968f7e; }
     @media only screen and (max-width: 767px) {
@@ -4076,6 +4197,9 @@ body.node-map .layout-main-wrapper {
     width: 100%; }
 body.node-map .footer_first_wrap {
   display: none; }
+
+.path-contact form .form-actions {
+  text-align: right; }
 
 body.user-logged-in .contextual-links {
   display: none !important; }

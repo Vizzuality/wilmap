@@ -1,0 +1,12 @@
+// --------------
+// Hide before loading (js)
+// --------------
+@mixin hide-before-dom-alter {
+  & {
+    display: none;
+
+    &.__processed {
+      display: block;
+    }
+  }
+}
