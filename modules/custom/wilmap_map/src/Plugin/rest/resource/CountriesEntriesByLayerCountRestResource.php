@@ -7,9 +7,11 @@ use Drupal\rest\Plugin\ResourceBase;
 use Drupal\rest\ResourceResponse;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Request;
 use Psr\Log\LoggerInterface;
 use Drupal\wilmap_map\MapServices;
+use Drupal\node\Entity\Node;
 
 
 /**
@@ -46,21 +48,21 @@ class CountriesEntriesByLayerCountRestResource extends ResourceBase
     /**
      * Constructs a new CountryRestResource object.
      *
-     * @param array                                         $configuration
+     * @param array                                     $configuration
      *   A configuration array containing information about the plugin instance.
-     * @param string                                        $plugin_id
+     * @param string                                    $plugin_id
      *   The plugin_id for the plugin instance.
-     * @param mixed                                         $plugin_definition
+     * @param mixed                                     $plugin_definition
      *   The plugin implementation definition.
-     * @param array                                         $serializer_formats
+     * @param array                                     $serializer_formats
      *   The available serialization formats.
-     * @param \Psr\Log\LoggerInterface                      $logger
+     * @param \Psr\Log\LoggerInterface                  $logger
      *   A logger instance.
-     * @param \Drupal\Core\Session\AccountProxy             $current_user
+     * @param \Drupal\Core\Session\AccountProxy         $current_user
      *   A current user instance.
-     * @param \Symfony\Component\HttpFoundation\Request     $current_request
+     * @param \Symfony\Component\HttpFoundation\Request $current_request
      *   A current user instance.
-     * @param \Drupal\wilmap_map\MapServices                $map_service
+     * @param \Drupal\wilmap_map\MapServices            $map_service
      *   A current user instance.
      */
     public function __construct(
@@ -123,8 +125,18 @@ class CountriesEntriesByLayerCountRestResource extends ResourceBase
             throw new AccessDeniedHttpException();
         }
 
+        // Is parameter is 'all', no layer applied
+        if ($layer_nid == 'all') {
+            $countries_entries = $this->map->getCountriesEntriesCount(null);
+        } else {
+            $node = Node::load($layer_nid);
+            if (Node::load($layer_nid) && $node->getType() == 'layer') {
+                $countries_entries = $this->map->getCountriesEntriesCount($layer_nid);
+            } else {
+                throw new NotFoundHttpException();
+            }
+        }
         // Use 'wilmap_map.map' service to retrieve countries entries.
-        $countries_entries = $this->map->getCountriesEntriesCount($layer_nid);
 
         return new ResourceResponse($countries_entries);
     }

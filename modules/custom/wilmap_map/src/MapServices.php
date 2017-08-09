@@ -136,14 +136,17 @@ class MapServices
     {
 
         $countries_entries = [];
+        $conditions = [];
 
         // Get Countries if not calculated previously or reset required
         if ($reset || !$this->countries) {
             $this->countries = Node::loadMultiple($this->countryService->getCountries());
         }
 
-        // Get Conditions from layer
-        $conditions = $this->layerService->getLayerConditions($layer_nid);
+        // Get Conditions if layer present
+        if($layer_nid){
+            $conditions = $this->layerService->getLayerConditions($layer_nid);
+        }
 
         // For each country, get entries count
         foreach ($this->countries as $country) {
