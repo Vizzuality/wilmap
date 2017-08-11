@@ -1,0 +1,8 @@
+
+wilmap_widget.map:
+  path: '/widgets/map/{layer}'
+  defaults:
+    _controller: '\Drupal\wilmap_widget\Controller\MapWidget::get'
+    _title: 'WILMap map widget'
+  requirements:
+    _permission: 'access content'

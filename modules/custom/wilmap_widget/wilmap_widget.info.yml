@@ -1,0 +1,7 @@
+name: WILMap Widget
+type: module
+description: Provides widgets to embed content in other sites using an iframe
+core: 8.x
+package: WILMap
+dependencies:
+  - wilmap_map
