@@ -117,7 +117,7 @@ class CountryDataRestResource extends ResourceBase
 
         $node = Node::load($nid);
 
-        if (!$node || $node->getType()!='country'){
+        if (!$node || $node->getType() != 'country') {
             throw new AccessDeniedHttpException();
         }
 
@@ -126,8 +126,16 @@ class CountryDataRestResource extends ResourceBase
         $data['id'] = $node->id();
         $data['title'] = $node->getTitle();
         $data['iso2'] = $node->get('field_iso2')->value;
+        $data['values'] = [];
         foreach ($field_group->children as $field_name) {
-            $data[$field_name] = $node->get($field_name)->value;
+            $field = [
+              'label' => $node->get($field_name)
+                ->getFieldDefinition()
+                ->getLabel(),
+              'value' => $node->get($field_name)->value
+            ];
+
+            $data['values'][$field_name] = $field;
         }
 
         return new ResourceResponse($data);
