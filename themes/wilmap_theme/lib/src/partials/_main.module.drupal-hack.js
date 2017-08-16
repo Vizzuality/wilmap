@@ -89,36 +89,66 @@
         var runON = '.view-list-entries .view-filters';
 
         this.updateAdvancedFilters = function() {
+          var advancedDOM = runON + ' .views-exposed-form .form--advanced';
+          var advancedContentDOM = advancedDOM + ' .content';
+          var cont = 0;
+
+          $(advancedContentDOM).empty();
           $(runON + ' .views-exposed-form .form--modal .content-inner .form-item input').each(function(item, value) {
+            var v_text = "";
+            var v_id = "";
+            var template_button = '<div class="advanced-tag btn">[v_text] <a href="#" class="delete">X</a></div>';
+
             switch ($(value).attr('type')) {
               case 'text':
                 if($(value).val() !== '') {
-                  console.log($(value).val());
+                  v_text = $(value).parent().find('label').text() + ': ' + $(value).val();
+
+                  $(advancedContentDOM).append(template_button.replace(/\[v_text\]/g, v_text));
+                  cont++;
                 }
 
                 break;
               case 'checkbox':
                 if($(value).is(':checked')) {
-                  console.log($(value).parents('label').text());
+                  v_text = $(value).parents('label').text();
+
+                  $(advancedContentDOM).append(template_button.replace(/\[v_text\]/g, v_text));
+                  cont++;
                 }
 
                 break;
               default:
-                breakK
+                break;
             }
           });
+
+          // Events
+          $(advancedContentDOM + ' .advanced-tag a.delete').on('click', function(e){
+            e.preventDefault();
+            $(this).parent().remove();
+
+            //
+            //App.DrupalHack.methods.updateAdvancedFilters();
+          });
+
+          if(cont) {
+            $(advancedDOM).show();
+          } else {
+            $(advancedDOM).hide();
+          }
         };
 
         if ($(runON).length > 0) {
           if(!$(runON + ' .form--modal').length > 0) {
-            $(runON + ' .views-exposed-form').append('<div id="modal-advanced-filter" class="form--modal modal"><div class="content"><a class="close switch" gumby-trigger="|#modal-advanced-filter">CLOSE</a><h3>Advanced - Search</h3><div class="content-inner"><div class="date-selectors"></div></div><div class="modal-actions"><a href="#" class="btn">DONE</a></div></div></div>');
+            $(runON + ' .views-exposed-form').append('<div id="modal-advanced-filter" class="form--modal modal"><div class="content"><a class="close switch" gumby-trigger="|#modal-advanced-filter">CLOSE</a><h3>Advanced - Search</h3><div class="content-inner"><div class="date-selectors"></div></div><div class="modal-actions"><a href="#" class="btn modal-done">APPLY</a></div></div></div>');
             $(runON + ' .views-exposed-form').append('<div class="form--advanced" style="display: none;"><fieldset><legend>Advanced filters:</legend></fieldset><div class="content"></div></div>');
 
-            // $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .views-exposed-form .js-form-item-fromyear').remove().wrap());
-            // $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .views-exposed-form .js-form-item-toyear').remove().wrap());
 
             $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .form--inline > .js-form-item').remove().wrap());
             $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .form--inline > details.form-item').remove().wrap());
+            $(runON + ' .views-exposed-form .form--modal .content-inner .date-selectors').append($(runON + ' .views-exposed-form .js-form-item-fromyear').remove().wrap());
+            $(runON + ' .views-exposed-form .form--modal .content-inner .date-selectors').append($(runON + ' .views-exposed-form .js-form-item-toyear').remove().wrap());
 
             $(runON + ' .views-exposed-form .form--modal .content-inner details.form-item').each(function (item, value) {
               var summary_text = $(value).find('summary').text();
@@ -157,14 +187,17 @@
           $(runON).addClass('__processed');
 
           // Events
+          // checkboxes
           $(runON + ' .views-exposed-form .form--modal .content-inner details .form-type-checkbox').on('click', function(){
             var txt = '';
             var output = '';
 
-            $(this).parent().find('.form-type-checkbox input:checked').each(function(i,value) {
+            $(this).parents('.details-wrapper').find('.form-type-checkbox input:checked').each(function(i, value) {
+
               var comma = (txt == '') ? '':' - ';
               txt +=  comma + $(value).parent().text();
             });
+
 
             output = (txt == '')?'NONE SELECTED':txt;
             $(this).parents('details.form-item').find('summary').text(output);
@@ -172,6 +205,22 @@
             //
             App.DrupalHack.methods.updateAdvancedFilters();
           });
+
+          // Inputs
+          $(runON + ' .views-exposed-form .form--modal input.form-text').on('blur', function(t){
+            //
+            App.DrupalHack.methods.updateAdvancedFilters();
+          });
+
+
+          // done button
+          $(runON + ' .views-exposed-form .form--modal a.modal-done').on('click', function(e){
+            e.preventDefault();
+
+            App.DrupalHack.methods.updateAdvancedFilters();
+            $(runON + ' .views-exposed-form .form--modal a.close').click();
+            $(runON + ' .views-exposed-form input.form-submit').click();
+          })
 
         }
       },

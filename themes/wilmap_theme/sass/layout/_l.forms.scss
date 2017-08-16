@@ -21,6 +21,7 @@ $form-input-stroke-color:                $gray-10;
 $form-input-radius:                      $metro-radius;
 $form-picker-color:                      $form-input-color;
 $form-picker-bg-color:                   $form-input-bg-color;
+$form-picker-arrow-bg-color:             $form-input-bg-color;
 $form-picker-weight:                     $semibold;
 $form-picker-stroke-size:                0;
 $form-picker-stroke-color:               $form-input-stroke-color;
@@ -196,6 +197,17 @@ label {
   resize: none;
   vertical-align: top;
 
+  // Gradient right
+  @include image-overlay(rgba($form-picker-arrow-bg-color, 0), rgba($form-picker-arrow-bg-color, 1), 1, 90deg);
+  &::before {
+    top: 0;
+    left: auto;
+    right: $dp * 1.5;
+    width: $dp * 3;
+    height: $dp * 3;
+    z-index: 100;
+  }
+
   @include icon-change('icon-down-dir', after);
   &::after {
     @include trim();
@@ -205,6 +217,8 @@ label {
     color: darken($form-picker-stroke-color, 10);
     border: 0;
     border-left: $form-picker-stroke-size solid $form-picker-stroke-color;
+    z-index: 100;
+    background-color: $form-picker-arrow-bg-color;
 
     @include respond(tablets) {
       @include position(absolute, 0 0 null null);

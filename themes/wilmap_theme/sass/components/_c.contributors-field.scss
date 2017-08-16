@@ -22,12 +22,13 @@
     }
 
     .profile {
+      @include margin(null null null (-$dp * 2.2));
+      @include position(relative, null null null (-$dp / 2));
       display: inline-block;
-      position: relative;
-      left: -$dp * 1.5;
 
       &:first-child {
-        left: 0;
+        @include margin(null null null 0);
+        @include position(relative, null null null 0);
       }
 
       a {

@@ -267,12 +267,12 @@ $nav-item-bgcolor-active:               $white;
   .navbar {
     @include position(relative !important);
     @include trim();
-    @include padding($dp * 2 null $dp * 2 $header-w-logo-desktop + $header-marginleft + ($dp * 2));
+    @include padding($dp * 2 null $dp * 1.9 $header-w-logo-desktop + $header-marginleft + ($dp * 2));
     min-height: auto;
     background-color: $header-navbar;
 
     @include respond(tablets) {
-      @include padding($dp * 2 null $dp * 2 $header-w-logo-tablets + $header-marginleft + ($dp * 2));
+      @include padding($dp * 2 null $dp * 1.9 $header-w-logo-tablets + $header-marginleft + ($dp * 2));
     }
 
     @include respond(portrait-tablets) {

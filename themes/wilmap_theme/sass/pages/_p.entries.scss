@@ -49,6 +49,10 @@
     .form--filter {
       @include column(12, false, collapse, false);
 
+      @include respond(tablets) {
+        width: columns(11);
+      }
+
       fieldset {
         @include trim();
         @include margin($dp null);
@@ -66,6 +70,11 @@
         @include column(3.8);
         margin-left: $gutter * 1.5;
 
+        @include respond(tablets) {
+          width: columns(3.4);
+          margin-left: $gutter;
+        }
+
         &.js-form-item-claim {
           margin-left: 0;
         }
@@ -74,6 +83,35 @@
       .site-btn {
         @include column(2);
         margin-left: $gutter * 1.5;
+
+        @include respond(tablets) {
+          width: columns(3.5);
+        }
+
+        a {
+          @include button-second();
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+
+    .form--sort {
+      @include column(2);
+      @include padding($dp 0 0 $dp * 2);
+      border-left: 1px solid $hr-color;
+
+      @include respond(tablets) {
+        width: columns(2.5);
+      }
+
+      @include respond(all-phones) {
+        @include padding($dp 0 0 0);
+        border-left: none;
+      }
+
+      .picker {
+        top: 6px;
       }
     }
 
@@ -96,11 +134,34 @@
           .content-inner {
             overflow-x: hidden;
             overflow-y: auto;
-            height: 84%;
+            height: 80%;
 
             .picker {
               width: 100%;
             }
+          }
+
+          .modal-actions {
+            @include position(absolute, auto null $dp * 2 0);
+            width: 100%;
+            text-align: center;
+
+            .site-btn {
+              @include margin(0);
+            }
+          }
+        }
+      }
+
+      .date-selectors {
+        @include column(14, false, collapse, false);
+        @include clearfix();
+
+        .js-form-item {
+          @include column(7);
+
+          &:first-child {
+            @include margin(null null null 0);
           }
         }
       }
@@ -200,13 +261,48 @@
       }
     }
 
-    .form--sort {
-      @include column(2);
-      @include padding($dp 0 0 $dp * 2);
-      border-left: 1px solid $hr-color;
+    .form--advanced {
+      fieldset {
+        @include margin(null null 0 null);
+        max-height: $dp * 2;
+      }
 
-      .picker {
-        top: 6px;
+      .advanced-tag {
+        @include margin(0 $dp $dp 0 !important);
+        @include font($normal, 1.2, $semibold, $body-font);
+        // padding: $dp / 2  $dp * 3 $dp / 2 $dp !important;
+        padding: $dp / 2  0 $dp / 2 $dp !important;
+        color: $fourth-color;
+        background-color: rgba($fourth-color, 0.2);
+        display: inline-block;
+
+        a {
+          @include icon-insert('icon-cancel', before);
+          @include position(absolute, 0 0 null auto);
+
+          &::after {
+            @include trim();
+            @include position(absolute, 12px 10px null auto);
+            @include fs(20px);
+            color: $fourth-color;
+            border: 0;
+          }
+
+          @include font($normal, 1.2, $semibold, $body-font);
+          @include size($dp * 2);
+          margin-left: $dp / 2;
+          position: relative;
+          top: 5px;
+          color: $fourth-color;
+          display: inline-block;
+          overflow: hidden;
+          background-color: transparent;
+
+          &:hover {
+            background-color: $fourth-color;
+            color: $white;
+          }
+        }
       }
     }
 
@@ -216,6 +312,10 @@
 
       .js-form-type-textfield {
         @include column(10, false, collapse, false);
+
+        @include respond(tablets) {
+          width: columns(8);
+        }
 
         label {
           @include font($normal - 1, 1, $semibold, $heading-font);
@@ -231,14 +331,27 @@
           border-top: none;
           border-left: none;
           border-right: none;
+
+          @include respond(tablets) {
+            width: 60%;
+          }
         }
       }
 
       .form-actions {
         @include column(2);
+        @include padding(null 3px);
+
+        @include respond(tablets) {
+          width: columns(2.9);
+        }
+
+        @include respond(all-phones) {
+          @include margin(null null $dp * 2 null);
+        }
 
         .site-btn {
-          width: 95%;
+          width: 100%;
 
           input {
             width: 100%;
@@ -250,6 +363,10 @@
         @include column(2);
         @include padding($dp * 2.4 null null null);
         text-align: right;
+
+        @include respond(all-phones) {
+          display: none;
+        }
       }
     }
   }

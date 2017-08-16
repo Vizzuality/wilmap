@@ -835,10 +835,13 @@
     .field--name-field-contributors .thumbnails.single {
       margin-right: 10px; }
     .field--name-field-contributors .thumbnails .profile {
-      display: inline-block;
+      margin-left: -22px;
       position: relative;
-      left: -15px; }
+      left: -5px;
+      display: inline-block; }
       .field--name-field-contributors .thumbnails .profile:first-child {
+        margin-left: 0;
+        position: relative;
         left: 0; }
       .field--name-field-contributors .thumbnails .profile a {
         display: block;
@@ -1179,7 +1182,7 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
   border-left: 0px solid transparent;
   border-right: 14px solid transparent;
   bottom: auto;
-  top: 84%;
+  top: 85%;
   z-index: 11;
   left: 22px; }
 .ttip:after {
