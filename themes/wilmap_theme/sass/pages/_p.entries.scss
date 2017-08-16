@@ -297,7 +297,7 @@
 
           &::before {
             @include trim();
-            @include position(relative, 0 0 null null);
+            @include position(relative, 1px 0 null null);
             @include padding(2px 20px 20px 3px);
             @include fs(24px);
             color: $fourth-color;

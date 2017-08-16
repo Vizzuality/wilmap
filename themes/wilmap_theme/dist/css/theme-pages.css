@@ -3802,7 +3802,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         margin: 0;
         padding: 0;
         position: relative;
-        top: 0;
+        top: 1px;
         right: 0;
         padding: 2px 20px 20px 3px;
         font-size: 24px;
