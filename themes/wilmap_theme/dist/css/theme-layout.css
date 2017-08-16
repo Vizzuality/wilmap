@@ -1022,10 +1022,6 @@ label {
     outline: none;
     -webkit-appearance: none; }
 
-.field .input.form-search {
-  padding: 0 10px !important;
-  width: auto; }
-
 a.btn,
 button.btn,
 .append .btn {

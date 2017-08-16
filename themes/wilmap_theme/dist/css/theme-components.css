@@ -957,7 +957,8 @@
     border: none;
     border-bottom: 1px solid #e6e6e6;
     color: #222;
-    width: 90%; }
+    width: 90%;
+    padding: 0 10px !important; }
     .block-search .field .input::-webkit-input-placeholder {
       color: #222; }
     .block-search .field .input:-ms-input-placeholder {

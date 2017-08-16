@@ -247,9 +247,3 @@ label {
     -webkit-appearance: none;
   }
 }
-
-// Search fields
-.field .input.form-search {
-  @include padding(0 $dp !important);
-  width: auto;
-}

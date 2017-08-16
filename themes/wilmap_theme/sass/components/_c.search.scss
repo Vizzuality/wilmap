@@ -37,6 +37,8 @@
       border-bottom: 1px solid $hr-color;
       color: $first-color;
       width: 90%;
+      padding: 0 $dp !important;
+
 
       &::placeholder {
         color: $first-color;
