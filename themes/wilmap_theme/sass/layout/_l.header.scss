@@ -15,9 +15,12 @@ $header-navbar:                         rgba($white, 0.95);
 $header-bandcolor:                      transparent;
 $header-bandcolor-active:               $third-color;
 
-$header-height-desktop:                 132px;
-$header-height-tablets:                 100px;
-$header-height-phones:                  65px;
+$header-height-desktop:                 auto;
+$header-height-tablets:                 auto;
+$header-height-phones:                  auto;
+// $header-height-desktop:                 132px;
+// $header-height-tablets:                 100px;
+// $header-height-phones:                  65px;
 $header-w-logo-desktop:                 179px;
 $header-w-logo-tablets:                 135px;
 $header-w-logo-phones:                  88px;
@@ -188,12 +191,19 @@ $nav-item-bgcolor-active:               $white;
       }
 
       a {
-        @extend %is-shown-block;
-        @extend %hide-text;
-        @include size(100%);
-
-        @include bg-image ($img-path + 'logo.png', $width:78%, $height:auto);
-        background-position: 50% 50%;
+        @include font($normal, 1.2, $bold, $body-font);
+        color: $second-color;
+        padding: $dp * 2;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        text-transform: uppercase;
+        // @extend %is-shown-block;
+        // @extend %hide-text;
+        // @include size(100%);
+        //
+        // @include bg-image ($img-path + 'logo.png', $width:78%, $height:auto);
+        // background-position: 50% 50%;
       }
     }
 

@@ -128,6 +128,10 @@
             e.preventDefault();
             $(this).parent().remove();
 
+            if($(advancedContentDOM + ' .advanced-tag').length === 0) {
+              $(advancedDOM).hide();
+            }
+
             //
             //App.DrupalHack.methods.updateAdvancedFilters();
           });

@@ -271,44 +271,46 @@
 
     .form--advanced {
       fieldset {
-        @include margin(null null 0 null);
+        @include margin(null null $dp null);
         max-height: $dp * 2;
       }
 
       .advanced-tag {
+        @include position(relative);
         @include margin(0 $dp $dp 0 !important);
         @include font($normal, 1.2, $semibold, $body-font);
-        // padding: $dp / 2  $dp * 3 $dp / 2 $dp !important;
-        padding: $dp / 2  0 $dp / 2 $dp !important;
+        padding: $dp / 2  $dp * 3.5 $dp / 2 $dp !important;
         color: $fourth-color;
         background-color: rgba($fourth-color, 0.2);
         display: inline-block;
 
         a {
+          @include trim();
           @include icon-insert('icon-cancel', before);
-          @include position(absolute, 0 0 null auto);
-
-          &::after {
-            @include trim();
-            @include position(absolute, 12px 10px null auto);
-            @include fs(20px);
-            color: $fourth-color;
-            border: 0;
-          }
-
+          @include position(absolute, $dp / 2 $dp / 2 null auto);
           @include font($normal, 1.2, $semibold, $body-font);
           @include size($dp * 2);
-          margin-left: $dp / 2;
-          position: relative;
-          top: 5px;
           color: $fourth-color;
           display: inline-block;
           overflow: hidden;
           background-color: transparent;
 
+          &::before {
+            @include trim();
+            @include position(relative, 0 0 null null);
+            @include padding(2px 20px 20px 3px);
+            @include fs(24px);
+            color: $fourth-color;
+            background-color: transparent;
+            border: 0;
+          }
+
           &:hover {
+            &::before {
+              color: $white;
+            }
+
             background-color: $fourth-color;
-            color: $white;
           }
         }
       }

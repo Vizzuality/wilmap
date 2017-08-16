@@ -3745,9 +3745,10 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
           .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li ul li .form-type-checkbox label {
             font-weight: 400; }
   .block-views-blocklist-entries-block-1 .view-filters .form--advanced fieldset {
-    margin-bottom: 0;
+    margin-bottom: 10px;
     max-height: 20px; }
   .block-views-blocklist-entries-block-1 .view-filters .form--advanced .advanced-tag {
+    position: relative;
     margin: 0 10px 10px 0;
     font-size: 16px;
     font-size: 1rem;
@@ -3755,11 +3756,13 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     line-height: 1.2rem;
     font-weight: 600;
     font-family: "Raleway", sans-serif;
-    padding: 5px 0 5px 10px !important;
+    padding: 5px 35px 5px 10px !important;
     color: #968f7e;
     background-color: rgba(150, 143, 126, 0.2);
     display: inline-block; }
     .block-views-blocklist-entries-block-1 .view-filters .form--advanced .advanced-tag a {
+      margin: 0;
+      padding: 0;
       font-family: 'entypo';
       speak: none;
       font-style: normal;
@@ -3772,8 +3775,8 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 5px;
+      right: 5px;
       left: auto;
       font-size: 16px;
       font-size: 1rem;
@@ -3783,9 +3786,6 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       font-family: "Raleway", sans-serif;
       height: 20px;
       width: 20px;
-      margin-left: 5px;
-      position: relative;
-      top: 5px;
       color: #968f7e;
       display: inline-block;
       overflow: hidden;
@@ -3798,20 +3798,22 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         position: relative;
         top: 1px;
         left: 1px; }
-      .block-views-blocklist-entries-block-1 .view-filters .form--advanced .advanced-tag a::after {
+      .block-views-blocklist-entries-block-1 .view-filters .form--advanced .advanced-tag a::before {
         margin: 0;
         padding: 0;
-        position: absolute;
-        top: 12px;
-        right: 10px;
-        left: auto;
-        font-size: 20px;
-        font-size: 1.25rem;
+        position: relative;
+        top: 0;
+        right: 0;
+        padding: 2px 20px 20px 3px;
+        font-size: 24px;
+        font-size: 1.5rem;
         color: #968f7e;
+        background-color: transparent;
         border: 0; }
       .block-views-blocklist-entries-block-1 .view-filters .form--advanced .advanced-tag a:hover {
-        background-color: #968f7e;
-        color: #fff; }
+        background-color: #968f7e; }
+        .block-views-blocklist-entries-block-1 .view-filters .form--advanced .advanced-tag a:hover::before {
+          color: #fff; }
   .block-views-blocklist-entries-block-1 .view-filters .form--bottom {
     margin-top: 30px;
     *zoom: 1; }
