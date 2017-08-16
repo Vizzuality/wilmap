@@ -1,0 +1,14 @@
+{
+  "name": "drupal/wilmap_widget",
+  "type": "drupal-module",
+  "description": "Provides widgets to embed content in other sites using an iframe",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/wilmap_widget",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/wilmap_widget",
+    "source": "http://cgit.drupalcode.org/wilmap_widget"
+  },
+  "require": { }
+}

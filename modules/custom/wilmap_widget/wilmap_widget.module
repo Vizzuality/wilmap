@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains wilmap_widget.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function wilmap_widget_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the wilmap_widget module.
+    case 'help.page.wilmap_widget':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides widgets to embed content in other sites using an iframe') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function wilmap_widget_theme() {
+  return [
+    'wilmap_widget' => [
+      'render element' => 'children',
+    ],
+  ];
+}

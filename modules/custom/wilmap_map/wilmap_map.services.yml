@@ -1,3 +1,10 @@
 services:
- wilmap_map.country_iso2:
-   class: Drupal\wilmap_map\CountryServices
+  wilmap_map.layer:
+    class: Drupal\wilmap_map\LayerServices
+    arguments: ['@entity_type.manager', '@entity.query']
+  wilmap_map.country:
+    class: Drupal\wilmap_map\CountryServices
+    arguments: ['@entity.query']
+  wilmap_map.map:
+    class: Drupal\wilmap_map\MapServices
+    arguments: ['@database','@entity.query','@wilmap_map.country','@wilmap_map.layer']
