@@ -44,6 +44,10 @@
     .picker {
       padding-left: 0;
       top: 4px;
+
+      @include respond(all-phones) {
+        width: 100%;
+      }
     }
 
     .form--filter {
@@ -81,7 +85,7 @@
       }
 
       .site-btn {
-        @include column(2);
+        @include column(2.2);
         margin-left: $gutter * 1.5;
 
         @include respond(tablets) {
@@ -112,6 +116,10 @@
 
       .picker {
         top: 6px;
+
+        @include respond(all-phones) {
+          width: 100%;
+        }
       }
     }
 
@@ -334,6 +342,10 @@
 
           @include respond(tablets) {
             width: 60%;
+          }
+
+          @include respond(all-phones) {
+            width: 57%;
           }
         }
       }

@@ -3483,6 +3483,9 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
   .block-views-blocklist-entries-block-1 .view-filters .picker {
     padding-left: 0;
     top: 4px; }
+    @media only screen and (max-width: 767px) {
+      .block-views-blocklist-entries-block-1 .view-filters .picker {
+        width: 100%; } }
   .block-views-blocklist-entries-block-1 .view-filters .form--filter {
     width: 85.46032%; }
     @media only screen and (max-width: 767px) {
@@ -3517,7 +3520,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       .block-views-blocklist-entries-block-1 .view-filters .form--filter .js-form-type-select.js-form-item-claim {
         margin-left: 0; }
     .block-views-blocklist-entries-block-1 .view-filters .form--filter .site-btn {
-      width: 12.7619%;
+      width: 14.21587%;
       margin-left: 2.66667%; }
       @media only screen and (max-width: 767px) {
         .block-views-blocklist-entries-block-1 .view-filters .form--filter .site-btn {
@@ -3592,6 +3595,9 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         border-left: none; } }
     .block-views-blocklist-entries-block-1 .view-filters .form--sort .picker {
       top: 6px; }
+      @media only screen and (max-width: 767px) {
+        .block-views-blocklist-entries-block-1 .view-filters .form--sort .picker {
+          width: 100%; } }
   .block-views-blocklist-entries-block-1 .view-filters .form--modal.modal.active > .content {
     width: 640px;
     height: 90%;
@@ -3844,6 +3850,9 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         @media only screen and (min-width: 768px) and (max-width: 1124px) {
           .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield .form-text {
             width: 60%; } }
+        @media only screen and (max-width: 767px) {
+          .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield .form-text {
+            width: 57%; } }
     .block-views-blocklist-entries-block-1 .view-filters .form--bottom .form-actions {
       width: 12.7619%;
       padding-right: 3px;

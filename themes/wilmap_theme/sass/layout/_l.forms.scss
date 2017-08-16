@@ -206,6 +206,15 @@ label {
     width: $dp * 3;
     height: $dp * 3;
     z-index: 100;
+    display: none;
+
+    @include respond(tablets) {
+      display: block;
+    }
+
+    @include respond(all-phones) {
+      display: block;
+    }
   }
 
   @include icon-change('icon-down-dir', after);
