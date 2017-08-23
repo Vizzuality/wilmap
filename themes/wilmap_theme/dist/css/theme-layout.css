@@ -7,7 +7,7 @@ body .layout-main-wrapper, body.path-frontpage .layout-main-wrapper, .site-foote
   body .layout-main-wrapper:after, body.path-frontpage .layout-main-wrapper:after, .site-footer .footer_first_wrap .region-footer-first:after {
     clear: both; }
 
-body .layout-main-wrapper .layout-main, body.path-frontpage .layout-main-wrapper .layout-main, body.path-frontpage.no-sidebar .main-content, body.path-frontpage.sidebar-first #sidebar-first, body.path-frontpage.sidebar-first .main-content, body.path-frontpage.sidebar-second .main-content, body.path-frontpage.sidebar-second #sidebar-second, body.path-frontpage.both-sidebars #sidebar-first, body.path-frontpage.both-sidebars .main-content, body.path-frontpage.both-sidebars #sidebar-second, .main-content-inner .content-sidenav, .main-content-inner .content-content, .main-content-inner .content-content.with-sidenav, .site-footer .footer_first_wrap .region-footer-first .block-menu, .site-footer .footer_first_wrap .region-footer-first .block-menu .menu-item, .block-page-title-block .page-title, article.node--view-mode-full > .node__content .node-body, article.node--view-mode-full > .node__content .node-body > .text-formatted p {
+body .layout-main-wrapper .layout-main, body.path-frontpage .layout-main-wrapper .layout-main, body.path-frontpage.no-sidebar .main-content, body.path-frontpage.sidebar-first #sidebar-first, body.path-frontpage.sidebar-first .main-content, body.path-frontpage.sidebar-second .main-content, body.path-frontpage.sidebar-second #sidebar-second, body.path-frontpage.both-sidebars #sidebar-first, body.path-frontpage.both-sidebars .main-content, body.path-frontpage.both-sidebars #sidebar-second, .main-content-inner .content-sidenav, .main-content-inner .content-content, .main-content-inner .content-content.with-sidenav, .site-footer .footer_first_wrap .region-footer-first .block-menu, .site-footer .footer_first_wrap .region-footer-first .block-menu .menu-item, .site-footer .footer_second_wrap .block-block-content, .site-footer .footer_second_wrap .block-menu, .block-page-title-block .page-title, article.node--view-mode-full > .node__content .node-body, article.node--view-mode-full > .node__content .node-body > .text-formatted p {
   margin-left: 1.77778%;
   float: left;
   min-height: 1px;
@@ -15,7 +15,7 @@ body .layout-main-wrapper .layout-main, body.path-frontpage .layout-main-wrapper
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-body.path-frontpage .layout-main-wrapper .layout-main, body.path-frontpage.no-sidebar .main-content, body.path-frontpage.sidebar-first #sidebar-first, body.path-frontpage.sidebar-second .main-content, body.path-frontpage.both-sidebars #sidebar-first, .main-content-inner .content-sidenav, .main-content-inner .content-content, .block-page-title-block .page-title, article.node--view-mode-full > .node__content .node-body {
+body.path-frontpage .layout-main-wrapper .layout-main, body.path-frontpage.no-sidebar .main-content, body.path-frontpage.sidebar-first #sidebar-first, body.path-frontpage.sidebar-second .main-content, body.path-frontpage.both-sidebars #sidebar-first, .main-content-inner .content-sidenav, .main-content-inner .content-content, .site-footer .footer_second_wrap .block-block-content, .block-page-title-block .page-title, article.node--view-mode-full > .node__content .node-body {
   margin-left: 0; }
 
 .site-header .main-header .site-slogan {
@@ -24,7 +24,7 @@ body.path-frontpage .layout-main-wrapper .layout-main, body.path-frontpage.no-si
 .site-header {
   display: block; }
 
-.site-footer .footer_second_wrap .logo-sign {
+.site-footer .footer_second_wrap .block-block-content .logo-cis, .site-footer .footer_second_wrap .block-block-content .logo-sign {
   text-indent: -9999px;
   overflow: hidden;
   text-align: left; }
@@ -1894,26 +1894,95 @@ button.btn,
             .site-footer .footer_first_wrap .region-footer-first .block-menu .menu-item {
               margin-bottom: 20px; } }
   .site-footer .footer_second_wrap {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 30px;
+    padding: 20px 30px;
+    *zoom: 1;
+    width: 100%;
+    float: none;
+    clear: both;
+    display: block;
     border-top: 1px solid rgba(255, 255, 255, 0.5); }
     .site-footer .footer_second_wrap .field {
       margin: 0;
       padding: 0; }
+    .site-footer .footer_second_wrap:before, .site-footer .footer_second_wrap:after {
+      content: "";
+      display: table; }
+    .site-footer .footer_second_wrap:after {
+      clear: both; }
     @media only screen and (max-width: 767px) {
       .site-footer .footer_second_wrap {
+        padding: 20px; } }
+    .site-footer .footer_second_wrap .block-block-content {
+      width: 49.11111%; }
+      @media only screen and (max-width: 767px) {
+        .site-footer .footer_second_wrap .block-block-content {
+          float: left;
+          width: 100%; } }
+      @media only screen and (max-width: 767px) {
+        .site-footer .footer_second_wrap .block-block-content {
+          margin-bottom: 10px; } }
+      .site-footer .footer_second_wrap .block-block-content .logo-cis {
+        background-image: url("../../images/logo.png");
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: 100% auto;
+        height: 95px;
+        width: 162px;
+        background-position: center left;
+        background-size: 132px 95px;
+        float: left; }
+        @media only screen and (max-width: 767px) {
+          .site-footer .footer_second_wrap .block-block-content .logo-cis {
+            height: 60px;
+            width: 105px;
+            background-size: contain;
+            background-position: 0 0; } }
+      .site-footer .footer_second_wrap .block-block-content .logo-sign {
+        background-image: url("../../images/footer/stanford-logo.png");
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: 100% auto;
+        height: 14px;
+        width: 175px;
         padding-top: 10px;
         padding-bottom: 10px;
-        padding-left: 20px; } }
-    .site-footer .footer_second_wrap .logo-sign {
-      background-image: url("../../images/footer/stanford-logo.png");
-      background-repeat: no-repeat;
-      background-position: 0 0;
-      background-size: 100% auto;
-      height: 14px;
-      width: 145px;
-      display: block; }
+        background-position: center right;
+        background-size: 145px 14px;
+        border-left: 1px solid rgba(255, 255, 255, 0.4);
+        float: left;
+        position: relative;
+        top: 75px; }
+        @media only screen and (max-width: 767px) {
+          .site-footer .footer_second_wrap .block-block-content .logo-sign {
+            top: 40px; } }
+    .site-footer .footer_second_wrap .block-menu {
+      width: 49.11111%;
+      text-align: right;
+      opacity: 0.7;
+      position: relative;
+      top: 35px; }
+      @media only screen and (max-width: 767px) {
+        .site-footer .footer_second_wrap .block-menu {
+          float: left;
+          margin-left: 0;
+          width: 100%; } }
+      @media only screen and (max-width: 767px) {
+        .site-footer .footer_second_wrap .block-menu {
+          top: 20px; } }
+      .site-footer .footer_second_wrap .block-menu ul {
+        text-align: right; }
+        .site-footer .footer_second_wrap .block-menu ul li a {
+          font-size: 16px;
+          font-size: 1rem;
+          line-height: 16px;
+          line-height: 1rem;
+          font-weight: 600;
+          font-family: "Raleway", sans-serif;
+          text-transform: uppercase;
+          color: #fff;
+          text-decoration: none; }
+          .site-footer .footer_second_wrap .block-menu ul li a:hover {
+            text-decoration: underline; }
 
 .block-page-title-block {
   position: relative;

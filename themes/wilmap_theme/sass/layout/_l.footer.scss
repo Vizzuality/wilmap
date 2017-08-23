@@ -120,18 +120,85 @@ $footer-bandcolor:                      #222222;
 
   .footer_second_wrap {
     @include trim-field();
-    @include padding($dp null $dp $dp * 3);
+    @include padding($dp * 2 $dp * 3);
+    @include clearfix();
+    width: 100%;
+    float: none;
+    clear: both;
+    display: block;
     border-top: 1px solid rgba($footer-text-color, 0.5);
 
     @include respond(all-phones) {
-      @include padding($dp null $dp $dp * 2);
+      @include padding($dp * 2 $dp * 2);
     }
 
-    .logo-sign {
-      @extend %hide-text;
-      @include bg-image ($img-path + 'footer/stanford-logo.png', $width:100%, $height:auto);
-      @include size(145px 14px);
-      display: block;
+    .block-block-content {
+      @include column(7, false, collapse, false);
+
+      @include respond(all-phones) {
+        @include margin(null null $dp null);
+      }
+
+      .logo-cis {
+        @extend %hide-text;
+        @include bg-image ($img-path + 'logo.png', $width:100%, $height:auto);
+        @include size(162px 95px);
+        background-position: center left;
+        background-size: 132px 95px;
+        float: left;
+
+        @include respond(all-phones) {
+          @include size(105px 60px);
+          background-size: contain;
+          background-position: 0 0;
+        }
+      }
+
+      .logo-sign {
+        @extend %hide-text;
+        @include bg-image ($img-path + 'footer/stanford-logo.png', $width:100%, $height:auto);
+        @include size(175px 14px);
+        @include padding($dp null);
+        background-position: center right;
+        background-size: 145px 14px;
+        border-left: 1px solid rgba($footer-text-color, 0.4);
+        float: left;
+        position: relative;
+        top: 75px;
+
+        @include respond(all-phones) {
+          top: 40px;
+        }
+      }
+    }
+
+    .block-menu {
+      @include column(7);
+      text-align: right;
+      opacity: 0.7;
+      position: relative;
+      top: 35px;
+
+      @include respond(all-phones) {
+        top: 20px;
+      }
+
+      ul {
+        text-align: right;
+
+        li {
+          a {
+            @include font($normal, 1, $semibold, $buttons-font);
+            text-transform: uppercase;
+            color: $footer-text-color;
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
     }
   }
 }
