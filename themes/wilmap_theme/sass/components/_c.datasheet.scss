@@ -65,10 +65,17 @@
       background-color: lighten($fifth-color, 10);
     }
 
-    .field__items {
+    .field__items,
+    .field__item {
       margin: 0 !important;
       padding: $dp * 2 $dp * 1.5 $dp * 2 $dp * 1.5 !important;
       min-height: $dp * 11;
+
+      .field__item {
+        margin: 0 0 $dp 0 !important;
+        padding: 0 !important;
+        min-height: auto;
+      }
     }
   }
 }

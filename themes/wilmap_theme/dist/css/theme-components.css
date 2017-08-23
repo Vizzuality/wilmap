@@ -1485,9 +1485,15 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
       color: #968f7e !important;
       text-transform: uppercase !important;
       background-color: #f7f5f2; }
-    .fields-datasheet .field .field__items {
+    .fields-datasheet .field .field__items,
+    .fields-datasheet .field .field__item {
       margin: 0 !important;
       padding: 20px 15px 20px 15px !important;
       min-height: 110px; }
+      .fields-datasheet .field .field__items .field__item,
+      .fields-datasheet .field .field__item .field__item {
+        margin: 0 0 10px 0 !important;
+        padding: 0 !important;
+        min-height: auto; }
 
 /*# sourceMappingURL=theme-components.css.map */
