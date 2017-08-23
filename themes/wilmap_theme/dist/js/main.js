@@ -853,6 +853,55 @@
         }
       },
 
+      /**
+       * Field Datasheet
+       */
+      fieldDatasheet: function() {
+        var dom = '.fields-datasheet';
+        var items_group = 2;
+
+        if ($(dom).length > 0) {
+          // Reset field
+          $(dom + ' .field').removeClass().addClass('field');
+
+          // Group fields
+          if (!$(dom + ' .fields-group').length > 0) {
+            var fields = $(dom + ' > .field');
+            for(var i = 0; i < fields.length; i += items_group) {
+              fields.slice(i, i + items_group).wrapAll("<div class='fields-group'></div>");
+            }
+          }
+
+          // fields groups adjustements
+          var num_fieldsgruop = $(dom + ' > .fields-group').length;
+          $.each($(dom + ' > .fields-group'), function (index, value) {
+            if(index == 0) {
+              $(this).addClass('__show');
+            } else {
+              $(this).addClass('__hide');
+            }
+          });
+
+          // button show more
+          if (!$(dom + ' .datasheet-actions').length > 0) {
+            if(num_fieldsgruop > 1) {
+              $(dom).append('<div class="datasheet-actions"><a href="#" class="btn">Show more</a></div>');
+            }
+          }
+
+          // Events
+          $(dom + ' .datasheet-actions a').on('click', function(e){
+            e.preventDefault();
+
+            $(dom + ' .datasheet-actions').hide();
+            $(dom + ' .fields-group.__hide').removeClass('__hide').addClass('__show');
+          });
+
+          // DOM processed
+          $(dom).addClass('__processed');
+        }
+      },
+
 
       /**
        * Big Links Areas. List and grid items.

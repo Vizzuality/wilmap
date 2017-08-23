@@ -279,9 +279,9 @@
         @include position(relative);
         @include margin(0 $dp $dp 0 !important);
         @include font($normal, 1.2, $semibold, $body-font);
-        padding: $dp / 2  $dp * 3.5 $dp / 2 $dp !important;
+        padding: $dp $dp * 3.5 $dp $dp * 2 !important;
         color: $fourth-color;
-        background-color: rgba($fourth-color, 0.2);
+        background-color: rgba($fourth-color, 0.1);
         display: inline-block;
 
         a {
@@ -333,6 +333,7 @@
           color: $fourth-color;
           text-transform: capitalize;
           display: inline-block;
+          min-height: $dp * 2;
         }
 
         .form-text {
@@ -347,7 +348,7 @@
           }
 
           @include respond(all-phones) {
-            width: 57%;
+            width: 100%;
           }
         }
       }

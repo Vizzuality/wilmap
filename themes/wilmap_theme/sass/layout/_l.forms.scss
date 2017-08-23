@@ -207,6 +207,7 @@ label {
     height: $dp * 3;
     z-index: 100;
     display: none;
+    pointer-events: none;
 
     @include respond(tablets) {
       display: block;
@@ -228,6 +229,7 @@ label {
     border-left: $form-picker-stroke-size solid $form-picker-stroke-color;
     z-index: 100;
     background-color: $form-picker-arrow-bg-color;
+    pointer-events: none;
 
     @include respond(tablets) {
       @include position(absolute, 0 0 null null);

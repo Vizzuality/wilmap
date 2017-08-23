@@ -17,10 +17,10 @@ $header-bandcolor-active:               $third-color;
 
 $header-height-desktop:                 auto;
 $header-height-tablets:                 auto;
-$header-height-phones:                  auto;
+// $header-height-phones:                  auto;
 // $header-height-desktop:                 132px;
 // $header-height-tablets:                 100px;
-// $header-height-phones:                  65px;
+$header-height-phones:                  65px;
 $header-w-logo-desktop:                 179px;
 $header-w-logo-tablets:                 135px;
 $header-w-logo-phones:                  88px;
@@ -204,6 +204,10 @@ $nav-item-bgcolor-active:               $white;
         //
         // @include bg-image ($img-path + 'logo.png', $width:78%, $height:auto);
         // background-position: 50% 50%;
+
+        @include respond(all-phones) {
+          padding: $dp * 2.2 0 $dp * 2 0;
+        }
       }
     }
 

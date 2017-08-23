@@ -47,7 +47,7 @@ article.node--type-news.node--view-mode-full {
     @include trim();
     @include column(10);
     @include clearfix();
-    @include margin(null null $dp * 2 columns(2.45));
+    @include margin(null null $dp * 5 columns(2.45));
     @include padding($dp * 2);
     display: block;
     clear: both;

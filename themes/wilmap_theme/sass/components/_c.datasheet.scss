@@ -5,6 +5,70 @@
 // ============================================================================
 
 .fields-datasheet {
-  @include column(14, false, collapse, false);
+  @include hide-before-dom-alter();
   @include clearfix();
+  margin: $dp * 5 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  float: none;
+  clear: both;
+  display: block;
+
+  .fields-group {
+    width: 100%;
+    @include clearfix();
+
+    &.__show {
+      display: block;
+    }
+    &.__hide {
+      display: none;
+    }
+  }
+
+  .datasheet-actions {
+    @include padding($dp * 2 0);
+    text-align: center;
+
+    .btn {
+      @include button-second();
+    }
+  }
+
+  .field {
+    @include clearfix();
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 50%;
+    float: left;
+    min-height: $dp * 12;
+
+    @include respond(all-phones) {
+      width: 100%;
+      display: block;
+      clear: both;
+      float: none;
+    }
+
+    .field__label {
+      margin: 0 !important;
+      padding: $dp $dp * 3 $dp $dp * 1.5 !important;
+      border: 0 !important;
+      font-family: $base-font-family !important;
+      font-size: $normal !important;
+      font-size: rem($normal !important);
+      font-weight: $semibold !important;
+      line-height: $normal * 1.2 !important;
+      line-height: rem($normal * 1.2 !important);
+      color: $fourth-color !important;
+      text-transform: uppercase !important;
+      background-color: lighten($fifth-color, 10);
+    }
+
+    .field__items {
+      margin: 0 !important;
+      padding: $dp * 2 $dp * 1.5 $dp * 2 $dp * 1.5 !important;
+      min-height: $dp * 11;
+    }
+  }
 }
