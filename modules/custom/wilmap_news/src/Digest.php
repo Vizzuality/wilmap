@@ -218,6 +218,7 @@ class Digest
             'value'  => $renderer->renderPlain($body),
             'format' => 'full_html',
           ],
+          'field_transnational' => array(1),
 //          'field_summary' => [
 //            'value'  => $renderer->renderPlain(node_view_multiple($this->entries,
 //              'digest')),
