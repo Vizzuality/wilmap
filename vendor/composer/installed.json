@@ -6803,5 +6803,48 @@
         "support": {
             "source": "http://cgit.drupalcode.org/link_css"
         }
+    },
+    {
+        "name": "drupal/condition_query",
+        "version": "dev-1.x",
+        "version_normalized": "dev-1.x",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/condition_query",
+            "reference": "deba7a7eb1673921890e7d83ed7af5017136f4b8"
+        },
+        "require": {
+            "drupal/core": "~8.0"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.0-alpha3+1-dev",
+                "datestamp": "1492700644",
+                "security-coverage": {
+                    "status": "not-covered",
+                    "message": "Project has not opted into security advisory coverage!"
+                }
+            }
+        },
+        "installation-source": "source",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "logan.H",
+                "homepage": "https://www.drupal.org/user/629136"
+            }
+        ],
+        "description": "Adds condition plugin by query parameter",
+        "homepage": "https://www.drupal.org/project/condition_query",
+        "support": {
+            "source": "http://cgit.drupalcode.org/condition_query"
+        }
     }
 ]

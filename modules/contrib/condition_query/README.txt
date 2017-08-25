@@ -1,7 +1,14 @@
-Condition Query
-===============
+CONTENTS OF THIS FILE
+---------------------
 
---SUMMARY --
+ * Introduction
+ * Requirements
+ * Installation
+ * Configuration
+ * Maintainers
+
+INTRODUCTION
+------------
 
 Extends conditional plugin API to add URI Query
 Parameters to control the content visibility.
@@ -27,17 +34,20 @@ Example usage:
    ( http:://www.example.com/?app=true)
 
 
--- REQUIREMENTS --
+REQUIREMENTS
+------------
 
 None.
 
 
--- INSTALLATION --
+INSTALLATION
+------------
 
 * Install as usual, see http://drupal.org/node/1897420 for further information.
 
 
--- CONFIGURATION --
+CONFIGURATION
+-------------
 
 * Configure visibility of block Administration » Structure » Block layout
    Configure block » Under Visibility add/update "Request Param"
@@ -47,7 +57,8 @@ None.
    http://www.example.com/?app=yes
 
 
--- CONTACT --
+MAINTAINERS
+-----------
 
 Current maintainers:
-* Loganathan Harikrishnan (logan.H) - https://www.drupal.org/u/loganh.
+* Loganathan Harikrishnan (logan.H) - https://www.drupal.org/u/loganh

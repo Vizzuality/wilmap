@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0b61cd2ca63b04f90c6cfe4fb0617cee",
-    "content-hash": "94acc6021c85b0a6c598ccca7a6dd912",
+    "hash": "52b1f6469bb525773e32d2da4e2e3673",
+    "content-hash": "f139b2369daa085205cc73e22b70d097",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -653,7 +653,8 @@
             "homepage": "https://www.drupal.org/project/better_exposed_filters",
             "support": {
                 "source": "http://cgit.drupalcode.org/better_exposed_filters"
-            }
+            },
+            "time": "2017-06-18 01:04:09"
         },
         {
             "name": "drupal/cer",
@@ -703,6 +704,48 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/cer"
             }
+        },
+        {
+            "name": "drupal/condition_query",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/condition_query",
+                "reference": "deba7a7eb1673921890e7d83ed7af5017136f4b8"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-alpha3+1-dev",
+                    "datestamp": "1492700644",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "logan.H",
+                    "homepage": "https://www.drupal.org/user/629136"
+                }
+            ],
+            "description": "Adds condition plugin by query parameter",
+            "homepage": "https://www.drupal.org/project/condition_query",
+            "support": {
+                "source": "http://cgit.drupalcode.org/condition_query"
+            },
+            "time": "2017-04-20 14:59:40"
         },
         {
             "name": "drupal/contact_block",
@@ -786,8 +829,7 @@
             "homepage": "https://www.drupal.org/project/link_css",
             "support": {
                 "source": "http://cgit.drupalcode.org/link_css"
-            },
-            "time": "2016-11-08 03:19:30"
+            }
         },
         {
             "name": "drupal/search_autocomplete",
@@ -4205,7 +4247,8 @@
                 "source": "http://cgit.drupalcode.org/examples",
                 "issues": "https://www.drupal.org/project/issues/examples",
                 "documentation": "https://api.drupal.org/api/examples"
-            }
+            },
+            "time": "2017-03-15 19:39:11"
         },
         {
             "name": "drupal/migrate_plus",
@@ -6588,6 +6631,7 @@
         "drupal/cer": 20,
         "drupal/better_exposed_filters": 20,
         "drupal/link_css": 20,
+        "drupal/condition_query": 20,
         "behat/mink": 20
     },
     "prefer-stable": true,

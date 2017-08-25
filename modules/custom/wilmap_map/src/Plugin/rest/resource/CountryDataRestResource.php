@@ -128,7 +128,7 @@ class CountryDataRestResource extends ResourceBase
         $data['iso2'] = $node->get('field_iso2')->value;
         $data['values'] = [];
         foreach ($field_group->children as $field_name) {
-            
+
             $value = '';
             if ($node->get($field_name)->value) {
 
