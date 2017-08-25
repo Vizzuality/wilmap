@@ -212,7 +212,7 @@ class Digest
           'type'          => 'news',
           'title'         => $title,
           'langcode'      => $language,
-          'uid'           => 1,
+          'uid'           => ($config->get('author')) ? $config->get('author') : 1,
           'status'        => 1,
           'field_summary' => [
             'value'  => $renderer->renderPlain($body),

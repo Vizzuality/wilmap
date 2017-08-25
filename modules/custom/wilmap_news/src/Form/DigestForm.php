@@ -54,6 +54,16 @@ class DigestForm extends ConfigFormBase
           '#description'   => $this->t('Generates digest every this ammount of days'),
           '#default_value' => $config->get('days'),
         ];
+
+        $form['author'] = [
+          '#type' => 'entity_autocomplete',
+          '#target_type' => 'user',
+          '#selection_settings' => ['include_anonymous' => FALSE],
+          '#default_value' => ($config->get('author')) ? \Drupal\user\Entity\User::load($config->get('author')) : '',
+          '#title' => $this->t('Authored by'),
+          '#description' => $this->t('Digest author. Must be other than admin_WILMAP (uid=1)'),
+        ];
+
         return parent::buildForm($form, $form_state);
     }
 
@@ -76,6 +86,7 @@ class DigestForm extends ConfigFormBase
           ->set('enabled', $form_state->getValue('enabled'))
           ->set('title', $form_state->getValue('title'))
           ->set('days', $form_state->getValue('days'))
+          ->set('author', $form_state->getValue('author'))
           ->save();
     }
 

@@ -3,7 +3,7 @@ wilmap_news.digest_form:
   path: '/admin/config/wilmap_news/digest'
   defaults:
     _form: '\Drupal\wilmap_news\Form\DigestForm'
-    _title: 'DigestForm'
+    _title: 'Digest settings'
   requirements:
     _permission: 'access administration pages'
   options:
