@@ -7,9 +7,15 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\field\Entity\FieldConfig;
 use Drupal\node\NodeInterface;
 
+define( 'WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM', 'wilmap_contributors_to_country');
+define( 'WILMAP_CONTRIBUTORS_TO_REGION_REALM', 'wilmap_contributors_to_region');
+define( 'WILMAP_CONTRIBUTORS_TO_TOPICS_REALM', 'wilmap_contributors_to_topic');
+define( 'WILMAP_CONTRIBUTORS_ADMIN_REALM', 'wilmap_admin');
+define( 'WILMAP_CONTRIBUTORS_ANONYMOUS_REALM', 'wilmap_anonymous');
+define( 'WILMAP_CONTRIBUTORS_AUTHENTICATED_REALM', 'wilmap_authenticated');
+define( 'WILMAP_CONTRIBUTORS_OWNER_REALM', 'wilmap_owner');
 
 /**
  * Implements hook_help().
@@ -28,72 +34,304 @@ function wilmap_contributors_help($route_name, RouteMatchInterface $route_match)
     }
 }
 
-
-/**
- * Implements hook_node_grants().
- */
-function wilmap_contributors_node_grants(AccountInterface $account, $op)
-{
-    $grants = [];
-
-    //kint($account);
-    if ($id = $account->id()) {
-        $grants['wilmap_contributors'] = array($id);
-    }
-
-    // Desconozco si estos controles se hacen aquí o en hook_node_access_records()
-    // TODO: Allow for News, Topics and Entries should check user Countries
-    // TODO: Also check Countries in user Regions
-
-    return $grants;
-}
+/******************************************************************************/
+/* ACCESS                                                                     */
+/******************************************************************************/
 
 /**
  * Implements hook_node_access_records().
+ *
+ * All implementations of hook_node_access() will be called. Each implementation
+ * may explicitly allow, explicitly forbid, or ignore the access request. If at
+ * least one module says to forbid the request, it will be rejected. If no
+ * modules deny the request and at least one says to allow it, the request will
+ * be permitted.
+ *
+ * If all modules ignore the access request, then the node_access table is used
+ * to determine access
+ *
+ * @see https://api.drupal.org/api/drupal/core%21modules%21node%21node.module/group/node_access/8.2.x
+ */
+//function hook_node_access(
+//  \Drupal\node\NodeInterface $node,
+//  $op,
+//  \Drupal\Core\Session\AccountInterface $account
+//) {
+//    $type = $node->bundle();
+//
+//
+//    // TODO: al guardar el nodo (News, Topics, Entries), comprobando si el usuario tiene asociado el país/región seleccionados
+//    // - Además habría que hacer un autocompletado para el campo país/región que
+//    //   sólo muestre los disponibles para el usuario (todos si el rol Admin)
+//
+//    switch ($op) {
+//
+//        case 'update':
+//            // TODO ¿?: Entries and News can be updated only by its contributors and by users Contributing to Country or region related to it
+//
+//            // All node contributors may edit the node (Entries, Topics, News,
+//            // Countries, Region). This is delivered to hook_node_grants()
+//
+//            if ($account->hasPermission('edit any ' . $type . ' content',
+//              $account)) {
+//                return AccessResult::allowed()->cachePerPermissions();
+//            } else {
+//                return AccessResult::allowedIf($account->hasPermission('edit own ' . $type . ' content',
+//                    $account) && ($account->id() == $node->getOwnerId()))
+//                  ->cachePerPermissions()
+//                  ->cachePerUser()
+//                  ->addCacheableDependency($node);
+//            }
+//
+//        default:
+//            // No opinion.
+//            return AccessResult::neutral();
+//    }
+//}
+
+
+/**
+ * Implements hook_node_access_records().
+ *
+ * Set permissions for a node to be written to the database.
  */
 function wilmap_contributors_node_access_records(NodeInterface $node)
 {
     $grants = [];
 
-// kint($node);
-    if (!$field_info = FieldConfig::loadByName('node', $node->bundle(),
-      'field_contributors')
-    ) {
-        return $grants;
+    $type = $node->getType();
+
+
+    // Adds Contributors grants/keys
+    switch ($type) {
+
+        case 'topics':
+            // If Topics adds a WILMAP_CONTRIBUTORS_TO_TOPICS_REALM
+            // record using topic nid as gid
+            $grants[] = array(
+              'realm'        => WILMAP_CONTRIBUTORS_TO_TOPICS_REALM,
+              'gid'          => $node->id(),
+              'grant_view'   => (int) $node->isPublished(),
+              'grant_update' => 1,
+              'grant_delete' => 1
+            );
+            break;
+
+        case 'country':
+            // If Country  adds a WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM
+            // record using country nid as gid
+            $grants[] = array(
+              'realm'        => WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM,
+              'gid'          => $node->id(),
+              'grant_view'   => (int) $node->isPublished(),
+              'grant_update' => 1,
+              'grant_delete' => 1
+            );
+            break;
+
+        case 'region':
+
+            // If Region adds a WILMAP_CONTRIBUTORS_TO_REGION_REALM
+            // record using region nid as gid
+            $grants[] = array(
+              'realm'        => WILMAP_CONTRIBUTORS_TO_REGION_REALM,
+              'gid'          => $node->id(),
+              'grant_view'   => (int) $node->isPublished(),
+              'grant_update' => 1,
+              'grant_delete' => 1
+            );
+            break;
+
+        case 'entry':
+            // If Entry then adds a WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM / WILMAP_CONTRIBUTORS_TO_REGION_REALM
+            // record using country/region from field_location_entry as gid
+            // Get country nids from field_location_entry
+            foreach ($node->field_location_entry->getValue() as $delta => $value) {
+                $grants[] = array(
+                  'realm'        => WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM,
+                  'gid'          => $value['target_id'],
+                  'grant_view'   => (int) $node->isPublished(),
+                  'grant_update' => 1,
+                  'grant_delete' => 1
+                );
+            }
+            // Get region nids from field_region
+            foreach ($node->field_region->getValue() as $delta => $value) {
+                $grants[] = array(
+                  'realm'        => WILMAP_CONTRIBUTORS_TO_REGION_REALM,
+                  'gid'          => $value['target_id'],
+                  'grant_view'   => (int) $node->isPublished(),
+                  'grant_update' => 1,
+                  'grant_delete' => 1
+                );
+            }
+            break;
+
+        case 'news':
+            // If News then adds a WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM / WILMAP_CONTRIBUTORS_TO_REGION_REALM
+            // record using country/region from field_location as gid
+            // Get country nids from field_location_entry
+            foreach ($node->field_location->getValue() as $delta => $value) {
+                $grants[] = array(
+                  'realm'        => WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM,
+                  'gid'          => $value['target_id'],
+                  'grant_view'   => (int) $node->isPublished(),
+                  'grant_update' => 1,
+                  'grant_delete' => 1
+                );
+            }
+            // Get region nids from field_region
+            foreach ($node->field_region->getValue() as $delta => $value) {
+                $grants[] = array(
+                  'realm'        => WILMAP_CONTRIBUTORS_TO_REGION_REALM,
+                  'gid'          => $value['target_id'],
+                  'grant_view'   => (int) $node->isPublished(),
+                  'grant_update' => 1,
+                  'grant_delete' => 1
+                );
+            }
+            break;
+
+        default:
+
     }
 
-    // Default, grant view
+    // Add grant/key for admins
     $grants[] = array(
-      'realm'        => 'all',
+      'realm'        => WILMAP_CONTRIBUTORS_ADMIN_REALM,
       'gid'          => 0,
-      'grant_view'   => 1,
-      'grant_update' => 0,
-      'grant_delete' => 0,
+      'grant_view'   => (int) $node->isPublished(),
+      'grant_update' => 1,
+      'grant_delete' => 1
     );
 
-    if (!$node->isPublished()) {
+    //    Not needed, core checks owner permission, presumably in hook_node_access()
+//    // Add grant/key for owners with owner uid as gid
+//    $grants[] = array(
+//      'realm'        => WILMAP_CONTRIBUTORS_OWNER_REALM,
+//      'gid'          => $node->getOwnerId(),
+//      'grant_view'   => (int) $node->isPublished(),
+//      'grant_update' => 1,
+//      'grant_delete' => 1
+//    );
+
+    // Add grant/key for authenticated
+    $grants[] = array(
+      'realm'        => WILMAP_CONTRIBUTORS_AUTHENTICATED_REALM,
+      'gid'          => 0,
+      'grant_view'   => (int) $node->isPublished(),
+      'grant_update' => 0,
+      'grant_delete' => 0
+    );
+
+    // Add grant/key for anonymous
+    $grants[] = array(
+      'realm'        => WILMAP_CONTRIBUTORS_ANONYMOUS_REALM,
+      'gid'          => 0,
+      'grant_view'   => (int) $node->isPublished(),
+      'grant_update' => 0,
+      'grant_delete' => 0
+    );
+
+    return $grants;
+}
+
+
+/**
+ * Implements hook_node_grants().
+ *
+ * Inform the node access system what permissions the user has.
+ */
+function wilmap_contributors_node_grants(AccountInterface $account, $op)
+{
+    $grants = array();
+
+    // If user has administrator role give user Admin grant/key
+    if (in_array('administrator', $account->getRoles())) {
+        // gid to view, update, delete
+        $grants[WILMAP_CONTRIBUTORS_ADMIN_REALM][] = 0;
+
+        // Return as admin has all privileges
         return $grants;
     }
 
-    // Allow "update" if in contributors list
-    // Add a realm for each associated user.
-    foreach ($node->field_contributors->getValue() as $delta => $item) {
-        $grants[] = [
-          'realm'        => 'wilmap_contributors',
-          'gid'          => $item['target_id'],
-          'grant_view'   => 1,
-          'grant_update' => 1,
-          'grant_delete' => 0,
-        ];
+//    Not needed, core checks owner permission, presumably in hook_node_access()
+//    // Add user owner grant/key, may match a record
+//    if ($account->id() != 0) {
+//        $grants[WILMAP_CONTRIBUTORS_OWNER_REALM][] = $account->id();
+//    }
+
+    // Grants for Country and Region Contributors
+    if (in_array('contributors', $account->getRoles())) {
+
+        $user = \Drupal::entityTypeManager()
+          ->getStorage('user')
+          ->load($account->id());
+
+        // Give contributor all her countries grants/keys
+        foreach ($user->field_country->getValue() as $delta => $value) {
+            $grants[WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM][] = $value['target_id'];
+        }
+
+        // Give contributor all her regions grants/keys
+        foreach ($user->field_region->getValue() as $delta => $value) {
+            $grants[WILMAP_CONTRIBUTORS_TO_REGION_REALM][] = $value['target_id'];
+        }
+    }
+
+    // If user has authenticated role give user Authenticated grant/key
+    if (in_array('authenticated', $account->getRoles())) {
+        $grants[WILMAP_CONTRIBUTORS_AUTHENTICATED_REALM][] = 0;
+        return $grants;
+    }
+
+    // If user has anonymous role give user Anonymous grant/key
+    if (in_array('anonymous', $account->getRoles())) {
+        $grants[WILMAP_CONTRIBUTORS_ANONYMOUS_REALM][] = 0;
     }
 
     return $grants;
 }
 
+
+/******************************************************************************/
+/* ALTERS                                                                     */
+/******************************************************************************/
+
+///**
+// * Implements hook_entity_bundle_field_info_alter().
+// *
+// * @see https://www.drupal.org/docs/8/api/entity-validation-api/providing-a-custom-validation-constraint
+// */
+//function wilmap_contributors_entity_bundle_field_info_alter(
+//  &$fields,
+//  \Drupal\Core\Entity\EntityTypeInterface $entity_type,
+//  $bundle
+//) {
+//
+//    // Adds 'available_country' constraint to field_location field in News
+//    if ($bundle === 'news') {
+//        if (isset($fields['field_location'])) {
+//            // Use the ID as defined in the annotation of the constraint definition
+//            $fields['field_location']->addConstraint('available_country', []);
+//        }
+//    }
+//
+//    // Adds 'available_country' constraint to field_location_entry field in Entry
+//    if ($bundle === 'entry') {
+//        if (isset($fields['field_location_entry'])) {
+//            // Use the ID as defined in the annotation of the constraint definition
+//            $fields['field_location_entry']->addConstraint('available_country',
+//              []);
+//        }
+//    }
+//
+//}
+
+
 /******************************************************************************/
 /* PREPROCESS                                                                 */
 /******************************************************************************/
-
 
 /**
  * hook template_preprocess_user()
@@ -107,8 +345,8 @@ function wilmap_contributors_preprocess_user(&$variables)
     $contributors = intval($ranking_service->getUserContributions($account->id()));
     $ranking = intval($ranking_service->getUserRanking($account->id()));
 
-    $variables['ranking'] = ($ranking < 10 && $ranking != 0)?'0'.$ranking:$ranking;
-    $variables['contributions'] = ($contributors < 10 && $contributors != 0)?'0'.$contributors:$contributors;
+    $variables['ranking'] = ($ranking < 10 && $ranking != 0) ? '0' . $ranking : $ranking;
+    $variables['contributions'] = ($contributors < 10 && $contributors != 0) ? '0' . $contributors : $contributors;
 
     //kint($variables);
 
