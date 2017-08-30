@@ -7,7 +7,7 @@
   #block-wilmap-theme-blockwelcomehome .content:after, #block-wilmap-theme-blockmaphome .content:after, #block-wilmap-theme-blockexplorehome .content:after, #block-wilmap-theme-blocknewshome .content:after {
     clear: both; }
 
-#block-wilmap-theme-blockwelcomehome .text, #block-wilmap-theme-blockwelcomehome .text .description, #block-wilmap-theme-blockmaphome .text, #block-wilmap-theme-blockexplorehome .text, #block-wilmap-theme-blocknewshome .text, .block-views-blocktopics-block-1 .views-row, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p, article.node--type-topics.node--view-mode-full .node-header, article.node--type-topics.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .node-header, article.node--type-news.node--view-mode-full .field--name-field-original-source, article.node--type-news.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items > .field__item, .block-views-blockcontributors-block-1 .view-filters, .block-views-blockcontributors-block-1 .view-filters .js-form-item-country, .block-views-blockcontributors-block-1 .view-filters .js-form-item-expertise, .block-views-blockcontributors-block-1 .view-filters .js-form-item-name, .block-views-blockcontributors-block-1 .view-filters .form-actions, .block-views-blockcontributors-block-1 .view-content, .block-views-blockcontributors-block-1 .view-content .views-row, .path-user article.profile .contributor-sheet, .path-user article.profile .contributor-info, .path-user .block-views-blockcontributions-block-1 .view-contributions .views-row, .block-views-blocklist-entries-block-1._switch-off .views-row, .block-views-blocklist-entries-block-1 .view-filters .form--filter, .block-views-blocklist-entries-block-1 .view-filters .form--filter .js-form-type-select, .block-views-blocklist-entries-block-1 .view-filters .form--filter .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--sort, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors .js-form-item, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > .form-type-checkbox, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .form-actions, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .listswitch, article.node--type-entry.node--view-mode-full .node-header, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items > .field__item {
+#block-wilmap-theme-blockwelcomehome .text, #block-wilmap-theme-blockwelcomehome .text .description, #block-wilmap-theme-blockmaphome .text, #block-wilmap-theme-blockexplorehome .text, #block-wilmap-theme-blocknewshome .text, .block-views-blocktopics-block-1 .views-row, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p, article.node--type-topics.node--view-mode-full .node-header, article.node--type-topics.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .node-header, article.node--type-news.node--view-mode-full .field--name-field-original-source, article.node--type-news.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items > .field__item, .block-views-blockcontributors-block-1 .view-filters, .block-views-blockcontributors-block-1 .view-filters .js-form-item-country, .block-views-blockcontributors-block-1 .view-filters .js-form-item-expertise, .block-views-blockcontributors-block-1 .view-filters .js-form-item-name, .block-views-blockcontributors-block-1 .view-filters .form-actions, .block-views-blockcontributors-block-1 .view-content, .block-views-blockcontributors-block-1 .view-content .views-row, .path-user article.profile .contributor-sheet, .path-user article.profile .contributor-info, .path-user .block-views-blockcontributions-block-1 .view-contributions .views-row, .block-views-blocklist-entries-block-1._switch-off .views-row, .block-views-blocklist-entries-block-1 .view-filters .form--filter, .block-views-blocklist-entries-block-1 .view-filters .form--filter .js-form-type-select, .block-views-blocklist-entries-block-1 .view-filters .form--filter .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--sort, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors .js-form-item, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > .form-type-checkbox, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .form-actions, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .listswitch, article.node--type-entry.node--view-mode-full .node-header, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items > .field__item, .search-page-form .form-type-search, .search-page-form .site-btn, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest {
   margin-left: 1.77778%;
   float: left;
   min-height: 1px;
@@ -15,7 +15,7 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-#block-wilmap-theme-blockwelcomehome .text .description, .block-views-blockcontributors-block-1 .view-filters, .block-views-blockcontributors-block-1 .view-filters .js-form-item-country, .block-views-blockcontributors-block-1 .view-content, .path-user article.profile .contributor-sheet, .block-views-blocklist-entries-block-1 .view-filters .form--filter, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield {
+#block-wilmap-theme-blockwelcomehome .text .description, .block-views-blockcontributors-block-1 .view-filters, .block-views-blockcontributors-block-1 .view-filters .js-form-item-country, .block-views-blockcontributors-block-1 .view-content, .path-user article.profile .contributor-sheet, .block-views-blocklist-entries-block-1 .view-filters .form--filter, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield, .search-page-form .form-type-search, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest {
   margin-left: 0; }
 
 #block-wilmap-theme-blockwelcomehome {
@@ -1678,29 +1678,35 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
         width: 150%;
         z-index: 10; }
 
-.block-views-blocknews-block-1 .node {
+.block-views-blocknews-block-1 .node,
+.block-views-blocknews-block-2 .node {
   margin-bottom: 20px;
   padding: 30px;
   background-color: #f7f5f2;
   display: block;
   cursor: pointer;
   overflow: hidden; }
-  .block-views-blocknews-block-1 .node .field {
+  .block-views-blocknews-block-1 .node .field,
+  .block-views-blocknews-block-2 .node .field {
     margin: 0;
     padding: 0; }
-  .block-views-blocknews-block-1 .node:hover {
+  .block-views-blocknews-block-1 .node:hover,
+  .block-views-blocknews-block-2 .node:hover {
     background-color: #e3ded3; }
-  .block-views-blocknews-block-1 .node header {
+  .block-views-blocknews-block-1 .node header,
+  .block-views-blocknews-block-2 .node header {
     margin: 0;
     padding: 0; }
-    .block-views-blocknews-block-1 .node header .node__title {
+    .block-views-blocknews-block-1 .node header .node__title,
+    .block-views-blocknews-block-2 .node header .node__title {
       margin: 0;
       padding: 0;
       position: relative;
       padding-bottom: 10px;
       margin-bottom: 10px;
       background: none; }
-      .block-views-blocknews-block-1 .node header .node__title a {
+      .block-views-blocknews-block-1 .node header .node__title a,
+      .block-views-blocknews-block-2 .node header .node__title a {
         text-decoration: none;
         font-size: 50px;
         font-size: 3.125rem;
@@ -1708,11 +1714,13 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
         line-height: 3.125rem;
         font-weight: 200;
         font-family: "Raleway", sans-serif; }
-        .block-views-blocknews-block-1 .node header .node__title a .field {
+        .block-views-blocknews-block-1 .node header .node__title a .field,
+        .block-views-blocknews-block-2 .node header .node__title a .field {
           margin: 0;
           padding: 0; }
         @media only screen and (min-width: 768px) and (max-width: 1124px) {
-          .block-views-blocknews-block-1 .node header .node__title a {
+          .block-views-blocknews-block-1 .node header .node__title a,
+          .block-views-blocknews-block-2 .node header .node__title a {
             font-size: 33.33333px;
             font-size: 2.08333rem;
             line-height: 33.33333px;
@@ -1720,18 +1728,22 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
             font-weight: 200;
             font-family: "Raleway", sans-serif; } }
         @media only screen and (max-width: 767px) {
-          .block-views-blocknews-block-1 .node header .node__title a {
+          .block-views-blocknews-block-1 .node header .node__title a,
+          .block-views-blocknews-block-2 .node header .node__title a {
             font-size: 25px;
             font-size: 1.5625rem;
             line-height: 25px;
             line-height: 1.5625rem;
             font-weight: 200;
             font-family: "Raleway", sans-serif; } }
-        .block-views-blocknews-block-1 .node header .node__title a .field {
+        .block-views-blocknews-block-1 .node header .node__title a .field,
+        .block-views-blocknews-block-2 .node header .node__title a .field {
           overflow: visible; }
-        .block-views-blocknews-block-1 .node header .node__title a:hover {
+        .block-views-blocknews-block-1 .node header .node__title a:hover,
+        .block-views-blocknews-block-2 .node header .node__title a:hover {
           text-decoration: none; }
-        .block-views-blocknews-block-1 .node header .node__title a span {
+        .block-views-blocknews-block-1 .node header .node__title a span,
+        .block-views-blocknews-block-2 .node header .node__title a span {
           display: block;
           font-size: 50px;
           font-size: 3.125rem;
@@ -1740,7 +1752,8 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
           font-weight: 200;
           font-family: "Raleway", sans-serif; }
           @media only screen and (min-width: 768px) and (max-width: 1124px) {
-            .block-views-blocknews-block-1 .node header .node__title a span {
+            .block-views-blocknews-block-1 .node header .node__title a span,
+            .block-views-blocknews-block-2 .node header .node__title a span {
               font-size: 33.33333px;
               font-size: 2.08333rem;
               line-height: 33.33333px;
@@ -1748,14 +1761,16 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
               font-weight: 200;
               font-family: "Raleway", sans-serif; } }
           @media only screen and (max-width: 767px) {
-            .block-views-blocknews-block-1 .node header .node__title a span {
+            .block-views-blocknews-block-1 .node header .node__title a span,
+            .block-views-blocknews-block-2 .node header .node__title a span {
               font-size: 25px;
               font-size: 1.5625rem;
               line-height: 25px;
               line-height: 1.5625rem;
               font-weight: 200;
               font-family: "Raleway", sans-serif; } }
-  .block-views-blocknews-block-1 .node .field--name-field-date-published {
+  .block-views-blocknews-block-1 .node .field--name-field-date-published,
+  .block-views-blocknews-block-2 .node .field--name-field-date-published {
     margin-bottom: 30px;
     font-size: 16px;
     font-size: 1rem;
@@ -1765,9 +1780,11 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
     font-family: "Raleway", sans-serif;
     color: #968f7e; }
     @media only screen and (max-width: 767px) {
-      .block-views-blocknews-block-1 .node .field--name-field-date-published {
+      .block-views-blocknews-block-1 .node .field--name-field-date-published,
+      .block-views-blocknews-block-2 .node .field--name-field-date-published {
         padding-left: 0; } }
-  .block-views-blocknews-block-1 .node .node__links a {
+  .block-views-blocknews-block-1 .node .node__links a,
+  .block-views-blocknews-block-2 .node .node__links a {
     margin: 0;
     padding: 0;
     font-size: inherit;
@@ -1794,38 +1811,51 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
     text-decoration: none;
     text-transform: uppercase;
     font-style: normal; }
-    .block-views-blocknews-block-1 .node .node__links a .field {
+    .block-views-blocknews-block-1 .node .node__links a .field,
+    .block-views-blocknews-block-2 .node .node__links a .field {
       margin: 0;
       padding: 0; }
-    .block-views-blocknews-block-1 .node .node__links a:hover {
+    .block-views-blocknews-block-1 .node .node__links a:hover,
+    .block-views-blocknews-block-2 .node .node__links a:hover {
       text-decoration: none; }
-    .block-views-blocknews-block-1 .node .node__links a:hover {
+    .block-views-blocknews-block-1 .node .node__links a:hover,
+    .block-views-blocknews-block-2 .node .node__links a:hover {
       background-color: #9a001a; }
-    .block-views-blocknews-block-1 .node .node__links a:active {
+    .block-views-blocknews-block-1 .node .node__links a:active,
+    .block-views-blocknews-block-2 .node .node__links a:active {
       background-color: #8a0017; }
-    .block-views-blocknews-block-1 .node .node__links a.disabled, .block-views-blocknews-block-1 .node .node__links a[disabled] {
+    .block-views-blocknews-block-1 .node .node__links a.disabled, .block-views-blocknews-block-1 .node .node__links a[disabled],
+    .block-views-blocknews-block-2 .node .node__links a.disabled,
+    .block-views-blocknews-block-2 .node .node__links a[disabled] {
       filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
       opacity: 0.6;
       background: false;
       cursor: default;
       -webkit-box-shadow: none;
       box-shadow: none; }
-    .block-views-blocknews-block-1 .node .node__links a::-moz-focus-inner {
+    .block-views-blocknews-block-1 .node .node__links a::-moz-focus-inner,
+    .block-views-blocknews-block-2 .node .node__links a::-moz-focus-inner {
       padding: 0 !important;
       margin: -1px !important; }
-.block-views-blocknews-block-1 none {
+.block-views-blocknews-block-1 none,
+.block-views-blocknews-block-2 none {
   margin-bottom: 20px;
   *zoom: 1;
   overflow: hidden; }
-  .block-views-blocknews-block-1 none:before, .block-views-blocknews-block-1 none:after {
+  .block-views-blocknews-block-1 none:before, .block-views-blocknews-block-1 none:after,
+  .block-views-blocknews-block-2 none:before,
+  .block-views-blocknews-block-2 none:after {
     content: "";
     display: table; }
-  .block-views-blocknews-block-1 none:after {
+  .block-views-blocknews-block-1 none:after,
+  .block-views-blocknews-block-2 none:after {
     clear: both; }
-.block-views-blocknews-block-1 .content {
+.block-views-blocknews-block-1 .content,
+.block-views-blocknews-block-2 .content {
   min-height: 700px; }
   @media only screen and (max-width: 767px) {
-    .block-views-blocknews-block-1 .content {
+    .block-views-blocknews-block-1 .content,
+    .block-views-blocknews-block-2 .content {
       min-height: initial; } }
 
 article.node--type-news.node--view-mode-full .node-header {
@@ -4434,6 +4464,348 @@ body.node-map .footer_first_wrap {
 
 .path-contact form .form-actions {
   text-align: right; }
+
+.search-page-form {
+  *zoom: 1;
+  width: 100%;
+  display: block;
+  clear: both;
+  float: none; }
+  .search-page-form {
+    display: none; }
+    .search-page-form.__processed {
+      display: block; }
+  .search-page-form:before, .search-page-form:after {
+    content: "";
+    display: table; }
+  .search-page-form:after {
+    clear: both; }
+  .search-page-form .search-help-link {
+    display: none; }
+  .search-page-form .form-type-search {
+    width: 85.46032%; }
+    @media only screen and (max-width: 767px) {
+      .search-page-form .form-type-search {
+        float: left;
+        width: 100%; } }
+    .search-page-form .form-type-search label {
+      margin-bottom: 20px; }
+    .search-page-form .form-type-search input {
+      margin: 0;
+      padding: 0 !important;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      background-image: none !important; }
+  .search-page-form .site-btn {
+    width: 12.7619%;
+    margin-bottom: 0;
+    position: relative;
+    top: 20px; }
+    @media only screen and (max-width: 767px) {
+      .search-page-form .site-btn {
+        float: left;
+        margin-left: 0;
+        width: 100%; } }
+    @media only screen and (max-width: 767px) {
+      .search-page-form .site-btn {
+        position: relative;
+        top: 0; } }
+    .search-page-form .site-btn input {
+      width: 100%; }
+
+h2.title-result {
+  font-size: 50px;
+  font-size: 3.125rem;
+  line-height: 50px;
+  line-height: 3.125rem;
+  font-weight: 200;
+  font-family: "Raleway", sans-serif;
+  padding: 0;
+  margin: 0;
+  display: block;
+  text-decoration: none;
+  text-transform: none;
+  color: #222;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-top: 50px;
+  border-top: 5px solid rgba(150, 143, 126, 0.2);
+  margin-top: 0;
+  padding-top: 30px;
+  border-top: none; }
+  @media only screen and (min-width: 768px) and (max-width: 1124px) {
+    h2.title-result {
+      font-size: 33.33333px;
+      font-size: 2.08333rem;
+      line-height: 33.33333px;
+      line-height: 2.08333rem;
+      font-weight: 200;
+      font-family: "Raleway", sans-serif; } }
+  @media only screen and (max-width: 767px) {
+    h2.title-result {
+      font-size: 45.5px;
+      font-size: 2.84375rem;
+      line-height: 45.5px;
+      line-height: 2.84375rem;
+      font-weight: 200;
+      font-family: "Raleway", sans-serif; } }
+  @media only screen and (max-width: 767px) {
+    h2.title-result {
+      font-size: 25px;
+      font-size: 1.5625rem;
+      line-height: 25px;
+      line-height: 1.5625rem;
+      font-weight: 200;
+      font-family: "Raleway", sans-serif; } }
+
+.item-list {
+  margin-top: 30px; }
+  .item-list > h3 {
+    padding: 30px;
+    font-weight: 700;
+    display: block;
+    clear: both;
+    float: none;
+    background-color: rgba(227, 222, 211, 0.4);
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 17.6px;
+    line-height: 1.1rem;
+    font-weight: 700;
+    font-family: "Raleway", sans-serif;
+    color: #222; }
+  .item-list .search-results li {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+    padding: 30px 30px 20px;
+    *zoom: 1;
+    background-color: #f7f5f2;
+    display: block;
+    cursor: pointer;
+    overflow: hidden;
+    height: auto; }
+    .item-list .search-results li:before, .item-list .search-results li:after {
+      content: "";
+      display: table; }
+    .item-list .search-results li:after {
+      clear: both; }
+    .item-list .search-results li:hover {
+      background-color: #e3ded3; }
+    .item-list .search-results li h3 {
+      margin: 0;
+      padding: 0;
+      font-size: 25px;
+      font-size: 1.5625rem;
+      line-height: 30px;
+      line-height: 1.875rem;
+      font-weight: 300;
+      font-family: "Raleway", sans-serif; }
+      .item-list .search-results li h3 {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        background: none; }
+        .item-list .search-results li h3 a {
+          text-decoration: none;
+          font-size: 50px;
+          font-size: 3.125rem;
+          line-height: 50px;
+          line-height: 3.125rem;
+          font-weight: 200;
+          font-family: "Raleway", sans-serif; }
+          .item-list .search-results li h3 a .field {
+            margin: 0;
+            padding: 0; }
+          @media only screen and (min-width: 768px) and (max-width: 1124px) {
+            .item-list .search-results li h3 a {
+              font-size: 33.33333px;
+              font-size: 2.08333rem;
+              line-height: 33.33333px;
+              line-height: 2.08333rem;
+              font-weight: 200;
+              font-family: "Raleway", sans-serif; } }
+          @media only screen and (max-width: 767px) {
+            .item-list .search-results li h3 a {
+              font-size: 25px;
+              font-size: 1.5625rem;
+              line-height: 25px;
+              line-height: 1.5625rem;
+              font-weight: 200;
+              font-family: "Raleway", sans-serif; } }
+          .item-list .search-results li h3 a .field {
+            overflow: visible; }
+          .item-list .search-results li h3 a:hover {
+            text-decoration: none; }
+          .item-list .search-results li h3 a span {
+            display: block;
+            font-size: 50px;
+            font-size: 3.125rem;
+            line-height: 50px;
+            line-height: 3.125rem;
+            font-weight: 200;
+            font-family: "Raleway", sans-serif; }
+            @media only screen and (min-width: 768px) and (max-width: 1124px) {
+              .item-list .search-results li h3 a span {
+                font-size: 33.33333px;
+                font-size: 2.08333rem;
+                line-height: 33.33333px;
+                line-height: 2.08333rem;
+                font-weight: 200;
+                font-family: "Raleway", sans-serif; } }
+            @media only screen and (max-width: 767px) {
+              .item-list .search-results li h3 a span {
+                font-size: 25px;
+                font-size: 1.5625rem;
+                line-height: 25px;
+                line-height: 1.5625rem;
+                font-weight: 200;
+                font-family: "Raleway", sans-serif; } }
+      .item-list .search-results li h3 a {
+        font-size: 25px;
+        font-size: 1.5625rem;
+        line-height: 30px;
+        line-height: 1.875rem;
+        font-weight: 300;
+        font-family: "Raleway", sans-serif; }
+
+body.updates-report .layout-main-wrapper .layout-main .node-main .node-date {
+  display: none; }
+body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group {
+  width: 100%;
+  *zoom: 1;
+  margin-bottom: 20px; }
+  @media only screen and (max-width: 767px) {
+    body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group {
+      float: left;
+      width: 100%; } }
+  body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group:before, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group:after {
+    content: "";
+    display: table; }
+  body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group:after {
+    clear: both; }
+  body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group > h3 {
+    font-size: 50px;
+    font-size: 3.125rem;
+    line-height: 50px;
+    line-height: 3.125rem;
+    font-weight: 200;
+    font-family: "Raleway", sans-serif;
+    padding: 0;
+    margin: 0;
+    display: block;
+    text-decoration: none;
+    text-transform: none;
+    color: #222;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-top: 50px;
+    border-top: 5px solid rgba(150, 143, 126, 0.2); }
+    @media only screen and (min-width: 768px) and (max-width: 1124px) {
+      body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group > h3 {
+        font-size: 33.33333px;
+        font-size: 2.08333rem;
+        line-height: 33.33333px;
+        line-height: 2.08333rem;
+        font-weight: 200;
+        font-family: "Raleway", sans-serif; } }
+    @media only screen and (max-width: 767px) {
+      body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group > h3 {
+        font-size: 45.5px;
+        font-size: 2.84375rem;
+        line-height: 45.5px;
+        line-height: 2.84375rem;
+        font-weight: 200;
+        font-family: "Raleway", sans-serif; } }
+    @media only screen and (max-width: 767px) {
+      body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group > h3 {
+        font-size: 25px;
+        font-size: 1.5625rem;
+        line-height: 25px;
+        line-height: 1.5625rem;
+        font-weight: 200;
+        font-family: "Raleway", sans-serif; } }
+  body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest {
+    width: 70.92063%;
+    margin-left: 30.85714%;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #e3ded3; }
+    @media only screen and (max-width: 767px) {
+      body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest {
+        float: left;
+        width: 100%; } }
+    body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest:first-child {
+      margin-left: 29.07937%; }
+    @media only screen and (max-width: 767px) {
+      body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest {
+        margin-left: 0; }
+        body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest:first-child {
+          margin-left: 0; } }
+    body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none; }
+    body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest h2.node__title {
+      margin: 0;
+      padding: 0;
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+      border-top: none; }
+      body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest h2.node__title {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        background: none; }
+        body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest h2.node__title a {
+          text-decoration: none;
+          font-size: 16px;
+          font-size: 1rem;
+          line-height: 17.6px;
+          line-height: 1.1rem;
+          font-weight: 700;
+          font-family: "Raleway", sans-serif;
+          color: #222; }
+          body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest h2.node__title a .field {
+            margin: 0;
+            padding: 0; }
+          body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest h2.node__title a .field {
+            overflow: visible; }
+          body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest h2.node__title a:hover {
+            text-decoration: none; }
+          body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest h2.node__title a span {
+            display: block;
+            font-size: 16px;
+            font-size: 1rem;
+            line-height: 17.6px;
+            line-height: 1.1rem;
+            font-weight: 700;
+            font-family: "Raleway", sans-serif;
+            color: #222; }
+    body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest .node__content .field--name-field-date-published {
+      margin: 0;
+      padding: 0; }
+      body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest .node__content .field--name-field-date-published {
+        margin-bottom: 30px;
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 27.2px;
+        line-height: 1.7rem;
+        font-weight: 600;
+        font-family: "Raleway", sans-serif;
+        color: #968f7e; }
+        @media only screen and (max-width: 767px) {
+          body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest .node__content .field--name-field-date-published {
+            padding-left: 0; } }
+    body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest .node__content .text-formatted {
+      margin-top: 20px; }
+    body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest .node__content a.See.details {
+      margin-left: 5px; }
 
 body.user-logged-in .contextual-links {
   display: none !important; }

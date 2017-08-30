@@ -1,0 +1,108 @@
+// ============================================================================
+//
+// PAGES: SEARCH
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+$search-color-base:       lighten($fifth-color, 10);
+$search-color-hover:      $fifth-color;
+
+
+// -------------------------------------
+// Scaffold
+// -------------------------------------
+
+.search-page-form {
+  @include hide-before-dom-alter();
+  @include clearfix();
+  width: 100%;
+  display: block;
+  clear: both;
+  float: none;
+
+  .search-help-link {
+    display: none;
+  }
+
+  .form-type-search {
+    @include column(12, false, collapse, false);
+
+    label {
+      @include margin(null null $dp * 2 null);
+    }
+
+    input {
+      margin: 0;
+      padding: 0 !important;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      background-image: none !important;
+    }
+  }
+
+  .site-btn {
+    @include column(2);
+    @include margin(null null 0 null);
+    @include position(relative, $dp * 2 null null null);
+
+    @include respond(all-phones) {
+      @include position(relative, 0 null null null);
+    }
+
+    input {
+      width: 100%;
+    }
+  }
+}
+
+// Lists
+h2.title-result {
+  @include header-block-separator();
+  @include margin(0 null null null);
+  @include padding($dp * 3 null null null);
+  border-top: none;
+}
+
+.item-list {
+  @include margin($dp * 3 null null null);
+
+  > h3 {
+    @include empty-result();
+    @include font($normal, 1.1, $bold, $base-font-family);
+    color: $heading-font-color;
+  }
+
+  .search-results {
+    li {
+      @include trim();
+      @include margin(null null $dp * 2 null);
+      @include padding($dp * 3 $dp * 3 $dp * 2 $dp * 3);
+      @include clearfix();
+      background-color: $search-color-base;
+      display: block;
+      cursor: pointer;
+      overflow: hidden;
+      height: auto;
+
+      &:hover {
+        background-color: $search-color-hover;
+      }
+
+      h3 {
+        @include trim();
+        @include news--header(big);
+        @include font($med, 1.2, $light, $heading-font);
+
+        a {
+          @include font($med, 1.2, $light, $heading-font);
+        }
+      }
+
+    }
+  }
+}

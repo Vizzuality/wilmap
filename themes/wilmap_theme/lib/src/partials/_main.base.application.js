@@ -115,6 +115,10 @@
             bigitem: '.block-views-blockcontributions-block-1 .view-content .views-row',
             ref: '.node__title a'
           },
+          {
+            bigitem: '.item-list .search-results li',
+            ref: '.search-result__title a'
+          },
         ];
 
         $.each(linkareas, function (index, value) {
@@ -141,8 +145,9 @@
        * Main search
        */
       mainSearch: function() {
-        var dom = '.search-block-form';
+        var dom = '.site-header .search-block-form';
         var bgseparator = '.fake-modal';
+        var dom_autocomplete = 'ul.ui-autocomplete.ui-widget.ui-widget-content';
 
         if ($(dom).length > 0) {
           // Hide submit
@@ -167,6 +172,7 @@
           $(dom + ' input[type="search"]').on('focus', function() {
             $(dom).addClass('active');
             $(bgseparator).addClass('active');
+            $(dom_autocomplete).removeClass('__kill');
           });
 
           $(dom + ' input[type="search"]').on('blur', function() {
@@ -175,6 +181,28 @@
           });
         }
       },
+
+      /**
+      * Main search
+      */
+      pageSearch: function() {
+        var dom = '.content-content .search-page-form';
+        var dom_autocomplete = 'ul.ui-autocomplete.ui-widget.ui-widget-content';
+
+        if ($(dom).length > 0) {
+
+          $(dom).parent().find('h2').addClass('title-result');
+
+          $(dom + ' input[type="search"]').on('focus', function() {
+            $(dom_autocomplete).addClass('__kill');
+          });
+
+          // DOM processed
+          $(dom).addClass('__processed');
+        }
+
+      },
+
 
       /**
        * Sharethis

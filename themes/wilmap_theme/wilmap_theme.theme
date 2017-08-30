@@ -45,6 +45,11 @@ function wilmap_theme_preprocess_html(&$variables) {
 
     $variables['attributes']['class'][] = 'node-' . $title;
 
+    // Update Report Node News
+    if(stripos($title, 'updates-report') !== false) {
+      $variables['attributes']['class'][] = 'updates-report';
+    }
+
   }
 
   if ( theme_get_setting('developer_mode_css') ) {

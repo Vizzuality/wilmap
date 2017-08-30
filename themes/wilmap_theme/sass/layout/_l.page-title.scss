@@ -113,3 +113,32 @@ body.node-about {
     }
   }
 }
+
+// -------------------------------------
+// Entry detail page override
+// -------------------------------------
+
+.updates-report {
+  .block-page-title-block {
+    .page-title {
+      @include padding($gutter * 5 null null null);
+
+      .secondary-page-title {
+        @include column(12, false, collapse, false);
+        @include padding(0 null null null);
+        @include text-main-header();
+
+        @include respond(tablets) {
+          @include padding($gutter * 5.5 null null null);
+          @include font($xxlarge, 1, $extra-light, $heading-font);
+          width: columns(12);
+        }
+
+        @include respond(all-phones) {
+          @include padding($gutter * 5 null null null);
+          width: columns(13);
+        }
+      }
+    }
+  }
+}
