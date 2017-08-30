@@ -7,7 +7,7 @@ body .layout-main-wrapper, body.path-frontpage .layout-main-wrapper, .site-foote
   body .layout-main-wrapper:after, body.path-frontpage .layout-main-wrapper:after, .site-footer .footer_first_wrap .region-footer-first:after {
     clear: both; }
 
-body .layout-main-wrapper .layout-main, body.path-frontpage .layout-main-wrapper .layout-main, body.path-frontpage.no-sidebar .main-content, body.path-frontpage.sidebar-first #sidebar-first, body.path-frontpage.sidebar-first .main-content, body.path-frontpage.sidebar-second .main-content, body.path-frontpage.sidebar-second #sidebar-second, body.path-frontpage.both-sidebars #sidebar-first, body.path-frontpage.both-sidebars .main-content, body.path-frontpage.both-sidebars #sidebar-second, .main-content-inner .content-sidenav, .main-content-inner .content-content, .main-content-inner .content-content.with-sidenav, .site-footer .footer_first_wrap .region-footer-first .block-menu, .site-footer .footer_first_wrap .region-footer-first .block-menu .menu-item, .site-footer .footer_second_wrap .block-block-content, .site-footer .footer_second_wrap .block-menu, .block-page-title-block .page-title, article.node--view-mode-full > .node__content .node-body, article.node--view-mode-full > .node__content .node-body > .text-formatted p {
+body .layout-main-wrapper .layout-main, body.path-frontpage .layout-main-wrapper .layout-main, body.path-frontpage.no-sidebar .main-content, body.path-frontpage.sidebar-first #sidebar-first, body.path-frontpage.sidebar-first .main-content, body.path-frontpage.sidebar-second .main-content, body.path-frontpage.sidebar-second #sidebar-second, body.path-frontpage.both-sidebars #sidebar-first, body.path-frontpage.both-sidebars .main-content, body.path-frontpage.both-sidebars #sidebar-second, .main-content-inner .content-sidenav, .main-content-inner .content-content, .main-content-inner .content-content.with-sidenav, .site-footer .footer_first_wrap .region-footer-first .block-menu, .site-footer .footer_first_wrap .region-footer-first .block-menu .menu-item, .site-footer .footer_second_wrap .block-block-content, .site-footer .footer_second_wrap .block-menu, .block-page-title-block .page-title, .updates-report .block-page-title-block .page-title .secondary-page-title, article.node--view-mode-full > .node__content .node-body, article.node--view-mode-full > .node__content .node-body > .text-formatted p {
   margin-left: 1.77778%;
   float: left;
   min-height: 1px;
@@ -15,7 +15,7 @@ body .layout-main-wrapper .layout-main, body.path-frontpage .layout-main-wrapper
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-body.path-frontpage .layout-main-wrapper .layout-main, body.path-frontpage.no-sidebar .main-content, body.path-frontpage.sidebar-first #sidebar-first, body.path-frontpage.sidebar-second .main-content, body.path-frontpage.both-sidebars #sidebar-first, .main-content-inner .content-sidenav, .main-content-inner .content-content, .site-footer .footer_second_wrap .block-block-content, .block-page-title-block .page-title, article.node--view-mode-full > .node__content .node-body {
+body.path-frontpage .layout-main-wrapper .layout-main, body.path-frontpage.no-sidebar .main-content, body.path-frontpage.sidebar-first #sidebar-first, body.path-frontpage.sidebar-second .main-content, body.path-frontpage.both-sidebars #sidebar-first, .main-content-inner .content-sidenav, .main-content-inner .content-content, .site-footer .footer_second_wrap .block-block-content, .block-page-title-block .page-title, .updates-report .block-page-title-block .page-title .secondary-page-title, article.node--view-mode-full > .node__content .node-body {
   margin-left: 0; }
 
 .site-header .main-header .site-slogan {
@@ -1540,18 +1540,12 @@ button.btn,
     top: -20px;
     right: 0;
     width: 350px;
-    z-index: 99;
+    z-index: 2000;
     overflow: hidden; }
     @media only screen and (min-width: 768px) and (max-width: 1124px) {
       .site-header .block-search {
         position: absolute;
         top: -20px;
-        right: 0;
-        width: 300px; } }
-    @media only screen and (max-width: 768px) {
-      .site-header .block-search {
-        position: absolute;
-        top: 23px;
         right: 0;
         width: 300px; } }
     @media only screen and (max-width: 767px) {
@@ -1568,16 +1562,12 @@ button.btn,
     padding-bottom: 19px;
     padding-left: 229px;
     min-height: auto;
-    background-color: rgba(255, 255, 255, 0.95); }
+    background-color: rgba(255, 255, 255, 0.95);
+    z-index: 9; }
     @media only screen and (min-width: 768px) and (max-width: 1124px) {
       .site-header .navbar {
         padding-top: 20px;
         padding-bottom: 19px;
-        padding-left: 185px; } }
-    @media only screen and (max-width: 768px) {
-      .site-header .navbar {
-        padding-top: 20px;
-        padding-bottom: 60px;
         padding-left: 185px; } }
     @media only screen and (max-width: 767px) {
       .site-header .navbar {
@@ -1709,7 +1699,7 @@ button.btn,
           position: relative;
           height: auto;
           width: auto;
-          padding: 5px 0 14px;
+          padding: 5px 0 13px;
           margin: 0 10px;
           text-shadow: none;
           -webkit-transition: all 0.3s ease;
@@ -1745,12 +1735,7 @@ button.btn,
             .site-header .navbar ul.menu li:hover a,
             .site-header .navbar ul.menu li a {
               padding: 5px 0 14px;
-              margin: 0 7px; } }
-          @media only screen and (max-width: 768px) {
-            .site-header .navbar ul.menu li:hover a,
-            .site-header .navbar ul.menu li a {
-              padding: 5px 0;
-              margin: 0 7px; } }
+              margin: 0 6px; } }
           @media only screen and (max-width: 767px) {
             .site-header .navbar ul.menu li:hover a,
             .site-header .navbar ul.menu li a {
@@ -2154,6 +2139,57 @@ button.btn,
 @media only screen and (max-width: 767px) {
   .page-node-type-entry .block-page-title-block .page-title {
     padding-top: 13.33333%; } }
+
+.updates-report .block-page-title-block .page-title {
+  padding-top: 8.88889%; }
+  .updates-report .block-page-title-block .page-title .secondary-page-title {
+    width: 85.46032%;
+    padding-top: 0;
+    font-size: 91px;
+    font-size: 5.6875rem;
+    line-height: 91px;
+    line-height: 5.6875rem;
+    font-weight: 200;
+    font-family: "Raleway", sans-serif;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    text-transform: none;
+    color: #222; }
+    @media only screen and (max-width: 767px) {
+      .updates-report .block-page-title-block .page-title .secondary-page-title {
+        float: left;
+        width: 100%; } }
+    @media only screen and (min-width: 768px) and (max-width: 1124px) {
+      .updates-report .block-page-title-block .page-title .secondary-page-title {
+        font-size: 60.66667px;
+        font-size: 3.79167rem;
+        line-height: 60.66667px;
+        line-height: 3.79167rem;
+        font-weight: 200;
+        font-family: "Raleway", sans-serif; } }
+    @media only screen and (max-width: 767px) {
+      .updates-report .block-page-title-block .page-title .secondary-page-title {
+        font-size: 45.5px;
+        font-size: 2.84375rem;
+        line-height: 45.5px;
+        line-height: 2.84375rem;
+        font-weight: 200;
+        font-family: "Raleway", sans-serif; } }
+    @media only screen and (min-width: 768px) and (max-width: 1124px) {
+      .updates-report .block-page-title-block .page-title .secondary-page-title {
+        padding-top: 9.77778%;
+        font-size: 80px;
+        font-size: 5rem;
+        line-height: 80px;
+        line-height: 5rem;
+        font-weight: 200;
+        font-family: "Raleway", sans-serif;
+        width: 85.46032%; } }
+    @media only screen and (max-width: 767px) {
+      .updates-report .block-page-title-block .page-title .secondary-page-title {
+        padding-top: 8.88889%;
+        width: 92.73016%; } }
 
 article.node--view-mode-full > .node__content .node-body {
   width: 100%;

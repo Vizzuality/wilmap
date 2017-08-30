@@ -1,0 +1,77 @@
+// ============================================================================
+//
+// PAGES: UPDATES REPORT
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+
+
+// -------------------------------------
+// Scaffold
+// -------------------------------------
+
+
+body.updates-report {
+  .layout-main-wrapper .layout-main {
+    .node-main {
+      .node-date {
+        display: none;
+      }
+
+      .node-body {
+        .text-formatted {
+          .digest-group {
+            @include column(14, false, collapse, false);
+            @include clearfix();
+            @include margin(null null $dp * 2 null);
+
+            > h3 {
+              @include header-block-separator();
+            }
+
+            .node--view-mode-digest {
+              @include column(10, false, collapse, false);
+              @include push(4);
+              @include margin($dp * 2 null null null);
+              @include padding($dp * 2 null null null);
+              border-top: 2px solid $fifth-color;
+
+              &:first-child {
+                @include margin(0 null null null);
+                @include padding(0 null null null);
+                border-top: none;
+              }
+
+              h2.node__title {
+                @include news--header(small);
+                @include trim();
+                margin-bottom: 0 !important;
+                padding-bottom: 0 !important;
+                border-top: none;
+              }
+
+              .node__content {
+                .field--name-field-date-published {
+                  @include news--date();
+                  @include trim();
+                }
+
+                .text-formatted {
+                  @include margin($dp * 2 null null null);
+                }
+
+                a.See.details {
+                  @include margin(null null null $dp / 2);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
