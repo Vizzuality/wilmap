@@ -7,6 +7,7 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\node\NodeInterface;
 
 define('WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM',
@@ -38,58 +39,6 @@ function wilmap_contributors_help($route_name, RouteMatchInterface $route_match)
 /******************************************************************************/
 /* ACCESS                                                                     */
 /******************************************************************************/
-
-/**
- * Implements hook_node_access_records().
- *
- * All implementations of hook_node_access() will be called. Each implementation
- * may explicitly allow, explicitly forbid, or ignore the access request. If at
- * least one module says to forbid the request, it will be rejected. If no
- * modules deny the request and at least one says to allow it, the request will
- * be permitted.
- *
- * If all modules ignore the access request, then the node_access table is used
- * to determine access
- *
- * @see https://api.drupal.org/api/drupal/core%21modules%21node%21node.module/group/node_access/8.2.x
- */
-//function hook_node_access(
-//  \Drupal\node\NodeInterface $node,
-//  $op,
-//  \Drupal\Core\Session\AccountInterface $account
-//) {
-//    $type = $node->bundle();
-//
-//
-//    // TODO: al guardar el nodo (News, Topics, Entries), comprobando si el usuario tiene asociado el país/región seleccionados
-//    // - Además habría que hacer un autocompletado para el campo país/región que
-//    //   sólo muestre los disponibles para el usuario (todos si el rol Admin)
-//
-//    switch ($op) {
-//
-//        case 'update':
-//            // TODO ¿?: Entries and News can be updated only by its contributors and by users Contributing to Country or region related to it
-//
-//            // All node contributors may edit the node (Entries, Topics, News,
-//            // Countries, Region). This is delivered to hook_node_grants()
-//
-//            if ($account->hasPermission('edit any ' . $type . ' content',
-//              $account)) {
-//                return AccessResult::allowed()->cachePerPermissions();
-//            } else {
-//                return AccessResult::allowedIf($account->hasPermission('edit own ' . $type . ' content',
-//                    $account) && ($account->id() == $node->getOwnerId()))
-//                  ->cachePerPermissions()
-//                  ->cachePerUser()
-//                  ->addCacheableDependency($node);
-//            }
-//
-//        default:
-//            // No opinion.
-//            return AccessResult::neutral();
-//    }
-//}
-
 
 /**
  * Implements hook_node_access_records().
@@ -358,6 +307,25 @@ function wilmap_contributors_preprocess_user(&$variables)
     $variables['ranking'] = ($ranking < 10 && $ranking != 0) ? '0' . $ranking : $ranking;
     $variables['contributions'] = ($contributors < 10 && $contributors != 0) ? '0' . $contributors : $contributors;
 
-    //kint($variables);
+}
 
+
+/**
+ * Implements hook_ENTITY_TYPE_presave() for node entities.
+ *
+ * @param $node Drupal\node\Entity\Node
+ */
+function wilmap_contributors_node_presave(EntityInterface $node) {
+
+    // News, Entries
+    if ($node->getType() == "news" || $node->getType() == "entry") {
+
+        // Adds author to field_contributors if not exist
+        $test = $node->field_contributors->getValue();
+        if( !array_search($node->getOwnerId(), array_column($test, 'target_id'))){
+            // Add author with status not visible
+            $node->field_contributors[] =  ['target_id' => $node->getOwnerId(), 'status' => 0];
+        }
+
+    }
 }
