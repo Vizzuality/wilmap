@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraint;
 class AllowedCountry extends Constraint
 {
 
-// The message that will be shown if the value is not an integer
+// The message that will be shown if user is not contributor of country
     public $message = 'You are not a Contributor of %country.';
 
 }

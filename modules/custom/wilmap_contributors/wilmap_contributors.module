@@ -9,13 +9,14 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\node\NodeInterface;
 
-define( 'WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM', 'wilmap_contributors_to_country');
-define( 'WILMAP_CONTRIBUTORS_TO_REGION_REALM', 'wilmap_contributors_to_region');
-define( 'WILMAP_CONTRIBUTORS_TO_TOPICS_REALM', 'wilmap_contributors_to_topic');
-define( 'WILMAP_CONTRIBUTORS_ADMIN_REALM', 'wilmap_admin');
-define( 'WILMAP_CONTRIBUTORS_ANONYMOUS_REALM', 'wilmap_anonymous');
-define( 'WILMAP_CONTRIBUTORS_AUTHENTICATED_REALM', 'wilmap_authenticated');
-define( 'WILMAP_CONTRIBUTORS_OWNER_REALM', 'wilmap_owner');
+define('WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM',
+  'wilmap_contributors_to_country');
+define('WILMAP_CONTRIBUTORS_TO_REGION_REALM', 'wilmap_contributors_to_region');
+define('WILMAP_CONTRIBUTORS_TO_TOPICS_REALM', 'wilmap_contributors_to_topic');
+define('WILMAP_CONTRIBUTORS_ADMIN_REALM', 'wilmap_admin');
+define('WILMAP_CONTRIBUTORS_ANONYMOUS_REALM', 'wilmap_anonymous');
+define('WILMAP_CONTRIBUTORS_AUTHENTICATED_REALM', 'wilmap_authenticated');
+define('WILMAP_CONTRIBUTORS_OWNER_REALM', 'wilmap_owner');
 
 /**
  * Implements hook_help().
@@ -111,7 +112,7 @@ function wilmap_contributors_node_access_records(NodeInterface $node)
             $grants[] = array(
               'realm'        => WILMAP_CONTRIBUTORS_TO_TOPICS_REALM,
               'gid'          => $node->id(),
-              'grant_view'   => (int) $node->isPublished(),
+              'grant_view'   => (int)$node->isPublished(),
               'grant_update' => 1,
               'grant_delete' => 1
             );
@@ -123,7 +124,7 @@ function wilmap_contributors_node_access_records(NodeInterface $node)
             $grants[] = array(
               'realm'        => WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM,
               'gid'          => $node->id(),
-              'grant_view'   => (int) $node->isPublished(),
+              'grant_view'   => (int)$node->isPublished(),
               'grant_update' => 1,
               'grant_delete' => 1
             );
@@ -136,7 +137,7 @@ function wilmap_contributors_node_access_records(NodeInterface $node)
             $grants[] = array(
               'realm'        => WILMAP_CONTRIBUTORS_TO_REGION_REALM,
               'gid'          => $node->id(),
-              'grant_view'   => (int) $node->isPublished(),
+              'grant_view'   => (int)$node->isPublished(),
               'grant_update' => 1,
               'grant_delete' => 1
             );
@@ -150,7 +151,7 @@ function wilmap_contributors_node_access_records(NodeInterface $node)
                 $grants[] = array(
                   'realm'        => WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM,
                   'gid'          => $value['target_id'],
-                  'grant_view'   => (int) $node->isPublished(),
+                  'grant_view'   => (int)$node->isPublished(),
                   'grant_update' => 1,
                   'grant_delete' => 1
                 );
@@ -160,7 +161,7 @@ function wilmap_contributors_node_access_records(NodeInterface $node)
                 $grants[] = array(
                   'realm'        => WILMAP_CONTRIBUTORS_TO_REGION_REALM,
                   'gid'          => $value['target_id'],
-                  'grant_view'   => (int) $node->isPublished(),
+                  'grant_view'   => (int)$node->isPublished(),
                   'grant_update' => 1,
                   'grant_delete' => 1
                 );
@@ -175,7 +176,7 @@ function wilmap_contributors_node_access_records(NodeInterface $node)
                 $grants[] = array(
                   'realm'        => WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM,
                   'gid'          => $value['target_id'],
-                  'grant_view'   => (int) $node->isPublished(),
+                  'grant_view'   => (int)$node->isPublished(),
                   'grant_update' => 1,
                   'grant_delete' => 1
                 );
@@ -185,7 +186,7 @@ function wilmap_contributors_node_access_records(NodeInterface $node)
                 $grants[] = array(
                   'realm'        => WILMAP_CONTRIBUTORS_TO_REGION_REALM,
                   'gid'          => $value['target_id'],
-                  'grant_view'   => (int) $node->isPublished(),
+                  'grant_view'   => (int)$node->isPublished(),
                   'grant_update' => 1,
                   'grant_delete' => 1
                 );
@@ -200,7 +201,7 @@ function wilmap_contributors_node_access_records(NodeInterface $node)
     $grants[] = array(
       'realm'        => WILMAP_CONTRIBUTORS_ADMIN_REALM,
       'gid'          => 0,
-      'grant_view'   => (int) $node->isPublished(),
+      'grant_view'   => (int)$node->isPublished(),
       'grant_update' => 1,
       'grant_delete' => 1
     );
@@ -219,7 +220,7 @@ function wilmap_contributors_node_access_records(NodeInterface $node)
     $grants[] = array(
       'realm'        => WILMAP_CONTRIBUTORS_AUTHENTICATED_REALM,
       'gid'          => 0,
-      'grant_view'   => (int) $node->isPublished(),
+      'grant_view'   => (int)$node->isPublished(),
       'grant_update' => 0,
       'grant_delete' => 0
     );
@@ -228,7 +229,7 @@ function wilmap_contributors_node_access_records(NodeInterface $node)
     $grants[] = array(
       'realm'        => WILMAP_CONTRIBUTORS_ANONYMOUS_REALM,
       'gid'          => 0,
-      'grant_view'   => (int) $node->isPublished(),
+      'grant_view'   => (int)$node->isPublished(),
       'grant_update' => 0,
       'grant_delete' => 0
     );
@@ -311,20 +312,27 @@ function wilmap_contributors_entity_bundle_field_info_alter(
   $bundle
 ) {
 
-    // Adds 'available_country' constraint to field_location field in News
+    // News
     if ($entity_type->id() == 'node' && $bundle === 'news') {
+        // Adds 'allowed_country' constraint to field_location field in Entry
         if (isset($fields['field_location'])) {
-            // Use the ID as defined in the annotation of the constraint definition
             $fields['field_location']->addConstraint('allowed_country', []);
+        }
+        // Adds 'allowed_region' constraint to field_region field in Entry
+        if (isset($fields['field_region'])) {
+            $fields['field_region']->addConstraint('allowed_region', []);
         }
     }
 
-    // Adds 'available_country' constraint to field_location_entry field in Entry
+    // Entry
     if ($bundle === 'entry') {
+        // Adds 'allowed_country' constraint to field_location_entry field in Entry
         if (isset($fields['field_location_entry'])) {
-            // Use the ID as defined in the annotation of the constraint definition
-            $fields['field_location_entry']->addConstraint('allowed_country',
-              []);
+            $fields['field_location_entry']->addConstraint('allowed_country', []);
+        }
+        // Adds 'allowed_region' constraint to field_region field in Entry
+        if (isset($fields['field_region'])) {
+            $fields['field_region']->addConstraint('allowed_region', []);
         }
     }
 
