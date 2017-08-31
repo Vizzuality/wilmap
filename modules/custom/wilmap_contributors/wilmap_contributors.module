@@ -298,35 +298,37 @@ function wilmap_contributors_node_grants(AccountInterface $account, $op)
 /* ALTERS                                                                     */
 /******************************************************************************/
 
-///**
-// * Implements hook_entity_bundle_field_info_alter().
-// *
-// * @see https://www.drupal.org/docs/8/api/entity-validation-api/providing-a-custom-validation-constraint
-// */
-//function wilmap_contributors_entity_bundle_field_info_alter(
-//  &$fields,
-//  \Drupal\Core\Entity\EntityTypeInterface $entity_type,
-//  $bundle
-//) {
-//
-//    // Adds 'available_country' constraint to field_location field in News
-//    if ($bundle === 'news') {
-//        if (isset($fields['field_location'])) {
-//            // Use the ID as defined in the annotation of the constraint definition
-//            $fields['field_location']->addConstraint('available_country', []);
-//        }
-//    }
-//
-//    // Adds 'available_country' constraint to field_location_entry field in Entry
-//    if ($bundle === 'entry') {
-//        if (isset($fields['field_location_entry'])) {
-//            // Use the ID as defined in the annotation of the constraint definition
-//            $fields['field_location_entry']->addConstraint('available_country',
-//              []);
-//        }
-//    }
-//
-//}
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ *
+ * @see https://www.drupal.org/docs/8/api/entity-validation-api/providing-a-custom-validation-constraint
+ * @see https://www.drupalwatchdog.com/volume-5/issue-2/introducing-drupal-8s-entity-validation-api
+ * @see https://lakshminp.com/entity-validation-drupal-8-part-2
+ */
+function wilmap_contributors_entity_bundle_field_info_alter(
+  &$fields,
+  \Drupal\Core\Entity\EntityTypeInterface $entity_type,
+  $bundle
+) {
+
+    // Adds 'available_country' constraint to field_location field in News
+    if ($entity_type->id() == 'node' && $bundle === 'news') {
+        if (isset($fields['field_location'])) {
+            // Use the ID as defined in the annotation of the constraint definition
+            $fields['field_location']->addConstraint('allowed_country', []);
+        }
+    }
+
+    // Adds 'available_country' constraint to field_location_entry field in Entry
+    if ($bundle === 'entry') {
+        if (isset($fields['field_location_entry'])) {
+            // Use the ID as defined in the annotation of the constraint definition
+            $fields['field_location_entry']->addConstraint('allowed_country',
+              []);
+        }
+    }
+
+}
 
 
 /******************************************************************************/
