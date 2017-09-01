@@ -320,9 +320,11 @@ function wilmap_contributors_node_presave(EntityInterface $node) {
     // News, Entries
     if ($node->getType() == "news" || $node->getType() == "entry") {
 
-        // Adds author to field_contributors if not exist
+        // Get all node Contributors
         $test = $node->field_contributors->getValue();
-        if( !array_search($node->getOwnerId(), array_column($test, 'target_id'))){
+
+        // Adds author to field_contributors if not exist excluding uid=1, already has all permissions
+        if( $node->getOwnerId()==1 && !array_search($node->getOwnerId(), array_column($test, 'target_id'))){
             // Add author with status not visible
             $node->field_contributors[] =  ['target_id' => $node->getOwnerId(), 'status' => 0];
         }
