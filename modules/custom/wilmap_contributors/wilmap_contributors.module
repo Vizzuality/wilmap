@@ -408,6 +408,13 @@ function wilmap_contributors_mail($key, &$message, $params)
             //$message['body'][] = SafeMarkup::checkPlain($params['message']);
             $message['body'][] = t('Congrats! You are now a contributor of %title, so you can edit this region page and publish related Entries and News.', array('%title' => $params['node_title']), $options);
             break;
+        case 'notify_new_contributors_other':
+            $message['from'] = \Drupal::config('system.site')->get('mail');
+            $message['subject'] = t('You have been invited to contribute to @item',
+              array('@item' => $params['node_title']), $options);
+            //$message['body'][] = SafeMarkup::checkPlain($params['message']);
+            $message['body'][] = t('Congrats! You are now a contributor of %title, so you can edit its content page.', array('%title' => $params['node_title']), $options);
+            break;
     }
 }
 
@@ -447,7 +454,7 @@ function wilmap_contributors_mail_notity_new_contributors($entity)
             $key = 'notify_new_contributors_region';
             break;
         default:
-            $key = 'notify_new_contributors';
+            $key = 'notify_new_contributors_other';
     }
 
     $params['node_title'] = $entity->label();
