@@ -9,6 +9,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\node\NodeInterface;
+use Drupal\Component\Utility\SafeMarkup;
 
 define('WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM',
   'wilmap_contributors_to_country');
@@ -277,7 +278,8 @@ function wilmap_contributors_entity_bundle_field_info_alter(
     if ($bundle === 'entry') {
         // Adds 'allowed_country' constraint to field_location_entry field in Entry
         if (isset($fields['field_location_entry'])) {
-            $fields['field_location_entry']->addConstraint('allowed_country', []);
+            $fields['field_location_entry']->addConstraint('allowed_country',
+              []);
         }
         // Adds 'allowed_region' constraint to field_region field in Entry
         if (isset($fields['field_region'])) {
@@ -315,7 +317,8 @@ function wilmap_contributors_preprocess_user(&$variables)
  *
  * @param $node Drupal\node\Entity\Node
  */
-function wilmap_contributors_node_presave(EntityInterface $node) {
+function wilmap_contributors_node_presave(EntityInterface $node)
+{
 
     // News, Entries
     if ($node->getType() == "news" || $node->getType() == "entry") {
@@ -324,10 +327,172 @@ function wilmap_contributors_node_presave(EntityInterface $node) {
         $test = $node->field_contributors->getValue();
 
         // Adds author to field_contributors if not exist excluding uid=1, already has all permissions
-        if( $node->getOwnerId()==1 && !array_search($node->getOwnerId(), array_column($test, 'target_id'))){
+        if ($node->getOwnerId() != 1 && !array_search($node->getOwnerId(),
+            array_column($test, 'target_id'))) {
             // Add author with status not visible
-            $node->field_contributors[] =  ['target_id' => $node->getOwnerId(), 'status' => 0];
+            $node->field_contributors[] = [
+              'target_id' => $node->getOwnerId(),
+              'status'    => 0
+            ];
         }
 
+    }
+}
+
+
+/**
+ * Implements hook_ENTITY_TYPE_update() for node entities.
+ *
+ * @param $entity Drupal\Core\Entity\EntityInterface
+ */
+function wilmap_contributors_node_update(
+  Drupal\Core\Entity\EntityInterface $entity
+) {
+
+    // Entity has contributor field
+    if ($entity->hasField('field_contributors')) {
+        wilmap_contributors_mail_notity_new_contributors($entity);
+    }
+
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update() for node entities.
+ *
+ * @param $entity Drupal\Core\Entity\EntityInterface
+ */
+function wilmap_contributors_node_insert(
+  Drupal\Core\Entity\EntityInterface $entity
+) {
+
+    // Entity has contributor field
+    if ($entity->hasField('field_contributors')) {
+        wilmap_contributors_mail_notity_new_contributors($entity);
+    }
+
+}
+
+/******************************************************************************/
+/* MAILS                                                                      */
+/******************************************************************************/
+// http://drupaldeveloper.in/codelet/drupal8-send-e-mail-after-node-creating
+
+/**
+ * Implements hook_mail().
+ */
+function wilmap_contributors_mail($key, &$message, $params)
+{
+    $options = array(
+      'langcode' => $message['langcode'],
+    );
+
+    switch ($key) {
+        case 'notify_new_contributors_topic':
+            $message['from'] = \Drupal::config('system.site')->get('mail');
+            $message['subject'] = t('You have been invited to contribute to @item',
+              array('@item' => $params['node_title']), $options);
+            //$message['body'][] = SafeMarkup::checkPlain($params['message']);v
+            $message['body'][] = t('Congrats! You are now a contributor of %title, so you can edit this topic page.', array('%title' => $params['node_title']), $options);
+            break;
+        case 'notify_new_contributors_country':
+            $message['from'] = \Drupal::config('system.site')->get('mail');
+            $message['subject'] = t('You have been invited to contribute to @item',
+              array('@item' => $params['node_title']), $options);
+            //$message['body'][] = SafeMarkup::checkPlain($params['message']);
+            $message['body'][] = t('Congrats! You are now a contributor of %title, so you can edit this country page and publish related Entries and News.', array('%title' => $params['node_title']), $options);
+            break;
+        case 'notify_new_contributors_region':
+            $message['from'] = \Drupal::config('system.site')->get('mail');
+            $message['subject'] = t('You have been invited to contribute to @item',
+              array('@item' => $params['node_title']), $options);
+            //$message['body'][] = SafeMarkup::checkPlain($params['message']);
+            $message['body'][] = t('Congrats! You are now a contributor of %title, so you can edit this region page and publish related Entries and News.', array('%title' => $params['node_title']), $options);
+            break;
+    }
+}
+
+
+/**
+ * Mail helper function.
+ */
+function wilmap_contributors_mail_notity_new_contributors($entity)
+{
+
+    // Select only new contributors
+    if (isset($entity->original->field_contributors)) {
+        $uids = array_diff_assoc(array_column($entity->field_contributors->getValue(),
+          'target_id'),
+          array_column($entity->original->field_contributors->getValue(),
+            'target_id'));
+    } else {
+        $uids = array_column($entity->field_contributors->getValue(),
+          'target_id');
+    }
+
+    // Get new contributors as user entities
+    $contributors = \Drupal\user\Entity\User::loadMultiple($uids);
+
+    // Email settings
+    $mailManager = \Drupal::service('plugin.manager.mail');
+    $module = 'wilmap_contributors';
+
+    switch ($entity->getType()){
+        case 'topics':
+            $key = 'notify_new_contributors_topics';
+            break;
+        case 'country':
+            $key = 'notify_new_contributors_country';
+            break;
+        case 'region':
+            $key = 'notify_new_contributors_region';
+            break;
+        default:
+            $key = 'notify_new_contributors';
+    }
+
+    $params['node_title'] = $entity->label();
+    $langcode = \Drupal::currentUser()->getPreferredLangcode();
+    $send = true;
+
+    // Send email to each new contributor
+    foreach ($contributors as $contributor) {
+
+        if ($to = $contributor->getEmail()) {
+
+            // Send email
+            $result = $mailManager->mail(
+              $module,
+              $key,
+              $to,
+              $langcode,
+              $params,
+              null,
+              $send
+            );
+
+            if ($result['result'] !== true) {
+
+                //drupal dblog: mail sent
+                \Drupal::logger('wilmap_contributors')
+                  ->error('There was a problem sending email inviting @email to contribute to %title (@id).',
+                    array(
+                      '@email' => $to,
+                      '%title' => $entity->label(),
+                      '@id'    => $entity->id()
+                    )
+                );
+            } else {
+
+                //drupal dblog: mail sent error
+                \Drupal::logger('wilmap_contributors')
+                  ->notice('An email notification has been sent to @email inviting to contribute to %title (@id).',
+                    array(
+                      '@email' => $to,
+                      '%title' => $entity->label(),
+                      '@id'    => $entity->id()
+                    )
+                );
+            }
+        }
     }
 }
