@@ -2,20 +2,37 @@
 
 namespace Drupal\wilmap_map;
 
+use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Database\Connection;
 use Drupal\node\Entity\Node;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Entity\Query\QueryFactory;
+use Drupal\Core\Entity\EntityManagerInterface;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\Core\DependencyInjection\DependencySerializationTrait;
+use Drupal\Core\StringTranslation\TranslationInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Class Ranking.
+ * Class MapServices.
  *
- * @package Drupal\wilmap_contributors
+ * @package Drupal\wilmap_map
+ *
+ * @see \Drupal\Core\DependencyInjection\ContainerInjectionInterface
  */
-class MapServices
+class MapServices implements ContainerInjectionInterface
 {
 
+    use StringTranslationTrait;
+    use DependencySerializationTrait {
+        __wakeup as defaultWakeup;
+        __sleep as defaultSleep;
+    }
+    /**
+     * @var \Drupal\Core\Entity\EntityManagerInterface
+     */
+    protected $entityManager;
     /**
      * Database Service Object.
      *
@@ -34,6 +51,44 @@ class MapServices
      * @var \Drupal\wilmap_map\LayerServices
      */
     protected $layerService;
+    /**
+     * @var \Drupal\taxonomy\TermStorage
+     */
+    protected $termStorage;
+
+    /**
+     * Implements __construct().
+     *
+     * @param \Drupal\Core\Entity\EntityManagerInterface $entity_manager
+     *   Entity Manager.
+     *
+     * @param \Drupal\Core\Database\Connection           $database
+     *   Database Service Object.
+     *
+     * @param \Drupal\Core\Entity\Query\QueryFactory     $query_factory
+     *   Query Factory Service Object.
+     *
+     * @param \Drupal\wilmap_map\CountryServices         $country_services
+     *   Country Service Object.
+     *
+     * @param \Drupal\wilmap_map\LayerServices           $layer_services
+     *   Layer Service Object.
+     *
+     */
+    public function __construct(
+      EntityManagerInterface $entity_manager,
+      Connection $database,
+      QueryFactory $query_factory,
+      CountryServices $country_services,
+      LayerServices $layer_services
+    ) {
+        $this->entityManager = $entity_manager;
+        $this->database = $database;
+        $this->entityQueryFactory = $query_factory;
+        $this->countryService = $country_services;
+        $this->layerService = $layer_services;
+        $this->termStorage = $entity_manager->getStorage('taxonomy_term');
+    }
 
     /**
      * @var array countries
@@ -42,32 +97,12 @@ class MapServices
     private $countries;
 
     /**
-     * Implements __construct().
-     *
-     * @param \Drupal\Core\Database\Connection       $database
-     *   Database Service Object.
-     *
-     * @param \Drupal\Core\Entity\Query\QueryFactory $query_factory
-     *   Query Factory Service Object.
-     */
-    public function __construct(
-      Connection $database,
-      QueryFactory $query_factory,
-      CountryServices $country_services,
-      LayerServices $layer_services
-    ) {
-        $this->database = $database;
-        $this->entityQueryFactory = $query_factory;
-        $this->countryService = $country_services;
-        $this->layerService = $layer_services;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public static function create(ContainerInterface $container)
     {
         return new static(
+          $container->get('entity.manager'),
           $container->get('database'),
           $container->get('entity.query'),
           $container->get('wilmap_map.country'),
@@ -144,7 +179,7 @@ class MapServices
         }
 
         // Get Conditions if layer present
-        if($layer_nid){
+        if ($layer_nid) {
             $conditions = $this->layerService->getLayerConditions($layer_nid);
         }
 
@@ -163,4 +198,94 @@ class MapServices
         return $countries_entries;
     }
 
+
+    /**
+     * Get countries entries count with conditions set in layer
+     *
+     * @param \Drupal\node\NodeInterface $country
+     *     country node object
+     * @param \Drupal\node\NodeInterface $layer
+     *     layer node object, null to get all country data
+     *
+     * @return array, iso2 -> country data for selected layer
+     */
+    public function getCountryData($country, $layer = null)
+    {
+
+        $data = [];
+        $conditions = [];
+
+        // Entries with:
+        // - "Legislation" (vid='section', tid=125 and children)
+        // - "Bills and Pending Proposals" (vid='section', tid=126 and children)
+        // - "Decisions" (vid='section', tid=127 and children)
+        $terms_shown = [125, 126, 127];
+
+
+        // Get Conditions if layer present
+        if ($layer && $layer->getType() == 'layer') {
+            $conditions = $this->layerService->getLayerConditions($layer->id());
+        }
+
+
+        // Basic country date
+        $data = array();
+        $data['id'] = $country->id();
+        $data['title'] = $country->getTitle();
+        $data['iso2'] = $country->get('field_iso2')->value;
+        $data['values'] = [];
+
+        // Return data for each term to show.
+        // For each term launch a query with base conditions and a specific
+        // condition for the term to show an its children
+        foreach ($terms_shown as $term_id) {
+
+            // Get term
+            $term = \Drupal\taxonomy\Entity\Term::load($term_id);
+
+            // Get term children
+            $children = $this->termStorage->loadTree('section', $term_id, null,
+              false);
+
+            // Get terms ids from terms
+            $terms = $this->getTermsIds($children);
+
+            // Add the term itself to the array
+            $terms[] = $term_id;
+
+            // Generate condition from term ids
+            $term_condition[0] = [
+              'field_name' => 'field_tax_section',
+              'values'     => $terms,
+              'operator'   => 'IN'
+            ];
+
+            // Return data for this term
+            $data['values'][$term_id] = [
+              'label' => $term->label(),
+              'count' => $this->getCountryEntriesCount($country->id(),
+                array_merge($conditions, $term_condition))
+            ];
+        }
+
+        return $data;
+    }
+
+    /**
+     * Get terms id from array of terms objects
+     *
+     * @param array $terms
+     *     Array of term objects
+     *
+     * @return array
+     *      Array with terms ids
+     */
+    private function getTermsIds($terms)
+    {
+        $tids = [];
+        foreach ($terms as $term) {
+            $tids[] = $term->tid;
+        }
+        return $tids;
+    }
 }

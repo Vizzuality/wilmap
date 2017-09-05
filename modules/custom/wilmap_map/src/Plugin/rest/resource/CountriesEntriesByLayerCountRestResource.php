@@ -130,7 +130,7 @@ class CountriesEntriesByLayerCountRestResource extends ResourceBase
             $countries_entries = $this->map->getCountriesEntriesCount(null);
         } else {
             $node = Node::load($layer_nid);
-            if (Node::load($layer_nid) && $node->getType() == 'layer') {
+            if ($node && $node->getType() == 'layer') {
                 $countries_entries = $this->map->getCountriesEntriesCount($layer_nid);
             } else {
                 throw new NotFoundHttpException();

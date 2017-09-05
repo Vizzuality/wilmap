@@ -7,4 +7,4 @@ services:
     arguments: ['@entity.query']
   wilmap_map.map:
     class: Drupal\wilmap_map\MapServices
-    arguments: ['@database','@entity.query','@wilmap_map.country','@wilmap_map.layer']
+    arguments: ['@entity.manager','@database','@entity.query','@wilmap_map.country','@wilmap_map.layer']

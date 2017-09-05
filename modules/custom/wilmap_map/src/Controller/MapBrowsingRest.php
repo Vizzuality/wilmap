@@ -12,11 +12,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
- * Class MapBrowsing.
+ * Class MapBrowsingRest.
  *
  * @package Drupal\wilmap_map\Controller
  */
-class MapBrowsing extends ControllerBase
+class MapBrowsingRest extends ControllerBase
 {
 
     /**
@@ -27,7 +27,7 @@ class MapBrowsing extends ControllerBase
     protected $nodeStorage;
 
     /**
-     * Constructs a new MapBrowsing object.
+     * Constructs a new MapBrowsingRest object.
      */
     public function __construct(EntityStorageInterface $storage)
     {

@@ -61,7 +61,7 @@ class CountryServices
         $query->condition('field_iso2', $iso2);
         $entity_ids = $query->execute();
 
-        return $entity_ids;
+        return reset($entity_ids);
 
     }
 
