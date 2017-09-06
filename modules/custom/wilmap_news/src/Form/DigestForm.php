@@ -61,7 +61,7 @@ class DigestForm extends ConfigFormBase
           '#selection_settings' => ['include_anonymous' => FALSE],
           '#default_value' => ($config->get('author')) ? \Drupal\user\Entity\User::load($config->get('author')) : '',
           '#title' => $this->t('Authored by'),
-          '#description' => $this->t('Digest author. Must be other than admin_WILMAP (uid=1)'),
+          '#description' => $this->t('Digest author. Should be other than admin_WILMAP (uid=1)'),
         ];
 
         return parent::buildForm($form, $form_state);
