@@ -841,15 +841,31 @@
         if ($(dom).length > 0) {
           $(dom).attr('id','mapid');
           $(dom).width($(window).width() - 300);
-          $(dom).height($(window).height() - 50);
+          $(dom).height($(window).height());
 
-          var mymap = L.map('mapid').setView([51.505, -0.09], 8);
-          L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-              attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-              maxZoom: 5,
-              id: 'mapbox.light',
-              accessToken: 'your.mapbox.access.token'
-          }).addTo(mymap);
+          var wilmap = L.map('mapid');
+          wilmap.setView([51.505, -0.09], 3);
+
+          // wilmap.createPane('labels');
+
+          var cartodbAttribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
+
+          var geojson = L.geoJson(geoCountries, {style: {fillColor: '#e4dfd3', fillOpacity: 1, color: 'white', weight: 1}}).addTo(wilmap);
+          geojson.eachLayer(function (layer) {
+            layer.bindPopup(layer.feature.properties.iso2);
+          });
+
+        	// var positron = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
+        	// 	attribution: cartodbAttribution
+        	// }).addTo(wilmap);
+
+        	var positron_labels = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png', {
+        		attribution: cartodbAttribution
+        	}).addTo(wilmap);
+
+          //wilmap.getPane('labels').style.zIndex = 1000;
+          // wilmap.getPane('labels').style.pointerEvents = 'none';
+
         }
       },
 
