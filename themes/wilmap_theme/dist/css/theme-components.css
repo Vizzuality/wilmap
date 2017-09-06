@@ -825,7 +825,7 @@
       min-height: 0;
       max-height: 92.5%; } }
   .contact-message-personal-form.modal .content .inner-content {
-    overflow-y: scroll;
+    overflow-y: auto;
     min-height: 90%; }
 
 .field--name-field-contributors {
