@@ -216,6 +216,12 @@ function wilmap_theme_form_alter(&$form, FormStateInterface $form_state, $form_i
     if (strpos($form_id, 'contact_message_') !== FALSE) {
         $form['actions']['preview']['#access'] = FALSE;
     }
+
+    // Disable search_form autocomplete in node and users search
+    // @see search_autocomplete.module
+    if ($form_id == 'search_form') {
+            unset($form['basic']['keys']['#autocomplete_configuration']);
+    }
 }
 
 /**
