@@ -16,7 +16,8 @@
 
 // NEWS List
 .block-views-blocknews-block-1,
-.block-views-blocknews-block-2 {
+.block-views-blocknews-block-2,
+.block-views-blocknews-block-3 {
   @include news(list);
 
   .content {

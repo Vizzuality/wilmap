@@ -108,6 +108,14 @@
             ref: '.node__title a'
           },
           {
+            bigitem: '.block-views-blocktopics-block-2 .views-row .node',
+            ref: '.node__title a'
+          },
+          {
+            bigitem: '.block-views-blocktopics-block-3 .views-row .node',
+            ref: '.node__title a'
+          },
+          {
             bigitem: '.block-views-blocklist-entries-block-1 .views-row .node',
             ref: '.node__title a'
           },
@@ -349,7 +357,7 @@
         var isPhone = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
 
         if ($(dom).length > 0) {
-          var default_item = 'continent=all';
+          var default_item = 'show=all';
           var uri = location.href.split('/news?')[1];
               uri = ( uri == undefined || ( uri.indexOf('continent') == -1 && uri.indexOf('transnational') == -1 ) ) ? default_item : uri;
 
