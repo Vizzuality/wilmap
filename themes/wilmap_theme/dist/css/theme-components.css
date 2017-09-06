@@ -1514,4 +1514,14 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
         padding: 0 !important;
         min-height: auto; }
 
+.leaflet-container {
+  background-color: #f7f6f2; }
+  .leaflet-container .leaflet-control-zoom {
+    position: relative;
+    top: 70px; }
+  .leaflet-container .leaflet-map-pane .leaflet-tile-pane {
+    z-index: 900; }
+  .leaflet-container .leaflet-map-pane .leaflet-popup-pane {
+    z-index: 1000; }
+
 /*# sourceMappingURL=theme-components.css.map */
