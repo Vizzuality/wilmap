@@ -808,8 +808,8 @@
   z-index: 2;
   top: 15%;
   width: 50%;
-  min-height: 50%;
-  max-height: 65%;
+  min-height: auto;
+  max-height: 100%;
   margin: 0 auto;
   padding: 30px; }
   @media only screen and (max-width: 768px) {
@@ -826,8 +826,7 @@
       max-height: 92.5%; } }
   .contact-message-personal-form.modal .content .inner-content {
     overflow-y: scroll;
-    min-height: 90%;
-    border: 1px solid red; }
+    min-height: 90%; }
 
 .field--name-field-contributors {
   margin: 0;

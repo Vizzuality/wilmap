@@ -12,8 +12,8 @@
     z-index: 2;
     top: 15%;
     width: 50%;
-    min-height: 50%;
-    max-height: 65%;
+    min-height: auto;
+    max-height: 100%;
     margin: 0 auto;
     padding: 30px;
 
@@ -34,7 +34,6 @@
     .inner-content {
       overflow-y: scroll;
       min-height: 90%;
-      border: 1px solid red;
     }
   }
 }
