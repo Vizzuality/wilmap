@@ -108,14 +108,6 @@
             ref: '.node__title a'
           },
           {
-            bigitem: '.block-views-blocktopics-block-2 .views-row .node',
-            ref: '.node__title a'
-          },
-          {
-            bigitem: '.block-views-blocktopics-block-3 .views-row .node',
-            ref: '.node__title a'
-          },
-          {
             bigitem: '.block-views-blocklist-entries-block-1 .views-row .node',
             ref: '.node__title a'
           },
@@ -129,6 +121,14 @@
           },
           {
             bigitem: '.block-views-blocknews-block-1 .node',
+            ref: '.node__title a'
+          },
+          {
+            bigitem: '.block-views-blocknews-block-2 .node',
+            ref: '.node__title a'
+          },
+          {
+            bigitem: '.block-views-blocknews-block-3 .node',
             ref: '.node__title a'
           },
           {
