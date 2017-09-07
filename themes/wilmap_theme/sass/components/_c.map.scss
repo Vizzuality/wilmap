@@ -12,12 +12,9 @@
   }
 
   .leaflet-map-pane {
-    .leaflet-tile-pane {
-      z-index: 900;
-    }
-
-    .leaflet-popup-pane {
-      z-index: 1000;
+    // Solve the problem with tiles in custom panes.
+    .leaflet-labels-pane img {
+    	max-width: none !important;
     }
   }
 

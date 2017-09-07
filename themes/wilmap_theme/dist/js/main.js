@@ -843,29 +843,103 @@
           $(dom).width($(window).width() - 300);
           $(dom).height($(window).height());
 
-          var wilmap = L.map('mapid');
-          wilmap.setView([51.505, -0.09], 3);
 
-          // wilmap.createPane('labels');
+          // Init map
+          var bounds = new L.LatLngBounds(new L.LatLng(83.6567687988283, 180.00000000000034), new L.LatLng(-90, -179.99999999999994));
 
-          var cartodbAttribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
-
-          var geojson = L.geoJson(geoCountries, {style: {fillColor: '#e4dfd3', fillOpacity: 1, color: 'white', weight: 1}}).addTo(wilmap);
-          geojson.eachLayer(function (layer) {
-            layer.bindPopup(layer.feature.properties.iso2);
+          var wilmap = L.map('mapid', {
+            center: bounds.getCenter(),
+            zoom: 5,
+            minZoom: 2,
+            maxZoom: 5,
+            maxBounds: bounds,
+            maxBoundsViscosity: 0.75
           });
 
-        	// var positron = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
-        	// 	attribution: cartodbAttribution
-        	// }).addTo(wilmap);
+          wilmap.setView([51.505, -0.09], 3);
 
-        	var positron_labels = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png', {
-        		attribution: cartodbAttribution
-        	}).addTo(wilmap);
 
-          //wilmap.getPane('labels').style.zIndex = 1000;
-          // wilmap.getPane('labels').style.pointerEvents = 'none';
+          // Tiles
+          var cartodbAttribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
 
+          wilmap.createPane('labels');
+          wilmap.getPane('labels').style.zIndex = 640;
+          wilmap.getPane('labels').style.pointerEvents = 'none';
+
+          // var positron_basemap = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
+          // 	attribution: cartodbAttribution,
+          // }).addTo(wilmap);
+
+          var positron_labels = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png', {
+            attribution: cartodbAttribution,
+            pane: 'labels'
+          }).addTo(wilmap);
+
+
+
+          // Vector maps
+          // var basemap_area = L.polygon([
+          //   [83.6567687988283, -179.99999999999994],
+          //   [83.6567687988283, 180.00000000000034],
+          //   [-90, 180.00000000000034],
+          //   [-90, -179.99999999999994]
+          // ],
+          // {
+          //   fillOpacity: 0,
+          //   opacity: 0
+          // }).addTo(wilmap);
+
+          var basemap = L.geoJson(geoCountries,
+              {style: {
+                fillColor: '#e4dfd3',
+                fillOpacity: 1,
+                color: 'white',
+                weight: 1,
+                opacity: 1
+              },
+              onEachFeature: function(feature, layer){
+                 layer.bindPopup(layer.feature.properties.name_engli + '<br />' + layer.feature.properties.iso2 + '<br />' + layer.feature.properties.unregion2 + '<br />');
+                 layer.on({
+                   mouseover: function(e) {
+                     var l = e.target;
+
+                     l.setStyle({
+                       fillColor: '#e4dfd3',
+                       fillOpacity: 1,
+                       color: '#b3001e',
+                       weight: 2,
+                       opacity: 1
+                     });
+
+                     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                         l.bringToFront();
+                     }
+                   },
+                   mouseout: function(e) {
+                     basemap.resetStyle(e.target);
+                   },
+                   click: function (e) {
+                     var l = e.target;
+                     
+                     l.setStyle({
+                       fillColor: '#b3001e',
+                       fillOpacity: 1,
+                       color: '#b3001e',
+                       weight: 1,
+                       opacity: 1
+                     });
+
+                     wilmap.fitBounds(l.getBounds())
+                   }
+                 });
+               }
+              }).addTo(wilmap);
+
+          // var regions = L.geoJson(geoContinents, {style: {fillColor: 'blue', fillOpacity: 0.5, color: 'blue', weight: 1}}).addTo(wilmap);
+
+          console.log(wilmap);
+          console.log(geoCountries);
+          console.log(geoContinents);
         }
       },
 

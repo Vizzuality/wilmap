@@ -13,7 +13,7 @@ global-styling:
     dist/source/gadm28_countries.js: {}
     node_modules/npm-gumby/js/libs/jquery.mobile.custom.min.js: {}
     node_modules/npm-gumby/js/libs/modernizr-2.6.2.min.js: {}
-    node_modules/leaflet/dist/leaflet.js: {}
+    node_modules/leaflet/dist/leaflet-src.js: {}
     node_modules/slick-carousel/slick/slick.min.js: {}
     node_modules/npm-gumby/js/libs/gumby.min.js: {}
     dist/js/main.js: {}

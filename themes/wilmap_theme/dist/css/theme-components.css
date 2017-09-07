@@ -1518,9 +1518,7 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
   .leaflet-container .leaflet-control-zoom {
     position: relative;
     top: 70px; }
-  .leaflet-container .leaflet-map-pane .leaflet-tile-pane {
-    z-index: 900; }
-  .leaflet-container .leaflet-map-pane .leaflet-popup-pane {
-    z-index: 1000; }
+  .leaflet-container .leaflet-map-pane .leaflet-labels-pane img {
+    max-width: none !important; }
 
 /*# sourceMappingURL=theme-components.css.map */
