@@ -15,6 +15,111 @@
        * Map
        */
       Map: function() {
+        // Init
+        App.Application.Maps = {};
+        App.Application.Maps.Config = {};
+        App.Application.Maps.Functions = {};
+        App.Application.Maps.Data = {};
+        App.Application.Maps.Config.wilmap                      = null;
+        App.Application.Maps.Config.basemap                     = null;
+        App.Application.Maps.Config.countriesmap                = null;
+        App.Application.Maps.Config.positron_labels             = null;
+        App.Application.Maps.Config.curr_continent_active       = null;
+        App.Application.Maps.Config.curr_country_active         = null;
+        App.Application.Maps.Config.color_active                = '#b3001e';
+        App.Application.Maps.Config.color_border                = '#fff';
+        App.Application.Maps.Config.color_inactive              = '#e4dfd3';
+        App.Application.Maps.Config.bounds                      = new L.LatLngBounds(new L.LatLng(83.6567687988283, 180.00000000000034), new L.LatLng(-90, -179.99999999999994));
+        App.Application.Maps.Config.initial_view                = [51.505, -0.09];
+        // App.Application.Maps.Functions.highlightArea            = function(source, layer, e) {
+        //
+        //
+        //   // var target = e.target;
+        //   //
+        //   // target.setStyle({
+        //   //   fillColor: '#b3001e',
+        //   //   fillOpacity: 1,
+        //   //   color: '#b3001e',
+        //   //   weight: 1,
+        //   //   opacity: 1
+        //   // });
+        //   //
+        //   // wilmap.fitBounds(l.getBounds())
+        //
+        // };
+        // App.Application.Maps.Functions.activeArea                = function(e) {
+        //   //console.log('hola mamon ' + e);
+        // };
+
+        App.Application.Maps.Functions.loadLayer                = function(layer) {
+          // if (App.Application.Maps.Config.countriesmap) {
+          //   App.Application.Maps.Config.wilmap.removeLayer(App.Application.Maps.Config.countriesMap);
+          // }
+
+          $.each(geoCountries.features, function(index, value) {
+            if(layer === 'default') {
+              value.properties.color = App.Application.Maps.Config.color_inactive;
+            } else {
+              value.properties.color = App.Utils.getRandomColor();
+            }
+          });
+        };
+
+        App.Application.Maps.Functions.drawBaseMap              = function() {
+        };
+
+        App.Application.Maps.Functions.drawCountriesMap         = function(layer) {
+          App.Application.Maps.Config.countriesmap = L.geoJson(geoCountries,
+          {
+            style: function(feature) {
+              return {
+                fillColor: feature.properties.color,
+                fillOpacity: 1,
+                color: App.Application.Maps.Config.color_border,
+                weight: 1,
+                opacity: 1
+              }
+            },
+            onEachFeature: function(feature, layer){
+              layer.bindPopup(layer.feature.properties.name_engli + '<br />' + layer.feature.properties.iso2 + '<br />' + layer.feature.properties.unregion2 + '<br />');
+              layer.on({
+               mouseover: function(e) {
+                 var l = e.target;
+
+                 l.setStyle({
+                  //  fillColor: '#e4dfd3',
+                  //  fillOpacity: 1,
+                   color: '#b3001e',
+                   weight: 2,
+                   opacity: 1
+                 });
+
+                 if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                     l.bringToFront();
+                 }
+               },
+               mouseout: function(e) {
+                 App.Application.Maps.Config.countriesmap.resetStyle(e.target);
+               },
+               click: function (e) {
+                 var l = e.target;
+
+                 l.setStyle({
+                   fillColor: '#b3001e',
+                   fillOpacity: 1,
+                   color: '#b3001e',
+                   weight: 1,
+                   opacity: 1
+                 });
+
+                 App.Application.Maps.Config.wilmap.fitBounds(l.getBounds())
+               }
+             });
+            }
+          }).addTo(App.Application.Maps.Config.wilmap);
+
+        };
+
         var dom = '.block-wilmap-map .wilmap';
 
         if ($(dom).length > 0) {
@@ -24,99 +129,167 @@
 
 
           // Init map
-          var bounds = new L.LatLngBounds(new L.LatLng(83.6567687988283, 180.00000000000034), new L.LatLng(-90, -179.99999999999994));
-
-          var wilmap = L.map('mapid', {
-            center: bounds.getCenter(),
+          App.Application.Maps.Config.wilmap = L.map('mapid', {
+            center: App.Application.Maps.Config.bounds.getCenter(),
             zoom: 5,
             minZoom: 2,
             maxZoom: 5,
-            maxBounds: bounds,
+            maxBounds: App.Application.Maps.Config.bounds,
             maxBoundsViscosity: 0.75
           });
 
-          wilmap.setView([51.505, -0.09], 3);
+          App.Application.Maps.Config.wilmap.setView(App.Application.Maps.Config.initial_view, 3);
 
 
           // Tiles
           var cartodbAttribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
 
-          wilmap.createPane('labels');
-          wilmap.getPane('labels').style.zIndex = 640;
-          wilmap.getPane('labels').style.pointerEvents = 'none';
+          App.Application.Maps.Config.wilmap.createPane('labels');
+          App.Application.Maps.Config.wilmap.getPane('labels').style.zIndex = 640;
+          App.Application.Maps.Config.wilmap.getPane('labels').style.pointerEvents = 'none';
 
-          // var positron_basemap = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
-          // 	attribution: cartodbAttribution,
-          // }).addTo(wilmap);
-
-          var positron_labels = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png', {
+          App.Application.Maps.Config.positron_labels = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png', {
             attribution: cartodbAttribution,
             pane: 'labels'
-          }).addTo(wilmap);
+          }).addTo(App.Application.Maps.Config.wilmap);
 
 
+          // Load layer
+          App.Application.Maps.Functions.loadLayer('default');
 
           // Vector maps
-          // var basemap_area = L.polygon([
-          //   [83.6567687988283, -179.99999999999994],
-          //   [83.6567687988283, 180.00000000000034],
-          //   [-90, 180.00000000000034],
-          //   [-90, -179.99999999999994]
-          // ],
+          App.Application.Maps.Functions.drawCountriesMap();
+
+
+
+          $('body').append('<a href="#" class="btn" id="randomcolor" style="position:absolute; top: 80px; left: 55px; z-index: 500;">RANDOM COLOR</a>');
+          $('#randomcolor').on('click', function(e){
+            // basemap.setStyle({fillColor:App.Utils.getRandomColor});
+            App.Application.Maps.Functions.loadLayer('lala');
+            App.Application.Maps.Functions.drawCountriesMap();
+            e.preventDefault();
+          });
+          $('body').append('<a href="#" class="btn" id="resetcolor" style="position:absolute; top: 125px; left: 55px; z-index: 500;">RESET COLOR</a>');
+          $('#resetcolor').on('click', function(e){
+            // basemap.setStyle({fillColor:App.Utils.getRandomColor});
+            App.Application.Maps.Functions.loadLayer('default');
+            App.Application.Maps.Functions.drawCountriesMap();
+            e.preventDefault();
+          });
+
+          // var basemap = L.geoJson(geoCountries,
           // {
-          //   fillOpacity: 0,
-          //   opacity: 0
+          //   style: function(feature) {
+          //     return {
+          //       fillColor: App.Application.Maps.Config.color_inactive,
+          //       fillOpacity: 1,
+          //       color: App.Application.Maps.Config.color_border,
+          //       weight: 1,
+          //       opacity: 1
+          //     }
+          //   },
+          //   onEachFeature: function(feature, layer){
+          //     layer.bindPopup(layer.feature.properties.name_engli + '<br />' + layer.feature.properties.iso2 + '<br />' + layer.feature.properties.unregion2 + '<br />');
+          //   }
           // }).addTo(wilmap);
 
-          var basemap = L.geoJson(geoCountries,
-              {style: {
-                fillColor: '#e4dfd3',
-                fillOpacity: 1,
-                color: 'white',
-                weight: 1,
-                opacity: 1
-              },
-              onEachFeature: function(feature, layer){
-                 layer.bindPopup(layer.feature.properties.name_engli + '<br />' + layer.feature.properties.iso2 + '<br />' + layer.feature.properties.unregion2 + '<br />');
-                 layer.on({
-                   mouseover: function(e) {
-                     var l = e.target;
+          // var countriesmap = L.geoJson(geoCountries,
+          //     {style: {
+          //       fillColor: App.Application.Maps.Config.color_inactive,
+          //       fillOpacity: 1,
+          //       color: App.Application.Maps.Config.color_border,
+          //       weight: 1,
+          //       opacity: 1
+          //     },
 
-                     l.setStyle({
-                       fillColor: '#e4dfd3',
-                       fillOpacity: 1,
-                       color: '#b3001e',
-                       weight: 2,
-                       opacity: 1
-                     });
 
-                     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-                         l.bringToFront();
-                     }
-                   },
-                   mouseout: function(e) {
-                     basemap.resetStyle(e.target);
-                   },
-                   click: function (e) {
-                     var l = e.target;
-                     
-                     l.setStyle({
-                       fillColor: '#b3001e',
-                       fillOpacity: 1,
-                       color: '#b3001e',
-                       weight: 1,
-                       opacity: 1
-                     });
+          // var countriesmap = L.geoJson(geoCountries,
+          //     {style: {
+          //       fillColor: App.Application.Maps.Config.color_inactive,
+          //       fillOpacity: 1,
+          //       color: App.Application.Maps.Config.color_border,
+          //       weight: 1,
+          //       opacity: 1
+          //     },
+          //     onEachFeature: function(feature, layer){
+          //        layer.bindPopup(layer.feature.properties.name_engli + '<br />' + layer.feature.properties.iso2 + '<br />' + layer.feature.properties.unregion2 + '<br />');
+          //        layer.on({
+          //          mouseover: function(e) {
+          //            var l = e.target;
+          //
+          //            l.setStyle({
+          //              fillColor: '#e4dfd3',
+          //              fillOpacity: 1,
+          //              color: '#b3001e',
+          //              weight: 2,
+          //              opacity: 1
+          //            });
+          //
+          //            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+          //                l.bringToFront();
+          //            }
+          //          },
+          //          mouseout: function(e) {
+          //            countriesmap.resetStyle(e.target);
+          //          },
+          //          click: function (e) {
+          //            var l = e.target;
+          //
+          //            l.setStyle({
+          //              fillColor: '#b3001e',
+          //              fillOpacity: 1,
+          //              color: '#b3001e',
+          //              weight: 1,
+          //              opacity: 1
+          //            });
+          //
+          //            wilmap.fitBounds(l.getBounds())
+          //          }
+          //        });
+          //      }
+          //     }).addTo(wilmap);
+          //
+          // var continentsmaps = L.geoJson(geoContinents,
+          //     {style: {
+          //       fillColor: App.Application.Maps.Config.color_inactive,
+          //       fillOpacity: 0,
+          //       color: App.Application.Maps.Config.color_border,
+          //       weight: 1,
+          //       opacity: 0
+          //     },
+          //     onEachFeature: function(feature, layer){
+          //        layer.on({
+          //          mouseover: function(e) {
+          //            var l = e.target;
+          //
+          //            l.style.pointerEvents = 'none';
+          //
+          //           //  l.setStyle({
+          //           //    fillColor: '#e4dfd3',
+          //           //    fillOpacity: 1,
+          //           //    color: '#b3001e',
+          //           //    weight: 2,
+          //           //    opacity: 1
+          //           //  });
+          //            //
+          //           //  if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+          //           //      l.bringToFront();
+          //           //  }
+          //           //  App.Application.Maps.Functions.highlightArea('pepe');
+          //          },
+          //          mouseout: function(e) {
+          //           //  continentsmaps.resetStyle(e.target);
+          //          },
+          //          click: function (e) {
+          //           //  App.Application.Maps.Functions.activeArea('pepe');
+          //          }
+          //        });
+          //      }
+          //     }).addTo(wilmap);
 
-                     wilmap.fitBounds(l.getBounds())
-                   }
-                 });
-               }
-              }).addTo(wilmap);
+          // continentsmaps.style.pointerEvents = 'none';
 
-          // var regions = L.geoJson(geoContinents, {style: {fillColor: 'blue', fillOpacity: 0.5, color: 'blue', weight: 1}}).addTo(wilmap);
-
-          console.log(wilmap);
+          console.log(App.Application.Maps.Config.wilmap);
           console.log(geoCountries);
           console.log(geoContinents);
         }
