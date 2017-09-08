@@ -162,14 +162,14 @@
 
 
 
-          $('body').append('<a href="#" class="btn" id="randomcolor" style="position:absolute; top: 80px; left: 55px; z-index: 500;">RANDOM COLOR</a>');
+          //$('body').append('<a href="#" class="btn" id="randomcolor" style="position:absolute; top: 80px; left: 55px; z-index: 500;">RANDOM COLOR</a>');
           $('#randomcolor').on('click', function(e){
             // basemap.setStyle({fillColor:App.Utils.getRandomColor});
             App.Application.Maps.Functions.loadLayer('lala');
             App.Application.Maps.Functions.drawCountriesMap();
             e.preventDefault();
           });
-          $('body').append('<a href="#" class="btn" id="resetcolor" style="position:absolute; top: 125px; left: 55px; z-index: 500;">RESET COLOR</a>');
+          //$('body').append('<a href="#" class="btn" id="resetcolor" style="position:absolute; top: 125px; left: 55px; z-index: 500;">RESET COLOR</a>');
           $('#resetcolor').on('click', function(e){
             // basemap.setStyle({fillColor:App.Utils.getRandomColor});
             App.Application.Maps.Functions.loadLayer('default');
