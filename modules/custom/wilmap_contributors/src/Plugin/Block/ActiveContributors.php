@@ -50,7 +50,7 @@ class ActiveContributors extends BlockBase {
 
     $contributors .= "</ul>";
 
-    dump($contributors);
+    //dump($contributors);
 
     return array(
       '#type' => 'markup',
