@@ -400,9 +400,11 @@ function user_user_view(array &$build, UserInterface $account, EntityViewDisplay
 function user_user_view_alter(array &$build, UserInterface $account, EntityViewDisplayInterface $display) {
   if (user_picture_enabled() && !empty($build['user_picture'])) {
     foreach (Element::children($build['user_picture']) as $key) {
-      $item = $build['user_picture'][$key]['#item'];
-      if (!$item->get('alt')->getValue()) {
-        $item->get('alt')->setValue(\Drupal::translation()->translate('Profile picture for user @username', ['@username' => $account->getUsername()]));
+      if(isset($build['user_picture'][$key]['#item'])){
+        $item = $build['user_picture'][$key]['#item'];
+        if (!$item->get('alt')->getValue()) {
+          $item->get('alt')->setValue(\Drupal::translation()->translate('Profile picture for user @username', ['@username' => $account->getUsername()]));
+        }
       }
     }
   }
