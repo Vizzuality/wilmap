@@ -48,10 +48,16 @@ class ActiveContributors extends BlockBase {
 
     $uids = $query->execute();
 
+    dump ($uids);
+
     $contributors = User::loadMultiple($uids);
     
-    // Render each user using 'avatar' display
-    return user_view_multiple($contributors, 'teaser');
+    if($contributors){
+      // Render each user using 'avatar' display
+      return user_view_multiple($contributors, 'teaser');
+    }else{
+      //return 'No result';
+    }
     
     //        // Render each user using 'teaser' display
     //        $items = [];
