@@ -38,6 +38,8 @@ class ActiveContributors extends BlockBase {
       ->condition('e.nid', $nid); 
         
     $revision_uids = $query->execute()->fetchAllKeyed();
+
+    dump($query);
     $keys = array_keys($revision_uids);
     
     //Select only the contributors
@@ -54,7 +56,9 @@ class ActiveContributors extends BlockBase {
       // Render each user using 'avatar' display
       return user_view_multiple($contributors, 'teaser');
     }else{
-      //return 'No result';
+      return array(
+        '#markup' => $this->t('No results in this category'),
+      );
     }
     
     //        // Render each user using 'teaser' display
