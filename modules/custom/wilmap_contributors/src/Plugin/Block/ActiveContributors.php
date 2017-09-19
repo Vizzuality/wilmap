@@ -3,6 +3,8 @@
 namespace Drupal\wilmap_contributors\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\user\Entity\User;
+use Drupal\Core\Database\Connection;
 
 /**
  * Provides a 'Active contributors' block.
@@ -22,40 +24,50 @@ class ActiveContributors extends BlockBase {
    */
   public function build() {
 
+    //Get the nid of the country/region from the URL
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if ($node){
+      $nid = $node->id();
+    }
+
+    //Get the uids who has made a revision of the conuntry/region
+    $connection = \Drupal::database();
+        
+    $query = $connection->select('node_revision', 'e')
+      ->fields('e', array('revision_uid'))
+      ->condition('e.nid', $nid); 
+        
+    $revision_uids = $query->execute()->fetchAllKeyed();
+    $keys = array_keys($revision_uids);
+    
+    //Select only the contributors
     $query = \Drupal::entityQuery('user')
       ->condition('status', 1)
-      ->condition('roles', 'contributors');
+      ->condition('roles', 'contributors')
+      ->condition('uid', $keys, 'IN');
 
     $uids = $query->execute();
 
-    $users = entity_load_multiple ('user', $uids);
-
-    $contributors = "<ul>";
-
-    foreach ($users as $user){
-      //$view_builder = \Drupal::entityManager()->getViewBuilder('user');
-      //dump($view_builder);
-      //$renderarray = $view_builder->view($user, 'teaser');
-      //dump($renderarray);
-      //$html = \Drupal::service('renderer')->renderRoot($renderarray);
-      //$contributors .= "<li>".$html."</li>";
-      
-
-      //$urlimage = file_create_url($user->user_picture->entity->getFileUri());
-      $contributors .= "<li>".$user->name->value."<br/>".$user->field_profile_title->value."</li>";
-
-      //$contributors .= "<li>".entity_view($user,'teaser')."</li>";
-      //dump($contributors);
-    }
-
-    $contributors .= "</ul>";
-
-    //dump($contributors);
-
-    return array(
-      '#type' => 'markup',
-      '#markup' => $contributors,
-    );
+    $contributors = User::loadMultiple($uids);
+    
+    // Render each user using 'avatar' display
+    return user_view_multiple($contributors, 'teaser');
+    
+    //        // Render each user using 'teaser' display
+    //        $items = [];
+    //        foreach ($contributors as $key => $contributor) {
+    //            $items[$key] = user_view($contributor, 'teaser');
+    //        }
+    //
+    //        $content = [
+    //          '#theme'              => 'item_list',
+    //          '#list_type'          => 'ul',
+    //          '#title'              => 'My List',
+    //          '#items'              => $items,
+    //          '#attributes'         => ['class' => ['mylist']],
+    //          '#wrapper_attributes' => ['class' => ['container']],
+    //        ];
+    //        return $content;
   }
 
 }
