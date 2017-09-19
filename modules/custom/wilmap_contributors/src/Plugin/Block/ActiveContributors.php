@@ -38,8 +38,6 @@ class ActiveContributors extends BlockBase {
       ->condition('e.nid', $nid); 
         
     $revision_uids = $query->execute()->fetchAllKeyed();
-
-    dump($query);
     $keys = array_keys($revision_uids);
     
     //Select only the contributors
