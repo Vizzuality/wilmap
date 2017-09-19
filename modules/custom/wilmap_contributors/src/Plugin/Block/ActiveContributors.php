@@ -48,8 +48,6 @@ class ActiveContributors extends BlockBase {
 
     $uids = $query->execute();
 
-    dump ($uids);
-
     $contributors = User::loadMultiple($uids);
     
     if($contributors){
