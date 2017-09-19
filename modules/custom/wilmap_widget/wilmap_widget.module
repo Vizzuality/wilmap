@@ -33,3 +33,15 @@ function wilmap_widget_theme() {
     ],
   ];
 }
+
+function wilmap_widget_preprocess_page(&$variables) {
+    // Check path to determine widget pages
+    $current_path = \Drupal::service('path.current')->getPath();
+    $pathargs = explode('/', $current_path);
+
+    $test = 1;
+//    if ($pathargs[1] == 'widgets') {
+//        // Use template: page__widgets
+//        $variables['theme_hook_suggestion'] = 'page__widgets';
+//    }
+}
