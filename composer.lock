@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "52b1f6469bb525773e32d2da4e2e3673",
-    "content-hash": "f139b2369daa085205cc73e22b70d097",
+    "hash": "19f48a3b048f779befd1581036c4fba7",
+    "content-hash": "2b66b2c3c74d11fe7a5127b983530dbc",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -706,6 +706,54 @@
             }
         },
         {
+            "name": "drupal/ckeditor_iframe",
+            "version": "dev-2.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/ckeditor_iframe",
+                "reference": "a2357364ad8f067aee28dd957cc10ada3e0e39e3"
+            },
+            "require": {
+                "drupal/core": "*",
+                "drupal/fakeobjects": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-2.0-beta1+0-dev",
+                    "datestamp": "1484760183",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Quillen (kevinquillen)",
+                    "homepage": "https://www.drupal.org/u/kevinquillen",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Adds the iFrame dialog plugin to CKEditor.",
+            "homepage": "http://drupal.org/project/ckeditor_iframe",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/ckeditor_iframe",
+                "issues": "http://drupal.org/project/issues/ckeditor_iframe"
+            },
+            "time": "2017-01-18 17:16:19"
+        },
+        {
             "name": "drupal/condition_query",
             "version": "dev-1.x",
             "source": {
@@ -788,6 +836,58 @@
             "homepage": "https://www.drupal.org/project/contact_block",
             "support": {
                 "source": "http://cgit.drupalcode.org/contact_block"
+            }
+        },
+        {
+            "name": "drupal/fakeobjects",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/fakeobjects",
+                "reference": "8.x-1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/fakeobjects-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "b1ebbd4ad2026f99c0204ad513cea74fb2692ff8"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0",
+                    "datestamp": "1474470239",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Quillen (kevinquillen)",
+                    "homepage": "https://www.drupal.org/u/kevinquillen",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Adds the FakeObjects plugin to CKEditor. This plugin is a utility plugin that is required by certain user-facing CKEditor plugins.",
+            "homepage": "http://drupal.org/project/fakeobjects",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/fakeobjects",
+                "issues": "http://drupal.org/project/issues/fakeobjects"
             }
         },
         {
@@ -6632,6 +6732,7 @@
         "drupal/better_exposed_filters": 20,
         "drupal/link_css": 20,
         "drupal/condition_query": 20,
+        "drupal/ckeditor_iframe": 20,
         "behat/mink": 20
     },
     "prefer-stable": true,
