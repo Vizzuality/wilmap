@@ -11,9 +11,6 @@ class RemoveXFrameOptionsSubscriber implements EventSubscriberInterface {
     public function RemoveXFrameOptions(FilterResponseEvent $event) {
         $response = $event->getResponse();
         $response->headers->remove('X-Frame-Options');
-        // Set the header, use FALSE to not replace it if it's set already.
-        // TODO: set final site
-        $response->headers->set('Content-Security-Policy', "frame-ancestors 'self' pantheonsite.io *.pantheonsite.io", FALSE);
     }
 
     public static function getSubscribedEvents() {
