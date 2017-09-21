@@ -6,8 +6,9 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\wilmap_entries\Digest;
 use Drupal\field\FieldStorageConfigInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Link;
 
 /**
  * Implements hook_help().
@@ -26,6 +27,31 @@ function wilmap_entries_help($route_name, RouteMatchInterface $route_match)
     }
 }
 
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function wilmap_entries_form_views_exposed_form_alter(
+  &$form,
+  \Drupal\Core\Form\FormStateInterface $form_state,
+  $form_id
+) {
+
+    // Add 'Show in map' link to exposed form
+    if ($form['#id'] == 'views-exposed-form-list-entries-block-1') {
+
+        // Map page node id: 28185
+        $url = Url::fromRoute('entity.node.canonical', ['node' => 28185]);
+
+        $project_link = Link::fromTextAndUrl(t('Show in map'), $url);
+        $project_link = $project_link->toRenderable();
+        $project_link['#attributes'] = array(
+          'class' => array('button', 'button-map'),
+          'id'    => 'show-map'
+        );
+
+        $form['show_in_map'] = $project_link;
+    }
+}
 
 /**
  * Implements hook_field_views_data_alter().
@@ -35,7 +61,10 @@ function wilmap_entries_help($route_name, RouteMatchInterface $route_match)
  *
  * @see views_field_default_views_data()
  */
-function wilmap_entries_field_views_data_alter(array &$data, FieldStorageConfigInterface $field_storage) {
+function wilmap_entries_field_views_data_alter(
+  array &$data,
+  FieldStorageConfigInterface $field_storage
+) {
     if ($field_storage->getType() == 'entity_reference' && $field_storage->getSetting('target_type') == 'node') {
         foreach ($data as $table_name => $table_data) {
             foreach ($table_data as $field_name => $field_data) {
