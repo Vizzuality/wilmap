@@ -15,17 +15,18 @@ use Drupal\node\Entity\Node;
 
 
 /**
- * Provides a resource to get countries entries depending on layer conditions.
+ * Provides a resource to get countries entries depending query
+ * parameters conditions.
  *
  * @RestResource(
- *   id = "countries_entries_by_layer_count_rest_resource",
- *   label = @Translation("Countries entries by layer count Rest Resource"),
+ *   id = "countries_entries_count_rest_resource",
+ *   label = @Translation("Entries count by country applying filter parameters Rest Resource"),
  *   uri_paths = {
- *     "canonical" = "/api/countries/entries/count/{layer}",
+ *     "canonical" = "/api/countries/entries/count",
  *   }
  * )
  */
-class CountriesEntriesByLayerCountRestResource extends ResourceBase
+class CountriesEntriesCountRestResource extends ResourceBase
 {
 
     /**
@@ -107,17 +108,14 @@ class CountriesEntriesByLayerCountRestResource extends ResourceBase
     /**
      * Responds to GET requests.
      *
-     * Returns entries by country that satisfied conditions of given layer. If
-     * no layer provided all entries returned for each country.
-     *
-     * @param $layer_nid int layer nid, all entries by default.
+     * Returns entries by country that satisfied conditions of query parameters.
      *
      * @throws \Symfony\Component\HttpKernel\Exception\HttpException
      *   Throws exception expected.
      *
      * @return string json assoc array with country iso2 and entries count
      */
-    public function get($layer_nid = null)
+    public function get()
     {
 
         // Use current user after pass authentication to validate access.
@@ -125,18 +123,14 @@ class CountriesEntriesByLayerCountRestResource extends ResourceBase
             throw new AccessDeniedHttpException();
         }
 
-        // Is parameter is 'all', no layer applied
-        if ($layer_nid == 'all') {
-            $countries_entries = $this->map->getCountriesEntriesCountByLayer(null);
-        } else {
-            $node = Node::load($layer_nid);
-            if ($node && $node->getType() == 'layer') {
-                $countries_entries = $this->map->getCountriesEntriesCountByLayer($layer_nid);
-            } else {
-                throw new NotFoundHttpException();
-            }
-        }
-        // Use 'wilmap_map.map' service to retrieve countries entries.
+        // Get parameters from URL
+        $params = $this->currentRequest->query->all();
+
+        // Get conditions from parameters
+        $conditions = $this->map->getMapConditionsFromParams($params);
+
+        // Get countries entries with conditions
+        $countries_entries = $this->map->getCountriesEntriesCount($conditions);
 
         return new ResourceResponse($countries_entries);
     }

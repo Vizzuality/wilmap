@@ -42,8 +42,7 @@ class LayerServices
     /**
      * {@inheritdoc}
      */
-    public
-    static function create(
+    public static function create(
       ContainerInterface $container
     ) {
         return new static(
@@ -60,8 +59,7 @@ class LayerServices
      *
      * @return \Drupal\Core\Entity\EntityInterface|null
      */
-    public
-    function getLayer(
+    public function getLayer(
       $nid
     ) {
         return Node::load($nid);
@@ -75,8 +73,7 @@ class LayerServices
      * @return array
      *  assoc array with conditions (field_name, value)
      */
-    public
-    function getLayerConditions(
+    public function getLayerConditions(
       $nid
     ) {
         $conditions = [];
@@ -120,7 +117,7 @@ class LayerServices
                     // Add condition to conditions
                     $conditions[] = array(
                       'field_name' => $condition_field,
-                      'values'     => (array) $condition_value,
+                      'values'     => $condition_value,
                       'operator'   => $condition_operator
                     );
 

@@ -7,11 +7,10 @@ use Drupal\Core\Database\Connection;
 use Drupal\node\Entity\Node;
 use Drupal\Core\Entity\Query\QueryFactory;
 use Drupal\Core\Entity\EntityManagerInterface;
-use Drupal\taxonomy\Entity\Term;
 use Drupal\Core\DependencyInjection\DependencySerializationTrait;
-use Drupal\Core\StringTranslation\TranslationInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 
+//use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -55,25 +54,31 @@ class MapServices implements ContainerInjectionInterface
      * @var \Drupal\taxonomy\TermStorage
      */
     protected $termStorage;
+//    /*
+//     * @var \Symfony\Component\HttpFoundation\RequestStack
+//     */
+//    protected $requestStack;
 
     /**
      * Implements __construct().
      *
-     * @param \Drupal\Core\Entity\EntityManagerInterface $entity_manager
+     * @param \Drupal\Core\Entity\EntityManagerInterface     $entity_manager
      *   Entity Manager.
      *
-     * @param \Drupal\Core\Database\Connection           $database
+     * @param \Drupal\Core\Database\Connection               $database
      *   Database Service Object.
      *
-     * @param \Drupal\Core\Entity\Query\QueryFactory     $query_factory
+     * @param \Drupal\Core\Entity\Query\QueryFactory         $query_factory
      *   Query Factory Service Object.
      *
-     * @param \Drupal\wilmap_map\CountryServices         $country_services
+     * @param \Drupal\wilmap_map\CountryServices             $country_services
      *   Country Service Object.
      *
-     * @param \Drupal\wilmap_map\LayerServices           $layer_services
+     * @param \Drupal\wilmap_map\LayerServices               $layer_services
      *   Layer Service Object.
      *
+     * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
+     *   RequestStack object
      */
     public function __construct(
       EntityManagerInterface $entity_manager,
@@ -81,13 +86,16 @@ class MapServices implements ContainerInjectionInterface
       QueryFactory $query_factory,
       CountryServices $country_services,
       LayerServices $layer_services
-    ) {
+        //, RequestStack $request_stack
+    )
+    {
         $this->entityManager = $entity_manager;
         $this->database = $database;
         $this->entityQueryFactory = $query_factory;
         $this->countryService = $country_services;
         $this->layerService = $layer_services;
         $this->termStorage = $entity_manager->getStorage('taxonomy_term');
+        // $this->requestStack = $request_stack;
     }
 
     /**
@@ -107,6 +115,7 @@ class MapServices implements ContainerInjectionInterface
           $container->get('entity.query'),
           $container->get('wilmap_map.country'),
           $container->get('wilmap_map.layer')
+        //, $container->get('request_stack')
         );
     }
 
@@ -132,8 +141,11 @@ class MapServices implements ContainerInjectionInterface
 
         // Adds additional query conditions got from layer
         foreach ($conditions as $condition) {
-            $query->condition($condition['field_name'],
-              join(',', $condition['values']), $condition['operator']);
+            // Array join if multiple values
+            $values = (is_array($condition['values'])) ? join(',',
+              $condition['values']) : $condition['values'];
+            $query->condition($condition['field_name'], $values,
+              $condition['operator']);
         }
 
         $entries_count = $query->execute();
@@ -158,6 +170,39 @@ class MapServices implements ContainerInjectionInterface
         // return $entries;
     }
 
+    /**
+     * Get countries entries count with conditions set
+     *
+     * @param $conditions array, conditions to apply to query like in
+     *      getCountryEntriesCount()
+     * @param $reset boolean, true tu recalculate entries count.
+     *
+     * @return array, iso2 -> entries count
+     */
+    public function getCountriesEntriesCount($conditions, $reset = false)
+    {
+
+        $countries_entries = [];
+
+        // Get Countries if not calculated previously or reset required
+        if ($reset || !$this->countries) {
+            $this->countries = Node::loadMultiple($this->countryService->getCountries());
+        }
+
+        // For each country, get entries count
+        foreach ($this->countries as $country) {
+
+            // Get entries count
+            $countries_entries[$country->get('field_iso2')->value] = array(
+              'nid'     => $country->id(),
+              'entries' => $this->getCountryEntriesCount($country->id(),
+                $conditions)
+            );
+
+        }
+
+        return $countries_entries;
+    }
 
     /**
      * Get countries entries count with conditions set in layer
@@ -167,8 +212,10 @@ class MapServices implements ContainerInjectionInterface
      *
      * @return array, iso2 -> entries count
      */
-    public function getCountriesEntriesCount($layer_nid = null, $reset = false)
-    {
+    public function getCountriesEntriesCountByLayer(
+      $layer_nid = null,
+      $reset = false
+    ) {
 
         $countries_entries = [];
         $conditions = [];
@@ -270,6 +317,85 @@ class MapServices implements ContainerInjectionInterface
 
         return $data;
     }
+
+    /**
+     * Get Map conditions from parameters
+     *
+     * @param $params , parameters
+     *
+     * @return array
+     *  assoc array with conditions (field_name, value)
+     */
+    public function getMapConditionsFromParams(
+      $params
+    ) {
+
+        // URL parameters mapping with Entry fields
+
+        $parameter_field_mapping = [
+          'country'           => 'field_location_entry',
+          'claim'             => 'field_tax_topic_claim_defense',
+          'document'          => 'field_tax_document.type',
+          'fromyear'          => 'field_year',
+          'toyear'            => 'field_year_to',
+          'section'           => 'field_tax_section',
+          'issuing'           => 'field_tax_issuing_entity',
+          'liability'         => 'field_tax_type_liability',
+          'law'               => 'field_tax_type_law',
+          'service'           => 'field_tax_type_service_provider',
+          'general_immunity'  => 'field_tax_general_immunity',
+          'general_liability' => 'field_tax_general_liability',
+          'title'             => 'title'
+        ];
+
+        $conditions = [];
+
+        // Set a condition for each param
+        foreach ($params as $param => $value) {
+
+            // Only parameters mapped with fields, ignore others
+            if (array_key_exists($param, $parameter_field_mapping)) {
+
+                // Get field mapped with param
+                $field = $parameter_field_mapping[$param];
+
+                // Fields special treatments
+                switch ($field) {
+                    case 'title':
+                        $condition_field = 'title';
+                        $condition_value = $value;
+                        $condition_operator = 'CONTAINS';
+                        break;
+                    case 'field_year':
+                        $condition_field = 'field_year';
+                        $condition_value = $value;
+                        $condition_operator = '>=';
+                        break;
+                    case 'field_year_to':
+                        $condition_field = 'field_year';
+                        $condition_value = $value;
+                        $condition_operator = '<=';
+                        break;
+                    default:
+                        $condition_field = $field;
+                        $condition_value = explode(',', $value);
+                        $condition_operator = 'in';
+                }
+
+                // Add condition to conditions
+                $conditions[] = array(
+                  'field_name' => $condition_field,
+                  'values'     => $condition_value,
+                  'operator'   => $condition_operator
+                );
+            }
+
+
+        }
+
+        return $conditions;
+    }
+
 
     /**
      * Get terms id from array of terms objects
