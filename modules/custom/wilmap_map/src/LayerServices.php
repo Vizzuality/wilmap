@@ -81,7 +81,6 @@ class LayerServices
         // Get field conditions from Layer
         // Each field value in Layer defines a condition
         if ($layer = $this->getLayer($nid)) {
-            // var_dump($layer->toArray());
 
             // Get node fields definitions and get only fields with name "field_"
             $fields = array_filter($layer->getFieldDefinitions(),

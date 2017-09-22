@@ -91,6 +91,8 @@ class MapCountryRest extends ControllerBase
      *
      * @return string
      *   Return JSON string containing browsing tree.
+     *
+     * @deprecated
      */
     public function getByLayer($code, NodeInterface $layer = NULL, Request $request)
     {
@@ -111,8 +113,7 @@ class MapCountryRest extends ControllerBase
         // Get country data
         $data = $this->mapService->getCountryDataByLayer($country, $layer);
 
-        $response['data'] = $data;
-        $response['method'] = 'GET';
+        $response = $data;
 
         return new JsonResponse($response);
 
@@ -120,13 +121,10 @@ class MapCountryRest extends ControllerBase
 
     /**
      *
-     * Callback for `/api/country/data/iso2/{code}/layer/{layer}` API method.
+     * Callback for `/api/country/data/iso2/{code}` API method.
      *
      * @param string                                                   $code
      *     iso2 country code. Ej: FR
-     *
-     * @param \Drupal\node\NodeInterface                               $layer
-     *     layer node, null if not applied
      *
      * @param \Symfony\Component\HttpFoundation\Request                $request
      *     request object
@@ -159,8 +157,7 @@ class MapCountryRest extends ControllerBase
         // Get country data
         $data = $this->mapService->getCountryData($country, $conditions);
 
-        $response['data'] = $data;
-        $response['method'] = 'GET';
+        $response = $data;
 
         return new JsonResponse($response);
 

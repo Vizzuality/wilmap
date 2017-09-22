@@ -12,6 +12,7 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 //use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\ParameterBag;
 
 /**
  * Class MapServices.
@@ -28,6 +29,22 @@ class MapServices implements ContainerInjectionInterface
         __wakeup as defaultWakeup;
         __sleep as defaultSleep;
     }
+
+    const PARAMETER_FIELD_MAPPING = [
+      'country'           => 'field_location_entry',
+      'claim'             => 'field_tax_topic_claim_defense',
+      'document'          => 'field_tax_document_type',
+      'fromyear'          => 'field_year',
+      'toyear'            => 'field_year_to',
+      'section'           => 'field_tax_section',
+      'issuing'           => 'field_tax_issuing_entity',
+      'liability'         => 'field_tax_type_liability',
+      'law'               => 'field_tax_type_law',
+      'service'           => 'field_tax_type_service_provider',
+      'general_immunity'  => 'field_tax_general_immunity',
+      'general_liability' => 'field_tax_general_liability',
+      'title'             => 'title'
+    ];
     /**
      * @var \Drupal\Core\Entity\EntityManagerInterface
      */
@@ -211,6 +228,8 @@ class MapServices implements ContainerInjectionInterface
      * @param $reset boolean, true tu recalculate entries count.
      *
      * @return array, iso2 -> entries count
+     *
+     * @deprecated
      */
     public function getCountriesEntriesCountByLayer(
       $layer_nid = null,
@@ -250,12 +269,12 @@ class MapServices implements ContainerInjectionInterface
      *
      * @param \Drupal\node\NodeInterface $country
      *     country node object
-     * @param array $layer
+     * @param array                      $layer
      *     conditions array, null to get all country data
      *
      * @return array, iso2 -> country data for selected layer
      */
-    public function getCountryData ($country, $conditions = null)
+    public function getCountryData($country, $conditions = null)
     {
 
         // Entries with:
@@ -287,7 +306,7 @@ class MapServices implements ContainerInjectionInterface
             $terms = $this->getTermsIds($children);
 
             // Add the term itself to the array
-            $terms[] = (string) $term_id;
+            $terms[] = (string)$term_id;
 
             // Generate condition from term ids
             $term_condition[0] = [
@@ -317,8 +336,10 @@ class MapServices implements ContainerInjectionInterface
      *     layer node object, null to get all country data
      *
      * @return array, iso2 -> country data for selected layer
+     *
+     * @deprecated
      */
-    public function getCountryDataByLayer ($country, $layer = null)
+    public function getCountryDataByLayer($country, $layer = null)
     {
 
         $conditions = [];
@@ -346,32 +367,16 @@ class MapServices implements ContainerInjectionInterface
 
         // URL parameters mapping with Entry fields
 
-        $parameter_field_mapping = [
-          'country'           => 'field_location_entry',
-          'claim'             => 'field_tax_topic_claim_defense',
-          'document'          => 'field_tax_document.type',
-          'fromyear'          => 'field_year',
-          'toyear'            => 'field_year_to',
-          'section'           => 'field_tax_section',
-          'issuing'           => 'field_tax_issuing_entity',
-          'liability'         => 'field_tax_type_liability',
-          'law'               => 'field_tax_type_law',
-          'service'           => 'field_tax_type_service_provider',
-          'general_immunity'  => 'field_tax_general_immunity',
-          'general_liability' => 'field_tax_general_liability',
-          'title'             => 'title'
-        ];
-
         $conditions = [];
 
         // Set a condition for each param
         foreach ($params as $param => $value) {
 
             // Only parameters mapped with fields, ignore others
-            if (array_key_exists($param, $parameter_field_mapping)) {
+            if (array_key_exists($param, self::PARAMETER_FIELD_MAPPING)) {
 
                 // Get field mapped with param
-                $field = $parameter_field_mapping[$param];
+                $field = self::PARAMETER_FIELD_MAPPING[$param];
 
                 // Fields special treatments
                 switch ($field) {
@@ -410,6 +415,40 @@ class MapServices implements ContainerInjectionInterface
         return $conditions;
     }
 
+    /**
+     * Get filter parameters from layer
+     *
+     * @param $nid ,
+     *      layer node id
+     *
+     * @return \Symfony\Component\HttpFoundation\ParameterBag
+     *  query parameters
+     */
+    public function getParamsFromLayer(
+      $nid
+    ) {
+        $conditions = $this->layerService->getLayerConditions($nid);
+
+        /* A condition has this structure:
+         array(
+          'field_name' => $condition_field,
+          'values'     => $condition_value,
+          'operator'   => $condition_operator
+        );
+        */
+
+        // Convert conditions into parameterBag naming fields as
+        // query parameters
+        $params = new ParameterBag();
+        foreach ($conditions as $condition) {
+            $key = array_search ($condition['field_name'], self::PARAMETER_FIELD_MAPPING);
+            if($key){
+                $params->set($key, $condition['values']);
+            }
+        }
+
+        return $params->all();
+    }
 
     /**
      * Get terms id from array of terms objects

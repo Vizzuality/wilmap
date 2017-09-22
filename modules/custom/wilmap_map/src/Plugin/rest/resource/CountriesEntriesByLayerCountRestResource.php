@@ -24,6 +24,8 @@ use Drupal\node\Entity\Node;
  *     "canonical" = "/api/countries/entries/count/{layer}",
  *   }
  * )
+ *
+ * @deprecated
  */
 class CountriesEntriesByLayerCountRestResource extends ResourceBase
 {

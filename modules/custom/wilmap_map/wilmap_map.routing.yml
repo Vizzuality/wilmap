@@ -33,3 +33,17 @@ wilmap_map.get_country_data_by_layer:
     _permission: 'access content'
     code: '^[a-zA-Z]+'
     layer: '^[0-9]+'
+
+wilmap_map.get_layer_filters:
+  path: '/api/layer/{layer}/filters'
+  defaults:
+    _controller: '\Drupal\wilmap_map\Controller\MapLayerRest::getFilters'
+    _title: 'Map Layer filters'
+  options:
+      parameters:
+        layer:
+          type: entity:node
+  methods:  [GET]
+  requirements:
+    _permission: 'access content'
+    layer: '^[0-9]+'

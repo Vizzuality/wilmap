@@ -79,8 +79,7 @@ class MapBrowsingRest extends ControllerBase
 
         }
 
-        $response['data'] = $tree;
-        $response['method'] = 'GET';
+        $response = $tree;
 
         return new JsonResponse($response);
 
