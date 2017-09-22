@@ -9,10 +9,20 @@ wilmap_map.get_browsing:
     _permission: 'access content'
 
 wilmap_map.get_country_data:
-  path: '/api/country/data/iso2/{code}/layer/{layer}'
+  path: '/api/country/data/iso2/{code}'
   defaults:
     _controller: '\Drupal\wilmap_map\Controller\MapCountryRest::get'
     _title: 'Map Country data'
+  methods:  [GET]
+  requirements:
+    _permission: 'access content'
+    code: '^[a-zA-Z]+'
+
+wilmap_map.get_country_data_by_layer:
+  path: '/api/country/data/iso2/{code}/layer/{layer}'
+  defaults:
+    _controller: '\Drupal\wilmap_map\Controller\MapCountryRest::getByLayer'
+    _title: 'Map Country data by Layer'
     layer : NULL
   options:
       parameters:

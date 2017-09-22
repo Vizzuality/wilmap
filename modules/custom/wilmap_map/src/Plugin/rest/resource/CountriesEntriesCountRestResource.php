@@ -5,13 +5,13 @@ namespace Drupal\wilmap_map\Plugin\rest\resource;
 use Drupal\Core\Session\AccountProxy;
 use Drupal\rest\Plugin\ResourceBase;
 use Drupal\rest\ResourceResponse;
+use Drupal\wilmap_map\MapServices;
+
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Request;
+
 use Psr\Log\LoggerInterface;
-use Drupal\wilmap_map\MapServices;
-use Drupal\node\Entity\Node;
 
 
 /**

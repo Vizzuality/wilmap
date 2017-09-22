@@ -92,7 +92,7 @@ class MapCountryRest extends ControllerBase
      * @return string
      *   Return JSON string containing browsing tree.
      */
-    public function get($code, NodeInterface $layer = NULL, Request $request)
+    public function getByLayer($code, NodeInterface $layer = NULL, Request $request)
     {
 
         $country_nid = $this->countryService->getCountryFromIso($code);
@@ -108,8 +108,56 @@ class MapCountryRest extends ControllerBase
             throw new NotFoundHttpException();
         }
 
-        // Check if there is a layer with $layer_nid
-        $data = $this->mapService->getCountryData($country, $layer);
+        // Get country data
+        $data = $this->mapService->getCountryDataByLayer($country, $layer);
+
+        $response['data'] = $data;
+        $response['method'] = 'GET';
+
+        return new JsonResponse($response);
+
+    }
+
+    /**
+     *
+     * Callback for `/api/country/data/iso2/{code}/layer/{layer}` API method.
+     *
+     * @param string                                                   $code
+     *     iso2 country code. Ej: FR
+     *
+     * @param \Drupal\node\NodeInterface                               $layer
+     *     layer node, null if not applied
+     *
+     * @param \Symfony\Component\HttpFoundation\Request                $request
+     *     request object
+     *
+     * @return string
+     *   Return JSON string containing browsing tree.
+     */
+    public function get($code, Request $request)
+    {
+
+        $country_nid = $this->countryService->getCountryFromIso($code);
+
+        // Check there is a node with that iso2
+        if (empty($country_nid)) {
+            throw new NotFoundHttpException();
+        }
+
+        // Check node is a country
+        $country = Node::load($country_nid);
+        if (!$country || $country->getType() != 'country') {
+            throw new NotFoundHttpException();
+        }
+
+        // Get parameters from URL
+        $params = $request->query->all();
+
+        // Get conditions from parameters
+        $conditions = $this->mapService->getMapConditionsFromParams($params);
+
+        // Get country data
+        $data = $this->mapService->getCountryData($country, $conditions);
 
         $response['data'] = $data;
         $response['method'] = 'GET';

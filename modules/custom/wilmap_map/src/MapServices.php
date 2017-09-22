@@ -142,9 +142,9 @@ class MapServices implements ContainerInjectionInterface
         // Adds additional query conditions got from layer
         foreach ($conditions as $condition) {
             // Array join if multiple values
-            $values = (is_array($condition['values'])) ? join(',',
-              $condition['values']) : $condition['values'];
-            $query->condition($condition['field_name'], $values,
+//            $values = (is_array($condition['values'])) ? join(',',
+//              $condition['values']) : $condition['values'];
+            $query->condition($condition['field_name'], $condition['values'],
               $condition['operator']);
         }
 
@@ -245,35 +245,24 @@ class MapServices implements ContainerInjectionInterface
         return $countries_entries;
     }
 
-
     /**
-     * Get countries entries count with conditions set in layer
+     * Get countries entries count with conditions
      *
      * @param \Drupal\node\NodeInterface $country
      *     country node object
-     * @param \Drupal\node\NodeInterface $layer
-     *     layer node object, null to get all country data
+     * @param array $layer
+     *     conditions array, null to get all country data
      *
      * @return array, iso2 -> country data for selected layer
      */
-    public function getCountryData($country, $layer = null)
+    public function getCountryData ($country, $conditions = null)
     {
-
-        $data = [];
-        $conditions = [];
 
         // Entries with:
         // - "Legislation" (vid='section', tid=125 and children)
         // - "Bills and Pending Proposals" (vid='section', tid=126 and children)
         // - "Decisions" (vid='section', tid=127 and children)
         $terms_shown = [125, 126, 127];
-
-
-        // Get Conditions if layer present
-        if ($layer && $layer->getType() == 'layer') {
-            $conditions = $this->layerService->getLayerConditions($layer->id());
-        }
-
 
         // Basic country date
         $data = array();
@@ -298,7 +287,7 @@ class MapServices implements ContainerInjectionInterface
             $terms = $this->getTermsIds($children);
 
             // Add the term itself to the array
-            $terms[] = $term_id;
+            $terms[] = (string) $term_id;
 
             // Generate condition from term ids
             $term_condition[0] = [
@@ -316,6 +305,31 @@ class MapServices implements ContainerInjectionInterface
         }
 
         return $data;
+    }
+
+
+    /**
+     * Get countries entries count with conditions set in layer
+     *
+     * @param \Drupal\node\NodeInterface $country
+     *     country node object
+     * @param \Drupal\node\NodeInterface $layer
+     *     layer node object, null to get all country data
+     *
+     * @return array, iso2 -> country data for selected layer
+     */
+    public function getCountryDataByLayer ($country, $layer = null)
+    {
+
+        $conditions = [];
+
+        // Get Conditions if layer present
+        if ($layer && $layer->getType() == 'layer') {
+            $conditions = $this->layerService->getLayerConditions($layer->id());
+        }
+
+        return $this->getCountryData($country, $conditions);
+
     }
 
     /**
@@ -379,7 +393,7 @@ class MapServices implements ContainerInjectionInterface
                     default:
                         $condition_field = $field;
                         $condition_value = explode(',', $value);
-                        $condition_operator = 'in';
+                        $condition_operator = 'IN';
                 }
 
                 // Add condition to conditions
