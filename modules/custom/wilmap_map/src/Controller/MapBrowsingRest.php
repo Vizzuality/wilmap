@@ -169,12 +169,18 @@ class MapBrowsingRest extends ControllerBase
     {
         $node = Node::load($nid);
 
-        return array(
+        $leaf = array(
           'title' => $node->title->value,
           'path'  => \Drupal::service('path.alias_manager')
             ->getAliasByPath('/node/' . $nid)
         );
 
+        // Add iso code to countries
+        if ($node->getType() == 'country') {
+            $leaf['iso2'] = $node->get('field_iso2')->value;
+        }
+
+        return $leaf;
     }
 
 
