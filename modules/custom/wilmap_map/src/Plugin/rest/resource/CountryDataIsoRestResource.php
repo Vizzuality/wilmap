@@ -10,9 +10,11 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
  *   id = "country_data_iso_rest_resource",
  *   label = @Translation("Country Data From iso2 Rest Resource"),
  *   uri_paths = {
- *     "canonical" = "/api/country/data/iso2/{code}",
+ *     "canonical" = "/deprecated/api/country/data/iso2/{code}",
  *   }
  * )
+ *
+ * @deprecated
  */
 class CountryDataIsoRestResource extends CountryDataRestResource
 {
