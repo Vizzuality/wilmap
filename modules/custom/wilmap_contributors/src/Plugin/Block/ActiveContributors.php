@@ -35,27 +35,24 @@ class ActiveContributors extends BlockBase {
         
     $query = $connection->select('node_revision', 'e')
       ->fields('e', array('revision_uid'))
-      ->condition('e.nid', $nid); 
-        
+      ->distinct()
+      ->condition('e.nid', $nid);
+      //the user must be active
+      $query->join('users_field_data','b','e.revision_uid = b.uid AND b.status = :status', array(':status' => 1));
+      //the user must have the rol of contributor
+      $query->join('user__roles','c','e.revision_uid = c.entity_id AND c.roles_target_id = :rol_user', array(':rol_user' => 'contributors')); 
+         
     $revision_uids = $query->execute()->fetchAllKeyed();
     $keys = array_keys($revision_uids);
     
-    //Select only the contributors
-    $query = \Drupal::entityQuery('user')
-      ->condition('status', 1)
-      ->condition('roles', 'contributors')
-      ->condition('uid', $keys, 'IN');
-
-    $uids = $query->execute();
-
-    $contributors = User::loadMultiple($uids);
+    $contributors = User::loadMultiple($keys);
     
     if($contributors){
       // Render each user using 'avatar' display
       return user_view_multiple($contributors, 'teaser');
     }else{
       return array(
-        '#markup' => $this->t('No results in this category'),
+        '#markup' => $this->t('<div class="view-empty">No results in this category</div>'),
       );
     }
     
