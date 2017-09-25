@@ -1,0 +1,266 @@
+# Migration configuration for Entries
+# List available plugins:
+#  drupal plugin:debug migrate.process
+#
+# Run this migration:
+#  drush migrate-import wilmap_entries
+# Migrations status:
+#  drush migrate-status
+#
+id: wilmap_entries
+label: Entries from CSV file.
+migration_group: wilmap
+source:
+  plugin: csv
+  path: modules/custom/wilmap_migration/data/wilmap_entries.csv
+  header_row_count: 1
+  keys:
+   - id
+  # Here we identify the columns of interest in the source file. Each numeric
+  # key is the 0-based index of the column. For each column, the key below
+  # (e.g., "continent") is the field name assigned to the data on import, to
+  # be used in field mappings below. The value is a user-friendly string for
+  # display by the migration UI.
+
+process:
+  # The content (node) type we are creating is 'entry'.
+  type:
+    plugin: default_value
+    default_value: entry
+  # Most fields can be mapped directly - we just specify the destination (D8)
+  # field and the corresponding field name from above, and the values will be
+  # copied in.
+  uid:
+    plugin: default_value
+    default_value: 1
+
+  # Another new process plugin - callback. This allows us to filter an incoming
+  # source value through an arbitrary PHP function. The function called must
+  # have one required argument.
+#  created:
+#    plugin: callback
+#    # The 'registered' timestamp in the source data is a string of the form
+#    # 'yyyy-mm-dd hh:mm:ss', but Drupal wants a UNIX timestamp for 'created'.
+#    source: post_date
+#    callable: strtotime
+  title: title
+  'field_body_entry/value': body_html
+  'field_body_entry/format':
+    plugin: default_value
+    default_value: "full_html"
+
+  field_date_published:
+        plugin: published_date
+        source: post_date
+  field_contributors: '@uid'
+  # field_location is a multivalue field, separated by '+'.
+  # Use entity_generate as entity_lookup does not process each source item separately
+  field_location_entry:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: i_country
+    -
+      plugin: explode
+      limit: 10
+      delimiter: '+'
+    -
+      plugin: entity_generate
+      bundle: country
+      entity_type: node
+      ignore_case: true
+      # value_key: title
+  # field_region is a multivalue field, separated by '+'.
+  # Use entity_generate as entity_lookup does not process each source item separately
+  field_region:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: i_region
+    -
+      plugin: explode
+      limit: 10
+      delimiter: '+'
+    -
+      plugin: entity_generate
+      bundle: region
+      entity_type: node
+      ignore_case: true
+      # value_key: title
+
+  # TODO: falta validar qué hacer si el valor es 'GENERAL INTRODUCTION'
+  field_tax_section:
+    plugin: static_map
+    source: section
+    map:
+      # 'GENERAL INTRODUCTION':
+      'LEGISLATION - General/Introduction': 129
+      'LEGISLATION - International Law / Agreement (all)': 130
+      'LEGISLATION - Constitution': 131
+      'LEGISLATION - Law': 132
+      'LEGISLATION - Self Regulation': 133
+      'LEGISLATION - Administrative Regulation': 134
+      'BILLS AND PENDING PROPOSALS - General/Introduction': 135
+      'BILLS AND PENDING PROPOSALS - International Law / Agreement (all)': 136
+      'BILLS AND PENDING PROPOSALS - Constitutional Amendment': 137
+      'BILLS AND PENDING PROPOSALS - Law': 138
+      'BILLS AND PENDING PROPOSALS - Self Regulation': 205
+      'BILLS AND PENDING PROPOSALS - Administrative Regulation': 139
+      'DECISIONS - General/Introduction': 140
+      'DECISIONS - International Court': 141
+      'DECISIONS - Administrative Procedure or Enforcement': 142
+      'DECISIONS - Lower Courts': 143
+      'DECISIONS - High or Apellate Courts': 144
+      'DECISIONS - Superior Courts': 145
+      'OTHER RESOURCES': 128
+
+  field_year: year
+  field_external_link: link_ok
+
+  # Use entity_generate as entity_lookup does not process each source item separately
+  field_tax_document_type:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: document
+    -
+      plugin: explode
+      limit: 10
+      delimiter: '+'
+    -
+      plugin: entity_generate
+      bundle: document_type
+      entity_type: taxonomy_term
+      ignore_case: true
+  # Use entity_generate as entity_lookup does not process each source item separately
+  field_tax_general_immunity:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: immunity
+    -
+      plugin: explode
+      limit: 10
+      delimiter: '+'
+    -
+      plugin: entity_generate
+      bundle: general_effect_immunity
+      entity_type: taxonomy_term
+      ignore_case: true
+  # Use entity_generate as entity_lookup does not process each source item separately
+  field_tax_general_liability:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: intermediary_liability
+    -
+      plugin: explode
+      limit: 10
+      delimiter: '+'
+    -
+      plugin: entity_generate
+      bundle: general_intermediary_liability
+      entity_type: taxonomy_term
+      ignore_case: true
+  # Use entity_generate as entity_lookup does not process each source item separately
+  field_tax_topic_claim_defense:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: topic
+    -
+      plugin: explode
+      limit: 10
+      delimiter: '+'
+    -
+      plugin: entity_generate
+      bundle: topic_claim_defense
+      entity_type: taxonomy_term
+      ignore_case: true
+  # Use entity_generate as entity_lookup does not process each source item separately
+  field_tax_type_liability:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: type_liability
+    -
+      plugin: explode
+      limit: 10
+      delimiter: '+'
+    -
+      plugin: entity_generate
+      bundle: type_of_liability
+      entity_type: taxonomy_term
+      ignore_case: true
+  # Use entity_generate as entity_lookup does not process each source item separately
+  field_tax_issuing_entity:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: issuing
+    -
+      plugin: explode
+      limit: 10
+      delimiter: '+'
+    -
+      plugin: entity_generate
+      bundle: issuing_entity
+      entity_type: taxonomy_term
+      ignore_case: true
+  # Use entity_generate as entity_lookup does not process each source item separately
+  field_tax_type_law:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: law_type
+    -
+      plugin: explode
+      limit: 10
+      delimiter: '+'
+    -
+      plugin: entity_generate
+      bundle: type_of_law
+      entity_type: taxonomy_term
+      ignore_case: true
+  # Use entity_generate as entity_lookup does not process each source item separately
+  field_tax_type_service_provider:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: provider
+    -
+      plugin: explode
+      limit: 10
+      delimiter: '+'
+    -
+      plugin: entity_generate
+      bundle: type_service_provider
+      entity_type: taxonomy_term
+      ignore_case: true
+
+  # Fields without data in source:
+  # - field_image_entry
+  # - field_attachments
+  # - field_transnational: transnational
+  # - field_related_entries
+
+  # CSV columns without destination field:
+  # - OSP OBLIGATION CONSIDERED (osp_obligation)
+  # - ISSUES ADDRESSED (issues)
+  # - PROMOTE DUE PROCESS SAFEGUARDS (promote)
+
+destination:
+  # Here we're saying that each row of data (line from the CSV file) will be
+  # used to create a node entity.
+  plugin: entity:node
+# List any optional or required migration dependencies.
+# Required means that 100% of the content must be migrated
+# Optional means that that the other dependency should be run first but if there
+# are items from the dependant migration that were not successful, it will still
+# run the migration.
+migration_dependencies:
+  required:
+  - wilmap_countries
+  - wilmap_users
+
+  optional: {}

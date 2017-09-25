@@ -23,7 +23,7 @@ source:
   # display by the migration UI.
 
 process:
-  # The content (node) type we are creating is 'country'.
+  # The content (node) type we are creating is 'news'.
   type:
     plugin: default_value
     default_value: news

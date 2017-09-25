@@ -13,3 +13,4 @@ config_devel:
    - migrate_plus.migration.wilmap_countries
    - migrate_plus.migration.wilmap_users
    - migrate_plus.migration.wilmap_news
+   - migrate_plus.migration.wilmap_entries

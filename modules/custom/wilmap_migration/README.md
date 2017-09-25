@@ -52,6 +52,25 @@ Nothing.
 
 
 
+## MIGRATION: entries (wilmap_entries)
+
+### Preprocess
+- Remove entries.
+
+### Source
+Source: modules/custom/wilmap_migration/data/wilmap_entries.csv
+
+Preprocess CSV file:
+1. Añadimos una columna *id* a partir del número de fila
+2. Rename headers
+3. Generate *link_ok* column that generates link depending on provided info provided in other link columns
+
+### Process
+1. Taxonomy fields are multivalue fields separated by "+", the process explode it an looks up for needed entities.
+2. *field_section* needs special lookup in depth
+
+### After migration
+Nothing.
 
 
 # REMEMBER, REMEMBER
