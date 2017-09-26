@@ -30,6 +30,11 @@
   }
 
   // Filters
+
+  #show-map {
+    display: none; // TEMPORAL
+  }
+
   .view-filters {
     @include hide-before-dom-alter();
     clear: both;
