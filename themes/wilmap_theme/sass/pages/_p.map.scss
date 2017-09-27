@@ -17,10 +17,20 @@
 body.node-map {
   .block-wilmap-map {
     .wilmap {
+      @include position(relative, null null null null);
       display: block;
       min-width: 250px;
       min-height: 250px;
       z-index: 0;
+
+      .actions {
+        @include position(absolute, null $dp * 2 $dp * 2.5 null);
+        z-index: 650;
+
+        .btn {
+          @include margin(null null null $dp);
+        }
+      }
     }
   }
 
