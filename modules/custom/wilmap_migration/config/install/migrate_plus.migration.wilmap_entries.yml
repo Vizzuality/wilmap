@@ -23,6 +23,7 @@ source:
   # display by the migration UI.
 
 process:
+
   # The content (node) type we are creating is 'entry'.
   type:
     plugin: default_value
@@ -44,7 +45,7 @@ process:
 #    source: post_date
 #    callable: strtotime
   title: title
-  'field_body_entry/value': body_html
+  'field_body_entry/value': body_clean
   'field_body_entry/format':
     plugin: default_value
     default_value: "full_html"
@@ -115,7 +116,10 @@ process:
       'OTHER RESOURCES': 128
 
   field_year: year
-  field_external_link: link_ok
+  field_external_link:
+    plugin: skip_on_empty
+    method: process
+    source: link_ok
 
   # Use entity_generate as entity_lookup does not process each source item separately
   field_tax_document_type:
@@ -237,6 +241,36 @@ process:
       bundle: type_service_provider
       entity_type: taxonomy_term
       ignore_case: true
+  # Use entity_generate as entity_lookup does not process each source item separately
+  field_tax_osp_obligation:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: osp_obligation
+    -
+      plugin: explode
+      limit: 10
+      delimiter: '+'
+    -
+      plugin: entity_generate
+      bundle: osp_obligation_cosidered
+      entity_type: taxonomy_term
+      ignore_case: true
+  # Use entity_generate as entity_lookup does not process each source item separately
+  field_tax_issues_addressed:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: issues
+    -
+      plugin: explode
+      limit: 10
+      delimiter: '+'
+    -
+      plugin: entity_generate
+      bundle: issues_addressed
+      entity_type: taxonomy_term
+      ignore_case: true
 
   # Fields without data in source:
   # - field_image_entry
@@ -245,14 +279,13 @@ process:
   # - field_related_entries
 
   # CSV columns without destination field:
-  # - OSP OBLIGATION CONSIDERED (osp_obligation)
-  # - ISSUES ADDRESSED (issues)
-  # - PROMOTE DUE PROCESS SAFEGUARDS (promote)
+  # - PROMOTE DUE PROCESS SAFEGUARDS (promote) -> Not Needed
 
 destination:
   # Here we're saying that each row of data (line from the CSV file) will be
   # used to create a node entity.
   plugin: entity:node
+
 # List any optional or required migration dependencies.
 # Required means that 100% of the content must be migrated
 # Optional means that that the other dependency should be run first but if there

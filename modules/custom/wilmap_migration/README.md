@@ -64,10 +64,11 @@ Preprocess CSV file:
 1. Añadimos una columna *id* a partir del número de fila
 2. Rename headers
 3. Generate *link_ok* column that generates link depending on provided info provided in other link columns
+4. Generate *body_clean* that trims brackets from *body_html*
 
 ### Process
 1. Taxonomy fields are multivalue fields separated by "+", the process explode it an looks up for needed entities.
-2. *field_section* needs special lookup in depth
+2. *field_section* maps each term by name
 
 ### After migration
 Nothing.
