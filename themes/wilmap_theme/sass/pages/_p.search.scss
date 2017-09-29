@@ -16,6 +16,13 @@ $search-color-hover:      $fifth-color;
 // Scaffold
 // -------------------------------------
 
+.path-search {
+  .messages--error {
+    display: none;
+  }
+}
+
+
 .search-page-form {
   @include hide-before-dom-alter();
   @include clearfix();

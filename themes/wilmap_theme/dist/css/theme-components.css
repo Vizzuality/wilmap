@@ -994,10 +994,12 @@
       color: #222; }
     .block-search .field .input::placeholder {
       color: #222; }
-    .block-search .field .input.form-autocomplete {
+    .block-search .field .input.form-autocomplete, .block-search .field .input.country-search {
       background-image: none;
-      background-position: 87% 50%; }
-      .block-search .field .input.form-autocomplete.ui-autocomplete-loading {
+      background-position: 87% 50%;
+      -webkit-box-sizing: content-box;
+              box-sizing: content-box; }
+      .block-search .field .input.form-autocomplete.ui-autocomplete-loading, .block-search .field .input.country-search.ui-autocomplete-loading {
         background-image: url("../../images/spinner_small.gif");
         background-repeat: no-repeat;
         background-position: 0 0;
@@ -1032,7 +1034,7 @@
   overflow: scroll;
   border: none !important;
   background: #fff;
-  padding: 10px 30px 10px 20px; }
+  padding: 10px 30px 80px 20px; }
   @media only screen and (min-width: 768px) and (max-width: 1124px) {
     .ui-autocomplete.ui-widget.ui-widget-content {
       width: 300px !important;
@@ -1520,5 +1522,43 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
     top: 70px; }
   .leaflet-container .leaflet-map-pane .leaflet-labels-pane img {
     max-width: none !important; }
+
+body.node-map .ui-autocomplete {
+  padding-top: 40px !important; }
+  body.node-map .ui-autocomplete .continent-list-item a {
+    font-size: 25px;
+    font-size: 1.5625rem;
+    line-height: 25px;
+    line-height: 1.5625rem;
+    font-weight: 700;
+    font-family: "Raleway", sans-serif;
+    color: #fff;
+    text-decoration: none; }
+    body.node-map .ui-autocomplete .continent-list-item a:hover {
+      color: #fff;
+      text-decoration: underline; }
+  body.node-map .ui-autocomplete .continent-list-drawer {
+    margin: 0;
+    padding: 0;
+    background-color: transparent; }
+    body.node-map .ui-autocomplete .continent-list-drawer.active {
+      max-height: 2000px;
+      background-color: transparent; }
+  body.node-map .ui-autocomplete .country-list-item {
+    text-align: center; }
+    body.node-map .ui-autocomplete .country-list-item a {
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 16px;
+      line-height: 1rem;
+      font-weight: 400;
+      font-family: "Raleway", sans-serif;
+      color: #fff;
+      text-decoration: none; }
+      body.node-map .ui-autocomplete .country-list-item a:hover {
+        color: #fff;
+        text-decoration: underline; }
+    body.node-map .ui-autocomplete .country-list-item.region a {
+      text-transform: uppercase; }
 
 /*# sourceMappingURL=theme-components.css.map */

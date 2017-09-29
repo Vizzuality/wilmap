@@ -7,7 +7,7 @@ body .layout-main-wrapper, body.path-frontpage .layout-main-wrapper, .site-foote
   body .layout-main-wrapper:after, body.path-frontpage .layout-main-wrapper:after, .site-footer .footer_first_wrap .region-footer-first:after {
     clear: both; }
 
-body .layout-main-wrapper .layout-main, body.path-frontpage .layout-main-wrapper .layout-main, body.path-frontpage.no-sidebar .main-content, body.path-frontpage.sidebar-first #sidebar-first, body.path-frontpage.sidebar-first .main-content, body.path-frontpage.sidebar-second .main-content, body.path-frontpage.sidebar-second #sidebar-second, body.path-frontpage.both-sidebars #sidebar-first, body.path-frontpage.both-sidebars .main-content, body.path-frontpage.both-sidebars #sidebar-second, .main-content-inner .content-sidenav, .main-content-inner .content-content, .main-content-inner .content-content.with-sidenav, .site-footer .footer_first_wrap .region-footer-first .block-menu, .site-footer .footer_first_wrap .region-footer-first .block-menu .menu-item, .site-footer .footer_second_wrap .block-block-content, .site-footer .footer_second_wrap .block-menu, .block-page-title-block .page-title, .updates-report .block-page-title-block .page-title .secondary-page-title, article.node--view-mode-full > .node__content .node-body, article.node--view-mode-full > .node__content .node-body > .text-formatted p {
+body .layout-main-wrapper .layout-main, body.path-frontpage .layout-main-wrapper .layout-main, body.path-frontpage.no-sidebar .main-content, body.path-frontpage.sidebar-first #sidebar-first, body.path-frontpage.sidebar-first .main-content, body.path-frontpage.sidebar-second .main-content, body.path-frontpage.sidebar-second #sidebar-second, body.path-frontpage.both-sidebars #sidebar-first, body.path-frontpage.both-sidebars .main-content, body.path-frontpage.both-sidebars #sidebar-second, .main-content-inner .content-sidenav, .main-content-inner .content-content, .main-content-inner .content-content.with-sidenav, .site-footer .footer_first_wrap .region-footer-first .block-menu, .site-footer .footer_first_wrap .region-footer-first .block-menu .menu-item, .site-footer .footer_second_wrap .block-block-content, .site-footer .footer_second_wrap .block-menu, .block-page-title-block .page-title, .updates-report .block-page-title-block .page-title .secondary-page-title, article.node--view-mode-full > .node__content .node-body, article.node--view-mode-full > .node__content .node-body > .text-formatted p, article.node--view-mode-full > .node__content .node-body > .text-formatted h2, article.node--view-mode-full > .node__content .node-body > .text-formatted h3, article.node--view-mode-full > .node__content .node-body > .text-formatted h4, article.node--view-mode-full > .node__content .node-body > .text-formatted h5, article.node--view-mode-full > .node__content .node-body > .text-formatted h6 {
   margin-left: 1.77778%;
   float: left;
   min-height: 1px;
@@ -2203,22 +2203,22 @@ article.node--view-mode-full > .node__content .node-body {
     display: table; }
   article.node--view-mode-full > .node__content .node-body:after {
     clear: both; }
-  article.node--view-mode-full > .node__content .node-body > .text-formatted p {
+  article.node--view-mode-full > .node__content .node-body > .text-formatted p, article.node--view-mode-full > .node__content .node-body > .text-formatted h2, article.node--view-mode-full > .node__content .node-body > .text-formatted h3, article.node--view-mode-full > .node__content .node-body > .text-formatted h4, article.node--view-mode-full > .node__content .node-body > .text-formatted h5, article.node--view-mode-full > .node__content .node-body > .text-formatted h6 {
     width: 70.92063%;
     *zoom: 1;
     margin-left: 16.03333%; }
     @media only screen and (max-width: 767px) {
-      article.node--view-mode-full > .node__content .node-body > .text-formatted p {
+      article.node--view-mode-full > .node__content .node-body > .text-formatted p, article.node--view-mode-full > .node__content .node-body > .text-formatted h2, article.node--view-mode-full > .node__content .node-body > .text-formatted h3, article.node--view-mode-full > .node__content .node-body > .text-formatted h4, article.node--view-mode-full > .node__content .node-body > .text-formatted h5, article.node--view-mode-full > .node__content .node-body > .text-formatted h6 {
         float: left;
         margin-left: 0;
         width: 100%; } }
-    article.node--view-mode-full > .node__content .node-body > .text-formatted p:before, article.node--view-mode-full > .node__content .node-body > .text-formatted p:after {
+    article.node--view-mode-full > .node__content .node-body > .text-formatted p:before, article.node--view-mode-full > .node__content .node-body > .text-formatted p:after, article.node--view-mode-full > .node__content .node-body > .text-formatted h2:before, article.node--view-mode-full > .node__content .node-body > .text-formatted h2:after, article.node--view-mode-full > .node__content .node-body > .text-formatted h3:before, article.node--view-mode-full > .node__content .node-body > .text-formatted h3:after, article.node--view-mode-full > .node__content .node-body > .text-formatted h4:before, article.node--view-mode-full > .node__content .node-body > .text-formatted h4:after, article.node--view-mode-full > .node__content .node-body > .text-formatted h5:before, article.node--view-mode-full > .node__content .node-body > .text-formatted h5:after, article.node--view-mode-full > .node__content .node-body > .text-formatted h6:before, article.node--view-mode-full > .node__content .node-body > .text-formatted h6:after {
       content: "";
       display: table; }
-    article.node--view-mode-full > .node__content .node-body > .text-formatted p:after {
+    article.node--view-mode-full > .node__content .node-body > .text-formatted p:after, article.node--view-mode-full > .node__content .node-body > .text-formatted h2:after, article.node--view-mode-full > .node__content .node-body > .text-formatted h3:after, article.node--view-mode-full > .node__content .node-body > .text-formatted h4:after, article.node--view-mode-full > .node__content .node-body > .text-formatted h5:after, article.node--view-mode-full > .node__content .node-body > .text-formatted h6:after {
       clear: both; }
     @media only screen and (min-width: 768px) and (max-width: 1124px) {
-      article.node--view-mode-full > .node__content .node-body > .text-formatted p {
+      article.node--view-mode-full > .node__content .node-body > .text-formatted p, article.node--view-mode-full > .node__content .node-body > .text-formatted h2, article.node--view-mode-full > .node__content .node-body > .text-formatted h3, article.node--view-mode-full > .node__content .node-body > .text-formatted h4, article.node--view-mode-full > .node__content .node-body > .text-formatted h5, article.node--view-mode-full > .node__content .node-body > .text-formatted h6 {
         margin-left: 18.57778%; } }
 
 /*# sourceMappingURL=theme-layout.css.map */

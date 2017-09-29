@@ -73,9 +73,11 @@
         color: $first-color;
       }
 
-      &.form-autocomplete {
+      &.form-autocomplete,
+      &.country-search {
         background-image: none;
         background-position: 87% 50%;
+        box-sizing: content-box;
 
         &.ui-autocomplete-loading {
           @include bg-image($img-path + 'spinner_small.gif', 16px, 16px);
@@ -116,7 +118,7 @@
   overflow: scroll;
   border: none !important;
   background: $second-color;
-  padding: $dp $dp * 3 $dp $dp * 2;
+  padding: $dp $dp * 3 $dp * 8 $dp * 2;
 
   @include respond(tablets) {
     width: $dp * 30 !important;

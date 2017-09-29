@@ -12,6 +12,70 @@
     methods: {
 
       /**
+       * Main search
+       */
+      mainSearch: function() {
+        var dom = '.site-header .search-block-form';
+        var bgseparator = '.fake-modal';
+        var dom_autocomplete = 'ul.ui-autocomplete.ui-widget.ui-widget-content';
+
+        if ($(dom).length > 0) {
+
+          // Hide submit
+          $(dom + ' .form-actions').hide();
+
+          // Generate bg separator
+          if (!$('.fake-modal').length > 0) {
+            $('body').append('<div class="fake-modal"></div>');
+          }
+
+          // DOM processed
+          $(dom).addClass('__processed');
+
+          // Events
+          $(dom + ' input[type="search"], ' + dom + ' input[type="text"]').attr('placeholder', 'Search').bind("keypress", function (e) {
+            // prevent submit on press enter key
+            if (e.keyCode == 13) {
+              return false;
+            }
+          });
+
+          $(dom + ' input[type="search"], ' + dom + ' input[type="text"]').on('focus', function() {
+            console.log('aqui estoy');
+            $(dom).addClass('active');
+            $(bgseparator).addClass('active');
+            $(dom_autocomplete).removeClass('__kill');
+          });
+
+          $(dom + ' input[type="search"], ' + dom + ' input[type="text"]').on('blur', function() {
+            $(dom).removeClass('active');
+            $(bgseparator).removeClass('active');
+          });
+        }
+      },
+
+      /**
+      * page search
+      */
+      pageSearch: function() {
+        var dom = '.content-content .search-page-form';
+        var dom_autocomplete = 'ul.ui-autocomplete.ui-widget.ui-widget-content';
+
+        if ($(dom).length > 0) {
+
+          $(dom).parent().find('h2').addClass('title-result');
+
+          $(dom + ' input[type="search"]').on('focus', function() {
+            $(dom_autocomplete).addClass('__kill');
+          });
+
+          // DOM processed
+          $(dom).addClass('__processed');
+        }
+
+      },
+
+      /**
        * Map
        */
       Map: function() {
@@ -135,7 +199,7 @@
           }
         };
 
-        App.Application.Maps.Functions.hoverCountry = function(country) {
+        App.Application.Maps.Functions.hoverCountry = function(country, action) {
           if (country === 'none') {
             App.Application.Maps.Config.interactivemap.eachLayer(function (layer) {
               layer.setStyle({
@@ -147,11 +211,19 @@
           } else {
             App.Application.Maps.Config.interactivemap.eachLayer(function (layer) {
               if(layer.feature.properties.iso2 === country) {
-                layer.setStyle({
-                  color: App.Application.Maps.Config.color_active,
-                  weight: 2,
-                  opacity: 1
-                });
+                if (action === 'on') {
+                  layer.setStyle({
+                    color: App.Application.Maps.Config.color_active,
+                    weight: 2,
+                    opacity: 1
+                  });
+                } else {
+                  layer.setStyle({
+                    color: 'transparent',
+                    weight: 0,
+                    opacity: 0
+                  });
+                }
 
                 if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
                  layer.bringToFront();
@@ -278,18 +350,14 @@
                  var l = e.target;
 
                  if (l.feature.properties.iso2 !== App.Application.Maps.Config.curr_country_active) {
-                   App.Application.Maps.Functions.hoverCountry(l.feature.properties.iso2);
+                   App.Application.Maps.Functions.hoverCountry(l.feature.properties.iso2, 'on');
                  }
                },
                mouseout: function(e) {
                  var l = e.target;
 
                  if (l.feature.properties.iso2 !== App.Application.Maps.Config.curr_country_active) {
-                   l.setStyle({
-                     color: 'transparent',
-                     weight: 0,
-                     opacity: 0
-                   });
+                   App.Application.Maps.Functions.hoverCountry(l.feature.properties.iso2, 'off');
                  }
                },
                click: function (e) {
@@ -410,6 +478,100 @@
         }
       },
 
+      /**
+       * country list
+       */
+      countryListMap: function() {
+        var dom = 'body.node-map .ui-autocomplete';
+        var api = '/api/map/browse';
+
+        if ($(dom).length > 0) {
+          $.getJSON( api, function( data ) {
+            console.log(data);
+            var output = '';
+            $.each( data, function( key, val ) {
+              output += '<li class="continent-list-item" id="continent-list-item-' + key + '"><a class="continent toggle" gumby-trigger="#countries-continent-' + key + '" href="#">' + val.title + '</a>';
+              output += '<ul class="continent-list-drawer drawer" id="countries-continent-' + key + '">';
+
+              // Regions
+              if (Object.keys(val.regions).length) {
+                $.each( val.regions, function( kr, vr ) {
+                  output += '<li class="country-list-item region"><a href="' + vr.path + '">' + vr.title + '</a>';
+                });
+              }
+
+              // Countries
+              if (Object.keys(val.countries).length) {
+                $.each( val.countries, function( kc, vc ) {
+                  output += '<li class="country-list-item country"><a data-iso2="' + vc.iso2 + '" href="' + vc.path + '">' + vc.title + '</a>';
+                });
+              }
+
+              output += '</ul>';
+              output += '</li>';
+            });
+
+            $(dom).append(output);
+
+            // Events
+            Gumby.init();
+
+            $('.continent-list-item a.continent').on('click', function (e) {
+              // $('.continent-list-item a.continent').removeClass('active');
+              // $('.continent-list-item .continent-list-drawer').removeClass('active');
+
+              // $(this).addClass('active');
+              // $(this).parent().find('.continent-list-drawer').addClass('active');
+              var target = $(this).text();
+              if ($(this).hasClass('active')){
+                $(dom).scrollTop(0);
+                App.Application.Maps.Functions.activeContinent(target, true, true);
+              } else {
+                App.Application.Maps.Functions.activeContinent('none', true, true);
+              }
+
+              $('.continent-list-item a.continent').each(function (k, v, t = target){
+                console.log($(this).text() + ' - ' + t);
+                if($(this).text() !== t) {
+                  $(this).removeClass('active');
+                  $(this).parent().find('.continent-list-drawer').removeClass('active');
+                }
+              });
+
+            });
+
+            $('.continent-list-item .country-list-item.country a').on('mouseover', function (e) {
+              App.Application.Maps.Functions.hoverCountry($(this).data('iso2'), 'on');
+            });
+
+            $('.continent-list-item .country-list-item.country a').on('mouseout', function (e) {
+              App.Application.Maps.Functions.hoverCountry($(this).data('iso2'), 'off');
+            });
+
+          });
+        }
+      },
+
+      /**
+      * country search
+      */
+      countrySearchMap: function() {
+        var dom = 'body.node-map .site-header .search-block-form';
+
+        if ($(dom).length > 0) {
+          $(dom + ' input[type="search"]').hide();
+
+          if (!$(dom + ' .country-search').length > 0) {
+            $(dom + ' .form-item.form-type-search').append('<input class="country-search input text" type="text" value="" size="15" maxlength="128" placeholder="Search for a country">');
+
+            // Events
+            // $(dom + ' input[type="text"]').bind("keypress", function (e) {
+            //
+            // });
+          }
+        }
+
+      },
 
       /**
        * Big Links Areas. List and grid items.
@@ -475,68 +637,6 @@
         $('a[href^="http://"], a[href^="https://"]').each(function(i, item) {
             $(this).attr('target','_blank');
         });
-
-      },
-
-      /**
-       * Main search
-       */
-      mainSearch: function() {
-        var dom = '.site-header .search-block-form';
-        var bgseparator = '.fake-modal';
-        var dom_autocomplete = 'ul.ui-autocomplete.ui-widget.ui-widget-content';
-
-        if ($(dom).length > 0) {
-          // Hide submit
-          $(dom + ' .form-actions').hide();
-
-          // Generate bg separator
-          if (!$('.fake-modal').length > 0) {
-            $('body').append('<div class="fake-modal"></div>');
-          }
-
-          // DOM processed
-          $(dom).addClass('__processed');
-
-          // Events
-          $(dom + ' input[type="search"]').attr('placeholder', 'Search').bind("keypress", function (e) {
-            // prevent submit on press enter key
-            if (e.keyCode == 13) {
-              return false;
-            }
-          });
-
-          $(dom + ' input[type="search"]').on('focus', function() {
-            $(dom).addClass('active');
-            $(bgseparator).addClass('active');
-            $(dom_autocomplete).removeClass('__kill');
-          });
-
-          $(dom + ' input[type="search"]').on('blur', function() {
-            $(dom).removeClass('active');
-            $(bgseparator).removeClass('active');
-          });
-        }
-      },
-
-      /**
-      * Main search
-      */
-      pageSearch: function() {
-        var dom = '.content-content .search-page-form';
-        var dom_autocomplete = 'ul.ui-autocomplete.ui-widget.ui-widget-content';
-
-        if ($(dom).length > 0) {
-
-          $(dom).parent().find('h2').addClass('title-result');
-
-          $(dom + ' input[type="search"]').on('focus', function() {
-            $(dom_autocomplete).addClass('__kill');
-          });
-
-          // DOM processed
-          $(dom).addClass('__processed');
-        }
 
       },
 
