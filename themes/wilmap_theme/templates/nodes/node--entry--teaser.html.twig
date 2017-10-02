@@ -80,7 +80,15 @@
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }}>
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-    {{ content.field_location_entry }}
+    <div locations>
+      {{ content.field_location_entry }}
+      {{ content.field_region }}
+      {% if node.field_transnational.value == '1' %}
+        <div field field-transnational>
+          {{ 'Transnational' }}
+        </div>
+      {% endif %}
+    </div>
     {{ content.field_tax_section }}
     <h2{{ title_attributes.addClass('node__title') }}>
       <a href="{{ url }}" rel="bookmark">{{ label }}</a>
