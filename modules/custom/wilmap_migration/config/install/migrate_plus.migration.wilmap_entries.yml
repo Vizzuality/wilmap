@@ -94,7 +94,7 @@ process:
     plugin: static_map
     source: section
     map:
-      # 'GENERAL INTRODUCTION':
+      # 'GENERAL INTRODUCTION': ignore this entries
       'LEGISLATION - General/Introduction': 129
       'LEGISLATION - International Law / Agreement (all)': 130
       'LEGISLATION - Constitution': 131

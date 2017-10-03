@@ -349,10 +349,11 @@ function wilmap_contributors_node_update(
   Drupal\Core\Entity\EntityInterface $entity
 ) {
 
+    // Uncomment if needed
     // Entity has contributor field
-    if ($entity->hasField('field_contributors')) {
-        wilmap_contributors_mail_notity_new_contributors($entity);
-    }
+//    if ($entity->hasField('field_contributors')) {
+//        wilmap_contributors_mail_notity_new_contributors($entity);
+//    }
 
 }
 
@@ -365,10 +366,11 @@ function wilmap_contributors_node_insert(
   Drupal\Core\Entity\EntityInterface $entity
 ) {
 
+    // Uncomment if needed
     // Entity has contributor field
-    if ($entity->hasField('field_contributors')) {
-        wilmap_contributors_mail_notity_new_contributors($entity);
-    }
+//    if ($entity->hasField('field_contributors')) {
+//        wilmap_contributors_mail_notity_new_contributors($entity);
+//    }
 
 }
 
