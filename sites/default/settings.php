@@ -23,3 +23,7 @@ $local_settings = __DIR__ . "/settings.local.php";
 if (file_exists($local_settings)) {
   include $local_settings;
 }
+
+/** CUSTOM settings */
+// Title length. See title_length module
+$settings['node_title_length_chars'] = 800;

@@ -196,8 +196,3 @@ if (empty($settings['file_scan_ignore_directories'])) {
     'bower_components',
   ];
 }
-
-/** CUSTOM settings */
-// Title length. See title_length module
-$settings['node_title_length_chars'] = 800;
-
