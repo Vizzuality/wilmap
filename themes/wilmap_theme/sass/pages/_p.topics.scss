@@ -25,7 +25,7 @@ article.node--type-topics.node--view-mode-full {
   > .node__content {
       .node-body {
       > .text-formatted {
-        p {
+        p, h2, h3, h4, h5, h6 {
           @include column(12);
           @include margin(null null null columns(1.45));
 

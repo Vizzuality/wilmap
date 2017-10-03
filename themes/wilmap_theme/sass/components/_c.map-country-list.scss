@@ -1,0 +1,55 @@
+// ============================================================================
+//
+// COMPONENTS: MAP COUNTRY LIST
+//
+// ============================================================================
+
+body.node-map {
+  .ui-autocomplete {
+    padding-top: $dp * 4 !important;
+
+    .continent-list-item {
+      a {
+        @include font($med, 1, $bold, $body-font);
+        color: $second-color;
+        text-decoration: none;
+
+        &:hover {
+          color: $second-color;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .continent-list-drawer {
+      @include trim();
+      background-color: transparent;
+
+      &.active {
+        max-height: 2000px;
+        background-color: transparent;
+      }
+    }
+
+    .country-list-item {
+      text-align: center;
+
+      a {
+        @include font($normal, 1, $regular, $body-font);
+        color: $second-color;
+        text-decoration: none;
+
+        &:hover {
+          color: $second-color;
+          text-decoration: underline;
+        }
+      }
+
+      &.region {
+        a {
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}
