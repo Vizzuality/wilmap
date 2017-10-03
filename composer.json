@@ -15,7 +15,8 @@
         "drupal/smart_trim": "^1.0",
         "drupal/link_css": "1.x-dev",
         "drupal/condition_query": "1.x-dev",
-        "drupal/ckeditor_iframe": "2.x-dev"
+        "drupal/ckeditor_iframe": "2.x-dev",
+        "drupal/title_length": "^1.0"
     },
     "replace": {
         "drupal/core": "~8.3"
