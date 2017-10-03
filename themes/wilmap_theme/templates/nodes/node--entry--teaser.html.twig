@@ -80,11 +80,11 @@
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }}>
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-    <div locations>
+    <div class="locations">
       {{ content.field_location_entry }}
       {{ content.field_region }}
       {% if node.field_transnational.value == '1' %}
-        <div field field-transnational>
+        <div class="field field-transnational">
           {{ 'Transnational' }}
         </div>
       {% endif %}
