@@ -59,23 +59,26 @@ class MapBrowsingRest extends ControllerBase
 
         // Mount browsing tree
         foreach ($continents as $continent_nid) {
-            $tree[$continent_nid] = $this->set_tree_leaf($continent_nid);
+
+            $leaf = $this->set_tree_leaf($continent_nid);
 
             // For each Continent get its regions
             $regions = $this->get_regions($continent_nid);
 
-            $tree[$continent_nid]['regions'] = array();
+            $leaf['regions'] = array();
             foreach ($regions as $region_nid) {
-                $tree[$continent_nid]['regions'][$region_nid] = $this->set_tree_leaf($region_nid);
+                $leaf['regions'][] = $this->set_tree_leaf($region_nid);
             }
 
             // For each Continent get its countries
             $countries = $this->get_countries($continent_nid);
 
-            $tree[$continent_nid]['countries'] = array();
+            $leaf['countries'] = array();
             foreach ($countries as $country_nid) {
-                $tree[$continent_nid]['countries'][$country_nid] = $this->set_tree_leaf($country_nid);
+                $leaf['countries'][] = $this->set_tree_leaf($country_nid);
             }
+
+            $tree[] = $leaf;
 
         }
 
@@ -169,6 +172,7 @@ class MapBrowsingRest extends ControllerBase
         $node = Node::load($nid);
 
         $leaf = array(
+          'id'    => $nid,
           'title' => $node->title->value,
           'path'  => \Drupal::service('path.alias_manager')
             ->getAliasByPath('/node/' . $nid)
