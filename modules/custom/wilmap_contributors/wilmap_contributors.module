@@ -9,7 +9,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\node\NodeInterface;
-use Drupal\Component\Utility\SafeMarkup;
+use Drupal\Core\Form\FormState;
 
 define('WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM',
   'wilmap_contributors_to_country');
@@ -289,6 +289,44 @@ function wilmap_contributors_entity_bundle_field_info_alter(
 
 }
 
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function wilmap_contributors_form_user_login_form_alter(
+  &$form,
+  FormState $form_state
+) {
+
+    $form['#submit'][] = 'wilmap_contributors_user_login_submit';
+}
+
+/**
+ * Form submission handler for user_login_form().
+ *
+ * Redirects the user to the dashboard after logging in.
+ */
+function wilmap_contributors_user_login_submit(&$form, FormState $form_state)
+{
+
+    $account = \Drupal::currentUser();
+
+    // Only redirect to "My workbench" if has permission
+    if (!$account->hasPermission('access workbench')) {
+        return;
+    }
+
+    $url = \Drupal\Core\Url::fromRoute('workbench.content');
+
+    // Check if a destination was set, probably on an exception controller.
+    // @see \Drupal\user\Form\UserLoginForm::submitForm()
+    $request = \Drupal::service('request_stack')->getCurrentRequest();
+    if (!$request->request->has('destination')) {
+        $form_state->setRedirectUrl($url);
+    } else {
+        $request->query->set('destination',
+          $request->request->get('destination'));
+    }
+}
 
 /******************************************************************************/
 /* PREPROCESS                                                                 */
@@ -394,28 +432,32 @@ function wilmap_contributors_mail($key, &$message, $params)
             $message['subject'] = t('You have been invited to contribute to @item',
               array('@item' => $params['node_title']), $options);
             //$message['body'][] = SafeMarkup::checkPlain($params['message']);v
-            $message['body'][] = t('Congrats! You are now a contributor of %title, so you can edit this topic page.', array('%title' => $params['node_title']), $options);
+            $message['body'][] = t('Congrats! You are now a contributor of %title, so you can edit this topic page.',
+              array('%title' => $params['node_title']), $options);
             break;
         case 'notify_new_contributors_country':
             $message['from'] = \Drupal::config('system.site')->get('mail');
             $message['subject'] = t('You have been invited to contribute to @item',
               array('@item' => $params['node_title']), $options);
             //$message['body'][] = SafeMarkup::checkPlain($params['message']);
-            $message['body'][] = t('Congrats! You are now a contributor of %title, so you can edit this country page and publish related Entries and News.', array('%title' => $params['node_title']), $options);
+            $message['body'][] = t('Congrats! You are now a contributor of %title, so you can edit this country page and publish related Entries and News.',
+              array('%title' => $params['node_title']), $options);
             break;
         case 'notify_new_contributors_region':
             $message['from'] = \Drupal::config('system.site')->get('mail');
             $message['subject'] = t('You have been invited to contribute to @item',
               array('@item' => $params['node_title']), $options);
             //$message['body'][] = SafeMarkup::checkPlain($params['message']);
-            $message['body'][] = t('Congrats! You are now a contributor of %title, so you can edit this region page and publish related Entries and News.', array('%title' => $params['node_title']), $options);
+            $message['body'][] = t('Congrats! You are now a contributor of %title, so you can edit this region page and publish related Entries and News.',
+              array('%title' => $params['node_title']), $options);
             break;
         case 'notify_new_contributors_other':
             $message['from'] = \Drupal::config('system.site')->get('mail');
             $message['subject'] = t('You have been invited to contribute to @item',
               array('@item' => $params['node_title']), $options);
             //$message['body'][] = SafeMarkup::checkPlain($params['message']);
-            $message['body'][] = t('Congrats! You are now a contributor of %title, so you can edit its content page.', array('%title' => $params['node_title']), $options);
+            $message['body'][] = t('Congrats! You are now a contributor of %title, so you can edit its content page.',
+              array('%title' => $params['node_title']), $options);
             break;
     }
 }
@@ -445,7 +487,7 @@ function wilmap_contributors_mail_notity_new_contributors($entity)
     $mailManager = \Drupal::service('plugin.manager.mail');
     $module = 'wilmap_contributors';
 
-    switch ($entity->getType()){
+    switch ($entity->getType()) {
         case 'topics':
             $key = 'notify_new_contributors_topics';
             break;
@@ -489,7 +531,7 @@ function wilmap_contributors_mail_notity_new_contributors($entity)
                       '%title' => $entity->label(),
                       '@id'    => $entity->id()
                     )
-                );
+                  );
             } else {
 
                 //drupal dblog: mail sent error
@@ -500,7 +542,7 @@ function wilmap_contributors_mail_notity_new_contributors($entity)
                       '%title' => $entity->label(),
                       '@id'    => $entity->id()
                     )
-                );
+                  );
             }
         }
     }
