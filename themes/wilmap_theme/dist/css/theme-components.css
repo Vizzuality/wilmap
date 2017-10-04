@@ -1524,19 +1524,23 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
     max-width: none !important; }
 
 body.node-map .ui-autocomplete {
+  padding-left: 0;
+  padding-right: 0;
   padding-top: 40px !important; }
-  body.node-map .ui-autocomplete .continent-list-item a {
-    font-size: 25px;
-    font-size: 1.5625rem;
-    line-height: 25px;
-    line-height: 1.5625rem;
-    font-weight: 700;
-    font-family: "Raleway", sans-serif;
-    color: #fff;
-    text-decoration: none; }
-    body.node-map .ui-autocomplete .continent-list-item a:hover {
+  body.node-map .ui-autocomplete .continent-list-item {
+    margin-bottom: 20px; }
+    body.node-map .ui-autocomplete .continent-list-item a {
+      font-size: 25px;
+      font-size: 1.5625rem;
+      line-height: 25px;
+      line-height: 1.5625rem;
+      font-weight: 700;
+      font-family: "Raleway", sans-serif;
       color: #fff;
-      text-decoration: underline; }
+      text-decoration: none; }
+      body.node-map .ui-autocomplete .continent-list-item a:hover {
+        color: #fff;
+        text-decoration: underline; }
   body.node-map .ui-autocomplete .continent-list-drawer {
     margin: 0;
     padding: 0;

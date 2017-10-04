@@ -6,9 +6,13 @@
 
 body.node-map {
   .ui-autocomplete {
+    padding-left: 0;
+    padding-right: 0;
     padding-top: $dp * 4 !important;
 
     .continent-list-item {
+      @include margin(null null $dp * 2 null);
+
       a {
         @include font($med, 1, $bold, $body-font);
         color: $second-color;

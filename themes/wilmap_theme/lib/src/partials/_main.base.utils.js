@@ -165,6 +165,17 @@
     },
 
     /**
+    * isIframe
+    */
+    isIframe: function() {
+      try {
+        return window.self !== window.top;
+      } catch (e) {
+          return true;
+      }
+    },
+
+    /**
     * ScrollAnimate
     */
     scrollAnimate: function( target, offset ) {

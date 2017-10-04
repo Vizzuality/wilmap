@@ -176,6 +176,17 @@
     },
 
     /**
+    * isIframe
+    */
+    isIframe: function() {
+      try {
+        return window.self !== window.top;
+      } catch (e) {
+          return true;
+      }
+    },
+
+    /**
     * ScrollAnimate
     */
     scrollAnimate: function( target, offset ) {
@@ -944,6 +955,7 @@
         App.Application.Maps.Functions = {};
         App.Application.Maps.Data = {};
         App.Application.Maps.Config.wilmap                      = null;
+        App.Application.Maps.Config.wilmap_popup                = null;
         App.Application.Maps.Config.basemapcontinents           = null;
         App.Application.Maps.Config.basemapcountries            = null;
         App.Application.Maps.Config.basemapcolor                = null;
@@ -958,9 +970,9 @@
         App.Application.Maps.Config.color_inactive              = '#e4dfd3';
         App.Application.Maps.Config.bounds                      = new L.LatLngBounds(new L.LatLng(83.6567687988283, 180.00000000000034), new L.LatLng(-90, -179.99999999999994));
         App.Application.Maps.Config.initial_view                = [51.505, -0.09];
-        App.Application.Maps.Config.is_embed                    = !(window.location.href.indexOf('/map') > -1)
+        App.Application.Maps.Config.is_embed                    = (window.location.href.indexOf('/widgets/map' || App.Utils.isIframe()) > -1)
         App.Application.Maps.Config.color_styles                = {'style1':'#049cdb','style2':'#46a546','style3':'#f89406','style4':'#7a43b6'}
-
+        App.Application.Maps.Config.click_on_map                = false;
 
         App.Application.Maps.Functions.choropleth = function(color, currVal, minVal, maxVal, steps = 5) {
           // calculates the percent of value
@@ -986,7 +998,16 @@
         App.Application.Maps.Functions.resetActiveMap = function() {
           App.Application.Maps.Functions.activeContinent('none');
           App.Application.Maps.Functions.activeCountry('none');
-        }
+        };
+
+        App.Application.Maps.Functions.showPopup = function(iso2, layer) {
+          //layer.bindPopup(iso2);
+          console.log(iso2, layer);
+          // App.Application.Maps.Config.wilmap_popup = L.popup();
+			    // App.Application.Maps.Config.wilmap_popup.setLatLng(layer.latlng)
+			    // App.Application.Maps.Config.wilmap_popup.setContent(iso2);
+			    // App.Application.Maps.Config.wilmap_popup.openOn(App.Application.Maps.Config.wilmap);
+        };
 
         App.Application.Maps.Functions.activeContinent = function(continent, visually = true, center = false) {
           if (continent === 'none') {
@@ -1146,6 +1167,14 @@
                 weight: 1,
                 opacity: 1
               }
+            },
+            onEachFeature: function(feature, layer){
+              layer.on({
+               click: function (e) {
+                 var l = e.target;
+                 console.log('click aqui');
+               }
+             });
             }
           }).addTo(App.Application.Maps.Config.wilmap);
 
@@ -1202,7 +1231,7 @@
               }
             },
             onEachFeature: function(feature, layer){
-              layer.bindPopup(layer.feature.properties.name_engli + '<br />' + layer.feature.properties.iso2 + '<br />' + layer.feature.properties.unregion2 + '<br />');
+
 
               layer.on({
                mouseover: function(e) {
@@ -1221,7 +1250,9 @@
                },
                click: function (e) {
                  var l = e.target;
-
+                 App.Application.Maps.Config.click_on_map = true;
+console.log(e);
+                 App.Application.Maps.Functions.showPopup(l.feature.properties.iso2, layer);
                  App.Application.Maps.Functions.activeContinent(l.feature.properties.unregion2, true, true);
                  App.Application.Maps.Functions.activeCountry(l.feature.properties.iso2, true, false);
                }
@@ -1234,9 +1265,14 @@
 
         if ($(dom).length > 0) {
           $(dom).attr('id','mapid');
-          $(dom).width($(window).width() - 349);
-          $(dom).height($(window).height());
 
+          if (App.Application.Maps.Config.is_embed) {
+            $(dom).width('100%');
+            $(dom).height($(window).height());
+          } else {
+            $(dom).width($(window).width() - 349);
+            $(dom).height($(window).height());
+          }
 
           // Init map
           App.Application.Maps.Config.wilmap = L.map('mapid', {
@@ -1260,6 +1296,16 @@
           // Tiles labels
           App.Application.Maps.Functions.drawLabelsMap();
 
+          // Events
+          // Map click
+          App.Application.Maps.Config.wilmap.on('click', function(e) {
+            // click on water
+            if(!App.Application.Maps.Config.click_on_map) {
+              App.Application.Maps.Functions.resetActiveMap();
+            }
+
+            App.Application.Maps.Config.click_on_map = false;
+          });
 
           // Layer buttons
           if (!App.Application.Maps.Config.is_embed) {
@@ -1278,6 +1324,15 @@
               App.Application.Maps.Functions.loadLayer('none', true);
               e.preventDefault();
             });
+
+            $('.actions .btn').on('mouseover click', function(e){
+              App.Application.Maps.Config.wilmap.doubleClickZoom.disable();
+            });
+
+            $('.actions .btn').on('mouseout', function(e){
+              App.Application.Maps.Config.wilmap.doubleClickZoom.enable();
+            });
+
           }
 
 
