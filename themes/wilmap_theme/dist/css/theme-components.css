@@ -1691,7 +1691,7 @@ body.node-map .ui-autocomplete {
       font-family: "Raleway", sans-serif;
       color: #fff;
       text-decoration: none; }
-      body.node-map .ui-autocomplete .country-list-item a:hover {
+      body.node-map .ui-autocomplete .country-list-item a:hover, body.node-map .ui-autocomplete .country-list-item a.active, body.node-map .ui-autocomplete .country-list-item a.hover {
         color: #fff;
         text-decoration: underline; }
     body.node-map .ui-autocomplete .country-list-item.region a {

@@ -43,7 +43,9 @@ body.node-map {
         color: $second-color;
         text-decoration: none;
 
-        &:hover {
+        &:hover,
+        &.active,
+        &.hover {
           color: $second-color;
           text-decoration: underline;
         }

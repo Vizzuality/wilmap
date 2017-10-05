@@ -955,6 +955,7 @@
         App.Application.Maps.Functions = {};
         App.Application.Maps.Data = {};
         App.Application.Maps.Config.wilmap                      = null;
+        App.Application.Maps.Config.popup                       = null;
         App.Application.Maps.Config.basemapcontinents           = null;
         App.Application.Maps.Config.basemapcountries            = null;
         App.Application.Maps.Config.basemapcolor                = null;
@@ -997,6 +998,7 @@
         App.Application.Maps.Functions.resetActiveMap = function() {
           App.Application.Maps.Functions.activeContinent('none');
           App.Application.Maps.Functions.activeCountry('none');
+          App.Application.Maps.Config.wilmap.closePopup(App.Application.Maps.Config.popup);
         };
 
         App.Application.Maps.Functions.showPopup = function(iso2, layer, coord) {
@@ -1005,10 +1007,10 @@
             var info_popup = '<p><strong>' + App.Application.Maps.Data[iso2].title + '</strong></p><p></p>';
             var output = '<div class="popup-inner"><div class="popup-inner-left"><span>00</span>Articles</div><div class="popup-inner-right"><div class="popup-info">' + info_popup + '</div><div class="popup-actions">' + goto_button + '</div></div></div>';
 
-            var popup = L.popup();
-            popup.setLatLng(coord);
-            popup.setContent(output);
-            popup.openOn(App.Application.Maps.Config.wilmap);
+            App.Application.Maps.Config.popup = L.popup();
+            App.Application.Maps.Config.popup.setLatLng(coord);
+            App.Application.Maps.Config.popup.setContent(output);
+            App.Application.Maps.Config.popup.openOn(App.Application.Maps.Config.wilmap);
           }
         };
 
@@ -1041,6 +1043,11 @@
                 }
               }
             });
+          }
+
+          // Update list
+          if(!App.Application.Maps.Config.is_embed) {
+            App.Application.ListMaps.Functions.activeContinent(continent);
           }
         };
 
@@ -1080,6 +1087,11 @@
               }
             });
           }
+
+          // Update list
+          if(!App.Application.Maps.Config.is_embed) {
+            App.Application.ListMaps.Functions.activeHoverCountry(country, 'active');
+          }
         };
 
         App.Application.Maps.Functions.hoverCountry = function(country, action) {
@@ -1113,6 +1125,11 @@
                 }
               }
             });
+          }
+
+          // Update list
+          if(!App.Application.Maps.Config.is_embed) {
+            App.Application.ListMaps.Functions.activeHoverCountry(country, 'hover');
           }
         };
 
@@ -1243,11 +1260,13 @@
                },
                click: function (e) {
                  var l = e.target;
-                 App.Application.Maps.Config.click_on_map = true;
+                 if (App.Application.Maps.Data[l.feature.properties.iso2]) {
+                   App.Application.Maps.Config.click_on_map = true;
 
-                 App.Application.Maps.Functions.showPopup(l.feature.properties.iso2, '', e.latlng);
-                 App.Application.Maps.Functions.activeContinent(App.Application.Maps.Data[l.feature.properties.iso2].continent, true, true);
-                 App.Application.Maps.Functions.activeCountry(l.feature.properties.iso2, true, false);
+                   App.Application.Maps.Functions.activeContinent(App.Application.Maps.Data[l.feature.properties.iso2].continent, true, true);
+                   App.Application.Maps.Functions.activeCountry(l.feature.properties.iso2, true, false);
+                   App.Application.Maps.Functions.showPopup(l.feature.properties.iso2, '', e.latlng);
+                 }
                }
              });
             }
@@ -1413,33 +1432,35 @@
         App.Application.ListMaps.Functions = {};
 
         App.Application.ListMaps.Functions.activeContinent = function(continent) {
-          if (country === 'none') {
-            App.Application.Maps.Functions.activeContinent('none', true, true);
-          } else {
-            if ($(this).hasClass('active')){
-              $(dom).scrollTop(0);
-              App.Application.Maps.Functions.activeContinent(target, true, true);
-            } else {
-              App.Application.Maps.Functions.activeContinent('none', true, true);
-            }
+          $(dom).scrollTop(0);
 
-            $('.continent-list-item a.continent').each(function (k, v, t = target){
+          if (continent === 'none') {
+            $('.continent-list-item a.continent').removeClass('active');
+            $('.continent-list-item .continent-list-drawer').removeClass('active');
+          } else {
+            $('.continent-list-item a.continent').each(function (k, v, t = continent){
               console.log($(this).text() + ' - ' + t);
               if($(this).text() !== t) {
                 $(this).removeClass('active');
                 $(this).parent().find('.continent-list-drawer').removeClass('active');
+              } else {
+                $(this).addClass('active');
+                $(this).parent().find('.continent-list-drawer').addClass('active');
               }
             });
-
           }
         };
 
-        App.Application.ListMaps.Functions.activeCountry = function(country) {
+        App.Application.ListMaps.Functions.activeHoverCountry = function(country, action) {
+          $('.continent-list-item .country a').removeClass(action);
 
-        };
+          if(country !== 'none') {
+            $('.continent-list-item .country a[data-iso2="'+country+'"]').addClass(action);
 
-        App.Application.ListMaps.Functions.hoverCountry = function(country) {
-
+            if(action === 'active') {
+              $(dom).scrollTop(($('.continent-list-item .country a[data-iso2="'+country+'"]').offset().top) - 200);
+            }
+          }
         };
 
         if ($(dom).length > 0) {
@@ -1475,7 +1496,13 @@
 
             $('.continent-list-item a.continent').on('click', function (e) {
               var target = $(this).text();
-              App.Application.ListMaps.Functions.activeContinent(target);
+
+              if ($(this).hasClass('active')){
+                App.Application.Maps.Functions.resetActiveMap();
+                App.Application.Maps.Functions.activeContinent(target, true, true);
+              } else {
+                App.Application.Maps.Functions.resetActiveMap();
+              }
             });
 
             $('.continent-list-item .country-list-item.country a').on('mouseover', function (e) {
