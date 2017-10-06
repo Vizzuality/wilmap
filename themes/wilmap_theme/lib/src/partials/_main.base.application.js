@@ -101,7 +101,7 @@
         App.Application.Maps.Config.bounds                      = new L.LatLngBounds(new L.LatLng(83.6567687988283, 180.00000000000034), new L.LatLng(-90, -179.99999999999994));
         App.Application.Maps.Config.initial_view                = [51.505, -0.09];
         App.Application.Maps.Config.is_embed                    = (window.location.href.indexOf('/widgets/map' || App.Utils.isIframe()) > -1)
-        App.Application.Maps.Config.color_styles                = {'style1':'#049cdb','style2':'#46a546','style3':'#f89406','style4':'#7a43b6'}
+        App.Application.Maps.Config.color_styles                = {'style1':'#035e7e','style2':'#325735','style3':'#484d0c','style4':'#554324','style5':'#5b1717','style6':'#31244a'}
         App.Application.Maps.Config.click_on_map                = false;
 
         App.Application.Maps.Functions.choropleth = function(color, currVal, minVal, maxVal, steps = 5) {

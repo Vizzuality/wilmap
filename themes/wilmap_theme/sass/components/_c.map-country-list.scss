@@ -6,8 +6,7 @@
 
 body.node-map {
   .ui-autocomplete {
-    padding-left: 0;
-    padding-right: 0;
+    @include trim();
     padding-top: $dp * 4 !important;
 
     .continent-list-item {
