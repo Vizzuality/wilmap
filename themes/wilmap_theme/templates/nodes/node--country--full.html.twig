@@ -97,11 +97,16 @@
       </div>
     {% endif %}
   </header>
+  {{ content.field_continent_country }}
+  {{ content.field_body_country }}
+
+  <div class="action multi-action">     
+          <a class="btn searchinexplore" href="/entries?country={{ node.id }}">Search in Explore</a>
+  </div>
+  
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-    {% if node.field_hide_datasheet.value == '1' %}
-      {{ content|without('group_data') }}
-    {% else %}
-      {{ content }}
+    {% if node.field_hide_datasheet.value == '0' %}
+      {{ content.group_data }}
     {% endif %}
   </div>
 </article>
