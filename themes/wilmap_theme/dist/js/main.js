@@ -903,21 +903,20 @@
           $(dom).addClass('__processed');
 
           // Events
-          $(dom + ' input[type="search"], ' + dom + ' input[type="text"]').attr('placeholder', 'Search').bind("keypress", function (e) {
+          $(dom + ' input[type="search"]').attr('placeholder', 'Search').bind("keypress", function (e) {
             // prevent submit on press enter key
             if (e.keyCode == 13) {
               return false;
             }
           });
 
-          $(dom + ' input[type="search"], ' + dom + ' input[type="text"]').on('focus', function() {
-            console.log('aqui estoy');
+          $(dom + ' input[type="search"]').on('focus', function() {
             $(dom).addClass('active');
             $(bgseparator).addClass('active');
             $(dom_autocomplete).removeClass('__kill');
           });
 
-          $(dom + ' input[type="search"], ' + dom + ' input[type="text"]').on('blur', function() {
+          $(dom + ' input[type="search"]').on('blur', function() {
             $(dom).removeClass('active');
             $(bgseparator).removeClass('active');
           });
@@ -1522,20 +1521,64 @@
       */
       countrySearchMap: function() {
         var dom = 'body.node-map .site-header .search-block-form';
+        var dom_autocomplete = 'ul.ui-autocomplete.ui-widget.ui-widget-content';
 
-        if ($(dom).length > 0) {
-          $(dom + ' input[type="search"]').hide();
+        // Init
+        App.Application.countrySearchMaps = {};
+        App.Application.countrySearchMaps.Functions = {};
 
-          if (!$(dom + ' .country-search').length > 0) {
-            $(dom + ' .form-item.form-type-search').append('<input class="country-search input text" type="text" value="" size="15" maxlength="128" placeholder="Search for a country">');
+        App.Application.countrySearchMaps.Functions.resetList = function() {
+          $(dom_autocomplete + ' .continent-list-drawer .country-list-item').show();
+        };
 
-            // Events
-            // $(dom + ' input[type="text"]').bind("keypress", function (e) {
-            //
-            // });
+        App.Application.countrySearchMaps.Functions.initSearch = function() {
+          if ($(dom).length > 0) {
+            $(dom + ' input[type="search"]').hide();
+
+            if (!$(dom + ' .country-search').length > 0) {
+              $(dom + ' .form-item.form-type-search').append('<input class="country-search input text" type="text" value="" size="15" maxlength="128" placeholder="Search for a country">');
+
+              // Events
+              $(dom + ' input[type="text"]').bind("keypress", function (e) {
+                // prevent submit on press enter key
+                if (e.keyCode == 13) {
+                  return false;
+                }
+              });
+
+              $(dom + ' input[type="text"]').bind("keyup", function (e) {
+                var val = $(this).val();
+
+                if(val.length > 2) {
+                  App.Application.ListMaps.Functions.activeContinent('none');
+
+                  $(dom_autocomplete + ' .continent-list-drawer').addClass('active');
+                  $(dom_autocomplete + ' .continent-list-drawer .country-list-item').hide();
+
+                  $(dom_autocomplete + ' .continent-list-drawer .country-list-item.country').filter(':contains("'+val+'")').show();
+                } else {
+                  App.Application.ListMaps.Functions.activeContinent('none');
+                  App.Application.countrySearchMaps.Functions.resetList();
+                }
+
+              });
+
+              $(dom + ' input[type="text"]').on('focus', function() {
+                $(dom).addClass('active');
+                $(dom_autocomplete).removeClass('__kill');
+              });
+
+              $(dom + ' input[type="text"]').on('blur', function() {
+                App.Application.ListMaps.Functions.activeContinent('none');
+                App.Application.countrySearchMaps.Functions.resetList();
+                $(this).val('');
+                $(dom).removeClass('active');
+              });
+            }
           }
-        }
+        };
 
+        App.Application.countrySearchMaps.Functions.initSearch();
       },
 
       /**
