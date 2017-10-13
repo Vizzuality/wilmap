@@ -10,6 +10,7 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Form\FormState;
+use Drupal\user\Entity\User;
 
 define('WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM',
   'wilmap_contributors_to_country');
@@ -299,6 +300,51 @@ function wilmap_contributors_form_user_login_form_alter(
 
     $form['#submit'][] = 'wilmap_contributors_user_login_submit';
 }
+
+/**
+ * Implements hook_form_alter() to add classes to the search form.
+ */
+function wilmap_contributors_form_alter(
+  &$form,
+  FormState $form_state,
+  $form_id
+) {
+    // $account = User::load(\Drupal::currentUser()->id());
+    // User is Contributor and is a Topic, Country or Region node
+
+
+    if (in_array($form_id, [
+      'node_region_edit_form',
+      'node_country_edit_form',
+      'node_topics_edit_form'
+    ])) {
+
+        $node = $form_state->getFormObject()->getEntity();
+
+        if (!$node) {
+            return;
+        }
+
+        // "Suggest edit" link
+        $referrer = Drupal\Core\Url::fromRoute('entity.node.canonical',
+          ['node' => $node->id()], ['absolute' => TRUE])->toString();
+        //$suggest_link =
+
+        // Add block with link to Contact with reference
+        $form['suggest_contributor'] = array(
+          '#type'        => 'details',
+          '#title'       => t('Suggest contributor'),
+          '#description' => t('Do you know anyone who can help with this page?'),
+          '#group'       => 'advanced',
+          '#open'        => true,
+          'markup'       => array(
+            '#markup' => '<p>Please <a href="/contact?r=' . $referrer . '">tell us here</a>.</p>',
+          ),
+          '#weight'      => 1000,
+        );
+    }
+}
+
 
 /**
  * Form submission handler for user_login_form().

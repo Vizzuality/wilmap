@@ -206,7 +206,6 @@ function wilmap_theme_theme_suggestions_block_alter(array &$suggestions, array $
   }
 }
 
-
 /**
  * Implements hook_form_alter() to add classes to the search form.
  */
@@ -218,9 +217,9 @@ function wilmap_theme_form_alter(&$form, FormStateInterface $form_state, $form_i
         $form['actions']['preview']['#access'] = FALSE;
 
         // Adds subject and message if there is a referrer URL
-        if($referer = \Drupal::request()->query->get('r')){
-            $form['subject']['widget'][0]['value']['#default_value'] = t('Suggest edit');
-            $form['message']['widget'][0]['value']['#default_value'] = t('Suggest edit on @link', array('@link' => $referer));
+        if($referrer = \Drupal::request()->query->get('r')){
+            $form['subject']['widget'][0]['value']['#default_value'] = t('Suggest contributor');
+            $form['message']['widget'][0]['value']['#default_value'] = t('Suggest contributor for @link', array('@link' => $referrer));
         }
 
 
@@ -259,3 +258,6 @@ function wilmap_theme_theme_suggestions_page_alter(array &$suggestions, array $v
     $suggestions[] = 'page__'.$content_type;
   }
 }
+
+
+
