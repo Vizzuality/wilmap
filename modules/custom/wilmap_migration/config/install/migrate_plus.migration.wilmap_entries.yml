@@ -116,11 +116,13 @@ process:
       'OTHER RESOURCES': 128
 
   field_year: year
-  field_external_link:
+  'field_external_link/uri':
     plugin: skip_on_empty
     method: process
     source: link_ok
-
+  'field_external_link/title':
+    plugin: default_value
+    default_value: 'See detail'
   # Use entity_generate as entity_lookup does not process each source item separately
   field_tax_document_type:
     -
