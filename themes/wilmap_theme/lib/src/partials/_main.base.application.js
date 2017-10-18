@@ -103,7 +103,9 @@
         App.Application.Maps.Config.color_styles                = {'style1':'#035e7e','style2':'#325735','style3':'#484d0c','style4':'#554324','style5':'#5b1717','style6':'#31244a'}
         App.Application.Maps.Config.click_on_map                = false;
 
-        App.Application.Maps.Functions.choropleth = function(color, currVal, minVal, maxVal, steps = 5) {
+        App.Application.Maps.Functions.choropleth = function(color, currVal, minVal, maxVal, steps) {
+          var steps = typeof steps !== 'undefined' ? steps : 5;
+
           // calculates the percent of value
           var percentValue = Math.floor((currVal - minVal) / (maxVal - minVal) * 100);
 
@@ -143,7 +145,10 @@
           }
         };
 
-        App.Application.Maps.Functions.activeContinent = function(continent, visually = true, center = false) {
+        App.Application.Maps.Functions.activeContinent = function(continent, visually, center) {
+          var visually = typeof visually !== 'undefined' ? visually : true;
+          var center = typeof center !== 'undefined' ? center : false;
+
           if (continent === 'none') {
             App.Application.Maps.Config.curr_continent_active = null;
 
@@ -180,7 +185,10 @@
           }
         };
 
-        App.Application.Maps.Functions.activeCountry = function(country, visually = true, center = false) {
+        App.Application.Maps.Functions.activeCountry = function(country, visually, center) {
+          var visually = typeof visually !== 'undefined' ? visually : true;
+          var center = typeof center !== 'undefined' ? center : false;
+
           if (country === 'none') {
             App.Application.Maps.Config.curr_country_active = null;
 
@@ -258,11 +266,14 @@
 
           // Update list
           if(!App.Application.Maps.Config.is_embed) {
+            country = (action === 'off') ? 'none':country;
             App.Application.ListMaps.Functions.activeHoverCountry(country, 'hover');
           }
         };
 
-        App.Application.Maps.Functions.loadLayer = function(layer, redraw = false) {
+        App.Application.Maps.Functions.loadLayer = function(layer, redraw) {
+          var redraw = typeof redraw !== 'undefined' ? redraw : false;
+
           App.Application.Maps.Config.curr_layer_active = (layer === 'none')?null:layer;
 
           //Style layer color -- random temporally - FAKE
@@ -413,7 +424,8 @@
             $(dom).height($(window).height());
           } else {
             $(dom).width($(window).width() - 349);
-            $(dom).height($(window).height());
+            $(dom).height($(window).height() - 78);
+            $('.ui-autocomplete.ui-widget.ui-widget-content').height($(window).height() - 249);
           }
 
           // Init map
@@ -567,7 +579,8 @@
             $('.continent-list-item a.continent').removeClass('active');
             $('.continent-list-item .continent-list-drawer').removeClass('active');
           } else {
-            $('.continent-list-item a.continent').each(function (k, v, t = continent){
+            $('.continent-list-item a.continent').each(function (k, v){
+              var t = continent;
               console.log($(this).text() + ' - ' + t);
               if($(this).text() !== t) {
                 $(this).removeClass('active');
@@ -587,7 +600,10 @@
             $('.continent-list-item .country a[data-iso2="'+country+'"]').addClass(action);
 
             if(action === 'active') {
-              $(dom).scrollTop(($('.continent-list-item .country a[data-iso2="'+country+'"]').offset().top) - 200);
+              setTimeout(function(){
+                $(dom).scrollTop(($('.continent-list-item .country a[data-iso2="'+country+'"]').offset().top) - 200);
+              }, 300)
+
             }
           }
         };
@@ -774,6 +790,22 @@
 
         $('a[href^="http://"], a[href^="https://"]').each(function(i, item) {
             $(this).attr('target','_blank');
+        });
+
+      },
+
+
+      /**
+       * Suggest edit footer
+       */
+      suggestEditFooter: function() {
+
+        var ref = window.location.href;
+
+        $('.site-footer .footer_second_wrap .block-menu li').each(function(i, item) {
+          if ($(item).text().toLowerCase().indexOf('suggest') != -1) {
+            $(item).find('a').attr('href', $(item).find('a').attr('href') + '/?r=' + ref);
+          }
         });
 
       },

@@ -187,6 +187,9 @@ $footer-bandcolor:                      #222222;
         text-align: right;
 
         li {
+          display: inline-block;
+          margin-left: $dp * 1.5;
+
           a {
             @include font($normal, 1, $semibold, $buttons-font);
             text-transform: uppercase;
@@ -198,6 +201,34 @@ $footer-bandcolor:                      #222222;
             }
           }
         }
+      }
+    }
+  }
+}
+
+
+// -------------------------------------
+// Override
+// -------------------------------------
+
+body.node-map {
+  .site-footer {
+    @include margin(0 null null null);
+
+    .footer_second_wrap {
+      .block-block-content {
+        .logo-cis {
+          background-position: bottom left;
+          height: 35px;
+        }
+
+        .logo-sign {
+          top: 15px;
+        }
+      }
+
+      .block-menu {
+        top: 13px;
       }
     }
   }

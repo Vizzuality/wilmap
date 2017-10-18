@@ -7,19 +7,40 @@
 body.node-map {
   .ui-autocomplete {
     @include trim();
-    padding-top: $dp * 4 !important;
+    @include image-overlay(rgba($third-color, 1), rgba($third-color, 0), 1, 180deg, sticky);
+    padding: 0 !important;
+    padding-top: $dp * 4  !important;
+    padding-bottom: $dp * 8  !important;
+
+    &:before {
+      content:'';
+      display: block;
+      width: 100%;
+      height: 30px;
+      position: sticky;
+      top: 5px;
+      left: 0;
+      z-index: 10;
+    }
 
     .continent-list-item {
-      @include margin(null null $dp * 2 null);
+      @include margin(null null 0 null);
 
       a {
         @include font($med, 1, $bold, $body-font);
+        @include padding($dp $dp * 3);
+        @include margin(0 null);
+        display: block;
+        width: 100%;
         color: $second-color;
         text-decoration: none;
 
-        &:hover {
+        &:hover,
+        &.active,
+        &.hover {
           color: $second-color;
-          text-decoration: underline;
+          text-decoration: none;
+          background-color: rgba($white, 0.16);
         }
       }
     }
@@ -29,7 +50,7 @@ body.node-map {
       background-color: transparent;
 
       &.active {
-        max-height: 2000px;
+        max-height: 3000px;
         background-color: transparent;
       }
     }
@@ -39,14 +60,19 @@ body.node-map {
 
       a {
         @include font($normal, 1, $regular, $body-font);
+        @include padding($dp null);
+        @include margin(0 null);
         color: $second-color;
         text-decoration: none;
+        display: block;
+        width: 100%;
 
         &:hover,
         &.active,
         &.hover {
           color: $second-color;
-          text-decoration: underline;
+          text-decoration: none;
+          background-color: rgba($white, 0.16);
         }
       }
 
