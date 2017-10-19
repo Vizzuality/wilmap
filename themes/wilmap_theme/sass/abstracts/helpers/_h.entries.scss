@@ -109,7 +109,7 @@ $entry-gradient-dir:     180deg;
 // entry list
 // -------------------------------------
 
-@mixin entry-list($structure:'.views-row', $break-margin: false) {
+@mixin entry-list($structure:'.views-row', $break-margin: false, $highlight:false) {
   // Structure wrapper
   @include content-listings-wrapper($structure, $break-margin) {
     @include margin(null null $dp * 2 null);
@@ -117,7 +117,8 @@ $entry-gradient-dir:     180deg;
     overflow: hidden;
 
     .node {
-      @include topic--gradient(relative, true);
+      @debug $highlight;
+      @include topic--gradient(relative, true, $highlight);
     }
   }
 }
@@ -126,7 +127,7 @@ $entry-gradient-dir:     180deg;
 // entry grid
 // -------------------------------------
 
-@mixin entry-grid($structure:'.views-row', $break-margin: '2n+1') {
+@mixin entry-grid($structure:'.views-row', $break-margin: '2n+1', $highlight:false) {
   // Structure wrapper
   @include content-listings-wrapper($structure, $break-margin) {
     @include column(7);
@@ -136,7 +137,7 @@ $entry-gradient-dir:     180deg;
     overflow: hidden;
 
     .node {
-      @include topic--gradient(relative, true);
+      @include topic--gradient(relative, true, $highlight);
       height: $dp * 37;
       max-height: $dp * 37;
 
@@ -151,7 +152,7 @@ $entry-gradient-dir:     180deg;
 // -------------------------------------
 // News general entity
 // -------------------------------------
-@mixin entry($target: false, $structure:none, $break-margin: false) {
+@mixin entry($target: false, $structure:none, $break-margin: false, $highlight: false) {
   & {
     .node {
       @include trim-field();
@@ -181,17 +182,36 @@ $entry-gradient-dir:     180deg;
       .field--name-field-location-entry {
         @include entry--location();
       }
+
+      @if $highlight == true {
+        background-color: darken($topic-color-base, 10);
+
+        &:hover {
+          background-color: darken($news-color-hover, 10);
+        }
+
+        &:after {
+          content: '';
+          @include retina-image($img-path + 'highlighted', 'svg', 31px, 35px);
+          display: block;
+          position: absolute;
+          width: 31px;
+          height: 35px;
+          top: 0;
+          right: $dp * 1.5;
+        }
+      }
     }
   }
 
   // Layouts
   // Grid
   @if $target == grid {
-    @include entry-grid($structure, '2n+1');
+    @include entry-grid($structure, '2n+1', $highlight);
   }
 
   // List
   @if $target == list {
-    @include entry-list($structure, false);
+    @include entry-list($structure, false, $highlight);
   }
 }

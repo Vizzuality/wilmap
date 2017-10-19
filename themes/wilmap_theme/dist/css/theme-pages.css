@@ -1689,6 +1689,195 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
         height: 100px;
         width: 150%;
         z-index: 10; }
+.block-views-blockentries-block-1 .view-highlighted-entries h3.country-block-title {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1 solid rgba(150, 143, 126, 0.2); }
+.block-views-blockentries-block-1 .view-highlighted-entries .node {
+  margin-bottom: 20px;
+  padding: 30px;
+  background-color: #f7f5f2;
+  display: block;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: #e3ded3; }
+  .block-views-blockentries-block-1 .view-highlighted-entries .node .field {
+    margin: 0;
+    padding: 0; }
+  .block-views-blockentries-block-1 .view-highlighted-entries .node:hover {
+    background-color: #e3ded3; }
+  .block-views-blockentries-block-1 .view-highlighted-entries .node .node__title {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    background: none; }
+    .block-views-blockentries-block-1 .view-highlighted-entries .node .node__title a {
+      text-decoration: none;
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 17.6px;
+      line-height: 1.1rem;
+      font-weight: 700;
+      font-family: "Raleway", sans-serif;
+      color: #222; }
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .node__title a .field {
+        margin: 0;
+        padding: 0; }
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .node__title a .field {
+        overflow: visible; }
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .node__title a:hover {
+        text-decoration: none; }
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .node__title a span {
+        display: block;
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 17.6px;
+        line-height: 1.1rem;
+        font-weight: 700;
+        font-family: "Raleway", sans-serif;
+        color: #222; }
+  .block-views-blockentries-block-1 .view-highlighted-entries .node .node__title {
+    margin-bottom: 0; }
+  .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-date-published {
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 27.2px;
+    line-height: 1.7rem;
+    font-weight: 600;
+    font-family: "Raleway", sans-serif;
+    color: #968f7e; }
+    @media only screen and (max-width: 767px) {
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-date-published {
+        padding-left: 0; } }
+  .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-date-published {
+    margin-bottom: 5px; }
+  .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 16px;
+    line-height: 1rem;
+    font-weight: 700;
+    font-family: "Raleway", sans-serif;
+    text-transform: uppercase;
+    color: #b3001e;
+    text-decoration: none;
+    z-index: 10;
+    margin-bottom: 20px; }
+    @media only screen and (min-width: 768px) and (max-width: 1124px) {
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section {
+        font-size: 13px;
+        font-size: 0.8125rem;
+        line-height: 13px;
+        line-height: 0.8125rem;
+        font-weight: 600;
+        font-family: "Raleway", sans-serif; } }
+    @media only screen and (max-width: 767px) {
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section {
+        font-size: 13px;
+        font-size: 0.8125rem;
+        line-height: 13px;
+        line-height: 0.8125rem;
+        font-weight: 700;
+        font-family: "Raleway", sans-serif; } }
+    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section:hover {
+      text-decoration: underline; }
+    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section::after {
+      height: 5px;
+      width: 140px;
+      margin-top: 20px;
+      content: '';
+      display: block;
+      border: 0;
+      background-color: rgba(150, 143, 126, 0.2); }
+    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section {
+      text-decoration: none; }
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section:hover {
+        text-decoration: none; }
+  .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 27.2px;
+    line-height: 1.7rem;
+    font-weight: 400;
+    font-family: "Raleway", sans-serif;
+    margin-bottom: 5px;
+    color: #968f7e;
+    text-decoration: none; }
+    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry a {
+      font-size: 14px;
+      font-size: 0.875rem;
+      line-height: 23.8px;
+      line-height: 1.4875rem;
+      font-weight: 400;
+      font-family: "Raleway", sans-serif;
+      color: #968f7e;
+      text-decoration: none; }
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry a:hover {
+        text-decoration: underline; }
+  .block-views-blockentries-block-1 .view-highlighted-entries .node:hover {
+    background-color: #cfc7b4; }
+  .block-views-blockentries-block-1 .view-highlighted-entries .node:after {
+    content: '';
+    background-image: url("../../images/highlighted.svg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: initial;
+    display: block;
+    position: absolute;
+    width: 31px;
+    height: 35px;
+    top: 0;
+    right: 15px; }
+.block-views-blockentries-block-1 .view-highlighted-entries .views-row {
+  margin-bottom: 20px;
+  *zoom: 1;
+  overflow: hidden; }
+  .block-views-blockentries-block-1 .view-highlighted-entries .views-row:before, .block-views-blockentries-block-1 .view-highlighted-entries .views-row:after {
+    content: "";
+    display: table; }
+  .block-views-blockentries-block-1 .view-highlighted-entries .views-row:after {
+    clear: both; }
+  .block-views-blockentries-block-1 .view-highlighted-entries .views-row .node {
+    position: relative; }
+    .block-views-blockentries-block-1 .view-highlighted-entries .views-row .node::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: '';
+      background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(247, 245, 242, 0)), to(#f7f5f2));
+      background-image: linear-gradient(180deg, rgba(247, 245, 242, 0), #f7f5f2);
+      opacity: 1; }
+    .block-views-blockentries-block-1 .view-highlighted-entries .views-row .node::before {
+      position: absolute;
+      top: auto;
+      right: auto;
+      bottom: 0;
+      left: 0;
+      height: 100px;
+      width: 150%;
+      z-index: 10; }
+    .block-views-blockentries-block-1 .view-highlighted-entries .views-row .node:hover {
+      position: relative; }
+      .block-views-blockentries-block-1 .view-highlighted-entries .views-row .node:hover::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: '';
+        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(227, 222, 211, 0)), to(#e3ded3));
+        background-image: linear-gradient(180deg, rgba(227, 222, 211, 0), #e3ded3);
+        opacity: 1; }
+      .block-views-blockentries-block-1 .view-highlighted-entries .views-row .node:hover::before {
+        position: absolute;
+        top: auto;
+        right: auto;
+        bottom: 0;
+        left: 0;
+        height: 100px;
+        width: 150%;
+        z-index: 10; }
 
 .block-views-blocknews-block-1 .node,
 .block-views-blocknews-block-2 .node,
@@ -6149,5 +6338,4 @@ body.user-logged-in .contextual-region .contextual .contextual-links a {
   body.user-logged-in .contextual-region .contextual .contextual-links a:hover {
     color: #000 !important;
     background: #f7fcff !important; }
-
 /*# sourceMappingURL=theme-pages.css.map */
