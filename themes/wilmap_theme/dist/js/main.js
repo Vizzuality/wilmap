@@ -2210,6 +2210,7 @@
 
         $.each( elementsSticky, function( index, value ) {
           var canFix = true;
+          console.log('ho');
 
           if( isPhone && !value.mobile ) {
             canFix = false;

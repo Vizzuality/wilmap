@@ -1693,7 +1693,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
 .block-views-blockentries-block-1 .view-highlighted-entries h3.country-block-title {
   margin-top: 20px;
   padding-top: 20px;
-  border-top: 1 solid rgba(150, 143, 126, 0.2) !important; }
+  border-top: 1px solid rgba(150, 143, 126, 0.2) !important; }
 .block-views-blockentries-block-1 .view-highlighted-entries .node {
   margin-bottom: 20px;
   padding: 30px;

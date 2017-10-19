@@ -82,7 +82,7 @@ article.node--type-topics.node--view-mode-full {
     h3.country-block-title {
       @include margin($dp * 2 null null null);
       @include padding($dp * 2 null null null);
-      border-top: 1 solid rgba($fourth-color, 0.2) !important;
+      border-top: 1px solid rgba($fourth-color, 0.2) !important;
     }
 
     @include entry(list, '.views-row', false, true);
