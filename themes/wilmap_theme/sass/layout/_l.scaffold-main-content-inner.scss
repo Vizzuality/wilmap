@@ -36,6 +36,10 @@ $responsivenav-menuitem-height: $dp * 6;
 
 @mixin sidebar-nav () {
   & {
+    .tab-nav {
+      border: none;
+    }
+
     // Menu
     .views-row {
       @include trim();

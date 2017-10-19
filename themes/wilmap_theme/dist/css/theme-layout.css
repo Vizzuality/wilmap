@@ -567,6 +567,8 @@ body.path-frontpage.both-sidebars #sidebar-second {
       display: table; }
     .main-content-inner .content-sidenav:after {
       clear: both; }
+    .main-content-inner .content-sidenav .tab-nav {
+      border: none; }
     .main-content-inner .content-sidenav .views-row {
       margin: 0;
       padding: 0;

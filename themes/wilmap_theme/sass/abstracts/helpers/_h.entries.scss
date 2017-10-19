@@ -183,7 +183,7 @@ $entry-gradient-dir:     180deg;
         @include entry--location();
       }
 
-      @if $highlight == true {
+      @if $highlight {
         background-color: darken($topic-color-base, 10);
 
         &:hover {

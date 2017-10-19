@@ -44,6 +44,15 @@ body.page-node-type-region {
         @include text-secondary-header($first-color, 40px);
         @include margin(null null $dp * 2 null);
       }
+
+      .text-formatted {
+        @include column(12);
+        @include margin(null null null columns(1.45));
+
+        @include respond(tablets) {
+          @include margin(null null null columns(1.8));
+        }
+      }
     }
 
     section:not(.block-system-main-block) {
@@ -85,6 +94,10 @@ body.page-node-type-region {
 
           .views-row {
             @include column(4.6);
+
+            .field--name-user-picture {
+              display: none;
+            }
           }
         }
 

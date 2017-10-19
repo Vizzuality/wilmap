@@ -1113,7 +1113,6 @@
         if ($(dom).length > 0) {
           // fix active contributos image
           $('#block-activecontributors .views-field-user-picture').each(function(k,v){
-            console.log(v);
             var img = $(v).find('.field--name-user-picture').remove().text();
             $(v).css('background-image', 'url('+img+')');
           });
@@ -1141,9 +1140,34 @@
                       console.log($('h2.title-section').text());
 
                       // wrap pannels
-
+                      $('.region-content section').hide().first().show();
 
                       // generate navigation
+                      // Generate anchors and side menu
+                      var sidemenu = '';
+                      sidemenu += '<section class="views-element-container block block-views fake-view" id="custom-sidenav">';
+                      sidemenu += '  <div class="content">';
+                      sidemenu += '    <div>';
+                      sidemenu += '      <div class="view view-continent">';
+                      sidemenu += '        <div class="view-content">';
+                      sidemenu += '          <div class="views-row"><a class="skip __active" gumby-duration="600" gumby-goto="top" href="#">Description</a></div>';
+
+                      $('h2.title-section').each(function(i, item) {
+                        sidemenu += '          <div class="views-row"><a class="skip" gumby-duration="600" gumby-goto="top" href="#" href="#">' + $(this).text() + '</a></div>';
+                      });
+
+                      sidemenu += '        </div>';
+                      sidemenu += '      </div>';
+                      sidemenu += '    </div>';
+                      sidemenu += '  </div>';
+                      sidemenu += '</section>';
+
+                      // Print sidemenu and active tabs
+                      if(!$(dom_sidemenu + ' .view-content').length > 0) {
+                        $(dom_sidemenu).append(sidemenu);
+                        App.Application.methods.sidenavMobile();
+                      }
+
                     }
                   });
               });

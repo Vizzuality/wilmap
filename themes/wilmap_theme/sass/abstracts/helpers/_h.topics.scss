@@ -21,7 +21,7 @@ $topic-gradient-dir:     180deg;
 @mixin topic--gradient($pos:relative, $hover:true, $highlight:false) {
   & {
 
-    @if $highlight == true {
+    @if $highlight {
     //   // $topic-color-base: darken($topic-color-base, 10);
     //   // $topic-color-hover: darken($topic-color-hover, 10);
       $topic-color-base: $yellow;
