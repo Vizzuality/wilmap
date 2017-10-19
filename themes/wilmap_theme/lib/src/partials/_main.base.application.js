@@ -414,6 +414,9 @@
         };
 
         var dom = '.block-wilmap-map .wilmap';
+        var dom_sidebar = '.ui-autocomplete.ui-widget-content';
+        var dom_footer = '.site-footer';
+        var dom_header = '.site-header';
         var api_countries = '/api/map/browse';
 
         if ($(dom).length > 0) {
@@ -423,9 +426,9 @@
             $(dom).width('100%');
             $(dom).height($(window).height());
           } else {
-            $(dom).width($(window).width() - 349);
-            $(dom).height($(window).height() - 78);
-            $('.ui-autocomplete.ui-widget.ui-widget-content').height($(window).height() - 249);
+            $(dom).width($(window).width() - $(dom_sidebar).width());
+            $(dom).height($(window).height() - $(dom_footer).height());
+            $(dom_sidebar).height($(window).height() - $(dom_footer).height() - $(dom_header).height() - 116);
           }
 
           // Init map
@@ -619,14 +622,14 @@
               // Regions
               if (Object.keys(val.regions).length) {
                 $.each( val.regions, function( kr, vr ) {
-                  output += '<li class="country-list-item region"><a href="' + vr.path + '">' + vr.title + '</a>';
+                  output += '<li class="country-list-item region"><a data-original="' + vr.title + '" href="' + vr.path + '">' + vr.title + '</a>';
                 });
               }
 
               // Countries
               if (Object.keys(val.countries).length) {
                 $.each( val.countries, function( kc, vc ) {
-                  output += '<li class="country-list-item country"><a data-iso2="' + vc.iso2 + '" href="' + vc.path + '">' + vc.title + '</a>';
+                  output += '<li class="country-list-item country"><a data-original="' + vc.title + '" data-iso2="' + vc.iso2 + '" href="' + vc.path + '">' + vc.title + '</a>';
                 });
               }
 
@@ -674,7 +677,10 @@
         App.Application.countrySearchMaps.Functions = {};
 
         App.Application.countrySearchMaps.Functions.resetList = function() {
-          $(dom_autocomplete + ' .continent-list-drawer .country-list-item').show();
+          $(dom_autocomplete + ' .continent-list-drawer .country-list-item').each(function(k, v){
+              $(v).show().find('a').text($(v).find('a').data('original'));
+          });
+
         };
 
         App.Application.countrySearchMaps.Functions.initSearch = function() {
@@ -695,13 +701,21 @@
               $(dom + ' input[type="text"]').bind("keyup", function (e) {
                 var val = $(this).val();
 
-                if(val.length > 2) {
+                if(val.length > 0) {
                   App.Application.ListMaps.Functions.activeContinent('none');
 
                   $(dom_autocomplete + ' .continent-list-drawer').addClass('active');
                   $(dom_autocomplete + ' .continent-list-drawer .country-list-item').hide();
 
-                  $(dom_autocomplete + ' .continent-list-drawer .country-list-item.country').filter(':contains("'+val+'")').show();
+                  $(dom_autocomplete + ' .continent-list-drawer .country-list-item').each(function(k, v){
+                    var re = new RegExp( "(" + val + ")", "gi" );
+                    var template = '<span class="highlight">$1</span>';
+                    var html = $(v).text().replace( re, template );
+
+                    if ($(v).text().match(re)) {
+                      $(v).show().find('a').html(html);
+                    }
+                  });
                 } else {
                   App.Application.ListMaps.Functions.activeContinent('none');
                   App.Application.countrySearchMaps.Functions.resetList();
@@ -767,6 +781,14 @@
           {
             bigitem: '.block-views-blockcontributions-block-1 .view-content .views-row',
             ref: '.node__title a'
+          },
+          {
+            bigitem: '.view-contributors.view-id-contributors .view-content .views-row',
+            ref: '.contributor-info-holder .views-field-name a'
+          },
+          {
+            bigitem: '#block-activecontributors .content .views-row',
+            ref: '.views-field-name a'
           },
           {
             bigitem: '.item-list .search-results li',
@@ -1073,6 +1095,148 @@
           }
         });
       },
+
+
+      /**
+       * country and region prepare content + navigation
+       */
+      countryAndRegionContentNavigation: function() {
+        var dom = '.page-node-type-country, .page-node-type-region';
+        var dom_sidemenu = '.content-sidenav';
+        var dom_contentblocks =  '.region-content > section';
+        var nid = $('.node-id').text();
+        var api_section_list = '/api/section';
+        var api_section = '/api/country-entries/country/' + nid + '/section/';
+        var uri = location.href.split('#')[1];
+            uri = (uri === undefined) ? '' : uri;
+
+        if ($(dom).length > 0) {
+          // fix active contributos image
+          $('#block-activecontributors .views-field-user-picture').each(function(k,v){
+            console.log(v);
+            var img = $(v).find('.field--name-user-picture').remove().text();
+            $(v).css('background-image', 'url('+img+')');
+          });
+
+          // load ajax content
+          $.get(api_section_list, function() {})
+            .done(function( data ) {
+
+              var count = 0;
+              $.each(data, function(k, v){
+                console.log(v.tid);
+
+                $.get(api_section + v.tid, function() {})
+                  .done(function( data2 ) {
+                    var el = $(data2).find('.region-content section').removeClass().prepend('<h2 class="title-section">'+v.name+'</h2>');
+
+                    $('#block-views-block-contributors-block-country-contributors').before($(el).addClass('block-topics'));
+
+                    count++;
+
+                    // when all sections loaded
+                    if(count == data.length) {
+                      // Prepare h2
+                      $(dom_contentblocks + ' > h2').addClass('title-section');
+                      console.log($('h2.title-section').text());
+
+                      // wrap pannels
+
+
+                      // generate navigation
+                    }
+                  });
+              });
+
+            });
+
+
+
+          // wrap panels
+
+          // create sidebar nav
+          // // Generate anchors and side menu
+          // var count = 0;
+          // var sidemenu = '';
+          // sidemenu += '<section class="views-element-container block block-views fake-view" id="custom-sidenav">';
+          // sidemenu += '  <div class="content">';
+          // sidemenu += '    <div>';
+          // sidemenu += '      <div class="view view-continent">';
+          // sidemenu += '        <div class="view-content">';
+          // sidemenu += '          <div class="views-row"><a class="skip" gumby-duration="600" gumby-goto="top" href="#">Description</a></div>';
+          //
+          // $(dom_entries + ' h3').each(function(i, item) {
+          //   var slug = App.Utils.Slugify($(this).text());
+          //
+          //   $(this).addClass('country-block-title').attr('id','entry-block-' + slug);
+          //   sidemenu += '          <div class="views-row"><a class="skip" gumby-offset="' + offset + '" gumby-duration="600" gumby-goto="#entry-block-' + slug + '" href="#entry-block-' + slug + '">' + $(this).text() + '</a></div>';
+          //
+          //   count++;
+          // });
+          //
+          // sidemenu += '        </div>';
+          // sidemenu += '      </div>';
+          // sidemenu += '    </div>';
+          // sidemenu += '  </div>';
+          // sidemenu += '</section>';
+          //
+          // // Print sidemenu
+          // if(!$(dom_sidemenu + ' .view-content').length > 0) {
+          //   $(dom_sidemenu).append(sidemenu);
+          //   App.Application.methods.sidenavMobile();
+          // }
+
+          // Click Event
+          // $(dom_sidemenu + ' .view-content .views-row a').on('click touchend', function() {
+          //   $(dom_sidemenu + ' .view-content .views-row a').removeClass('__active');
+          //   $(this).addClass('__active');
+          //
+          //   window.history.pushState($(this).attr('href'), document.title, $(this).attr('href'));
+          // });
+
+          // Active current element when first load
+          // $(dom_sidemenu + ' .view-content .views-row a').each(function(i, item) {
+          //     var target = $(item).attr('href').split('#')[1];
+          //
+          //     if (uri.indexOf(target) != -1) {
+          //       $(dom_sidemenu + ' .view-content .views-row a').removeClass('__active');
+          //       $(item).addClass('__active');
+          //
+          //       //Scroll content
+          //       setTimeout(function(){
+          //         $(item).click();
+          //       }, 1000);
+          //
+          //       if(isPhone) {
+          //         // Nav to active item
+          //         var active = parseInt($(item).parents('.slick-slide').attr('data-slick-index'));
+          //         $(dom_sidemenu + ' .view-content').slick('slickGoTo', active);
+          //       }
+          //     };
+          // });
+        }
+      },
+
+
+      /**
+       * title + map country/region detail
+       */
+      countryAndRegionHeader: function() {
+        var dom = '.page-node-type-country, .page-node-type-region';
+
+        if ($(dom).length > 0 && !$('#block-pagetitle .node-top').length > 0) {
+          // country name
+          var country = ($('body').hasClass('page-node-type-country')) ? $('.field--name-field-continent-country').text():$('.field--name-field-continent').text();
+          $('#block-pagetitle').prepend('<div class="node-top"><div class="field--name-field-tax-section">'+country+'</div></div>');
+
+          // goto map
+          $('#block-pagetitle').prepend('<a href="/map" class="btn">Go to Map</a>');
+
+          // map
+
+        }
+      },
+
 
       /**
        * Lists Switch

@@ -97,13 +97,17 @@
       </div>
     {% endif %}
   </header>
+
+  <div class="node-id">{{ node.id }}</div>
+  {{ content.field_iso2 }}
   {{ content.field_continent_country }}
+
   {{ content.field_body_country }}
 
-  <div class="action multi-action">     
+  <div class="action multi-action">
           <a class="btn searchinexplore" href="/entries?country={{ node.id }}">Search in Explore</a>
   </div>
-  
+
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
     {% if node.field_hide_datasheet.value == '0' %}
       {{ content.group_data }}

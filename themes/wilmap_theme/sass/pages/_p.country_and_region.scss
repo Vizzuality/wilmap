@@ -1,0 +1,117 @@
+// ============================================================================
+//
+// PAGES: COUNTRY AND REGION
+//
+// ============================================================================
+
+
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+
+
+// -------------------------------------
+// Scaffold
+// -------------------------------------
+
+// REGION/COUNTRY detail
+body.page-node-type-country,
+body.page-node-type-region {
+
+  .node-id,
+  .field--name-field-iso2,
+  .field--name-field-continent-country,
+  .field--name-field-continent {
+    display: none;
+  }
+
+  #block-pagetitle {
+    .node-top {
+      top: $dp * 7.5;
+      left: $dp;
+    }
+
+    a.btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  #content-content {
+    section.block-system-main-block {
+      .field__label {
+        @include text-secondary-header($first-color, 40px);
+        @include margin(null null $dp * 2 null);
+      }
+    }
+
+    section:not(.block-system-main-block) {
+      @include margin(null null $dp * 3 null);
+
+      > h2 {
+        @include text-secondary-header($first-color, 40px);
+        @include margin(null null $dp * 2 null);
+      }
+
+      h3,
+      h3 a {
+        @include text-secondary-header(rgba($first-color, 0.8), 30px);
+        @include margin(null null $dp null);
+      }
+
+      @include entry(list, '.views-row');
+
+      &.block-views-blocknews-block-country-news,
+      &.block-views-blocknews-block-region-news {
+        @include news(list);
+
+        .views-row {
+          header {
+            .node__title {
+              @include news--header(small);
+            }
+          }
+        }
+      }
+
+      &.block-views-blockcontributors-block-country-contributors,
+      &.block-views-blockcontributors-block-region-contributors {
+        .view-content {
+          @include column(14, false, collapse, false);
+          @include contributors(grid, '.views-row');
+          display: block;
+          clear: both;
+
+          .views-row {
+            @include column(4.6);
+          }
+        }
+
+
+        .view-footer {
+          @include margin($dp * 6 null null null);
+
+          .content {
+            @include column(14, false, collapse, false);
+            @include contributors(grid, '.views-row');
+            display: block;
+            clear: both;
+
+            .views-row {
+              @include column(4.6);
+            }
+          }
+        }
+      }
+
+      .views-row .node {
+        @include margin(null null 0 null);
+      }
+    }
+  }
+
+  .site-footer {
+    @include margin(0 null null null);
+  }
+}

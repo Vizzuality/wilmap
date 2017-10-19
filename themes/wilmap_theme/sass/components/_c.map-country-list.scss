@@ -18,7 +18,7 @@ body.node-map {
       width: 100%;
       height: 30px;
       position: sticky;
-      top: 5px;
+      top: -33px;
       left: 0;
       z-index: 10;
     }
@@ -73,6 +73,10 @@ body.node-map {
           color: $second-color;
           text-decoration: none;
           background-color: rgba($white, 0.16);
+        }
+
+        span.highlight {
+          font-weight: $bold !important;
         }
       }
 
