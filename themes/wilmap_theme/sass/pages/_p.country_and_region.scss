@@ -18,17 +18,36 @@
 body.page-node-type-country,
 body.page-node-type-region {
 
-  .node-id,
-  .field--name-field-iso2,
-  .field--name-field-continent-country,
-  .field--name-field-continent {
+  .metadata {
     display: none;
+  }
+
+  .panel-block {
+    @include clearfix();
+    clear:both;
+    float: none;
+    display: none;
+
+    &.__active {
+      display: block;
+    }
+  }
+
+  .content-sidenav {
+    .views-row.__disabled {
+      display: none;
+    }
   }
 
   #block-pagetitle {
     .node-top {
       top: $dp * 7.5;
       left: $dp;
+
+      @include respond(all-phones) {
+        top: $dp;
+        left: 3px;
+      }
     }
 
     a.btn {
@@ -39,6 +58,12 @@ body.page-node-type-region {
   }
 
   #content-content {
+    min-height: 500px;
+
+    @include respond(all-phones) {
+      min-height: auto;
+    }
+
     section.block-system-main-block {
       .field__label {
         @include text-secondary-header($first-color, 40px);

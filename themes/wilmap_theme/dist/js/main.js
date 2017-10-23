@@ -218,7 +218,7 @@
     * shadeColor("#63C6FF",40); //lighten
     * shadeColor("#63C6FF",-40); //darken
     */
-    shadeColor(color, percent) {
+    shadeColor: function(color, percent) {
 
         var R = parseInt(color.substring(1,3),16);
         var G = parseInt(color.substring(3,5),16);
@@ -237,6 +237,13 @@
         var BB = ((B.toString(16).length==1)?"0"+B.toString(16):B.toString(16));
 
         return "#"+RR+GG+BB;
+    },
+
+    /**
+    * setBrowserURL
+    */
+    setBrowserURL: function(href, title) {
+      window.history.pushState(href, title, href);
     }
   };
 
@@ -1664,6 +1671,10 @@
             bigitem: '.item-list .search-results li',
             ref: '.search-result__title a'
           },
+          {
+            bigitem: '.panel-block .view-content .views-row',
+            ref: '.node__title a'
+          },
         ];
 
         $.each(linkareas, function (index, value) {
@@ -1916,9 +1927,9 @@
                 $(item).addClass('__active');
 
                 //Scroll content
-                setTimeout(function(){
-                  $(item).click();
-                }, 1000);
+                // setTimeout(function(){
+                //   $(item).click();
+                // }, 1000);
 
                 if(isPhone) {
                   // Nav to active item
@@ -1973,18 +1984,55 @@
       countryAndRegionContentNavigation: function() {
         var dom = '.page-node-type-country, .page-node-type-region';
         var dom_sidemenu = '.content-sidenav';
-        var dom_contentblocks =  '.region-content > section';
+        var dom_content =  '.region-content';
+        var dom_contentsections =  dom_content + ' > section';
         var nid = $('.node-id').text();
         var api_section_list = '/api/section';
         var api_section = '/api/country-entries/country/' + nid + '/section/';
+        var isPhone = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
         var uri = location.href.split('#')[1];
             uri = (uri === undefined) ? '' : uri;
 
         if ($(dom).length > 0) {
+          // Prepare sidenav
+          var sidemenu = '';
+          sidemenu += '<section class="views-element-container block block-views fake-view" id="custom-sidenav">';
+          sidemenu += '  <div class="content">';
+          sidemenu += '    <div>';
+          sidemenu += '      <div class="view view-continent">';
+          sidemenu += '        <div class="view-content">';
+
+          var enabled = ($('article.node').hasClass('node--empty'))?'__disabled':'__enabled';
+          sidemenu += '          <div class="views-row '+enabled+'"><a class="skip" gumby-duration="600" gumby-goto="top" href="#description">Description</a></div>';
+
+          sidemenu += '        </div>';
+          sidemenu += '      </div>';
+          sidemenu += '    </div>';
+          sidemenu += '  </div>';
+          sidemenu += '</section>';
+
+          // Print sidemenu and active tabs
+          if(!$(dom_sidemenu + ' .view-content').length > 0) {
+            $(dom_sidemenu).append(sidemenu);
+          }
+
           // fix active contributos image
           $('#block-activecontributors .views-field-user-picture').each(function(k,v){
             var img = $(v).find('.field--name-user-picture').remove().text();
             $(v).css('background-image', 'url('+img+')');
+          });
+
+          // Prepare static content
+          $.each($(dom_contentsections), function(i, k){
+
+            if(i === 0){
+              $(k).attr('id','panel-description');
+            } else {
+              $(k).attr('id', 'panel-' + App.Utils.Slugify($(k).find('h2').first().text()));
+              $(dom_sidemenu + ' .view-content').append('<div class="views-row __enabled"><a class="skip" gumby-duration="600" gumby-goto="top" href="#'+App.Utils.Slugify($(k).find('h2').first().text())+'">'+$(k).find('h2').first().text()+'</a></div>');
+            }
+
+            $(k).addClass('panel-block');
           });
 
           // load ajax content
@@ -1992,122 +2040,66 @@
             .done(function( data ) {
 
               var count = 0;
-              $.each(data, function(k, v){
-                console.log(v.tid);
+              var data_clone = data;
+              $.each(data_clone.reverse(), function(k, v){
+                // console.log(v.tid, v.name);
 
-                $.get(api_section + v.tid, function() {})
-                  .done(function( data2 ) {
-                    var el = $(data2).find('.region-content section').removeClass().prepend('<h2 class="title-section">'+v.name+'</h2>');
+                $(dom_sidemenu + ' .views-row').first().after('<div class="views-row __enabled"><a class="skip" gumby-duration="600" gumby-goto="top" href="#'+App.Utils.Slugify(v.name)+'">'+v.name+'</a></div>');
+                $(dom_content + ' .block-system-main-block').after('<section id="panel-' + App.Utils.Slugify(v.name) + '" class="panel-block block-topics"><h2 class="title-section">'+v.name+'</h2><div class="content"></div></div>');
 
-                    $('#block-views-block-contributors-block-country-contributors').before($(el).addClass('block-topics'));
+                // when all sections loaded
+                count++;
+                if(count == data_clone.length) {
 
-                    count++;
+                  // Events
+                  $(dom_sidemenu + ' .view-content a').on('click', function(e){
+                    if(!$(this).hasClass('__active')) {
+                      $(dom_contentsections).removeClass('__active');
+                      $(dom_sidemenu + ' .view-content a').removeClass('__active');
 
-                    // when all sections loaded
-                    if(count == data.length) {
-                      // Prepare h2
-                      $(dom_contentblocks + ' > h2').addClass('title-section');
-                      console.log($('h2.title-section').text());
+                      var id = '#panel-' + $(this).addClass('__active').attr('href').split('#')[1];
+                      $(dom_contentsections+id).addClass('__active');
 
-                      // wrap pannels
-                      $('.region-content section').hide().first().show();
+                      $(dom_sidemenu + ' .block-views').removeClass('fixed').removeClass('pinned');
 
-                      // generate navigation
-                      // Generate anchors and side menu
-                      var sidemenu = '';
-                      sidemenu += '<section class="views-element-container block block-views fake-view" id="custom-sidenav">';
-                      sidemenu += '  <div class="content">';
-                      sidemenu += '    <div>';
-                      sidemenu += '      <div class="view view-continent">';
-                      sidemenu += '        <div class="view-content">';
-                      sidemenu += '          <div class="views-row"><a class="skip __active" gumby-duration="600" gumby-goto="top" href="#">Description</a></div>';
-
-                      $('h2.title-section').each(function(i, item) {
-                        sidemenu += '          <div class="views-row"><a class="skip" gumby-duration="600" gumby-goto="top" href="#" href="#">' + $(this).text() + '</a></div>';
-                      });
-
-                      sidemenu += '        </div>';
-                      sidemenu += '      </div>';
-                      sidemenu += '    </div>';
-                      sidemenu += '  </div>';
-                      sidemenu += '</section>';
-
-                      // Print sidemenu and active tabs
-                      if(!$(dom_sidemenu + ' .view-content').length > 0) {
-                        $(dom_sidemenu).append(sidemenu);
-                        App.Application.methods.sidenavMobile();
-                      }
-
+                      App.Utils.setBrowserURL($(this).attr('href'), document.title);
                     }
                   });
+
+
+                  // Active current/first content
+                  var id = '';
+                  if(uri === '') {
+                    id = '#panel-' + $(dom_sidemenu + ' .views-row.__enabled').first().find('a').addClass('__active').attr('href').split('#')[1];
+                    console.log(id);
+                  } else {
+                    id = '#panel-'+uri;
+                    $(dom_sidemenu + ' .views-row a[href="#'+uri+'"]').addClass('__active');
+                  }
+
+                  $(dom_contentsections+id).addClass('__active');
+                  Gumby.init();
+
+                  if(isPhone) {
+                    App.Application.methods.sidenavMobile();
+
+                    // Nav to active item
+                    var active = parseInt($(dom_sidemenu + ' .view-content a.__active').parents('.slick-slide').attr('data-slick-index'));
+                    $(dom_sidemenu + ' .view-content').slick('slickGoTo', active);
+                  }
+                }
+
+                // Load ajax content
+                $.get(api_section + v.tid, function() {})
+                  .done(function( data2 ) {
+                    var el = $(data2).find('.region-content section .content > div');
+                    var id = '#panel-' + App.Utils.Slugify(v.name);
+
+                    $(dom_contentsections+id+' .content').html($(el).unwrap());
+                    App.Application.methods.bigLinkAreas();
+                  });
               });
-
             });
-
-
-
-          // wrap panels
-
-          // create sidebar nav
-          // // Generate anchors and side menu
-          // var count = 0;
-          // var sidemenu = '';
-          // sidemenu += '<section class="views-element-container block block-views fake-view" id="custom-sidenav">';
-          // sidemenu += '  <div class="content">';
-          // sidemenu += '    <div>';
-          // sidemenu += '      <div class="view view-continent">';
-          // sidemenu += '        <div class="view-content">';
-          // sidemenu += '          <div class="views-row"><a class="skip" gumby-duration="600" gumby-goto="top" href="#">Description</a></div>';
-          //
-          // $(dom_entries + ' h3').each(function(i, item) {
-          //   var slug = App.Utils.Slugify($(this).text());
-          //
-          //   $(this).addClass('country-block-title').attr('id','entry-block-' + slug);
-          //   sidemenu += '          <div class="views-row"><a class="skip" gumby-offset="' + offset + '" gumby-duration="600" gumby-goto="#entry-block-' + slug + '" href="#entry-block-' + slug + '">' + $(this).text() + '</a></div>';
-          //
-          //   count++;
-          // });
-          //
-          // sidemenu += '        </div>';
-          // sidemenu += '      </div>';
-          // sidemenu += '    </div>';
-          // sidemenu += '  </div>';
-          // sidemenu += '</section>';
-          //
-          // // Print sidemenu
-          // if(!$(dom_sidemenu + ' .view-content').length > 0) {
-          //   $(dom_sidemenu).append(sidemenu);
-          //   App.Application.methods.sidenavMobile();
-          // }
-
-          // Click Event
-          // $(dom_sidemenu + ' .view-content .views-row a').on('click touchend', function() {
-          //   $(dom_sidemenu + ' .view-content .views-row a').removeClass('__active');
-          //   $(this).addClass('__active');
-          //
-          //   window.history.pushState($(this).attr('href'), document.title, $(this).attr('href'));
-          // });
-
-          // Active current element when first load
-          // $(dom_sidemenu + ' .view-content .views-row a').each(function(i, item) {
-          //     var target = $(item).attr('href').split('#')[1];
-          //
-          //     if (uri.indexOf(target) != -1) {
-          //       $(dom_sidemenu + ' .view-content .views-row a').removeClass('__active');
-          //       $(item).addClass('__active');
-          //
-          //       //Scroll content
-          //       setTimeout(function(){
-          //         $(item).click();
-          //       }, 1000);
-          //
-          //       if(isPhone) {
-          //         // Nav to active item
-          //         var active = parseInt($(item).parents('.slick-slide').attr('data-slick-index'));
-          //         $(dom_sidemenu + ' .view-content').slick('slickGoTo', active);
-          //       }
-          //     };
-          // });
         }
       },
 
@@ -2193,13 +2185,15 @@
        * sticky items
        */
       stickyItems: function() {
+        var offDOM = ($('#prefooter').length > 0)?'#prefooter':'#footer';
+        var pinoffset = ($('#prefooter').length > 0)?'700':'auto';
 
         var elementsSticky = [
           {
             element: '.content-sidenav .block-views',
-            off: '#footer',
+            off: offDOM,
             offset: '150',
-            pinoffset: 'auto',
+            pinoffset: pinoffset,
             onFixed: '',
             onUnfixed: '',
             mobile: false
@@ -2210,12 +2204,10 @@
 
         $.each( elementsSticky, function( index, value ) {
           var canFix = true;
-          console.log('ho');
 
           if( isPhone && !value.mobile ) {
             canFix = false;
           }
-
 
           if( canFix ) {
             if ( $(value.element ).length > 0 && $( 'body.user-logged-in' ).length === 0 ) {

@@ -74,6 +74,7 @@
     node.isSticky() ? 'node--sticky',
     not node.isPublished() ? 'node--unpublished',
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    content.body|length <= 2 ? 'node--empty',
     'clearfix',
   ]
 %}
@@ -97,14 +98,18 @@
       </div>
     {% endif %}
   </header>
+  <div class="metadata">
+    {{ content.field_continent }}
+    <div class="node-id">{{ node.id }}</div>
+  </div>
 
-  <div class="node-id">{{ node.id }}</div>
-
+  {% if content.body|length > 2 %}
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-    {% if node.field_hide_datasheet.value == '1' %}
-      {{ content|without('group_data') }}
-    {% else %}
-      {{ content }}
+    {{ content.body }}
+
+    {% if node.field_hide_datasheet.value != '1' and content.group_data|length > 2  %}
+    {{ content.group_data }}
     {% endif %}
   </div>
+  {% endif %}
 </article>

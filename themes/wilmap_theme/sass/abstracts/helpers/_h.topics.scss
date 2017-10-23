@@ -19,15 +19,15 @@ $topic-gradient-dir:     180deg;
 // Topic gradient
 // -------------------------------------
 @mixin topic--gradient($pos:relative, $hover:true, $highlight:false) {
+  $topic-color-base: $topic-color-base;
+  $topic-color-hover: $topic-color-hover;
+
+  @if $highlight {
+    $topic-color-base: darken($topic-color-base, 10);
+    $topic-color-hover: darken($topic-color-hover, 10);
+  }
+
   & {
-
-    @if $highlight {
-    //   // $topic-color-base: darken($topic-color-base, 10);
-    //   // $topic-color-hover: darken($topic-color-hover, 10);
-      $topic-color-base: $yellow;
-      $topic-color-hover: $green;
-    }
-
     @include image-overlay(rgba($topic-color-base, 0), rgba($topic-color-base, 1), 1, $topic-gradient-dir, $pos);
 
     // gradient bottom
