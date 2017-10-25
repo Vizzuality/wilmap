@@ -338,7 +338,7 @@ function wilmap_contributors_form_alter(
           '#group'       => 'advanced',
           '#open'        => true,
           'markup'       => array(
-            '#markup' => '<p>Please <a href="/contact?r=' . $referrer . '">tell us here</a>.</p>',
+            '#markup' => '<p>Please <a href="/contact?c=' . $referrer . '">tell us here</a>.</p>',
           ),
           '#weight'      => 1000,
         );

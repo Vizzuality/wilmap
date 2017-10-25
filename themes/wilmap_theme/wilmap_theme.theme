@@ -216,12 +216,17 @@ function wilmap_theme_form_alter(&$form, FormStateInterface $form_state, $form_i
     if (strpos($form_id, 'contact_message_') !== FALSE) {
         $form['actions']['preview']['#access'] = FALSE;
 
-        // Adds subject and message if there is a referrer URL
+        // Adds subject and message if there is a "suggest edition" URL
         if($referrer = \Drupal::request()->query->get('r')){
+            $form['subject']['widget'][0]['value']['#default_value'] = t('Suggest edition');
+            $form['message']['widget'][0]['value']['#default_value'] = t('Suggest edition on page @link', array('@link' => $referrer));
+        }
+
+        // Adds subject and message if there is a "suggest contributor" URL
+        if($referrer = \Drupal::request()->query->get('c')){
             $form['subject']['widget'][0]['value']['#default_value'] = t('Suggest contributor');
             $form['message']['widget'][0]['value']['#default_value'] = t('Suggest contributor for @link', array('@link' => $referrer));
         }
-
 
     }
 

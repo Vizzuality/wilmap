@@ -89,7 +89,6 @@ process:
       ignore_case: true
       # value_key: title
 
-  # TODO: falta validar qué hacer si el valor es 'GENERAL INTRODUCTION'
   field_tax_section:
     plugin: static_map
     source: section
