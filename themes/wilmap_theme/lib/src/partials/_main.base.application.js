@@ -103,7 +103,9 @@
         App.Application.Maps.Config.color_styles                = {'style1':'#035e7e','style2':'#325735','style3':'#484d0c','style4':'#554324','style5':'#5b1717','style6':'#31244a'}
         App.Application.Maps.Config.click_on_map                = false;
 
-        App.Application.Maps.Functions.choropleth = function(color, currVal, minVal, maxVal, steps = 5) {
+        App.Application.Maps.Functions.choropleth = function(color, currVal, minVal, maxVal, steps) {
+          var steps = typeof steps !== 'undefined' ? steps : 5;
+
           // calculates the percent of value
           var percentValue = Math.floor((currVal - minVal) / (maxVal - minVal) * 100);
 
@@ -143,7 +145,10 @@
           }
         };
 
-        App.Application.Maps.Functions.activeContinent = function(continent, visually = true, center = false) {
+        App.Application.Maps.Functions.activeContinent = function(continent, visually, center) {
+          var visually = typeof visually !== 'undefined' ? visually : true;
+          var center = typeof center !== 'undefined' ? center : false;
+
           if (continent === 'none') {
             App.Application.Maps.Config.curr_continent_active = null;
 
@@ -180,7 +185,10 @@
           }
         };
 
-        App.Application.Maps.Functions.activeCountry = function(country, visually = true, center = false) {
+        App.Application.Maps.Functions.activeCountry = function(country, visually, center) {
+          var visually = typeof visually !== 'undefined' ? visually : true;
+          var center = typeof center !== 'undefined' ? center : false;
+
           if (country === 'none') {
             App.Application.Maps.Config.curr_country_active = null;
 
@@ -258,11 +266,14 @@
 
           // Update list
           if(!App.Application.Maps.Config.is_embed) {
+            country = (action === 'off') ? 'none':country;
             App.Application.ListMaps.Functions.activeHoverCountry(country, 'hover');
           }
         };
 
-        App.Application.Maps.Functions.loadLayer = function(layer, redraw = false) {
+        App.Application.Maps.Functions.loadLayer = function(layer, redraw) {
+          var redraw = typeof redraw !== 'undefined' ? redraw : false;
+
           App.Application.Maps.Config.curr_layer_active = (layer === 'none')?null:layer;
 
           //Style layer color -- random temporally - FAKE
@@ -403,6 +414,9 @@
         };
 
         var dom = '.block-wilmap-map .wilmap';
+        var dom_sidebar = '.ui-autocomplete.ui-widget-content';
+        var dom_footer = '.site-footer';
+        var dom_header = '.site-header';
         var api_countries = '/api/map/browse';
 
         if ($(dom).length > 0) {
@@ -412,8 +426,9 @@
             $(dom).width('100%');
             $(dom).height($(window).height());
           } else {
-            $(dom).width($(window).width() - 349);
-            $(dom).height($(window).height());
+            $(dom).width($(window).width() - $(dom_sidebar).width());
+            $(dom).height($(window).height() - $(dom_footer).height());
+            $(dom_sidebar).height($(window).height() - $(dom_footer).height() - $(dom_header).height() - 116);
           }
 
           // Init map
@@ -567,7 +582,8 @@
             $('.continent-list-item a.continent').removeClass('active');
             $('.continent-list-item .continent-list-drawer').removeClass('active');
           } else {
-            $('.continent-list-item a.continent').each(function (k, v, t = continent){
+            $('.continent-list-item a.continent').each(function (k, v){
+              var t = continent;
               console.log($(this).text() + ' - ' + t);
               if($(this).text() !== t) {
                 $(this).removeClass('active');
@@ -587,7 +603,10 @@
             $('.continent-list-item .country a[data-iso2="'+country+'"]').addClass(action);
 
             if(action === 'active') {
-              $(dom).scrollTop(($('.continent-list-item .country a[data-iso2="'+country+'"]').offset().top) - 200);
+              setTimeout(function(){
+                $(dom).scrollTop(($('.continent-list-item .country a[data-iso2="'+country+'"]').offset().top) - 200);
+              }, 300)
+
             }
           }
         };
@@ -603,14 +622,14 @@
               // Regions
               if (Object.keys(val.regions).length) {
                 $.each( val.regions, function( kr, vr ) {
-                  output += '<li class="country-list-item region"><a href="' + vr.path + '">' + vr.title + '</a>';
+                  output += '<li class="country-list-item region"><a data-original="' + vr.title + '" href="' + vr.path + '">' + vr.title + '</a>';
                 });
               }
 
               // Countries
               if (Object.keys(val.countries).length) {
                 $.each( val.countries, function( kc, vc ) {
-                  output += '<li class="country-list-item country"><a data-iso2="' + vc.iso2 + '" href="' + vc.path + '">' + vc.title + '</a>';
+                  output += '<li class="country-list-item country"><a data-original="' + vc.title + '" data-iso2="' + vc.iso2 + '" href="' + vc.path + '">' + vc.title + '</a>';
                 });
               }
 
@@ -658,7 +677,10 @@
         App.Application.countrySearchMaps.Functions = {};
 
         App.Application.countrySearchMaps.Functions.resetList = function() {
-          $(dom_autocomplete + ' .continent-list-drawer .country-list-item').show();
+          $(dom_autocomplete + ' .continent-list-drawer .country-list-item').each(function(k, v){
+              $(v).show().find('a').text($(v).find('a').data('original'));
+          });
+
         };
 
         App.Application.countrySearchMaps.Functions.initSearch = function() {
@@ -679,13 +701,21 @@
               $(dom + ' input[type="text"]').bind("keyup", function (e) {
                 var val = $(this).val();
 
-                if(val.length > 2) {
+                if(val.length > 0) {
                   App.Application.ListMaps.Functions.activeContinent('none');
 
                   $(dom_autocomplete + ' .continent-list-drawer').addClass('active');
                   $(dom_autocomplete + ' .continent-list-drawer .country-list-item').hide();
 
-                  $(dom_autocomplete + ' .continent-list-drawer .country-list-item.country').filter(':contains("'+val+'")').show();
+                  $(dom_autocomplete + ' .continent-list-drawer .country-list-item').each(function(k, v){
+                    var re = new RegExp( "(" + val + ")", "gi" );
+                    var template = '<span class="highlight">$1</span>';
+                    var html = $(v).text().replace( re, template );
+
+                    if ($(v).text().match(re)) {
+                      $(v).show().find('a').html(html);
+                    }
+                  });
                 } else {
                   App.Application.ListMaps.Functions.activeContinent('none');
                   App.Application.countrySearchMaps.Functions.resetList();
@@ -753,8 +783,20 @@
             ref: '.node__title a'
           },
           {
+            bigitem: '.view-contributors.view-id-contributors .view-content .views-row',
+            ref: '.contributor-info-holder .views-field-name a'
+          },
+          {
+            bigitem: '#block-activecontributors .content .views-row',
+            ref: '.views-field-name a'
+          },
+          {
             bigitem: '.item-list .search-results li',
             ref: '.search-result__title a'
+          },
+          {
+            bigitem: '.panel-block .view-content .views-row',
+            ref: '.node__title a'
           },
         ];
 
@@ -774,6 +816,22 @@
 
         $('a[href^="http://"], a[href^="https://"]').each(function(i, item) {
             $(this).attr('target','_blank');
+        });
+
+      },
+
+
+      /**
+       * Suggest edit footer
+       */
+      suggestEditFooter: function() {
+
+        var ref = window.location.href;
+
+        $('.site-footer .footer_second_wrap .block-menu li').each(function(i, item) {
+          if ($(item).text().toLowerCase().indexOf('suggest') != -1) {
+            $(item).find('a').attr('href', $(item).find('a').attr('href') + '/?r=' + ref);
+          }
         });
 
       },
@@ -992,9 +1050,9 @@
                 $(item).addClass('__active');
 
                 //Scroll content
-                setTimeout(function(){
-                  $(item).click();
-                }, 1000);
+                // setTimeout(function(){
+                //   $(item).click();
+                // }, 1000);
 
                 if(isPhone) {
                   // Nav to active item
@@ -1041,6 +1099,153 @@
           }
         });
       },
+
+
+      /**
+       * country and region prepare content + navigation
+       */
+      countryAndRegionContentNavigation: function() {
+        var dom = '.page-node-type-country, .page-node-type-region';
+        var dom_sidemenu = '.content-sidenav';
+        var dom_content =  '.region-content';
+        var dom_contentsections =  dom_content + ' > section';
+        var nid = $('.node-id').text();
+        var api_section_list = '/api/section';
+        var api_section = '/api/country-entries/country/' + nid + '/section/';
+        var isPhone = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
+        var uri = location.href.split('#')[1];
+            uri = (uri === undefined) ? '' : uri;
+
+        if ($(dom).length > 0) {
+          // Prepare sidenav
+          var sidemenu = '';
+          sidemenu += '<section class="views-element-container block block-views fake-view" id="custom-sidenav">';
+          sidemenu += '  <div class="content">';
+          sidemenu += '    <div>';
+          sidemenu += '      <div class="view view-continent">';
+          sidemenu += '        <div class="view-content">';
+
+          var enabled = ($('article.node').hasClass('node--empty'))?'__disabled':'__enabled';
+          sidemenu += '          <div class="views-row '+enabled+'"><a class="skip" gumby-duration="600" gumby-goto="top" href="#description">Description</a></div>';
+
+          sidemenu += '        </div>';
+          sidemenu += '      </div>';
+          sidemenu += '    </div>';
+          sidemenu += '  </div>';
+          sidemenu += '</section>';
+
+          // Print sidemenu and active tabs
+          if(!$(dom_sidemenu + ' .view-content').length > 0) {
+            $(dom_sidemenu).append(sidemenu);
+          }
+
+          // fix active contributos image
+          $('#block-activecontributors .views-field-user-picture').each(function(k,v){
+            var img = $(v).find('.field--name-user-picture').remove().text();
+            $(v).css('background-image', 'url('+img+')');
+          });
+
+          // Prepare static content
+          $.each($(dom_contentsections), function(i, k){
+
+            if(i === 0){
+              $(k).attr('id','panel-description');
+            } else {
+              $(k).attr('id', 'panel-' + App.Utils.Slugify($(k).find('h2').first().text()));
+              $(dom_sidemenu + ' .view-content').append('<div class="views-row __enabled"><a class="skip" gumby-duration="600" gumby-goto="top" href="#'+App.Utils.Slugify($(k).find('h2').first().text())+'">'+$(k).find('h2').first().text()+'</a></div>');
+            }
+
+            $(k).addClass('panel-block');
+          });
+
+          // load ajax content
+          $.get(api_section_list, function() {})
+            .done(function( data ) {
+
+              var count = 0;
+              var data_clone = data;
+              $.each(data_clone.reverse(), function(k, v){
+                // console.log(v.tid, v.name);
+
+                $(dom_sidemenu + ' .views-row').first().after('<div class="views-row __enabled"><a class="skip" gumby-duration="600" gumby-goto="top" href="#'+App.Utils.Slugify(v.name)+'">'+v.name+'</a></div>');
+                $(dom_content + ' .block-system-main-block').after('<section id="panel-' + App.Utils.Slugify(v.name) + '" class="panel-block block-topics"><h2 class="title-section">'+v.name+'</h2><div class="content"></div></div>');
+
+                // when all sections loaded
+                count++;
+                if(count == data_clone.length) {
+
+                  // Events
+                  $(dom_sidemenu + ' .view-content a').on('click', function(e){
+                    if(!$(this).hasClass('__active')) {
+                      $(dom_contentsections).removeClass('__active');
+                      $(dom_sidemenu + ' .view-content a').removeClass('__active');
+
+                      var id = '#panel-' + $(this).addClass('__active').attr('href').split('#')[1];
+                      $(dom_contentsections+id).addClass('__active');
+
+                      $(dom_sidemenu + ' .block-views').removeClass('fixed').removeClass('pinned');
+
+                      App.Utils.setBrowserURL($(this).attr('href'), document.title);
+                    }
+                  });
+
+
+                  // Active current/first content
+                  var id = '';
+                  if(uri === '') {
+                    id = '#panel-' + $(dom_sidemenu + ' .views-row.__enabled').first().find('a').addClass('__active').attr('href').split('#')[1];
+                    console.log(id);
+                  } else {
+                    id = '#panel-'+uri;
+                    $(dom_sidemenu + ' .views-row a[href="#'+uri+'"]').addClass('__active');
+                  }
+
+                  $(dom_contentsections+id).addClass('__active');
+                  Gumby.init();
+
+                  if(isPhone) {
+                    App.Application.methods.sidenavMobile();
+
+                    // Nav to active item
+                    var active = parseInt($(dom_sidemenu + ' .view-content a.__active').parents('.slick-slide').attr('data-slick-index'));
+                    $(dom_sidemenu + ' .view-content').slick('slickGoTo', active);
+                  }
+                }
+
+                // Load ajax content
+                $.get(api_section + v.tid, function() {})
+                  .done(function( data2 ) {
+                    var el = $(data2).find('.region-content section .content > div');
+                    var id = '#panel-' + App.Utils.Slugify(v.name);
+
+                    $(dom_contentsections+id+' .content').html($(el).unwrap());
+                    App.Application.methods.bigLinkAreas();
+                  });
+              });
+            });
+        }
+      },
+
+
+      /**
+       * title + map country/region detail
+       */
+      countryAndRegionHeader: function() {
+        var dom = '.page-node-type-country, .page-node-type-region';
+
+        if ($(dom).length > 0 && !$('#block-pagetitle .node-top').length > 0) {
+          // country name
+          var country = ($('body').hasClass('page-node-type-country')) ? $('.field--name-field-continent-country').text():$('.field--name-field-continent').text();
+          $('#block-pagetitle').prepend('<div class="node-top"><div class="field--name-field-tax-section">'+country+'</div></div>');
+
+          // goto map
+          $('#block-pagetitle').prepend('<a href="/map" class="btn">Go to Map</a>');
+
+          // map
+
+        }
+      },
+
 
       /**
        * Lists Switch
@@ -1103,13 +1308,15 @@
        * sticky items
        */
       stickyItems: function() {
+        var offDOM = ($('#prefooter').length > 0)?'#prefooter':'#footer';
+        var pinoffset = ($('#prefooter').length > 0)?'700':'auto';
 
         var elementsSticky = [
           {
             element: '.content-sidenav .block-views',
-            off: '#footer',
+            off: offDOM,
             offset: '150',
-            pinoffset: 'auto',
+            pinoffset: pinoffset,
             onFixed: '',
             onUnfixed: '',
             mobile: false
@@ -1124,7 +1331,6 @@
           if( isPhone && !value.mobile ) {
             canFix = false;
           }
-
 
           if( canFix ) {
             if ( $(value.element ).length > 0 && $( 'body.user-logged-in' ).length === 0 ) {

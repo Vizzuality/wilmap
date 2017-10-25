@@ -567,6 +567,8 @@ body.path-frontpage.both-sidebars #sidebar-second {
       display: table; }
     .main-content-inner .content-sidenav:after {
       clear: both; }
+    .main-content-inner .content-sidenav .tab-nav {
+      border: none; }
     .main-content-inner .content-sidenav .views-row {
       margin: 0;
       padding: 0;
@@ -857,7 +859,7 @@ label {
   margin: 0;
   padding: 0;
   position: relative;
-  padding: 20px 16px !important;
+  padding: 10px 16px !important;
   font-size: 16px;
   font-size: 1rem;
   line-height: 16px;
@@ -867,6 +869,7 @@ label {
   border-radius: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
+  height: 42px;
   color: #968f7e;
   background: #fff;
   border: 1px solid #e6e6e6;
@@ -1956,18 +1959,31 @@ button.btn,
           top: 20px; } }
       .site-footer .footer_second_wrap .block-menu ul {
         text-align: right; }
-        .site-footer .footer_second_wrap .block-menu ul li a {
-          font-size: 16px;
-          font-size: 1rem;
-          line-height: 16px;
-          line-height: 1rem;
-          font-weight: 600;
-          font-family: "Raleway", sans-serif;
-          text-transform: uppercase;
-          color: #fff;
-          text-decoration: none; }
-          .site-footer .footer_second_wrap .block-menu ul li a:hover {
-            text-decoration: underline; }
+        .site-footer .footer_second_wrap .block-menu ul li {
+          display: inline-block;
+          margin-left: 15px; }
+          .site-footer .footer_second_wrap .block-menu ul li a {
+            font-size: 16px;
+            font-size: 1rem;
+            line-height: 16px;
+            line-height: 1rem;
+            font-weight: 600;
+            font-family: "Raleway", sans-serif;
+            text-transform: uppercase;
+            color: #fff;
+            text-decoration: none; }
+            .site-footer .footer_second_wrap .block-menu ul li a:hover {
+              text-decoration: underline; }
+
+body.node-map .site-footer {
+  margin-top: 0; }
+  body.node-map .site-footer .footer_second_wrap .block-block-content .logo-cis {
+    background-position: bottom left;
+    height: 35px; }
+  body.node-map .site-footer .footer_second_wrap .block-block-content .logo-sign {
+    top: 15px; }
+  body.node-map .site-footer .footer_second_wrap .block-menu {
+    top: 13px; }
 
 .block-page-title-block {
   position: relative;

@@ -1,0 +1,45 @@
+// ============================================================================
+//
+// COMPONENTS: TAKE PART BLOCK
+//
+// ============================================================================
+
+#block-takepart {
+  @include margin($dp * 5 null null null);
+  width: 100%;
+  background-color: $third-color;
+
+  .content {
+    @include row();
+    @include padding($dp * 7 null $dp * 3 null);
+
+    .text-formatted {
+      @include column(8, center, false, false);
+      text-align: center;
+
+      h3 {
+        @include text-secondary-header($second-color, 40px);
+        @include margin(null null $dp * 2 null);
+      }
+
+      p {
+        @include padding(null $dp * 2);
+        color: $second-color;
+      }
+
+      .site-btn {
+        @include margin(null $dp / 2);
+
+        a {
+          @include button-transparent-red();
+        }
+
+        &:first-child {
+          a {
+            @include button-white();
+          }
+        }
+      }
+    }
+  }
+}

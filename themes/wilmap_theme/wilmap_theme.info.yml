@@ -24,6 +24,7 @@ regions:
   sidebar_first: 'Sidebar first'
   sidebar_second: 'Sidebar second'
   featured_bottom: 'Featured bottom'
+  prefooter: 'Pre-Footer'
   footer_first: 'Footer first'
   footer_second: 'Footer second'
 settings:

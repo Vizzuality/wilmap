@@ -168,6 +168,9 @@ $news-gradient-dir:     180deg;
       }
 
       .node__links {
+        position: relative;
+        z-index: 10;
+        
         a {
           @include default-button();
         }

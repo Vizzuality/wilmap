@@ -16,14 +16,13 @@
  * @see template_preprocess_user()
  */
 #}
-<div class="contributor-info">
-  {% if content.user_picture %}
-    {{ content.user_picture }}
-  {% endif %}
-  
-  <a href="{{ path('entity.user.canonical', {'user': user.id}) }}">{{ user.displayname }}</a>
-
-  {% if content.field_profile_title %}
-    {{ content.field_profile_title }}
-  {% endif %}
+<div class="views-row">
+  <div class="contributor-image-holder">
+    <div class="hover-text">Go to profile</div>
+    <div class="views-field views-field-user-picture">{{ content.user_picture }}</div>
+  </div>
+  <div class="contributor-info-holder">
+    <div class="views-field views-field-name"><a href="{{ path('entity.user.canonical', {'user': user.id}) }}">{{ user.displayname }}</a></div>
+    <div class="views-field views-field-field-profile-title">{{ content.field_profile_title }}</div>
+  </div>
 </div>

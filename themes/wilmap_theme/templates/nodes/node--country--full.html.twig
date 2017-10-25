@@ -74,6 +74,7 @@
     node.isSticky() ? 'node--sticky',
     not node.isPublished() ? 'node--unpublished',
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    content.field_body_country|length <= 2 ? 'node--empty',
     'clearfix',
   ]
 %}
@@ -97,16 +98,23 @@
       </div>
     {% endif %}
   </header>
-  {{ content.field_continent_country }}
-  {{ content.field_body_country }}
-
-  <div class="action multi-action">     
-          <a class="btn searchinexplore" href="/entries?country={{ node.id }}">Search in Explore</a>
+  <div class="metadata">
+    {{ content.field_iso2 }}
+    {{ content.field_continent_country }}
+    <div class="node-id">{{ node.id }}</div>
   </div>
-  
+
+  {% if content.field_body_country|length > 2 %}
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-    {% if node.field_hide_datasheet.value == '0' %}
-      {{ content.group_data }}
+    {{ content.field_body_country }}
+
+    <div class="action multi-action">
+      <a class="btn searchinexplore" href="/entries?country={{ node.id }}">Search in Explore</a>
+    </div>
+
+    {% if node.field_hide_datasheet.value != '1' and content.group_data|length > 2  %}
+    {{ content.group_data }}
     {% endif %}
   </div>
+  {% endif %}
 </article>

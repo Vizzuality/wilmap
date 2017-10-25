@@ -161,17 +161,23 @@ function wilmap_theme_preprocess_maintenance_page(&$variables) {
 function wilmap_theme_preprocess_views_view_fields(&$variables) {
   $view = $variables['view'];
 
-  if($view->id() == 'contributors') {
-    $contributor_uid = intval(strip_tags($variables['fields']['uid']->content));
-    $account = \Drupal\user\Entity\User::load($contributor_uid);
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $bundle = $node->bundle();
 
-    $ranking_service = \Drupal::service('wilmap_contributors.ranking');
-    $contributors = intval($ranking_service->getUserContributions($account->id()));
-    $ranking = intval($ranking_service->getUserRanking($account->id()));
+    /*if($view->id() == 'contributors' && $bundle != 'country' && $bundle != 'region') {*/
+    if($view->id() == 'contributors') {
+      $contributor_uid = intval(strip_tags($variables['fields']['uid']->content));
+      $account = \Drupal\user\Entity\User::load($contributor_uid);
 
-    $variables['fields']['contributions'] = ($contributors < 10 && $contributors != 0)?'0'.$contributors:$contributors;
-    $variables['fields']['ranking'] = ($ranking < 10 && $ranking != 0)?'0'.$ranking:$ranking;
+      $ranking_service = \Drupal::service('wilmap_contributors.ranking');
+      $contributors = intval($ranking_service->getUserContributions($account->id()));
+      $ranking = intval($ranking_service->getUserRanking($account->id()));
+
+      $variables['fields']['contributions'] = ($contributors < 10 && $contributors != 0)?'0'.$contributors:$contributors;
+      $variables['fields']['ranking'] = ($ranking < 10 && $ranking != 0)?'0'.$ranking:$ranking;
+    }
   }
+
 }
 
 /**
@@ -263,6 +269,3 @@ function wilmap_theme_theme_suggestions_page_alter(array &$suggestions, array $v
     $suggestions[] = 'page__'.$content_type;
   }
 }
-
-
-

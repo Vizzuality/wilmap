@@ -89,10 +89,11 @@ label {
   .input {
     @include trim();
     @include position(relative);
-    @include padding($dp * 2 $dp * 1.6 !important);
+    @include padding($dp $dp * 1.6 !important);
     @include font($normal, 1, $form-input-weight, $body-font);
     @include border-radius($form-input-radius);
     @include box-shadow(none);
+    height: 42px;
     color: $form-input-color;
     background: $form-input-bg-color;
     border: $form-input-stroke-size solid $form-input-stroke-color;

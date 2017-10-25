@@ -207,7 +207,7 @@
     * shadeColor("#63C6FF",40); //lighten
     * shadeColor("#63C6FF",-40); //darken
     */
-    shadeColor(color, percent) {
+    shadeColor: function(color, percent) {
 
         var R = parseInt(color.substring(1,3),16);
         var G = parseInt(color.substring(3,5),16);
@@ -226,5 +226,12 @@
         var BB = ((B.toString(16).length==1)?"0"+B.toString(16):B.toString(16));
 
         return "#"+RR+GG+BB;
+    },
+
+    /**
+    * setBrowserURL
+    */
+    setBrowserURL: function(href, title) {
+      window.history.pushState(href, title, href);
     }
   };
