@@ -960,6 +960,7 @@
         App.Application.Maps.Config = {};
         App.Application.Maps.Functions = {};
         App.Application.Maps.Data = {};
+        App.Application.Maps.ContinentData = {};
         App.Application.Maps.Config.wilmap                      = null;
         App.Application.Maps.Config.popup                       = null;
         App.Application.Maps.Config.basemapcontinents           = null;
@@ -1003,23 +1004,114 @@
           return App.Utils.shadeColor(color, percentColor)
         };
 
+        App.Application.Maps.Functions.centerMap = function(coord) {
+          var is_coord = typeof coord === 'string' ? false : true
+
+          if ( is_coord ) {
+            App.Application.Maps.Config.wilmap.fitBounds(coord);
+          } else {
+            var continent = App.Application.Maps.ContinentData[coord];
+            App.Application.Maps.Config.wilmap.setView([continent.centroid[1],continent.centroid[0]], continent.zoom, {animation: true});
+          }
+        };
+
         App.Application.Maps.Functions.resetActiveMap = function() {
           App.Application.Maps.Functions.activeContinent('none');
           App.Application.Maps.Functions.activeCountry('none');
           App.Application.Maps.Config.wilmap.closePopup(App.Application.Maps.Config.popup);
         };
 
-        App.Application.Maps.Functions.showPopup = function(iso2, layer, coord) {
-          if (App.Application.Maps.Data[iso2]) {
-            var goto_button = (App.Application.Maps.Data[iso2].path)?'<a class="btn" href="' + App.Application.Maps.Data[iso2].path + '">GO TO COUNTRY PAGE</a>':'';
-            var info_popup = '<p><strong>' + App.Application.Maps.Data[iso2].title + '</strong></p><p></p>';
-            var output = '<div class="popup-inner"><div class="popup-inner-left"><span>00</span>Articles</div><div class="popup-inner-right"><div class="popup-info">' + info_popup + '</div><div class="popup-actions">' + goto_button + '</div></div></div>';
+        App.Application.Maps.Functions.generateLayerModal = function() {
+          var DOM = 'modal-maplayer';
+          var API = '/api/layers';
+          var output_layers = '';
+          var output = '';
 
-            App.Application.Maps.Config.popup = L.popup();
-            App.Application.Maps.Config.popup.setLatLng(coord);
-            App.Application.Maps.Config.popup.setContent(output);
-            App.Application.Maps.Config.popup.openOn(App.Application.Maps.Config.wilmap);
-          }
+          // get Layers
+          $.getJSON( API, function( data ) {
+            console.log("LAYERS::::::::::::::");
+            console.log(data);
+
+            output_layers += '<ul>';
+            $.each( data, function( key, val ) {
+              output_layers += '<li class="layer-item field">';
+              output_layers += '<label class="checkbox" for="layer-item-'+key+'"><input type="checkbox" id="layer-item-'+key+'" name="layer-item[]" value="'+val.nid[0].value+'"><span></span> '+val.title[0].value+'</label>';
+              output_layers += '</li>';
+            });
+            output_layers += '</ul>';
+
+            if ( !$('#' + DOM).length > 0 ) {
+              output += '<div class="modal" id="'+DOM+'">';
+              output += '  <div class="content">';
+              output += '    <a class="close switch" gumby-trigger="|#modal-maplayer">CLOSE</a>';
+              output += '      <h3>Layers</h3>';
+              output += '      <div class="content-inner">';
+              output += '         <section>';
+              output += output_layers;
+              output += '         </section>';
+              output += '         <div class="modal-actions"><a href="#" class="btn modal-done">APPLY</a></div>';
+              output += '      </div>';
+              output += '  </div>';
+              output += '</div>';
+
+              // Write modal in body
+              $('body').append(output);
+              $(dom + ' .actions').append('<a class="btn switch" href="#" gumby-trigger="#modal-maplayer">Layers</a>');
+
+              // Events
+              //App.Gumbyfy.methods.formsUI();
+              $('#' + DOM + ' label.checkbox').on('click', function(e) {
+                e.preventDefault();
+
+                if ( !$(this).hasClass('checked') ) {
+                  $('#' + DOM + ' label.checkbox.checked i.icon-check').remove();
+                  $('#' + DOM + ' label.checkbox.checked input').prop('checked', false); ;
+                  $('#' + DOM + ' label.checkbox.checked').removeClass('checked');
+                }
+              });
+
+              // done button
+              $('#' + DOM + ' .modal-actions a.modal-done').on('click', function(e) {
+                e.preventDefault();
+                var layer = ($('#' + DOM + ' label.checkbox.checked').length > 0) ? $('#' + DOM + ' label.checkbox.checked input').val() : 'none';
+
+                App.Application.Maps.Functions.resetActiveMap()
+                App.Application.Maps.Functions.loadLayer(layer, true);
+
+                $('#' + DOM + '  a.close').click();
+              });
+            };
+          });
+        };
+
+        App.Application.Maps.Functions.showPopup = function(iso2, layer, coord) {
+          var API = '/api/country/data/iso2/';
+
+          if (App.Application.Maps.Data[iso2]) {
+            $.getJSON( API + iso2, function( data ) {
+              var total = 0;
+              var goto_button = (App.Application.Maps.Data[iso2].path)?'<a class="btn" href="' + App.Application.Maps.Data[iso2].path + '">GO TO COUNTRY PAGE</a>':'';
+              var info_popup = '<p><strong>' + App.Application.Maps.Data[iso2].title + '</strong></p><ul>';
+
+
+              $.each( data.values, function( key, val ) {
+                console.log(val);
+
+                total = total + parseInt(val.count);
+                info_popup += '<li><span class="count">' + val.count + '</span> ' + val.label + '</li>';
+              });
+
+              info_popup += '</ul>';
+
+              total = (total < 10) ? '0' + total : total;
+              var output = '<div class="popup-inner"><div class="popup-inner-left"><span>'+total+'</span>Articles</div><div class="popup-inner-right"><div class="popup-info">' + info_popup + '</div><div class="popup-actions">' + goto_button + '</div></div></div>';
+
+              App.Application.Maps.Config.popup = L.popup();
+              App.Application.Maps.Config.popup.setLatLng(coord);
+              App.Application.Maps.Config.popup.setContent(output);
+              App.Application.Maps.Config.popup.openOn(App.Application.Maps.Config.wilmap);
+            });
+          };
         };
 
         App.Application.Maps.Functions.activeContinent = function(continent, visually, center) {
@@ -1050,7 +1142,8 @@
                 }
 
                 if (center){
-                  App.Application.Maps.Config.wilmap.fitBounds(layer.getBounds());
+                  // App.Application.Maps.Functions.centerMap(layer.getBounds());
+                  App.Application.Maps.Functions.centerMap(continent);
                 }
               }
             });
@@ -1092,7 +1185,8 @@
                 });
 
                 if (center){
-                  App.Application.Maps.Config.wilmap.fitBounds(layer.getBounds());
+                  // App.Application.Maps.Functions.centerMap(layer.getBounds());
+                  App.Application.Maps.Functions.centerMap(continent);
                 }
 
                 if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
@@ -1335,8 +1429,14 @@
             });
           });
 
-          App.Application.Maps.Functions.loadLayer('none', false);
+          // Continents
+          $.each( geoContinents.features, function ( key, val ) {
+            var v = val.properties;
+            var obj = {'id':key,'title':v.CONTINENT,'centroid':v.centroid,'zoom':v.zoom};
+            App.Application.Maps.ContinentData[v.CONTINENT] = obj;
+          });
 
+          App.Application.Maps.Functions.loadLayer('none', false);
 
           // Vector maps
           App.Application.Maps.Functions.drawBaseMap();
@@ -1359,8 +1459,12 @@
           // Layer buttons
           if (!App.Application.Maps.Config.is_embed) {
             $(dom).append('<div class="actions"></div>');
-            $(dom + ' .actions').append('<a href="#" class="btn" id="randomcolor">SIMULATE LOAD LAYER COLOR</a>');
-            $(dom + ' .actions').append('<a href="#" class="btn" id="resetcolor">REMOVE COLOR</a>');
+//            $(dom + ' .actions').append('<a href="#" class="btn" id="randomcolor">SIMULATE LOAD LAYER COLOR</a>');
+//            $(dom + ' .actions').append('<a href="#" class="btn" id="resetcolor">REMOVE COLOR</a>');
+            $(dom + ' .actions').append('<a class="btn" href="#" data-action="share" data-embed="true">Share</a>');
+
+            // Generate Layer modal
+            App.Application.Maps.Functions.generateLayerModal();
 
             $('#randomcolor').on('click', function(e){
               App.Application.Maps.Functions.resetActiveMap()
@@ -1719,12 +1823,15 @@
        */
       shareThis: function() {
         var dom = 'a[data-action="share"]';
+        var embed = ($(dom).attr('data-embed') !== 'undefined' && $(dom).attr('data-embed') === 'true') ? true : false;
+        var embed_style = (embed) ? '' : ' style="display:none"';
         var output = '';
         var url_to_share = escape(window.location.href);
         var title_to_share = document.title;
 
-        // console.log(escape(window.location.href));
+        console.log(url_to_share);
         // console.log(title_to_share);
+        // console.log(embed);
 
         if ($(dom).length > 0) {
           output += '<div class="modal" id="modal-share">';
@@ -1735,20 +1842,25 @@
           output += '         <section class="tabs">';
           output += '           <ul class="tab-nav">';
           output += '             <li class="active"><a href="#">Share Page</a></li>';
-          output += '             <!-- <li><a href="#">Embed map</a></li> -->';
+          output += '             <li' + embed_style + '><a href="#">Embed map</a></li>';
           output += '           </ul>';
           output += '           <div class="tab-content active">';
           output += '             <a class="btn sharebutton fb" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u='+url_to_share+'">Share on facebook</a>';
           output += '             <a class="btn sharebutton twitter" target="_blank" href="https://twitter.com/share?url='+url_to_share+'">Share on twitter</a>';
           output += '             <br /><br />';
-          output += '             <div class="copy-url append field">';
+          output += '             <div id="share-input" class="copy-url append field">';
           output += '               <input class="input" type="text" value="'+unescape(url_to_share)+'" />';
           output += '               <a class="btn" href="#">COPY</a>';
           output += '               <div class="result"></div>';
           output += '             </div>';
           output += '           </div>';
           output += '           <div class="tab-content">';
-          output += '             <p>Comparte mapa</p>';
+          output += '             <p>' + Drupal.t('Copy and Paste this code in your website in the HTML editor view.') + '</p>';
+          output += '             <div id="share-textarea" class="copy-url field">';
+          output += '               <textarea class="js-text-full text-full form-textarea input textarea"><iframe width="600" height="400" src="http://dev-wilmap.pantheonsite.io/widgets/map/?'+unescape(url_to_share.split('%3Fck')[1])+'"></iframe></textarea><br />';
+          output += '               <a class="btn" href="#">COPY EMBED CODE</a>';
+          output += '               <div class="result"></div>';
+          output += '             </div>';
           output += '           </div>';
           output += '         </section>';
           output += '      </div>';
@@ -1762,7 +1874,11 @@
           $(dom).addClass('switch').attr('gumby-trigger','#modal-share');
 
           $(dom).on('click', function(){
-            $('.copy-url .result').text('').removeClass('success').removeClass('error');
+            $('.copy-url .result').text('').removeClass('success').removeClass('error').removeClass('empty');
+          });
+
+          $('#modal-share .tab-nav li a').on('click', function(){
+            $('.copy-url .result').text('').removeClass('success').removeClass('error').removeClass('empty');
           });
 
           // Actions in share button
@@ -1778,6 +1894,8 @@
 
           // Copy URL to clipboard
           $('.copy-url a.btn').on('click', function(e){
+            $('.copy-url .result').text('').removeClass('success').removeClass('error').removeClass('empty');
+
             try {
               $('.copy-url .input').select();
               document.execCommand("copy");
@@ -1785,6 +1903,10 @@
             } catch(err) {
               $('.copy-url .result').text('Page URL not copied. Please select and copy with your keyboard.').addClass('error');
             }
+
+            setTimeout(function(){
+              $('.copy-url .result').addClass('empty');
+            }, 2000);
 
             e.preventDefault();
           });

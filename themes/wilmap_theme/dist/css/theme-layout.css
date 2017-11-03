@@ -1436,6 +1436,14 @@ button.btn,
     .modal .content .close::-moz-focus-inner {
       padding: 0 !important;
       margin: -1px !important; }
+  .modal .content .modal-actions {
+    padding-bottom: 20px;
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    width: 100%; }
 
 .site-header {
   margin: 0;

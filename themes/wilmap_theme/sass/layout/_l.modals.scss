@@ -74,5 +74,12 @@ $modal-close-bg-button:                 $fifth-color;
       right: 0;
       cursor: pointer;
     }
+
+    .modal-actions {
+      @include padding(null null $dp * 2 null);
+      @include position(absolute, auto null 0 0);
+      text-align: center;
+      width: 100%;
+    }
   }
 }

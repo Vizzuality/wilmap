@@ -1622,7 +1622,8 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       text-decoration: none; }
       .block-views-blockentries-block-1 .node .field--name-field-tax-section:hover {
         text-decoration: none; }
-  .block-views-blockentries-block-1 .node .field--name-field-location-entry {
+  .block-views-blockentries-block-1 .node .field--name-field-location-entry,
+  .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference {
     font-size: 16px;
     font-size: 1rem;
     line-height: 27.2px;
@@ -1632,7 +1633,8 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
     margin-bottom: 5px;
     color: #968f7e;
     text-decoration: none; }
-    .block-views-blockentries-block-1 .node .field--name-field-location-entry a {
+    .block-views-blockentries-block-1 .node .field--name-field-location-entry a,
+    .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference a {
       font-size: 14px;
       font-size: 0.875rem;
       line-height: 23.8px;
@@ -1641,7 +1643,8 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       font-family: "Raleway", sans-serif;
       color: #968f7e;
       text-decoration: none; }
-      .block-views-blockentries-block-1 .node .field--name-field-location-entry a:hover {
+      .block-views-blockentries-block-1 .node .field--name-field-location-entry a:hover,
+      .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference a:hover {
         text-decoration: underline; }
 .block-views-blockentries-block-1 .views-row {
   margin-bottom: 20px;
@@ -1797,7 +1800,8 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       text-decoration: none; }
       .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section:hover {
         text-decoration: none; }
-  .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry {
+  .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry,
+  .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference {
     font-size: 16px;
     font-size: 1rem;
     line-height: 27.2px;
@@ -1807,7 +1811,8 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
     margin-bottom: 5px;
     color: #968f7e;
     text-decoration: none; }
-    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry a {
+    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry a,
+    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference a {
       font-size: 14px;
       font-size: 0.875rem;
       line-height: 23.8px;
@@ -1816,7 +1821,8 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       font-family: "Raleway", sans-serif;
       color: #968f7e;
       text-decoration: none; }
-      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry a:hover {
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry a:hover,
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference a:hover {
         text-decoration: underline; }
   .block-views-blockentries-block-1 .view-highlighted-entries .node:hover {
     background-color: #cfc7b4; }
@@ -3525,7 +3531,9 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       text-decoration: none; }
       .block-views-blocklist-entries-block-1 .node .field--name-field-tax-section:hover, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-section:hover {
         text-decoration: none; }
-  .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry {
+  .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry,
+  .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry,
+  .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference {
     font-size: 16px;
     font-size: 1rem;
     line-height: 27.2px;
@@ -3535,7 +3543,9 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     margin-bottom: 5px;
     color: #968f7e;
     text-decoration: none; }
-    .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry a, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry a {
+    .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry a,
+    .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference a, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry a,
+    .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference a {
       font-size: 14px;
       font-size: 0.875rem;
       line-height: 23.8px;
@@ -3544,7 +3554,9 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       font-family: "Raleway", sans-serif;
       color: #968f7e;
       text-decoration: none; }
-      .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry a:hover, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry a:hover {
+      .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry a:hover,
+      .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference a:hover, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry a:hover,
+      .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference a:hover {
         text-decoration: underline; }
 .block-views-blocklist-entries-block-1 .views-row, .block-views-blocklist-entries-block-1._switch-on .views-row {
   margin-bottom: 20px;
@@ -3695,7 +3707,8 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       text-decoration: none; }
       .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-section:hover {
         text-decoration: none; }
-  .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry {
+  .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry,
+  .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference {
     font-size: 16px;
     font-size: 1rem;
     line-height: 27.2px;
@@ -3705,7 +3718,8 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     margin-bottom: 5px;
     color: #968f7e;
     text-decoration: none; }
-    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry a {
+    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry a,
+    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference a {
       font-size: 14px;
       font-size: 0.875rem;
       line-height: 23.8px;
@@ -3714,7 +3728,8 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       font-family: "Raleway", sans-serif;
       color: #968f7e;
       text-decoration: none; }
-      .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry a:hover {
+      .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry a:hover,
+      .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference a:hover {
         text-decoration: underline; }
 .block-views-blocklist-entries-block-1._switch-off .views-row {
   width: 49.11111%;
@@ -4587,7 +4602,8 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
       text-decoration: none; }
       article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-section:hover {
         text-decoration: none; }
-  article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry {
+  article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry,
+  article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference {
     font-size: 16px;
     font-size: 1rem;
     line-height: 27.2px;
@@ -4597,7 +4613,8 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
     margin-bottom: 5px;
     color: #968f7e;
     text-decoration: none; }
-    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry a {
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry a,
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference a {
       font-size: 14px;
       font-size: 0.875rem;
       line-height: 23.8px;
@@ -4606,7 +4623,8 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
       font-family: "Raleway", sans-serif;
       color: #968f7e;
       text-decoration: none; }
-      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry a:hover {
+      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry a:hover,
+      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference a:hover {
         text-decoration: underline; }
 article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items > .field__item {
   width: 49.11111%;
@@ -5349,7 +5367,9 @@ body.page-node-type-region #content-content {
           body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section:hover {
             text-decoration: none; }
       body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry,
-      body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry {
+      body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference,
+      body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry,
+      body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference {
         font-size: 16px;
         font-size: 1rem;
         line-height: 27.2px;
@@ -5360,7 +5380,9 @@ body.page-node-type-region #content-content {
         color: #968f7e;
         text-decoration: none; }
         body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry a,
-        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry a {
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference a,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry a,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference a {
           font-size: 14px;
           font-size: 0.875rem;
           line-height: 23.8px;
@@ -5370,7 +5392,9 @@ body.page-node-type-region #content-content {
           color: #968f7e;
           text-decoration: none; }
           body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry a:hover,
-          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry a:hover {
+          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference a:hover,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry a:hover,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference a:hover {
             text-decoration: underline; }
     body.page-node-type-country #content-content section:not(.block-system-main-block) .views-row,
     body.page-node-type-region #content-content section:not(.block-system-main-block) .views-row {

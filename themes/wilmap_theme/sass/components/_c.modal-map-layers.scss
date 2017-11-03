@@ -1,0 +1,30 @@
+// ============================================================================
+//
+// COMPONENTS: MODAL MAP LAYER
+//
+// ============================================================================
+
+#modal-maplayer {
+
+  h3 {
+    margin-bottom: $dp * 3;
+  }
+
+  .content {
+    min-height: 38%;
+
+    ul {
+      @include column(12, center, collapse, false);
+
+      li.layer-item {
+        &:nth-child(even) {
+          @include column(6, center, collapse, false);
+        }
+
+        &:nth-child(odd) {
+          @include column(6);
+        }
+      }
+    }
+  }
+}

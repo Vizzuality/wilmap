@@ -7,7 +7,7 @@
   .tabs:after, .messages__wrapper:after, #block-takepart .content:after {
     clear: both; }
 
-.tabs .tabs, .user-actions, .user-actions .attachments, .user-actions .action, .action, #block-takepart .content .text-formatted {
+.tabs .tabs, #modal-maplayer .content ul, #modal-maplayer .content ul li.layer-item:nth-child(even), #modal-maplayer .content ul li.layer-item:nth-child(odd), .user-actions, .user-actions .attachments, .user-actions .action, .action, #block-takepart .content .text-formatted {
   margin-left: 1.77778%;
   float: left;
   min-height: 1px;
@@ -625,6 +625,7 @@
     -webkit-box-shadow: none;
     box-shadow: none;
     border-radius: 0;
+    margin-right: 30px;
     border: none;
     position: relative;
     top: 14px; }
@@ -652,7 +653,9 @@
       text-decoration: none;
       text-align: left;
       opacity: 1 !important;
-      border-bottom: 5px solid transparent; }
+      border-bottom: 5px solid transparent;
+      background: transparent;
+      height: 35px; }
       @media only screen and (min-width: 768px) and (max-width: 1124px) {
         #modal-share .tab-nav li a {
           font-size: 13px;
@@ -789,6 +792,13 @@
     @media only screen and (max-width: 767px) {
       #modal-share .copy-url .input {
         width: 55%; } }
+  #modal-share .copy-url .textarea {
+    margin-bottom: 10px;
+    width: 90%;
+    height: 80px; }
+    @media only screen and (max-width: 767px) {
+      #modal-share .copy-url .textarea {
+        width: 65%; } }
   #modal-share .copy-url .result {
     font-size: 14px;
     font-size: 0.875rem;
@@ -796,11 +806,47 @@
     line-height: 0.875rem;
     font-weight: 400;
     font-family: "Raleway", sans-serif;
-    padding: 10px; }
+    padding: 10px;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease; }
     #modal-share .copy-url .result.success {
       color: #46a546; }
     #modal-share .copy-url .result.error {
       color: #9d261d; }
+    #modal-share .copy-url .result.empty {
+      color: transparent; }
+
+#modal-maplayer h3 {
+  margin-bottom: 30px; }
+#modal-maplayer .content {
+  min-height: 38%; }
+  #modal-maplayer .content ul {
+    float: none;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 85.46032%; }
+    @media only screen and (max-width: 767px) {
+      #modal-maplayer .content ul {
+        float: left;
+        margin-left: 0;
+        width: 100%; } }
+    #modal-maplayer .content ul li.layer-item:nth-child(even) {
+      float: none;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      width: 41.84127%; }
+      @media only screen and (max-width: 767px) {
+        #modal-maplayer .content ul li.layer-item:nth-child(even) {
+          float: left;
+          margin-left: 0;
+          width: 100%; } }
+    #modal-maplayer .content ul li.layer-item:nth-child(odd) {
+      width: 41.84127%; }
+      @media only screen and (max-width: 767px) {
+        #modal-maplayer .content ul li.layer-item:nth-child(odd) {
+          float: left;
+          margin-left: 0;
+          width: 100%; } }
 
 .contact-message-personal-form.modal .content {
   position: relative;

@@ -29,6 +29,7 @@
     li {
       @include box-shadow(none);
       @include border-radius($metro-radius);
+      @include margin(null $dp * 3 null null);
       border: none;
       position: relative;
       top: 14px;
@@ -47,6 +48,8 @@
         text-align: left;
         opacity: 1 !important;
         border-bottom: 5px solid transparent;
+        background: transparent;
+        height: $dp * 3.5;
       }
 
       &.active {
@@ -91,7 +94,7 @@
 
   .copy-url {
     @include trim();
-    
+
     .input {
       width: 80%;
 
@@ -100,9 +103,20 @@
       }
     }
 
+    .textarea {
+      @include margin(null null $dp null);
+      width: 90%;
+      height: $dp * 8;
+
+      @include respond(all-phones) {
+        width: 65%;
+      }
+    }
+
     .result {
       @include font($normal - 2, 1, $regular, $body-font);
       @include padding($dp);
+      @include transition(all .3s ease);
 
       &.success {
         color: $success-color;
@@ -110,6 +124,10 @@
 
       &.error {
         color: $danger-color;
+      }
+
+      &.empty {
+        color: transparent;
       }
     }
   }

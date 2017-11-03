@@ -178,7 +178,8 @@ $entry-gradient-dir:     180deg;
         @include entry--taxonomy();
       }
 
-      .field--name-field-location-entry {
+      .field--name-field-location-entry,
+      .field--name-field-region.field--type-entity-reference {
         @include entry--location();
       }
 
