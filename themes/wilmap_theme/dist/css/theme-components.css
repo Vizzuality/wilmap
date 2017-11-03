@@ -1943,4 +1943,9 @@ body.node-map .ui-autocomplete {
             padding: 0 !important;
             margin: -1px !important; }
 
+#block-googletranslate {
+  position: absolute;
+  top: 70px;
+  left: 40px; }
+
 /*# sourceMappingURL=theme-components.css.map */
