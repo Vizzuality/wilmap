@@ -25,6 +25,14 @@
           <span class="value">{{ ranking }}</span>
         </div>
       </div> -->
+      {% if content.field_kind|render %}
+      <div class="field field--field-kind field--label-above">
+          <div class="field__label">Kind</div>
+          <div class="field__items">
+              <span class="value">{{ content.field_kind }}</span>
+          </div>
+      </div>
+      {% endif %}
       <div class="field field--field-contributions field--label-above">
         <div class="field__label">Contributions</div>
         <div class="field__items">

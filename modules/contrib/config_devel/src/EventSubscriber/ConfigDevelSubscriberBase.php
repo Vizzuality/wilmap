@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\config_devel\EventSubscriber\ConfigDevelSubscriberBase.
- */
-
 namespace Drupal\config_devel\EventSubscriber;
 
 

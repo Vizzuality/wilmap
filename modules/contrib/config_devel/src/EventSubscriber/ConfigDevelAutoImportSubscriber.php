@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\config_devel\EventSubscriber\ConfigDevelAutoImportSubscriber.
- */
-
 namespace Drupal\config_devel\EventSubscriber;
 
 use Drupal\Component\Utility\Crypt;

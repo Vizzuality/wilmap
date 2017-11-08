@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\config_devel\Event\ConfigDevelEvents.
- */
-
 namespace Drupal\config_devel\Event;
 
 /**
