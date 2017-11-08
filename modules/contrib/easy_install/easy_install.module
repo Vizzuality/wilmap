@@ -1,0 +1,100 @@
+<?php
+
+/**
+ * @file
+ * Easy uninstall module file.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Config\InstallStorage;
+
+/**
+ * Implements hook_form_alter().
+ */
+function easy_install_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form_ids = ['system_modules_uninstall_confirm_form'];
+  if (in_array($form_id, $form_ids)) {
+    $modules = \Drupal::service('keyvalue.expirable')
+      ->get('modules_uninstall')
+      ->get(\Drupal::currentUser()->id());
+    foreach ($modules as $module) {
+      $install_dir = drupal_get_path('module', $module) . '/' . InstallStorage::CONFIG_INSTALL_DIRECTORY;
+      $details = file_scan_directory($install_dir, "/\.(yml)$/");
+      if (!empty($details)) {
+        $form['modules_config'][$module] = [
+          '#type' => 'details',
+          '#title' => t('@name', ['@name' => $module]),
+          '#description' => t('We found that @description module have configurations with it, if you like to delete it Please select the checkbox', ['@description' => $module]),
+          '#weight' => 0,
+          '#validated' => TRUE,
+          '#open' => TRUE,
+        ];
+        $details = file_scan_directory($install_dir, "/\.(yml)$/");
+        $options = [];
+        foreach ($details as $config_value) {
+          $options[$config_value->name] = $config_value->name;
+        }
+        if(!empty($options)) {
+          $form['modules_config'][$module]['configs'] = [
+            '#type' => 'checkboxes',
+            '#label' => $config_value->name,
+            '#title' => t('Select the configurations to be deleted'),
+            '#options' => $options,
+            '#validated' => TRUE,
+          ];
+        }
+      }
+    }
+    if(!empty($options)) {
+      foreach (array_keys($form['actions']) as $action) {
+        if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+          $form['actions'][$action]['#submit'][0] = 'easy_install_form_submit';
+        }
+      }
+      $form['all_configs'] = [
+        '#type' => 'checkbox',
+        '#label' => t('Delete all the listed configurations'),
+        '#title' => t('Delete all the listed configurations'),
+        '#validated' => TRUE,
+      ];
+    }
+  }
+
+}
+
+/**
+ * Implements custom submit().
+ */
+function easy_install_form_submit(array $form, FormStateInterface $form_state) {
+  $account = \Drupal::currentUser()->id();
+  $modules_list = \Drupal::service('keyvalue.expirable')
+    ->get('modules_uninstall');
+  $modules = $modules_list->get($account);
+  $module_handler = \Drupal::service('module_installer');
+  $module_handler->uninstall($modules);
+  $modules_list->delete($account);
+  $msg = 'The selected modules have been uninstalled';
+  $configs = $form_state->getValue('configs') ? $form_state->getValue('configs') : [];
+  if ($form_state->getValue('all_configs') != 0) {
+    foreach ($configs as $key => $value) {
+      Drupal::configFactory()->getEditable($key)->delete();
+    }
+    $msg = 'The selected modules have been uninstalled and configurations
+  deleted';
+  }
+  else {
+    foreach ($configs as $key => $values) {
+      if ($values !== 0) {
+        Drupal::configFactory()->getEditable($key)->delete();
+        $msg = 'The selected modules have been uninstalled and configurations
+         deleted';
+      }
+    }
+  }
+
+  drupal_set_message(t('@msg', ['@msg' => $msg]));
+  $redirect = new Url('system.modules_uninstall');
+  $form_state->setRedirectUrl($redirect);
+
+}
