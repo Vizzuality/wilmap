@@ -1,0 +1,3 @@
+services:
+  migrate_spreadsheet.iterator:
+    class: Drupal\migrate_spreadsheet\SpreadsheetIterator

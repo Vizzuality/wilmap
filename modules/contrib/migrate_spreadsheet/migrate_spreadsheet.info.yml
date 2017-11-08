@@ -1,0 +1,8 @@
+type: module
+name: 'Migrate Spreadsheet'
+description: 'Provides a migrate source plugin for importing data from spreadsheet files.'
+php: '5.6'
+core: '8.x'
+package: Migration
+dependencies:
+  - migrate
