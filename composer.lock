@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f152793e306ca583d2352980df20b3c2",
-    "content-hash": "17aecd237a41229bbe6b491e51339d50",
+    "hash": "9572a33b9c339b3caf3a7b16c3f16c2d",
+    "content-hash": "f6143600a4802ba19609eac831b305e7",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -933,55 +933,6 @@
             }
         },
         {
-            "name": "drupal/conditional_fields",
-            "version": "dev-1.x",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/conditional_fields",
-                "reference": "4ce2f1dbad7f1165fbd3015142d2a93f6aae78f4"
-            },
-            "require": {
-                "drupal/core": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.0-alpha2+6-dev",
-                    "datestamp": "1499870342",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Adyax",
-                    "homepage": "https://www.adyax.com/"
-                },
-                {
-                    "name": "itsekhmistro",
-                    "homepage": "https://www.drupal.org/user/928152"
-                },
-                {
-                    "name": "peterpoe",
-                    "homepage": "https://www.drupal.org/user/55674"
-                }
-            ],
-            "description": "Conditional fields",
-            "homepage": "https://www.drupal.org/project/conditional_fields",
-            "support": {
-                "source": "http://cgit.drupalcode.org/conditional_fields"
-            }
-        },
-        {
             "name": "drupal/config_devel",
             "version": "1.1.0",
             "source": {
@@ -1236,75 +1187,6 @@
             }
         },
         {
-            "name": "drupal/delete_all",
-            "version": "dev-1.x",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/delete_all",
-                "reference": "0f3e58f48d9c39b5fb4c330cc5be04b2c2814cef"
-            },
-            "require": {
-                "drupal/core": "~8.0"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.0-alpha2+6-dev",
-                    "datestamp": "1508526845",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Dev releases are not covered by Drupal security advisories."
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Hammad Ghani",
-                    "homepage": "https://www.drupal.org/user/3196009"
-                },
-                {
-                    "name": "coderintherye",
-                    "homepage": "https://www.drupal.org/user/297478"
-                },
-                {
-                    "name": "danylevskyi",
-                    "homepage": "https://www.drupal.org/user/322039"
-                },
-                {
-                    "name": "dipakmdhrm",
-                    "homepage": "https://www.drupal.org/user/1687410"
-                },
-                {
-                    "name": "douggreen",
-                    "homepage": "https://www.drupal.org/user/29191"
-                },
-                {
-                    "name": "kbahey",
-                    "homepage": "https://www.drupal.org/user/4063"
-                },
-                {
-                    "name": "realityloop",
-                    "homepage": "https://www.drupal.org/user/139189"
-                },
-                {
-                    "name": "wafaa",
-                    "homepage": "https://www.drupal.org/user/50133"
-                }
-            ],
-            "description": "Allows deletion of all nodes, comments and users on a site. Useful for development or prior to launching a site.",
-            "homepage": "https://www.drupal.org/project/delete_all",
-            "support": {
-                "source": "http://cgit.drupalcode.org/delete_all"
-            }
-        },
-        {
             "name": "drupal/devel",
             "version": "1.2.0",
             "source": {
@@ -1436,60 +1318,6 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/fakeobjects",
                 "issues": "http://drupal.org/project/issues/fakeobjects"
-            }
-        },
-        {
-            "name": "drupal/field_permissions",
-            "version": "dev-1.x",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/field_permissions",
-                "reference": "fd8839d719020f0a13573c067e320a10a2070050"
-            },
-            "require": {
-                "drupal/core": "~8.0"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.0-beta3+1-dev",
-                    "datestamp": "1505322243",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Dev releases are not covered by Drupal security advisories."
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "RobLoach",
-                    "homepage": "https://www.drupal.org/user/61114"
-                },
-                {
-                    "name": "jhedstrom",
-                    "homepage": "https://www.drupal.org/user/208732"
-                },
-                {
-                    "name": "mariacha1",
-                    "homepage": "https://www.drupal.org/user/2210776"
-                },
-                {
-                    "name": "markus_petrux",
-                    "homepage": "https://www.drupal.org/user/39593"
-                }
-            ],
-            "description": "The Field Permissions module allows site administrators to set field-level permissions to edit, view and create fields on any entity.",
-            "homepage": "https://www.drupal.org/project/field_permissions",
-            "support": {
-                "source": "http://cgit.drupalcode.org/field_permissions",
-                "issues": "https://www.drupal.org/project/issues/field_permissions"
             }
         },
         {
@@ -1812,51 +1640,6 @@
             "homepage": "https://www.drupal.org/project/pathauto",
             "support": {
                 "source": "http://cgit.drupalcode.org/pathauto"
-            }
-        },
-        {
-            "name": "drupal/redirect",
-            "version": "dev-1.x",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/redirect",
-                "reference": "1aa7894ba038656d56df945ddf3b8f840ba958a0"
-            },
-            "require": {
-                "drupal/core": "~8"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.0-beta1+6-dev",
-                    "datestamp": "1505206745",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Berdir",
-                    "homepage": "https://www.drupal.org/user/214652"
-                },
-                {
-                    "name": "Dave Reid",
-                    "homepage": "https://www.drupal.org/user/53892"
-                }
-            ],
-            "description": "Allows users to redirect from old URLs to new URLs.",
-            "homepage": "https://www.drupal.org/project/redirect",
-            "support": {
-                "source": "http://cgit.drupalcode.org/redirect"
             }
         },
         {
@@ -6274,10 +6057,6 @@
         "drupal/ckeditor_iframe": 20,
         "drupal/migrate_spreadsheet": 20,
         "drupal/acl": 20,
-        "drupal/conditional_fields": 20,
-        "drupal/delete_all": 20,
-        "drupal/field_permissions": 20,
-        "drupal/redirect": 20,
         "behat/mink": 20
     },
     "prefer-stable": true,
