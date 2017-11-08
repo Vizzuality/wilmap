@@ -8,7 +8,7 @@
 .block-search {
   @include hide-before-dom-alter();
   @include icon-insert('icon-search', after);
-  padding: $dp $dp * 3 $dp - 2 $dp * 2 !important;
+  padding: $dp $dp * 3 $dp - 3 $dp * 2 !important;
   background: none;
 
   @include respond(tablets) {

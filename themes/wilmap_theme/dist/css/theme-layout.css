@@ -1548,7 +1548,7 @@ button.btn,
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     position: absolute;
-    top: -20px;
+    top: -25px;
     right: 0;
     width: 350px;
     z-index: 2000;
@@ -1556,7 +1556,7 @@ button.btn,
     @media only screen and (min-width: 768px) and (max-width: 1124px) {
       .site-header .block-search {
         position: absolute;
-        top: -20px;
+        top: -25px;
         right: 0;
         width: 300px; } }
     @media only screen and (max-width: 767px) {

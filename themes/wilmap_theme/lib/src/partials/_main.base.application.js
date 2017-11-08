@@ -102,6 +102,7 @@
         App.Application.Maps.Config.initial_view                = [51.505, -0.09];
         App.Application.Maps.Config.is_embed                    = (window.location.href.indexOf('/widgets/map' || App.Utils.isIframe()) > -1)
         App.Application.Maps.Config.color_styles                = {'style1':'#035e7e','style2':'#325735','style3':'#484d0c','style4':'#554324','style5':'#5b1717','style6':'#31244a'}
+        // App.Application.Maps.Config.color_styles                = {'blue':'#035e7e','green':'#325735','olive':'#484d0c','bronze':'#554324','maroon':'#5b1717','purple':'#31244a'}
         App.Application.Maps.Config.click_on_map                = false;
 
         App.Application.Maps.Functions.choropleth = function(color, currVal, minVal, maxVal, steps) {
@@ -149,6 +150,7 @@
           var API = '/api/layers';
           var output_layers = '';
           var output = '';
+          var layer_in_url = (window.location.href.indexOf('layerid=') > -1) ? App.Utils.getUrlVar('layerid') : false;
 
           // get Layers
           $.getJSON( API, function( data ) {
@@ -157,8 +159,10 @@
 
             output_layers += '<ul>';
             $.each( data, function( key, val ) {
+              var checked = (layer_in_url && layer_in_url == val.nid[0].value)? ' checked':'';
+
               output_layers += '<li class="layer-item field">';
-              output_layers += '<label class="checkbox" for="layer-item-'+key+'"><input type="checkbox" id="layer-item-'+key+'" name="layer-item[]" value="'+val.nid[0].value+'"><span></span> '+val.title[0].value+'</label>';
+              output_layers += '<label class="checkbox" for="layer-item-'+key+'" data-layerid="'+val.nid[0].value+'" data-layer-style="'+val.field_style[0].value+'" data-layer-title="'+val.title[0].value+'" data-layer-desc="'+val.body[0].value+'"><input type="checkbox" id="layer-item-'+key+'" name="layer-item[]" value="'+val.nid[0].value+'"' + checked + '><span></span> '+val.title[0].value+'</label>';
               output_layers += '</li>';
             });
             output_layers += '</ul>';
@@ -207,11 +211,19 @@
           });
         };
 
+        App.Application.Maps.Functions.showLegend = function(show, title, subtitle) {
+
+        };
+
         App.Application.Maps.Functions.showPopup = function(iso2, layer, coord) {
-          var API = '/api/country/data/iso2/';
+          var API = '/api/country/data/iso2/' + iso2;
+
+          if(App.Application.Maps.Config.curr_layer_active !== null) {
+            API = API + '?' + App.Application.Maps.Config.curr_layer_active.query;
+          }
 
           if (App.Application.Maps.Data[iso2]) {
-            $.getJSON( API + iso2, function( data ) {
+            $.getJSON( API, function( data ) {
               var total = 0;
               var goto_button = (App.Application.Maps.Data[iso2].path)?'<a class="btn" href="' + App.Application.Maps.Data[iso2].path + '">GO TO COUNTRY PAGE</a>':'';
               var info_popup = '<p><strong>' + App.Application.Maps.Data[iso2].title + '</strong></p><ul>';
@@ -366,17 +378,85 @@
         };
 
         App.Application.Maps.Functions.loadLayer = function(layer, redraw) {
+          var API_LAYER = '/api/layer/' + layer + '/filters';
+          var API_QUERY = '/api/countries/entries/count?';
+          var DOM_LAYERS = '#modal-maplayer';
+
           var redraw = typeof redraw !== 'undefined' ? redraw : false;
 
-          App.Application.Maps.Config.curr_layer_active = (layer === 'none')?null:layer;
+          if (layer !== 'none') {
+            layer = { layerid:layer, query:'', title:'', description:'', style:'' };
+            App.Application.Maps.Config.curr_layer_active = layer;
+
+            if (App.Application.Maps.Config.curr_layer_active.layerid === 'frommap') {
+              App.Application.Maps.Config.curr_layer_active.title = App.Utils.getUrlVar('title');
+              App.Application.Maps.Config.curr_layer_active.description = App.Utils.getUrlVar('desc');
+              App.Application.Maps.Config.curr_layer_active.style = App.Utils.getUrlVar('style');
+
+              // $.getJSON( API_QUERY, function( data ) {
+              //
+              // }
+            } else {
+              var l = $(DOM_LAYERS + ' label[data-layerid="' + App.Application.Maps.Config.curr_layer_active.layerid + '"]');
+
+              App.Application.Maps.Config.curr_layer_active.title = l.data('layer-title');
+              App.Application.Maps.Config.curr_layer_active.description = l.data('layer-desc');
+              App.Application.Maps.Config.curr_layer_active.style = l.data('layer-style');
+
+              // Change URL
+              App.Utils.setBrowserURL('?layerid=' + App.Application.Maps.Config.curr_layer_active.layerid, document.title);
+
+              // Get query
+              $.getJSON( API_LAYER, function( data ) {
+                console.log(data);
+                App.Application.Maps.Config.curr_layer_active.query = data.query;
+
+                // var t = Date.now();
+                // console.log(t);
+                //
+                // $.each(App.Application.Maps.Data, function(i, k) {
+                //   $.getJSON('/api/country/data/iso2/' + i +'?' + App.Application.Maps.Config.curr_layer_active.query, function (d) {
+                //     console.log(d);
+                //   })
+                // });
+                //
+                // var t2 = t - Date.now();
+                // console.log(t2);
+                // var API = '/api/country/data/iso2/' + iso2;
+                //
+                // if(App.Application.Maps.Config.curr_layer_active !== null) {
+                //   API = API + '?' + App.Application.Maps.Config.curr_layer_active.query;
+                // }
+
+                App.Application.Maps.Functions.applyLayerOverMap('none', redraw);
+              });
+            }
+          } else {
+            if (App.Application.Maps.Config.curr_layer_active !== null) {
+              // Change URL
+              App.Utils.setBrowserURL('/map', document.title);
+            }
+
+            App.Application.Maps.Config.curr_layer_active = null;
+            App.Application.Maps.Functions.applyLayerOverMap('none', redraw);
+          }
+
+console.log(">>>>>>>");
+console.log(App.Application.Maps.Config);
+        };
+
+        App.Application.Maps.Functions.applyLayerOverMap = function(style, redraw) {
+          var redraw = typeof redraw !== 'undefined' ? redraw : false;
+          var style = typeof style !== 'undefined' ? style : 'none';
 
           //Style layer color -- random temporally - FAKE
-          var style = 'style' + (Math.floor(Math.random() * Object.keys(App.Application.Maps.Config.color_styles).length) + 1);
-          var color_base = App.Application.Maps.Config.color_styles[style];
-
+          if (style !== 'none') {
+            style = 'style' + (Math.floor(Math.random() * Object.keys(App.Application.Maps.Config.color_styles).length) + 1);
+            var color_base = App.Application.Maps.Config.color_styles[style];
+          }
 
           $.each(geoCountries.features, function(index, value) {
-            if(layer === 'none') {
+            if(style === 'none') {
               value.properties.color = 'transparent';
             } else {
               //density FAKE
@@ -559,7 +639,13 @@
             App.Application.Maps.ContinentData[v.CONTINENT] = obj;
           });
 
-          App.Application.Maps.Functions.loadLayer('none', false);
+          // Firs load
+          var first_layer_load = (window.location.href.indexOf('layerid=') > -1) ? App.Utils.getUrlVar('layerid') : false;
+          first_layer_load = (!first_layer_load) ? 'none' : first_layer_load;
+
+console.log('first_layer_load -> ' + first_layer_load);
+
+          App.Application.Maps.Functions.loadLayer(first_layer_load, false);
 
           // Vector maps
           App.Application.Maps.Functions.drawBaseMap();
@@ -581,35 +667,36 @@
 
           // Layer buttons
           if (!App.Application.Maps.Config.is_embed) {
-            $(dom).append('<div class="actions"></div>');
+          }
+          var style_actions = (App.Application.Maps.Config.is_embed) ? ' style="display:none;"' : ' style="display:block;"';
+          $(dom).append('<div class="actions"' + style_actions + '></div>');
 //            $(dom + ' .actions').append('<a href="#" class="btn" id="randomcolor">SIMULATE LOAD LAYER COLOR</a>');
 //            $(dom + ' .actions').append('<a href="#" class="btn" id="resetcolor">REMOVE COLOR</a>');
-            $(dom + ' .actions').append('<a class="btn" href="#" data-action="share" data-embed="true">Share</a>');
+          $(dom + ' .actions').append('<a class="btn" href="#" data-action="share" data-embed="true">Share</a>');
 
-            // Generate Layer modal
-            App.Application.Maps.Functions.generateLayerModal();
+          // Generate Layer modal
+          App.Application.Maps.Functions.generateLayerModal();
 
-            $('#randomcolor').on('click', function(e){
-              App.Application.Maps.Functions.resetActiveMap()
-              App.Application.Maps.Functions.loadLayer('lala', true);
-              e.preventDefault();
-            });
+          $('#randomcolor').on('click', function(e){
+            App.Application.Maps.Functions.resetActiveMap()
+            App.Application.Maps.Functions.loadLayer('lala', true);
+            e.preventDefault();
+          });
 
-            $('#resetcolor').on('click', function(e){
-              App.Application.Maps.Functions.resetActiveMap()
-              App.Application.Maps.Functions.loadLayer('none', true);
-              e.preventDefault();
-            });
+          $('#resetcolor').on('click', function(e){
+            App.Application.Maps.Functions.resetActiveMap()
+            App.Application.Maps.Functions.loadLayer('none', true);
+            e.preventDefault();
+          });
 
-            $('.actions .btn').on('mouseover click', function(e){
-              App.Application.Maps.Config.wilmap.doubleClickZoom.disable();
-            });
+          $('.actions .btn').on('mouseover click', function(e){
+            App.Application.Maps.Config.wilmap.doubleClickZoom.disable();
+          });
 
-            $('.actions .btn').on('mouseout', function(e){
-              App.Application.Maps.Config.wilmap.doubleClickZoom.enable();
-            });
+          $('.actions .btn').on('mouseout', function(e){
+            App.Application.Maps.Config.wilmap.doubleClickZoom.enable();
+          });
 
-          }
 
 
 
@@ -949,10 +1036,15 @@
         var embed = ($(dom).attr('data-embed') !== 'undefined' && $(dom).attr('data-embed') === 'true') ? true : false;
         var embed_style = (embed) ? '' : ' style="display:none"';
         var output = '';
-        var url_to_share = escape(window.location.href);
+        var url_to_share = window.location.href;
+        var facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' + escape(url_to_share);
+        var twitter_url = 'https://twitter.com/share?url=' + escape(url_to_share);
+        var url_to_embed = 'http://dev-wilmap.pantheonsite.io/widgets/map/' + ((url_to_share.indexOf('?') > -1) ? '?' + url_to_share.split('?')[1] : '');
+        var embed_code = '<iframe width="600" height="400" src="'+ url_to_embed +'"></iframe>';
         var title_to_share = document.title;
 
         console.log(url_to_share);
+        console.log(url_to_embed);
         // console.log(title_to_share);
         // console.log(embed);
 
@@ -968,11 +1060,11 @@
           output += '             <li' + embed_style + '><a href="#">Embed map</a></li>';
           output += '           </ul>';
           output += '           <div class="tab-content active">';
-          output += '             <a class="btn sharebutton fb" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u='+url_to_share+'">Share on facebook</a>';
-          output += '             <a class="btn sharebutton twitter" target="_blank" href="https://twitter.com/share?url='+url_to_share+'">Share on twitter</a>';
+          output += '             <a class="btn sharebutton fb" target="_blank" href="' + facebook_url + '">Share on facebook</a>';
+          output += '             <a class="btn sharebutton twitter" target="_blank" href="' + twitter_url + '">Share on twitter</a>';
           output += '             <br /><br />';
           output += '             <div id="share-input" class="copy-url append field">';
-          output += '               <input class="input" type="text" value="'+unescape(url_to_share)+'" />';
+          output += '               <input class="input" type="text" value="' + url_to_share + '" />';
           output += '               <a class="btn" href="#">COPY</a>';
           output += '               <div class="result"></div>';
           output += '             </div>';
@@ -980,7 +1072,8 @@
           output += '           <div class="tab-content">';
           output += '             <p>' + Drupal.t('Copy and Paste this code in your website in the HTML editor view.') + '</p>';
           output += '             <div id="share-textarea" class="copy-url field">';
-          output += '               <textarea class="js-text-full text-full form-textarea input textarea"><iframe width="600" height="400" src="http://dev-wilmap.pantheonsite.io/widgets/map/?'+unescape(url_to_share.split('%3Fck')[1])+'"></iframe></textarea><br />';
+          // output += '               <textarea class="js-text-full text-full form-textarea input textarea"><iframe width="600" height="400" src="http://dev-wilmap.pantheonsite.io/widgets/map/?'+unescape(url_to_share.split('%3Fck')[1])+'"></iframe></textarea><br />';
+          output += '               <textarea class="js-text-full text-full form-textarea input textarea">'+ embed_code +'</textarea><br />';
           output += '               <a class="btn" href="#">COPY EMBED CODE</a>';
           output += '               <div class="result"></div>';
           output += '             </div>';
@@ -997,7 +1090,21 @@
           $(dom).addClass('switch').attr('gumby-trigger','#modal-share');
 
           $(dom).on('click', function(){
-            $('.copy-url .result').text('').removeClass('success').removeClass('error').removeClass('empty');
+            var modal = '#modal-share';
+
+            // Refresh data
+            var url_to_share = window.location.href;
+            var facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' + escape(url_to_share);
+            var twitter_url = 'https://twitter.com/share?url=' + escape(url_to_share);
+            var url_to_embed = 'http://dev-wilmap.pantheonsite.io/widgets/map/' + ((url_to_share.indexOf('?') > -1) ? '?' + url_to_share.split('?')[1] : '');
+            var embed_code = '<iframe width="600" height="400" src="'+ url_to_embed +'"></iframe>';
+
+            $(modal + ' .sharebutton.fb').attr('href', facebook_url);
+            $(modal + ' .sharebutton.twitter').attr('href', twitter_url);
+            $(modal + ' #share-input input.input').val(url_to_share);
+            $(modal + ' #share-textarea textarea.input').val(embed_code);
+
+            $(modal + '.copy-url .result').text('').removeClass('success').removeClass('error').removeClass('empty');
           });
 
           $('#modal-share .tab-nav li a').on('click', function(){

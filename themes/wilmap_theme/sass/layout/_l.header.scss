@@ -252,13 +252,13 @@ $nav-item-bgcolor-active:               $white;
   .block-search {
     @include trim();
     @include transition(all .3s ease);
-    @include position(absolute, -$dp * 2 0 null null);
+    @include position(absolute, -$dp * 2.5 0 null null);
     width: $dp * 35;
     z-index: 2000;
     overflow: hidden;
 
     @include respond(tablets) {
-      @include position(absolute, -$dp * 2 0 null null);
+      @include position(absolute, -$dp * 2.5 0 null null);
       width: $dp * 30;
     }
 
