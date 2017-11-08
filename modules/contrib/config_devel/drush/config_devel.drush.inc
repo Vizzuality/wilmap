@@ -14,17 +14,19 @@ function config_devel_drush_command() {
   $items = array();
 
   $description = '';
-  $description .= "Write back configuration to module's config/install directory." . "\n";
-  $description .= "List which configuration settings you want to export in the" . "\n";
-  $description .= "module's info file by listing them under 'config_devel', as shown below:"  . "\n";
+  $description .= "List which configuration settings you want to export in the\n";
+  $description .= "module's info file by listing them under 'config_devel', as shown below:\n";
   $description .= "\n";
-  $description .= "config_devel:"  . "\n";
-  $description .= "  - entity.view_display.node.article.default"  . "\n";
-  $description .= "  - entity.view_display.node.article.teaser"  . "\n";
-  $description .= "  - field.instance.node.article.body"  . "\n";
+  $description .= "config_devel:\n";
+  $description .= "  install:\n";
+  $description .= "    - entity.view_display.node.article.default\n";
+  $description .= "    - entity.view_display.node.article.teaser\n";
+  $description .= "    - field.instance.node.article.body\n";
+  $description .= "  optional:\n";
+  $description .= "    - field.instance.node.article.tags\n";
 
   $items['config-devel-export'] = array(
-    'description' => $description,
+    'description' => "Write back configuration to module's config directory.\n" . $description,
     'arguments' => array(
       'module' => 'Module machine name.',
     ),
@@ -38,7 +40,7 @@ function config_devel_drush_command() {
   );
 
   $items['config-devel-import'] = array(
-    'description' => $description,
+    'description' => "Import configuration from module's config directory to active storage.\n" . $description,
     'arguments' => array(
       'module' => 'Module machine name.',
     ),
@@ -52,7 +54,7 @@ function config_devel_drush_command() {
   );
 
   $items['config-devel-import-one'] = array(
-    'description' => $description,
+    'description' => "Import a single configuration item from module's config directory to active storage.\n" . $description,
     'arguments' => array(
       'path' => 'Config file name.',
     ),
@@ -87,7 +89,7 @@ function drush_config_devel_export($extension) {
 
     // If we have any optional configuration, process that as well.
     if (isset($config['optional'])) {
-      drush_config_devel_process_config($config['optional'], $type, $extension, InstallStorage::CONFIG_INSTALL_DIRECTORY);
+      drush_config_devel_process_config($config['optional'], $type, $extension, InstallStorage::CONFIG_OPTIONAL_DIRECTORY);
     }
   }
   else {
@@ -113,7 +115,7 @@ function drush_config_devel_import($extension) {
 
     // Import optional config
     if (isset($config['optional'])) {
-      drush_config_devel_import_config($config['optional'], $type, $extension, InstallStorage::CONFIG_INSTALL_DIRECTORY);
+      drush_config_devel_import_config($config['optional'], $type, $extension, InstallStorage::CONFIG_OPTIONAL_DIRECTORY);
     }
   }
   else {
@@ -138,7 +140,7 @@ function drush_config_devel_import_one($path) {
     \Drupal::service('config_devel.auto_import_subscriber')->importOne($path, '', $contents);
   }
   else {
-    drush_log('file not found', 'error');
+    drush_log("file '$path' not found", 'error');
     exit;
   }
 }
@@ -201,8 +203,11 @@ function drush_config_devel_get_config($type, $extension) {
 
   $config = array();
   if (isset($info['config_devel'])) {
-    // Keep backwards compatibility for the old format.
-    if (!isset($info['config_devel']['install'])) {
+    // Keep backwards compatibility for the old format. This has config names
+    // listed directly beneath 'config_devel', rather than an intermediate level
+    // for 'install' and 'optional'.
+    // Detect the old format based on whether there's neither of these two keys.
+    if (!isset($info['config_devel']['install']) && !isset($info['config_devel']['optional'])) {
       $info['config_devel']['install'] = $info['config_devel'];
     }
 

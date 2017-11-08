@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\config_devel\Form\ConfigDevelSettingsForm.
- */
-
 namespace Drupal\config_devel\Form;
 
 use Drupal\Core\Config\FileStorage;
@@ -38,13 +33,17 @@ class ConfigDevelSettingsForm extends ConfigFormBase {
       '#type' => 'textarea',
       '#title' => $this->t('Auto import'),
       '#default_value' => $default_value,
-      '#description' => $this->t('When these files change, they will be automatically imported at the beginning of the next request. List one file per line.'),
+      '#description' => $this->t('When these files change, they will be automatically imported at the beginning of the next request.') . '<br>' .
+        $this->t('Enter one item per line. Each item should consist of a path relative to the Drupal root and a filename in the same form as a config YML file.') . '<br>' .
+        $this->t('For example: "modules/mymodule/config/install/node.type.mytype.yml".'),
     );
     $form['auto_export'] = array(
       '#type' => 'textarea',
       '#title' => $this->t('Auto export'),
       '#default_value' => implode("\n", $this->config(static::CONFIGNAME)->get('auto_export')),
-      '#description' => $this->t('Automatically export to the files specified. List one file per line.'),
+      '#description' => $this->t('Automatically export to the files specified when the corresponding config item is changed in the admin UI.') . '<br>' .
+        $this->t('Enter one item per line. Each item should consist of a path relative to the Drupal root and a filename in the same form as a config YML file.') . '<br>' .
+        $this->t('For example: "modules/mymodule/config/install/node.type.mytype.yml".'),
     );
     return parent::buildForm($form, $form_state);
   }
