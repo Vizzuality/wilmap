@@ -28,8 +28,7 @@
         "drupal/migrate_plus": "^2.0",
         "drupal/migrate_tools": "^2.0",
         "drupal/config_devel": "^1.1",
-        "drupal/migrate_source_csv": "^2.0",
-        "drupal/easy_install": "8.x-dev"
+        "drupal/migrate_source_csv": "^2.0"
     },
     "replace": {
         "drupal/core": "^8.4"

@@ -6245,48 +6245,5 @@
             "issues": "https://www.drupal.org/project/issues/migrate_source_csv",
             "irc": "irc://irc.freenode.org/drupal-migrate"
         }
-    },
-    {
-        "name": "drupal/easy_install",
-        "version": "dev-8.x",
-        "version_normalized": "dev-8.x",
-        "source": {
-            "type": "git",
-            "url": "https://git.drupal.org/project/easy_install",
-            "reference": "078d579a366c3bd9da7ead77a524aa0f9368e04f"
-        },
-        "require": {
-            "drupal/core": "~8.0"
-        },
-        "type": "drupal-module",
-        "extra": {
-            "branch-alias": {
-                "dev-8.x": "8.x-dev"
-            },
-            "drupal": {
-                "version": "8.x-8.0-alpha6+0-dev",
-                "datestamp": "1504955945",
-                "security-coverage": {
-                    "status": "not-covered",
-                    "message": "Project has not opted into security advisory coverage!"
-                }
-            }
-        },
-        "installation-source": "source",
-        "notification-url": "https://packages.drupal.org/8/downloads",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "authors": [
-            {
-                "name": "karthikeyan-manivasagam",
-                "homepage": "https://www.drupal.org/user/1494424"
-            }
-        ],
-        "description": "Provides UI to delete configuration while uninstalling or reinstalling the modules.",
-        "homepage": "https://www.drupal.org/project/easy_install",
-        "support": {
-            "source": "http://cgit.drupalcode.org/easy_install"
-        }
     }
 ]
