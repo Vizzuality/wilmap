@@ -18,7 +18,17 @@
         "drupal/ckeditor_iframe": "2.x-dev",
         "drupal/title_length": "^1.0",
         "drupal/workbench": "^1.0",
-        "drupal/migrate_spreadsheet": "1.x-dev"
+        "drupal/migrate_spreadsheet": "1.x-dev",
+        "drupal/pathauto": "^1.0",
+        "drupal/admin_toolbar": "^1.20",
+        "drupal/acl": "1.x-dev",
+        "drupal/conditional_fields": "1.x-dev",
+        "drupal/devel": "^1.2",
+        "drupal/delete_all": "1.x-dev",
+        "drupal/field_permissions": "1.x-dev",
+        "drupal/redirect": "1.x-dev",
+        "drupal/config_update": "^1.4",
+        "drupal/restui": "^1.15"
     },
     "replace": {
         "drupal/core": "~8.3"
