@@ -28,7 +28,11 @@
         "drupal/field_permissions": "1.x-dev",
         "drupal/redirect": "1.x-dev",
         "drupal/config_update": "^1.4",
-        "drupal/restui": "^1.15"
+        "drupal/restui": "^1.15",
+        "drupal/migrate_plus": "^2.0",
+        "drupal/migrate_tools": "^2.0",
+        "drupal/config_devel": "^1.1",
+        "drupal/migrate_source_csv": "^2.0"
     },
     "replace": {
         "drupal/core": "^8.4"
