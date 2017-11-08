@@ -10,7 +10,7 @@ use Drupal\social_media_links\PlatformBase;
  * @Platform(
  *   id = "youtube",
  *   name = @Translation("Youtube"),
- *   urlPrefix = "http://www.youtube.com/",
+ *   urlPrefix = "https://www.youtube.com/",
  * )
  */
 class Youtube extends PlatformBase {}

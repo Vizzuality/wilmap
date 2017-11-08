@@ -10,7 +10,7 @@ use Drupal\social_media_links\PlatformBase;
  * @Platform(
  *   id = "linkedin",
  *   name = @Translation("LinkedIn"),
- *   urlPrefix = "http://www.linkedin.com/",
+ *   urlPrefix = "https://www.linkedin.com/",
  * )
  */
 class Linkedin extends PlatformBase {}

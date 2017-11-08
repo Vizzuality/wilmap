@@ -1,8 +1,0 @@
-name: PHPUnit example
-type: module
-description: Demontrates how to use PHPUnit-based tests.
-package: Example modules
-core: 8.x
-dependencies:
-  - drupal:node
-  - examples:examples

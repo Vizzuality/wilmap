@@ -10,7 +10,7 @@ use Drupal\social_media_links\PlatformBase;
  * @Platform(
  *   id = "slideshare",
  *   name = @Translation("SlideShare"),
- *   urlPrefix = "http://www.slideshare.net/",
+ *   urlPrefix = "https://www.slideshare.net/",
  * )
  */
 class Slideshare extends PlatformBase {}

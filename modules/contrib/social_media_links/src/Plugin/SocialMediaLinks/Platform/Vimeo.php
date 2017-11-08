@@ -10,7 +10,7 @@ use Drupal\social_media_links\PlatformBase;
  * @Platform(
  *   id = "vimeo",
  *   name = @Translation("Vimeo"),
- *   urlPrefix = "http://www.vimeo.com/",
+ *   urlPrefix = "https://www.vimeo.com/",
  * )
  */
 class Vimeo extends PlatformBase {}

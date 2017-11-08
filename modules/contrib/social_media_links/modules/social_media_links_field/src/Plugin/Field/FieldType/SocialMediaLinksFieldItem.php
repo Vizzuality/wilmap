@@ -117,7 +117,7 @@ class SocialMediaLinksFieldItem extends FieldItemBase {
 
       $element['platforms'][$platform_id]['enabled'] = [
         '#type' => 'checkbox',
-        '#default_value' => $platform_settings[$platform_id]['enabled'],
+        '#default_value' => isset($platform_settings[$platform_id]['enabled']) ? $platform_settings[$platform_id]['enabled'] : FALSE,
         '#title' => $platform['name']->render(),
         '#title_display' => 'after',
       ];
@@ -145,8 +145,6 @@ class SocialMediaLinksFieldItem extends FieldItemBase {
         // the max weight, when the last item is dragged to be the first item.
         '#delta' => $max_weight + count($platforms),
       ];
-
-      $default_weight++;
     }
 
     return $element;

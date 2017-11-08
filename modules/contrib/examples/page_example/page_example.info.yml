@@ -1,8 +1,0 @@
-name: Page example
-type: module
-description: 'Demonstrates how to display a page at a given URL.'
-package: Example modules
-core: 8.x
-dependencies:
-  - drupal:node
-  - examples:examples

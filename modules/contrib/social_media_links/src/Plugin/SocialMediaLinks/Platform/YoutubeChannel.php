@@ -9,7 +9,7 @@ namespace Drupal\social_media_links\Plugin\SocialMediaLinks\Platform;
  *   id = "youtube_channel",
  *   iconName = "youtube",
  *   name = @Translation("Youtube Channel"),
- *   urlPrefix = "http://www.youtube.com/channel/",
+ *   urlPrefix = "https://www.youtube.com/channel/",
  * )
  */
 class YoutubeChannel extends Youtube {}

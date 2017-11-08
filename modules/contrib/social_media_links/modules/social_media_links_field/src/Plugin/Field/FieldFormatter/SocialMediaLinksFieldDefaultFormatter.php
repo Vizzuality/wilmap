@@ -27,6 +27,10 @@ class SocialMediaLinksFieldDefaultFormatter extends FormatterBase {
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $platforms = $this->getPlatformsWithValues($items);
+    if (count($platforms) < 1) {
+      return [];
+    }
+
     $iconset_style = IconsetBase::explodeStyle($items->getSetting('iconset'));
     $iconset = $this->getIconset($iconset_style['iconset']);
 

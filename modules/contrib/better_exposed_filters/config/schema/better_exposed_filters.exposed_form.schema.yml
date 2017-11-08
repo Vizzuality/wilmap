@@ -12,6 +12,9 @@ better_exposed_filters.general:
     autosubmit:
       type: boolean
       label: 'Autosubmit'
+    autosubmit_exclude_textfield:
+      type: boolean
+      label: 'Exclude Textfield'
     autosubmit_hide:
       type: boolean
       label: 'Hide submit button'
@@ -61,6 +64,9 @@ better_exposed_filters.*:
       label: 'More options'
       type: mapping
       mapping:
+        placeholder_text:
+          type: text
+          label: 'Placeholder text for text fields'
         bef_select_all_none:
           type: boolean
           label: 'Add select all/none links'

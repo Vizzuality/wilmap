@@ -10,7 +10,7 @@ use Drupal\social_media_links\PlatformBase;
  * @Platform(
  *   id = "instagram",
  *   name = @Translation("Instagram"),
- *   urlPrefix = "http://www.instagram.com/",
+ *   urlPrefix = "https://www.instagram.com/",
  * )
  */
 class Instagram extends PlatformBase {}

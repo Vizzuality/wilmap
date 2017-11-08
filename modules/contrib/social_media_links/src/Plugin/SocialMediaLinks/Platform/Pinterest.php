@@ -10,7 +10,7 @@ use Drupal\social_media_links\PlatformBase;
  * @Platform(
  *   id = "pinterest",
  *   name = @Translation("Pinterest"),
- *   urlPrefix = "http://www.pinterest.com/",
+ *   urlPrefix = "https://www.pinterest.com/",
  * )
  */
 class Pinterest extends PlatformBase {}

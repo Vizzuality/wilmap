@@ -88,6 +88,18 @@ class BetterExposedFilters extends InputRequired {
       '#default_value' => $existing['general']['autosubmit'],
     );
 
+    $bef_options['general']['autosubmit_exclude_textfield'] = array(
+      '#type' => 'checkbox',
+      '#title' => $this->t('Exclude Textfield'),
+      '#description' => $this->t('Exclude Textfield from autosubmit. User will have to press enter key or click submit.'),
+      '#default_value' => $existing['general']['autosubmit_exclude_textfield'],
+      '#states' => array(
+        'visible' => array(
+          ':input[name="exposed_form_options[bef][general][autosubmit]"]' => array('checked' => TRUE),
+        ),
+      ),
+    );
+
     $bef_options['general']['autosubmit_hide'] = array(
       '#type' => 'checkbox',
       '#title' => $this->t('Hide submit button'),
@@ -509,6 +521,16 @@ Title Desc|Z -> A</pre> Leave the replacement text blank to remove an option alt
         '#description' => $this->t('Places this element in the secondary options portion of the exposed form.'),
       );
 
+      if ($filter instanceof StringFilter) {
+        // Allow users to specify placeholder text.
+        $bef_options[$label]['more_options']['placeholder_text'] = [
+          '#type' => 'textfield',
+          '#title' => $this->t('Placeholder text'),
+          '#description' => $this->t('Text to be shown in the text field until it is edited. Leave blank for no placeholder to be set.'),
+          '#default_value' => $existing[$label]['more_options']['placeholder_text'],
+        ];
+      }
+
       // Allow rewriting of filter options for any filter. String and numeric
       // filters allow unlimited filter options via textfields, so we can't
       // offer rewriting for those.
@@ -634,6 +656,14 @@ Title Desc|Z -> A</pre> Leave the replacement text blank to remove an option alt
       $form['actions']['submit']['#attributes']['data-bef-auto-submit-click'] = '';
       $form['#attached']['library'][] = 'better_exposed_filters/auto_submit';
 
+      if (!empty($settings['general']['autosubmit_exclude_textfield'])) {
+        foreach ($form as &$element) {
+          if (isset($element['#type']) && $element['#type'] == 'textfield') {
+            $element['#attributes'] = ['data-bef-auto-submit-exclude' => ''];
+          }
+        }
+      }
+
       if (!empty($settings['general']['autosubmit_hide'])) {
         $form['actions']['submit']['#attributes']['class'][] = 'js-hide';
       }
@@ -709,7 +739,7 @@ Title Desc|Z -> A</pre> Leave the replacement text blank to remove an option alt
             // the view results appear on. This can cause problems with
             // select_as_links options as they will use the wrong path. We
             // provide a hint for theme functions to correct this.
-            $form['sort_bef_combine']['#bef_path'] = $this->displayHandler->getUrl();
+            $form['sort_bef_combine']['#bef_path'] = $this->getExposedFormActionUrl();
             break;
 
           case 'default':
@@ -755,9 +785,9 @@ Title Desc|Z -> A</pre> Leave the replacement text blank to remove an option alt
           // view results appear on. This can cause problems with
           // select_as_links options as they will use the wrong path. We provide
           // a hint for theme functions to correct this.
-          $form['sort_by']['#bef_path'] = $this->displayHandler->getUrl();
+          $form['sort_by']['#bef_path'] = $this->getExposedFormActionUrl();
           if(!empty($form['sort_order'])) {
-            $form['sort_order']['#bef_path'] = $this->displayHandler->getUrl();
+            $form['sort_order']['#bef_path'] = $this->getExposedFormActionUrl();
           }
         }
 
@@ -824,7 +854,7 @@ Title Desc|Z -> A</pre> Leave the replacement text blank to remove an option alt
             // the view results appear on. This can cause problems with
             // select_as_links options as they will use the wrong path. We
             // provide a hint for theme functions to correct this.
-            $form['items_per_page']['#bef_path'] = $this->displayHandler->getUrl();
+            $form['items_per_page']['#bef_path'] = $this->getExposedFormActionUrl();
           }
           break;
       }
@@ -854,6 +884,12 @@ Title Desc|Z -> A</pre> Leave the replacement text blank to remove an option alt
       // Form element is designated by the element ID which is user-
       // configurable.
       $field_id = $filters[$label]->options['expose']['identifier'];
+
+      // Check for placeholder text.
+      if (!empty($settings[$label]['more_options']['placeholder_text'])) {
+        // @todo: Add token replacement for placeholder text.
+        $form[$label]['#placeholder'] = $settings[$label]['more_options']['placeholder_text'];
+      }
 
       // Handle filter value rewrites.
       if (!empty($options['more_options']['rewrite']['filter_rewrite_values'])) {
@@ -1066,7 +1102,7 @@ Title Desc|Z -> A</pre> Leave the replacement text blank to remove an option alt
           // the view results appear on. This can cause problems with
           // select_as_links options as they will use the wrong path. We provide
           // a hint for theme functions to correct this.
-          $form[$field_id]['#bef_path'] = $this->displayHandler->getUrl();
+          $form[$field_id]['#bef_path'] = $this->getExposedFormActionUrl();
           break;
 
         case 'bef_single':
@@ -1455,6 +1491,7 @@ Title Desc|Z -> A</pre> Leave the replacement text blank to remove an option alt
         'allow_secondary' => FALSE,
         'secondary_label' => $this->t('Advanced options'),
         'autosubmit' => FALSE,
+        'autosubmit_exclude_textfield' => FALSE,
         'autosubmit_hide' => FALSE,
       ),
       'sort' => array(
@@ -1478,7 +1515,10 @@ Title Desc|Z -> A</pre> Leave the replacement text blank to remove an option alt
     // Update legacy settings in the exposed form settings form. This
     // keep us from losing settings when an option is put into an
     // 'advanced options' details element.
-    $current = $this->updateLegacySettings($this->options['bef']);
+    $current = [];
+    if (isset($this->options['bef'])) {
+      $current = $this->updateLegacySettings($this->options['bef']);
+    }
 
     // Collect existing values or use defaults.
     $settings = $this->setDefaults($defaults, $current);
@@ -1487,6 +1527,7 @@ Title Desc|Z -> A</pre> Leave the replacement text blank to remove an option alt
     $filter_defaults = array(
       'bef_format' => 'default',
       'more_options' => array(
+        'placeholder_text' => '',
         'bef_select_all_none' => FALSE,
         'bef_select_all_none_nested' => FALSE,
         'bef_collapsible' => FALSE,
@@ -1521,4 +1562,23 @@ Title Desc|Z -> A</pre> Leave the replacement text blank to remove an option alt
     }
     return $settings;
   }
+
+  /**
+   * Returns exposed form action URL object.
+   *
+   * @return \Drupal\Core\Url
+   *   Url object.
+   */
+  protected function getExposedFormActionUrl() {
+    if ($this->displayHandler->getRoutedDisplay()) {
+      return $this->displayHandler->getUrl();
+    }
+
+    $request = \Drupal::request();
+    $url = Url::createFromRequest($request);
+    $url->setAbsolute();
+
+    return $url;
+  }
+
 }
