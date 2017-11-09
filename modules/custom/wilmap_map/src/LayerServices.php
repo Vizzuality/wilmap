@@ -95,7 +95,7 @@ class LayerServices
 //                    var_dump($field_name);
 //                    var_dump(array_column($value, 'target_id'));
 
-                    // field_year and field_year_to special treatment
+                    // field_year and field_year_to have special treatment
                     switch ($field_name) {
                         case 'field_year':
                             $condition_field = 'field_year';
@@ -110,7 +110,7 @@ class LayerServices
                         default:
                             $condition_field = $field_name;
                             $condition_value = array_column($value, 'target_id');
-                            $condition_operator = 'in';
+                            $condition_operator = 'IN';
                     }
 
                     // Add condition to conditions
