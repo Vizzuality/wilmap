@@ -25,6 +25,8 @@ use Psr\Log\LoggerInterface;
  *     "canonical" = "/api/countries/entries/count",
  *   }
  * )
+ *
+ * @deprecated
  */
 class CountriesEntriesCountRestResource extends ResourceBase
 {

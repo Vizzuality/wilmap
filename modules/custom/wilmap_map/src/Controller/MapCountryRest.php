@@ -132,7 +132,7 @@ class MapCountryRest extends ControllerBase
      * @return string
      *   Return JSON string containing browsing tree.
      */
-    public function get($code, Request $request)
+    public function getCountryData($code, Request $request)
     {
 
         $country_nid = $this->countryService->getCountryFromIso($code);
@@ -161,6 +161,34 @@ class MapCountryRest extends ControllerBase
 
         return new JsonResponse($response);
 
+    }
+
+
+    /**
+     * Responds to GET requests.
+     *
+     * Returns entries by country that satisfied conditions of query parameters.
+     *
+     * @throws \Symfony\Component\HttpKernel\Exception\HttpException
+     *   Throws exception expected.
+     *
+     * @return string json assoc array with country iso2 and entries count
+     */
+    public function getCountriesTotals(Request $request)
+    {
+
+        // Get parameters from URL
+        $params = $request->query->all();
+
+        // Get conditions from parameters
+        $conditions = $this->mapService->getMapConditionsFromParams($params);
+
+        // Get countries entries with conditions
+        $countries_entries = $this->mapService->getCountriesEntriesCount($conditions);
+
+        $response = $countries_entries;
+
+        return new JsonResponse($response);
     }
 
 }
