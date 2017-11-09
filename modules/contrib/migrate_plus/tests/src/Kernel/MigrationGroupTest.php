@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\migrate_plus\Tests;
+namespace Drupal\Tests\migrate_plus\Kernel;
 
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\migrate_plus\Entity\Migration;
@@ -49,6 +49,7 @@ class MigrationGroupTest extends KernelTestBase {
       'migration_tags' => ['Drupal 7'], // Overrides group.
       'destination' => [],
       'source' => [],
+      'process' => [],
       'migration_dependencies' => [],
     ]);
     $migration->set('source', [
@@ -75,7 +76,7 @@ class MigrationGroupTest extends KernelTestBase {
       'destination' => ['plugin' => 'field_storage_config'],
     ];
     /** @var \Drupal\migrate\Plugin\MigrationInterface $loaded_migration */
-    $loaded_migration = $this->container->get('plugin.manager.config_entity_migration')
+    $loaded_migration = $this->container->get('plugin.manager.migration')
       ->createInstance('specific_migration');
     foreach ($expected_config as $key => $expected_value) {
       $actual_value = $loaded_migration->get($key);
