@@ -1,0 +1,4 @@
+bypass contributors access:
+  title: 'Bypass contributor content access control'
+  description: 'View, edit and delete contributors content regardless of permission restrictions.'
+  restrict access: true

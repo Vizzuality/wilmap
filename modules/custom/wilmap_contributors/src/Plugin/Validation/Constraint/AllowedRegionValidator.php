@@ -34,7 +34,10 @@ class AllowedRegionValidator extends ConstraintValidator
         $account = \Drupal::currentUser();
 
         // Admins may select any Country
-        if( in_array( 'administrator', $account->getRoles() )){
+        //if( in_array( 'administrator', $account->getRoles() )){}
+
+        // Bypass users with 'bypass contributors access' permission
+        if ($account->hasPermission('bypass contributors access')) {
             return;
         }
 
