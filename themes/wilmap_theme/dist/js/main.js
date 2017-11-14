@@ -1141,7 +1141,7 @@ console.log(coord.lng - App.Application.Maps.Config.wilmap.getBounds()['_southWe
               info_popup += '</ul>';
 
               total = (total < 10) ? '0' + total : total;
-              var output = '<div class="popup-inner"><div class="popup-inner-left"><span>'+total+'</span>Articles</div><div class="popup-inner-right"><div class="popup-info">' + info_popup + '</div><div class="popup-actions">' + goto_button + '</div></div></div>';
+              var output = '<div class="popup-inner"><div class="popup-inner-left"><span>'+total+'</span>Entries</div><div class="popup-inner-right"><div class="popup-info">' + info_popup + '</div><div class="popup-actions">' + goto_button + '</div></div></div>';
 
               App.Application.Maps.Config.popup = L.popup();
               App.Application.Maps.Config.popup.setLatLng(coord);
