@@ -7,7 +7,7 @@
   #block-wilmap-theme-blockwelcomehome .content:after, #block-wilmap-theme-blockmaphome .content:after, #block-wilmap-theme-blockexplorehome .content:after, #block-wilmap-theme-blocknewshome .content:after {
     clear: both; }
 
-#block-wilmap-theme-blockwelcomehome .text, #block-wilmap-theme-blockwelcomehome .text .description, #block-wilmap-theme-blockmaphome .text, #block-wilmap-theme-blockexplorehome .text, #block-wilmap-theme-blocknewshome .text, .block-views-blocktopics-block-1 .views-row, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6, article.node--type-topics.node--view-mode-full .node-header, article.node--type-topics.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .node-header, article.node--type-news.node--view-mode-full .field--name-field-original-source, article.node--type-news.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items > .field__item, .block-views-blockcontributors-block-1 .view-filters, .block-views-blockcontributors-block-1 .view-filters .js-form-item-country, .block-views-blockcontributors-block-1 .view-filters .js-form-item-expertise, .block-views-blockcontributors-block-1 .view-filters .js-form-item-name, .block-views-blockcontributors-block-1 .view-filters .form-actions, .block-views-blockcontributors-block-1 .view-content, .block-views-blockcontributors-block-1 .view-content .views-row, .path-user article.profile .contributor-sheet, .path-user article.profile .contributor-info, .path-user .block-views-blockcontributions-block-1 .view-contributions .views-row, .block-views-blocklist-entries-block-1._switch-off .views-row, .block-views-blocklist-entries-block-1 .view-filters .form--filter, .block-views-blocklist-entries-block-1 .view-filters .form--filter .js-form-type-select, .block-views-blocklist-entries-block-1 .view-filters .form--filter .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--sort, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors .js-form-item, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > .form-type-checkbox, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .form-actions, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .listswitch, article.node--type-entry.node--view-mode-full .node-header, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items > .field__item, .search-page-form .form-type-search, .search-page-form .site-btn, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest, body.page-node-type-country #content-content section.block-system-main-block .text-formatted,
+#block-wilmap-theme-blockwelcomehome .text, #block-wilmap-theme-blockwelcomehome .text .description, #block-wilmap-theme-blockmaphome .text, #block-wilmap-theme-blockexplorehome .text, #block-wilmap-theme-blocknewshome .text, .block-views-blocktopics-block-1 .views-row, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6, article.node--type-topics.node--view-mode-full .node-header, article.node--type-topics.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .node-header, article.node--type-news.node--view-mode-full .field--name-field-original-source, article.node--type-news.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items > .field__item, .block-views-blockcontributors-block-1 .view-filters, .block-views-blockcontributors-block-1 .view-filters .js-form-item-country, .block-views-blockcontributors-block-1 .view-filters .js-form-item-expertise, .block-views-blockcontributors-block-1 .view-filters .js-form-item-name, .block-views-blockcontributors-block-1 .view-filters .form-actions, .block-views-blockcontributors-block-1 .view-content, .block-views-blockcontributors-block-1 .view-content .views-row, .path-user article.profile .contributor-sheet, .path-user article.profile .contributor-info, .path-user .block-views-blockcontributions-block-1 .view-contributions .views-row, .block-views-blocklist-entries-block-1._switch-off .views-row, .block-views-blocklist-entries-block-1 .view-filters .form--filter, .block-views-blocklist-entries-block-1 .view-filters .form--filter .js-form-type-select, .block-views-blocklist-entries-block-1 .view-filters .form--filter .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--sort, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors .js-form-item, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > .form-type-checkbox, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield, .block-views-blocklist-entries-block-1 .view-filters .form--bottom > .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .form-actions, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .listswitch, article.node--type-entry.node--view-mode-full .node-header, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items > .field__item, .search-page-form .form-type-search, .search-page-form .site-btn, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest, body.page-node-type-country #content-content section.block-system-main-block .text-formatted,
 body.page-node-type-region #content-content section.block-system-main-block .text-formatted, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content,
 body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content,
 body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content .views-row, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content .views-row,
@@ -3792,8 +3792,6 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       background-color: #e3ded3; }
   .block-views-blocklist-entries-block-1._switch-off .views-row:nth-child(2n+1) {
     margin-left: 0; }
-.block-views-blocklist-entries-block-1 #show-map {
-  display: none; }
 .block-views-blocklist-entries-block-1 .view-filters {
   clear: both; }
   .block-views-blocklist-entries-block-1 .view-filters {
@@ -4150,14 +4148,14 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     .block-views-blocklist-entries-block-1 .view-filters .form--bottom:after {
       clear: both; }
     .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield {
-      width: 70.92063%; }
+      width: 49.11111%; }
       @media only screen and (max-width: 767px) {
         .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield {
           float: left;
           width: 100%; } }
       @media only screen and (min-width: 768px) and (max-width: 1124px) {
         .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield {
-          width: 56.38095%; } }
+          width: 27.30159%; } }
       .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield label {
         font-size: 15px;
         font-size: 0.9375rem;
@@ -4173,16 +4171,40 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         min-height: 20px; }
       .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield .form-text {
         display: inline-block;
-        width: 74%;
+        width: 70%;
         border-top: none;
         border-left: none;
         border-right: none; }
         @media only screen and (min-width: 768px) and (max-width: 1124px) {
           .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield .form-text {
-            width: 60%; } }
+            width: 100%; } }
         @media only screen and (max-width: 767px) {
           .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield .form-text {
             width: 100%; } }
+    .block-views-blocklist-entries-block-1 .view-filters .form--bottom > .site-btn {
+      width: 20.03175%;
+      padding-right: 3px;
+      padding-left: 3px; }
+      @media only screen and (max-width: 767px) {
+        .block-views-blocklist-entries-block-1 .view-filters .form--bottom > .site-btn {
+          float: left;
+          margin-left: 0;
+          width: 100%; } }
+      @media only screen and (min-width: 768px) and (max-width: 1124px) {
+        .block-views-blocklist-entries-block-1 .view-filters .form--bottom > .site-btn {
+          width: 26.5746%; } }
+      @media only screen and (max-width: 767px) {
+        .block-views-blocklist-entries-block-1 .view-filters .form--bottom > .site-btn {
+          margin-bottom: 20px; } }
+      .block-views-blocklist-entries-block-1 .view-filters .form--bottom > .site-btn a {
+        width: 100%;
+        background-color: #fff;
+        color: #b3001e;
+        border: 1px solid #b3001e;
+        text-align: center; }
+        .block-views-blocklist-entries-block-1 .view-filters .form--bottom > .site-btn a:hover {
+          background-color: #b3001e;
+          color: #fff; }
     .block-views-blocklist-entries-block-1 .view-filters .form--bottom .form-actions {
       width: 12.7619%;
       padding-right: 3px;

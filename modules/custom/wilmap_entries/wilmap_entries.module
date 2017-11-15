@@ -45,7 +45,7 @@ function wilmap_entries_form_views_exposed_form_alter(
         $project_link = Link::fromTextAndUrl(t('Show in map'), $url);
         $project_link = $project_link->toRenderable();
         $project_link['#attributes'] = array(
-          'class' => array('button', 'button-map'),
+          'class' => array('btn', 'button-map'),
           'id'    => 'show-map'
         );
 

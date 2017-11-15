@@ -31,10 +31,6 @@
 
   // Filters
 
-  #show-map {
-    display: none; // TEMPORAL
-  }
-
   .view-filters {
     @include hide-before-dom-alter();
     clear: both;
@@ -326,10 +322,10 @@
       @include clearfix();
 
       .js-form-type-textfield {
-        @include column(10, false, collapse, false);
+        @include column(7, false, collapse, false);
 
         @include respond(tablets) {
-          width: columns(8);
+          width: columns(4);
         }
 
         label {
@@ -343,17 +339,43 @@
 
         .form-text {
           display: inline-block;
-          width: 74%;
+          width: 70%;
           border-top: none;
           border-left: none;
           border-right: none;
 
           @include respond(tablets) {
-            width: 60%;
+            width: 100%;
           }
 
           @include respond(all-phones) {
             width: 100%;
+          }
+        }
+      }
+
+      & > .site-btn {
+        @include column(3);
+        @include padding(null 3px);
+
+        @include respond(tablets) {
+          width: columns(3.9);
+        }
+
+        @include respond(all-phones) {
+          @include margin(null null $dp * 2 null);
+        }
+
+        a {
+          width: 100%;
+          background-color: $white;
+          color: $third-color;
+          border: 1px solid $third-color;
+          text-align: center;
+
+          &:hover {
+            background-color: $third-color;
+            color: $white;
           }
         }
       }

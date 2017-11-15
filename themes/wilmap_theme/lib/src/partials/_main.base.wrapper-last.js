@@ -3,7 +3,7 @@
    * Attach the App code to Drupal.
    *
    */
-  Drupal.behaviors.cuentametoledo_theme = {
+  Drupal.behaviors.wilmap_theme = {
     attach: function ( context, settings ) {
 
       // Rock & Roll

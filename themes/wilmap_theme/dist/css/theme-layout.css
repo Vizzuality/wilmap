@@ -880,6 +880,8 @@ label {
     color: #968f7e; }
   .field .input:-ms-input-placeholder {
     color: #968f7e; }
+  .field .input::-ms-input-placeholder {
+    color: #968f7e; }
   .field .input::placeholder {
     color: #968f7e; }
   .field .input.file {
