@@ -230,7 +230,9 @@ console.log(coord.lng - App.Application.Maps.Config.wilmap.getBounds()['_southWe
           if (App.Application.Maps.CountryData[iso2]) {
             $.getJSON( API, function( data ) {
               var total = 0;
-              var goto_button = (App.Application.Maps.CountryData[iso2].path)?'<a class="btn" href="' + App.Application.Maps.CountryData[iso2].path + '">GO TO COUNTRY PAGE</a>':'';
+              console.log('al montar esto: ' + App.Application.Maps.Config.is_embed);
+              var target_button = (App.Application.Maps.Config.is_embed)?' target="_blank"':'';
+              var goto_button = (App.Application.Maps.CountryData[iso2].path)?'<a class="btn" href="' + App.Application.Maps.CountryData[iso2].path + '"' + target_button + '>GO TO COUNTRY PAGE</a>':'';
               var info_popup = '<p><strong>' + App.Application.Maps.CountryData[iso2].title + '</strong></p><ul>';
 
 

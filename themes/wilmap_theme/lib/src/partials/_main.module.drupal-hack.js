@@ -233,13 +233,18 @@
 
             var href = '/map?'
             var serialize = $(runON + ' .views-exposed-form').serialize();
+            var styles = ['blue','green','olive','bronze','maroon','purple','forest'];
 
-            //add fromform
+            //add fromform and random style
             serialize = serialize + '&layerid=fromform';
+            serialize = serialize + '&layerstyle='+styles[Math.floor(Math.random()*styles.length)];
 
             //Clean serialize
             //?claim=56&document=All&country=28278&sort_by=changed&fromyear=1900&toyear=&region=All&title=&layerid=fromform
+            serialize = serialize.replace('claim=All&','');
+            serialize = serialize.replace('country=All&','');
             serialize = serialize.replace('document=All&','');
+            serialize = serialize.replace('fromyear=&','');
             serialize = serialize.replace('toyear=&','');
             serialize = serialize.replace('region=All&','');
             serialize = serialize.replace('sort_by=changed&','');
