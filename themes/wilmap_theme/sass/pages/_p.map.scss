@@ -13,47 +13,46 @@
 // -------------------------------------
 // Scaffold
 // -------------------------------------
+.block-wilmap-map {
+  .wilmap {
+    @include position(relative, null null null null);
+    display: block;
+    min-width: 250px;
+    min-height: 250px;
+    z-index: 0;
 
-body {
-  .block-wilmap-map {
-    .wilmap {
-      @include position(relative, null null null null);
-      display: block;
-      min-width: 250px;
-      min-height: 250px;
-      z-index: 0;
+    .wilmap-logomap {
+      @include position(absolute, 0 null null 10px);
+      @include size(105px auto);
+      @include margin(null null null null);
+      background-color: $third-color;
+      border: 1px solid $white;
+      border-top: none;
+      z-index: 660;
 
-      .wilmap-logomap {
-        @include position(absolute, 0 null null 10px);
-        @include size(105px auto);
-        @include margin(null null null null);
-        background-color: $third-color;
-        border: 1px solid $white;
-        border-top: none;
-        z-index: 660;
-
-        a {
-          @include font($normal - 3, 1.2, $bold, $body-font);
-          color: $second-color;
-          padding: $dp * 1.2;
-          text-align: center;
-          text-decoration: none;
-          display: block;
-          text-transform: uppercase;
-        }
+      a {
+        @include font($normal - 3, 1.2, $bold, $body-font);
+        color: $second-color;
+        padding: $dp * 1.2;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        text-transform: uppercase;
       }
+    }
 
-      .actions {
-        @include position(absolute, null $dp * 2 $dp * 2.5 null);
-        z-index: 650;
+    .actions {
+      @include position(absolute, null $dp * 2 $dp * 2.5 null);
+      z-index: 650;
 
-        .btn {
-          @include margin(null null null $dp);
-        }
+      .btn {
+        @include margin(null null null $dp);
       }
     }
   }
+}
 
+body.node-map {
   .layout-main-wrapper {
     @include reset-grid();
 
