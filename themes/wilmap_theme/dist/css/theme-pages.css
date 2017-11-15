@@ -4710,13 +4710,13 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
   article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items > .field__item:nth-child(2n+1) {
     margin-left: 0; }
 
-body.node-map .block-wilmap-map .wilmap {
+body .block-wilmap-map .wilmap {
   position: relative;
   display: block;
   min-width: 250px;
   min-height: 250px;
   z-index: 0; }
-  body.node-map .block-wilmap-map .wilmap .wilmap-logomap {
+  body .block-wilmap-map .wilmap .wilmap-logomap {
     position: absolute;
     top: 0;
     left: 10px;
@@ -4726,7 +4726,7 @@ body.node-map .block-wilmap-map .wilmap {
     border: 1px solid #fff;
     border-top: none;
     z-index: 660; }
-    body.node-map .block-wilmap-map .wilmap .wilmap-logomap a {
+    body .block-wilmap-map .wilmap .wilmap-logomap a {
       font-size: 13px;
       font-size: 0.8125rem;
       line-height: 15.6px;
@@ -4739,40 +4739,40 @@ body.node-map .block-wilmap-map .wilmap {
       text-decoration: none;
       display: block;
       text-transform: uppercase; }
-  body.node-map .block-wilmap-map .wilmap .actions {
+  body .block-wilmap-map .wilmap .actions {
     position: absolute;
     right: 20px;
     bottom: 25px;
     z-index: 650; }
-    body.node-map .block-wilmap-map .wilmap .actions .btn {
+    body .block-wilmap-map .wilmap .actions .btn {
       margin-left: 10px; }
-body.node-map .layout-main-wrapper {
+body .layout-main-wrapper {
   margin: 0;
   padding: 0;
   min-width: 0;
   max-width: 100%;
   width: 100%; }
   @media only screen and (min-width: 768px) and (max-width: 1124px) {
-    body.node-map .layout-main-wrapper {
+    body .layout-main-wrapper {
       margin: 0;
       padding: 0;
       min-width: 0;
       max-width: 100%;
       width: 100%; } }
   @media only screen and (max-width: 767px) {
-    body.node-map .layout-main-wrapper {
+    body .layout-main-wrapper {
       margin: 0;
       padding: 0;
       min-width: 0;
       max-width: 100%;
       width: 100%; } }
-  body.node-map .layout-main-wrapper .layout-main {
+  body .layout-main-wrapper .layout-main {
     margin: 0;
     padding: 0;
     min-width: 0;
     max-width: 100%;
     width: 100%; }
-body.node-map .footer_first_wrap {
+body .footer_first_wrap {
   display: none; }
 
 .path-contact form .form-actions {
