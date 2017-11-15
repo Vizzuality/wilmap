@@ -23,6 +23,26 @@ body.node-map {
       min-height: 250px;
       z-index: 0;
 
+      .wilmap-logomap {
+        @include position(absolute, 0 null null 10px);
+        @include size(105px auto);
+        @include margin(null null null null);
+        background-color: $third-color;
+        border: 1px solid $white;
+        border-top: none;
+        z-index: 660;
+
+        a {
+          @include font($normal - 3, 1.2, $bold, $body-font);
+          color: $second-color;
+          padding: $dp * 1.2;
+          text-align: center;
+          text-decoration: none;
+          display: block;
+          text-transform: uppercase;
+        }
+      }
+
       .actions {
         @include position(absolute, null $dp * 2 $dp * 2.5 null);
         z-index: 650;

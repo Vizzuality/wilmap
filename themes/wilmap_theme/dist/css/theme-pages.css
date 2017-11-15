@@ -4716,6 +4716,29 @@ body.node-map .block-wilmap-map .wilmap {
   min-width: 250px;
   min-height: 250px;
   z-index: 0; }
+  body.node-map .block-wilmap-map .wilmap .wilmap-logomap {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    height: auto;
+    width: 105px;
+    background-color: #b3001e;
+    border: 1px solid #fff;
+    border-top: none;
+    z-index: 660; }
+    body.node-map .block-wilmap-map .wilmap .wilmap-logomap a {
+      font-size: 13px;
+      font-size: 0.8125rem;
+      line-height: 15.6px;
+      line-height: 0.975rem;
+      font-weight: 700;
+      font-family: "Raleway", sans-serif;
+      color: #fff;
+      padding: 12px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      text-transform: uppercase; }
   body.node-map .block-wilmap-map .wilmap .actions {
     position: absolute;
     right: 20px;

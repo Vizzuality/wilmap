@@ -1603,6 +1603,11 @@ console.log('first_layer_load -> ' + first_layer_load);
             App.Application.Maps.Config.click_on_map = false;
           });
 
+          // Logo on map
+          var style_logo = (App.Application.Maps.Config.is_embed) ? ' style="display:block;"' : ' style="display:none;"';
+          $(dom).append('<div class="wilmap-logomap"' + style_logo + '><a href="/" title="Home" target="_blank">WilMap</a></div>');
+
+
           // Layer buttons
           var style_actions = (App.Application.Maps.Config.is_embed) ? ' style="display:none;"' : ' style="display:block;"';
           $(dom).append('<div class="actions"' + style_actions + '></div>');
