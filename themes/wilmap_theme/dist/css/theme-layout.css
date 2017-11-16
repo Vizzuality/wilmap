@@ -24,7 +24,7 @@ body.path-frontpage .layout-main-wrapper .layout-main, body.path-frontpage.no-si
 .site-header {
   display: block; }
 
-.site-footer .footer_second_wrap .block-block-content .logo-cis, .site-footer .footer_second_wrap .block-block-content .logo-sign {
+.site-footer .footer_second_wrap .block-block-content .logo-cis a, .site-footer .footer_second_wrap .block-block-content .logo-sign a {
   text-indent: -9999px;
   overflow: hidden;
   text-align: left; }
@@ -879,6 +879,8 @@ label {
   .field .input::-webkit-input-placeholder {
     color: #968f7e; }
   .field .input:-ms-input-placeholder {
+    color: #968f7e; }
+  .field .input::-ms-input-placeholder {
     color: #968f7e; }
   .field .input::placeholder {
     color: #968f7e; }
@@ -1917,7 +1919,7 @@ button.btn,
       @media only screen and (max-width: 767px) {
         .site-footer .footer_second_wrap .block-block-content {
           margin-bottom: 10px; } }
-      .site-footer .footer_second_wrap .block-block-content .logo-cis {
+      .site-footer .footer_second_wrap .block-block-content .logo-cis a {
         background-image: url("../../images/logo.png");
         background-repeat: no-repeat;
         background-position: 0 0;
@@ -1928,12 +1930,12 @@ button.btn,
         background-size: 132px 95px;
         float: left; }
         @media only screen and (max-width: 767px) {
-          .site-footer .footer_second_wrap .block-block-content .logo-cis {
+          .site-footer .footer_second_wrap .block-block-content .logo-cis a {
             height: 60px;
             width: 105px;
             background-size: contain;
             background-position: 0 0; } }
-      .site-footer .footer_second_wrap .block-block-content .logo-sign {
+      .site-footer .footer_second_wrap .block-block-content .logo-sign a {
         background-image: url("../../images/footer/stanford-logo.png");
         background-repeat: no-repeat;
         background-position: 0 0;
@@ -1949,7 +1951,7 @@ button.btn,
         position: relative;
         top: 75px; }
         @media only screen and (max-width: 767px) {
-          .site-footer .footer_second_wrap .block-block-content .logo-sign {
+          .site-footer .footer_second_wrap .block-block-content .logo-sign a {
             top: 40px; } }
     .site-footer .footer_second_wrap .block-menu {
       width: 49.11111%;
@@ -1985,10 +1987,10 @@ button.btn,
 
 body.node-map .site-footer {
   margin-top: 0; }
-  body.node-map .site-footer .footer_second_wrap .block-block-content .logo-cis {
+  body.node-map .site-footer .footer_second_wrap .block-block-content .logo-cis a {
     background-position: bottom left;
     height: 35px; }
-  body.node-map .site-footer .footer_second_wrap .block-block-content .logo-sign {
+  body.node-map .site-footer .footer_second_wrap .block-block-content .logo-sign a {
     top: 15px; }
   body.node-map .site-footer .footer_second_wrap .block-menu {
     top: 13px; }

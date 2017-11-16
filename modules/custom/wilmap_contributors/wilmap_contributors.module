@@ -318,7 +318,9 @@ function wilmap_contributors_form_alter(
     if (in_array($form_id, [
       'node_region_edit_form',
       'node_country_edit_form',
-      'node_topics_edit_form'
+      'node_topics_edit_form',
+      'node_entry_edit_form',
+      'node_news_edit_form'
     ])) {
 
         $node = $form_state->getFormObject()->getEntity();

@@ -139,7 +139,7 @@ $footer-bandcolor:                      #222222;
         @include margin(null null $dp null);
       }
 
-      .logo-cis {
+      .logo-cis a {
         @extend %hide-text;
         @include bg-image ($img-path + 'logo.png', $width:100%, $height:auto);
         @include size(162px 95px);
@@ -154,7 +154,7 @@ $footer-bandcolor:                      #222222;
         }
       }
 
-      .logo-sign {
+      .logo-sign a {
         @extend %hide-text;
         @include bg-image ($img-path + 'footer/stanford-logo.png', $width:100%, $height:auto);
         @include size(175px 14px);
@@ -217,12 +217,12 @@ body.node-map {
 
     .footer_second_wrap {
       .block-block-content {
-        .logo-cis {
+        .logo-cis a {
           background-position: bottom left;
           height: 35px;
         }
 
-        .logo-sign {
+        .logo-sign a {
           top: 15px;
         }
       }
