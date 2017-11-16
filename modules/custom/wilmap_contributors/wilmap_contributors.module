@@ -96,8 +96,8 @@ function wilmap_contributors_node_access_records(NodeInterface $node)
 
         case 'entry':
             // If Entry then adds a WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM / WILMAP_CONTRIBUTORS_TO_REGION_REALM
-            // record using country/region from field_location_entry as gid
-            // Get country nids from field_location_entry
+            // record using country/region from field_location_entry.target_id as gid
+            // Get country nids from field_location_entry.target_id
             foreach ($node->field_location_entry->getValue() as $delta => $value) {
                 $grants[] = array(
                   'realm'        => WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM,
@@ -148,7 +148,7 @@ function wilmap_contributors_node_access_records(NodeInterface $node)
 
     }
 
-    // Add grant/key for admins
+    // Add grant/key for admins and content admins
     $grants[] = array(
       'realm'        => WILMAP_CONTRIBUTORS_ADMIN_REALM,
       'gid'          => 0,
@@ -199,7 +199,9 @@ function wilmap_contributors_node_grants(AccountInterface $account, $op)
     $grants = array();
 
     // If user has administrator role give user Admin grant/key
-    if (in_array('administrator', $account->getRoles())) {
+    if (in_array('administrator',
+        $account->getRoles()) || in_array('content_administrator',
+        $account->getRoles())) {
         // gid to view, update, delete
         $grants[WILMAP_CONTRIBUTORS_ADMIN_REALM][] = 0;
 
@@ -276,7 +278,7 @@ function wilmap_contributors_entity_bundle_field_info_alter(
     }
 
     // Entry
-    if ($bundle === 'entry') {
+    if ($entity_type->id() == 'node' && $bundle === 'entry') {
         // Adds 'allowed_country' constraint to field_location_entry field in Entry
         if (isset($fields['field_location_entry'])) {
             $fields['field_location_entry']->addConstraint('allowed_country',
@@ -327,7 +329,7 @@ function wilmap_contributors_form_alter(
 
         // "Suggest edit" link
         $referrer = Drupal\Core\Url::fromRoute('entity.node.canonical',
-          ['node' => $node->id()], ['absolute' => TRUE])->toString();
+          ['node' => $node->id()], ['absolute' => true])->toString();
         //$suggest_link =
 
         // Add block with link to Contact with reference
