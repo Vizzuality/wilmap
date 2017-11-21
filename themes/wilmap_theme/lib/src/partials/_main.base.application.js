@@ -101,8 +101,7 @@
         App.Application.Maps.Config.bounds                      = new L.LatLngBounds(new L.LatLng(83.6567687988283, 180.00000000000034), new L.LatLng(-90, -179.99999999999994));
         App.Application.Maps.Config.initial_view                = [51.505, -0.09];
         App.Application.Maps.Config.is_embed                    = (window.location.href.indexOf('/widgets/map' || App.Utils.isIframe()) > -1);
-        // App.Application.Maps.Config.color_styles                = {'style1':'#035e7e','style2':'#325735','style3':'#484d0c','style4':'#554324','style5':'#5b1717','style6':'#31244a'}
-        App.Application.Maps.Config.color_styles                = {'blue':'#035e7e','green':'#325735','olive':'#484d0c','bronze':'#554324','maroon':'#5b1717','purple':'#31244a','forest':'#466946'};
+        App.Application.Maps.Config.color_styles                = {'blue':'#035e7e','forest':'#325735','olive':'#484d0c','bronze':'#554324','maroon':'#5b1717','purple':'#31244a'};
         App.Application.Maps.Config.click_on_map                = false;
 
         App.Application.Maps.Functions.choropleth = function(color, currVal, minVal, maxVal, steps) {
@@ -123,9 +122,13 @@
               percentColor = percentColor+incrementStep;
           }
 
+          percentColor = 100 - percentColor;
+
           //sets lighten
-          console.log("cl: " + percentValue + ' | ' + percentColor);
-          return App.Utils.shadeColor(color, percentColor)
+          console.log("cl: " + currVal + ' | '  + percentValue + ' | ' + percentColor + ' | ' + color + ' | ' + App.Utils.shadeColor(color, percentColor));
+          return App.Utils.shadeColor(color, percentColor);
+          // return App.Utils.shadeColor(color, 200);
+          //return color;
         };
 
         App.Application.Maps.Functions.centerMap = function(coord) {
@@ -1389,7 +1392,7 @@ console.log('first_layer_load -> ' + first_layer_load);
           sidemenu += '      <div class="view view-continent">';
           sidemenu += '        <div class="view-content">';
 
-          var enabled = ($('article.node').hasClass('node--empty'))?'__disabled':'__enabled';
+          var enabled = ($('article.node').hasClass('node--empty') && $('.fields-datasheet').length > 0)?'__disabled':'__enabled';
           sidemenu += '          <div class="views-row '+enabled+'"><a class="skip" gumby-duration="600" gumby-goto="top" href="#description">Description</a></div>';
 
           sidemenu += '        </div>';
