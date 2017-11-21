@@ -104,9 +104,10 @@
     <div class="node-id">{{ node.id }}</div>
   </div>
 
-  {% if content.field_body_country|length > 2 %}
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
+    {% if content.field_body_country|length > 2 %}
     {{ content.field_body_country }}
+    {% endif %}
 
     <div class="action multi-action">
       <a class="btn searchinexplore" href="/entries?country={{ node.id }}">Search in Explore</a>
@@ -116,5 +117,4 @@
     {{ content.group_data }}
     {% endif %}
   </div>
-  {% endif %}
 </article>
