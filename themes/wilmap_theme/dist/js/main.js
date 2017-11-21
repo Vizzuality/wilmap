@@ -2316,7 +2316,7 @@ console.log('first_layer_load -> ' + first_layer_load);
           sidemenu += '      <div class="view view-continent">';
           sidemenu += '        <div class="view-content">';
 
-          var enabled = ($('article.node').hasClass('node--empty') && $('.fields-datasheet').length > 0)?'__disabled':'__enabled';
+          var enabled = ($('article.node').hasClass('node--empty') && !$('.fields-datasheet').length > 0)?'__disabled':'__enabled';
           sidemenu += '          <div class="views-row '+enabled+'"><a class="skip" gumby-duration="600" gumby-goto="top" href="#description">Description</a></div>';
 
           sidemenu += '        </div>';
