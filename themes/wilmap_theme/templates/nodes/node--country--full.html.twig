@@ -102,6 +102,7 @@
     {{ content.field_iso2 }}
     {{ content.field_continent_country }}
     <div class="node-id">{{ node.id }}</div>
+    <a class="btn searchinexplore" href="/entries?country={{ node.id }}">Search in Explore</a>
   </div>
 
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
@@ -109,9 +110,6 @@
     {{ content.field_body_country }}
     {% endif %}
 
-    <div class="action multi-action">
-      <a class="btn searchinexplore" href="/entries?country={{ node.id }}">Search in Explore</a>
-    </div>
 
     {% if node.field_hide_datasheet.value != '1' and content.group_data|length > 2  %}
     {{ content.group_data }}

@@ -49,6 +49,149 @@
         @include margin(null null null $dp);
       }
     }
+
+    #map-legend {
+      @include position(absolute, null null $dp * 2 $dp * 2.5);
+      z-index: 660;
+
+      a.toggle {
+        @include trim();
+        display: block;
+        clear: both;
+        float: none;
+        cursor: pointer !important;
+
+        i {
+          @include trim();
+          @include padding($dp $dp * 1.5);
+          @include fs(15px);
+          border: 1px solid $hr-color;
+          background-color: $second-color;
+          color: $first-color;
+        }
+
+        &.active {
+          i {
+            @include icon-change('icon-down-open-big', before);
+          }
+        }
+      }
+
+      .drawer {
+        width: $dp * 22;
+        background-color: $second-color;
+        border: 0px solid transparent;
+
+        &.active {
+          @include margin($dp null null null);
+          background-color: $second-color;
+          border: 1px solid $hr-color;
+        }
+
+        .drawer-inner {
+          @include padding($dp * 1.5);
+        }
+
+        h3 {
+          @include trim();
+          @include margin(null null $dp / 2 null);
+          @include font($normal - 1, 1.1, $bold, $body-font);
+          color: $first-color;
+        }
+
+        .description,
+        .description p {
+          @include trim();
+          @include font($normal - 1, 1.1, $regular, $body-font);
+          color: $fourth-color;
+          font-style: normal;
+        }
+
+        .color-ranges {
+          @include trim();
+          margin-top: $dp * 1.5;
+
+          ul {
+            @include trim();
+
+            &.segments-1 {
+              li {
+                width: 98%;
+                margin: 0 1%;
+              }
+            }
+
+            &.segments-2 {
+              li {
+                width: 48%;
+                margin: 0 1%;
+              }
+            }
+
+            &.segments-3 {
+              li {
+                width: 31%;
+                margin: 0 1%;
+              }
+            }
+
+            &.segments-4 {
+              li {
+                width: 23%;
+                margin: 0 1%;
+              }
+            }
+
+            &.segments-5 {
+              li {
+                width: 98%;
+                margin: 0 1%;
+              }
+            }
+
+            li {
+              @include trim();
+              position: relative;
+              display: inline-block;
+
+              &:first-child {
+                .text {
+                  text-align: left;
+                }
+              }
+
+              &:last-child {
+                .text {
+                  text-align: right;
+                }
+              }
+
+              .text {
+                @include font($normal - 1, 1.1, $regular, $body-font);
+                @include padding($dp * 1.5 null null null);
+                color: $fourth-color;
+                text-align: center;
+              }
+
+              .color {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                width: 100%;
+                height: $dp;
+
+                &.base {
+                  background-color: #e4dfd3;
+                  z-index: 10;
+                }
+              }
+            }
+          }
+        }
+      }
+
+    }
   }
 }
 

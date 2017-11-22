@@ -235,9 +235,11 @@
             var serialize = $(runON + ' .views-exposed-form').serialize();
             var styles = ['blue','green','olive','bronze','maroon','purple','forest'];
 
-            //add fromform and random style
+            //add fromform, random style, title and desc
             serialize = serialize + '&layerid=fromform';
             serialize = serialize + '&layerstyle='+styles[Math.floor(Math.random()*styles.length)];
+            serialize = serialize + '&layertitle=Explore in Map';
+            serialize = serialize + '&layerdesc=';
 
             //Clean serialize
             //?claim=56&document=All&country=28278&sort_by=changed&fromyear=1900&toyear=&region=All&title=&layerid=fromform

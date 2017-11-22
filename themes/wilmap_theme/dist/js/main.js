@@ -505,9 +505,11 @@
             var serialize = $(runON + ' .views-exposed-form').serialize();
             var styles = ['blue','green','olive','bronze','maroon','purple','forest'];
 
-            //add fromform and random style
+            //add fromform, random style, title and desc
             serialize = serialize + '&layerid=fromform';
             serialize = serialize + '&layerstyle='+styles[Math.floor(Math.random()*styles.length)];
+            serialize = serialize + '&layertitle=Explore in Map';
+            serialize = serialize + '&layerdesc=';
 
             //Clean serialize
             //?claim=56&document=All&country=28278&sort_by=changed&fromyear=1900&toyear=&region=All&title=&layerid=fromform
@@ -1030,6 +1032,7 @@
 
         App.Application.Maps.Functions.choropleth = function(color, currVal, minVal, maxVal, steps) {
           var steps = typeof steps !== 'undefined' ? steps : 5;
+          var output_color = '';
 
           // calculates the percent of value
           var percentValue = Math.floor((currVal - minVal) / (maxVal - minVal) * 100);
@@ -1046,13 +1049,26 @@
               percentColor = percentColor+incrementStep;
           }
 
-          percentColor = 100 - percentColor;
+          // Adjust colors
+          percentColor = (100 - percentColor);
+
+          switch (percentColor) {
+            case 80:
+              percentColor = 100;
+              break;
+            default:
+              percentColor = percentColor * 1.25;
+              break;
+          }
 
           //sets lighten
-          console.log("cl: " + currVal + ' | '  + percentValue + ' | ' + percentColor + ' | ' + color + ' | ' + App.Utils.shadeColor(color, percentColor));
-          return App.Utils.shadeColor(color, percentColor);
-          // return App.Utils.shadeColor(color, 200);
-          //return color;
+          output_color = App.Utils.shadeColor(color, percentColor);
+
+          // save color scale
+          App.Application.Maps.Config.curr_layer_active.colorscale[percentColor] = output_color;
+
+          // console.log("cl: " + currVal + ' | '  + percentValue + ' | ' + percentColor + ' | ' + color + ' | ' + output_color);
+          return output_color
         };
 
         App.Application.Maps.Functions.centerMap = function(coord) {
@@ -1138,8 +1154,83 @@
           });
         };
 
-        App.Application.Maps.Functions.showLegend = function(show, title, subtitle) {
+        App.Application.Maps.Functions.mapLegend = function() {
+          var DOM = 'map-legend';
+          var output = '';
 
+          if ( !$('#' + DOM).length > 0 ) {
+            output += '<div id="'+DOM+'">';
+            output += '  <a class="toggle active" gumby-trigger="#' + DOM + '-drawer"><i class="icon-up-open-big"></i></a>';
+            output += '  <div class="drawer active" id="' + DOM + '-drawer">';
+            output += '    <div class="drawer-inner">';
+            output += '      <h3></h3>';
+            output += '      <div class="description"></div>';
+            output += '      <div class="color-ranges"></div>';
+            output += '    </div>';
+            output += '  </div>';
+            output += '</div>';
+
+            // Write modal in body
+            $(dom).append(output);
+            Gumby.init();
+            $('#' + DOM).hide();
+
+            $('#map-legend').on('mouseover click', function(e){
+              App.Application.Maps.Config.wilmap.doubleClickZoom.disable();
+            });
+
+            $('#map-legend').on('mouseout', function(e){
+              App.Application.Maps.Config.wilmap.doubleClickZoom.enable();
+            });
+          }
+
+          if (App.Application.Maps.Config.curr_layer_active !== null) {
+            // Generate colorange
+            var colorange = '';
+            var count = 0;
+            var total = Object.keys(App.Application.Maps.Config.curr_layer_active.colorscale).length;
+
+            colorange += '<ul class="segments-' + total + '">';
+
+            $.each(Object.assign([],App.Application.Maps.Config.curr_layer_active.colorscale).reverse(), function(k, v) {
+              console.log(k, v);
+
+              if( v !== undefined ) {
+                var value = 0;
+
+                switch (count) {
+                  case 0:
+                    value = 0;
+                    break;
+                  case parseInt(total/2):
+                    value = parseInt(App.Application.Maps.Config.curr_layer_active.data.max / 2);
+                    break;
+                  case total - 1:
+                    value = App.Application.Maps.Config.curr_layer_active.data.max;
+                    break;
+                  default:
+                    value = '&nbsp;';
+                }
+
+                colorange += '<li><div class="color" style="background-color:' + v + '; opacity: 0.5; z-index: 20;"></div><div class="color base"></div><div class="text">' + value + '</div></li>';
+
+                count++;
+              }
+            });
+
+            colorange += '</ul>';
+
+            // Show info
+            $('#' + DOM + ' h3').text(App.Application.Maps.Config.curr_layer_active.title);
+            $('#' + DOM + ' .description').html(App.Application.Maps.Config.curr_layer_active.description);
+            $('#' + DOM + ' .color-ranges').empty().html(colorange);
+
+            $('#' + DOM).show();
+            $('#' + DOM + ' .toggle').addClass('active');
+            $('#' + DOM + ' .drawer').addClass('active');
+          } else {
+            $('#' + DOM).hide();
+          }
         };
 
         App.Application.Maps.Functions.showPopup = function(iso2, layer, coord) {
@@ -1180,6 +1271,15 @@ console.log(coord.lng - App.Application.Maps.Config.wilmap.getBounds()['_southWe
               App.Application.Maps.Config.popup.setContent(output);
               App.Application.Maps.Config.popup.openOn(App.Application.Maps.Config.wilmap);
             });
+          } else {
+            setTimeout(function(){
+              var output = '<div class="popup-inner" class="background-color: #fff;"><div class="popup-inner-right" style="width:100%;"><div class="popup-info">No data available for this country</div></div></div>';
+
+              App.Application.Maps.Config.popup = L.popup();
+              App.Application.Maps.Config.popup.setLatLng(coord);
+              App.Application.Maps.Config.popup.setContent(output);
+              App.Application.Maps.Config.popup.openOn(App.Application.Maps.Config.wilmap);
+            }, 300);
           };
         };
 
@@ -1318,14 +1418,14 @@ console.log(coord.lng - App.Application.Maps.Config.wilmap.getBounds()['_southWe
           var redraw = typeof redraw !== 'undefined' ? redraw : false;
 
           if (layer !== 'none') {
-            layer = { layerid:layer, query:'', title:'', description:'', style:'', data:{min:0, max:0, counts:''} };
+            layer = { layerid:layer, query:'', title:'', description:'', style:'', data:{min:0, max:0, counts:''}, colorscale:{} };
             App.Application.Maps.Config.curr_layer_active = layer;
 
             if (App.Application.Maps.Config.curr_layer_active.layerid === 'fromform') {
               var url = window.location.href;
 
-              App.Application.Maps.Config.curr_layer_active.title = (url.indexOf('layertitle') > -1) ? App.Utils.getUrlVar('layertitle') : '';
-              App.Application.Maps.Config.curr_layer_active.description = (url.indexOf('layerdesc') > -1) ? App.Utils.getUrlVar('layerdesc') : '';
+              App.Application.Maps.Config.curr_layer_active.title = (url.indexOf('layertitle') > -1) ? unescape(App.Utils.getUrlVar('layertitle')) : '';
+              App.Application.Maps.Config.curr_layer_active.description = (url.indexOf('layerdesc') > -1) ? unescape(App.Utils.getUrlVar('layerdesc')) : '';
               App.Application.Maps.Config.curr_layer_active.style = (url.indexOf('layerstyle') > -1) ? App.Utils.getUrlVar('layerstyle') : Object.keys(App.Application.Maps.Config.color_styles)[0];
               App.Application.Maps.Config.curr_layer_active.query = url.split('?')[1];
 
@@ -1405,6 +1505,9 @@ console.log(App.Application.Maps);
                 fillColor: layer.feature.properties.color
               });
             });
+
+            // Call legend map
+            App.Application.Maps.Functions.mapLegend();
           });
         };
 
@@ -1511,6 +1614,8 @@ console.log(App.Application.Maps);
                    App.Application.Maps.Functions.activeContinent(App.Application.Maps.CountryData[l.feature.properties.iso2].continent, true, true);
                    App.Application.Maps.Functions.activeCountry(l.feature.properties.iso2, true, false);
                    App.Application.Maps.Functions.showPopup(l.feature.properties.iso2, '', e.latlng);
+                 } else {
+                   App.Application.Maps.Functions.showPopup('empty', '', e.latlng);
                  }
                }
              });
@@ -1638,7 +1743,6 @@ console.log('first_layer_load -> ' + first_layer_load);
           $('.actions .btn').on('mouseout', function(e){
             App.Application.Maps.Config.wilmap.doubleClickZoom.enable();
           });
-
 
 
 
@@ -2087,12 +2191,15 @@ console.log('first_layer_load -> ' + first_layer_load);
           $('.copy-url a.btn').on('click', function(e){
             $('.copy-url .result').text('').removeClass('success').removeClass('error').removeClass('empty');
 
+            var str = ($(this).parent().attr('id') === 'share-textarea') ? 'Embed code' : 'Page URL';
+
             try {
               $('.copy-url .input').select();
               document.execCommand("copy");
-              $('.copy-url .result').text('Page URL copied!').addClass('success');
+              console.log($(this).parent().attr('id'));
+              $('.copy-url .result').text(str + ' copied!').addClass('success');
             } catch(err) {
-              $('.copy-url .result').text('Page URL not copied. Please select and copy with your keyboard.').addClass('error');
+              $('.copy-url .result').text(str + ' not copied. Please select and copy with your keyboard.').addClass('error');
             }
 
             setTimeout(function(){
@@ -2299,6 +2406,7 @@ console.log('first_layer_load -> ' + first_layer_load);
         var dom_sidemenu = '.content-sidenav';
         var dom_content =  '.region-content';
         var dom_contentsections =  dom_content + ' > section';
+        var dom_search_in_explore =  dom_content + ' .metadata .site-btn';
         var nid = $('.node-id').text();
         var api_section_list = '/api/section';
         var node_type = $(dom).hasClass('page-node-type-region')?'region':'country';
@@ -2348,6 +2456,11 @@ console.log('first_layer_load -> ' + first_layer_load);
 
             $(k).addClass('panel-block');
           });
+
+          // Move Search in explore button to sidebar
+          if($(dom_search_in_explore).length > 0) {
+            $(dom_sidemenu).append($(dom_search_in_explore).remove().wrap());
+          }
 
           // load ajax content
           $.get(api_section_list, function() {})
