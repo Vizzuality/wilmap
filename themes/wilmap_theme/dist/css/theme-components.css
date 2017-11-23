@@ -1578,7 +1578,8 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
     left: 0 !important;
     bottom: 0 !important;
     margin-bottom: 0;
-    border-left: 1px solid #a4001b; }
+    border-left: 1px solid #a4001b;
+    /* Override orientation */ }
     .leaflet-container .leaflet-popup-pane .leaflet-popup .leaflet-popup-content-wrapper {
       border-radius: 0;
       background-color: #b3001e;
@@ -1722,6 +1723,39 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
         background-color: #b3001e;
         width: 23px;
         height: 23px; }
+    .leaflet-container .leaflet-popup-pane .leaflet-popup.__no-data {
+      border-left: none; }
+      .leaflet-container .leaflet-popup-pane .leaflet-popup.__no-data .leaflet-popup-content-wrapper {
+        background-color: #fff; }
+        .leaflet-container .leaflet-popup-pane .leaflet-popup.__no-data .leaflet-popup-content-wrapper .popup-inner .popup-inner-right {
+          width: 100%;
+          min-height: 30px; }
+          .leaflet-container .leaflet-popup-pane .leaflet-popup.__no-data .leaflet-popup-content-wrapper .popup-inner .popup-inner-right .popup-info {
+            padding: 20px 10px;
+            font-size: 14px;
+            font-size: 0.875rem;
+            line-height: 15.4px;
+            line-height: 0.9625rem;
+            font-weight: 700;
+            font-family: "Raleway", sans-serif;
+            color: #222;
+            text-align: center; }
+            .leaflet-container .leaflet-popup-pane .leaflet-popup.__no-data .leaflet-popup-content-wrapper .popup-inner .popup-inner-right .popup-info i::before {
+              font-size: 15px;
+              font-size: 0.9375rem; }
+      .leaflet-container .leaflet-popup-pane .leaflet-popup.__no-data .leaflet-popup-tip-container .leaflet-popup-tip {
+        background-color: #fff; }
+      .leaflet-container .leaflet-popup-pane .leaflet-popup.__no-data.__right .leaflet-popup-tip-container .leaflet-popup-tip {
+        background-color: #fff; }
+    .leaflet-container .leaflet-popup-pane .leaflet-popup.__right {
+      left: -303px !important;
+      bottom: 0 !important;
+      border-left: none; }
+      .leaflet-container .leaflet-popup-pane .leaflet-popup.__right .leaflet-popup-tip-container {
+        left: auto;
+        right: -20px; }
+        .leaflet-container .leaflet-popup-pane .leaflet-popup.__right .leaflet-popup-tip-container .leaflet-popup-tip {
+          background-color: #e3ded3; }
 
 body.node-map .ui-autocomplete {
   margin: 0;

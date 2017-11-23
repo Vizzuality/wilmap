@@ -1063,6 +1063,7 @@
 
           //sets lighten
           output_color = App.Utils.shadeColor(color, percentColor);
+          // output_color = (percentColor == 100)?'#ccc':output_color;
 
           // save color scale
           App.Application.Maps.Config.curr_layer_active.colorscale[percentColor] = output_color;
@@ -1202,11 +1203,11 @@
                   case 0:
                     value = 0;
                     break;
-                  case parseInt(total/2):
-                    value = parseInt(App.Application.Maps.Config.curr_layer_active.data.max / 2);
-                    break;
                   case total - 1:
                     value = App.Application.Maps.Config.curr_layer_active.data.max;
+                    break;
+                  case parseInt(total/2):
+                    value = parseInt(App.Application.Maps.Config.curr_layer_active.data.max / 2);
                     break;
                   default:
                     value = '&nbsp;';
@@ -1235,27 +1236,24 @@
 
         App.Application.Maps.Functions.showPopup = function(iso2, layer, coord) {
           var API = '/api/country/data/iso2/' + iso2;
+          var popup_dom = '.leaflet-popup';
+          var orientation = '';
+
 
           if(App.Application.Maps.Config.curr_layer_active !== null) {
             API = API + '?' + App.Application.Maps.Config.curr_layer_active.query;
           }
 
-// try to know coordinates for popup orientation
-console.log(coord, App.Application.Maps.Config.wilmap.getBounds()['_southWest'], coord.lng - App.Application.Maps.Config.wilmap.getBounds()['_southWest'].lng);
-console.log(coord.lng - App.Application.Maps.Config.wilmap.getBounds()['_southWest'].lng);
-
-
           if (App.Application.Maps.CountryData[iso2]) {
             $.getJSON( API, function( data ) {
               var total = 0;
-              console.log('al montar esto: ' + App.Application.Maps.Config.is_embed);
+              // console.log('al montar esto: ' + App.Application.Maps.Config.is_embed);
               var target_button = (App.Application.Maps.Config.is_embed)?' target="_blank"':'';
               var goto_button = (App.Application.Maps.CountryData[iso2].path)?'<a class="btn" href="' + App.Application.Maps.CountryData[iso2].path + '"' + target_button + '>GO TO COUNTRY PAGE</a>':'';
               var info_popup = '<p><strong>' + App.Application.Maps.CountryData[iso2].title + '</strong></p><ul>';
 
-
               $.each( data.values, function( key, val ) {
-                console.log(val);
+                // console.log(val);
 
                 total = total + parseInt(val.count);
                 info_popup += '<li><span class="count">' + val.count + '</span> ' + val.label + '</li>';
@@ -1270,15 +1268,28 @@ console.log(coord.lng - App.Application.Maps.Config.wilmap.getBounds()['_southWe
               App.Application.Maps.Config.popup.setLatLng(coord);
               App.Application.Maps.Config.popup.setContent(output);
               App.Application.Maps.Config.popup.openOn(App.Application.Maps.Config.wilmap);
+              $(popup_dom).addClass(orientation);
+
+              // Orientation
+              //console.log(coord);
+              console.log(coord, App.Application.Maps.Config.wilmap.getBounds()['_southWest']);
+              console.log(coord.lng - App.Application.Maps.Config.wilmap.getBounds()['_southWest'].lng);
+
+              if(parseInt(coord.lng) > 50) {
+                orientation = '__right';
+              }
             });
           } else {
             setTimeout(function(){
-              var output = '<div class="popup-inner" class="background-color: #fff;"><div class="popup-inner-right" style="width:100%;"><div class="popup-info">No data available for this country</div></div></div>';
+              var output = '<div class="popup-inner"><div class="popup-inner-right"><div class="popup-info"><i class="icon-attention"></i> No data available for this country</div></div></div>';
 
               App.Application.Maps.Config.popup = L.popup();
               App.Application.Maps.Config.popup.setLatLng(coord);
               App.Application.Maps.Config.popup.setContent(output);
               App.Application.Maps.Config.popup.openOn(App.Application.Maps.Config.wilmap);
+
+              $(popup_dom).addClass('__no-data');
+              $(popup_dom).addClass(orientation);
             }, 300);
           };
         };
@@ -2459,7 +2470,7 @@ console.log('first_layer_load -> ' + first_layer_load);
 
           // Move Search in explore button to sidebar
           if($(dom_search_in_explore).length > 0) {
-            $(dom_sidemenu).append($(dom_search_in_explore).remove().wrap());
+            $(dom_sidemenu + ' section').append($(dom_search_in_explore).remove().wrap());
           }
 
           // load ajax content
