@@ -282,7 +282,8 @@ $nav-item-bgcolor-active:               $white;
     @include position(relative !important);
     @include trim();
     @include padding($dp * 2 null $dp * 1.9 $header-w-logo-desktop + $header-marginleft + ($dp * 2));
-    min-height: auto;
+    min-height: 55px;
+    max-height: 55px;
     background-color: $header-navbar;
     z-index: 9;
 

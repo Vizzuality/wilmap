@@ -1574,7 +1574,8 @@ button.btn,
     padding-top: 20px;
     padding-bottom: 19px;
     padding-left: 229px;
-    min-height: auto;
+    min-height: 55px;
+    max-height: 55px;
     background-color: rgba(255, 255, 255, 0.95);
     z-index: 9; }
     @media only screen and (min-width: 768px) and (max-width: 1124px) {
