@@ -749,15 +749,14 @@
      */
      run: function() {
 
-      //if ( !$( 'body' ).hasClass( 'theme-started' ) ) {
+      if ( !$( 'body' ).hasClass( 'theme-started' ) ) {
         // Execute all functions
         var m = this.methods;
         for ( var key in this.methods ) {
          //console.log(key);
          m[key]();
         }
-
-      //}
+      }
 
       // log
       console.log( 'App.DrupalHack Running' );
@@ -2716,11 +2715,13 @@ console.log('first_layer_load -> ' + first_layer_load);
      */
     run: function() {
 
-      // Execute all functions
-      var m = this.methods;
-      for ( var key in this.methods ) {
-        //console.log(key);
-        m[key]();
+      if ( !$( 'body' ).hasClass( 'theme-started' ) ) {
+        // Execute all functions
+        var m = this.methods;
+        for ( var key in this.methods ) {
+          //console.log(key);
+          m[key]();
+        }
       }
 
       // log

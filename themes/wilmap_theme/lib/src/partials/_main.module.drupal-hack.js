@@ -479,15 +479,14 @@
      */
      run: function() {
 
-      //if ( !$( 'body' ).hasClass( 'theme-started' ) ) {
+      if ( !$( 'body' ).hasClass( 'theme-started' ) ) {
         // Execute all functions
         var m = this.methods;
         for ( var key in this.methods ) {
          //console.log(key);
          m[key]();
         }
-
-      //}
+      }
 
       // log
       console.log( 'App.DrupalHack Running' );
