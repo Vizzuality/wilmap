@@ -137,7 +137,7 @@
 
           //sets lighten
           output_color = App.Utils.shadeColor(color, percentColor);
-          // output_color = (percentColor == 100)?'#ccc':output_color;
+          output_color = (percentColor == 100)?'#ccc':output_color;
 
           // save color scale
           App.Application.Maps.Config.curr_layer_active.colorscale[percentColor] = output_color;
