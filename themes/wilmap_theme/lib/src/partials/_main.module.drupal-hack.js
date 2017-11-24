@@ -296,11 +296,16 @@
 
         if ($(runON).length > 0) {
           var toplinks = '.node-top';
+          var target = ($(toplinks + '-hidden .field--name-field-region').length > 0) ? 'region' : 'none';
+          target = ($(toplinks + '-hidden .field--name-field-location-entry').length > 0) ? 'country' : target;
+          var target_class = (target === 'region') ? 'field--name-field-region' : 'field--name-field-location-entry';
+          var text = $('a.gotocountry').text().replace('#target#', target);
 
           if ($(toplinks).length > 0) {
-            console.log('hola caracola');
-            // Link Go To Country Page
-            $('a.gotocountry').attr('href', $(toplinks + '-hidden .field--name-field-location-entry a').attr('href'));
+            if(target !== 'none') {
+              // Link Go To Page
+              $('a.gotocountry').attr('href', $(toplinks + '-hidden .' + target_class + ' a').attr('href')).text(text).removeAttr('style');
+            }
 
             // Set location and tax-section on title block
             $(toplinks).append($(toplinks + '-hidden').remove().html());

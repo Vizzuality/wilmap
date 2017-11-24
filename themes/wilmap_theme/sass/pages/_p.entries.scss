@@ -437,7 +437,8 @@
     @include position(absolute, -$dp null null 0);
   }
 
-  .field--name-field-location-entry {
+  .field--name-field-location-entry,
+  .field--name-field-region.field--type-entity-reference {
     @include entry--location();
 
     .field__label {

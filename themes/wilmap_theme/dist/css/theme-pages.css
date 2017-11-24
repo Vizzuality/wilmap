@@ -4260,7 +4260,8 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       position: absolute;
       top: -10px;
       left: 0; } }
-  .node-top .field--name-field-location-entry {
+  .node-top .field--name-field-location-entry,
+  .node-top .field--name-field-region.field--type-entity-reference {
     font-size: 16px;
     font-size: 1rem;
     line-height: 27.2px;
@@ -4270,7 +4271,8 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     margin-bottom: 5px;
     color: #968f7e;
     text-decoration: none; }
-    .node-top .field--name-field-location-entry a {
+    .node-top .field--name-field-location-entry a,
+    .node-top .field--name-field-region.field--type-entity-reference a {
       font-size: 14px;
       font-size: 0.875rem;
       line-height: 23.8px;
@@ -4279,9 +4281,11 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       font-family: "Raleway", sans-serif;
       color: #968f7e;
       text-decoration: none; }
-      .node-top .field--name-field-location-entry a:hover {
+      .node-top .field--name-field-location-entry a:hover,
+      .node-top .field--name-field-region.field--type-entity-reference a:hover {
         text-decoration: underline; }
-  .node-top .field--name-field-location-entry .field__label {
+  .node-top .field--name-field-location-entry .field__label,
+  .node-top .field--name-field-region.field--type-entity-reference .field__label {
     display: none; }
   .node-top .field--name-field-tax-section {
     font-size: 16px;
