@@ -20,16 +20,16 @@ article.node--view-mode-full {
       @include clearfix();
 
       > .text-formatted {
-        div, p, h2, h3, h4, h5, h6 {
+        div, ul, p, h2, h3, h4, h5, h6 {
           @include column(10);
           @include clearfix();
-          @include margin(null null null columns(2.45));
+          @include margin(null null $dp * 1.5 columns(2.45));
 
           @include respond(tablets) {
-            @include margin(null null null columns(2.8));
+            @include margin(null null $dp columns(2.8));
           }
 
-          p {
+          div, ul, p, h2, h3, h4, h5, h6 {
             @include trim();
             @include column(14);
           }
