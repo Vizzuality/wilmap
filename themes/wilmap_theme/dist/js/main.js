@@ -1239,6 +1239,14 @@
           var popup_dom = '.leaflet-popup';
           var orientation = '';
 
+          // Orientation
+          //console.log(coord);
+          console.log(coord, App.Application.Maps.Config.wilmap.getBounds()['_southWest']);
+          console.log(coord.lng - App.Application.Maps.Config.wilmap.getBounds()['_southWest'].lng);
+
+          if(parseInt(coord.lng) > 50) {
+            orientation = '__right';
+          }
 
           if(App.Application.Maps.Config.curr_layer_active !== null) {
             API = API + '?' + App.Application.Maps.Config.curr_layer_active.query;
@@ -1270,14 +1278,7 @@
               App.Application.Maps.Config.popup.openOn(App.Application.Maps.Config.wilmap);
               $(popup_dom).addClass(orientation);
 
-              // Orientation
-              //console.log(coord);
-              console.log(coord, App.Application.Maps.Config.wilmap.getBounds()['_southWest']);
-              console.log(coord.lng - App.Application.Maps.Config.wilmap.getBounds()['_southWest'].lng);
 
-              if(parseInt(coord.lng) > 50) {
-                orientation = '__right';
-              }
             });
           } else {
             setTimeout(function(){
@@ -1654,7 +1655,7 @@ console.log(App.Application.Maps);
           } else {
             $(dom).width($(window).width() - $(dom_sidebar).width());
             $(dom).height($(window).height() - $(dom_footer).height());
-            $(dom_sidebar).height($(window).height() - $(dom_footer).height() - $(dom_header).height() - 116);
+            $(dom_sidebar).height($(window).height() - $(dom_footer).height() - $(dom_header).height() - 86);
           }
 
           // Init map

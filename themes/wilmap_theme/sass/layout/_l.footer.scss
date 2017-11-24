@@ -141,34 +141,28 @@ $footer-bandcolor:                      #222222;
 
       .logo-cis a {
         @extend %hide-text;
-        @include bg-image ($img-path + 'logo.png', $width:100%, $height:auto);
-        @include size(162px 95px);
-        background-position: center left;
-        background-size: 132px 95px;
+        @include retina-image($img-path + 'footer/logo', 'png', 101px, 26px, 2x);
+        @include size(101px 26px);
+        display: block;
         float: left;
-
-        @include respond(all-phones) {
-          @include size(105px 60px);
-          background-size: contain;
-          background-position: 0 0;
-        }
+        position: relative;
       }
 
       .logo-sign a {
         @extend %hide-text;
-        @include bg-image ($img-path + 'footer/stanford-logo.png', $width:100%, $height:auto);
-        @include size(175px 14px);
-        @include padding($dp null);
+        @include retina-image($img-path + 'footer/standford', 'png', 145px, 14px, 2x);
+        @include size(155px 14px);
+        @include margin(null null null $dp);
         background-position: center right;
-        background-size: 145px 14px;
         border-left: 1px solid rgba($footer-text-color, 0.4);
+        display: block;
         float: left;
         position: relative;
-        top: 75px;
+        top: 10px;
 
-        @include respond(all-phones) {
-          top: 40px;
-        }
+        // @include respond(all-phones) {
+        //   top: 40px;
+        // }
       }
     }
 
@@ -177,7 +171,7 @@ $footer-bandcolor:                      #222222;
       text-align: right;
       opacity: 0.7;
       position: relative;
-      top: 35px;
+      top: 0;
 
       @include respond(all-phones) {
         top: 20px;
@@ -186,9 +180,17 @@ $footer-bandcolor:                      #222222;
       ul {
         text-align: right;
 
+        @include respond(all-phones) {
+          text-align: center;
+        }
+
         li {
           display: inline-block;
           margin-left: $dp * 1.5;
+
+          &:first-child {
+            margin-left: 0;
+          }
 
           a {
             @include font($normal, 1, $semibold, $buttons-font);
@@ -211,25 +213,25 @@ $footer-bandcolor:                      #222222;
 // Override
 // -------------------------------------
 
-body.node-map {
-  .site-footer {
-    @include margin(0 null null null);
-
-    .footer_second_wrap {
-      .block-block-content {
-        .logo-cis a {
-          background-position: bottom left;
-          height: 35px;
-        }
-
-        .logo-sign a {
-          top: 15px;
-        }
-      }
-
-      .block-menu {
-        top: 13px;
-      }
-    }
-  }
-}
+// body.node-map {
+//   .site-footer {
+//     @include margin(0 null null null);
+//
+//     .footer_second_wrap {
+//       .block-block-content {
+//         .logo-cis a {
+//           background-position: bottom left;
+//           height: 35px;
+//         }
+//
+//         .logo-sign a {
+//           top: 15px;
+//         }
+//       }
+//
+//       .block-menu {
+//         top: 13px;
+//       }
+//     }
+//   }
+// }

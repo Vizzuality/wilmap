@@ -1921,45 +1921,43 @@ button.btn,
         .site-footer .footer_second_wrap .block-block-content {
           margin-bottom: 10px; } }
       .site-footer .footer_second_wrap .block-block-content .logo-cis a {
-        background-image: url("../../images/logo.png");
+        background-image: url("../../images/footer/logo.png");
         background-repeat: no-repeat;
         background-position: 0 0;
-        background-size: 100% auto;
-        height: 95px;
-        width: 162px;
-        background-position: center left;
-        background-size: 132px 95px;
-        float: left; }
-        @media only screen and (max-width: 767px) {
+        background-size: initial;
+        height: 26px;
+        width: 101px;
+        display: block;
+        float: left;
+        position: relative; }
+        @media only screen and (min--moz-device-pixel-ratio: 1.25), only screen and (-webkit-min-device-pixel-ratio: 1.25), only screen and (min-device-pixel-ratio: 1.25), only screen and (min-resolution: 1.25dppx) {
           .site-footer .footer_second_wrap .block-block-content .logo-cis a {
-            height: 60px;
-            width: 105px;
-            background-size: contain;
-            background-position: 0 0; } }
+            background-image: url("../../images/footer/logo@2x.png");
+            background-size: 101px 26px; } }
       .site-footer .footer_second_wrap .block-block-content .logo-sign a {
-        background-image: url("../../images/footer/stanford-logo.png");
+        background-image: url("../../images/footer/standford.png");
         background-repeat: no-repeat;
         background-position: 0 0;
-        background-size: 100% auto;
+        background-size: initial;
         height: 14px;
-        width: 175px;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        width: 155px;
+        margin-left: 10px;
         background-position: center right;
-        background-size: 145px 14px;
         border-left: 1px solid rgba(255, 255, 255, 0.4);
+        display: block;
         float: left;
         position: relative;
-        top: 75px; }
-        @media only screen and (max-width: 767px) {
+        top: 10px; }
+        @media only screen and (min--moz-device-pixel-ratio: 1.25), only screen and (-webkit-min-device-pixel-ratio: 1.25), only screen and (min-device-pixel-ratio: 1.25), only screen and (min-resolution: 1.25dppx) {
           .site-footer .footer_second_wrap .block-block-content .logo-sign a {
-            top: 40px; } }
+            background-image: url("../../images/footer/standford@2x.png");
+            background-size: 145px 14px; } }
     .site-footer .footer_second_wrap .block-menu {
       width: 49.11111%;
       text-align: right;
       opacity: 0.7;
       position: relative;
-      top: 35px; }
+      top: 0; }
       @media only screen and (max-width: 767px) {
         .site-footer .footer_second_wrap .block-menu {
           float: left;
@@ -1970,9 +1968,14 @@ button.btn,
           top: 20px; } }
       .site-footer .footer_second_wrap .block-menu ul {
         text-align: right; }
+        @media only screen and (max-width: 767px) {
+          .site-footer .footer_second_wrap .block-menu ul {
+            text-align: center; } }
         .site-footer .footer_second_wrap .block-menu ul li {
           display: inline-block;
           margin-left: 15px; }
+          .site-footer .footer_second_wrap .block-menu ul li:first-child {
+            margin-left: 0; }
           .site-footer .footer_second_wrap .block-menu ul li a {
             font-size: 16px;
             font-size: 1rem;
@@ -1985,16 +1988,6 @@ button.btn,
             text-decoration: none; }
             .site-footer .footer_second_wrap .block-menu ul li a:hover {
               text-decoration: underline; }
-
-body.node-map .site-footer {
-  margin-top: 0; }
-  body.node-map .site-footer .footer_second_wrap .block-block-content .logo-cis a {
-    background-position: bottom left;
-    height: 35px; }
-  body.node-map .site-footer .footer_second_wrap .block-block-content .logo-sign a {
-    top: 15px; }
-  body.node-map .site-footer .footer_second_wrap .block-menu {
-    top: 13px; }
 
 .block-page-title-block {
   position: relative;
