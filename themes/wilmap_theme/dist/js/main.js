@@ -568,6 +568,7 @@
           var toplinks = '.node-top';
 
           if ($(toplinks).length > 0) {
+            console.log('hola caracola');
             // Link Go To Country Page
             $('a.gotocountry').attr('href', $(toplinks + '-hidden .field--name-field-location-entry a').attr('href'));
 

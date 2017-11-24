@@ -4373,8 +4373,22 @@ article.node--type-entry.node--view-mode-full .node-header {
       article.node--type-entry.node--view-mode-full .node-header .field--name-field-contributors {
         width: 50%; } }
   article.node--type-entry.node--view-mode-full .node-header .node-date {
+    display: inline-block;
+    float: left;
+    padding-left: 0.88889%;
+    padding-right: 0.88889%;
+    width: 50%;
     margin: 0;
     padding: 0; }
+    @media only screen and (min-width: 0px) {
+      article.node--type-entry.node--view-mode-full .node-header .node-date {
+        width: 50%; } }
+    @media only screen and (min-width: 768px) {
+      article.node--type-entry.node--view-mode-full .node-header .node-date {
+        width: 50%; } }
+    @media only screen and (min-width: 1125px) {
+      article.node--type-entry.node--view-mode-full .node-header .node-date {
+        width: 50%; } }
     article.node--type-entry.node--view-mode-full .node-header .node-date {
       margin-bottom: 30px;
       font-size: 16px;

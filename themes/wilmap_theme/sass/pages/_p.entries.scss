@@ -482,6 +482,7 @@ article.node--type-entry.node--view-mode-full {
     }
 
     .node-date {
+      @include fancytiles(2,2,2);
       @include entry--date();
       @include trim();
     }

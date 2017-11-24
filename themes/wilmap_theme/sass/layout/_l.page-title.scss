@@ -103,6 +103,9 @@ body.node-about {
 .page-node-type-entry {
   .block-page-title-block {
     .page-title {
+      @include text-secondary-header();
+      @include padding($gutter * 5.7 null null null);
+
       @include respond(tablets) {
         @include padding($gutter * 7 null null null);
       }
@@ -115,7 +118,7 @@ body.node-about {
 }
 
 // -------------------------------------
-// Entry detail page override
+// Updates report
 // -------------------------------------
 
 .updates-report {
