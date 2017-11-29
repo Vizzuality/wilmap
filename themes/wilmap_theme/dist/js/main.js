@@ -1797,6 +1797,7 @@ console.log(App.Application.Maps);
               if (Object.keys(val.countries).length) {
                 $.each( val.countries, function( kc, vc ) {
                   var obj = {'id':kc,'title':vc.title,'path':vc.path,'continent':continent};
+                  console.log(obj);
                   App.Application.Maps.CountryData[vc.iso2] = obj;
                 });
               }
