@@ -96,6 +96,7 @@
     @include trim();
 
     .input {
+      @include position(relative, 1px null null null);
       width: 80%;
 
       @include respond(all-phones) {
@@ -109,7 +110,7 @@
       height: $dp * 8;
 
       @include respond(all-phones) {
-        width: 65%;
+        width: 100%;
       }
     }
 

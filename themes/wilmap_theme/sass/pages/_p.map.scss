@@ -41,18 +41,69 @@
       }
     }
 
-    .actions {
-      @include position(absolute, null $dp * 2 $dp * 2.5 null);
+    #mobile-popup {
+      @include position(absolute, null null 50% 0);
+      display: block;
+      width: 100%;
       z-index: 650;
+      text-align: center;
+      background: transparent;
+
+      .content {
+        width: 301px;
+        min-height: 30px;
+        display: block;
+        border: 1px solid red;
+        position: relative;
+        margin: 0 auto;
+
+        a.close {
+          @include position(absolute, 5px 5px null null);
+          display: block;
+          boder: 1px solid green;
+          @include size(20px);
+        }
+      }
+    }
+
+    .actions {
+      @include position(absolute, null $dp * 1.5 $dp * 2.5 null);
+      display: block;
+      width: 100%;
+      z-index: 650;
+      text-align: right;
+
+      @include respond(all-phones) {
+        @include position(absolute, null 0 $dp * 2.5 null);
+        text-align: center;
+      }
 
       .btn {
         @include margin(null null null $dp);
+
+        &:first-child {
+          @include margin(null null null 0);
+        }
+      }
+
+      #calllist.btn {
+        @include button-white();
+        border: 1px solid $third-color !important;
+        display: none;
+
+        @include respond(all-phones) {
+          display: inline-block;
+        }
       }
     }
 
     #map-legend {
-      @include position(absolute, null null $dp * 2 $dp * 2.5);
+      @include position(absolute, null null $dp * 2 $dp * 1.5);
       z-index: 660;
+
+      @include respond(all-phones) {
+        @include position(absolute, $dp * 12 null null $dp);
+      }
 
       a.toggle {
         @include trim();
@@ -63,11 +114,15 @@
 
         i {
           @include trim();
-          @include padding($dp $dp * 1.5);
+          @include padding($dp - 2 $dp * 1.28);
           @include fs(15px);
           border: 1px solid $hr-color;
           background-color: $second-color;
           color: $first-color;
+
+          &:hover {
+            background-color: $gray-10;
+          }
         }
 
         &.active {
@@ -113,41 +168,6 @@
 
           ul {
             @include trim();
-
-            &.segments-1 {
-              li {
-                width: 98%;
-                margin: 0 1%;
-              }
-            }
-
-            &.segments-2 {
-              li {
-                width: 48%;
-                margin: 0 1%;
-              }
-            }
-
-            &.segments-3 {
-              li {
-                width: 31%;
-                margin: 0 1%;
-              }
-            }
-
-            &.segments-4 {
-              li {
-                width: 23%;
-                margin: 0 1%;
-              }
-            }
-
-            &.segments-5 {
-              li {
-                width: 18%;
-                margin: 0 1%;
-              }
-            }
 
             li {
               @include trim();

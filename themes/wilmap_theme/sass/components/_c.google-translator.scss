@@ -5,5 +5,48 @@
 // ============================================================================
 
 #block-googletranslate {
-  @include position(absolute, 70px null null 40px);
+  @include position(absolute, 13px 365px null auto);
+  z-index: 10;
+
+  @include respond(tablets) {
+    @include position(absolute, 13px 70px null auto);
+  }
+
+  @include respond(all-phones) {
+    @include position(absolute, 18px 110px null auto);
+  }
+
+  .text-formatted {
+    @include trim();
+  }
 }
+
+#google_translate_element {
+  .goog-te-menu-value span {
+    &:first-child {
+      @include font($normal, 1, $regular, $heading-font);
+      letter-spacing: 0.9px;
+      display: inline-block;
+      text-decoration: none;
+      text-transform: uppercase !important;
+      color: $first-color;
+    }
+
+    border: none !important;
+    text-decoration: none !important;
+  }
+
+  .goog-te-gadget-simple {
+    background-color: #fff !important;
+    font-size: 10pt;
+    display: inline-block;
+    padding-top: 1px;
+    padding-bottom: 2px;
+    cursor: pointer;
+    zoom: 1;
+    border: none !important;
+  }
+}
+
+.goog-te-banner-frame.skiptranslate {display: none !important;}
+body { top: 0px !important; }

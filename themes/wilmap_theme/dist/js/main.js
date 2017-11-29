@@ -31,7 +31,7 @@
        */
       _configuration: {
         min_device_width:         414,  //From scss _settings.scss
-        tablet_device_width:      768,  //From scss _settings.scss
+        tablet_device_width:      900,  //From scss _settings.scss
         document_width:          1170,  //From scss _settings.scss
         max_device_width:        2880   //From scss _settings.scss
       },
@@ -747,6 +747,24 @@
 
       },
 
+      /**
+       * Google translator
+       */
+      google_translator: function() {
+        var dom = '#block-googletranslate';
+        var dom_google = '#google_translate_element';
+
+        if($(dom).length > 0) {
+          setTimeout(function(){
+            if($(dom_google).length > 0) {
+              console.log('hack google trans ' + $(dom_google + ' .goog-te-menu-value span').first().text());
+              $(dom_google + ' .goog-te-menu-value span').first().text('ENG');
+            }
+          }, 10000);
+        }
+
+      }
+
     },
 
 
@@ -762,6 +780,11 @@
          //console.log(key);
          m[key]();
         }
+      } else {
+        // If page reload
+        this.methods.contributorFilterList();
+        this.methods.entriesFilterList();
+        this.methods.updateAdvancedFilters();
       }
 
       // log
@@ -1034,6 +1057,11 @@
         App.Application.Maps.Config.is_embed                    = (window.location.href.indexOf('/widgets/map' || App.Utils.isIframe()) > -1);
         App.Application.Maps.Config.color_styles                = {'blue':'#035e7e','forest':'#325735','olive':'#484d0c','bronze':'#554324','maroon':'#5b1717','purple':'#31244a'};
         App.Application.Maps.Config.click_on_map                = false;
+        App.Application.Maps.Config.isPhone                     = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
+        App.Application.Maps.Config.isTable                     = (App.Utils.isMobile.Tablet() || App.Utils.isMobile.Tablet( 'desktop' ));
+        App.Application.Maps.Config.sidebar_offset_v            = 116;
+        App.Application.Maps.Config.sidebar_offset_h            = 15;
+
 
         App.Application.Maps.Functions.choropleth = function(color, currVal, minVal, maxVal, steps) {
           var steps = typeof steps !== 'undefined' ? steps : 5;
@@ -1047,33 +1075,41 @@
           var percentColor = incrementStep;
 
           while (percentColor < 100) {
-              if(percentValue >= percentColor - incrementStep && percentValue < percentColor) {
-                break;
-              }
+            if(percentValue >= percentColor - incrementStep && percentValue < percentColor) {
+              break;
+            }
 
-              percentColor = percentColor+incrementStep;
+            percentColor = percentColor+incrementStep;
           }
 
-          // Adjust colors
-          percentColor = (100 - percentColor);
+          // Invert color scale. Lighten is less value.
+          percentColor = 100 - parseInt(percentColor);
 
-          switch (percentColor) {
+          // Adjust colors/contrast
+          var adjustPercent = percentColor;
+
+          switch (adjustPercent) {
             case 80:
-              percentColor = 100;
+              adjustPercent = 100;
               break;
             default:
-              percentColor = percentColor * 1.25;
+              adjustPercent = adjustPercent * 1.25;
               break;
           }
 
           //sets lighten
-          output_color = App.Utils.shadeColor(color, percentColor);
-          output_color = (percentColor == 100)?'#ccc':output_color;
+          output_color = App.Utils.shadeColor(color, adjustPercent);
 
           // save color scale
           App.Application.Maps.Config.curr_layer_active.colorscale[percentColor] = output_color;
 
           // console.log("cl: " + currVal + ' | '  + percentValue + ' | ' + percentColor + ' | ' + color + ' | ' + output_color);
+
+          //If value is 0 set color transparent;
+          if(currVal == 0){
+            output_color = 'transparent';
+          }
+
           return output_color
         };
 
@@ -1199,26 +1235,32 @@
             colorange += '<ul class="segments-' + total + '">';
 
             $.each(Object.assign([],App.Application.Maps.Config.curr_layer_active.colorscale).reverse(), function(k, v) {
-              console.log(k, v);
+              //console.log(k, v);
 
               if( v !== undefined ) {
                 var value = 0;
 
                 switch (count) {
                   case 0:
-                    value = 0;
+                    value = 1;
                     break;
                   case total - 1:
                     value = App.Application.Maps.Config.curr_layer_active.data.max;
                     break;
-                  case parseInt(total/2):
-                    value = parseInt(App.Application.Maps.Config.curr_layer_active.data.max / 2);
-                    break;
                   default:
-                    value = '&nbsp;';
+                    if(total % 2 === 1 && total > 4) {
+                      if (count === parseInt((total / 2))) {
+                        value = parseInt(App.Application.Maps.Config.curr_layer_active.data.max / 2);
+                      } else {
+                        value = '&nbsp;';
+                      }
+                    } else {
+                      value = '&nbsp;';
+                    }
+                    break;
                 }
 
-                colorange += '<li><div class="color" style="background-color:' + v + '; opacity: 0.5; z-index: 20;"></div><div class="color base"></div><div class="text">' + value + '</div></li>';
+                colorange += '<li style="width: ' + ((100/total) - 2) + '%; margin: 0 1%;"><div class="color" style="background-color:' + v + '; opacity: 0.5; z-index: 20;"></div><div class="color base"></div><div class="text">' + value + '</div></li>';
 
                 count++;
               }
@@ -1242,16 +1284,46 @@
         App.Application.Maps.Functions.showPopup = function(iso2, layer, coord) {
           var API = '/api/country/data/iso2/' + iso2;
           var popup_dom = '.leaflet-popup';
-          var orientation = '';
 
-          // Orientation
-          //console.log(coord);
-          console.log(coord, App.Application.Maps.Config.wilmap.getBounds()['_southWest']);
-          console.log(coord.lng - App.Application.Maps.Config.wilmap.getBounds()['_southWest'].lng);
+          // Init
+          App.Application.Maps.Functions.popUpReorientation = function(coord){
+            var popup_dom = '.leaflet-popup';
+            var orientation_h = '';
+            var orientation_v = '';
 
-          if(parseInt(coord.lng) > 50) {
-            orientation = '__right';
-          }
+            // Orientation
+            // console.log(coord, App.Application.Maps.Config.wilmap.getBounds());
+            // console.log(parseInt(App.Application.Maps.Config.wilmap.getBounds()['_southWest'].lng - coord.lng));
+            // console.log(parseInt(App.Application.Maps.Config.wilmap.getBounds()['_northEast'].lat - coord.lat));
+
+            // //Horizontal
+            if(parseInt(coord.lng) > 75) {
+              if(parseInt(coord.lng) > 100) {
+                 if (parseInt(App.Application.Maps.Config.wilmap.getBounds()['_southWest'].lng - coord.lng) > -15) {
+                   orientation_h = '';
+                 } else {
+                   orientation_h = '__right';
+                 }
+              } else {
+                orientation_h = '__right';
+              }
+            } else if(parseInt(coord.lng) < -30) {
+               if (parseInt(App.Application.Maps.Config.wilmap.getBounds()['_southWest'].lng - coord.lng) < -55) {
+                 orientation_h = '__right';
+               }
+            }
+
+            // //Vertical
+            if(parseInt(coord.lat) > 75) {
+              orientation_v = '__bottom';
+            } else if(parseInt(coord.lat) < 30) {
+              if (parseInt(App.Application.Maps.Config.wilmap.getBounds()['_northEast'].lat - coord.lat) < 20) {
+                orientation_v = '__bottom';
+              }
+            }
+
+            $(popup_dom).addClass(orientation_h).addClass(orientation_v);
+          };
 
           if(App.Application.Maps.Config.curr_layer_active !== null) {
             API = API + '?' + App.Application.Maps.Config.curr_layer_active.query;
@@ -1277,25 +1349,35 @@
               total = (total < 10) ? '0' + total : total;
               var output = '<div class="popup-inner"><div class="popup-inner-left"><span>'+total+'</span>Entries</div><div class="popup-inner-right"><div class="popup-info">' + info_popup + '</div><div class="popup-actions">' + goto_button + '</div></div></div>';
 
-              App.Application.Maps.Config.popup = L.popup();
-              App.Application.Maps.Config.popup.setLatLng(coord);
-              App.Application.Maps.Config.popup.setContent(output);
-              App.Application.Maps.Config.popup.openOn(App.Application.Maps.Config.wilmap);
-              $(popup_dom).addClass(orientation);
+              if(App.Application.Maps.Config.isPhone) {
+                $('#mobile-popup .inner').empty().html(output);
+                $('#mobile-popup').addClass('active');
+              } else {
+                App.Application.Maps.Config.popup = L.popup();
+                App.Application.Maps.Config.popup.setLatLng(coord);
+                App.Application.Maps.Config.popup.setContent(output);
+                App.Application.Maps.Config.popup.openOn(App.Application.Maps.Config.wilmap);
 
-
+                App.Application.Maps.Functions.popUpReorientation(coord);
+              }
             });
           } else {
             setTimeout(function(){
               var output = '<div class="popup-inner"><div class="popup-inner-right"><div class="popup-info"><i class="icon-attention"></i> No data available for this country</div></div></div>';
 
-              App.Application.Maps.Config.popup = L.popup();
-              App.Application.Maps.Config.popup.setLatLng(coord);
-              App.Application.Maps.Config.popup.setContent(output);
-              App.Application.Maps.Config.popup.openOn(App.Application.Maps.Config.wilmap);
+              if(App.Application.Maps.Config.isPhone) {
+                $('#mobile-popup .inner').empty().html(output);
+                $('#mobile-popup').addClass('active');
+              } else {
+                App.Application.Maps.Config.popup = L.popup();
+                App.Application.Maps.Config.popup.setLatLng(coord);
+                App.Application.Maps.Config.popup.setContent(output);
+                App.Application.Maps.Config.popup.openOn(App.Application.Maps.Config.wilmap);
 
-              $(popup_dom).addClass('__no-data');
-              $(popup_dom).addClass(orientation);
+                $(popup_dom).addClass('__no-data');
+
+                App.Application.Maps.Functions.popUpReorientation(coord);
+              }
             }, 300);
           };
         };
@@ -1625,6 +1707,8 @@ console.log(App.Application.Maps);
                },
                click: function (e) {
                  var l = e.target;
+                 console.log('- ISO2 selected: ' + l.feature.properties.iso2);
+
                  if (App.Application.Maps.CountryData[l.feature.properties.iso2]) {
                    App.Application.Maps.Config.click_on_map = true;
 
@@ -1640,11 +1724,43 @@ console.log(App.Application.Maps);
           }).addTo(App.Application.Maps.Config.wilmap);
         };
 
+        // Set size & resize map
+        App.Application.Maps.Functions.mapContainerSize = function() {
+          if (App.Application.Maps.Config.is_embed) {
+            $(dom).width('100%');
+            $(dom).height($(window).height());
+          } else {
+            if (App.Application.Maps.Config.isPhone) {
+              $(dom).width($(window).width());
+              $(dom).height($(window).height() - $(dom_footer).height() - $(dom_header).height());
+              $(dom_sidebar).height('1000px');
+              $(dom_sidebar).addClass('__hide');
+            } else if(App.Application.Maps.Config.isTable){
+              $(dom).width($(window).width() - App.Application.Maps.Config.sidebar_offset_h);
+              $(dom).height($(window).height() - $(dom_footer).height());
+              $(dom_sidebar).height($(window).height() - $(dom_footer).height() - $(dom_header).height() - App.Application.Maps.Config.sidebar_offset_v);
+              $(dom_sidebar).addClass('__hide');
+            } else {
+              $(dom).width($(window).width() - $(dom_sidebar).width());
+              $(dom).height($(window).height() - $(dom_footer).height());
+              $(dom_sidebar).height($(window).height() - $(dom_footer).height() - $(dom_header).height() - App.Application.Maps.Config.sidebar_offset_v);
+              $(dom_sidebar).addClass('__hide');
+            }
+          }
+
+          // Resize trigger
+          $( window ).on( 'resize', function(){
+            App.Application.Maps.Functions.mapContainerSize();
+          });
+        }
+
+        // INIT
         var dom = '.block-wilmap-map .wilmap';
         var dom_sidebar = '.ui-autocomplete.ui-widget-content';
         var dom_footer = '.site-footer';
         var dom_header = '.site-header';
         var api_countries = '/api/map/browse';
+        var offset_sidebar = 116;
 
 
         if ($(dom).length > 0) {
@@ -1653,15 +1769,7 @@ console.log(App.Application.Maps);
 
           // Map dimensions
           $(dom).attr('id','mapid');
-
-          if (App.Application.Maps.Config.is_embed) {
-            $(dom).width('100%');
-            $(dom).height($(window).height());
-          } else {
-            $(dom).width($(window).width() - $(dom_sidebar).width());
-            $(dom).height($(window).height() - $(dom_footer).height());
-            $(dom_sidebar).height($(window).height() - $(dom_footer).height() - $(dom_header).height() - 86);
-          }
+          App.Application.Maps.Functions.mapContainerSize();
 
           // Init map
           App.Application.Maps.Config.wilmap = L.map('mapid', {
@@ -1733,11 +1841,12 @@ console.log('first_layer_load -> ' + first_layer_load);
           $(dom).append('<div class="wilmap-logomap"' + style_logo + '><a href="/" title="Home" target="_blank">WilMap</a></div>');
 
 
-          // Layer buttons
+          // Action buttons && mobile tooltip placeholder
           var style_actions = (App.Application.Maps.Config.is_embed) ? ' style="display:none;"' : ' style="display:block;"';
-          $(dom).append('<div class="actions"' + style_actions + '></div>');
+          $(dom).append('<div id="mobile-popup" class="drawer"><div class="content"><a class="close switch" gumby-trigger="#mobile-popup"><i class="icon-close"></i></a><div class="inner"></div></div></div><div class="actions"' + style_actions + '></div>');
 //            $(dom + ' .actions').append('<a href="#" class="btn" id="randomcolor">SIMULATE LOAD LAYER COLOR</a>');
 //            $(dom + ' .actions').append('<a href="#" class="btn" id="resetcolor">REMOVE COLOR</a>');
+          $(dom + ' .actions').append('<a class="btn" id="calllist" href="#">List</a>');
           $(dom + ' .actions').append('<a class="btn" href="#" data-action="share" data-embed="true">Share</a>');
 
 
@@ -1753,6 +1862,11 @@ console.log('first_layer_load -> ' + first_layer_load);
             e.preventDefault();
           });
 
+          $('#calllist').on('click', function(e){
+            $(dom_sidebar).removeClass('__hide').addClass('__insearch').addClass('__calllist');
+            e.preventDefault();
+          });
+
           $('.actions .btn').on('mouseover click', function(e){
             App.Application.Maps.Config.wilmap.doubleClickZoom.disable();
           });
@@ -1760,7 +1874,6 @@ console.log('first_layer_load -> ' + first_layer_load);
           $('.actions .btn').on('mouseout', function(e){
             App.Application.Maps.Config.wilmap.doubleClickZoom.enable();
           });
-
 
 
           console.log(App.Application.Maps);
@@ -1838,7 +1951,7 @@ console.log('first_layer_load -> ' + first_layer_load);
           } else {
             $('.continent-list-item a.continent').each(function (k, v){
               var t = continent;
-              console.log($(this).text() + ' - ' + t);
+              //console.log($(this).text() + ' - ' + t);
               if($(this).text() !== t) {
                 $(this).removeClass('active');
                 $(this).parent().find('.continent-list-drawer').removeClass('active');
@@ -1869,6 +1982,9 @@ console.log('first_layer_load -> ' + first_layer_load);
           $.getJSON( api, function( data ) {
             console.log(data);
             var output = '';
+            output = '<li id="back"><h3><a href="#"><i class="icon-left-open-big"></i><span>List</span></a></h3></li>';
+
+
             $.each( data, function( key, val ) {
               output += '<li class="continent-list-item" id="continent-list-item-' + key + '"><a class="continent toggle" gumby-trigger="#countries-continent-' + key + '" href="#">' + val.title + '</a>';
               output += '<ul class="continent-list-drawer drawer" id="countries-continent-' + key + '">';
@@ -1876,14 +1992,14 @@ console.log('first_layer_load -> ' + first_layer_load);
               // Regions
               if (Object.keys(val.regions).length) {
                 $.each( val.regions, function( kr, vr ) {
-                  output += '<li class="country-list-item region"><a data-original="' + vr.title + '" href="' + vr.path + '">' + vr.title + '</a>';
+                  output += '<li class="country-list-item region"><a data-original="' + vr.title + '" href="' + vr.path + '" tabindex="-1">' + vr.title + '</a>';
                 });
               }
 
               // Countries
               if (Object.keys(val.countries).length) {
                 $.each( val.countries, function( kc, vc ) {
-                  output += '<li class="country-list-item country"><a data-original="' + vc.title + '" data-iso2="' + vc.iso2 + '" href="' + vc.path + '">' + vc.title + '</a>';
+                  output += '<li class="country-list-item country"><a data-original="' + vc.title + '" data-iso2="' + vc.iso2 + '" href="' + vc.path + '" tabindex="-1">' + vc.title + '</a>';
                 });
               }
 
@@ -1896,14 +2012,49 @@ console.log('first_layer_load -> ' + first_layer_load);
             // Events
             Gumby.init();
 
+            $(dom + ' #back a').on('click', function (e) {
+              var search_dom = '#block-searchform';
+              var header_dom = '.site-header';
+
+              if(App.Application.Maps.Config.isTable) {
+                if($(dom).hasClass('__hide')) {
+                  $(search_dom).addClass('active');
+                  $(dom).addClass('__insearch').removeClass('__hide').removeClass('__calllist');
+                  $(dom + ' #back a i').removeClass('icon-left-open-big').addClass('icon-right-open-big');
+                } else {
+                  $(search_dom).removeClass('active');
+                  $(dom).addClass('__hide').removeClass('__insearch').removeClass('__calllist');
+                  $(dom + ' #back a i').removeClass('icon-right-open-big').addClass('icon-left-open-big');
+                }
+              } else {
+                $(search_dom).removeClass('active');
+                $(dom).addClass('__hide').removeClass('__insearch').removeClass('__calllist');
+
+                if($(header_dom).hasClass('active')){
+                  $(header_dom + ' a.toggle').click();
+                }
+              }
+
+              e.preventDefault();
+            });
+
             $('.continent-list-item a.continent').on('click', function (e) {
               var target = $(this).text();
 
-              if ($(this).hasClass('active')){
+              if (!$(this).hasClass('active')){
                 App.Application.Maps.Functions.resetActiveMap();
-                App.Application.Maps.Functions.activeContinent(target, true, true);
+
+                setTimeout(function(){
+                  App.Application.Maps.Functions.activeContinent(target, true, true);
+                }, 200);
+
               } else {
                 App.Application.Maps.Functions.resetActiveMap();
+
+                setTimeout(function(){
+                  $('.continent-list-drawer.active').removeClass('active');
+                  $('.continent-list-item a.continent.active').removeClass('active');
+                }, 200);
               }
             });
 
@@ -1934,7 +2085,6 @@ console.log('first_layer_load -> ' + first_layer_load);
           $(dom_autocomplete + ' .continent-list-drawer .country-list-item').each(function(k, v){
               $(v).show().find('a').text($(v).find('a').data('original'));
           });
-
         };
 
         App.Application.countrySearchMaps.Functions.initSearch = function() {
@@ -1948,38 +2098,77 @@ console.log('first_layer_load -> ' + first_layer_load);
               $(dom + ' input[type="text"]').bind("keypress", function (e) {
                 // prevent submit on press enter key
                 if (e.keyCode == 13) {
-                  return false;
+                  if ($(dom_autocomplete + ' .continent-list-drawer.active').length > 0) {
+                    var tar = $(dom_autocomplete + ' .continent-list-drawer .country-list-item a.active');
+                    if(tar.length > 0){
+                      location.href = tar.attr('href');
+                      e.preventDefault();
+                    } else {
+                      return false;
+                    }
+                  } else {
+                    return false;
+                  }
                 }
               });
 
               $(dom + ' input[type="text"]').bind("keyup", function (e) {
-                var val = $(this).val();
+                if(e.keyCode == 38 || e.keyCode == 40) {
+                  if ($(dom_autocomplete + ' .continent-list-drawer.active').length > 0) {
+                    var list = $(dom_autocomplete + ' .continent-list-drawer .country-list-item a:visible');
+                    var total_visible = list.length;
+                    var pos_active = null;
+                    var dir = (e.keyCode == 38)?'up':'down';
 
-                if(val.length > 0) {
-                  App.Application.ListMaps.Functions.activeContinent('none');
+                    $(list).each(function(k, i) {
+                      if($(i).hasClass('active')){
+                        $(i).removeClass('active');
+                        pos_active = k;
+                      }
+                    });
 
-                  $(dom_autocomplete + ' .continent-list-drawer').addClass('active');
-                  $(dom_autocomplete + ' .continent-list-drawer .country-list-item').hide();
-
-                  $(dom_autocomplete + ' .continent-list-drawer .country-list-item').each(function(k, v){
-                    var re = new RegExp( "(" + val + ")", "gi" );
-                    var template = '<span class="highlight">$1</span>';
-                    var html = $(v).text().replace( re, template );
-
-                    if ($(v).text().match(re)) {
-                      $(v).show().find('a').html(html);
+                    if(pos_active === null) {
+                      if(dir === 'up') {
+                        $(list).last().addClass('active');
+                      } else {
+                        $(list).first().addClass('active');
+                      }
+                    } else {
+                      if(dir === 'up') {
+                        $($(list)[pos_active - 1]).addClass('active');
+                      } else {
+                        $($(list)[pos_active + 1]).addClass('active');
+                      }
                     }
-                  });
+                  }
                 } else {
-                  App.Application.ListMaps.Functions.activeContinent('none');
-                  App.Application.countrySearchMaps.Functions.resetList();
-                }
+                  var val = $(this).val();
 
+                  if(val.length > 0) {
+                    App.Application.ListMaps.Functions.activeContinent('none');
+
+                    $(dom_autocomplete + ' .continent-list-drawer').addClass('active');
+                    $(dom_autocomplete + ' .continent-list-drawer .country-list-item').hide();
+
+                    $(dom_autocomplete + ' .continent-list-drawer .country-list-item').each(function(k, v){
+                      var re = new RegExp( "(\\b" + val + ")", "gi" );
+                      var template = '<span class="highlight">$1</span>';
+                      var html = $(v).text().replace( re, template );
+
+                      if ($(v).text().match(re)) {
+                        $(v).show().find('a').html(html);
+                      }
+                    });
+                  } else {
+                    App.Application.ListMaps.Functions.activeContinent('none');
+                    App.Application.countrySearchMaps.Functions.resetList();
+                  }
+                }
               });
 
               $(dom + ' input[type="text"]').on('focus', function() {
                 $(dom).addClass('active');
-                $(dom_autocomplete).removeClass('__kill');
+                $(dom_autocomplete).removeClass('__kill').removeClass('__hide').addClass('__insearch');
               });
 
               $(dom + ' input[type="text"]').on('blur', function() {
@@ -1987,6 +2176,7 @@ console.log('first_layer_load -> ' + first_layer_load);
                 App.Application.countrySearchMaps.Functions.resetList();
                 $(this).val('');
                 $(dom).removeClass('active');
+                $(dom_autocomplete).removeClass('__insearch').addClass('__hide');
               });
             }
           }
@@ -2234,6 +2424,7 @@ console.log('first_layer_load -> ' + first_layer_load);
        */
       headerActive: function() {
         var dom = '.site-header';
+        var dom_list_countries = 'body.node-map .ui-autocomplete';
 
         if ($(dom).length > 0) {
           $(dom + ' a.toggle').on(Gumby.click, function(e) {
@@ -2243,6 +2434,11 @@ console.log('first_layer_load -> ' + first_layer_load);
             } else {
               $(dom).addClass('active');
               $(dom + ' span.str').text('Close');
+
+              //If list map is open
+              if(!$(dom_list_countries).hasClass('__hide')){
+                $(dom_list_countries).addClass('__hide').removeClass('__insearch').removeClass('__calllist');
+              }
             }
           });
         }
@@ -2729,6 +2925,10 @@ console.log('first_layer_load -> ' + first_layer_load);
           //console.log(key);
           m[key]();
         }
+      } else {
+        // If page reload
+        this.methods.bigLinkAreas();
+        this.methods.listSwitch();
       }
 
       // log

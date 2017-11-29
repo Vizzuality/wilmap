@@ -330,11 +330,12 @@
 
         label {
           @include font($normal - 1, 1, $semibold, $heading-font);
-          @include position(relative, $dp null null null);
+          @include position(relative, 0 null null null);
           color: $fourth-color;
           text-transform: capitalize;
           display: inline-block;
           min-height: $dp * 2;
+
         }
 
         .form-text {

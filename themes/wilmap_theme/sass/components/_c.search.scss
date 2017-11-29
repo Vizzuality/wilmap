@@ -32,6 +32,7 @@
     background: $white;
 
     @include respond(tablets) {
+      @include position(absolute, (-$dp * 2.5) 0 null null);
       @include box-shadow(rgba(255, 255, 255, 0.8) -5px -20px 20px 1px);
       width: $dp * 30 !important;
 
@@ -173,11 +174,20 @@
     @include padding($dp / 2);
     @include margin(null null $dp / 2 null);
 
-    a {
+    a.ui-menu-item-wrapper {
+      @include trim();
+      border: none;
+      background: transparent;
       text-decoration: none;
+      display: block;
 
       &:hover {
         text-decoration: none;
+      }
+
+      &.ui-state-active {
+        border: none;
+        background: $gray-10;
       }
     }
 
@@ -225,14 +235,53 @@
 
 body.node-map {
   .block-search {
-    &,
-    &.active {
+    & {
       background: $third-color;
+      @include box-shadow(none);
+
+      @include respond(tablets) {
+        background: transparent;
+        @include box-shadow($third-color -35px 0px 0px inset);
+      }
+
+      @include respond(all-phones) {
+        background: $third-color;
+        @include box-shadow(none);
+      }
 
       &::after {
         color: $second-color;
+
+        @include respond(tablets) {
+          color: $fourth-color;
+        }
+      }
+    }
+
+    &.active {
+      background: $third-color;
+
+      @include respond(tablets) {
+        background: $third-color;
+        @include box-shadow(none);
       }
 
+      @include respond(all-phones) {
+        background: $third-color;
+        @include box-shadow(none);
+      }
+
+      &::after {
+        color: $second-color;
+
+        @include respond(tablets) {
+          top: 23px;
+        }
+      }
+    }
+
+    &,
+    &.active {
       .field {
         .input {
           border: none;
@@ -257,5 +306,91 @@ body.node-map {
   .ui-autocomplete.ui-widget.ui-widget-content {
     display: block !important;
     background: $third-color;
+
+    @include respond(tablets) {
+      @include transition(all .3s ease);
+      background: transparent;
+      @include background-image(linear-gradient(left, rgba($third-color,0) 0%, rgba($third-color,0) 5%, rgba($third-color,1) 5%, rgba($third-color,1) 100%));
+    }
+
+    @include respond(all-phones) {
+      @include transition(all .3s ease);
+      min-height: 1200px !important;
+    }
+
+    &.__hide {
+      @include respond(tablets) {
+        right: -270px !important;
+      }
+
+      @include respond(all-phones) {
+        display: none !important;
+      }
+
+      .continent-list-item {
+        @include respond(tablets) {
+          opacity: 0.5;
+        }
+      }
+
+      #back {
+        display: none;
+
+        @include respond(tablets) {
+          display: block;
+        }
+
+        @include respond(all-phones) {
+          display: none;
+        }
+      }
+    }
+
+    &.__insearch {
+      @include respond(tablets) {
+        right: 0px !important;
+      }
+
+      @include respond(all-phones) {
+        display: block !important;
+      }
+
+      .continent-list-item {
+        @include respond(tablets) {
+          opacity: 1;
+        }
+      }
+
+      #back {
+        display: none;
+
+        @include respond(tablets) {
+          display: block;
+        }
+
+        @include respond(all-phones) {
+          display: none;
+        }
+      }
+
+
+      &.__calllist {
+        @include respond(all-phones) {
+          top: 65px !important;
+        }
+
+        #back {
+          display: none;
+
+          @include respond(tablets) {
+            display: block;
+          }
+
+          @include respond(all-phones) {
+            display: block;
+          }
+        }
+      }
+    }
   }
 }

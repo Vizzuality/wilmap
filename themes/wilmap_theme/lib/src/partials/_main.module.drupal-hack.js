@@ -477,6 +477,24 @@
 
       },
 
+      /**
+       * Google translator
+       */
+      google_translator: function() {
+        var dom = '#block-googletranslate';
+        var dom_google = '#google_translate_element';
+
+        if($(dom).length > 0) {
+          setTimeout(function(){
+            if($(dom_google).length > 0) {
+              console.log('hack google trans ' + $(dom_google + ' .goog-te-menu-value span').first().text());
+              $(dom_google + ' .goog-te-menu-value span').first().text('ENG');
+            }
+          }, 10000);
+        }
+
+      }
+
     },
 
 
@@ -492,6 +510,11 @@
          //console.log(key);
          m[key]();
         }
+      } else {
+        // If page reload
+        this.methods.contributorFilterList();
+        this.methods.entriesFilterList();
+        this.methods.updateAdvancedFilters();
       }
 
       // log

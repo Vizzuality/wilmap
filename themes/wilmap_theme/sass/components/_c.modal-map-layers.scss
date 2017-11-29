@@ -11,18 +11,23 @@
   }
 
   .content {
-    min-height: 38%;
+    @include clearfix();
+    @include padding(null null $dp * 9 null);
+    min-height: auto;
 
     ul {
-      @include column(12, center, collapse, false);
+      @include trim();
+      @include clearfix();
+      @include column(14, center, collapse, false);
+      @include margin(null null $dp * 2 null);
 
       li.layer-item {
         &:nth-child(even) {
-          @include column(6, center, collapse, false);
+          @include column(7, center, collapse, false);
         }
 
         &:nth-child(odd) {
-          @include column(6);
+          @include column(7);
         }
       }
     }

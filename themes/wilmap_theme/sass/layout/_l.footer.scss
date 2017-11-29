@@ -179,6 +179,7 @@ $footer-bandcolor:                      #222222;
 
       ul {
         text-align: right;
+        margin-bottom: 0;
 
         @include respond(all-phones) {
           text-align: center;
@@ -213,10 +214,10 @@ $footer-bandcolor:                      #222222;
 // Override
 // -------------------------------------
 
-// body.node-map {
-//   .site-footer {
-//     @include margin(0 null null null);
-//
+body.node-map {
+  .site-footer {
+    @include margin(0 null null null);
+
 //     .footer_second_wrap {
 //       .block-block-content {
 //         .logo-cis a {
@@ -232,6 +233,6 @@ $footer-bandcolor:                      #222222;
 //       .block-menu {
 //         top: 13px;
 //       }
-//     }
-//   }
-// }
+//    }
+  }
+}

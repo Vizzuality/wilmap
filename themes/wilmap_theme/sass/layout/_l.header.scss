@@ -228,6 +228,21 @@ $nav-item-bgcolor-active:               $white;
     background-color: transparent;
     display: block;
 
+    // @include respond(portrait-tablets) {
+    //   @include position(absolute, $header-height-phones null null 0);
+    //   display: none;
+    //   background-color: $nav-item-bgcolor;
+    //   width: 100%;
+    //   height: 1000px;
+    //   max-height: 1000px;
+    //   overflow: hidden;
+    //   z-index: 99;
+    //
+    //   &.active {
+    //     display: block;
+    //   }
+    // }
+
     @include respond(all-phones) {
       @include position(absolute, $header-height-phones null null 0);
       display: none;
@@ -258,7 +273,7 @@ $nav-item-bgcolor-active:               $white;
     overflow: hidden;
 
     @include respond(tablets) {
-      @include position(absolute, -$dp * 2.5 0 null null);
+      @include position(absolute, (-$dp * 2) (-$dp * 2) null null);
       width: $dp * 30;
     }
 
@@ -305,6 +320,10 @@ $nav-item-bgcolor-active:               $white;
     a.toggle {
       display: none;
 
+      // @include respond(portrait-tablets) {
+      //   @include toggle-button();
+      // }
+
       @include respond(all-phones) {
         @include toggle-button();
       }
@@ -320,6 +339,10 @@ $nav-item-bgcolor-active:               $white;
       text-align: left;
       vertical-align: middle;
 
+      // @include respond(portrait-tablets) {
+      //   @include navigation-mobile();
+      // }
+
       @include respond(all-phones) {
         @include navigation-mobile();
       }
@@ -334,6 +357,10 @@ $nav-item-bgcolor-active:               $white;
         padding-bottom: 0;
         text-align: center;
         vertical-align: middle;
+
+        // @include respond(portrait-tablets) {
+        //   @include item-li-mobile();
+        // }
 
         @include respond(all-phones) {
           @include item-li-mobile();

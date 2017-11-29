@@ -9,6 +9,30 @@
 
   .leaflet-control-zoom {
     @include position(relative, 70px null null null);
+    @include border-radius($metro-radius);
+    border: 1px solid $hr-color;
+    background-color: $second-color;
+
+    @include respond(tablets) {
+      @include position(relative, 70px null null null);
+    }
+
+    @include respond(all-phones) {
+      @include position(relative, 15px null null null);
+    }
+
+    a {
+      @include text-shadow(none);
+      width: 40px;
+      height: 40px;
+      line-height: 35px;
+      border-bottom: 1px solid $hr-color;
+      color: $first-color;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
   }
 
   .leaflet-map-pane {
@@ -26,6 +50,7 @@
       bottom: 0 !important;
       margin-bottom: 0;
       border-left: 1px solid darken($third-color, 3);
+      border-right: none;
 
       .leaflet-popup-content-wrapper {
         @include border-radius($metro-radius);
@@ -124,11 +149,19 @@
           background-color: $third-color;
           width: 23px;
           height: 23px;
+          margin: -10px auto 0;
         }
+      }
+
+      .leaflet-popup-close-button {
+        position: absolute;
+        top: 0;
+        right: 0;
       }
 
       &.__no-data {
         border-left: none;
+        border-right: none;
 
         .leaflet-popup-content-wrapper {
           background-color: $white;
@@ -160,20 +193,28 @@
           }
         }
 
-        &.__right {
+        &.__right,
+        &.__bottom {
+          border-left: none;
+          border-right: none;
+
           .leaflet-popup-tip-container {
             .leaflet-popup-tip {
               background-color: $white;
             }
           }
         }
+
+        &.__bottom {
+          bottom: -80px !important;
+        }
       }
 
       /* Override orientation */
       &.__right {
         left: -303px !important;
-        bottom: 0 !important;
         border-left: none;
+        border-right: 1px solid darken($fifth-color, 3);
 
         .leaflet-popup-tip-container {
           left: auto;
@@ -181,6 +222,33 @@
 
           .leaflet-popup-tip {
             background-color: $fifth-color;
+          }
+        }
+      }
+
+      &.__bottom {
+        bottom: -200px !important;
+        padding-top: 20px;
+        padding-bottom: 0;
+
+        .leaflet-popup-tip-container {
+          bottom: auto;
+          top: 0;
+
+          .leaflet-popup-tip {
+            margin: 10px auto 0;
+          }
+        }
+
+        .leaflet-popup-close-button {
+          top: 20px;
+        }
+
+        &.__right {
+          .leaflet-popup-tip-container {
+            .leaflet-popup-tip {
+              background-color: $white;
+            }
           }
         }
       }

@@ -38,15 +38,22 @@ $modal-close-bg-button:                 $fifth-color;
     margin: 0 auto;
     padding: 30px;
 
+    @include respond(tablets) {
+      top: 10%;
+      width: 60%;
+      min-height: 0;
+      max-height: 90%;
+    }
+
     @include respond(portrait-tablets) {
-      top: 20%;
+      top: 15%;
       width: 80%;
       min-height: 0;
-      max-height: 80%;
+      max-height: 90%;
     }
 
     @include respond(all-phones) {
-      top: 15%;
+      top: 5%;
       width: 80%;
       min-height: 0;
       max-height: 92.5%;

@@ -20,7 +20,7 @@
        */
       _configuration: {
         min_device_width:         414,  //From scss _settings.scss
-        tablet_device_width:      768,  //From scss _settings.scss
+        tablet_device_width:      900,  //From scss _settings.scss
         document_width:          1170,  //From scss _settings.scss
         max_device_width:        2880   //From scss _settings.scss
       },
