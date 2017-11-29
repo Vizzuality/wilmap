@@ -6,7 +6,6 @@ use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\Query\QueryFactory;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\migrate_plus\Entity\MigrationGroupInterface;
 
 /**
  * Class MigrationGroupFormBase.
@@ -44,7 +43,6 @@ class MigrationGroupFormBase extends EntityForm {
    *   A container interface service.
    *
    * @return \Drupal\migrate_tools\Form\MigrationFormBase
-   *
    */
   public static function create(ContainerInterface $container) {
     return new static($container->get('entity.query'));
@@ -67,41 +65,41 @@ class MigrationGroupFormBase extends EntityForm {
     // Get anything we need from the base class.
     $form = parent::buildForm($form, $form_state);
 
-    /** @var MigrationGroupInterface $migration_group */
+    /** @var \Drupal\migrate_plus\Entity\MigrationGroupInterface $migration_group */
     $migration_group = $this->entity;
 
     // Build the form.
-    $form['label'] = array(
+    $form['label'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Label'),
       '#maxlength' => 255,
       '#default_value' => $migration_group->label(),
       '#required' => TRUE,
-    );
-    $form['id'] = array(
+    ];
+    $form['id'] = [
       '#type' => 'machine_name',
       '#title' => $this->t('Machine name'),
       '#default_value' => $migration_group->id(),
-      '#machine_name' => array(
-        'exists' => array($this, 'exists'),
+      '#machine_name' => [
+        'exists' => [$this, 'exists'],
         'replace_pattern' => '([^a-z0-9_]+)|(^custom$)',
         'error' => 'The machine-readable name must be unique, and can only contain lowercase letters, numbers, and underscores. Additionally, it can not be the reserved word "custom".',
-      ),
+      ],
       '#disabled' => !$migration_group->isNew(),
-    );
-    $form['description'] = array(
+    ];
+    $form['description'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Description'),
       '#maxlength' => 255,
       '#default_value' => $migration_group->get('description'),
-    );
-    $form['source_type'] = array(
+    ];
+    $form['source_type'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Source type'),
       '#description' => $this->t('Type of source system the group is migrating from, for example "Drupal 6" or "WordPress 4".'),
       '#maxlength' => 255,
       '#default_value' => $migration_group->get('source_type'),
-    );
+    ];
 
     // Return the form.
     return $form;
@@ -170,11 +168,11 @@ class MigrationGroupFormBase extends EntityForm {
 
     if ($status == SAVED_UPDATED) {
       // If we edited an existing entity...
-      drupal_set_message($this->t('Migration group %label has been updated.', array('%label' => $migration_group->label())));
+      drupal_set_message($this->t('Migration group %label has been updated.', ['%label' => $migration_group->label()]));
     }
     else {
       // If we created a new entity...
-      drupal_set_message($this->t('Migration group %label has been added.', array('%label' => $migration_group->label())));
+      drupal_set_message($this->t('Migration group %label has been added.', ['%label' => $migration_group->label()]));
     }
 
     // Redirect the user back to the listing route after the save operation.

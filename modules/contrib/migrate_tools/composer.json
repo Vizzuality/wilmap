@@ -1,0 +1,11 @@
+{
+    "name": "drupal/migrate_tools",
+    "description": "Tools to assist in developing and running migrations.",
+    "type": "drupal-module",
+    "require-dev": {
+        "drupal/coder": "^8"
+    },
+    "license": "GPL-2.0+",
+    "require": {},
+    "minimum-stability": "dev"
+}

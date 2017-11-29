@@ -74,6 +74,13 @@ entity.migration.process:
     _title: 'Process'
   requirements:
     _permission: 'administer migrations'
+entity.migration.process.run:
+  path: '/admin/structure/migrate/manage/{migration_group}/migrations/{migration}/process/run'
+  defaults:
+    _controller: '\Drupal\migrate_tools\Controller\MigrationController::run'
+    _title: 'Run'
+  requirements:
+    _permission: 'administer migrations'
 entity.migration.destination:
   path: '/admin/structure/migrate/manage/{migration_group}/migrations/{migration}/destination'
   defaults:
@@ -105,5 +112,13 @@ migrate_tools.messages:
   defaults:
     _controller: '\Drupal\migrate_tools\Controller\MessageController::overview'
     _title: 'Messages'
+  requirements:
+    _permission: 'administer migrations'
+
+migrate_tools.execute:
+  path: '/admin/structure/migrate/manage/{migration_group}/migrations/{migration}/execute'
+  defaults:
+    _form: '\Drupal\migrate_tools\Form\MigrationExecuteForm'
+    _title: 'Execute migration'
   requirements:
     _permission: 'administer migrations'

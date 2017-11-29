@@ -25,12 +25,12 @@ class MigrateExecutable extends MigrateExecutableBase {
    * @var array
    *   Set of counters, keyed by MigrateIdMapInterface::STATUS_* constant.
    */
-  protected $saveCounters = array(
+  protected $saveCounters = [
     MigrateIdMapInterface::STATUS_FAILED => 0,
     MigrateIdMapInterface::STATUS_IGNORED => 0,
     MigrateIdMapInterface::STATUS_IMPORTED => 0,
     MigrateIdMapInterface::STATUS_NEEDS_UPDATE => 0,
-  );
+  ];
 
   /**
    * Counter of map deletions.
@@ -93,10 +93,12 @@ class MigrateExecutable extends MigrateExecutableBase {
       $this->feedback = $options['feedback'];
     }
     if (isset($options['idlist'])) {
-      $this->idlist = explode(',', $options['idlist']);
-      array_walk($this->idlist , function(&$value, $key) {
-        $value = explode(':', $value);
-      });
+      if (is_string($options['idlist'])) {
+        $this->idlist = explode(',', $options['idlist']);
+        array_walk($this->idlist, function (&$value, $key) {
+          $value = explode(':', $value);
+        });
+      }
     }
 
     $this->listeners[MigrateEvents::MAP_SAVE] = [$this, 'onMapSave'];
@@ -252,12 +254,12 @@ class MigrateExecutable extends MigrateExecutableBase {
     }
     $this->message->display(\Drupal::translation()->formatPlural($processed,
       $singular_message, $plural_message,
-        array('@numitems' => $processed,
+        ['@numitems' => $processed,
               '@created' => $this->getCreatedCount(),
               '@updated' => $this->getUpdatedCount(),
               '@failures' => $this->getFailedCount(),
               '@ignored' => $this->getIgnoredCount(),
-              '@name' => $this->migration->id())));
+              '@name' => $this->migration->id()]));
   }
 
   /**
@@ -278,20 +280,20 @@ class MigrateExecutable extends MigrateExecutableBase {
    * @param bool $done
    */
   protected function rollbackMessage($done = TRUE) {
-   $rolled_back = $this->getRollbackCount();
-   if ($done) {
-     $singular_message = "Rolled back 1 item - done with '@name'";
-     $plural_message = "Rolled back @numitems items - done with '@name'";
-   }
-   else {
-     $singular_message = "Rolled back 1 item - continuing with '@name'";
-     $plural_message = "Rolled back @numitems items - continuing with '@name'";
-   }
-   $this->message->display(\Drupal::translation()->formatPlural($rolled_back,
+    $rolled_back = $this->getRollbackCount();
+    if ($done) {
+      $singular_message = "Rolled back 1 item - done with '@name'";
+      $plural_message = "Rolled back @numitems items - done with '@name'";
+    }
+    else {
+      $singular_message = "Rolled back 1 item - continuing with '@name'";
+      $plural_message = "Rolled back @numitems items - continuing with '@name'";
+    }
+    $this->message->display(\Drupal::translation()->formatPlural($rolled_back,
      $singular_message, $plural_message,
-       array('@numitems' => $rolled_back,
-             '@name' => $this->migration->id())));
- }
+       ['@numitems' => $rolled_back,
+             '@name' => $this->migration->id()]));
+  }
 
   /**
    * React to an item about to be imported.
@@ -329,7 +331,6 @@ class MigrateExecutable extends MigrateExecutableBase {
    *   The prepare-row event.
    *
    * @throws \Drupal\migrate\MigrateSkipRowException
-   *
    */
   public function onPrepareRow(MigratePrepareRowEvent $event) {
     if (!empty($this->idlist)) {

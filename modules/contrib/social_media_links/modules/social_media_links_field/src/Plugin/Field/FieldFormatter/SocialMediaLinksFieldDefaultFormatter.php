@@ -53,6 +53,10 @@ class SocialMediaLinksFieldDefaultFormatter extends FormatterBase {
       ],
     ];
 
+    if ($iconset['instance']->getPath() === 'library' && (array) $library = $iconset['instance']->getLibrary()) {
+      $output['#attached']['library'] = array_merge_recursive($output['#attached']['library'], $library);
+    }
+
     return $output;
   }
 

@@ -65,7 +65,7 @@ function migrate_tools_drush_command() {
       'migrate-import beer_user --idlist=5' => 'Import the user record with source ID 5',
     ],
     'drupal dependencies' => ['migrate_tools'],
-    'aliases' => ['mi'],
+    'aliases' => ['mi', 'mim'],
   ];
 
   $items['migrate-rollback'] = array(
@@ -226,6 +226,13 @@ function drush_migrate_tools_migrate_import($migration_names = '') {
   $group_names = drush_get_option('group');
   $tag_names = drush_get_option('tag');
   $all = drush_get_option('all');
+
+  // Display a depreciation message if "mi" alias is used.
+  $args = drush_get_arguments();
+  if ($args[0] === 'mi') {
+    drush_log('The \'mi\' alias is deprecated and will no longer work with Drush 9. Consider the use of \'mim\' alias instead.', 'warning');
+  }
+
   $options = [];
   if (!$all && !$group_names && !$migration_names && !$tag_names) {
     drush_set_error('MIGRATE_ERROR', dt('You must specify --all, --group, --tag or one or more migration names separated by commas'));
@@ -265,7 +272,7 @@ function _drush_migrate_tools_execute_migration(MigrationInterface $migration, $
 
   if (drush_get_option('execute-dependencies')) {
     if ($required_IDS = $migration->get('requirements')) {
-      $manager = \Drupal::service('plugin.manager.config_entity_migration');
+      $manager = \Drupal::service('plugin.manager.migration');
       $required_migrations = $manager->createInstances($required_IDS);
       $dependency_options = array_merge($options, ['is_dependency' => TRUE]);
       array_walk($required_migrations, __FUNCTION__, $dependency_options);
@@ -280,6 +287,10 @@ function _drush_migrate_tools_execute_migration(MigrationInterface $migration, $
   $executable = new MigrateExecutable($migration, $log, $options);
   // drush_op() provides --simulate support
   drush_op(array($executable, 'import'));
+  if ($count = $executable->getFailedCount()) {
+    // Nudge Drush to use a non-zero exit code.
+    drush_set_error('MIGRATE_ERROR', dt('!name Migration - !count failed.', array('!name' => $migration_id, '!count' => $count)));
+  }
 }
 
 /**

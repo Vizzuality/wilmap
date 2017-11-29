@@ -156,15 +156,27 @@ function drush_config_devel_import_one($path) {
  *   The module, theme or install profile we're exporting.
  * @param string $directory
  *   The directory we're exporting to.
+ *
+ * @return bool
+ *   TRUE when the configuration was successfully exported. FALSE otherwise.
  */
 function drush_config_devel_process_config($config_list, $type, $extension, $directory) {
   $config_path = drupal_get_path($type, $extension) . "/$directory";
+
+  // Ensure the directory always exists.
+  if (!file_exists($config_path) && !\Drupal::service('file_system')->mkdir($config_path, NULL, TRUE)) {
+    drush_set_error('CONFIG_DEVEL_DIRECTORY_NOT_CREATED', sprintf('The %s directory could not be created', $config_path));
+    return FALSE;
+  }
+
   foreach ($config_list as $name) {
     $config = \Drupal::config($name);
     $file_names = array($config_path . '/' . $name . '.yml');
 
     \Drupal::service('config_devel.writeback_subscriber')->writeBackConfig($config, $file_names);
   }
+
+  return TRUE;
 }
 
 /**

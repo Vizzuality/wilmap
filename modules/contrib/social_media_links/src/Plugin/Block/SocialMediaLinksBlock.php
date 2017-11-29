@@ -15,7 +15,7 @@ use Drupal\social_media_links\SocialMediaLinksIconsetManager;
 use Drupal\social_media_links\IconsetBase;
 use Drupal\social_media_links\IconsetFinderService;
 use Drupal\Core\Render\RendererInterface;
-use Drupal\Core\Logger\LoggerChannelInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * Provides the Social Media Links Block.
@@ -36,7 +36,7 @@ class SocialMediaLinksBlock extends BlockBase implements ContainerFactoryPluginI
   /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, SocialMediaLinksPlatformManager $platform_manager, SocialMediaLinksIconsetManager $iconset_manager, IconsetFinderService $finder_service, RendererInterface $renderer, LoggerChannelInterface $logger) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, SocialMediaLinksPlatformManager $platform_manager, SocialMediaLinksIconsetManager $iconset_manager, IconsetFinderService $finder_service, RendererInterface $renderer, LoggerInterface $logger) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->platformManager = $platform_manager;
