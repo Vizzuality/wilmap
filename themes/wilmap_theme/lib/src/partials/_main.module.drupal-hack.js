@@ -96,44 +96,65 @@
           $(advancedContentDOM).empty();
           $(runON + ' .views-exposed-form .form--modal .content-inner .form-item input').each(function(item, value) {
             var v_text = "";
-            var v_id = "";
-            var template_button = '<div class="advanced-tag btn">[v_text] <a href="#" class="delete">X</a></div>';
+            var v_target = "";
+            var v_type = "";
+            var ok = true;
+            var template_button = '<div data-type="[v_type]" data-target="[v_target]" class="advanced-tag btn">[v_text] <a href="#" class="delete">X</a></div>';
 
             switch ($(value).attr('type')) {
               case 'text':
                 if($(value).val() !== '') {
+                  ok = true;
                   v_text = $(value).parent().find('label').text() + ': ' + $(value).val();
-
-                  $(advancedContentDOM).append(template_button.replace(/\[v_text\]/g, v_text));
-                  cont++;
+                  v_target = $(value).attr('id');
+                  v_type = $(value).attr('type');
+                  break;
                 }
-
-                break;
               case 'checkbox':
                 if($(value).is(':checked')) {
+                  ok = true;
                   v_text = $(value).parents('label').text();
-
-                  $(advancedContentDOM).append(template_button.replace(/\[v_text\]/g, v_text));
-                  cont++;
+                  v_target = $(value).attr('id');
+                  v_type = $(value).attr('type');
+                  break;
                 }
-
-                break;
               default:
+                ok = false;
                 break;
+            }
+
+            if(ok){
+              $(advancedContentDOM).append(template_button.replace(/\[v_text\]/g, v_text).replace(/\[v_target\]/g, v_target).replace(/\[v_type\]/g, v_type));
+              cont++;
             }
           });
 
           // Events
           $(advancedContentDOM + ' .advanced-tag a.delete').on('click', function(e){
             e.preventDefault();
-            $(this).parent().remove();
+            //$(this).parent().remove();
+            var type = $(this).parent().data('type');
+            var target = $(this).parent().data('target')
+
+            switch (type) {
+              case 'text':
+                $('#'+target).val('');
+                console.log('#'+target);
+                console.log($('#'+target));
+                break;
+              case 'checkbox':
+                break;
+              default:
+                break;
+            }
+            // console.log($(this).parent().data('type'));
 
             if($(advancedContentDOM + ' .advanced-tag').length === 0) {
               $(advancedDOM).hide();
             }
 
             //
-            //App.DrupalHack.methods.updateAdvancedFilters();
+            App.DrupalHack.methods.updateAdvancedFilters();
           });
 
           if(cont) {
@@ -227,6 +248,17 @@
             $(runON + ' .views-exposed-form input.form-submit').click();
           });
 
+          // submit
+          $(runON + ' .views-exposed-form input.form-submit').on('click', function(e){
+            var href = location.href.split('?')[0];
+            var serialize = $(runON + ' .views-exposed-form').serialize();
+
+            var out = href + '?' + serialize;
+            console.log('SUBMIT -> ' + out);
+
+            App.Utils.setBrowserURL(out);
+          });
+
           // show in map button
           $(runON + ' .views-exposed-form .form--bottom a#show-map').on('click', function(e){
             e.preventDefault();
@@ -254,6 +286,19 @@
 
             location.href = href + serialize;
           });
+
+          // pagination
+          $('nav.pager .pager__item a').on('click', function(e){
+            var href = location.href.split('?')[0];
+            var serialize = $(runON + ' .views-exposed-form').serialize();
+            var page = $(this).attr('href').split('page=')[1];
+
+            var out = href + '?' + serialize + '&page=' + page;
+            console.log('PAGINATION -> ' + out);
+
+            App.Utils.setBrowserURL(out);
+          });
+
 
         }
       },
