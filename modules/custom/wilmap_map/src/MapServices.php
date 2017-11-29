@@ -30,7 +30,7 @@ class MapServices implements ContainerInjectionInterface
         __sleep as defaultSleep;
     }
 
-    const PARAMETER_FIELD_MAPPING = [
+    static protected $parameter_field_mapping = [
       'country'           => 'field_location_entry',
       'claim'             => 'field_tax_topic_claim_defense',
       'document'          => 'field_tax_document_type',
@@ -373,10 +373,10 @@ class MapServices implements ContainerInjectionInterface
         foreach ($params as $param => $value) {
 
             // Only parameters mapped with fields, ignore others
-            if (array_key_exists($param, self::PARAMETER_FIELD_MAPPING)) {
+            if (array_key_exists($param, self::$parameter_field_mapping)) {
 
                 // Get field mapped with param
-                $field = self::PARAMETER_FIELD_MAPPING[$param];
+                $field = self::$parameter_field_mapping[$param];
 
                 // Fields special treatments
                 switch ($field) {
@@ -441,7 +441,7 @@ class MapServices implements ContainerInjectionInterface
         // query parameters
         $params = new ParameterBag();
         foreach ($conditions as $condition) {
-            $key = array_search ($condition['field_name'], self::PARAMETER_FIELD_MAPPING);
+            $key = array_search ($condition['field_name'], self::$parameter_field_mapping);
             if($key){
                 $params->set($key, $condition['values']);
             }
