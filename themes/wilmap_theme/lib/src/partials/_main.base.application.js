@@ -336,37 +336,33 @@
             var popup_dom = '.leaflet-popup';
             var orientation_h = '';
             var orientation_v = '';
+            var dist_top = parseInt(Math.abs(App.Application.Maps.Config.wilmap.getBounds()['_northEast'].lat - coord.lat));
+            var dist_left = parseInt(Math.abs(App.Application.Maps.Config.wilmap.getBounds()['_southWest'].lng - coord.lng));
+            var dist_bottom = parseInt(Math.abs(App.Application.Maps.Config.wilmap.getBounds()['_southWest'].lat - coord.lat));
+            var dist_right = parseInt(Math.abs(App.Application.Maps.Config.wilmap.getBounds()['_northEast'].lng - coord.lng));
 
             // Orientation
-            // console.log(coord, App.Application.Maps.Config.wilmap.getBounds());
-            // console.log(parseInt(App.Application.Maps.Config.wilmap.getBounds()['_southWest'].lng - coord.lng));
-            // console.log(parseInt(App.Application.Maps.Config.wilmap.getBounds()['_northEast'].lat - coord.lat));
+            // console.log(coord);
+            // console.log('dist_top: ' + dist_top);
+            // console.log('dist_left: ' + dist_left);
+            // console.log('dist_bottom: ' + dist_bottom);
+            // console.log('dist_right: ' + dist_right);
 
-            // //Horizontal
-            if(parseInt(coord.lng) > 75) {
-              if(parseInt(coord.lng) > 100) {
-                 if (parseInt(App.Application.Maps.Config.wilmap.getBounds()['_southWest'].lng - coord.lng) > -15) {
-                   orientation_h = '';
-                 } else {
-                   orientation_h = '__right';
-                 }
-              } else {
-                orientation_h = '__right';
-              }
-            } else if(parseInt(coord.lng) < -30) {
-               if (parseInt(App.Application.Maps.Config.wilmap.getBounds()['_southWest'].lng - coord.lng) < -55) {
-                 orientation_h = '__right';
-               }
-            }
-
-            // //Vertical
-            if(parseInt(coord.lat) > 75) {
+            //// Vertical
+            if(dist_top > dist_bottom) {
+              orientation_v = '__top';
+            } else {
               orientation_v = '__bottom';
-            } else if(parseInt(coord.lat) < 30) {
-              if (parseInt(App.Application.Maps.Config.wilmap.getBounds()['_northEast'].lat - coord.lat) < 20) {
-                orientation_v = '__bottom';
-              }
             }
+
+            //// Horizontal
+            if(dist_left > dist_right) {
+              orientation_h = '__right';
+            } else {
+              orientation_h = '__left';
+            }
+
+            // console.log(orientation_h + ', ' + orientation_v);
 
             $(popup_dom).addClass(orientation_h).addClass(orientation_v);
           };
@@ -581,7 +577,7 @@
 
               // Get query
               $.getJSON( API_LAYER, function( data ) {
-                console.log(data);
+                //console.log(data);
                 var l = $(DOM_LAYERS + ' label[data-layerid="' + App.Application.Maps.Config.curr_layer_active.layerid + '"]');
 
                 App.Application.Maps.Config.curr_layer_active.title = l.data('layer-title');
@@ -753,7 +749,7 @@ console.log(App.Application.Maps);
                },
                click: function (e) {
                  var l = e.target;
-                 console.log('- ISO2 selected: ' + l.feature.properties.iso2);
+                 // console.log('- ISO2 selected: ' + l.feature.properties.iso2);
 
                  if (App.Application.Maps.CountryData[l.feature.properties.iso2]) {
                    App.Application.Maps.Config.click_on_map = true;
@@ -843,7 +839,7 @@ console.log(App.Application.Maps);
               if (Object.keys(val.countries).length) {
                 $.each( val.countries, function( kc, vc ) {
                   var obj = {'id':kc,'title':vc.title,'path':vc.path,'continent':continent};
-                  console.log(obj);
+                  //console.log(obj);
                   App.Application.Maps.CountryData[vc.iso2] = obj;
                 });
               }

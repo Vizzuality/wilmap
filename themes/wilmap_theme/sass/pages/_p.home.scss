@@ -108,6 +108,12 @@
       }
     }
 
+    .image {
+      @include respond(large-screens) {
+        @include translate(50%, -50%);
+      }
+    }
+
     .text {
       .description {
         .field--name-body,

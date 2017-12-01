@@ -358,7 +358,14 @@
       entriesFilterList: function() {
         var runON = '.view-list-entries .view-filters';
 
+        this.advancedChanges = [];
+
+        this.serializeForm = function() {
+
+        }
+
         this.updateAdvancedFilters = function() {
+          console.log('this.updateAdvancedFilters');
           var advancedDOM = runON + ' .views-exposed-form .form--advanced';
           var advancedContentDOM = advancedDOM + ' .content';
           var cont = 0;
@@ -368,7 +375,7 @@
             var v_text = "";
             var v_target = "";
             var v_type = "";
-            var ok = true;
+            var ok = false;
             var template_button = '<div data-type="[v_type]" data-target="[v_target]" class="advanced-tag btn">[v_text] <a href="#" class="delete">X</a></div>';
 
             switch ($(value).attr('type')) {
@@ -383,6 +390,7 @@
               case 'checkbox':
                 if($(value).is(':checked')) {
                   ok = true;
+                  console.log($(value).parents('label'));
                   v_text = $(value).parents('label').text();
                   v_target = $(value).attr('id');
                   v_type = $(value).attr('type');
@@ -405,26 +413,48 @@
             //$(this).parent().remove();
             var type = $(this).parent().data('type');
             var target = $(this).parent().data('target')
+            var active_checkbox_in_advanced = $(advancedContentDOM + ' .advanced-tag[data-type="checkbox"]').length;
+
+            console.log('#'+target, type);
+            console.log($('#'+target).parent());
 
             switch (type) {
               case 'text':
                 $('#'+target).val('');
-                console.log('#'+target);
-                console.log($('#'+target));
                 break;
               case 'checkbox':
+                $('#'+target).prop('checked', false).removeAttr('checked');
+                $('#'+target).parent().removeClass('checked');
+                $('#'+target).parent().find('span i').remove();
                 break;
               default:
                 break;
             }
-            // console.log($(this).parent().data('type'));
 
-            if($(advancedContentDOM + ' .advanced-tag').length === 0) {
-              $(advancedDOM).hide();
-            }
 
             //
             App.DrupalHack.methods.updateAdvancedFilters();
+
+
+            // if($(advancedContentDOM + ' .advanced-tag').length === 0) {
+            //   $(advancedDOM).hide();
+            // }
+
+console.log('despues total checkbox: ' + $(advancedContentDOM + ' .advanced-tag[data-type="checkbox"]').length);
+
+            if($(advancedContentDOM + ' .advanced-tag[data-type="checkbox"]').length === 0 && active_checkbox_in_advanced !== 0) {
+              // Reload url for preventing bug of last item in advanced search.
+              var href = location.href.split('?')[0];
+              var serialize = $(runON + ' .views-exposed-form').serialize();
+              var out = href + '?' + serialize;
+
+              $('body').after($('<div class="ajax-progress ajax-progress-fullscreen">&nbsp;</div>'));
+              location.href = out;
+            } else {
+              // Auto submit
+              $(runON + ' .views-exposed-form input.form-submit').click();
+            }
+
           });
 
           if(cont) {
@@ -482,6 +512,11 @@
           // DOM processed
           $(runON).addClass('__processed');
 
+          setTimeout(function(){
+            App.DrupalHack.methods.updateAdvancedFilters();
+          }, 100);
+
+
           // Events
           // checkboxes
           $(runON + ' .views-exposed-form .form--modal .content-inner details .form-type-checkbox').on('click', function(){
@@ -508,6 +543,11 @@
             App.DrupalHack.methods.updateAdvancedFilters();
           });
 
+
+          // close modal button
+          $(runON + ' .views-exposed-form .form--modal a.close').on('click', function(e){
+            e.preventDefault();
+          });
 
           // done button
           $(runON + ' .views-exposed-form .form--modal a.modal-done').on('click', function(e){
@@ -1335,37 +1375,33 @@
             var popup_dom = '.leaflet-popup';
             var orientation_h = '';
             var orientation_v = '';
+            var dist_top = parseInt(Math.abs(App.Application.Maps.Config.wilmap.getBounds()['_northEast'].lat - coord.lat));
+            var dist_left = parseInt(Math.abs(App.Application.Maps.Config.wilmap.getBounds()['_southWest'].lng - coord.lng));
+            var dist_bottom = parseInt(Math.abs(App.Application.Maps.Config.wilmap.getBounds()['_southWest'].lat - coord.lat));
+            var dist_right = parseInt(Math.abs(App.Application.Maps.Config.wilmap.getBounds()['_northEast'].lng - coord.lng));
 
             // Orientation
-            // console.log(coord, App.Application.Maps.Config.wilmap.getBounds());
-            // console.log(parseInt(App.Application.Maps.Config.wilmap.getBounds()['_southWest'].lng - coord.lng));
-            // console.log(parseInt(App.Application.Maps.Config.wilmap.getBounds()['_northEast'].lat - coord.lat));
+            // console.log(coord);
+            // console.log('dist_top: ' + dist_top);
+            // console.log('dist_left: ' + dist_left);
+            // console.log('dist_bottom: ' + dist_bottom);
+            // console.log('dist_right: ' + dist_right);
 
-            // //Horizontal
-            if(parseInt(coord.lng) > 75) {
-              if(parseInt(coord.lng) > 100) {
-                 if (parseInt(App.Application.Maps.Config.wilmap.getBounds()['_southWest'].lng - coord.lng) > -15) {
-                   orientation_h = '';
-                 } else {
-                   orientation_h = '__right';
-                 }
-              } else {
-                orientation_h = '__right';
-              }
-            } else if(parseInt(coord.lng) < -30) {
-               if (parseInt(App.Application.Maps.Config.wilmap.getBounds()['_southWest'].lng - coord.lng) < -55) {
-                 orientation_h = '__right';
-               }
-            }
-
-            // //Vertical
-            if(parseInt(coord.lat) > 75) {
+            //// Vertical
+            if(dist_top > dist_bottom) {
+              orientation_v = '__top';
+            } else {
               orientation_v = '__bottom';
-            } else if(parseInt(coord.lat) < 30) {
-              if (parseInt(App.Application.Maps.Config.wilmap.getBounds()['_northEast'].lat - coord.lat) < 20) {
-                orientation_v = '__bottom';
-              }
             }
+
+            //// Horizontal
+            if(dist_left > dist_right) {
+              orientation_h = '__right';
+            } else {
+              orientation_h = '__left';
+            }
+
+            // console.log(orientation_h + ', ' + orientation_v);
 
             $(popup_dom).addClass(orientation_h).addClass(orientation_v);
           };
@@ -1580,7 +1616,7 @@
 
               // Get query
               $.getJSON( API_LAYER, function( data ) {
-                console.log(data);
+                //console.log(data);
                 var l = $(DOM_LAYERS + ' label[data-layerid="' + App.Application.Maps.Config.curr_layer_active.layerid + '"]');
 
                 App.Application.Maps.Config.curr_layer_active.title = l.data('layer-title');
@@ -1752,7 +1788,7 @@ console.log(App.Application.Maps);
                },
                click: function (e) {
                  var l = e.target;
-                 console.log('- ISO2 selected: ' + l.feature.properties.iso2);
+                 // console.log('- ISO2 selected: ' + l.feature.properties.iso2);
 
                  if (App.Application.Maps.CountryData[l.feature.properties.iso2]) {
                    App.Application.Maps.Config.click_on_map = true;
@@ -1842,7 +1878,7 @@ console.log(App.Application.Maps);
               if (Object.keys(val.countries).length) {
                 $.each( val.countries, function( kc, vc ) {
                   var obj = {'id':kc,'title':vc.title,'path':vc.path,'continent':continent};
-                  console.log(obj);
+                  //console.log(obj);
                   App.Application.Maps.CountryData[vc.iso2] = obj;
                 });
               }

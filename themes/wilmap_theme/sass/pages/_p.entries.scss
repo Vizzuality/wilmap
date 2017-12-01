@@ -23,14 +23,15 @@
   &,
   &._switch-on {
     @include entry(list, '.views-row');
-  }
-
-  &._switch-off {
     @include entry(grid, '.views-row');
   }
 
-  // Filters
+  &._switch-off {
+    @include entry(list, '.views-row');
+  }
 
+
+  // Filters
   .view-filters {
     @include hide-before-dom-alter();
     clear: both;

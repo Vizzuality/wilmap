@@ -174,13 +174,14 @@ $entry-gradient-dir:     180deg;
         @include entry--date();
       }
 
-      .field--name-field-tax-section {
-        @include entry--taxonomy();
+      .field--name-field-tax-section,
+      .field--name-field-tax-document-type {
+        @include entry--location();
       }
 
       .field--name-field-location-entry,
       .field--name-field-region.field--type-entity-reference {
-        @include entry--location();
+        @include entry--taxonomy();
       }
 
       @if $highlight {

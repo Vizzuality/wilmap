@@ -88,7 +88,14 @@
       entriesFilterList: function() {
         var runON = '.view-list-entries .view-filters';
 
+        this.advancedChanges = [];
+
+        this.serializeForm = function() {
+
+        }
+
         this.updateAdvancedFilters = function() {
+          console.log('this.updateAdvancedFilters');
           var advancedDOM = runON + ' .views-exposed-form .form--advanced';
           var advancedContentDOM = advancedDOM + ' .content';
           var cont = 0;
@@ -98,7 +105,7 @@
             var v_text = "";
             var v_target = "";
             var v_type = "";
-            var ok = true;
+            var ok = false;
             var template_button = '<div data-type="[v_type]" data-target="[v_target]" class="advanced-tag btn">[v_text] <a href="#" class="delete">X</a></div>';
 
             switch ($(value).attr('type')) {
@@ -113,6 +120,7 @@
               case 'checkbox':
                 if($(value).is(':checked')) {
                   ok = true;
+                  console.log($(value).parents('label'));
                   v_text = $(value).parents('label').text();
                   v_target = $(value).attr('id');
                   v_type = $(value).attr('type');
@@ -135,26 +143,48 @@
             //$(this).parent().remove();
             var type = $(this).parent().data('type');
             var target = $(this).parent().data('target')
+            var active_checkbox_in_advanced = $(advancedContentDOM + ' .advanced-tag[data-type="checkbox"]').length;
+
+            console.log('#'+target, type);
+            console.log($('#'+target).parent());
 
             switch (type) {
               case 'text':
                 $('#'+target).val('');
-                console.log('#'+target);
-                console.log($('#'+target));
                 break;
               case 'checkbox':
+                $('#'+target).prop('checked', false).removeAttr('checked');
+                $('#'+target).parent().removeClass('checked');
+                $('#'+target).parent().find('span i').remove();
                 break;
               default:
                 break;
             }
-            // console.log($(this).parent().data('type'));
 
-            if($(advancedContentDOM + ' .advanced-tag').length === 0) {
-              $(advancedDOM).hide();
-            }
 
             //
             App.DrupalHack.methods.updateAdvancedFilters();
+
+
+            // if($(advancedContentDOM + ' .advanced-tag').length === 0) {
+            //   $(advancedDOM).hide();
+            // }
+
+console.log('despues total checkbox: ' + $(advancedContentDOM + ' .advanced-tag[data-type="checkbox"]').length);
+
+            if($(advancedContentDOM + ' .advanced-tag[data-type="checkbox"]').length === 0 && active_checkbox_in_advanced !== 0) {
+              // Reload url for preventing bug of last item in advanced search.
+              var href = location.href.split('?')[0];
+              var serialize = $(runON + ' .views-exposed-form').serialize();
+              var out = href + '?' + serialize;
+
+              $('body').after($('<div class="ajax-progress ajax-progress-fullscreen">&nbsp;</div>'));
+              location.href = out;
+            } else {
+              // Auto submit
+              $(runON + ' .views-exposed-form input.form-submit').click();
+            }
+
           });
 
           if(cont) {
@@ -212,6 +242,11 @@
           // DOM processed
           $(runON).addClass('__processed');
 
+          setTimeout(function(){
+            App.DrupalHack.methods.updateAdvancedFilters();
+          }, 100);
+
+
           // Events
           // checkboxes
           $(runON + ' .views-exposed-form .form--modal .content-inner details .form-type-checkbox').on('click', function(){
@@ -238,6 +273,11 @@
             App.DrupalHack.methods.updateAdvancedFilters();
           });
 
+
+          // close modal button
+          $(runON + ' .views-exposed-form .form--modal a.close').on('click', function(e){
+            e.preventDefault();
+          });
 
           // done button
           $(runON + ' .views-exposed-form .form--modal a.modal-done').on('click', function(e){
