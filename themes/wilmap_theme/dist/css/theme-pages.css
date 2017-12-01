@@ -7,8 +7,9 @@
   #block-wilmap-theme-blockwelcomehome .content:after, #block-wilmap-theme-blockmaphome .content:after, #block-wilmap-theme-blockexplorehome .content:after, #block-wilmap-theme-blocknewshome .content:after {
     clear: both; }
 
-#block-wilmap-theme-blockwelcomehome .text, #block-wilmap-theme-blockwelcomehome .text .description, #block-wilmap-theme-blockmaphome .text, #block-wilmap-theme-blockexplorehome .text, #block-wilmap-theme-blocknewshome .text, .block-views-blocktopics-block-1 .views-row, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6, article.node--type-topics.node--view-mode-full .node-header, article.node--type-topics.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .node-header, article.node--type-news.node--view-mode-full .field--name-field-original-source, article.node--type-news.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items > .field__item, .block-views-blockcontributors-block-1 .view-filters, .block-views-blockcontributors-block-1 .view-filters .js-form-item-country, .block-views-blockcontributors-block-1 .view-filters .js-form-item-expertise, .block-views-blockcontributors-block-1 .view-filters .js-form-item-name, .block-views-blockcontributors-block-1 .view-filters .form-actions, .block-views-blockcontributors-block-1 .view-content, .block-views-blockcontributors-block-1 .view-content .views-row, .path-user article.profile .contributor-sheet, .path-user article.profile .contributor-info, .path-user .block-views-blockcontributions-block-1 .view-contributions .views-row, .block-views-blocklist-entries-block-1 .views-row, .block-views-blocklist-entries-block-1._switch-on .views-row, .block-views-blocklist-entries-block-1 .view-filters .form--filter, .block-views-blocklist-entries-block-1 .view-filters .form--filter .js-form-type-select, .block-views-blocklist-entries-block-1 .view-filters .form--filter .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--sort, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors .js-form-item, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > .form-type-checkbox, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield, .block-views-blocklist-entries-block-1 .view-filters .form--bottom > .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .form-actions, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .listswitch, article.node--type-entry.node--view-mode-full .node-header, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items > .field__item, .search-page-form .form-type-search, .search-page-form .site-btn, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest, body.page-node-type-country #content-content section.block-system-main-block .text-formatted,
-body.page-node-type-region #content-content section.block-system-main-block .text-formatted, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content,
+#block-wilmap-theme-blockwelcomehome .text, #block-wilmap-theme-blockwelcomehome .text .description, #block-wilmap-theme-blockmaphome .text, #block-wilmap-theme-blockexplorehome .text, #block-wilmap-theme-blocknewshome .text, .block-views-blocktopics-block-1 .views-row, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6, article.node--type-topics.node--view-mode-full .node-header, article.node--type-topics.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, .block-views-blockentries-block-1 .views-row, .block-views-blockentries-block-1 .view-highlighted-entries .views-row, article.node--type-news.node--view-mode-full .node-header, article.node--type-news.node--view-mode-full .field--name-field-original-source, article.node--type-news.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items > .field__item, .block-views-blockcontributors-block-1 .view-filters, .block-views-blockcontributors-block-1 .view-filters .js-form-item-country, .block-views-blockcontributors-block-1 .view-filters .js-form-item-expertise, .block-views-blockcontributors-block-1 .view-filters .js-form-item-name, .block-views-blockcontributors-block-1 .view-filters .form-actions, .block-views-blockcontributors-block-1 .view-content, .block-views-blockcontributors-block-1 .view-content .views-row, .path-user article.profile .contributor-sheet, .path-user article.profile .contributor-info, .path-user .block-views-blockcontributions-block-1 .view-contributions .views-row, .block-views-blocklist-entries-block-1 .views-row, .block-views-blocklist-entries-block-1._switch-on .views-row, .block-views-blocklist-entries-block-1._switch-off .views-row, .block-views-blocklist-entries-block-1 .view-filters .form--filter, .block-views-blocklist-entries-block-1 .view-filters .form--filter .js-form-type-select, .block-views-blocklist-entries-block-1 .view-filters .form--filter .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--sort, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors .js-form-item, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > .form-type-checkbox, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield, .block-views-blocklist-entries-block-1 .view-filters .form--bottom > .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .form-actions, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .listswitch, article.node--type-entry.node--view-mode-full .node-header, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items > .field__item, .search-page-form .form-type-search, .search-page-form .site-btn, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest, body.page-node-type-country #content-content section.block-system-main-block .text-formatted,
+body.page-node-type-region #content-content section.block-system-main-block .text-formatted, body.page-node-type-country #content-content section:not(.block-system-main-block) .views-row,
+body.page-node-type-region #content-content section:not(.block-system-main-block) .views-row, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content,
 body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content,
 body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content .views-row, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content .views-row,
 body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content .views-row,
@@ -71,7 +72,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
     line-height: 91px;
     line-height: 5.6875rem;
     font-weight: 200;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     padding-bottom: 10px;
     margin-bottom: 20px;
     text-decoration: none;
@@ -84,7 +85,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
         line-height: 60.66667px;
         line-height: 3.79167rem;
         font-weight: 200;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     @media only screen and (max-width: 899px) {
       #block-wilmap-theme-blockwelcomehome .title-section {
         font-size: 45.5px;
@@ -92,14 +93,14 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
         line-height: 45.5px;
         line-height: 2.84375rem;
         font-weight: 200;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     #block-wilmap-theme-blockwelcomehome .title-section .secondary-title {
       font-size: 50px;
       font-size: 3.125rem;
       line-height: 50px;
       line-height: 3.125rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       padding: 0;
       margin: 0;
       display: block;
@@ -113,7 +114,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
           line-height: 33.33333px;
           line-height: 2.08333rem;
           font-weight: 200;
-          font-family: "Raleway", sans-serif; } }
+          font-family: "Raleway", "Mplus 1p", sans-serif; } }
       @media only screen and (max-width: 899px) {
         #block-wilmap-theme-blockwelcomehome .title-section .secondary-title {
           font-size: 45.5px;
@@ -121,7 +122,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
           line-height: 45.5px;
           line-height: 2.84375rem;
           font-weight: 200;
-          font-family: "Raleway", sans-serif; } }
+          font-family: "Raleway", "Mplus 1p", sans-serif; } }
   #block-wilmap-theme-blockwelcomehome .image {
     position: absolute;
     top: 50%;
@@ -171,7 +172,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
     line-height: 27.2px;
     line-height: 1.7rem;
     font-weight: 400;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     margin-bottom: 27px;
     margin-bottom: 1.7rem;
     word-break: break-word;
@@ -188,7 +189,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
         line-height: 28.9px;
         line-height: 1.80625rem;
         font-weight: 400;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
   #block-wilmap-theme-blockwelcomehome .description a.btn {
     margin: 0;
     padding: 0;
@@ -208,7 +209,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
     line-height: 14px;
     line-height: 0.875rem;
     font-weight: 600;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     padding: 14px 16px !important;
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -277,7 +278,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
       line-height: 25px;
       line-height: 1.5625rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
   #block-wilmap-theme-blockwelcomehome .site-btn a {
     padding: 14px 30px 14px 0 !important;
     background-position: 100% 50%;
@@ -329,7 +330,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
     line-height: 91px;
     line-height: 5.6875rem;
     font-weight: 200;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     padding-bottom: 10px;
     margin-bottom: 20px;
     text-decoration: none;
@@ -342,7 +343,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
         line-height: 60.66667px;
         line-height: 3.79167rem;
         font-weight: 200;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     @media only screen and (max-width: 899px) {
       #block-wilmap-theme-blockmaphome .title-section {
         font-size: 45.5px;
@@ -350,14 +351,14 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
         line-height: 45.5px;
         line-height: 2.84375rem;
         font-weight: 200;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     #block-wilmap-theme-blockmaphome .title-section .secondary-title {
       font-size: 50px;
       font-size: 3.125rem;
       line-height: 50px;
       line-height: 3.125rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       padding: 0;
       margin: 0;
       display: block;
@@ -371,7 +372,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
           line-height: 33.33333px;
           line-height: 2.08333rem;
           font-weight: 200;
-          font-family: "Raleway", sans-serif; } }
+          font-family: "Raleway", "Mplus 1p", sans-serif; } }
       @media only screen and (max-width: 899px) {
         #block-wilmap-theme-blockmaphome .title-section .secondary-title {
           font-size: 45.5px;
@@ -379,7 +380,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
           line-height: 45.5px;
           line-height: 2.84375rem;
           font-weight: 200;
-          font-family: "Raleway", sans-serif; } }
+          font-family: "Raleway", "Mplus 1p", sans-serif; } }
   #block-wilmap-theme-blockmaphome .image {
     position: absolute;
     top: 50%;
@@ -429,7 +430,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
     line-height: 27.2px;
     line-height: 1.7rem;
     font-weight: 400;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     margin-bottom: 27px;
     margin-bottom: 1.7rem;
     word-break: break-word;
@@ -446,7 +447,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
         line-height: 28.9px;
         line-height: 1.80625rem;
         font-weight: 400;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
   #block-wilmap-theme-blockmaphome .description a.btn {
     margin: 0;
     padding: 0;
@@ -466,7 +467,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
     line-height: 14px;
     line-height: 0.875rem;
     font-weight: 600;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     padding: 14px 16px !important;
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -534,7 +535,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
     line-height: 91px;
     line-height: 5.6875rem;
     font-weight: 200;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     padding-bottom: 10px;
     margin-bottom: 20px;
     text-decoration: none;
@@ -547,7 +548,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
         line-height: 60.66667px;
         line-height: 3.79167rem;
         font-weight: 200;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     @media only screen and (max-width: 899px) {
       #block-wilmap-theme-blockexplorehome .title-section {
         font-size: 45.5px;
@@ -555,14 +556,14 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
         line-height: 45.5px;
         line-height: 2.84375rem;
         font-weight: 200;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     #block-wilmap-theme-blockexplorehome .title-section .secondary-title {
       font-size: 50px;
       font-size: 3.125rem;
       line-height: 50px;
       line-height: 3.125rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       padding: 0;
       margin: 0;
       display: block;
@@ -576,7 +577,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
           line-height: 33.33333px;
           line-height: 2.08333rem;
           font-weight: 200;
-          font-family: "Raleway", sans-serif; } }
+          font-family: "Raleway", "Mplus 1p", sans-serif; } }
       @media only screen and (max-width: 899px) {
         #block-wilmap-theme-blockexplorehome .title-section .secondary-title {
           font-size: 45.5px;
@@ -584,7 +585,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
           line-height: 45.5px;
           line-height: 2.84375rem;
           font-weight: 200;
-          font-family: "Raleway", sans-serif; } }
+          font-family: "Raleway", "Mplus 1p", sans-serif; } }
   #block-wilmap-theme-blockexplorehome .image {
     position: absolute;
     top: 50%;
@@ -634,7 +635,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
     line-height: 27.2px;
     line-height: 1.7rem;
     font-weight: 400;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     margin-bottom: 27px;
     margin-bottom: 1.7rem;
     word-break: break-word;
@@ -651,7 +652,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
         line-height: 28.9px;
         line-height: 1.80625rem;
         font-weight: 400;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
   #block-wilmap-theme-blockexplorehome .description a.btn {
     margin: 0;
     padding: 0;
@@ -671,7 +672,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
     line-height: 14px;
     line-height: 0.875rem;
     font-weight: 600;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     padding: 14px 16px !important;
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -716,7 +717,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
     line-height: 91px;
     line-height: 5.6875rem;
     font-weight: 200;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     padding-bottom: 10px;
     margin-bottom: 20px;
     text-decoration: none;
@@ -729,7 +730,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
         line-height: 60.66667px;
         line-height: 3.79167rem;
         font-weight: 200;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     @media only screen and (max-width: 899px) {
       #block-wilmap-theme-blockexplorehome .title-section {
         font-size: 45.5px;
@@ -737,14 +738,14 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
         line-height: 45.5px;
         line-height: 2.84375rem;
         font-weight: 200;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     #block-wilmap-theme-blockexplorehome .title-section .secondary-title {
       font-size: 50px;
       font-size: 3.125rem;
       line-height: 50px;
       line-height: 3.125rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       padding: 0;
       margin: 0;
       display: block;
@@ -758,7 +759,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
           line-height: 33.33333px;
           line-height: 2.08333rem;
           font-weight: 200;
-          font-family: "Raleway", sans-serif; } }
+          font-family: "Raleway", "Mplus 1p", sans-serif; } }
       @media only screen and (max-width: 899px) {
         #block-wilmap-theme-blockexplorehome .title-section .secondary-title {
           font-size: 45.5px;
@@ -766,7 +767,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
           line-height: 45.5px;
           line-height: 2.84375rem;
           font-weight: 200;
-          font-family: "Raleway", sans-serif; } }
+          font-family: "Raleway", "Mplus 1p", sans-serif; } }
   @media only screen and (min-width: 1400px) {
     #block-wilmap-theme-blockexplorehome .image {
       -webkit-transform: translate(50%, -50%);
@@ -778,7 +779,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
     line-height: 27.2px;
     line-height: 1.7rem;
     font-weight: 400;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     margin-bottom: 27px;
     margin-bottom: 1.7rem;
     word-break: break-word;
@@ -795,7 +796,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
         line-height: 28.9px;
         line-height: 1.80625rem;
         font-weight: 400;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
   #block-wilmap-theme-blockexplorehome .text .description .site-btn a {
     margin: 0;
     padding: 0;
@@ -815,7 +816,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
     line-height: 14px;
     line-height: 0.875rem;
     font-weight: 600;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     padding: 14px 16px !important;
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -883,7 +884,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
     line-height: 91px;
     line-height: 5.6875rem;
     font-weight: 200;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     padding-bottom: 10px;
     margin-bottom: 20px;
     text-decoration: none;
@@ -896,7 +897,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
         line-height: 60.66667px;
         line-height: 3.79167rem;
         font-weight: 200;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     @media only screen and (max-width: 899px) {
       #block-wilmap-theme-blocknewshome .title-section {
         font-size: 45.5px;
@@ -904,14 +905,14 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
         line-height: 45.5px;
         line-height: 2.84375rem;
         font-weight: 200;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     #block-wilmap-theme-blocknewshome .title-section .secondary-title {
       font-size: 50px;
       font-size: 3.125rem;
       line-height: 50px;
       line-height: 3.125rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       padding: 0;
       margin: 0;
       display: block;
@@ -925,7 +926,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
           line-height: 33.33333px;
           line-height: 2.08333rem;
           font-weight: 200;
-          font-family: "Raleway", sans-serif; } }
+          font-family: "Raleway", "Mplus 1p", sans-serif; } }
       @media only screen and (max-width: 899px) {
         #block-wilmap-theme-blocknewshome .title-section .secondary-title {
           font-size: 45.5px;
@@ -933,7 +934,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
           line-height: 45.5px;
           line-height: 2.84375rem;
           font-weight: 200;
-          font-family: "Raleway", sans-serif; } }
+          font-family: "Raleway", "Mplus 1p", sans-serif; } }
   #block-wilmap-theme-blocknewshome .image {
     position: absolute;
     top: 50%;
@@ -983,7 +984,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
     line-height: 27.2px;
     line-height: 1.7rem;
     font-weight: 400;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     margin-bottom: 27px;
     margin-bottom: 1.7rem;
     word-break: break-word;
@@ -1000,7 +1001,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
         line-height: 28.9px;
         line-height: 1.80625rem;
         font-weight: 400;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
   #block-wilmap-theme-blocknewshome .description a.btn {
     margin: 0;
     padding: 0;
@@ -1020,7 +1021,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
     line-height: 14px;
     line-height: 0.875rem;
     font-weight: 600;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     padding: 14px 16px !important;
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -1112,7 +1113,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
       line-height: 30px;
       line-height: 1.875rem;
       font-weight: 300;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       margin-bottom: 20px;
       background: none; }
       .block-views-blocktopics-block-1 .node header .node__title::after {
@@ -1129,7 +1130,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
         line-height: 32.5px;
         line-height: 2.03125rem;
         font-weight: 300;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         font-style: normal;
         color: #222;
         text-decoration: none; }
@@ -1144,7 +1145,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
           line-height: 32.5px;
           line-height: 2.03125rem;
           font-weight: 300;
-          font-family: "Raleway", sans-serif; }
+          font-family: "Raleway", "Mplus 1p", sans-serif; }
   .block-views-blocktopics-block-1 .node .bg-image {
     position: absolute;
     top: 0;
@@ -1249,7 +1250,7 @@ article.node--type-topics.node--view-mode-full .node-header {
       line-height: 27.2px;
       line-height: 1.7rem;
       font-weight: 600;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       color: #968f7e; }
       @media only screen and (max-width: 899px) {
         article.node--type-topics.node--view-mode-full .node-header .node-date {
@@ -1262,7 +1263,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
   line-height: 50px;
   line-height: 3.125rem;
   font-weight: 200;
-  font-family: "Raleway", sans-serif;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
   padding: 0;
   margin: 0;
   display: block;
@@ -1280,7 +1281,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       line-height: 33.33333px;
       line-height: 2.08333rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
   @media only screen and (max-width: 899px) {
     article.node--type-topics.node--view-mode-full .field--name-field-related-topics .field__label {
       font-size: 45.5px;
@@ -1288,7 +1289,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       line-height: 45.5px;
       line-height: 2.84375rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
   @media only screen and (max-width: 899px) {
     article.node--type-topics.node--view-mode-full .field--name-field-related-topics .field__label {
       font-size: 25px;
@@ -1296,7 +1297,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       line-height: 25px;
       line-height: 1.5625rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
 article.node--type-topics.node--view-mode-full .field--name-field-related-topics .field__items .node {
   margin-bottom: 20px;
   padding: 20px 30px 10px;
@@ -1361,7 +1362,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       line-height: 30px;
       line-height: 1.875rem;
       font-weight: 300;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       margin-bottom: 20px;
       background: none; }
       article.node--type-topics.node--view-mode-full .field--name-field-related-topics .field__items .node header .node__title::after {
@@ -1378,7 +1379,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
         line-height: 32.5px;
         line-height: 2.03125rem;
         font-weight: 300;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         font-style: normal;
         color: #222;
         text-decoration: none; }
@@ -1393,7 +1394,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
           line-height: 32.5px;
           line-height: 2.03125rem;
           font-weight: 300;
-          font-family: "Raleway", sans-serif; }
+          font-family: "Raleway", "Mplus 1p", sans-serif; }
   article.node--type-topics.node--view-mode-full .field--name-field-related-topics .field__items .node .bg-image {
     position: absolute;
     top: 0;
@@ -1470,7 +1471,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
   line-height: 40px;
   line-height: 2.5rem;
   font-weight: 200;
-  font-family: "Raleway", sans-serif;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
   padding: 0;
   margin: 0;
   display: block;
@@ -1485,7 +1486,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       line-height: 26.66667px;
       line-height: 1.66667rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
   @media only screen and (max-width: 899px) {
     .block-views-blockentries-block-1 > h2 {
       font-size: 45.5px;
@@ -1493,14 +1494,14 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       line-height: 45.5px;
       line-height: 2.84375rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
 .block-views-blockentries-block-1 h3 {
   font-size: 30px;
   font-size: 1.875rem;
   line-height: 30px;
   line-height: 1.875rem;
   font-weight: 200;
-  font-family: "Raleway", sans-serif;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
   padding: 0;
   margin: 0;
   display: block;
@@ -1515,7 +1516,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       line-height: 20px;
       line-height: 1.25rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
   @media only screen and (max-width: 899px) {
     .block-views-blockentries-block-1 h3 {
       font-size: 45.5px;
@@ -1523,7 +1524,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       line-height: 45.5px;
       line-height: 2.84375rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
 .block-views-blockentries-block-1 .node {
   margin-bottom: 20px;
   padding: 30px;
@@ -1550,7 +1551,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       line-height: 17.6px;
       line-height: 1.1rem;
       font-weight: 700;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       color: #222; }
       .block-views-blockentries-block-1 .node .node__title a .field {
         margin: 0;
@@ -1566,7 +1567,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
         line-height: 17.6px;
         line-height: 1.1rem;
         font-weight: 700;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         color: #222; }
   .block-views-blockentries-block-1 .node .node__title {
     margin-bottom: 0; }
@@ -1577,37 +1578,13 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
     line-height: 27.2px;
     line-height: 1.7rem;
     font-weight: 600;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     color: #968f7e; }
     @media only screen and (max-width: 899px) {
       .block-views-blockentries-block-1 .node .field--name-field-date-published {
         padding-left: 0; } }
   .block-views-blockentries-block-1 .node .field--name-field-date-published {
     margin-bottom: 5px; }
-  .block-views-blockentries-block-1 .node .field--name-field-tax-section,
-  .block-views-blockentries-block-1 .node .field--name-field-tax-document-type {
-    font-size: 16px;
-    font-size: 1rem;
-    line-height: 27.2px;
-    line-height: 1.7rem;
-    font-weight: 400;
-    font-family: "Raleway", sans-serif;
-    margin-bottom: 5px;
-    color: #968f7e;
-    text-decoration: none; }
-    .block-views-blockentries-block-1 .node .field--name-field-tax-section a,
-    .block-views-blockentries-block-1 .node .field--name-field-tax-document-type a {
-      font-size: 14px;
-      font-size: 0.875rem;
-      line-height: 23.8px;
-      line-height: 1.4875rem;
-      font-weight: 400;
-      font-family: "Raleway", sans-serif;
-      color: #968f7e;
-      text-decoration: none; }
-      .block-views-blockentries-block-1 .node .field--name-field-tax-section a:hover,
-      .block-views-blockentries-block-1 .node .field--name-field-tax-document-type a:hover {
-        text-decoration: underline; }
   .block-views-blockentries-block-1 .node .field--name-field-location-entry,
   .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference {
     font-size: 16px;
@@ -1615,12 +1592,11 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
     line-height: 16px;
     line-height: 1rem;
     font-weight: 700;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     text-transform: uppercase;
     color: #b3001e;
     text-decoration: none;
-    z-index: 10;
-    margin-bottom: 20px; }
+    z-index: 10; }
     @media only screen and (min-width: 900px) and (max-width: 1124px) {
       .block-views-blockentries-block-1 .node .field--name-field-location-entry,
       .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference {
@@ -1629,7 +1605,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
         line-height: 13px;
         line-height: 0.8125rem;
         font-weight: 600;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     @media only screen and (max-width: 899px) {
       .block-views-blockentries-block-1 .node .field--name-field-location-entry,
       .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference {
@@ -1638,12 +1614,32 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
         line-height: 13px;
         line-height: 0.8125rem;
         font-weight: 700;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     .block-views-blockentries-block-1 .node .field--name-field-location-entry:hover,
     .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference:hover {
       text-decoration: underline; }
-    .block-views-blockentries-block-1 .node .field--name-field-location-entry::after,
-    .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference::after {
+    .block-views-blockentries-block-1 .node .field--name-field-location-entry, .block-views-blockentries-block-1 .node .field--name-field-location-entry a,
+    .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference,
+    .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference a {
+      text-decoration: none; }
+      .block-views-blockentries-block-1 .node .field--name-field-location-entry:hover, .block-views-blockentries-block-1 .node .field--name-field-location-entry a:hover,
+      .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference:hover,
+      .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference a:hover {
+        text-decoration: none; }
+  .block-views-blockentries-block-1 .node .field--name-field-tax-section,
+  .block-views-blockentries-block-1 .node .field--name-field-tax-document-type {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 27.2px;
+    line-height: 1.7rem;
+    font-weight: 400;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
+    margin-bottom: 5px;
+    color: #968f7e;
+    text-decoration: none;
+    margin-bottom: 20px; }
+    .block-views-blockentries-block-1 .node .field--name-field-tax-section::after,
+    .block-views-blockentries-block-1 .node .field--name-field-tax-document-type::after {
       height: 5px;
       width: 140px;
       margin-top: 20px;
@@ -1651,16 +1647,29 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       display: block;
       border: 0;
       background-color: rgba(150, 143, 126, 0.2); }
-    .block-views-blockentries-block-1 .node .field--name-field-location-entry,
-    .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference {
+    .block-views-blockentries-block-1 .node .field--name-field-tax-section a,
+    .block-views-blockentries-block-1 .node .field--name-field-tax-document-type a {
+      font-size: 14px;
+      font-size: 0.875rem;
+      line-height: 23.8px;
+      line-height: 1.4875rem;
+      font-weight: 400;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
+      color: #968f7e;
       text-decoration: none; }
-      .block-views-blockentries-block-1 .node .field--name-field-location-entry:hover,
-      .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference:hover {
-        text-decoration: none; }
+      .block-views-blockentries-block-1 .node .field--name-field-tax-section a:hover,
+      .block-views-blockentries-block-1 .node .field--name-field-tax-document-type a:hover {
+        text-decoration: underline; }
 .block-views-blockentries-block-1 .views-row {
+  width: 100%;
   margin-bottom: 20px;
   *zoom: 1;
   overflow: hidden; }
+  @media only screen and (max-width: 899px) {
+    .block-views-blockentries-block-1 .views-row {
+      float: left;
+      margin-left: 0;
+      width: 100%; } }
   .block-views-blockentries-block-1 .views-row:before, .block-views-blockentries-block-1 .views-row:after {
     content: "";
     display: table; }
@@ -1735,7 +1744,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       line-height: 17.6px;
       line-height: 1.1rem;
       font-weight: 700;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       color: #222; }
       .block-views-blockentries-block-1 .view-highlighted-entries .node .node__title a .field {
         margin: 0;
@@ -1751,7 +1760,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
         line-height: 17.6px;
         line-height: 1.1rem;
         font-weight: 700;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         color: #222; }
   .block-views-blockentries-block-1 .view-highlighted-entries .node .node__title {
     margin-bottom: 0; }
@@ -1762,37 +1771,13 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
     line-height: 27.2px;
     line-height: 1.7rem;
     font-weight: 600;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     color: #968f7e; }
     @media only screen and (max-width: 899px) {
       .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-date-published {
         padding-left: 0; } }
   .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-date-published {
     margin-bottom: 5px; }
-  .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section,
-  .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-document-type {
-    font-size: 16px;
-    font-size: 1rem;
-    line-height: 27.2px;
-    line-height: 1.7rem;
-    font-weight: 400;
-    font-family: "Raleway", sans-serif;
-    margin-bottom: 5px;
-    color: #968f7e;
-    text-decoration: none; }
-    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section a,
-    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-document-type a {
-      font-size: 14px;
-      font-size: 0.875rem;
-      line-height: 23.8px;
-      line-height: 1.4875rem;
-      font-weight: 400;
-      font-family: "Raleway", sans-serif;
-      color: #968f7e;
-      text-decoration: none; }
-      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section a:hover,
-      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-document-type a:hover {
-        text-decoration: underline; }
   .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry,
   .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference {
     font-size: 16px;
@@ -1800,12 +1785,11 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
     line-height: 16px;
     line-height: 1rem;
     font-weight: 700;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     text-transform: uppercase;
     color: #b3001e;
     text-decoration: none;
-    z-index: 10;
-    margin-bottom: 20px; }
+    z-index: 10; }
     @media only screen and (min-width: 900px) and (max-width: 1124px) {
       .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry,
       .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference {
@@ -1814,7 +1798,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
         line-height: 13px;
         line-height: 0.8125rem;
         font-weight: 600;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     @media only screen and (max-width: 899px) {
       .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry,
       .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference {
@@ -1823,12 +1807,32 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
         line-height: 13px;
         line-height: 0.8125rem;
         font-weight: 700;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry:hover,
     .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference:hover {
       text-decoration: underline; }
-    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry::after,
-    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference::after {
+    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry, .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry a,
+    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference,
+    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference a {
+      text-decoration: none; }
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry:hover, .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry a:hover,
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference:hover,
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference a:hover {
+        text-decoration: none; }
+  .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section,
+  .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-document-type {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 27.2px;
+    line-height: 1.7rem;
+    font-weight: 400;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
+    margin-bottom: 5px;
+    color: #968f7e;
+    text-decoration: none;
+    margin-bottom: 20px; }
+    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section::after,
+    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-document-type::after {
       height: 5px;
       width: 140px;
       margin-top: 20px;
@@ -1836,12 +1840,19 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       display: block;
       border: 0;
       background-color: rgba(150, 143, 126, 0.2); }
-    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry,
-    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference {
+    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section a,
+    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-document-type a {
+      font-size: 14px;
+      font-size: 0.875rem;
+      line-height: 23.8px;
+      line-height: 1.4875rem;
+      font-weight: 400;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
+      color: #968f7e;
       text-decoration: none; }
-      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry:hover,
-      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference:hover {
-        text-decoration: none; }
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section a:hover,
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-document-type a:hover {
+        text-decoration: underline; }
   .block-views-blockentries-block-1 .view-highlighted-entries .node:hover {
     background-color: #cfc7b4; }
   .block-views-blockentries-block-1 .view-highlighted-entries .node:after {
@@ -1857,9 +1868,15 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
     top: 0;
     right: 15px; }
 .block-views-blockentries-block-1 .view-highlighted-entries .views-row {
+  width: 100%;
   margin-bottom: 20px;
   *zoom: 1;
   overflow: hidden; }
+  @media only screen and (max-width: 899px) {
+    .block-views-blockentries-block-1 .view-highlighted-entries .views-row {
+      float: left;
+      margin-left: 0;
+      width: 100%; } }
   .block-views-blockentries-block-1 .view-highlighted-entries .views-row:before, .block-views-blockentries-block-1 .view-highlighted-entries .views-row:after {
     content: "";
     display: table; }
@@ -1945,7 +1962,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
         line-height: 50px;
         line-height: 3.125rem;
         font-weight: 200;
-        font-family: "Raleway", sans-serif; }
+        font-family: "Raleway", "Mplus 1p", sans-serif; }
         .block-views-blocknews-block-1 .node header .node__title a .field,
         .block-views-blocknews-block-2 .node header .node__title a .field,
         .block-views-blocknews-block-3 .node header .node__title a .field {
@@ -1960,7 +1977,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
             line-height: 33.33333px;
             line-height: 2.08333rem;
             font-weight: 200;
-            font-family: "Raleway", sans-serif; } }
+            font-family: "Raleway", "Mplus 1p", sans-serif; } }
         @media only screen and (max-width: 899px) {
           .block-views-blocknews-block-1 .node header .node__title a,
           .block-views-blocknews-block-2 .node header .node__title a,
@@ -1970,7 +1987,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
             line-height: 25px;
             line-height: 1.5625rem;
             font-weight: 200;
-            font-family: "Raleway", sans-serif; } }
+            font-family: "Raleway", "Mplus 1p", sans-serif; } }
         .block-views-blocknews-block-1 .node header .node__title a .field,
         .block-views-blocknews-block-2 .node header .node__title a .field,
         .block-views-blocknews-block-3 .node header .node__title a .field {
@@ -1988,7 +2005,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
           line-height: 50px;
           line-height: 3.125rem;
           font-weight: 200;
-          font-family: "Raleway", sans-serif; }
+          font-family: "Raleway", "Mplus 1p", sans-serif; }
           @media only screen and (min-width: 900px) and (max-width: 1124px) {
             .block-views-blocknews-block-1 .node header .node__title a span,
             .block-views-blocknews-block-2 .node header .node__title a span,
@@ -1998,7 +2015,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
               line-height: 33.33333px;
               line-height: 2.08333rem;
               font-weight: 200;
-              font-family: "Raleway", sans-serif; } }
+              font-family: "Raleway", "Mplus 1p", sans-serif; } }
           @media only screen and (max-width: 899px) {
             .block-views-blocknews-block-1 .node header .node__title a span,
             .block-views-blocknews-block-2 .node header .node__title a span,
@@ -2008,7 +2025,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
               line-height: 25px;
               line-height: 1.5625rem;
               font-weight: 200;
-              font-family: "Raleway", sans-serif; } }
+              font-family: "Raleway", "Mplus 1p", sans-serif; } }
   .block-views-blocknews-block-1 .node .field--name-field-date-published,
   .block-views-blocknews-block-2 .node .field--name-field-date-published,
   .block-views-blocknews-block-3 .node .field--name-field-date-published {
@@ -2018,7 +2035,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
     line-height: 27.2px;
     line-height: 1.7rem;
     font-weight: 600;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     color: #968f7e; }
     @media only screen and (max-width: 899px) {
       .block-views-blocknews-block-1 .node .field--name-field-date-published,
@@ -2051,7 +2068,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       line-height: 14px;
       line-height: 0.875rem;
       font-weight: 600;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       padding: 14px 16px !important;
       -moz-appearance: none;
       -webkit-appearance: none;
@@ -2146,7 +2163,7 @@ article.node--type-news.node--view-mode-full .node-header {
       line-height: 27.2px;
       line-height: 1.7rem;
       font-weight: 600;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       color: #968f7e; }
       @media only screen and (max-width: 899px) {
         article.node--type-news.node--view-mode-full .node-header .node-date {
@@ -2184,7 +2201,7 @@ article.node--type-news.node--view-mode-full .field--name-field-original-source 
     line-height: 20.8px;
     line-height: 1.3rem;
     font-weight: 500;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     font-style: italic; }
 article.node--type-news.node--view-mode-full .field__label {
   font-size: 50px;
@@ -2192,7 +2209,7 @@ article.node--type-news.node--view-mode-full .field__label {
   line-height: 50px;
   line-height: 3.125rem;
   font-weight: 200;
-  font-family: "Raleway", sans-serif;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
   padding: 0;
   margin: 0;
   display: block;
@@ -2210,7 +2227,7 @@ article.node--type-news.node--view-mode-full .field__label {
       line-height: 33.33333px;
       line-height: 2.08333rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
   @media only screen and (max-width: 899px) {
     article.node--type-news.node--view-mode-full .field__label {
       font-size: 45.5px;
@@ -2218,7 +2235,7 @@ article.node--type-news.node--view-mode-full .field__label {
       line-height: 45.5px;
       line-height: 2.84375rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
   @media only screen and (max-width: 899px) {
     article.node--type-news.node--view-mode-full .field__label {
       font-size: 25px;
@@ -2226,7 +2243,7 @@ article.node--type-news.node--view-mode-full .field__label {
       line-height: 25px;
       line-height: 1.5625rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
 article.node--type-news.node--view-mode-full .field--name-field-related-topics .field__items .node {
   margin-bottom: 20px;
   padding: 20px 30px 10px;
@@ -2291,7 +2308,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-topics .
       line-height: 30px;
       line-height: 1.875rem;
       font-weight: 300;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       margin-bottom: 20px;
       background: none; }
       article.node--type-news.node--view-mode-full .field--name-field-related-topics .field__items .node header .node__title::after {
@@ -2308,7 +2325,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-topics .
         line-height: 32.5px;
         line-height: 2.03125rem;
         font-weight: 300;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         font-style: normal;
         color: #222;
         text-decoration: none; }
@@ -2323,7 +2340,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-topics .
           line-height: 32.5px;
           line-height: 2.03125rem;
           font-weight: 300;
-          font-family: "Raleway", sans-serif; }
+          font-family: "Raleway", "Mplus 1p", sans-serif; }
   article.node--type-news.node--view-mode-full .field--name-field-related-topics .field__items .node .bg-image {
     position: absolute;
     top: 0;
@@ -2422,7 +2439,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         line-height: 50px;
         line-height: 3.125rem;
         font-weight: 200;
-        font-family: "Raleway", sans-serif; }
+        font-family: "Raleway", "Mplus 1p", sans-serif; }
         article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items .node header .node__title a .field {
           margin: 0;
           padding: 0; }
@@ -2433,7 +2450,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
             line-height: 33.33333px;
             line-height: 2.08333rem;
             font-weight: 200;
-            font-family: "Raleway", sans-serif; } }
+            font-family: "Raleway", "Mplus 1p", sans-serif; } }
         @media only screen and (max-width: 899px) {
           article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items .node header .node__title a {
             font-size: 25px;
@@ -2441,7 +2458,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
             line-height: 25px;
             line-height: 1.5625rem;
             font-weight: 200;
-            font-family: "Raleway", sans-serif; } }
+            font-family: "Raleway", "Mplus 1p", sans-serif; } }
         article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items .node header .node__title a .field {
           overflow: visible; }
         article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items .node header .node__title a:hover {
@@ -2453,7 +2470,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
           line-height: 50px;
           line-height: 3.125rem;
           font-weight: 200;
-          font-family: "Raleway", sans-serif; }
+          font-family: "Raleway", "Mplus 1p", sans-serif; }
           @media only screen and (min-width: 900px) and (max-width: 1124px) {
             article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items .node header .node__title a span {
               font-size: 33.33333px;
@@ -2461,7 +2478,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
               line-height: 33.33333px;
               line-height: 2.08333rem;
               font-weight: 200;
-              font-family: "Raleway", sans-serif; } }
+              font-family: "Raleway", "Mplus 1p", sans-serif; } }
           @media only screen and (max-width: 899px) {
             article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items .node header .node__title a span {
               font-size: 25px;
@@ -2469,7 +2486,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
               line-height: 25px;
               line-height: 1.5625rem;
               font-weight: 200;
-              font-family: "Raleway", sans-serif; } }
+              font-family: "Raleway", "Mplus 1p", sans-serif; } }
   article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items .node .field--name-field-date-published {
     margin-bottom: 30px;
     font-size: 16px;
@@ -2477,7 +2494,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     line-height: 27.2px;
     line-height: 1.7rem;
     font-weight: 600;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     color: #968f7e; }
     @media only screen and (max-width: 899px) {
       article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items .node .field--name-field-date-published {
@@ -2504,7 +2521,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       line-height: 14px;
       line-height: 0.875rem;
       font-weight: 600;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       padding: 14px 16px !important;
       -moz-appearance: none;
       -webkit-appearance: none;
@@ -2605,7 +2622,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
           line-height: 17.6px;
           line-height: 1.1rem;
           font-weight: 700;
-          font-family: "Raleway", sans-serif;
+          font-family: "Raleway", "Mplus 1p", sans-serif;
           color: #222; }
           article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items > .field__item .node header .node__title a .field {
             margin: 0;
@@ -2621,7 +2638,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
             line-height: 17.6px;
             line-height: 1.1rem;
             font-weight: 700;
-            font-family: "Raleway", sans-serif;
+            font-family: "Raleway", "Mplus 1p", sans-serif;
             color: #222; }
   article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items > .field__item:nth-child(2n+1) {
     margin-left: 0; }
@@ -2785,7 +2802,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
           line-height: 16.8px;
           line-height: 1.05rem;
           font-weight: 600;
-          font-family: "Raleway", sans-serif;
+          font-family: "Raleway", "Mplus 1p", sans-serif;
           color: #fff; }
       .block-views-blockcontributors-block-1 .view-content .views-row .contributor-image-holder .ranking {
         position: absolute;
@@ -2806,7 +2823,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
             line-height: 16.8px;
             line-height: 1.05rem;
             font-weight: 600;
-            font-family: "Raleway", sans-serif;
+            font-family: "Raleway", "Mplus 1p", sans-serif;
             color: #fff; }
       .block-views-blockcontributors-block-1 .view-content .views-row .contributor-image-holder .hover-text {
         position: absolute;
@@ -2837,7 +2854,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
           line-height: 14px;
           line-height: 0.875rem;
           font-weight: 600;
-          font-family: "Raleway", sans-serif;
+          font-family: "Raleway", "Mplus 1p", sans-serif;
           padding: 14px 16px !important;
           -moz-appearance: none;
           -webkit-appearance: none;
@@ -2908,7 +2925,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         line-height: 17.6px;
         line-height: 1.1rem;
         font-weight: 700;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         margin-bottom: 15px;
         text-decoration: none;
         color: #000; }
@@ -2923,7 +2940,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         line-height: 17.6px;
         line-height: 1.1rem;
         font-weight: 600;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         text-decoration: none;
         color: #968f7e; }
     .block-views-blockcontributors-block-1 .view-content .views-row:nth-child(4n+1) {
@@ -2951,7 +2968,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       line-height: 14px;
       line-height: 0.875rem;
       font-weight: 600;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       padding-top: 15px;
       margin-bottom: 15px;
       text-transform: uppercase;
@@ -2963,7 +2980,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       line-height: 16.8px;
       line-height: 1.05rem;
       font-weight: 400;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       margin-bottom: 20px;
       color: #000; }
       .path-user article.profile .contributor-sheet .field__items a {
@@ -3100,7 +3117,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         line-height: 16.8px;
         line-height: 1.05rem;
         font-weight: 600;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         color: #fff; }
   .path-user article.profile .contributor-info {
     width: 63.65079%;
@@ -3130,7 +3147,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         line-height: 16.8px;
         line-height: 1.05rem;
         font-weight: 600;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         margin-bottom: 5px;
         text-transform: uppercase;
         color: #968f7e; }
@@ -3147,7 +3164,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
           line-height: 16.8px;
           line-height: 1.05rem;
           font-weight: 600;
-          font-family: "Raleway", sans-serif;
+          font-family: "Raleway", "Mplus 1p", sans-serif;
           margin-bottom: 5px;
           text-transform: uppercase;
           color: #968f7e; }
@@ -3159,7 +3176,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
   line-height: 50px;
   line-height: 3.125rem;
   font-weight: 200;
-  font-family: "Raleway", sans-serif;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
   padding: 0;
   margin: 0;
   display: block;
@@ -3177,7 +3194,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       line-height: 33.33333px;
       line-height: 2.08333rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
   @media only screen and (max-width: 899px) {
     .path-user .block-views-blockcontributions-block-1 > h2 {
       font-size: 45.5px;
@@ -3185,7 +3202,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       line-height: 45.5px;
       line-height: 2.84375rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
   @media only screen and (max-width: 899px) {
     .path-user .block-views-blockcontributions-block-1 > h2 {
       font-size: 25px;
@@ -3193,7 +3210,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       line-height: 25px;
       line-height: 1.5625rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
 .path-user .block-views-blockcontributions-block-1 .view-contributions .node {
   margin-bottom: 20px;
   padding: 30px;
@@ -3207,48 +3224,28 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
   .path-user .block-views-blockcontributions-block-1 .view-contributions .node:hover {
     background-color: #e3ded3; }
   .path-user .block-views-blockcontributions-block-1 .view-contributions .node .post-type {
-    font-size: 16px;
-    font-size: 1rem;
-    line-height: 16px;
-    line-height: 1rem;
-    font-weight: 700;
-    font-family: "Raleway", sans-serif;
-    text-transform: uppercase;
-    color: #b3001e;
-    text-decoration: none;
-    z-index: 10;
-    margin-bottom: 20px;
     text-transform: none; }
-    @media only screen and (min-width: 900px) and (max-width: 1124px) {
-      .path-user .block-views-blockcontributions-block-1 .view-contributions .node .post-type {
-        font-size: 13px;
-        font-size: 0.8125rem;
-        line-height: 13px;
-        line-height: 0.8125rem;
-        font-weight: 600;
-        font-family: "Raleway", sans-serif; } }
-    @media only screen and (max-width: 899px) {
-      .path-user .block-views-blockcontributions-block-1 .view-contributions .node .post-type {
-        font-size: 13px;
-        font-size: 0.8125rem;
-        line-height: 13px;
-        line-height: 0.8125rem;
-        font-weight: 700;
-        font-family: "Raleway", sans-serif; } }
-    .path-user .block-views-blockcontributions-block-1 .view-contributions .node .post-type:hover {
-      text-decoration: underline; }
-    .path-user .block-views-blockcontributions-block-1 .view-contributions .node .post-type::after {
-      height: 5px;
-      width: 140px;
-      margin-top: 20px;
-      content: '';
-      display: block;
-      border: 0;
-      background-color: rgba(150, 143, 126, 0.2); }
     .path-user .block-views-blockcontributions-block-1 .view-contributions .node .post-type {
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 27.2px;
+      line-height: 1.7rem;
+      font-weight: 400;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
+      margin-bottom: 5px;
+      color: #968f7e;
       text-decoration: none; }
-      .path-user .block-views-blockcontributions-block-1 .view-contributions .node .post-type:hover {
+      .path-user .block-views-blockcontributions-block-1 .view-contributions .node .post-type a {
+        font-size: 14px;
+        font-size: 0.875rem;
+        line-height: 23.8px;
+        line-height: 1.4875rem;
+        font-weight: 400;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
+        color: #968f7e;
         text-decoration: none; }
+        .path-user .block-views-blockcontributions-block-1 .view-contributions .node .post-type a:hover {
+          text-decoration: underline; }
   .path-user .block-views-blockcontributions-block-1 .view-contributions .node .node__title {
     margin: 0;
     padding: 0;
@@ -3263,7 +3260,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       line-height: 17.6px;
       line-height: 1.1rem;
       font-weight: 700;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       color: #222; }
       .path-user .block-views-blockcontributions-block-1 .view-contributions .node .node__title a .field {
         margin: 0;
@@ -3279,7 +3276,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         line-height: 17.6px;
         line-height: 1.1rem;
         font-weight: 700;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         color: #222; }
   .path-user .block-views-blockcontributions-block-1 .view-contributions .node .node__title {
     margin-bottom: 0; }
@@ -3290,7 +3287,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     line-height: 27.2px;
     line-height: 1.7rem;
     font-weight: 600;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     color: #968f7e; }
     @media only screen and (max-width: 899px) {
       .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-date-published {
@@ -3300,66 +3297,57 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
   .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-tax-section {
     font-size: 16px;
     font-size: 1rem;
-    line-height: 16px;
-    line-height: 1rem;
-    font-weight: 700;
-    font-family: "Raleway", sans-serif;
-    text-transform: uppercase;
-    color: #b3001e;
-    text-decoration: none;
-    z-index: 10;
-    margin-bottom: 20px; }
-    @media only screen and (min-width: 900px) and (max-width: 1124px) {
-      .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-tax-section {
-        font-size: 13px;
-        font-size: 0.8125rem;
-        line-height: 13px;
-        line-height: 0.8125rem;
-        font-weight: 600;
-        font-family: "Raleway", sans-serif; } }
-    @media only screen and (max-width: 899px) {
-      .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-tax-section {
-        font-size: 13px;
-        font-size: 0.8125rem;
-        line-height: 13px;
-        line-height: 0.8125rem;
-        font-weight: 700;
-        font-family: "Raleway", sans-serif; } }
-    .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-tax-section:hover {
-      text-decoration: underline; }
-    .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-tax-section::after {
-      height: 5px;
-      width: 140px;
-      margin-top: 20px;
-      content: '';
-      display: block;
-      border: 0;
-      background-color: rgba(150, 143, 126, 0.2); }
-    .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-tax-section {
-      text-decoration: none; }
-      .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-tax-section:hover {
-        text-decoration: none; }
-  .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-location-entry {
-    font-size: 16px;
-    font-size: 1rem;
     line-height: 27.2px;
     line-height: 1.7rem;
     font-weight: 400;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     margin-bottom: 5px;
     color: #968f7e;
     text-decoration: none; }
-    .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-location-entry a {
+    .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-tax-section a {
       font-size: 14px;
       font-size: 0.875rem;
       line-height: 23.8px;
       line-height: 1.4875rem;
       font-weight: 400;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       color: #968f7e;
       text-decoration: none; }
-      .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-location-entry a:hover {
+      .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-tax-section a:hover {
         text-decoration: underline; }
+  .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-location-entry {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 16px;
+    line-height: 1rem;
+    font-weight: 700;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
+    text-transform: uppercase;
+    color: #b3001e;
+    text-decoration: none;
+    z-index: 10; }
+    @media only screen and (min-width: 900px) and (max-width: 1124px) {
+      .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-location-entry {
+        font-size: 13px;
+        font-size: 0.8125rem;
+        line-height: 13px;
+        line-height: 0.8125rem;
+        font-weight: 600;
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
+    @media only screen and (max-width: 899px) {
+      .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-location-entry {
+        font-size: 13px;
+        font-size: 0.8125rem;
+        line-height: 13px;
+        line-height: 0.8125rem;
+        font-weight: 700;
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
+    .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-location-entry:hover {
+      text-decoration: underline; }
+    .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-location-entry, .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-location-entry a {
+      text-decoration: none; }
+      .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-location-entry:hover, .path-user .block-views-blockcontributions-block-1 .view-contributions .node .field--name-field-location-entry a:hover {
+        text-decoration: none; }
   .path-user .block-views-blockcontributions-block-1 .view-contributions .node .text-formatted {
     margin-top: 30px; }
   .path-user .block-views-blockcontributions-block-1 .view-contributions .node .action {
@@ -3372,7 +3360,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       line-height: 14px;
       line-height: 0.875rem;
       font-weight: 700;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       text-transform: uppercase;
       text-decoration: none;
       color: #968f7e; }
@@ -3473,7 +3461,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       line-height: 17.6px;
       line-height: 1.1rem;
       font-weight: 700;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       color: #222; }
       .block-views-blocklist-entries-block-1 .node .node__title a .field, .block-views-blocklist-entries-block-1._switch-on .node .node__title a .field {
         margin: 0;
@@ -3489,7 +3477,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         line-height: 17.6px;
         line-height: 1.1rem;
         font-weight: 700;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         color: #222; }
   .block-views-blocklist-entries-block-1 .node .node__title, .block-views-blocklist-entries-block-1._switch-on .node .node__title {
     margin-bottom: 0; }
@@ -3500,40 +3488,13 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     line-height: 27.2px;
     line-height: 1.7rem;
     font-weight: 600;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     color: #968f7e; }
     @media only screen and (max-width: 899px) {
       .block-views-blocklist-entries-block-1 .node .field--name-field-date-published, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-date-published {
         padding-left: 0; } }
   .block-views-blocklist-entries-block-1 .node .field--name-field-date-published, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-date-published {
     margin-bottom: 5px; }
-  .block-views-blocklist-entries-block-1 .node .field--name-field-tax-section,
-  .block-views-blocklist-entries-block-1 .node .field--name-field-tax-document-type, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-section,
-  .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-document-type {
-    font-size: 16px;
-    font-size: 1rem;
-    line-height: 27.2px;
-    line-height: 1.7rem;
-    font-weight: 400;
-    font-family: "Raleway", sans-serif;
-    margin-bottom: 5px;
-    color: #968f7e;
-    text-decoration: none; }
-    .block-views-blocklist-entries-block-1 .node .field--name-field-tax-section a,
-    .block-views-blocklist-entries-block-1 .node .field--name-field-tax-document-type a, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-section a,
-    .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-document-type a {
-      font-size: 14px;
-      font-size: 0.875rem;
-      line-height: 23.8px;
-      line-height: 1.4875rem;
-      font-weight: 400;
-      font-family: "Raleway", sans-serif;
-      color: #968f7e;
-      text-decoration: none; }
-      .block-views-blocklist-entries-block-1 .node .field--name-field-tax-section a:hover,
-      .block-views-blocklist-entries-block-1 .node .field--name-field-tax-document-type a:hover, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-section a:hover,
-      .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-document-type a:hover {
-        text-decoration: underline; }
   .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry,
   .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry,
   .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference {
@@ -3542,12 +3503,11 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     line-height: 16px;
     line-height: 1rem;
     font-weight: 700;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     text-transform: uppercase;
     color: #b3001e;
     text-decoration: none;
-    z-index: 10;
-    margin-bottom: 20px; }
+    z-index: 10; }
     @media only screen and (min-width: 900px) and (max-width: 1124px) {
       .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry,
       .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry,
@@ -3557,7 +3517,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         line-height: 13px;
         line-height: 0.8125rem;
         font-weight: 600;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     @media only screen and (max-width: 899px) {
       .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry,
       .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry,
@@ -3567,136 +3527,23 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         line-height: 13px;
         line-height: 0.8125rem;
         font-weight: 700;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry:hover,
     .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference:hover, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry:hover,
     .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference:hover {
       text-decoration: underline; }
-    .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry::after,
-    .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference::after, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry::after,
-    .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference::after {
-      height: 5px;
-      width: 140px;
-      margin-top: 20px;
-      content: '';
-      display: block;
-      border: 0;
-      background-color: rgba(150, 143, 126, 0.2); }
-    .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry,
-    .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry,
-    .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference {
+    .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry, .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry a,
+    .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference,
+    .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference a, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry a,
+    .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference,
+    .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference a {
       text-decoration: none; }
-      .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry:hover,
-      .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference:hover, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry:hover,
-      .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference:hover {
+      .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry:hover, .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry a:hover,
+      .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference:hover,
+      .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference a:hover, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry:hover, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry a:hover,
+      .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference:hover,
+      .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference a:hover {
         text-decoration: none; }
-.block-views-blocklist-entries-block-1 .views-row, .block-views-blocklist-entries-block-1._switch-on .views-row {
-  margin-bottom: 20px;
-  *zoom: 1;
-  overflow: hidden; }
-  .block-views-blocklist-entries-block-1 .views-row:before, .block-views-blocklist-entries-block-1 .views-row:after, .block-views-blocklist-entries-block-1._switch-on .views-row:before, .block-views-blocklist-entries-block-1._switch-on .views-row:after {
-    content: "";
-    display: table; }
-  .block-views-blocklist-entries-block-1 .views-row:after, .block-views-blocklist-entries-block-1._switch-on .views-row:after {
-    clear: both; }
-  .block-views-blocklist-entries-block-1 .views-row .node, .block-views-blocklist-entries-block-1._switch-on .views-row .node {
-    position: relative; }
-    .block-views-blocklist-entries-block-1 .views-row .node::before, .block-views-blocklist-entries-block-1._switch-on .views-row .node::before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      content: '';
-      background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(247, 245, 242, 0)), to(#f7f5f2));
-      background-image: linear-gradient(180deg, rgba(247, 245, 242, 0), #f7f5f2);
-      opacity: 1; }
-    .block-views-blocklist-entries-block-1 .views-row .node::before, .block-views-blocklist-entries-block-1._switch-on .views-row .node::before {
-      position: absolute;
-      top: auto;
-      right: auto;
-      bottom: 0;
-      left: 0;
-      height: 100px;
-      width: 150%;
-      z-index: 10; }
-    .block-views-blocklist-entries-block-1 .views-row .node:hover, .block-views-blocklist-entries-block-1._switch-on .views-row .node:hover {
-      position: relative; }
-      .block-views-blocklist-entries-block-1 .views-row .node:hover::before, .block-views-blocklist-entries-block-1._switch-on .views-row .node:hover::before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        content: '';
-        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(227, 222, 211, 0)), to(#e3ded3));
-        background-image: linear-gradient(180deg, rgba(227, 222, 211, 0), #e3ded3);
-        opacity: 1; }
-      .block-views-blocklist-entries-block-1 .views-row .node:hover::before, .block-views-blocklist-entries-block-1._switch-on .views-row .node:hover::before {
-        position: absolute;
-        top: auto;
-        right: auto;
-        bottom: 0;
-        left: 0;
-        height: 100px;
-        width: 150%;
-        z-index: 10; }
-.block-views-blocklist-entries-block-1 .node, .block-views-blocklist-entries-block-1._switch-on .node {
-  margin-bottom: 20px;
-  padding: 30px;
-  background-color: #f7f5f2;
-  display: block;
-  cursor: pointer;
-  overflow: hidden; }
-  .block-views-blocklist-entries-block-1 .node .field, .block-views-blocklist-entries-block-1._switch-on .node .field {
-    margin: 0;
-    padding: 0; }
-  .block-views-blocklist-entries-block-1 .node:hover, .block-views-blocklist-entries-block-1._switch-on .node:hover {
-    background-color: #e3ded3; }
-  .block-views-blocklist-entries-block-1 .node .node__title, .block-views-blocklist-entries-block-1._switch-on .node .node__title {
-    margin: 0;
-    padding: 0;
-    position: relative;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    background: none; }
-    .block-views-blocklist-entries-block-1 .node .node__title a, .block-views-blocklist-entries-block-1._switch-on .node .node__title a {
-      text-decoration: none;
-      font-size: 16px;
-      font-size: 1rem;
-      line-height: 17.6px;
-      line-height: 1.1rem;
-      font-weight: 700;
-      font-family: "Raleway", sans-serif;
-      color: #222; }
-      .block-views-blocklist-entries-block-1 .node .node__title a .field, .block-views-blocklist-entries-block-1._switch-on .node .node__title a .field {
-        margin: 0;
-        padding: 0; }
-      .block-views-blocklist-entries-block-1 .node .node__title a .field, .block-views-blocklist-entries-block-1._switch-on .node .node__title a .field {
-        overflow: visible; }
-      .block-views-blocklist-entries-block-1 .node .node__title a:hover, .block-views-blocklist-entries-block-1._switch-on .node .node__title a:hover {
-        text-decoration: none; }
-      .block-views-blocklist-entries-block-1 .node .node__title a span, .block-views-blocklist-entries-block-1._switch-on .node .node__title a span {
-        display: block;
-        font-size: 16px;
-        font-size: 1rem;
-        line-height: 17.6px;
-        line-height: 1.1rem;
-        font-weight: 700;
-        font-family: "Raleway", sans-serif;
-        color: #222; }
-  .block-views-blocklist-entries-block-1 .node .node__title, .block-views-blocklist-entries-block-1._switch-on .node .node__title {
-    margin-bottom: 0; }
-  .block-views-blocklist-entries-block-1 .node .field--name-field-date-published, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-date-published {
-    margin-bottom: 30px;
-    font-size: 16px;
-    font-size: 1rem;
-    line-height: 27.2px;
-    line-height: 1.7rem;
-    font-weight: 600;
-    font-family: "Raleway", sans-serif;
-    color: #968f7e; }
-    @media only screen and (max-width: 899px) {
-      .block-views-blocklist-entries-block-1 .node .field--name-field-date-published, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-date-published {
-        padding-left: 0; } }
-  .block-views-blocklist-entries-block-1 .node .field--name-field-date-published, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-date-published {
-    margin-bottom: 5px; }
   .block-views-blocklist-entries-block-1 .node .field--name-field-tax-section,
   .block-views-blocklist-entries-block-1 .node .field--name-field-tax-document-type, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-section,
   .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-document-type {
@@ -3705,10 +3552,21 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     line-height: 27.2px;
     line-height: 1.7rem;
     font-weight: 400;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     margin-bottom: 5px;
     color: #968f7e;
-    text-decoration: none; }
+    text-decoration: none;
+    margin-bottom: 20px; }
+    .block-views-blocklist-entries-block-1 .node .field--name-field-tax-section::after,
+    .block-views-blocklist-entries-block-1 .node .field--name-field-tax-document-type::after, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-section::after,
+    .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-document-type::after {
+      height: 5px;
+      width: 140px;
+      margin-top: 20px;
+      content: '';
+      display: block;
+      border: 0;
+      background-color: rgba(150, 143, 126, 0.2); }
     .block-views-blocklist-entries-block-1 .node .field--name-field-tax-section a,
     .block-views-blocklist-entries-block-1 .node .field--name-field-tax-document-type a, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-section a,
     .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-document-type a {
@@ -3717,69 +3575,13 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       line-height: 23.8px;
       line-height: 1.4875rem;
       font-weight: 400;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       color: #968f7e;
       text-decoration: none; }
       .block-views-blocklist-entries-block-1 .node .field--name-field-tax-section a:hover,
       .block-views-blocklist-entries-block-1 .node .field--name-field-tax-document-type a:hover, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-section a:hover,
       .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-document-type a:hover {
         text-decoration: underline; }
-  .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry,
-  .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry,
-  .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference {
-    font-size: 16px;
-    font-size: 1rem;
-    line-height: 16px;
-    line-height: 1rem;
-    font-weight: 700;
-    font-family: "Raleway", sans-serif;
-    text-transform: uppercase;
-    color: #b3001e;
-    text-decoration: none;
-    z-index: 10;
-    margin-bottom: 20px; }
-    @media only screen and (min-width: 900px) and (max-width: 1124px) {
-      .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry,
-      .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry,
-      .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference {
-        font-size: 13px;
-        font-size: 0.8125rem;
-        line-height: 13px;
-        line-height: 0.8125rem;
-        font-weight: 600;
-        font-family: "Raleway", sans-serif; } }
-    @media only screen and (max-width: 899px) {
-      .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry,
-      .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry,
-      .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference {
-        font-size: 13px;
-        font-size: 0.8125rem;
-        line-height: 13px;
-        line-height: 0.8125rem;
-        font-weight: 700;
-        font-family: "Raleway", sans-serif; } }
-    .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry:hover,
-    .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference:hover, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry:hover,
-    .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference:hover {
-      text-decoration: underline; }
-    .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry::after,
-    .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference::after, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry::after,
-    .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference::after {
-      height: 5px;
-      width: 140px;
-      margin-top: 20px;
-      content: '';
-      display: block;
-      border: 0;
-      background-color: rgba(150, 143, 126, 0.2); }
-    .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry,
-    .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry,
-    .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference {
-      text-decoration: none; }
-      .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry:hover,
-      .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference:hover, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry:hover,
-      .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference:hover {
-        text-decoration: none; }
 .block-views-blocklist-entries-block-1 .views-row, .block-views-blocklist-entries-block-1._switch-on .views-row {
   width: 49.11111%;
   margin-bottom: 20px;
@@ -3867,7 +3669,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       line-height: 17.6px;
       line-height: 1.1rem;
       font-weight: 700;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       color: #222; }
       .block-views-blocklist-entries-block-1._switch-off .node .node__title a .field {
         margin: 0;
@@ -3883,7 +3685,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         line-height: 17.6px;
         line-height: 1.1rem;
         font-weight: 700;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         color: #222; }
   .block-views-blocklist-entries-block-1._switch-off .node .node__title {
     margin-bottom: 0; }
@@ -3894,37 +3696,13 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     line-height: 27.2px;
     line-height: 1.7rem;
     font-weight: 600;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     color: #968f7e; }
     @media only screen and (max-width: 899px) {
       .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-date-published {
         padding-left: 0; } }
   .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-date-published {
     margin-bottom: 5px; }
-  .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-section,
-  .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-document-type {
-    font-size: 16px;
-    font-size: 1rem;
-    line-height: 27.2px;
-    line-height: 1.7rem;
-    font-weight: 400;
-    font-family: "Raleway", sans-serif;
-    margin-bottom: 5px;
-    color: #968f7e;
-    text-decoration: none; }
-    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-section a,
-    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-document-type a {
-      font-size: 14px;
-      font-size: 0.875rem;
-      line-height: 23.8px;
-      line-height: 1.4875rem;
-      font-weight: 400;
-      font-family: "Raleway", sans-serif;
-      color: #968f7e;
-      text-decoration: none; }
-      .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-section a:hover,
-      .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-document-type a:hover {
-        text-decoration: underline; }
   .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry,
   .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference {
     font-size: 16px;
@@ -3932,12 +3710,11 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     line-height: 16px;
     line-height: 1rem;
     font-weight: 700;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     text-transform: uppercase;
     color: #b3001e;
     text-decoration: none;
-    z-index: 10;
-    margin-bottom: 20px; }
+    z-index: 10; }
     @media only screen and (min-width: 900px) and (max-width: 1124px) {
       .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry,
       .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference {
@@ -3946,7 +3723,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         line-height: 13px;
         line-height: 0.8125rem;
         font-weight: 600;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     @media only screen and (max-width: 899px) {
       .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry,
       .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference {
@@ -3955,12 +3732,32 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         line-height: 13px;
         line-height: 0.8125rem;
         font-weight: 700;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry:hover,
     .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference:hover {
       text-decoration: underline; }
-    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry::after,
-    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference::after {
+    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry, .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry a,
+    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference,
+    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference a {
+      text-decoration: none; }
+      .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry:hover, .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry a:hover,
+      .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference:hover,
+      .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference a:hover {
+        text-decoration: none; }
+  .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-section,
+  .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-document-type {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 27.2px;
+    line-height: 1.7rem;
+    font-weight: 400;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
+    margin-bottom: 5px;
+    color: #968f7e;
+    text-decoration: none;
+    margin-bottom: 20px; }
+    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-section::after,
+    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-document-type::after {
       height: 5px;
       width: 140px;
       margin-top: 20px;
@@ -3968,16 +3765,29 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       display: block;
       border: 0;
       background-color: rgba(150, 143, 126, 0.2); }
-    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry,
-    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference {
+    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-section a,
+    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-document-type a {
+      font-size: 14px;
+      font-size: 0.875rem;
+      line-height: 23.8px;
+      line-height: 1.4875rem;
+      font-weight: 400;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
+      color: #968f7e;
       text-decoration: none; }
-      .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry:hover,
-      .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference:hover {
-        text-decoration: none; }
+      .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-section a:hover,
+      .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-document-type a:hover {
+        text-decoration: underline; }
 .block-views-blocklist-entries-block-1._switch-off .views-row {
+  width: 100%;
   margin-bottom: 20px;
   *zoom: 1;
   overflow: hidden; }
+  @media only screen and (max-width: 899px) {
+    .block-views-blocklist-entries-block-1._switch-off .views-row {
+      float: left;
+      margin-left: 0;
+      width: 100%; } }
   .block-views-blocklist-entries-block-1._switch-off .views-row:before, .block-views-blocklist-entries-block-1._switch-off .views-row:after {
     content: "";
     display: table; }
@@ -4021,6 +3831,8 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         height: 100px;
         width: 150%;
         z-index: 10; }
+.block-views-blocklist-entries-block-1._switch-off .views-row {
+  margin-left: 0; }
 .block-views-blocklist-entries-block-1 .view-filters {
   clear: both; }
   .block-views-blocklist-entries-block-1 .view-filters {
@@ -4100,7 +3912,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         line-height: 14px;
         line-height: 0.875rem;
         font-weight: 600;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         padding: 14px 16px !important;
         -moz-appearance: none;
         -webkit-appearance: none;
@@ -4247,7 +4059,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       line-height: 19.2px;
       line-height: 1.2rem;
       font-weight: 600;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       color: #968f7e;
       cursor: pointer;
       outline: none; }
@@ -4309,7 +4121,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     line-height: 19.2px;
     line-height: 1.2rem;
     font-weight: 600;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     padding: 10px 35px 10px 20px !important;
     color: #968f7e;
     background-color: rgba(150, 143, 126, 0.1);
@@ -4337,7 +4149,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       line-height: 19.2px;
       line-height: 1.2rem;
       font-weight: 600;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       height: 20px;
       width: 20px;
       color: #968f7e;
@@ -4391,7 +4203,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         line-height: 15px;
         line-height: 0.9375rem;
         font-weight: 600;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         position: relative;
         top: 0;
         color: #968f7e;
@@ -4493,76 +4305,79 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
   .node-top .field--name-field-region.field--type-entity-reference {
     font-size: 16px;
     font-size: 1rem;
-    line-height: 27.2px;
-    line-height: 1.7rem;
-    font-weight: 400;
-    font-family: "Raleway", sans-serif;
-    margin-bottom: 5px;
-    color: #968f7e;
-    text-decoration: none; }
-    .node-top .field--name-field-location-entry a,
-    .node-top .field--name-field-region.field--type-entity-reference a {
-      font-size: 14px;
-      font-size: 0.875rem;
-      line-height: 23.8px;
-      line-height: 1.4875rem;
-      font-weight: 400;
-      font-family: "Raleway", sans-serif;
-      color: #968f7e;
-      text-decoration: none; }
-      .node-top .field--name-field-location-entry a:hover,
-      .node-top .field--name-field-region.field--type-entity-reference a:hover {
-        text-decoration: underline; }
-  .node-top .field--name-field-location-entry .field__label,
-  .node-top .field--name-field-region.field--type-entity-reference .field__label {
-    display: none; }
-  .node-top .field--name-field-tax-section {
-    font-size: 16px;
-    font-size: 1rem;
     line-height: 16px;
     line-height: 1rem;
     font-weight: 700;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     text-transform: uppercase;
     color: #b3001e;
     text-decoration: none;
-    z-index: 10;
-    margin-bottom: 20px;
-    margin: 0;
-    padding: 0; }
+    z-index: 10; }
     @media only screen and (min-width: 900px) and (max-width: 1124px) {
-      .node-top .field--name-field-tax-section {
+      .node-top .field--name-field-location-entry,
+      .node-top .field--name-field-region.field--type-entity-reference {
         font-size: 13px;
         font-size: 0.8125rem;
         line-height: 13px;
         line-height: 0.8125rem;
         font-weight: 600;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     @media only screen and (max-width: 899px) {
-      .node-top .field--name-field-tax-section {
+      .node-top .field--name-field-location-entry,
+      .node-top .field--name-field-region.field--type-entity-reference {
         font-size: 13px;
         font-size: 0.8125rem;
         line-height: 13px;
         line-height: 0.8125rem;
         font-weight: 700;
-        font-family: "Raleway", sans-serif; } }
-    .node-top .field--name-field-tax-section:hover {
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
+    .node-top .field--name-field-location-entry:hover,
+    .node-top .field--name-field-region.field--type-entity-reference:hover {
       text-decoration: underline; }
-    .node-top .field--name-field-tax-section::after {
-      height: 5px;
-      width: 140px;
-      margin-top: 20px;
-      content: '';
-      display: block;
-      border: 0;
-      background-color: rgba(150, 143, 126, 0.2); }
-    .node-top .field--name-field-tax-section {
+    .node-top .field--name-field-location-entry, .node-top .field--name-field-location-entry a,
+    .node-top .field--name-field-region.field--type-entity-reference,
+    .node-top .field--name-field-region.field--type-entity-reference a {
       text-decoration: none; }
-      .node-top .field--name-field-tax-section:hover {
+      .node-top .field--name-field-location-entry:hover, .node-top .field--name-field-location-entry a:hover,
+      .node-top .field--name-field-region.field--type-entity-reference:hover,
+      .node-top .field--name-field-region.field--type-entity-reference a:hover {
         text-decoration: none; }
-    .node-top .field--name-field-tax-section .field__label {
+    .node-top .field--name-field-location-entry .field__label,
+    .node-top .field--name-field-region.field--type-entity-reference .field__label {
       display: none; }
-    .node-top .field--name-field-tax-section::after {
+  .node-top .field--name-field-tax-section,
+  .node-top .field--name-field-tax-document-type {
+    margin: 0;
+    padding: 0; }
+    .node-top .field--name-field-tax-section,
+    .node-top .field--name-field-tax-document-type {
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 27.2px;
+      line-height: 1.7rem;
+      font-weight: 400;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
+      margin-bottom: 5px;
+      color: #968f7e;
+      text-decoration: none; }
+      .node-top .field--name-field-tax-section a,
+      .node-top .field--name-field-tax-document-type a {
+        font-size: 14px;
+        font-size: 0.875rem;
+        line-height: 23.8px;
+        line-height: 1.4875rem;
+        font-weight: 400;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
+        color: #968f7e;
+        text-decoration: none; }
+        .node-top .field--name-field-tax-section a:hover,
+        .node-top .field--name-field-tax-document-type a:hover {
+          text-decoration: underline; }
+    .node-top .field--name-field-tax-section .field__label,
+    .node-top .field--name-field-tax-document-type .field__label {
+      display: none; }
+    .node-top .field--name-field-tax-section::after,
+    .node-top .field--name-field-tax-document-type::after {
       display: none; }
 
 article.node--type-entry.node--view-mode-full .node-top-hidden {
@@ -4629,7 +4444,7 @@ article.node--type-entry.node--view-mode-full .node-header {
       line-height: 27.2px;
       line-height: 1.7rem;
       font-weight: 600;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       color: #968f7e; }
       @media only screen and (max-width: 899px) {
         article.node--type-entry.node--view-mode-full .node-header .node-date {
@@ -4646,6 +4461,13 @@ article.node--type-entry.node--view-mode-full .node-header {
     padding: 0;
     text-align: right; }
     article.node--type-entry.node--view-mode-full .node-header .field--name-field-external-link a {
+      font-size: 14px;
+      font-size: 0.875rem;
+      line-height: 14px;
+      line-height: 0.875rem;
+      font-weight: 600;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
+      text-transform: uppercase;
       text-decoration: none; }
       article.node--type-entry.node--view-mode-full .node-header .field--name-field-external-link a:hover {
         text-decoration: underline; }
@@ -4665,76 +4487,13 @@ article.node--type-entry.node--view-mode-full .node-header {
       background-size: 19px 15px;
       padding-right: 30px;
       background-position: 100% 50%; }
-article.node--type-entry.node--view-mode-full .field--name-field-tax-section {
-  font-size: 16px;
-  font-size: 1rem;
-  line-height: 16px;
-  line-height: 1rem;
-  font-weight: 700;
-  font-family: "Raleway", sans-serif;
-  text-transform: uppercase;
-  color: #b3001e;
-  text-decoration: none;
-  z-index: 10;
-  margin-bottom: 20px; }
-  @media only screen and (min-width: 900px) and (max-width: 1124px) {
-    article.node--type-entry.node--view-mode-full .field--name-field-tax-section {
-      font-size: 13px;
-      font-size: 0.8125rem;
-      line-height: 13px;
-      line-height: 0.8125rem;
-      font-weight: 600;
-      font-family: "Raleway", sans-serif; } }
-  @media only screen and (max-width: 899px) {
-    article.node--type-entry.node--view-mode-full .field--name-field-tax-section {
-      font-size: 13px;
-      font-size: 0.8125rem;
-      line-height: 13px;
-      line-height: 0.8125rem;
-      font-weight: 700;
-      font-family: "Raleway", sans-serif; } }
-  article.node--type-entry.node--view-mode-full .field--name-field-tax-section:hover {
-    text-decoration: underline; }
-  article.node--type-entry.node--view-mode-full .field--name-field-tax-section::after {
-    height: 5px;
-    width: 140px;
-    margin-top: 20px;
-    content: '';
-    display: block;
-    border: 0;
-    background-color: rgba(150, 143, 126, 0.2); }
-  article.node--type-entry.node--view-mode-full .field--name-field-tax-section {
-    text-decoration: none; }
-    article.node--type-entry.node--view-mode-full .field--name-field-tax-section:hover {
-      text-decoration: none; }
-article.node--type-entry.node--view-mode-full .field--name-field-location-entry {
-  font-size: 16px;
-  font-size: 1rem;
-  line-height: 27.2px;
-  line-height: 1.7rem;
-  font-weight: 400;
-  font-family: "Raleway", sans-serif;
-  margin-bottom: 5px;
-  color: #968f7e;
-  text-decoration: none; }
-  article.node--type-entry.node--view-mode-full .field--name-field-location-entry a {
-    font-size: 14px;
-    font-size: 0.875rem;
-    line-height: 23.8px;
-    line-height: 1.4875rem;
-    font-weight: 400;
-    font-family: "Raleway", sans-serif;
-    color: #968f7e;
-    text-decoration: none; }
-    article.node--type-entry.node--view-mode-full .field--name-field-location-entry a:hover {
-      text-decoration: underline; }
 article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__label {
   font-size: 50px;
   font-size: 3.125rem;
   line-height: 50px;
   line-height: 3.125rem;
   font-weight: 200;
-  font-family: "Raleway", sans-serif;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
   padding: 0;
   margin: 0;
   display: block;
@@ -4752,7 +4511,7 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
       line-height: 33.33333px;
       line-height: 2.08333rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
   @media only screen and (max-width: 899px) {
     article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__label {
       font-size: 45.5px;
@@ -4760,7 +4519,7 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
       line-height: 45.5px;
       line-height: 2.84375rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
   @media only screen and (max-width: 899px) {
     article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__label {
       font-size: 25px;
@@ -4768,7 +4527,7 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
       line-height: 25px;
       line-height: 1.5625rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
 article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node {
   margin-bottom: 20px;
   padding: 30px;
@@ -4795,7 +4554,7 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
       line-height: 17.6px;
       line-height: 1.1rem;
       font-weight: 700;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       color: #222; }
       article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .node__title a .field {
         margin: 0;
@@ -4811,7 +4570,7 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
         line-height: 17.6px;
         line-height: 1.1rem;
         font-weight: 700;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         color: #222; }
   article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .node__title {
     margin-bottom: 0; }
@@ -4822,37 +4581,13 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
     line-height: 27.2px;
     line-height: 1.7rem;
     font-weight: 600;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     color: #968f7e; }
     @media only screen and (max-width: 899px) {
       article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-date-published {
         padding-left: 0; } }
   article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-date-published {
     margin-bottom: 5px; }
-  article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-section,
-  article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-document-type {
-    font-size: 16px;
-    font-size: 1rem;
-    line-height: 27.2px;
-    line-height: 1.7rem;
-    font-weight: 400;
-    font-family: "Raleway", sans-serif;
-    margin-bottom: 5px;
-    color: #968f7e;
-    text-decoration: none; }
-    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-section a,
-    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-document-type a {
-      font-size: 14px;
-      font-size: 0.875rem;
-      line-height: 23.8px;
-      line-height: 1.4875rem;
-      font-weight: 400;
-      font-family: "Raleway", sans-serif;
-      color: #968f7e;
-      text-decoration: none; }
-      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-section a:hover,
-      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-document-type a:hover {
-        text-decoration: underline; }
   article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry,
   article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference {
     font-size: 16px;
@@ -4860,12 +4595,11 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
     line-height: 16px;
     line-height: 1rem;
     font-weight: 700;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     text-transform: uppercase;
     color: #b3001e;
     text-decoration: none;
-    z-index: 10;
-    margin-bottom: 20px; }
+    z-index: 10; }
     @media only screen and (min-width: 900px) and (max-width: 1124px) {
       article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry,
       article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference {
@@ -4874,7 +4608,7 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
         line-height: 13px;
         line-height: 0.8125rem;
         font-weight: 600;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     @media only screen and (max-width: 899px) {
       article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry,
       article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference {
@@ -4883,12 +4617,32 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
         line-height: 13px;
         line-height: 0.8125rem;
         font-weight: 700;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry:hover,
     article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference:hover {
       text-decoration: underline; }
-    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry::after,
-    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference::after {
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry a,
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference,
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference a {
+      text-decoration: none; }
+      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry:hover, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry a:hover,
+      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference:hover,
+      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference a:hover {
+        text-decoration: none; }
+  article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-section,
+  article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-document-type {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 27.2px;
+    line-height: 1.7rem;
+    font-weight: 400;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
+    margin-bottom: 5px;
+    color: #968f7e;
+    text-decoration: none;
+    margin-bottom: 20px; }
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-section::after,
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-document-type::after {
       height: 5px;
       width: 140px;
       margin-top: 20px;
@@ -4896,12 +4650,19 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
       display: block;
       border: 0;
       background-color: rgba(150, 143, 126, 0.2); }
-    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry,
-    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference {
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-section a,
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-document-type a {
+      font-size: 14px;
+      font-size: 0.875rem;
+      line-height: 23.8px;
+      line-height: 1.4875rem;
+      font-weight: 400;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
+      color: #968f7e;
       text-decoration: none; }
-      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry:hover,
-      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference:hover {
-        text-decoration: none; }
+      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-section a:hover,
+      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-document-type a:hover {
+        text-decoration: underline; }
 article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items > .field__item {
   width: 49.11111%;
   margin-bottom: 20px;
@@ -4986,7 +4747,7 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
       line-height: 15.6px;
       line-height: 0.975rem;
       font-weight: 700;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       color: #fff;
       padding: 12px;
       text-align: center;
@@ -5054,7 +4815,7 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
       line-height: 14px;
       line-height: 0.875rem;
       font-weight: 600;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       padding: 14px 16px !important;
       -moz-appearance: none;
       -webkit-appearance: none;
@@ -5135,7 +4896,7 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
         line-height: 16.5px;
         line-height: 1.03125rem;
         font-weight: 700;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         color: #222; }
       .block-wilmap-map .wilmap #map-legend .drawer .description,
       .block-wilmap-map .wilmap #map-legend .drawer .description p {
@@ -5146,7 +4907,7 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
         line-height: 16.5px;
         line-height: 1.03125rem;
         font-weight: 400;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         color: #968f7e;
         font-style: normal; }
       .block-wilmap-map .wilmap #map-legend .drawer .color-ranges {
@@ -5171,7 +4932,7 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
               line-height: 16.5px;
               line-height: 1.03125rem;
               font-weight: 400;
-              font-family: "Raleway", sans-serif;
+              font-family: "Raleway", "Mplus 1p", sans-serif;
               padding-top: 15px;
               color: #968f7e;
               text-align: center; }
@@ -5276,7 +5037,7 @@ h2.title-result {
   line-height: 50px;
   line-height: 3.125rem;
   font-weight: 200;
-  font-family: "Raleway", sans-serif;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
   padding: 0;
   margin: 0;
   display: block;
@@ -5297,7 +5058,7 @@ h2.title-result {
       line-height: 33.33333px;
       line-height: 2.08333rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
   @media only screen and (max-width: 899px) {
     h2.title-result {
       font-size: 45.5px;
@@ -5305,7 +5066,7 @@ h2.title-result {
       line-height: 45.5px;
       line-height: 2.84375rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
   @media only screen and (max-width: 899px) {
     h2.title-result {
       font-size: 25px;
@@ -5313,7 +5074,7 @@ h2.title-result {
       line-height: 25px;
       line-height: 1.5625rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif; } }
+      font-family: "Raleway", "Mplus 1p", sans-serif; } }
 
 .item-list {
   margin-top: 30px; }
@@ -5329,7 +5090,7 @@ h2.title-result {
     line-height: 17.6px;
     line-height: 1.1rem;
     font-weight: 700;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     color: #222; }
   .item-list .search-results li {
     margin: 0;
@@ -5357,7 +5118,7 @@ h2.title-result {
       line-height: 30px;
       line-height: 1.875rem;
       font-weight: 300;
-      font-family: "Raleway", sans-serif; }
+      font-family: "Raleway", "Mplus 1p", sans-serif; }
       .item-list .search-results li h3 {
         margin: 0;
         padding: 0;
@@ -5372,7 +5133,7 @@ h2.title-result {
           line-height: 50px;
           line-height: 3.125rem;
           font-weight: 200;
-          font-family: "Raleway", sans-serif; }
+          font-family: "Raleway", "Mplus 1p", sans-serif; }
           .item-list .search-results li h3 a .field {
             margin: 0;
             padding: 0; }
@@ -5383,7 +5144,7 @@ h2.title-result {
               line-height: 33.33333px;
               line-height: 2.08333rem;
               font-weight: 200;
-              font-family: "Raleway", sans-serif; } }
+              font-family: "Raleway", "Mplus 1p", sans-serif; } }
           @media only screen and (max-width: 899px) {
             .item-list .search-results li h3 a {
               font-size: 25px;
@@ -5391,7 +5152,7 @@ h2.title-result {
               line-height: 25px;
               line-height: 1.5625rem;
               font-weight: 200;
-              font-family: "Raleway", sans-serif; } }
+              font-family: "Raleway", "Mplus 1p", sans-serif; } }
           .item-list .search-results li h3 a .field {
             overflow: visible; }
           .item-list .search-results li h3 a:hover {
@@ -5403,7 +5164,7 @@ h2.title-result {
             line-height: 50px;
             line-height: 3.125rem;
             font-weight: 200;
-            font-family: "Raleway", sans-serif; }
+            font-family: "Raleway", "Mplus 1p", sans-serif; }
             @media only screen and (min-width: 900px) and (max-width: 1124px) {
               .item-list .search-results li h3 a span {
                 font-size: 33.33333px;
@@ -5411,7 +5172,7 @@ h2.title-result {
                 line-height: 33.33333px;
                 line-height: 2.08333rem;
                 font-weight: 200;
-                font-family: "Raleway", sans-serif; } }
+                font-family: "Raleway", "Mplus 1p", sans-serif; } }
             @media only screen and (max-width: 899px) {
               .item-list .search-results li h3 a span {
                 font-size: 25px;
@@ -5419,14 +5180,14 @@ h2.title-result {
                 line-height: 25px;
                 line-height: 1.5625rem;
                 font-weight: 200;
-                font-family: "Raleway", sans-serif; } }
+                font-family: "Raleway", "Mplus 1p", sans-serif; } }
       .item-list .search-results li h3 a {
         font-size: 25px;
         font-size: 1.5625rem;
         line-height: 30px;
         line-height: 1.875rem;
         font-weight: 300;
-        font-family: "Raleway", sans-serif; }
+        font-family: "Raleway", "Mplus 1p", sans-serif; }
 
 body.updates-report .layout-main-wrapper .layout-main .node-main .node-date {
   display: none; }
@@ -5449,7 +5210,7 @@ body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .tex
     line-height: 50px;
     line-height: 3.125rem;
     font-weight: 200;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     padding: 0;
     margin: 0;
     display: block;
@@ -5467,7 +5228,7 @@ body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .tex
         line-height: 33.33333px;
         line-height: 2.08333rem;
         font-weight: 200;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     @media only screen and (max-width: 899px) {
       body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group > h3 {
         font-size: 45.5px;
@@ -5475,7 +5236,7 @@ body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .tex
         line-height: 45.5px;
         line-height: 2.84375rem;
         font-weight: 200;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     @media only screen and (max-width: 899px) {
       body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group > h3 {
         font-size: 25px;
@@ -5483,7 +5244,7 @@ body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .tex
         line-height: 25px;
         line-height: 1.5625rem;
         font-weight: 200;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
   body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest {
     width: 70.92063%;
     margin-left: 30.85714%;
@@ -5525,7 +5286,7 @@ body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .tex
           line-height: 17.6px;
           line-height: 1.1rem;
           font-weight: 700;
-          font-family: "Raleway", sans-serif;
+          font-family: "Raleway", "Mplus 1p", sans-serif;
           color: #222; }
           body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest h2.node__title a .field {
             margin: 0;
@@ -5541,7 +5302,7 @@ body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .tex
             line-height: 17.6px;
             line-height: 1.1rem;
             font-weight: 700;
-            font-family: "Raleway", sans-serif;
+            font-family: "Raleway", "Mplus 1p", sans-serif;
             color: #222; }
     body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest .node__content .field--name-field-date-published {
       margin: 0;
@@ -5553,7 +5314,7 @@ body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .tex
         line-height: 27.2px;
         line-height: 1.7rem;
         font-weight: 600;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         color: #968f7e; }
         @media only screen and (max-width: 899px) {
           body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest .node__content .field--name-field-date-published {
@@ -5614,7 +5375,7 @@ body.page-node-type-region #content-content {
     line-height: 40px;
     line-height: 2.5rem;
     font-weight: 200;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
     padding: 0;
     margin: 0;
     display: block;
@@ -5630,7 +5391,7 @@ body.page-node-type-region #content-content {
         line-height: 26.66667px;
         line-height: 1.66667rem;
         font-weight: 200;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
     @media only screen and (max-width: 899px) {
       body.page-node-type-country #content-content section.block-system-main-block .field__label,
       body.page-node-type-region #content-content section.block-system-main-block .field__label {
@@ -5639,7 +5400,7 @@ body.page-node-type-region #content-content {
         line-height: 45.5px;
         line-height: 2.84375rem;
         font-weight: 200;
-        font-family: "Raleway", sans-serif; } }
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
   body.page-node-type-country #content-content section.block-system-main-block .text-formatted,
   body.page-node-type-region #content-content section.block-system-main-block .text-formatted {
     width: 85.46032%;
@@ -5664,7 +5425,7 @@ body.page-node-type-region #content-content {
       line-height: 40px;
       line-height: 2.5rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       padding: 0;
       margin: 0;
       display: block;
@@ -5680,7 +5441,7 @@ body.page-node-type-region #content-content {
           line-height: 26.66667px;
           line-height: 1.66667rem;
           font-weight: 200;
-          font-family: "Raleway", sans-serif; } }
+          font-family: "Raleway", "Mplus 1p", sans-serif; } }
       @media only screen and (max-width: 899px) {
         body.page-node-type-country #content-content section:not(.block-system-main-block) > h2,
         body.page-node-type-region #content-content section:not(.block-system-main-block) > h2 {
@@ -5689,7 +5450,7 @@ body.page-node-type-region #content-content {
           line-height: 45.5px;
           line-height: 2.84375rem;
           font-weight: 200;
-          font-family: "Raleway", sans-serif; } }
+          font-family: "Raleway", "Mplus 1p", sans-serif; } }
     body.page-node-type-country #content-content section:not(.block-system-main-block) h3,
     body.page-node-type-country #content-content section:not(.block-system-main-block) h3 a,
     body.page-node-type-region #content-content section:not(.block-system-main-block) h3,
@@ -5699,7 +5460,7 @@ body.page-node-type-region #content-content {
       line-height: 30px;
       line-height: 1.875rem;
       font-weight: 200;
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
       padding: 0;
       margin: 0;
       display: block;
@@ -5717,7 +5478,7 @@ body.page-node-type-region #content-content {
           line-height: 20px;
           line-height: 1.25rem;
           font-weight: 200;
-          font-family: "Raleway", sans-serif; } }
+          font-family: "Raleway", "Mplus 1p", sans-serif; } }
       @media only screen and (max-width: 899px) {
         body.page-node-type-country #content-content section:not(.block-system-main-block) h3,
         body.page-node-type-country #content-content section:not(.block-system-main-block) h3 a,
@@ -5728,7 +5489,7 @@ body.page-node-type-region #content-content {
           line-height: 45.5px;
           line-height: 2.84375rem;
           font-weight: 200;
-          font-family: "Raleway", sans-serif; } }
+          font-family: "Raleway", "Mplus 1p", sans-serif; } }
     body.page-node-type-country #content-content section:not(.block-system-main-block) .node,
     body.page-node-type-region #content-content section:not(.block-system-main-block) .node {
       margin-bottom: 20px;
@@ -5760,7 +5521,7 @@ body.page-node-type-region #content-content {
           line-height: 17.6px;
           line-height: 1.1rem;
           font-weight: 700;
-          font-family: "Raleway", sans-serif;
+          font-family: "Raleway", "Mplus 1p", sans-serif;
           color: #222; }
           body.page-node-type-country #content-content section:not(.block-system-main-block) .node .node__title a .field,
           body.page-node-type-region #content-content section:not(.block-system-main-block) .node .node__title a .field {
@@ -5780,7 +5541,7 @@ body.page-node-type-region #content-content {
             line-height: 17.6px;
             line-height: 1.1rem;
             font-weight: 700;
-            font-family: "Raleway", sans-serif;
+            font-family: "Raleway", "Mplus 1p", sans-serif;
             color: #222; }
       body.page-node-type-country #content-content section:not(.block-system-main-block) .node .node__title,
       body.page-node-type-region #content-content section:not(.block-system-main-block) .node .node__title {
@@ -5793,7 +5554,7 @@ body.page-node-type-region #content-content {
         line-height: 27.2px;
         line-height: 1.7rem;
         font-weight: 600;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         color: #968f7e; }
         @media only screen and (max-width: 899px) {
           body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-date-published,
@@ -5802,36 +5563,6 @@ body.page-node-type-region #content-content {
       body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-date-published,
       body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-date-published {
         margin-bottom: 5px; }
-      body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section,
-      body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type,
-      body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section,
-      body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type {
-        font-size: 16px;
-        font-size: 1rem;
-        line-height: 27.2px;
-        line-height: 1.7rem;
-        font-weight: 400;
-        font-family: "Raleway", sans-serif;
-        margin-bottom: 5px;
-        color: #968f7e;
-        text-decoration: none; }
-        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section a,
-        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type a,
-        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section a,
-        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type a {
-          font-size: 14px;
-          font-size: 0.875rem;
-          line-height: 23.8px;
-          line-height: 1.4875rem;
-          font-weight: 400;
-          font-family: "Raleway", sans-serif;
-          color: #968f7e;
-          text-decoration: none; }
-          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section a:hover,
-          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type a:hover,
-          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section a:hover,
-          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type a:hover {
-            text-decoration: underline; }
       body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry,
       body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference,
       body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry,
@@ -5841,12 +5572,11 @@ body.page-node-type-region #content-content {
         line-height: 16px;
         line-height: 1rem;
         font-weight: 700;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         text-transform: uppercase;
         color: #b3001e;
         text-decoration: none;
-        z-index: 10;
-        margin-bottom: 20px; }
+        z-index: 10; }
         @media only screen and (min-width: 900px) and (max-width: 1124px) {
           body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry,
           body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference,
@@ -5857,7 +5587,7 @@ body.page-node-type-region #content-content {
             line-height: 13px;
             line-height: 0.8125rem;
             font-weight: 600;
-            font-family: "Raleway", sans-serif; } }
+            font-family: "Raleway", "Mplus 1p", sans-serif; } }
         @media only screen and (max-width: 899px) {
           body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry,
           body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference,
@@ -5868,16 +5598,46 @@ body.page-node-type-region #content-content {
             line-height: 13px;
             line-height: 0.8125rem;
             font-weight: 700;
-            font-family: "Raleway", sans-serif; } }
+            font-family: "Raleway", "Mplus 1p", sans-serif; } }
         body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry:hover,
         body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference:hover,
         body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry:hover,
         body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference:hover {
           text-decoration: underline; }
-        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry::after,
-        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference::after,
-        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry::after,
-        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference::after {
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry, body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry a,
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference,
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference a,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry a,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference a {
+          text-decoration: none; }
+          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry:hover, body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry a:hover,
+          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference:hover,
+          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference a:hover,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry:hover,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry a:hover,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference:hover,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference a:hover {
+            text-decoration: none; }
+      body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section,
+      body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type,
+      body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section,
+      body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type {
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 27.2px;
+        line-height: 1.7rem;
+        font-weight: 400;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
+        margin-bottom: 5px;
+        color: #968f7e;
+        text-decoration: none;
+        margin-bottom: 20px; }
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section::after,
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type::after,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section::after,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type::after {
           height: 5px;
           width: 140px;
           margin-top: 20px;
@@ -5885,21 +5645,35 @@ body.page-node-type-region #content-content {
           display: block;
           border: 0;
           background-color: rgba(150, 143, 126, 0.2); }
-        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry,
-        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference,
-        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry,
-        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference {
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section a,
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type a,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section a,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type a {
+          font-size: 14px;
+          font-size: 0.875rem;
+          line-height: 23.8px;
+          line-height: 1.4875rem;
+          font-weight: 400;
+          font-family: "Raleway", "Mplus 1p", sans-serif;
+          color: #968f7e;
           text-decoration: none; }
-          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry:hover,
-          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference:hover,
-          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry:hover,
-          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference:hover {
-            text-decoration: none; }
+          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section a:hover,
+          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type a:hover,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section a:hover,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type a:hover {
+            text-decoration: underline; }
     body.page-node-type-country #content-content section:not(.block-system-main-block) .views-row,
     body.page-node-type-region #content-content section:not(.block-system-main-block) .views-row {
+      width: 100%;
       margin-bottom: 20px;
       *zoom: 1;
       overflow: hidden; }
+      @media only screen and (max-width: 899px) {
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .views-row,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .views-row {
+          float: left;
+          margin-left: 0;
+          width: 100%; } }
       body.page-node-type-country #content-content section:not(.block-system-main-block) .views-row:before, body.page-node-type-country #content-content section:not(.block-system-main-block) .views-row:after,
       body.page-node-type-region #content-content section:not(.block-system-main-block) .views-row:before,
       body.page-node-type-region #content-content section:not(.block-system-main-block) .views-row:after {
@@ -5993,7 +5767,7 @@ body.page-node-type-region #content-content {
             line-height: 50px;
             line-height: 3.125rem;
             font-weight: 200;
-            font-family: "Raleway", sans-serif; }
+            font-family: "Raleway", "Mplus 1p", sans-serif; }
             body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blocknews-block-country-news .node header .node__title a .field, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blocknews-block-region-news .node header .node__title a .field,
             body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blocknews-block-country-news .node header .node__title a .field,
             body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blocknews-block-region-news .node header .node__title a .field {
@@ -6008,7 +5782,7 @@ body.page-node-type-region #content-content {
                 line-height: 33.33333px;
                 line-height: 2.08333rem;
                 font-weight: 200;
-                font-family: "Raleway", sans-serif; } }
+                font-family: "Raleway", "Mplus 1p", sans-serif; } }
             @media only screen and (max-width: 899px) {
               body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blocknews-block-country-news .node header .node__title a, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blocknews-block-region-news .node header .node__title a,
               body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blocknews-block-country-news .node header .node__title a,
@@ -6018,7 +5792,7 @@ body.page-node-type-region #content-content {
                 line-height: 25px;
                 line-height: 1.5625rem;
                 font-weight: 200;
-                font-family: "Raleway", sans-serif; } }
+                font-family: "Raleway", "Mplus 1p", sans-serif; } }
             body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blocknews-block-country-news .node header .node__title a .field, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blocknews-block-region-news .node header .node__title a .field,
             body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blocknews-block-country-news .node header .node__title a .field,
             body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blocknews-block-region-news .node header .node__title a .field {
@@ -6036,7 +5810,7 @@ body.page-node-type-region #content-content {
               line-height: 50px;
               line-height: 3.125rem;
               font-weight: 200;
-              font-family: "Raleway", sans-serif; }
+              font-family: "Raleway", "Mplus 1p", sans-serif; }
               @media only screen and (min-width: 900px) and (max-width: 1124px) {
                 body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blocknews-block-country-news .node header .node__title a span, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blocknews-block-region-news .node header .node__title a span,
                 body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blocknews-block-country-news .node header .node__title a span,
@@ -6046,7 +5820,7 @@ body.page-node-type-region #content-content {
                   line-height: 33.33333px;
                   line-height: 2.08333rem;
                   font-weight: 200;
-                  font-family: "Raleway", sans-serif; } }
+                  font-family: "Raleway", "Mplus 1p", sans-serif; } }
               @media only screen and (max-width: 899px) {
                 body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blocknews-block-country-news .node header .node__title a span, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blocknews-block-region-news .node header .node__title a span,
                 body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blocknews-block-country-news .node header .node__title a span,
@@ -6056,7 +5830,7 @@ body.page-node-type-region #content-content {
                   line-height: 25px;
                   line-height: 1.5625rem;
                   font-weight: 200;
-                  font-family: "Raleway", sans-serif; } }
+                  font-family: "Raleway", "Mplus 1p", sans-serif; } }
       body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blocknews-block-country-news .node .field--name-field-date-published, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blocknews-block-region-news .node .field--name-field-date-published,
       body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blocknews-block-country-news .node .field--name-field-date-published,
       body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blocknews-block-region-news .node .field--name-field-date-published {
@@ -6066,7 +5840,7 @@ body.page-node-type-region #content-content {
         line-height: 27.2px;
         line-height: 1.7rem;
         font-weight: 600;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         color: #968f7e; }
         @media only screen and (max-width: 899px) {
           body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blocknews-block-country-news .node .field--name-field-date-published, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blocknews-block-region-news .node .field--name-field-date-published,
@@ -6099,7 +5873,7 @@ body.page-node-type-region #content-content {
           line-height: 14px;
           line-height: 0.875rem;
           font-weight: 600;
-          font-family: "Raleway", sans-serif;
+          font-family: "Raleway", "Mplus 1p", sans-serif;
           padding: 14px 16px !important;
           -moz-appearance: none;
           -webkit-appearance: none;
@@ -6175,7 +5949,7 @@ body.page-node-type-region #content-content {
         line-height: 17.6px;
         line-height: 1.1rem;
         font-weight: 700;
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
         color: #222; }
         body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blocknews-block-country-news .views-row header .node__title a .field, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blocknews-block-region-news .views-row header .node__title a .field,
         body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blocknews-block-country-news .views-row header .node__title a .field,
@@ -6199,7 +5973,7 @@ body.page-node-type-region #content-content {
           line-height: 17.6px;
           line-height: 1.1rem;
           font-weight: 700;
-          font-family: "Raleway", sans-serif;
+          font-family: "Raleway", "Mplus 1p", sans-serif;
           color: #222; }
     body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content,
     body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content,
@@ -6318,7 +6092,7 @@ body.page-node-type-region #content-content {
               line-height: 16.8px;
               line-height: 1.05rem;
               font-weight: 600;
-              font-family: "Raleway", sans-serif;
+              font-family: "Raleway", "Mplus 1p", sans-serif;
               color: #fff; }
           body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content .views-row .contributor-image-holder .ranking, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content .views-row .contributor-image-holder .ranking,
           body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content .views-row .contributor-image-holder .ranking,
@@ -6345,7 +6119,7 @@ body.page-node-type-region #content-content {
                 line-height: 16.8px;
                 line-height: 1.05rem;
                 font-weight: 600;
-                font-family: "Raleway", sans-serif;
+                font-family: "Raleway", "Mplus 1p", sans-serif;
                 color: #fff; }
           body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content .views-row .contributor-image-holder .hover-text, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content .views-row .contributor-image-holder .hover-text,
           body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content .views-row .contributor-image-holder .hover-text,
@@ -6380,7 +6154,7 @@ body.page-node-type-region #content-content {
               line-height: 14px;
               line-height: 0.875rem;
               font-weight: 600;
-              font-family: "Raleway", sans-serif;
+              font-family: "Raleway", "Mplus 1p", sans-serif;
               padding: 14px 16px !important;
               -moz-appearance: none;
               -webkit-appearance: none;
@@ -6483,7 +6257,7 @@ body.page-node-type-region #content-content {
             line-height: 17.6px;
             line-height: 1.1rem;
             font-weight: 700;
-            font-family: "Raleway", sans-serif;
+            font-family: "Raleway", "Mplus 1p", sans-serif;
             margin-bottom: 15px;
             text-decoration: none;
             color: #000; }
@@ -6504,7 +6278,7 @@ body.page-node-type-region #content-content {
             line-height: 17.6px;
             line-height: 1.1rem;
             font-weight: 600;
-            font-family: "Raleway", sans-serif;
+            font-family: "Raleway", "Mplus 1p", sans-serif;
             text-decoration: none;
             color: #968f7e; }
         body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content .views-row:nth-child(4n+1), body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content .views-row:nth-child(4n+1),
@@ -6647,7 +6421,7 @@ body.page-node-type-region #content-content {
                 line-height: 16.8px;
                 line-height: 1.05rem;
                 font-weight: 600;
-                font-family: "Raleway", sans-serif;
+                font-family: "Raleway", "Mplus 1p", sans-serif;
                 color: #fff; }
             body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-footer .content .views-row .contributor-image-holder .ranking, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-footer .content .views-row .contributor-image-holder .ranking,
             body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-footer .content .views-row .contributor-image-holder .ranking,
@@ -6674,7 +6448,7 @@ body.page-node-type-region #content-content {
                   line-height: 16.8px;
                   line-height: 1.05rem;
                   font-weight: 600;
-                  font-family: "Raleway", sans-serif;
+                  font-family: "Raleway", "Mplus 1p", sans-serif;
                   color: #fff; }
             body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-footer .content .views-row .contributor-image-holder .hover-text, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-footer .content .views-row .contributor-image-holder .hover-text,
             body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-footer .content .views-row .contributor-image-holder .hover-text,
@@ -6709,7 +6483,7 @@ body.page-node-type-region #content-content {
                 line-height: 14px;
                 line-height: 0.875rem;
                 font-weight: 600;
-                font-family: "Raleway", sans-serif;
+                font-family: "Raleway", "Mplus 1p", sans-serif;
                 padding: 14px 16px !important;
                 -moz-appearance: none;
                 -webkit-appearance: none;
@@ -6812,7 +6586,7 @@ body.page-node-type-region #content-content {
               line-height: 17.6px;
               line-height: 1.1rem;
               font-weight: 700;
-              font-family: "Raleway", sans-serif;
+              font-family: "Raleway", "Mplus 1p", sans-serif;
               margin-bottom: 15px;
               text-decoration: none;
               color: #000; }
@@ -6833,7 +6607,7 @@ body.page-node-type-region #content-content {
               line-height: 17.6px;
               line-height: 1.1rem;
               font-weight: 600;
-              font-family: "Raleway", sans-serif;
+              font-family: "Raleway", "Mplus 1p", sans-serif;
               text-decoration: none;
               color: #968f7e; }
           body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-footer .content .views-row:nth-child(4n+1), body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-footer .content .views-row:nth-child(4n+1),
@@ -6906,5 +6680,4 @@ body.user-logged-in .contextual-region .contextual .contextual-links a {
   body.user-logged-in .contextual-region .contextual .contextual-links a:hover {
     color: #000 !important;
     background: #f7fcff !important; }
-
 /*# sourceMappingURL=theme-pages.css.map */

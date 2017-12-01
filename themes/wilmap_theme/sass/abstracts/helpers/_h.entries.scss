@@ -47,7 +47,11 @@ $entry-gradient-dir:     180deg;
   & {
     a {
       // @include icon-insert(icon-right-open, after);
+      @include font($normal - 2, 1, $semibold, $buttons-font);
+      text-transform: uppercase;
       text-decoration: none;
+
+
 
       // &:after {
       //   border: 1px solid black;
@@ -64,32 +68,17 @@ $entry-gradient-dir:     180deg;
 // entry taxonomy
 // -------------------------------------
 
-@mixin entry--taxonomy() {
-  @include red-caps-link();
-  @include field-separator();
-  @include margin(null null $dp * 2 null);
-
-  // Override
-  & {
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
-
-}
-
-// -------------------------------------
-// entry location
-// -------------------------------------
-
-@mixin entry--location() {
+@mixin entry--taxonomy($separator: false) {
   & {
     @include font($normal, $base-line-increment, $regular, $base-font-family);
     @include margin(null null $dp / 2 null);
     color: $fourth-color;
     text-decoration: none;
+
+    @if $separator {
+      @include field-separator();
+      @include margin(null null $dp * 2 null);
+    }
 
     a {
       @include font($normal - 2, $base-line-increment, $regular, $base-font-family);
@@ -101,8 +90,29 @@ $entry-gradient-dir:     180deg;
       }
     }
   }
+}
 
+// -------------------------------------
+// entry location
+// -------------------------------------
 
+@mixin entry--location($separator: false) {
+  @include red-caps-link();
+
+  @if $separator {
+    @include field-separator();
+    @include margin(null null $dp * 2 null);
+  }
+
+  // Override
+  &,
+  & a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 // -------------------------------------
@@ -112,6 +122,7 @@ $entry-gradient-dir:     180deg;
 @mixin entry-list($structure:'.views-row', $break-margin: false, $highlight:false) {
   // Structure wrapper
   @include content-listings-wrapper($structure, $break-margin) {
+    @include column(14);
     @include margin(null null $dp * 2 null);
     @include clearfix();
     overflow: hidden;
@@ -174,14 +185,14 @@ $entry-gradient-dir:     180deg;
         @include entry--date();
       }
 
-      .field--name-field-tax-section,
-      .field--name-field-tax-document-type {
+      .field--name-field-location-entry,
+      .field--name-field-region.field--type-entity-reference {
         @include entry--location();
       }
 
-      .field--name-field-location-entry,
-      .field--name-field-region.field--type-entity-reference {
-        @include entry--taxonomy();
+      .field--name-field-tax-section,
+      .field--name-field-tax-document-type {
+        @include entry--taxonomy(true);
       }
 
       @if $highlight {

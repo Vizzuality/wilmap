@@ -46,6 +46,12 @@ body {
   display: block;
 }
 
+// Reset input
+input,
+textarea {
+  border: 1px solid #e6e6e6;
+}
+
 
 .btn,
 .btn a,

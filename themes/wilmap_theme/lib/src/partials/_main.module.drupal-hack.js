@@ -88,19 +88,59 @@
       entriesFilterList: function() {
         var runON = '.view-list-entries .view-filters';
 
-        this.advancedChanges = [];
+        //Init
+        App.DrupalHack.entriesFilterList = {};
+        App.DrupalHack.entriesFilterList.advancedChanges = [];
+        App.DrupalHack.entriesFilterList.last_active_checkbox_in_advanced = false;
 
-        this.serializeForm = function() {
+        App.DrupalHack.entriesFilterList.checkLastActiveCheckbox = function() {
+          var out_total = $(runON + ' .views-exposed-form .form--advanced .content .advanced-tag[data-type="checkbox"]').length;
+          var in_total = $(runON + ' .views-exposed-form .form--modal .content-inner .form-item input[type="checkbox"]:checked').length;
+
+          if (in_total === 0 && out_total !== 0) {
+            App.DrupalHack.entriesFilterList.last_active_checkbox_in_advanced = true;
+          }
 
         }
 
-        this.updateAdvancedFilters = function() {
-          console.log('this.updateAdvancedFilters');
+        App.DrupalHack.entriesFilterList.autoSubmit = function() {
+          if(App.DrupalHack.entriesFilterList.last_active_checkbox_in_advanced) {
+            console.log('Recarga Form');
+
+            // Reload url for preventing bug of last item in advanced search.
+            $('body').after($('<div class="ajax-progress ajax-progress-fullscreen">&nbsp;</div>'));
+            location.href = App.DrupalHack.entriesFilterList.serializeForm();
+          } else {
+            console.log('Hace submit');
+
+            // Auto submit
+            $(runON + ' .views-exposed-form input.form-submit').click();
+          }
+        }
+
+        App.DrupalHack.entriesFilterList.serializeForm = function(href) {
+          var href = typeof href !== 'undefined' ? href : location.href.split('?')[0];
+          var serialize = $(runON + ' .views-exposed-form').serialize();
+          var out = href + '?' + serialize;
+
+          return out;
+        }
+
+        App.DrupalHack.entriesFilterList.updateAdvancedFilters = function() {
           var advancedDOM = runON + ' .views-exposed-form .form--advanced';
           var advancedContentDOM = advancedDOM + ' .content';
           var cont = 0;
 
+console.log('in updateAdvancedFilters');
+
+          // Check if is last active checkbox in advanced form
+          App.DrupalHack.entriesFilterList.checkLastActiveCheckbox();
+
+          // Reset contents
           $(advancedContentDOM).empty();
+          $(runON + ' .views-exposed-form .form--modal .content-inner details.form-item summary').text('NONE SELECTED');
+
+          // Update contents
           $(runON + ' .views-exposed-form .form--modal .content-inner .form-item input').each(function(item, value) {
             var v_text = "";
             var v_target = "";
@@ -124,6 +164,15 @@
                   v_text = $(value).parents('label').text();
                   v_target = $(value).attr('id');
                   v_type = $(value).attr('type');
+
+                  //update summary info in modal
+                  var summary_dom = $(this).parents('details.form-item').find('summary');
+                  var comma = (summary_dom.text() === 'NONE SELECTED') ? '':' - ';
+                  var output = (summary_dom.text() === 'NONE SELECTED') ? '':summary_dom.text();
+                  output = output + comma + v_text;
+
+                  $(this).parents('details.form-item').find('summary').text(output);
+
                   break;
                 }
               default:
@@ -140,13 +189,12 @@
           // Events
           $(advancedContentDOM + ' .advanced-tag a.delete').on('click', function(e){
             e.preventDefault();
-            //$(this).parent().remove();
+
             var type = $(this).parent().data('type');
             var target = $(this).parent().data('target')
-            var active_checkbox_in_advanced = $(advancedContentDOM + ' .advanced-tag[data-type="checkbox"]').length;
 
-            console.log('#'+target, type);
-            console.log($('#'+target).parent());
+            // console.log('#'+target, type);
+            // console.log($('#'+target).parent());
 
             switch (type) {
               case 'text':
@@ -161,30 +209,11 @@
                 break;
             }
 
+            // Update
+            App.DrupalHack.entriesFilterList.updateAdvancedFilters();
 
-            //
-            App.DrupalHack.methods.updateAdvancedFilters();
-
-
-            // if($(advancedContentDOM + ' .advanced-tag').length === 0) {
-            //   $(advancedDOM).hide();
-            // }
-
-console.log('despues total checkbox: ' + $(advancedContentDOM + ' .advanced-tag[data-type="checkbox"]').length);
-
-            if($(advancedContentDOM + ' .advanced-tag[data-type="checkbox"]').length === 0 && active_checkbox_in_advanced !== 0) {
-              // Reload url for preventing bug of last item in advanced search.
-              var href = location.href.split('?')[0];
-              var serialize = $(runON + ' .views-exposed-form').serialize();
-              var out = href + '?' + serialize;
-
-              $('body').after($('<div class="ajax-progress ajax-progress-fullscreen">&nbsp;</div>'));
-              location.href = out;
-            } else {
-              // Auto submit
-              $(runON + ' .views-exposed-form input.form-submit').click();
-            }
-
+            // Submit
+            App.DrupalHack.entriesFilterList.autoSubmit();
           });
 
           if(cont) {
@@ -198,7 +227,6 @@ console.log('despues total checkbox: ' + $(advancedContentDOM + ' .advanced-tag[
           if(!$(runON + ' .form--modal').length > 0) {
             $(runON + ' .views-exposed-form').append('<div id="modal-advanced-filter" class="form--modal modal"><div class="content"><a class="close switch" gumby-trigger="|#modal-advanced-filter">CLOSE</a><h3>Advanced - Search</h3><div class="content-inner"><div class="date-selectors"></div></div><div class="modal-actions"><a href="#" class="btn modal-done">APPLY</a></div></div></div>');
             $(runON + ' .views-exposed-form').append('<div class="form--advanced" style="display: none;"><fieldset><legend>Advanced filters:</legend></fieldset><div class="content"></div></div>');
-
 
             $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .form--inline > .js-form-item').remove().wrap());
             $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .form--inline > details.form-item').remove().wrap());
@@ -223,6 +251,11 @@ console.log('despues total checkbox: ' + $(advancedContentDOM + ' .advanced-tag[
             $(runON + '  .views-exposed-form .form--inline .form--filter .js-form-type-select').each(function(item, value){
               var label = $(this).find('label').text();
 
+              // Clone first option
+              $(this).find('select option:first').text('All');
+              $(this).find('select').prepend($(this).find('select option:first').clone());
+
+              // Label in option
               $(this).find('select option:first').text(label);
             });
           }
@@ -243,57 +276,62 @@ console.log('despues total checkbox: ' + $(advancedContentDOM + ' .advanced-tag[
           $(runON).addClass('__processed');
 
           setTimeout(function(){
-            App.DrupalHack.methods.updateAdvancedFilters();
+            // First Update
+            App.DrupalHack.entriesFilterList.updateAdvancedFilters();
           }, 100);
 
 
           // Events
           // checkboxes
-          $(runON + ' .views-exposed-form .form--modal .content-inner details .form-type-checkbox').on('click', function(){
-            var txt = '';
-            var output = '';
-
-            $(this).parents('.details-wrapper').find('.form-type-checkbox input:checked').each(function(i, value) {
-
-              var comma = (txt == '') ? '':' - ';
-              txt +=  comma + $(value).parent().text();
-            });
-
-
-            output = (txt == '')?'NONE SELECTED':txt;
-            $(this).parents('details.form-item').find('summary').text(output);
-
-            //
-            App.DrupalHack.methods.updateAdvancedFilters();
-          });
+          // $(runON + ' .views-exposed-form .form--modal .content-inner details .form-type-checkbox').on('click', function(){
+          //   var advancedContentDOM = runON + ' .views-exposed-form .form--advanced .content';
+          //   App.DrupalHack.entriesFilterList.active_checkbox_in_advanced = $(advancedContentDOM + ' .advanced-tag[data-type="checkbox"]').length;
+          //
+          //   // Update
+          //   App.DrupalHack.entriesFilterList.updateAdvancedFilters();
+          // });
 
           // Inputs
-          $(runON + ' .views-exposed-form .form--modal input.form-text').on('blur', function(t){
-            //
-            App.DrupalHack.methods.updateAdvancedFilters();
+          // $(runON + ' .views-exposed-form .form--modal input.form-text').on('blur', function(t){
+          //   // Update
+          //   App.DrupalHack.entriesFilterList.updateAdvancedFilters();
+          // });
+
+          // Selects
+          $(runON + '  .views-exposed-form .form--inline .form--filter select, ' + runON + '  .views-exposed-form .form--inline .form--sort select').on('change', function(t){
+            // aqui tendré que sincronizar la selección con el select de la modal
+
+            // Update
+            App.DrupalHack.entriesFilterList.updateAdvancedFilters();
+
+            // AutoSubmit
+            App.DrupalHack.entriesFilterList.autoSubmit();
           });
 
 
           // close modal button
           $(runON + ' .views-exposed-form .form--modal a.close').on('click', function(e){
             e.preventDefault();
+            console.log('cierra advanced');
           });
 
           // done button
           $(runON + ' .views-exposed-form .form--modal a.modal-done').on('click', function(e){
             e.preventDefault();
 
-            App.DrupalHack.methods.updateAdvancedFilters();
+            // Update
+            App.DrupalHack.entriesFilterList.updateAdvancedFilters();
+
+            // Close modal
             $(runON + ' .views-exposed-form .form--modal a.close').click();
-            $(runON + ' .views-exposed-form input.form-submit').click();
+
+            // AutoSubmit
+            App.DrupalHack.entriesFilterList.autoSubmit();
           });
 
           // submit
           $(runON + ' .views-exposed-form input.form-submit').on('click', function(e){
-            var href = location.href.split('?')[0];
-            var serialize = $(runON + ' .views-exposed-form').serialize();
-
-            var out = href + '?' + serialize;
+            var out = App.DrupalHack.entriesFilterList.serializeForm();
             console.log('SUBMIT -> ' + out);
 
             App.Utils.setBrowserURL(out);
@@ -303,8 +341,7 @@ console.log('despues total checkbox: ' + $(advancedContentDOM + ' .advanced-tag[
           $(runON + ' .views-exposed-form .form--bottom a#show-map').on('click', function(e){
             e.preventDefault();
 
-            var href = '/map?'
-            var serialize = $(runON + ' .views-exposed-form').serialize();
+            var serialize = App.DrupalHack.entriesFilterList.serializeForm('/map');
             var styles = ['blue','green','olive','bronze','maroon','purple','forest'];
 
             //add fromform, random style, title and desc
@@ -324,23 +361,22 @@ console.log('despues total checkbox: ' + $(advancedContentDOM + ' .advanced-tag[
             serialize = serialize.replace('sort_by=changed&','');
             serialize = serialize.replace('title=&','');
 
-            location.href = href + serialize;
+            location.href = serialize;
           });
 
           // pagination
           $('nav.pager .pager__item a').on('click', function(e){
-            var href = location.href.split('?')[0];
-            var serialize = $(runON + ' .views-exposed-form').serialize();
+            var serialize = App.DrupalHack.entriesFilterList.serializeForm();
             var page = $(this).attr('href').split('page=')[1];
 
-            var out = href + '?' + serialize + '&page=' + page;
+            var out = serialize + '&page=' + page;
             console.log('PAGINATION -> ' + out);
 
             App.Utils.setBrowserURL(out);
           });
-
-
         }
+
+        console.log(App.DrupalHack.entriesFilterList);
       },
 
       /**
@@ -599,7 +635,7 @@ console.log('despues total checkbox: ' + $(advancedContentDOM + ' .advanced-tag[
         // If page reload
         this.methods.contributorFilterList();
         this.methods.entriesFilterList();
-        this.methods.updateAdvancedFilters();
+        App.DrupalHack.entriesFilterList.updateAdvancedFilters();
       }
 
       // log

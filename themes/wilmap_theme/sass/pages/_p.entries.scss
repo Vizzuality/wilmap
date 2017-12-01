@@ -22,12 +22,15 @@
 .block-views-blocklist-entries-block-1 {
   &,
   &._switch-on {
-    @include entry(list, '.views-row');
     @include entry(grid, '.views-row');
   }
 
   &._switch-off {
     @include entry(list, '.views-row');
+
+    .views-row {
+      margin-left: 0;
+    }
   }
 
 
@@ -448,7 +451,8 @@
     }
   }
 
-  .field--name-field-tax-section {
+  .field--name-field-tax-section,
+  .field--name-field-tax-document-type {
     @include entry--taxonomy();
     @include trim();
 
@@ -504,13 +508,13 @@ article.node--type-entry.node--view-mode-full {
     }
   }
 
-  .field--name-field-tax-section {
-    @include entry--taxonomy();
-  }
-
-  .field--name-field-location-entry {
-    @include entry--location();
-  }
+  // .field--name-field-tax-section {
+  //   @include entry--taxonomy();
+  // }
+  //
+  // .field--name-field-location-entry {
+  //   @include entry--location();
+  // }
 
   .field--name-field-related-entries {
 

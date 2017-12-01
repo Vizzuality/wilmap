@@ -1820,8 +1820,8 @@ console.log('first_layer_load -> ' + first_layer_load);
             element: '.block-views-blocklist-entries-block-1',
             insert_dom: '.block-views-blocklist-entries-block-1 .view-filters form .form--bottom',
             insert_position: 'bottom', // top or bottom
-            strings: 'List|Grid',
-            default_active: 'off', //on is first position, off second position
+            strings: 'Grid|List',
+            default_active: 'on', //on is first position, off second position
           }
         ];
 
