@@ -123,7 +123,7 @@ $entry-gradient-dir:     180deg;
   // Structure wrapper
   @include content-listings-wrapper($structure, $break-margin) {
     @include column(14);
-    @include margin(null null $dp * 2 null);
+    @include margin(null null $dp * 2 0);
     @include clearfix();
     overflow: hidden;
 

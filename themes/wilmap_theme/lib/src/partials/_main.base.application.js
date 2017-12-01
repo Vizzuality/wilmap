@@ -1796,7 +1796,7 @@ console.log('first_layer_load -> ' + first_layer_load);
         if ($(dom).length > 0 && !$('#block-pagetitle .node-top').length > 0) {
           // country name
           var country = ($('body').hasClass('page-node-type-country')) ? $('.field--name-field-continent-country').text():$('.field--name-field-continent').text();
-          $('#block-pagetitle').prepend('<div class="node-top"><div class="field--name-field-tax-section">'+country+'</div></div>');
+          $('#block-pagetitle').prepend('<div class="node-top"><div class="field--name-field-location-entry">'+country+'</div></div>');
 
           // goto map
           $('#block-pagetitle').prepend('<a href="/map" class="btn">Go to Map</a>');

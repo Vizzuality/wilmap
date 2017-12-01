@@ -1663,6 +1663,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
 .block-views-blockentries-block-1 .views-row {
   width: 100%;
   margin-bottom: 20px;
+  margin-left: 0;
   *zoom: 1;
   overflow: hidden; }
   @media only screen and (max-width: 899px) {
@@ -1870,6 +1871,7 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
 .block-views-blockentries-block-1 .view-highlighted-entries .views-row {
   width: 100%;
   margin-bottom: 20px;
+  margin-left: 0;
   *zoom: 1;
   overflow: hidden; }
   @media only screen and (max-width: 899px) {
@@ -3781,6 +3783,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
 .block-views-blocklist-entries-block-1._switch-off .views-row {
   width: 100%;
   margin-bottom: 20px;
+  margin-left: 0;
   *zoom: 1;
   overflow: hidden; }
   @media only screen and (max-width: 899px) {
@@ -3831,8 +3834,6 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         height: 100px;
         width: 150%;
         z-index: 10; }
-.block-views-blocklist-entries-block-1._switch-off .views-row {
-  margin-left: 0; }
 .block-views-blocklist-entries-block-1 .view-filters {
   clear: both; }
   .block-views-blocklist-entries-block-1 .view-filters {
@@ -5666,6 +5667,7 @@ body.page-node-type-region #content-content {
     body.page-node-type-region #content-content section:not(.block-system-main-block) .views-row {
       width: 100%;
       margin-bottom: 20px;
+      margin-left: 0;
       *zoom: 1;
       overflow: hidden; }
       @media only screen and (max-width: 899px) {
@@ -6680,5 +6682,4 @@ body.user-logged-in .contextual-region .contextual .contextual-links a {
   body.user-logged-in .contextual-region .contextual .contextual-links a:hover {
     color: #000 !important;
     background: #f7fcff !important; }
-
 /*# sourceMappingURL=theme-pages.css.map */

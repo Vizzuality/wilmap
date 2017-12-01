@@ -27,10 +27,6 @@
 
   &._switch-off {
     @include entry(list, '.views-row');
-
-    .views-row {
-      margin-left: 0;
-    }
   }
 
 
@@ -450,7 +446,7 @@
     .field__label {
       display: none;
     }
-    
+
     &::after {
       display: none;
     }
