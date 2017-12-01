@@ -442,15 +442,6 @@
     @include position(absolute, -$dp null null 0);
   }
 
-  .field--name-field-location-entry,
-  .field--name-field-region.field--type-entity-reference {
-    @include entry--location();
-
-    .field__label {
-      display: none;
-    }
-  }
-
   .field--name-field-tax-section,
   .field--name-field-tax-document-type {
     @include entry--taxonomy();
@@ -459,8 +450,17 @@
     .field__label {
       display: none;
     }
-
+    
     &::after {
+      display: none;
+    }
+  }
+
+  .field--name-field-location-entry,
+  .field--name-field-region.field--type-entity-reference {
+    @include entry--location();
+
+    .field__label {
       display: none;
     }
   }

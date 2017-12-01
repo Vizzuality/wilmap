@@ -185,15 +185,16 @@ $entry-gradient-dir:     180deg;
         @include entry--date();
       }
 
-      .field--name-field-location-entry,
-      .field--name-field-region.field--type-entity-reference {
-        @include entry--location();
-      }
-
       .field--name-field-tax-section,
       .field--name-field-tax-document-type {
-        @include entry--taxonomy(true);
+        @include entry--taxonomy();
       }
+
+      .field--name-field-location-entry,
+      .field--name-field-region.field--type-entity-reference {
+        @include entry--location(true);
+      }
+
 
       @if $highlight {
         background-color: darken($topic-color-base, 10);
