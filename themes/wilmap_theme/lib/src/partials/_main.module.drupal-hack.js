@@ -12,6 +12,17 @@
     methods: {
 
       /**
+       * Beta
+       */
+      betaVersion: function() {
+        var runON = '.site-name';
+
+        if ($(runON).length > 0) {
+          $(runON).append('<span class="beta">Beta</span>');
+        }
+      },
+
+      /**
        * Contributor/s Field profiles
        */
       contributorFieldProfile: function() {
@@ -124,6 +135,10 @@
           var out = href + '?' + serialize;
 
           return out;
+        }
+
+        App.DrupalHack.entriesFilterList.closeAdvancedFilters = function() {
+
         }
 
         App.DrupalHack.entriesFilterList.updateAdvancedFilters = function() {

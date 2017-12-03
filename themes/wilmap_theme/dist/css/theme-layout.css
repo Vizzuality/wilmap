@@ -1528,6 +1528,17 @@ button.btn,
         @media only screen and (max-width: 899px) {
           .site-header .main-header .site-name a {
             padding: 22px 0 20px 0; } }
+      .site-header .main-header .site-name .beta {
+        position: absolute;
+        bottom: -17px;
+        left: 0;
+        font-size: 15px;
+        font-size: 0.9375rem;
+        line-height: 16.5px;
+        line-height: 1.03125rem;
+        font-weight: 700;
+        font-family: "Raleway", "Mplus 1p", sans-serif;
+        color: #968f7e; }
   .site-header .region-primary-menu {
     position: relative;
     top: 0;
@@ -2464,4 +2475,5 @@ article.node--view-mode-full > .node__content .node-body {
             float: left;
             margin-left: 0;
             width: 100%; } }
+
 /*# sourceMappingURL=theme-layout.css.map */

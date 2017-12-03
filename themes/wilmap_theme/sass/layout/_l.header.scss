@@ -209,6 +209,12 @@ $nav-item-bgcolor-active:               $white;
           padding: $dp * 2.2 0 $dp * 2 0;
         }
       }
+
+      .beta {
+        @include position(absolute, null null -17px 0);
+        @include font($normal - 1, 1.1, $bold, $body-font);
+        color: $fourth-color;
+      }
     }
 
     // Slogan

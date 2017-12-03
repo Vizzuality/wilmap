@@ -1829,8 +1829,11 @@ console.log('first_layer_load -> ' + first_layer_load);
 
         $.each( elementsSwitch, function( index, value ) {
           if ( $(value.element).length > 0 && $(value.insert_dom).length > 0 ) {
-            var active_off = (value.default_active === 'off')? 'class="_active" ' : '';
-            var active_on = (value.default_active === 'on')? 'class="_active" ' : '';
+            var re = new RegExp( "(" + switch_onoff + ")(\\w+)", "g" );
+            re = $(value.element).attr('class').match(re);
+            var curr_state = (re !== null)?re[0].split('-')[1]:value.default_active;
+            var active_on = (curr_state === 'on')? 'class="_active" ' : '';
+            var active_off = (curr_state === 'off')? 'class="_active" ' : '';
 
             outputHTML += '<div class="' + switch_class + '">';
             outputHTML += '<a href="#" ' + active_on + 'data-switch="on" data-target="' + value.element + '">' + value.strings.split('|')[0] + '</a>';
@@ -1846,7 +1849,9 @@ console.log('first_layer_load -> ' + first_layer_load);
               }
             }
 
-            $(value.element).addClass(switch_onoff + value.default_active);
+            if($(value.element).attr('class').indexOf(switch_onoff) === -1) {
+              $(value.element).addClass(switch_onoff + value.default_active);
+            }
           }
         });
 
