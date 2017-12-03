@@ -42,7 +42,7 @@ class ActiveContributors extends BlockBase {
       //the user must have the rol of contributor
       $query->join('user__roles','c','e.revision_uid = c.entity_id AND c.roles_target_id = :rol_user', array(':rol_user' => 'contributors')); 
          
-    $revision_uids = $query->execute()->fetchAllKeyed();
+    $revision_uids = $query->execute()->fetchAll();
     $keys = array_keys($revision_uids);
     
     $contributors = User::loadMultiple($keys);
