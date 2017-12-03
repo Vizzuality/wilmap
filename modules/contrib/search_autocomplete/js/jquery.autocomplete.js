@@ -343,7 +343,7 @@
       select: selectHandler,
       renderItem: renderItem,
       resizeMenu: resizeMenu,
-      minLength: 1,
+      minLength: 3,
       // Custom options, used by Drupal.autocomplete.
       firstCharacterBlacklist: '',
       forms: drupalSettings.search_autocomplete ? drupalSettings.search_autocomplete : []
