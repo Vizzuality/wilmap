@@ -166,7 +166,7 @@ function wilmap_theme_preprocess_views_view_fields(&$variables) {
 
     /*if($view->id() == 'contributors' && $bundle != 'country' && $bundle != 'region') {*/
     if($view->id() == 'contributors') {
-      $contributor_uid = intval(strip_tags($variables['fields']['uid']->content));
+      $contributor_uid = array_key_exists('uid',$variables['fields']) ? intval(strip_tags($variables['fields']['uid']->content)) : 0;
       $account = \Drupal\user\Entity\User::load($contributor_uid);
 
       $ranking_service = \Drupal::service('wilmap_contributors.ranking');
