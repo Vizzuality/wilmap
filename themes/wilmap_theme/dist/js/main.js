@@ -1286,7 +1286,8 @@ console.log('in updateAdvancedFilters');
         App.Application.Maps.Config.isPhone                     = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
         App.Application.Maps.Config.isTable                     = (App.Utils.isMobile.Tablet() || App.Utils.isMobile.Tablet( 'desktop' ));
         App.Application.Maps.Config.sidebar_offset_v            = 116;
-        App.Application.Maps.Config.sidebar_offset_h            = 15;
+        App.Application.Maps.Config.sidebar_offset_h            = 90;
+        App.Application.Maps.Config.sidebar_offset_h_tablet     = 15;
 
 
         App.Application.Maps.Functions.choropleth = function(color, currVal, minVal, maxVal, steps) {
@@ -1959,12 +1960,12 @@ console.log(App.Application.Maps);
               $(dom_sidebar).height('1000px');
               $(dom_sidebar).addClass('__hide');
             } else if(App.Application.Maps.Config.isTable){
-              $(dom).width($(window).width() - App.Application.Maps.Config.sidebar_offset_h);
+              $(dom).width($(window).width() - App.Application.Maps.Config.sidebar_offset_h_tablet);
               $(dom).height($(window).height() - $(dom_footer).height());
               $(dom_sidebar).height($(window).height() - $(dom_footer).height() - $(dom_header).height() - App.Application.Maps.Config.sidebar_offset_v);
               $(dom_sidebar).addClass('__hide');
             } else {
-              $(dom).width($(window).width() - $(dom_sidebar).width());
+              $(dom).width($(window).width() - $(dom_sidebar).width() + App.Application.Maps.Config.sidebar_offset_h);
               $(dom).height($(window).height() - $(dom_footer).height());
               $(dom_sidebar).height($(window).height() - $(dom_footer).height() - $(dom_header).height() - App.Application.Maps.Config.sidebar_offset_v);
               $(dom_sidebar).addClass('__hide');
@@ -2160,6 +2161,7 @@ console.log('first_layer_load -> ' + first_layer_load);
        */
       countryListMap: function() {
         var dom = 'body.node-map .ui-autocomplete';
+        var dom_search = 'body.node-map .site-header .search-block-form';
         var api = '/api/map/browse';
 
         // Init
@@ -2235,6 +2237,22 @@ console.log('first_layer_load -> ' + first_layer_load);
 
             // Events
             Gumby.init();
+
+            $(dom).on('mouseover', function (e) {
+              $(dom).addClass('__insearch').removeClass('__hide').removeClass('__calllist');
+              $(dom_search).addClass('active');
+
+              // hide google translator
+              App.DrupalHack.google_translator.show(false);
+            });
+
+            $(dom).on('mouseout', function (e) {
+              $(dom).addClass('__hide').removeClass('__insearch').removeClass('__calllist');
+              $(dom_search).removeClass('active');
+
+              // show google translator
+              App.DrupalHack.google_translator.show(true);
+            });
 
             $(dom + ' #back a').on('click', function (e) {
               var search_dom = '#block-searchform';

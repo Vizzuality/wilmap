@@ -17,6 +17,10 @@
     width: $dp * 10 !important;
   }
 
+  @include respond(all-phones) {
+    width: 100% !important;
+  }
+
   &::after {
     @include trim();
     @include position(absolute, $dp * 1.8 $dp * 3.5 null auto);
@@ -44,6 +48,10 @@
           opacity: 1;
         }
       }
+    }
+
+    @include respond(all-phones) {
+      width: 100% !important;
     }
 
   }
@@ -306,6 +314,7 @@ body.node-map {
   }
 
   .ui-autocomplete.ui-widget.ui-widget-content {
+    @include transition(all .3s ease);
     display: block !important;
     background: $third-color;
 
@@ -321,6 +330,8 @@ body.node-map {
     }
 
     &.__hide {
+      right: -90px !important;
+
       @include respond(tablets) {
         right: -270px !important;
       }
@@ -349,6 +360,8 @@ body.node-map {
     }
 
     &.__insearch {
+      right: 0px !important;
+
       @include respond(tablets) {
         right: 0px !important;
       }

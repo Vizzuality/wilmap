@@ -109,7 +109,13 @@ body.node-map {
     }
 
     .country-list-item {
-      text-align: center;
+      text-align: left;
+      padding-left: $dp * 2;
+
+      @include respond(all-phones) {
+        text-align: center;
+        padding-left: 0;
+      }
 
       a {
         @include font($normal, 1, $regular, $body-font);
