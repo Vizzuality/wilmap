@@ -116,6 +116,7 @@
           @include trim();
           @include padding($dp - 2 $dp * 1.28);
           @include fs(15px);
+          @include icon-change('icon-down-open-big', before);
           border: 1px solid $hr-color;
           background-color: $second-color;
           color: $first-color;
@@ -127,7 +128,7 @@
 
         &.active {
           i {
-            @include icon-change('icon-down-open-big', before);
+            @include icon-change('icon-up-open-big', before);
           }
         }
       }

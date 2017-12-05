@@ -619,14 +619,87 @@ console.log('in updateAdvancedFilters');
       google_translator: function() {
         var dom = '#block-googletranslate';
         var dom_google = '#google_translate_element';
+        var dom_google_picker = dom + ' .picker';
+        var dom_google_select = dom_google + ' select.goog-te-combo';
+
+        //Init
+        App.DrupalHack.google_translator = {};
+        App.DrupalHack.google_translator.show = function(arg) {
+          if (arg === true) {
+            $(dom).removeClass('__hide').addClass('__show');
+          } else {
+            $(dom).removeClass('__show').addClass('__hide');
+          }
+        };
+
+        App.DrupalHack.google_translator.setData = function(arg) {
+          var classes = ['__small', '__big'];
+          var select_text = '';
+          var original_text = '';
+          var option = '';
+          var out = false;
+
+          if (arg === '') {
+            option = $(dom_google_select + ' option:first-child');
+            select_text = 'eng';
+            original_text = 'language';
+            out = classes[0];
+          } else {
+            option = $(dom_google_select + ' option[value="' + arg + '"]');
+            select_text = option.text().substring(0, 3);
+            original_text = option.text();
+            out = classes[0];
+          }
+
+          $(option).attr('data-original', original_text).text(select_text);
+
+          return out;
+        };
 
         if($(dom).length > 0) {
+          $(dom_google).wrap('<div class="picker"></div>');
+
           setTimeout(function(){
             if($(dom_google).length > 0) {
-              console.log('hack google trans ' + $(dom_google + ' .goog-te-menu-value span').first().text());
-              $(dom_google + ' .goog-te-menu-value span').first().text('ENG');
+              var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':google.translate.TranslateElement().c;
+              var css_class = App.DrupalHack.google_translator.setData(idlang);
+
+              $(dom_google_picker).addClass(css_class);
+              $(dom).addClass('__processed').addClass('__show');
+
+              //Event
+              $(dom_google_select).on('focus', function(){
+                var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':google.translate.TranslateElement().c;
+                var option = (idlang === '')?$(dom_google_select + ' option:first-child'):$(dom_google_select + ' option[value="' + idlang + '"]');
+
+                option.text(option.data('original'));
+
+                $(dom_google_picker).removeClass('__small').addClass('__big');
+              });
+
+              $(dom_google_select).on('blur', function(e){
+                var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':google.translate.TranslateElement().c;
+                var option = (idlang === '')?$(dom_google_select + ' option:first-child'):$(dom_google_select + ' option[value="' + idlang + '"]');
+
+                if(idlang === '') {
+                  option.text('eng');
+                } else {
+                  option.text(option.data('original').substring(0, 3));
+                }
+
+                $(dom_google_picker).removeClass('__big').addClass('__small');
+              });
+
+              $(dom_google_select).on('change', function(e){
+                setTimeout(function(){
+                  var idlang = google.translate.TranslateElement().c;
+                  var css_class = App.DrupalHack.google_translator.setData(idlang);
+
+                  $(dom_google_picker).removeClass('__small').removeClass('__big').addClass(css_class);
+                }, 2000);
+              });
             }
-          }, 10000);
+          }, 5000);
         }
 
       }

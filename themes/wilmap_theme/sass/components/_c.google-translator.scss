@@ -5,25 +5,87 @@
 // ============================================================================
 
 #block-googletranslate {
-  @include position(absolute, 13px 365px null auto);
+  @include hide-before-dom-alter();
+
+  &.__show {
+    display: block;
+  }
+
+  &.__hide {
+    display: none;
+  }
+
+  @include position(absolute, 8px 265px null auto);
   z-index: 10;
 
   @include respond(tablets) {
-    @include position(absolute, 13px 70px null auto);
+    @include position(absolute, 8px 70px null auto);
   }
 
   @include respond(all-phones) {
-    @include position(absolute, 18px 110px null auto);
+    @include position(absolute, 14px 110px null auto);
   }
 
   .text-formatted {
     @include trim();
   }
+
+  .picker {
+    @include transition(all .3s ease);
+    @include bg-image ($img-path + 'te_ctrl3.gif', 84px, 19px);
+    background-position: -65px 48%;
+
+    &.__big {
+      width: 140px;
+      padding: $dp - 2 $dp * 5 $dp - 2 $dp * 2.5;
+      background-color: $white;
+      border-left: 10px solid $white;
+
+      @include respond(tablets) {
+        width: 160px;
+      }
+
+      @include respond(all-phones) {
+        width: 160px;
+      }
+    }
+
+    &.__small {
+      width: 85px;
+      padding: $dp - 2 $dp * 3 $dp - 2 $dp * 2.5;
+      background-color: transparent;
+      border-left: none;
+    }
+
+    &::before {
+      display: none;
+
+      @include respond(tablets) {
+        display: none;
+      }
+
+      @include respond(all-tablets) {
+        display: none;
+      }
+    }
+
+    &::after {
+      background-color: transparent;
+      top: 6px;
+      color: $fourth-color;
+    }
+  }
 }
 
 #google_translate_element {
-  .goog-te-menu-value span {
-    &:first-child {
+  .goog-te-gadget {
+    @include font(0px, 1, $regular, $heading-font);
+
+    > span {
+      display: none;
+    }
+
+    select.goog-te-combo {
       @include font($normal, 1, $regular, $heading-font);
       letter-spacing: 0.9px;
       display: inline-block;
@@ -31,20 +93,6 @@
       text-transform: uppercase !important;
       color: $first-color;
     }
-
-    border: none !important;
-    text-decoration: none !important;
-  }
-
-  .goog-te-gadget-simple {
-    background-color: #fff !important;
-    font-size: 10pt;
-    display: inline-block;
-    padding-top: 1px;
-    padding-bottom: 2px;
-    cursor: pointer;
-    zoom: 1;
-    border: none !important;
   }
 }
 

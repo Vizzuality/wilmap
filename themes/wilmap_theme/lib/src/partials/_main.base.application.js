@@ -44,11 +44,17 @@
             $(dom).addClass('active');
             $(bgseparator).addClass('active');
             $(dom_autocomplete).removeClass('__kill');
+
+            // hide google translator
+            App.DrupalHack.google_translator.show(false);
           });
 
           $(dom + ' input[type="search"]').on('blur', function() {
             $(dom).removeClass('active');
             $(bgseparator).removeClass('active');
+
+            // show google translator
+            App.DrupalHack.google_translator.show(true);
           });
         }
       },
@@ -193,7 +199,7 @@
               var checked = (layer_in_url && layer_in_url == val.nid[0].value)? ' checked':'';
 
               output_layers += '<li class="layer-item field">';
-              output_layers += '<label class="checkbox" for="layer-item-'+key+'" data-layerid="'+val.nid[0].value+'" data-layer-style="'+val.field_style[0].value+'" data-layer-title="'+val.title[0].value+'" data-layer-desc="'+val.body[0].value+'"><input type="checkbox" id="layer-item-'+key+'" name="layer-item[]" value="'+val.nid[0].value+'"' + checked + '><span></span> '+val.title[0].value+'</label>';
+              output_layers += '<label class="checkbox" for="layer-item-'+key+'" data-layerid="'+val.nid[0].value+'" data-layer-style="'+val.field_style[0].value+'" data-layer-title="'+App.Utils.CleanHTML(val.title[0].value)+'" data-layer-desc="'+App.Utils.CleanHTML(val.body[0].value)+'"><input type="checkbox" id="layer-item-'+key+'" name="layer-item[]" value="'+val.nid[0].value+'"' + checked + '><span></span> '+val.title[0].value+'</label>';
               output_layers += '</li>';
             });
             output_layers += '</ul>';
@@ -207,8 +213,8 @@
               output += '         <section>';
               output += output_layers;
               output += '         </section>';
-              output += '         <div class="modal-actions"><a href="#" class="btn modal-done">APPLY</a></div>';
               output += '      </div>';
+              output += '      <div class="modal-actions"><a href="#" class="btn modal-done">APPLY</a></div>';
               output += '  </div>';
               output += '</div>';
 
@@ -1064,10 +1070,16 @@ console.log('first_layer_load -> ' + first_layer_load);
                   $(search_dom).addClass('active');
                   $(dom).addClass('__insearch').removeClass('__hide').removeClass('__calllist');
                   $(dom + ' #back a i').removeClass('icon-left-open-big').addClass('icon-right-open-big');
+
+                  // hide google translator
+                  App.DrupalHack.google_translator.show(false);
                 } else {
                   $(search_dom).removeClass('active');
                   $(dom).addClass('__hide').removeClass('__insearch').removeClass('__calllist');
                   $(dom + ' #back a i').removeClass('icon-right-open-big').addClass('icon-left-open-big');
+
+                  // show google translator
+                  App.DrupalHack.google_translator.show(true);
                 }
               } else {
                 $(search_dom).removeClass('active');
@@ -1212,6 +1224,9 @@ console.log('first_layer_load -> ' + first_layer_load);
               $(dom + ' input[type="text"]').on('focus', function() {
                 $(dom).addClass('active');
                 $(dom_autocomplete).removeClass('__kill').removeClass('__hide').addClass('__insearch');
+
+                // hide google translator
+                App.DrupalHack.google_translator.show(false);
               });
 
               $(dom + ' input[type="text"]').on('blur', function() {
@@ -1220,6 +1235,9 @@ console.log('first_layer_load -> ' + first_layer_load);
                 $(this).val('');
                 $(dom).removeClass('active');
                 $(dom_autocomplete).removeClass('__insearch').addClass('__hide');
+
+                // show google translator
+                App.DrupalHack.google_translator.show(true);
               });
             }
           }
@@ -1474,9 +1492,15 @@ console.log('first_layer_load -> ' + first_layer_load);
             if($(dom).hasClass('active')){
               $(dom).removeClass('active');
               $(dom + ' span.str').text('Menu');
+
+              // show google translator
+              App.DrupalHack.google_translator.show(true);
             } else {
               $(dom).addClass('active');
               $(dom + ' span.str').text('Close');
+
+              // hide google translator
+              App.DrupalHack.google_translator.show(false);
 
               //If list map is open
               if(!$(dom_list_countries).hasClass('__hide')){
@@ -1562,14 +1586,15 @@ console.log('first_layer_load -> ' + first_layer_load);
           sidemenu += '    <div>';
           sidemenu += '      <div class="view view-continent">';
           sidemenu += '        <div class="view-content">';
-          sidemenu += '          <div class="views-row"><a class="skip" gumby-duration="600" gumby-goto="top" href="#">Description</a></div>';
+          sidemenu += '          <div class="views-row"><a class="skip" gumby-duration="600" gumby-goto="top" href="#" gumby-update>Description</a></div>';
 
           $(dom_entries + ' h3').each(function(i, item) {
             var offset = (isPhone)?'-10':'-140';
             var slug = App.Utils.Slugify($(this).text());
 
             $(this).addClass('country-block-title').attr('id','entry-block-' + slug);
-            sidemenu += '          <div class="views-row"><a class="skip" gumby-offset="' + offset + '" gumby-duration="600" gumby-goto="#entry-block-' + slug + '" href="#entry-block-' + slug + '">' + $(this).text() + '</a></div>';
+
+            sidemenu += '          <div class="views-row"><a class="skip" gumby-offset="' + offset + '" gumby-duration="600" gumby-goto="#entry-block-' + slug + '" href="#entry-block-' + slug + '" gumby-update>' + $(this).text() + '</a></div>';
 
             count++;
           });

@@ -151,17 +151,28 @@
         .toString()
         .trim()
         .toLowerCase()
-        .replace(/\s+/g, "-")
-        .replace(/\-\-+/g, "-")
-        .replace(/^-+/, "")
-        .replace(/-+$/, "")
-        .replace(/[àáâãäåąæā]/g,"a")
-        .replace(/[èéêēëėę]/g,"e")
-        .replace(/[íïìîįī]/g,"i")
-        .replace(/[óºòöôõøœō]/g,"o")
-        .replace(/[úüùûū]/g,"u")
-        .replace(/[ç,ć,č]/g,"c")
-        .replace(/[^\w\-]+/g, "");
+        .replace(/\s+/g, '-')
+        .replace(/\-\-+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '')
+        .replace(/[àáâãäåąæā]/g,'a')
+        .replace(/[èéêēëėę]/g,'e')
+        .replace(/[íïìîįī]/g,'i')
+        .replace(/[óºòöôõøœō]/g,'o')
+        .replace(/[úüùûū]/g,'u')
+        .replace(/[ç,ć,č]/g,'c')
+        .replace(/[^\w\-]+/g, '');
+    },
+
+    /**
+    * Clean HTML Function
+    */
+    CleanHTML: function( arg ) {
+      return arg
+        .toString()
+        .trim()
+        .replace(/<[^>]*>?/g, '')
+        .replace(/"/g, '\'');
     },
 
     /**

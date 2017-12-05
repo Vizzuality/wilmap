@@ -279,7 +279,7 @@ $nav-item-bgcolor-active:               $white;
     overflow: hidden;
 
     @include respond(tablets) {
-      @include position(absolute, (-$dp * 2) (-$dp * 2) null null);
+      @include position(absolute, (-$dp * 2.3) (-$dp * 2) null null);
       width: $dp * 30;
     }
 

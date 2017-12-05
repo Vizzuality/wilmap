@@ -28,6 +28,10 @@
           @include icon-insert('icon-share', after);
           display: block;
 
+          &::before {
+            content: '';
+          }
+
           &::after {
             @include trim();
             @include position(absolute, 2px null null 4px);

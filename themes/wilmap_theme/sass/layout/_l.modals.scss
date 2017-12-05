@@ -73,6 +73,23 @@ $modal-close-bg-button:                 $fifth-color;
       }
     }
 
+    .content-inner {
+      @include image-overlay(rgba($modal-window-color, 1), rgba($modal-window-color, 0), 1, 180deg, sticky);
+      padding-bottom: $dp * 3;
+
+      &::before {
+        content:'';
+        display: block;
+        width: 100%;
+        height: 20px;
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        margin-left: 0;
+      }
+    }
+
     .close {
       @include button-second();
       position: absolute;
@@ -83,10 +100,28 @@ $modal-close-bg-button:                 $fifth-color;
     }
 
     .modal-actions {
-      @include padding(null null $dp * 2 null);
       @include position(absolute, auto null 0 0);
+      @include padding($dp / 2 null $dp * 2 null);
+      @include image-overlay(rgba($modal-window-color, 0), rgba($modal-window-color, 1), 1, 180deg, absolute);
       text-align: center;
       width: 100%;
+      background-color: $white;
+
+      &::before {
+        content:'';
+        display: block;
+        width: 100%;
+        height: 30px;
+        position: absolute;
+        top: -30px;
+        left: 0;
+        z-index: 10;
+        margin-left: 0;
+      }
+
+      .site-btn {
+        @include margin(0);
+      }
     }
   }
 }

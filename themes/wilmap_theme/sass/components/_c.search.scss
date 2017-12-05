@@ -10,6 +10,7 @@
   @include icon-insert('icon-search', after);
   padding: $dp $dp * 3 $dp - 3 $dp * 2 !important;
   background: none;
+  width: $dp * 26 !important;
 
   @include respond(tablets) {
     @include box-shadow(rgba(255, 255, 255, 0) -5px -20px 20px 1px);
@@ -30,6 +31,7 @@
 
   &.active {
     background: $white;
+    width: $dp * 35 !important;
 
     @include respond(tablets) {
       @include position(absolute, (-$dp * 2.5) 0 null null);

@@ -101,7 +101,7 @@ $responsivenav-menuitem-height: $dp * 6;
         }
 
         &.__active {
-          @include red-caps-link();
+          // @include red-caps-link();
           color: $color-on;
           text-decoration: none;
           text-align: left;
@@ -109,14 +109,14 @@ $responsivenav-menuitem-height: $dp * 6;
           border-bottom: none;
 
           @include respond(tablets) {
-            @include margin(null null $dp * 2 null);
+            // @include margin(null null $dp * 2 null);
             text-align: left;
             border-right: $line-weight solid $color-on;
             border-bottom: none;
           }
 
           @include respond(all-phones) {
-            @include margin(null null $dp * 2 null);
+            // @include margin(null null $dp * 2 null);
             text-align: center;
             border-right: none;
             border-bottom: $line-weight solid $color-on;

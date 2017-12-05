@@ -79,6 +79,13 @@ article.node--type-topics.node--view-mode-full {
   @include entry(list, '.views-row');
 
   .view-highlighted-entries {
+    @include clearfix();
+    position: relative;
+    display: block;
+    clear:both;
+    float: none;
+    overflow: hidden;
+
     h3.country-block-title {
       @include margin($dp * 2 null null null);
       @include padding($dp * 2 null null null);
@@ -86,5 +93,14 @@ article.node--type-topics.node--view-mode-full {
     }
 
     @include entry(list, '.views-row', false, true);
+  }
+
+  .views-row {
+    @include clearfix();
+    position: relative;
+    display: block;
+    clear:both;
+    float: none;
+    overflow: hidden;
   }
 }

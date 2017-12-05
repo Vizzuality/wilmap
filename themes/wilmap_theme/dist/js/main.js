@@ -162,17 +162,28 @@
         .toString()
         .trim()
         .toLowerCase()
-        .replace(/\s+/g, "-")
-        .replace(/\-\-+/g, "-")
-        .replace(/^-+/, "")
-        .replace(/-+$/, "")
-        .replace(/[àáâãäåąæā]/g,"a")
-        .replace(/[èéêēëėę]/g,"e")
-        .replace(/[íïìîįī]/g,"i")
-        .replace(/[óºòöôõøœō]/g,"o")
-        .replace(/[úüùûū]/g,"u")
-        .replace(/[ç,ć,č]/g,"c")
-        .replace(/[^\w\-]+/g, "");
+        .replace(/\s+/g, '-')
+        .replace(/\-\-+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '')
+        .replace(/[àáâãäåąæā]/g,'a')
+        .replace(/[èéêēëėę]/g,'e')
+        .replace(/[íïìîįī]/g,'i')
+        .replace(/[óºòöôõøœō]/g,'o')
+        .replace(/[úüùûū]/g,'u')
+        .replace(/[ç,ć,č]/g,'c')
+        .replace(/[^\w\-]+/g, '');
+    },
+
+    /**
+    * Clean HTML Function
+    */
+    CleanHTML: function( arg ) {
+      return arg
+        .toString()
+        .trim()
+        .replace(/<[^>]*>?/g, '')
+        .replace(/"/g, '\'');
     },
 
     /**
@@ -889,14 +900,87 @@ console.log('in updateAdvancedFilters');
       google_translator: function() {
         var dom = '#block-googletranslate';
         var dom_google = '#google_translate_element';
+        var dom_google_picker = dom + ' .picker';
+        var dom_google_select = dom_google + ' select.goog-te-combo';
+
+        //Init
+        App.DrupalHack.google_translator = {};
+        App.DrupalHack.google_translator.show = function(arg) {
+          if (arg === true) {
+            $(dom).removeClass('__hide').addClass('__show');
+          } else {
+            $(dom).removeClass('__show').addClass('__hide');
+          }
+        };
+
+        App.DrupalHack.google_translator.setData = function(arg) {
+          var classes = ['__small', '__big'];
+          var select_text = '';
+          var original_text = '';
+          var option = '';
+          var out = false;
+
+          if (arg === '') {
+            option = $(dom_google_select + ' option:first-child');
+            select_text = 'eng';
+            original_text = 'language';
+            out = classes[0];
+          } else {
+            option = $(dom_google_select + ' option[value="' + arg + '"]');
+            select_text = option.text().substring(0, 3);
+            original_text = option.text();
+            out = classes[0];
+          }
+
+          $(option).attr('data-original', original_text).text(select_text);
+
+          return out;
+        };
 
         if($(dom).length > 0) {
+          $(dom_google).wrap('<div class="picker"></div>');
+
           setTimeout(function(){
             if($(dom_google).length > 0) {
-              console.log('hack google trans ' + $(dom_google + ' .goog-te-menu-value span').first().text());
-              $(dom_google + ' .goog-te-menu-value span').first().text('ENG');
+              var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':google.translate.TranslateElement().c;
+              var css_class = App.DrupalHack.google_translator.setData(idlang);
+
+              $(dom_google_picker).addClass(css_class);
+              $(dom).addClass('__processed').addClass('__show');
+
+              //Event
+              $(dom_google_select).on('focus', function(){
+                var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':google.translate.TranslateElement().c;
+                var option = (idlang === '')?$(dom_google_select + ' option:first-child'):$(dom_google_select + ' option[value="' + idlang + '"]');
+
+                option.text(option.data('original'));
+
+                $(dom_google_picker).removeClass('__small').addClass('__big');
+              });
+
+              $(dom_google_select).on('blur', function(e){
+                var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':google.translate.TranslateElement().c;
+                var option = (idlang === '')?$(dom_google_select + ' option:first-child'):$(dom_google_select + ' option[value="' + idlang + '"]');
+
+                if(idlang === '') {
+                  option.text('eng');
+                } else {
+                  option.text(option.data('original').substring(0, 3));
+                }
+
+                $(dom_google_picker).removeClass('__big').addClass('__small');
+              });
+
+              $(dom_google_select).on('change', function(e){
+                setTimeout(function(){
+                  var idlang = google.translate.TranslateElement().c;
+                  var css_class = App.DrupalHack.google_translator.setData(idlang);
+
+                  $(dom_google_picker).removeClass('__small').removeClass('__big').addClass(css_class);
+                }, 2000);
+              });
             }
-          }, 10000);
+          }, 5000);
         }
 
       }
@@ -1134,11 +1218,17 @@ console.log('in updateAdvancedFilters');
             $(dom).addClass('active');
             $(bgseparator).addClass('active');
             $(dom_autocomplete).removeClass('__kill');
+
+            // hide google translator
+            App.DrupalHack.google_translator.show(false);
           });
 
           $(dom + ' input[type="search"]').on('blur', function() {
             $(dom).removeClass('active');
             $(bgseparator).removeClass('active');
+
+            // show google translator
+            App.DrupalHack.google_translator.show(true);
           });
         }
       },
@@ -1283,7 +1373,7 @@ console.log('in updateAdvancedFilters');
               var checked = (layer_in_url && layer_in_url == val.nid[0].value)? ' checked':'';
 
               output_layers += '<li class="layer-item field">';
-              output_layers += '<label class="checkbox" for="layer-item-'+key+'" data-layerid="'+val.nid[0].value+'" data-layer-style="'+val.field_style[0].value+'" data-layer-title="'+val.title[0].value+'" data-layer-desc="'+val.body[0].value+'"><input type="checkbox" id="layer-item-'+key+'" name="layer-item[]" value="'+val.nid[0].value+'"' + checked + '><span></span> '+val.title[0].value+'</label>';
+              output_layers += '<label class="checkbox" for="layer-item-'+key+'" data-layerid="'+val.nid[0].value+'" data-layer-style="'+val.field_style[0].value+'" data-layer-title="'+App.Utils.CleanHTML(val.title[0].value)+'" data-layer-desc="'+App.Utils.CleanHTML(val.body[0].value)+'"><input type="checkbox" id="layer-item-'+key+'" name="layer-item[]" value="'+val.nid[0].value+'"' + checked + '><span></span> '+val.title[0].value+'</label>';
               output_layers += '</li>';
             });
             output_layers += '</ul>';
@@ -1297,8 +1387,8 @@ console.log('in updateAdvancedFilters');
               output += '         <section>';
               output += output_layers;
               output += '         </section>';
-              output += '         <div class="modal-actions"><a href="#" class="btn modal-done">APPLY</a></div>';
               output += '      </div>';
+              output += '      <div class="modal-actions"><a href="#" class="btn modal-done">APPLY</a></div>';
               output += '  </div>';
               output += '</div>';
 
@@ -2154,10 +2244,16 @@ console.log('first_layer_load -> ' + first_layer_load);
                   $(search_dom).addClass('active');
                   $(dom).addClass('__insearch').removeClass('__hide').removeClass('__calllist');
                   $(dom + ' #back a i').removeClass('icon-left-open-big').addClass('icon-right-open-big');
+
+                  // hide google translator
+                  App.DrupalHack.google_translator.show(false);
                 } else {
                   $(search_dom).removeClass('active');
                   $(dom).addClass('__hide').removeClass('__insearch').removeClass('__calllist');
                   $(dom + ' #back a i').removeClass('icon-right-open-big').addClass('icon-left-open-big');
+
+                  // show google translator
+                  App.DrupalHack.google_translator.show(true);
                 }
               } else {
                 $(search_dom).removeClass('active');
@@ -2302,6 +2398,9 @@ console.log('first_layer_load -> ' + first_layer_load);
               $(dom + ' input[type="text"]').on('focus', function() {
                 $(dom).addClass('active');
                 $(dom_autocomplete).removeClass('__kill').removeClass('__hide').addClass('__insearch');
+
+                // hide google translator
+                App.DrupalHack.google_translator.show(false);
               });
 
               $(dom + ' input[type="text"]').on('blur', function() {
@@ -2310,6 +2409,9 @@ console.log('first_layer_load -> ' + first_layer_load);
                 $(this).val('');
                 $(dom).removeClass('active');
                 $(dom_autocomplete).removeClass('__insearch').addClass('__hide');
+
+                // show google translator
+                App.DrupalHack.google_translator.show(true);
               });
             }
           }
@@ -2564,9 +2666,15 @@ console.log('first_layer_load -> ' + first_layer_load);
             if($(dom).hasClass('active')){
               $(dom).removeClass('active');
               $(dom + ' span.str').text('Menu');
+
+              // show google translator
+              App.DrupalHack.google_translator.show(true);
             } else {
               $(dom).addClass('active');
               $(dom + ' span.str').text('Close');
+
+              // hide google translator
+              App.DrupalHack.google_translator.show(false);
 
               //If list map is open
               if(!$(dom_list_countries).hasClass('__hide')){
@@ -2652,14 +2760,15 @@ console.log('first_layer_load -> ' + first_layer_load);
           sidemenu += '    <div>';
           sidemenu += '      <div class="view view-continent">';
           sidemenu += '        <div class="view-content">';
-          sidemenu += '          <div class="views-row"><a class="skip" gumby-duration="600" gumby-goto="top" href="#">Description</a></div>';
+          sidemenu += '          <div class="views-row"><a class="skip" gumby-duration="600" gumby-goto="top" href="#" gumby-update>Description</a></div>';
 
           $(dom_entries + ' h3').each(function(i, item) {
             var offset = (isPhone)?'-10':'-140';
             var slug = App.Utils.Slugify($(this).text());
 
             $(this).addClass('country-block-title').attr('id','entry-block-' + slug);
-            sidemenu += '          <div class="views-row"><a class="skip" gumby-offset="' + offset + '" gumby-duration="600" gumby-goto="#entry-block-' + slug + '" href="#entry-block-' + slug + '">' + $(this).text() + '</a></div>';
+
+            sidemenu += '          <div class="views-row"><a class="skip" gumby-offset="' + offset + '" gumby-duration="600" gumby-goto="#entry-block-' + slug + '" href="#entry-block-' + slug + '" gumby-update>' + $(this).text() + '</a></div>';
 
             count++;
           });

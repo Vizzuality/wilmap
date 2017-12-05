@@ -149,16 +149,6 @@
               width: 100%;
             }
           }
-
-          .modal-actions {
-            @include position(absolute, auto null $dp * 2 0);
-            width: 100%;
-            text-align: center;
-
-            .site-btn {
-              @include margin(0);
-            }
-          }
         }
       }
 
@@ -219,6 +209,10 @@
           @include clearfix();
           display: block;
           clear:both;
+
+          @include respond(all-phones) {
+            @include padding($dp);
+          }
 
           >.form-checkboxes {
 
@@ -322,10 +316,12 @@
       @include clearfix();
 
       .js-form-type-textfield {
+        @include position(relative, 0 null null null);
         @include column(7, false, collapse, false);
 
         @include respond(tablets) {
-          width: columns(4);
+          top: -32px;
+          width: columns(4.1);
         }
 
         label {
@@ -336,9 +332,13 @@
           display: inline-block;
           min-height: $dp * 2;
 
+          @include respond(tablets) {
+            top: $dp;
+          }
         }
 
         .form-text {
+          @include position(relative, 0 null null null);
           display: inline-block;
           width: 70%;
           border-top: none;
@@ -346,6 +346,7 @@
           border-right: none;
 
           @include respond(tablets) {
+            padding: 10px 0px !important;
             width: 100%;
           }
 
