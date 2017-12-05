@@ -777,6 +777,7 @@ console.log(App.Application.Maps);
           if (App.Application.Maps.Config.is_embed) {
             $(dom).width('100%');
             $(dom).height($(window).height());
+            $(dom).addClass('__embed');
           } else {
             if (App.Application.Maps.Config.isPhone) {
               $(dom).width($(window).width());
