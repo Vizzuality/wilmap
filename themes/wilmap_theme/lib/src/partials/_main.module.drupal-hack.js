@@ -702,7 +702,7 @@ console.log('in updateAdvancedFilters');
           }, 5000);
         }
 
-      }
+      },
 
     },
 

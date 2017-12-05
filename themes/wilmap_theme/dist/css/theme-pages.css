@@ -1609,8 +1609,9 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       .block-views-blockentries-block-1 .node .field--name-field-tax-section a:hover,
       .block-views-blockentries-block-1 .node .field--name-field-tax-document-type a:hover {
         text-decoration: underline; }
-  .block-views-blockentries-block-1 .node .field--name-field-location-entry,
-  .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference {
+  .block-views-blockentries-block-1 .node .locations .field--name-field-location-entry,
+  .block-views-blockentries-block-1 .node .locations .field--name-field-region.field--type-entity-reference,
+  .block-views-blockentries-block-1 .node .locations .field-transnational {
     font-size: 16px;
     font-size: 1rem;
     line-height: 16px;
@@ -1623,8 +1624,9 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
     z-index: 10;
     margin-bottom: 20px; }
     @media only screen and (min-width: 900px) and (max-width: 1124px) {
-      .block-views-blockentries-block-1 .node .field--name-field-location-entry,
-      .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference {
+      .block-views-blockentries-block-1 .node .locations .field--name-field-location-entry,
+      .block-views-blockentries-block-1 .node .locations .field--name-field-region.field--type-entity-reference,
+      .block-views-blockentries-block-1 .node .locations .field-transnational {
         font-size: 13px;
         font-size: 0.8125rem;
         line-height: 13px;
@@ -1632,19 +1634,22 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
         font-weight: 600;
         font-family: "Raleway", "Mplus 1p", sans-serif; } }
     @media only screen and (max-width: 899px) {
-      .block-views-blockentries-block-1 .node .field--name-field-location-entry,
-      .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference {
+      .block-views-blockentries-block-1 .node .locations .field--name-field-location-entry,
+      .block-views-blockentries-block-1 .node .locations .field--name-field-region.field--type-entity-reference,
+      .block-views-blockentries-block-1 .node .locations .field-transnational {
         font-size: 13px;
         font-size: 0.8125rem;
         line-height: 13px;
         line-height: 0.8125rem;
         font-weight: 700;
         font-family: "Raleway", "Mplus 1p", sans-serif; } }
-    .block-views-blockentries-block-1 .node .field--name-field-location-entry:hover,
-    .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference:hover {
+    .block-views-blockentries-block-1 .node .locations .field--name-field-location-entry:hover,
+    .block-views-blockentries-block-1 .node .locations .field--name-field-region.field--type-entity-reference:hover,
+    .block-views-blockentries-block-1 .node .locations .field-transnational:hover {
       text-decoration: underline; }
-    .block-views-blockentries-block-1 .node .field--name-field-location-entry::after,
-    .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference::after {
+    .block-views-blockentries-block-1 .node .locations .field--name-field-location-entry::after,
+    .block-views-blockentries-block-1 .node .locations .field--name-field-region.field--type-entity-reference::after,
+    .block-views-blockentries-block-1 .node .locations .field-transnational::after {
       height: 5px;
       width: 140px;
       margin-top: 20px;
@@ -1652,13 +1657,17 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       display: block;
       border: 0;
       background-color: rgba(150, 143, 126, 0.2); }
-    .block-views-blockentries-block-1 .node .field--name-field-location-entry, .block-views-blockentries-block-1 .node .field--name-field-location-entry a,
-    .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference,
-    .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference a {
+    .block-views-blockentries-block-1 .node .locations .field--name-field-location-entry, .block-views-blockentries-block-1 .node .locations .field--name-field-location-entry a,
+    .block-views-blockentries-block-1 .node .locations .field--name-field-region.field--type-entity-reference,
+    .block-views-blockentries-block-1 .node .locations .field--name-field-region.field--type-entity-reference a,
+    .block-views-blockentries-block-1 .node .locations .field-transnational,
+    .block-views-blockentries-block-1 .node .locations .field-transnational a {
       text-decoration: none; }
-      .block-views-blockentries-block-1 .node .field--name-field-location-entry:hover, .block-views-blockentries-block-1 .node .field--name-field-location-entry a:hover,
-      .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference:hover,
-      .block-views-blockentries-block-1 .node .field--name-field-region.field--type-entity-reference a:hover {
+      .block-views-blockentries-block-1 .node .locations .field--name-field-location-entry:hover, .block-views-blockentries-block-1 .node .locations .field--name-field-location-entry a:hover,
+      .block-views-blockentries-block-1 .node .locations .field--name-field-region.field--type-entity-reference:hover,
+      .block-views-blockentries-block-1 .node .locations .field--name-field-region.field--type-entity-reference a:hover,
+      .block-views-blockentries-block-1 .node .locations .field-transnational:hover,
+      .block-views-blockentries-block-1 .node .locations .field-transnational a:hover {
         text-decoration: none; }
 .block-views-blockentries-block-1 .views-row {
   width: 100%;
@@ -1815,8 +1824,9 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
         .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section a:hover,
         .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-document-type a:hover {
           text-decoration: underline; }
-    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry,
-    .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference {
+    .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-location-entry,
+    .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-region.field--type-entity-reference,
+    .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field-transnational {
       font-size: 16px;
       font-size: 1rem;
       line-height: 16px;
@@ -1829,8 +1839,9 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
       z-index: 10;
       margin-bottom: 20px; }
       @media only screen and (min-width: 900px) and (max-width: 1124px) {
-        .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry,
-        .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference {
+        .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-location-entry,
+        .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-region.field--type-entity-reference,
+        .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field-transnational {
           font-size: 13px;
           font-size: 0.8125rem;
           line-height: 13px;
@@ -1838,19 +1849,22 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
           font-weight: 600;
           font-family: "Raleway", "Mplus 1p", sans-serif; } }
       @media only screen and (max-width: 899px) {
-        .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry,
-        .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference {
+        .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-location-entry,
+        .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-region.field--type-entity-reference,
+        .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field-transnational {
           font-size: 13px;
           font-size: 0.8125rem;
           line-height: 13px;
           line-height: 0.8125rem;
           font-weight: 700;
           font-family: "Raleway", "Mplus 1p", sans-serif; } }
-      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry:hover,
-      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference:hover {
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-location-entry:hover,
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-region.field--type-entity-reference:hover,
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field-transnational:hover {
         text-decoration: underline; }
-      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry::after,
-      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference::after {
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-location-entry::after,
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-region.field--type-entity-reference::after,
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field-transnational::after {
         height: 5px;
         width: 140px;
         margin-top: 20px;
@@ -1858,13 +1872,17 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
         display: block;
         border: 0;
         background-color: rgba(150, 143, 126, 0.2); }
-      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry, .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry a,
-      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference,
-      .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference a {
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-location-entry, .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-location-entry a,
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-region.field--type-entity-reference,
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-region.field--type-entity-reference a,
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field-transnational,
+      .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field-transnational a {
         text-decoration: none; }
-        .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry:hover, .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-location-entry a:hover,
-        .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference:hover,
-        .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-region.field--type-entity-reference a:hover {
+        .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-location-entry:hover, .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-location-entry a:hover,
+        .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-region.field--type-entity-reference:hover,
+        .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-region.field--type-entity-reference a:hover,
+        .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field-transnational:hover,
+        .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field-transnational a:hover {
           text-decoration: none; }
     .block-views-blockentries-block-1 .view-highlighted-entries .node:hover {
       background-color: #cfc7b4; }
@@ -3550,9 +3568,11 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       .block-views-blocklist-entries-block-1 .node .field--name-field-tax-document-type a:hover, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-section a:hover,
       .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-document-type a:hover {
         text-decoration: underline; }
-  .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry,
-  .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry,
-  .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference {
+  .block-views-blocklist-entries-block-1 .node .locations .field--name-field-location-entry,
+  .block-views-blocklist-entries-block-1 .node .locations .field--name-field-region.field--type-entity-reference,
+  .block-views-blocklist-entries-block-1 .node .locations .field-transnational, .block-views-blocklist-entries-block-1._switch-on .node .locations .field--name-field-location-entry,
+  .block-views-blocklist-entries-block-1._switch-on .node .locations .field--name-field-region.field--type-entity-reference,
+  .block-views-blocklist-entries-block-1._switch-on .node .locations .field-transnational {
     font-size: 16px;
     font-size: 1rem;
     line-height: 16px;
@@ -3565,9 +3585,11 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     z-index: 10;
     margin-bottom: 20px; }
     @media only screen and (min-width: 900px) and (max-width: 1124px) {
-      .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry,
-      .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry,
-      .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference {
+      .block-views-blocklist-entries-block-1 .node .locations .field--name-field-location-entry,
+      .block-views-blocklist-entries-block-1 .node .locations .field--name-field-region.field--type-entity-reference,
+      .block-views-blocklist-entries-block-1 .node .locations .field-transnational, .block-views-blocklist-entries-block-1._switch-on .node .locations .field--name-field-location-entry,
+      .block-views-blocklist-entries-block-1._switch-on .node .locations .field--name-field-region.field--type-entity-reference,
+      .block-views-blocklist-entries-block-1._switch-on .node .locations .field-transnational {
         font-size: 13px;
         font-size: 0.8125rem;
         line-height: 13px;
@@ -3575,22 +3597,28 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         font-weight: 600;
         font-family: "Raleway", "Mplus 1p", sans-serif; } }
     @media only screen and (max-width: 899px) {
-      .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry,
-      .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry,
-      .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference {
+      .block-views-blocklist-entries-block-1 .node .locations .field--name-field-location-entry,
+      .block-views-blocklist-entries-block-1 .node .locations .field--name-field-region.field--type-entity-reference,
+      .block-views-blocklist-entries-block-1 .node .locations .field-transnational, .block-views-blocklist-entries-block-1._switch-on .node .locations .field--name-field-location-entry,
+      .block-views-blocklist-entries-block-1._switch-on .node .locations .field--name-field-region.field--type-entity-reference,
+      .block-views-blocklist-entries-block-1._switch-on .node .locations .field-transnational {
         font-size: 13px;
         font-size: 0.8125rem;
         line-height: 13px;
         line-height: 0.8125rem;
         font-weight: 700;
         font-family: "Raleway", "Mplus 1p", sans-serif; } }
-    .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry:hover,
-    .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference:hover, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry:hover,
-    .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference:hover {
+    .block-views-blocklist-entries-block-1 .node .locations .field--name-field-location-entry:hover,
+    .block-views-blocklist-entries-block-1 .node .locations .field--name-field-region.field--type-entity-reference:hover,
+    .block-views-blocklist-entries-block-1 .node .locations .field-transnational:hover, .block-views-blocklist-entries-block-1._switch-on .node .locations .field--name-field-location-entry:hover,
+    .block-views-blocklist-entries-block-1._switch-on .node .locations .field--name-field-region.field--type-entity-reference:hover,
+    .block-views-blocklist-entries-block-1._switch-on .node .locations .field-transnational:hover {
       text-decoration: underline; }
-    .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry::after,
-    .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference::after, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry::after,
-    .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference::after {
+    .block-views-blocklist-entries-block-1 .node .locations .field--name-field-location-entry::after,
+    .block-views-blocklist-entries-block-1 .node .locations .field--name-field-region.field--type-entity-reference::after,
+    .block-views-blocklist-entries-block-1 .node .locations .field-transnational::after, .block-views-blocklist-entries-block-1._switch-on .node .locations .field--name-field-location-entry::after,
+    .block-views-blocklist-entries-block-1._switch-on .node .locations .field--name-field-region.field--type-entity-reference::after,
+    .block-views-blocklist-entries-block-1._switch-on .node .locations .field-transnational::after {
       height: 5px;
       width: 140px;
       margin-top: 20px;
@@ -3598,17 +3626,25 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       display: block;
       border: 0;
       background-color: rgba(150, 143, 126, 0.2); }
-    .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry, .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry a,
-    .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference,
-    .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference a, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry a,
-    .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference,
-    .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference a {
+    .block-views-blocklist-entries-block-1 .node .locations .field--name-field-location-entry, .block-views-blocklist-entries-block-1 .node .locations .field--name-field-location-entry a,
+    .block-views-blocklist-entries-block-1 .node .locations .field--name-field-region.field--type-entity-reference,
+    .block-views-blocklist-entries-block-1 .node .locations .field--name-field-region.field--type-entity-reference a,
+    .block-views-blocklist-entries-block-1 .node .locations .field-transnational,
+    .block-views-blocklist-entries-block-1 .node .locations .field-transnational a, .block-views-blocklist-entries-block-1._switch-on .node .locations .field--name-field-location-entry, .block-views-blocklist-entries-block-1._switch-on .node .locations .field--name-field-location-entry a,
+    .block-views-blocklist-entries-block-1._switch-on .node .locations .field--name-field-region.field--type-entity-reference,
+    .block-views-blocklist-entries-block-1._switch-on .node .locations .field--name-field-region.field--type-entity-reference a,
+    .block-views-blocklist-entries-block-1._switch-on .node .locations .field-transnational,
+    .block-views-blocklist-entries-block-1._switch-on .node .locations .field-transnational a {
       text-decoration: none; }
-      .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry:hover, .block-views-blocklist-entries-block-1 .node .field--name-field-location-entry a:hover,
-      .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference:hover,
-      .block-views-blocklist-entries-block-1 .node .field--name-field-region.field--type-entity-reference a:hover, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry:hover, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-location-entry a:hover,
-      .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference:hover,
-      .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-region.field--type-entity-reference a:hover {
+      .block-views-blocklist-entries-block-1 .node .locations .field--name-field-location-entry:hover, .block-views-blocklist-entries-block-1 .node .locations .field--name-field-location-entry a:hover,
+      .block-views-blocklist-entries-block-1 .node .locations .field--name-field-region.field--type-entity-reference:hover,
+      .block-views-blocklist-entries-block-1 .node .locations .field--name-field-region.field--type-entity-reference a:hover,
+      .block-views-blocklist-entries-block-1 .node .locations .field-transnational:hover,
+      .block-views-blocklist-entries-block-1 .node .locations .field-transnational a:hover, .block-views-blocklist-entries-block-1._switch-on .node .locations .field--name-field-location-entry:hover, .block-views-blocklist-entries-block-1._switch-on .node .locations .field--name-field-location-entry a:hover,
+      .block-views-blocklist-entries-block-1._switch-on .node .locations .field--name-field-region.field--type-entity-reference:hover,
+      .block-views-blocklist-entries-block-1._switch-on .node .locations .field--name-field-region.field--type-entity-reference a:hover,
+      .block-views-blocklist-entries-block-1._switch-on .node .locations .field-transnational:hover,
+      .block-views-blocklist-entries-block-1._switch-on .node .locations .field-transnational a:hover {
         text-decoration: none; }
 .block-views-blocklist-entries-block-1 .views-row, .block-views-blocklist-entries-block-1._switch-on .views-row {
   width: 49.11111%;
@@ -3755,8 +3791,9 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-section a:hover,
       .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-document-type a:hover {
         text-decoration: underline; }
-  .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry,
-  .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference {
+  .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-location-entry,
+  .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-region.field--type-entity-reference,
+  .block-views-blocklist-entries-block-1._switch-off .node .locations .field-transnational {
     font-size: 16px;
     font-size: 1rem;
     line-height: 16px;
@@ -3769,8 +3806,9 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     z-index: 10;
     margin-bottom: 20px; }
     @media only screen and (min-width: 900px) and (max-width: 1124px) {
-      .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry,
-      .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference {
+      .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-location-entry,
+      .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-region.field--type-entity-reference,
+      .block-views-blocklist-entries-block-1._switch-off .node .locations .field-transnational {
         font-size: 13px;
         font-size: 0.8125rem;
         line-height: 13px;
@@ -3778,19 +3816,22 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         font-weight: 600;
         font-family: "Raleway", "Mplus 1p", sans-serif; } }
     @media only screen and (max-width: 899px) {
-      .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry,
-      .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference {
+      .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-location-entry,
+      .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-region.field--type-entity-reference,
+      .block-views-blocklist-entries-block-1._switch-off .node .locations .field-transnational {
         font-size: 13px;
         font-size: 0.8125rem;
         line-height: 13px;
         line-height: 0.8125rem;
         font-weight: 700;
         font-family: "Raleway", "Mplus 1p", sans-serif; } }
-    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry:hover,
-    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference:hover {
+    .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-location-entry:hover,
+    .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-region.field--type-entity-reference:hover,
+    .block-views-blocklist-entries-block-1._switch-off .node .locations .field-transnational:hover {
       text-decoration: underline; }
-    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry::after,
-    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference::after {
+    .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-location-entry::after,
+    .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-region.field--type-entity-reference::after,
+    .block-views-blocklist-entries-block-1._switch-off .node .locations .field-transnational::after {
       height: 5px;
       width: 140px;
       margin-top: 20px;
@@ -3798,13 +3839,17 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       display: block;
       border: 0;
       background-color: rgba(150, 143, 126, 0.2); }
-    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry, .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry a,
-    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference,
-    .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference a {
+    .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-location-entry, .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-location-entry a,
+    .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-region.field--type-entity-reference,
+    .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-region.field--type-entity-reference a,
+    .block-views-blocklist-entries-block-1._switch-off .node .locations .field-transnational,
+    .block-views-blocklist-entries-block-1._switch-off .node .locations .field-transnational a {
       text-decoration: none; }
-      .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry:hover, .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-location-entry a:hover,
-      .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference:hover,
-      .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-region.field--type-entity-reference a:hover {
+      .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-location-entry:hover, .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-location-entry a:hover,
+      .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-region.field--type-entity-reference:hover,
+      .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-region.field--type-entity-reference a:hover,
+      .block-views-blocklist-entries-block-1._switch-off .node .locations .field-transnational:hover,
+      .block-views-blocklist-entries-block-1._switch-off .node .locations .field-transnational a:hover {
         text-decoration: none; }
 .block-views-blocklist-entries-block-1._switch-off .views-row {
   width: 100%;
@@ -4642,8 +4687,9 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
       article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-section a:hover,
       article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-document-type a:hover {
         text-decoration: underline; }
-  article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry,
-  article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference {
+  article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-location-entry,
+  article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-region.field--type-entity-reference,
+  article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field-transnational {
     font-size: 16px;
     font-size: 1rem;
     line-height: 16px;
@@ -4656,8 +4702,9 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
     z-index: 10;
     margin-bottom: 20px; }
     @media only screen and (min-width: 900px) and (max-width: 1124px) {
-      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry,
-      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference {
+      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-location-entry,
+      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-region.field--type-entity-reference,
+      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field-transnational {
         font-size: 13px;
         font-size: 0.8125rem;
         line-height: 13px;
@@ -4665,19 +4712,22 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
         font-weight: 600;
         font-family: "Raleway", "Mplus 1p", sans-serif; } }
     @media only screen and (max-width: 899px) {
-      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry,
-      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference {
+      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-location-entry,
+      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-region.field--type-entity-reference,
+      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field-transnational {
         font-size: 13px;
         font-size: 0.8125rem;
         line-height: 13px;
         line-height: 0.8125rem;
         font-weight: 700;
         font-family: "Raleway", "Mplus 1p", sans-serif; } }
-    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry:hover,
-    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference:hover {
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-location-entry:hover,
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-region.field--type-entity-reference:hover,
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field-transnational:hover {
       text-decoration: underline; }
-    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry::after,
-    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference::after {
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-location-entry::after,
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-region.field--type-entity-reference::after,
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field-transnational::after {
       height: 5px;
       width: 140px;
       margin-top: 20px;
@@ -4685,13 +4735,17 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
       display: block;
       border: 0;
       background-color: rgba(150, 143, 126, 0.2); }
-    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry a,
-    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference,
-    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference a {
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-location-entry, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-location-entry a,
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-region.field--type-entity-reference,
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-region.field--type-entity-reference a,
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field-transnational,
+    article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field-transnational a {
       text-decoration: none; }
-      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry:hover, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-location-entry a:hover,
-      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference:hover,
-      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-region.field--type-entity-reference a:hover {
+      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-location-entry:hover, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-location-entry a:hover,
+      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-region.field--type-entity-reference:hover,
+      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-region.field--type-entity-reference a:hover,
+      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field-transnational:hover,
+      article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field-transnational a:hover {
         text-decoration: none; }
 article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items > .field__item {
   width: 49.11111%;
@@ -5625,10 +5679,12 @@ body.page-node-type-region #content-content {
           body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section a:hover,
           body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type a:hover {
             text-decoration: underline; }
-      body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry,
-      body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference,
-      body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry,
-      body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference {
+      body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-location-entry,
+      body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-region.field--type-entity-reference,
+      body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field-transnational,
+      body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field--name-field-location-entry,
+      body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field--name-field-region.field--type-entity-reference,
+      body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field-transnational {
         font-size: 16px;
         font-size: 1rem;
         line-height: 16px;
@@ -5641,10 +5697,12 @@ body.page-node-type-region #content-content {
         z-index: 10;
         margin-bottom: 20px; }
         @media only screen and (min-width: 900px) and (max-width: 1124px) {
-          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry,
-          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference,
-          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry,
-          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference {
+          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-location-entry,
+          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-region.field--type-entity-reference,
+          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field-transnational,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field--name-field-location-entry,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field--name-field-region.field--type-entity-reference,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field-transnational {
             font-size: 13px;
             font-size: 0.8125rem;
             line-height: 13px;
@@ -5652,25 +5710,31 @@ body.page-node-type-region #content-content {
             font-weight: 600;
             font-family: "Raleway", "Mplus 1p", sans-serif; } }
         @media only screen and (max-width: 899px) {
-          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry,
-          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference,
-          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry,
-          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference {
+          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-location-entry,
+          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-region.field--type-entity-reference,
+          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field-transnational,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field--name-field-location-entry,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field--name-field-region.field--type-entity-reference,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field-transnational {
             font-size: 13px;
             font-size: 0.8125rem;
             line-height: 13px;
             line-height: 0.8125rem;
             font-weight: 700;
             font-family: "Raleway", "Mplus 1p", sans-serif; } }
-        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry:hover,
-        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference:hover,
-        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry:hover,
-        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference:hover {
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-location-entry:hover,
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-region.field--type-entity-reference:hover,
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field-transnational:hover,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field--name-field-location-entry:hover,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field--name-field-region.field--type-entity-reference:hover,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field-transnational:hover {
           text-decoration: underline; }
-        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry::after,
-        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference::after,
-        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry::after,
-        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference::after {
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-location-entry::after,
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-region.field--type-entity-reference::after,
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field-transnational::after,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field--name-field-location-entry::after,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field--name-field-region.field--type-entity-reference::after,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field-transnational::after {
           height: 5px;
           width: 140px;
           margin-top: 20px;
@@ -5678,21 +5742,29 @@ body.page-node-type-region #content-content {
           display: block;
           border: 0;
           background-color: rgba(150, 143, 126, 0.2); }
-        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry, body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry a,
-        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference,
-        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference a,
-        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry,
-        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry a,
-        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference,
-        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference a {
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-location-entry, body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-location-entry a,
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-region.field--type-entity-reference,
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-region.field--type-entity-reference a,
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field-transnational,
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field-transnational a,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field--name-field-location-entry,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field--name-field-location-entry a,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field--name-field-region.field--type-entity-reference,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field--name-field-region.field--type-entity-reference a,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field-transnational,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field-transnational a {
           text-decoration: none; }
-          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry:hover, body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry a:hover,
-          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference:hover,
-          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference a:hover,
-          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry:hover,
-          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-location-entry a:hover,
-          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference:hover,
-          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-region.field--type-entity-reference a:hover {
+          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-location-entry:hover, body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-location-entry a:hover,
+          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-region.field--type-entity-reference:hover,
+          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-region.field--type-entity-reference a:hover,
+          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field-transnational:hover,
+          body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field-transnational a:hover,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field--name-field-location-entry:hover,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field--name-field-location-entry a:hover,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field--name-field-region.field--type-entity-reference:hover,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field--name-field-region.field--type-entity-reference a:hover,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field-transnational:hover,
+          body.page-node-type-region #content-content section:not(.block-system-main-block) .node .locations .field-transnational a:hover {
             text-decoration: none; }
     body.page-node-type-country #content-content section:not(.block-system-main-block) .views-row,
     body.page-node-type-region #content-content section:not(.block-system-main-block) .views-row {
