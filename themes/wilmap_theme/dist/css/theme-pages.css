@@ -1361,8 +1361,7 @@ article.node--type-topics.node--view-mode-full > .node__content .node-body > .te
     article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted cite:before {
       content: '\2014 \2009'; }
   article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe {
-    width: 100% !important;
-    height: auto; }
+    width: 100% !important; }
   article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted .row {
     padding-right: 0;
     padding-left: 0; }

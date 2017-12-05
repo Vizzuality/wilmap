@@ -208,8 +208,7 @@ body .layout-main-wrapper {
         body .layout-main-wrapper .layout-main .text-formatted cite:before {
           content: '\2014 \2009'; }
       body .layout-main-wrapper .layout-main .text-formatted iframe {
-        width: 100% !important;
-        height: auto; }
+        width: 100% !important; }
       body .layout-main-wrapper .layout-main .text-formatted .row {
         padding-right: 0;
         padding-left: 0; }
@@ -420,8 +419,7 @@ body.path-frontpage .layout-main-wrapper {
         body.path-frontpage .layout-main-wrapper .layout-main .text-formatted cite:before {
           content: '\2014 \2009'; }
       body.path-frontpage .layout-main-wrapper .layout-main .text-formatted iframe {
-        width: 100% !important;
-        height: auto; }
+        width: 100% !important; }
       body.path-frontpage .layout-main-wrapper .layout-main .text-formatted .row {
         padding-right: 0;
         padding-left: 0; }
@@ -2441,8 +2439,7 @@ article.node--view-mode-full > .node__content .node-body {
       article.node--view-mode-full > .node__content .node-body > .text-formatted cite:before {
         content: '\2014 \2009'; }
     article.node--view-mode-full > .node__content .node-body > .text-formatted iframe {
-      width: 100% !important;
-      height: auto; }
+      width: 100% !important; }
     article.node--view-mode-full > .node__content .node-body > .text-formatted .row {
       padding-right: 0;
       padding-left: 0; }
