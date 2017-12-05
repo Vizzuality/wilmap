@@ -261,14 +261,14 @@
 // Embed Override
 .leaflet-container.__embed {
   .leaflet-control-zoom {
-    @include position(relative, 70px null null null);
+    @include position(relative, 40px null null null);
 
     @include respond(tablets) {
-      @include position(relative, 70px null null null);
+      @include position(relative, 40px null null null);
     }
 
     @include respond(all-phones) {
-      @include position(relative, 70px null null null);
+      @include position(relative, 40px null null null);
     }
   }
 }

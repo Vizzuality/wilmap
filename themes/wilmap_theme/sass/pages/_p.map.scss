@@ -215,7 +215,11 @@
 
     // Embed override
     &.__embed {
-      border: 10px solid green;
+      #map-legend {
+        @include respond(all-phones) {
+          @include position(absolute, null null $dp * 2 $dp * 1.5);
+        }
+      }
     }
   }
 }

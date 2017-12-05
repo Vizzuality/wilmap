@@ -1938,15 +1938,15 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
 
 .leaflet-container.__embed .leaflet-control-zoom {
   position: relative;
-  top: 70px; }
+  top: 40px; }
   @media only screen and (min-width: 900px) and (max-width: 1124px) {
     .leaflet-container.__embed .leaflet-control-zoom {
       position: relative;
-      top: 70px; } }
+      top: 40px; } }
   @media only screen and (max-width: 899px) {
     .leaflet-container.__embed .leaflet-control-zoom {
       position: relative;
-      top: 70px; } }
+      top: 40px; } }
 
 body.node-map .ui-autocomplete {
   margin: 0;
