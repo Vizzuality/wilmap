@@ -197,11 +197,12 @@
 
             output_layers += '<ul>';
             $.each( data, function( key, val ) {
+
               var checked = (layer_in_url && layer_in_url == val.nid[0].value)? ' checked':'';
               var layerid = val.nid[0].value;
-              var style = (val.field_style[0].value !== undefined)?val.field_style[0].value:'';
-              var title = (val.title[0].value !== undefined)?App.Utils.CleanHTML(val.title[0].value):'';
-              var desc = (val.body[0].value !== undefined)?App.Utils.CleanHTML(val.body[0].value):'';;
+              var style = (val.field_style.length > 0)?val.field_style[0].value:'forest';
+              var title = (val.title.length > 0)?App.Utils.CleanHTML(val.title[0].value):'';
+              var desc = (val.body.length > 0)?App.Utils.CleanHTML(val.body[0].value):'';;
 
               output_layers += '<li class="layer-item field">';
               output_layers += '<label class="checkbox" for="layer-item-'+key+'" data-layerid="'+layerid+'" data-layer-style="'+style+'" data-layer-title="'+title+'" data-layer-desc="'+desc+'"><input type="checkbox" id="layer-item-'+key+'" name="layer-item[]" value="'+layerid+'"' + checked + '><span></span> '+title+'</label>';
