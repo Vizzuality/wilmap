@@ -661,6 +661,9 @@ console.log('in updateAdvancedFilters');
 
           setTimeout(function(){
             if($(dom_google).length > 0) {
+
+console.log(google.translate.TranslateElement());
+
               var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':google.translate.TranslateElement().c;
               var css_class = App.DrupalHack.google_translator.setData(idlang);
 
@@ -699,7 +702,7 @@ console.log('in updateAdvancedFilters');
                 }, 2000);
               });
             }
-          }, 5000);
+          }, 10000);
         }
 
       },

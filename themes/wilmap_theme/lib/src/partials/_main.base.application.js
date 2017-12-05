@@ -809,6 +809,7 @@ console.log(App.Application.Maps);
         var dom_sidebar = '.ui-autocomplete.ui-widget-content';
         var dom_footer = '.site-footer';
         var dom_header = '.site-header';
+        var dom_search = 'body.node-map .site-header .search-block-form';
         var api_countries = '/api/map/browse';
         var offset_sidebar = 116;
 
@@ -914,7 +915,13 @@ console.log('first_layer_load -> ' + first_layer_load);
           });
 
           $('#calllist').on('click', function(e){
-            $(dom_sidebar).removeClass('__hide').addClass('__insearch').addClass('__calllist');
+            $(dom_sidebar).addClass('__insearch').addClass('__calllist').removeClass('__hide');
+            $(dom_header).addClass('active');
+            $(dom_header + ' span.str').text('Close');
+
+            // hide google translator
+            App.DrupalHack.google_translator.show(false);
+
             e.preventDefault();
           });
 
@@ -1059,7 +1066,18 @@ console.log('first_layer_load -> ' + first_layer_load);
               output += '</li>';
             });
 
+            // Print list in DOM
             $(dom).append(output);
+
+            // Scroll tunning in non apple devices
+            console.log(App.Utils.getOS());
+            if(App.Utils.getOS() === 'Windows' || App.Utils.getOS() === 'Linux') {
+              $(dom).css('overflow-y', 'hidden');
+              // var el = $('.ui-widget-content.ui-autocomplete');
+              var el = document.querySelector('.ui-widget-content.ui-autocomplete');
+              console.log(el);
+              SimpleScrollbar.initEl(el);
+            }
 
             // Events
             Gumby.init();

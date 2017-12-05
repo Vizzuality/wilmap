@@ -1108,7 +1108,8 @@
   left: auto !important;
   height: 100%;
   z-index: 104;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
   border: none !important;
   background: #fff;
   padding: 10px 30px 80px 20px; }
@@ -1963,36 +1964,9 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
 body.node-map .ui-autocomplete {
   margin: 0;
   padding: 0;
-  position: -webkit-sticky;
-  position: sticky;
   padding: 0 !important;
   padding-top: 40px !important;
   padding-bottom: 80px !important; }
-  body.node-map .ui-autocomplete::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: '';
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#b3001e), to(rgba(179, 0, 30, 0)));
-    background-image: linear-gradient(180deg, #b3001e, rgba(179, 0, 30, 0));
-    opacity: 1; }
-  body.node-map .ui-autocomplete::before {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 30px;
-    position: -webkit-sticky;
-    position: sticky;
-    top: -37px;
-    left: 0;
-    z-index: 10;
-    margin-left: 0; }
-    @media only screen and (min-width: 900px) and (max-width: 1124px) {
-      body.node-map .ui-autocomplete::before {
-        margin-left: 15px; } }
-    @media only screen and (max-width: 899px) {
-      body.node-map .ui-autocomplete::before {
-        margin-left: 0px; } }
   body.node-map .ui-autocomplete li#back {
     position: relative;
     top: -20px;
@@ -2345,7 +2319,10 @@ body.node-map .ui-autocomplete {
     display: inline-block;
     text-decoration: none;
     text-transform: uppercase !important;
-    color: #222; }
+    color: #222;
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: ''; }
 
 .goog-te-banner-frame.skiptranslate {
   display: none !important; }

@@ -155,6 +155,32 @@
     },
 
     /**
+     * get OS
+     */
+    getOS: function() {
+      var userAgent = window.navigator.userAgent,
+          platform = window.navigator.platform,
+          macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+          windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+          iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+          os = null;
+
+      if (macosPlatforms.indexOf(platform) !== -1) {
+        os = 'Mac OS';
+      } else if (iosPlatforms.indexOf(platform) !== -1) {
+        os = 'iOS';
+      } else if (windowsPlatforms.indexOf(platform) !== -1) {
+        os = 'Windows';
+      } else if (/Android/.test(userAgent)) {
+        os = 'Android';
+      } else if (!os && /Linux/.test(platform)) {
+        os = 'Linux';
+      }
+
+      return os;
+    },
+
+    /**
     * Slugify Function
     */
     Slugify: function( arg ) {
@@ -942,6 +968,9 @@ console.log('in updateAdvancedFilters');
 
           setTimeout(function(){
             if($(dom_google).length > 0) {
+
+console.log(google.translate.TranslateElement());
+
               var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':google.translate.TranslateElement().c;
               var css_class = App.DrupalHack.google_translator.setData(idlang);
 
@@ -980,7 +1009,7 @@ console.log('in updateAdvancedFilters');
                 }, 2000);
               });
             }
-          }, 5000);
+          }, 10000);
         }
 
       },
@@ -1983,6 +2012,7 @@ console.log(App.Application.Maps);
         var dom_sidebar = '.ui-autocomplete.ui-widget-content';
         var dom_footer = '.site-footer';
         var dom_header = '.site-header';
+        var dom_search = 'body.node-map .site-header .search-block-form';
         var api_countries = '/api/map/browse';
         var offset_sidebar = 116;
 
@@ -2088,7 +2118,13 @@ console.log('first_layer_load -> ' + first_layer_load);
           });
 
           $('#calllist').on('click', function(e){
-            $(dom_sidebar).removeClass('__hide').addClass('__insearch').addClass('__calllist');
+            $(dom_sidebar).addClass('__insearch').addClass('__calllist').removeClass('__hide');
+            $(dom_header).addClass('active');
+            $(dom_header + ' span.str').text('Close');
+
+            // hide google translator
+            App.DrupalHack.google_translator.show(false);
+
             e.preventDefault();
           });
 
@@ -2233,7 +2269,18 @@ console.log('first_layer_load -> ' + first_layer_load);
               output += '</li>';
             });
 
+            // Print list in DOM
             $(dom).append(output);
+
+            // Scroll tunning in non apple devices
+            console.log(App.Utils.getOS());
+            if(App.Utils.getOS() === 'Windows' || App.Utils.getOS() === 'Linux') {
+              $(dom).css('overflow-y', 'hidden');
+              // var el = $('.ui-widget-content.ui-autocomplete');
+              var el = document.querySelector('.ui-widget-content.ui-autocomplete');
+              console.log(el);
+              SimpleScrollbar.initEl(el);
+            }
 
             // Events
             Gumby.init();

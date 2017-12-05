@@ -7,30 +7,30 @@
 body.node-map {
   .ui-autocomplete {
     @include trim();
-    @include image-overlay(rgba($third-color, 1), rgba($third-color, 0), 1, 180deg, sticky);
+    // @include image-overlay(rgba($third-color, 1), rgba($third-color, 0), 1, 180deg, sticky);
     padding: 0 !important;
     padding-top: $dp * 4  !important;
     padding-bottom: $dp * 8  !important;
 
-    &::before {
-      content:'';
-      display: block;
-      width: 100%;
-      height: 30px;
-      position: sticky;
-      top: -37px;
-      left: 0;
-      z-index: 10;
-      margin-left: 0;
-
-      @include respond(tablets) {
-        margin-left: 15px;
-      }
-
-      @include respond(all-phones) {
-        margin-left: 0px;
-      }
-    }
+    // &::before {
+    //   content:'';
+    //   display: block;
+    //   width: 100%;
+    //   height: 30px;
+    //   position: sticky;
+    //   top: -37px;
+    //   left: 0;
+    //   z-index: 10;
+    //   margin-left: 0;
+    //
+    //   @include respond(tablets) {
+    //     margin-left: 15px;
+    //   }
+    //
+    //   @include respond(all-phones) {
+    //     margin-left: 0px;
+    //   }
+    // }
 
     li#back {
       @include position(relative, (-$dp * 2) null null $dp);

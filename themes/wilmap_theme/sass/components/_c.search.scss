@@ -126,7 +126,8 @@
   left: auto !important;
   height: 100%;
   z-index: 104;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
   border: none !important;
   background: $second-color;
   padding: $dp $dp * 3 $dp * 8 $dp * 2;
