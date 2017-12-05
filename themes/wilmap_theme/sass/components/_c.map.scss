@@ -61,7 +61,7 @@
         .leaflet-popup-content {
           @include margin(0);
           @include padding(0);
-          width: $dp * 30 !important;
+          width: $dp * 30 !important;º
         }
 
         .popup-inner {
@@ -252,6 +252,23 @@
           }
         }
       }
+    }
+  }
+}
+
+
+
+// Embed Override
+.leaflet-container.__embed {
+  .leaflet-control-zoom {
+    @include position(relative, 70px null null null);
+
+    @include respond(tablets) {
+      @include position(relative, 70px null null null);
+    }
+
+    @include respond(all-phones) {
+      @include position(relative, 70px null null null);
     }
   }
 }

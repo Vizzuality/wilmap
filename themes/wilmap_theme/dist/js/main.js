@@ -1571,7 +1571,7 @@ console.log('in updateAdvancedFilters');
               total = (total < 10) ? '0' + total : total;
               var output = '<div class="popup-inner"><div class="popup-inner-left"><span>'+total+'</span>Entries</div><div class="popup-inner-right"><div class="popup-info">' + info_popup + '</div><div class="popup-actions">' + goto_button + '</div></div></div>';
 
-              if(App.Application.Maps.Config.isPhone) {
+              if(App.Application.Maps.Config.isPhone && !App.Application.Maps.Config.is_embed) {
                 $('#mobile-popup .inner').empty().html(output);
                 $('#mobile-popup').addClass('active');
               } else {

@@ -5032,6 +5032,8 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
               .block-wilmap-map .wilmap #map-legend .drawer .color-ranges ul li .color.base {
                 background-color: #e4dfd3;
                 z-index: 10; }
+  .block-wilmap-map .wilmap.__embed {
+    border: 10px solid green; }
 
 body.node-map .layout-main-wrapper {
   margin: 0;

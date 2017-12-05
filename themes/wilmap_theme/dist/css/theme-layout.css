@@ -595,7 +595,7 @@ body.path-frontpage.both-sidebars #sidebar-second {
         padding-bottom: 12px;
         margin-bottom: 18px;
         color: #968f7e;
-        font-weight: 400;
+        font-weight: 600;
         display: block;
         text-decoration: none;
         text-align: left;
@@ -633,13 +633,13 @@ body.path-frontpage.both-sidebars #sidebar-second {
             margin-right: 20px;
             margin-bottom: 20px;
             padding-bottom: 12px;
-            font-weight: 400;
+            font-weight: 600;
             text-align: center;
             border-right: none;
             border-bottom: 5px solid transparent; } }
         .main-content-inner .content-sidenav .views-row a:hover {
           color: #b3001e;
-          font-weight: 400;
+          font-weight: 600;
           text-decoration: none;
           text-align: left;
           border-right: none;
@@ -653,7 +653,7 @@ body.path-frontpage.both-sidebars #sidebar-second {
               border-bottom: none; } }
           @media only screen and (max-width: 899px) {
             .main-content-inner .content-sidenav .views-row a:hover {
-              font-weight: 400;
+              font-weight: 600;
               text-align: center;
               border-right: none;
               border-bottom: none; } }

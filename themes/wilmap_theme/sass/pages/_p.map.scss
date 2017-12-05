@@ -211,11 +211,16 @@
           }
         }
       }
+    }
 
+    // Embed override
+    &.__embed {
+      border: 10px solid green;
     }
   }
 }
 
+// Page
 body.node-map {
   .layout-main-wrapper {
     @include reset-grid();

@@ -51,7 +51,7 @@ $responsivenav-menuitem-height: $dp * 6;
         @include padding($dp * 1.2 null);
         @include margin(null null $dp * 1.8 null);
         color: $color-off;
-        font-weight: $regular;
+        font-weight: $semibold;
         display: block;
         text-decoration: none;
         text-align: left;
@@ -70,7 +70,7 @@ $responsivenav-menuitem-height: $dp * 6;
         @include respond(all-phones) {
           @include margin(null $dp * 2 $dp * 2 null);
           @include padding(null null $dp * 1.2 null);
-          font-weight: $regular;
+          font-weight: $semibold;
           text-align: center;
           border-right: none;
           border-bottom: $line-weight solid transparent;
@@ -78,7 +78,7 @@ $responsivenav-menuitem-height: $dp * 6;
 
         &:hover {
           color: $color-on;
-          font-weight: $regular;
+          font-weight: $semibold;
           text-decoration: none;
           text-align: left;
           border-right: none;
@@ -93,7 +93,7 @@ $responsivenav-menuitem-height: $dp * 6;
           }
 
           @include respond(all-phones) {
-            font-weight: $regular;
+            font-weight: $semibold;
             text-align: center;
             border-right: none;
             border-bottom: none;
