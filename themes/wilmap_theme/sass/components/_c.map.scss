@@ -61,7 +61,7 @@
         .leaflet-popup-content {
           @include margin(0);
           @include padding(0);
-          width: $dp * 30 !important;º
+          width: $dp * 30 !important;
         }
 
         .popup-inner {
