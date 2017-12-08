@@ -242,6 +242,12 @@ function wilmap_theme_form_alter(&$form, FormStateInterface $form_state, $form_i
             unset($form['basic']['keys']['#autocomplete_configuration']);
     }
 
+    // Login descriptions
+    if ($form_id == 'user_login_form') {
+      $form['name']['#description'] = t('Enter your WILmap username.');
+      $form['pass']['#description'] = t('Enter your password.');
+    }
+
 }
 
 /**
