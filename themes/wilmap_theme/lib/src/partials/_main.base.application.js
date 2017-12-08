@@ -1088,19 +1088,23 @@ console.log('first_layer_load -> ' + first_layer_load);
             Gumby.init();
 
             $(dom).on('mouseover', function (e) {
-              $(dom).addClass('__insearch').removeClass('__hide').removeClass('__calllist');
-              $(dom_search).addClass('active');
+              if(!App.Application.Maps.Config.isPhone && !App.Application.Maps.Config.isTable) {
+                $(dom).addClass('__insearch').removeClass('__hide').removeClass('__calllist');
+                $(dom_search).addClass('active');
 
-              // hide google translator
-              App.DrupalHack.google_translator.show(false);
+                // hide google translator
+                App.DrupalHack.google_translator.show(false);
+              }
             });
 
             $(dom).on('mouseout', function (e) {
-              $(dom).addClass('__hide').removeClass('__insearch').removeClass('__calllist');
-              $(dom_search).removeClass('active');
+              if(!App.Application.Maps.Config.isPhone && !App.Application.Maps.Config.isTable) {
+                $(dom).addClass('__hide').removeClass('__insearch').removeClass('__calllist');
+                $(dom_search).removeClass('active');
 
-              // show google translator
-              App.DrupalHack.google_translator.show(true);
+                // show google translator
+                App.DrupalHack.google_translator.show(true);
+              }
             });
 
             $(dom + ' #back a').on('click', function (e) {

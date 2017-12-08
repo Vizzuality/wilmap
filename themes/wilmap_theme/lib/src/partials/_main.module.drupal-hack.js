@@ -356,27 +356,57 @@ console.log('in updateAdvancedFilters');
           $(runON + ' .views-exposed-form .form--bottom a#show-map').on('click', function(e){
             e.preventDefault();
 
-            var serialize = App.DrupalHack.entriesFilterList.serializeForm('/map');
-            var styles = ['blue','green','olive','bronze','maroon','purple','forest'];
+            var styles = ['blue','forest','olive','bronze','maroon','purple'];
+            var fields_to_check = ['title', 'claim','document','section','issuing','issues_addressed','liability','law','service','osp_obligation','general_immunity','general_liability','fromyear','toyear','country'];
+            var desc_output = ''
+            var serialize_row = App.DrupalHack.entriesFilterList.serializeForm('/map');
+            var serialize_out = serialize_row.split('?')[0] + '?';
+            var serialize_list = serialize_row.split('?')[1].split('&');
+
+            //Parse
+            console.log(serialize_row);
+
+            var cur_field = '';
+            var count_field = 0;
+            var total_fields = 0;
+            $.each(fields_to_check, function(h, j) {
+              $.each(serialize_list, function(i, k) {
+
+                var pair_serialize = k.split('=');
+
+                if(j === pair_serialize[0].split('%')[0]) {
+                  if(cur_field === j) {
+                    count_field++;
+                  } else {
+                    cur_field = j;
+                    count_field = 0;
+                  }
+
+                  if(pair_serialize[1] !== 'All' && pair_serialize[1] !== '') {
+                    console.log(count_field, j, k, pair_serialize[1]);
+                    var ampersan = (total_fields === 0)?'':'&';
+                    total_fields++;
+
+                    serialize_out += (count_field === 0)?ampersan + j + '=' + pair_serialize[1] : ',' + pair_serialize[1];
+                  }
+                }
+              });
+            });
+
+            //generate layer desc
+            if(total_fields == 0) {
+              desc_output = 'Not filtered';
+            }
+
 
             //add fromform, random style, title and desc
-            serialize = serialize + '&layerid=fromform';
-            serialize = serialize + '&layerstyle='+styles[Math.floor(Math.random()*styles.length)];
-            serialize = serialize + '&layertitle=Explore in Map';
-            serialize = serialize + '&layerdesc=';
+            serialize_out = serialize_out + '&layerid=fromform';
+            serialize_out = serialize_out + '&layerstyle='+styles[Math.floor(Math.random()*styles.length)];
+            serialize_out = serialize_out + '&layertitle=' + escape('Explore in Map');
+            serialize_out = serialize_out + '&layerdesc=' + escape(desc_output);
 
-            //Clean serialize
-            //?claim=56&document=All&country=28278&sort_by=changed&fromyear=1900&toyear=&region=All&title=&layerid=fromform
-            serialize = serialize.replace('claim=All&','');
-            serialize = serialize.replace('country=All&','');
-            serialize = serialize.replace('document=All&','');
-            serialize = serialize.replace('fromyear=&','');
-            serialize = serialize.replace('toyear=&','');
-            serialize = serialize.replace('region=All&','');
-            serialize = serialize.replace('sort_by=changed&','');
-            serialize = serialize.replace('title=&','');
-
-            location.href = serialize;
+            console.log(serialize_out)
+            location.href = serialize_out;
           });
 
           // pagination
@@ -621,6 +651,7 @@ console.log('in updateAdvancedFilters');
         var dom_google = '#google_translate_element';
         var dom_google_picker = dom + ' .picker';
         var dom_google_select = dom_google + ' select.goog-te-combo';
+        console.log('entra');
 
         //Init
         App.DrupalHack.google_translator = {};
@@ -657,9 +688,13 @@ console.log('in updateAdvancedFilters');
         };
 
         if($(dom).length > 0) {
-          $(dom_google).wrap('<div class="picker"></div>');
-
           setTimeout(function(){
+            // console.log($(dom + ' .picker').length);
+            // if(!$(dom + ' .picker').length > 0) {
+            //   $(dom_google).wrap('<div class="picker"></div>');
+            // }
+            App.Gumbyfy.methods.formsUI();
+
             if($(dom_google).length > 0) {
               var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':google.translate.TranslateElement().c;
               var css_class = App.DrupalHack.google_translator.setData(idlang);
