@@ -2177,7 +2177,7 @@ console.log('first_layer_load -> ' + first_layer_load);
           // button show more
           if (!$(dom + ' .datasheet-actions').length > 0) {
             if(num_fieldsgruop > 1) {
-              $(dom).append('<div class="datasheet-actions"><a href="#" class="btn">Show more</a></div>');
+              $(dom).append('<div class="datasheet-actions"><a href="#" class="btn">See all tags</a></div>');
             }
           }
 
