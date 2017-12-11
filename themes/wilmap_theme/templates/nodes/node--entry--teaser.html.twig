@@ -80,6 +80,7 @@
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }}>
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
+    {{ content.field_subtitle }}
     {{ content.field_tax_document_type }}
     <div class="locations">
       {{ content.field_location_entry }}
