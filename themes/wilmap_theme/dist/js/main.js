@@ -1393,6 +1393,7 @@ console.log('in updateAdvancedFilters');
         App.Application.Maps.Config.curr_continent_active       = null;
         App.Application.Maps.Config.curr_country_active         = null;
         App.Application.Maps.Config.curr_layer_active           = null;
+        App.Application.Maps.Config.count_entries               = {min:0, max:0, counts:''};
         App.Application.Maps.Config.color_active                = '#b3001e';
         App.Application.Maps.Config.color_border                = '#f7f6f2';
         App.Application.Maps.Config.color_inactive              = '#e4dfd3';
@@ -1448,7 +1449,7 @@ console.log('in updateAdvancedFilters');
           // save color scale
           App.Application.Maps.Config.curr_layer_active.colorscale[percentColor] = output_color;
 
-          // console.log("cl: " + currVal + ' | '  + percentValue + ' | ' + percentColor + ' | ' + color + ' | ' + output_color);
+          console.log("cl: " + currVal + ' | '  + percentValue + ' | ' + percentColor + ' | ' + color + ' | ' + output_color);
 
           //If value is 0 set color transparent;
           if(currVal == 0){
@@ -1595,12 +1596,12 @@ console.log('in updateAdvancedFilters');
                     value = 1;
                     break;
                   case total - 1:
-                    value = App.Application.Maps.Config.curr_layer_active.data.max;
+                    value = App.Application.Maps.Config.count_entries.max;
                     break;
                   default:
                     if(total % 2 === 1 && total > 4) {
                       if (count === parseInt((total / 2))) {
-                        value = parseInt(App.Application.Maps.Config.curr_layer_active.data.max / 2);
+                        value = parseInt(App.Application.Maps.Config.count_entries.max / 2);
                       } else {
                         value = '&nbsp;';
                       }
@@ -1677,7 +1678,9 @@ console.log('in updateAdvancedFilters');
 
           if (App.Application.Maps.CountryData[iso2]) {
             $.getJSON( API, function( data ) {
-              var realCount = parseInt(App.Application.Maps.Config.curr_layer_active.data.counts[iso2].entries);
+              console.log(App.Application.Maps.Config.count_entries);
+
+              var realCount = parseInt(App.Application.Maps.Config.count_entries.counts[iso2].entries);
               realCount = (realCount < 10) ? '0' + realCount : realCount;
 
               var total = 0;
@@ -1694,6 +1697,7 @@ console.log('in updateAdvancedFilters');
               });
 
               var other_total = parseInt(realCount) - total;
+
               info_popup += '<li><span class="count">' + other_total + '</span> Other</li>';
               info_popup += '</ul>';
 
@@ -1867,7 +1871,7 @@ console.log('in updateAdvancedFilters');
           var redraw = typeof redraw !== 'undefined' ? redraw : false;
 
           if (layer !== 'none') {
-            layer = { layerid:layer, query:'', title:'', description:'', style:'', data:{min:0, max:0, counts:''}, colorscale:{} };
+            layer = { layerid:layer, query:'', title:'', description:'', style:'', colorscale:{} };
             App.Application.Maps.Config.curr_layer_active = layer;
 
             if (App.Application.Maps.Config.curr_layer_active.layerid === 'fromform') {
@@ -1919,29 +1923,29 @@ console.log(App.Application.Maps);
           $.getJSON( API_QUERY, function( data ) {
             // Prepare data
             // console.log(query);
-            if (App.Application.Maps.Config.curr_layer_active !== null) {
-              App.Application.Maps.Config.curr_layer_active.data.counts = data;
+            // if (App.Application.Maps.Config.curr_layer_active !== null) {
+              App.Application.Maps.Config.count_entries.counts = data;
 
               // get max and min
-              $.each(App.Application.Maps.Config.curr_layer_active.data.counts, function(e, d) {
-                if(parseInt(d.entries) <= App.Application.Maps.Config.curr_layer_active.data.min) {
-                  App.Application.Maps.Config.curr_layer_active.data.min = parseInt(d.entries);
+              $.each(App.Application.Maps.Config.count_entries.counts, function(e, d) {
+                if(parseInt(d.entries) <= App.Application.Maps.Config.count_entries.min) {
+                  App.Application.Maps.Config.count_entries.min = parseInt(d.entries);
                 }
 
-                if(parseInt(d.entries) >= App.Application.Maps.Config.curr_layer_active.data.max) {
-                  App.Application.Maps.Config.curr_layer_active.data.max = parseInt(d.entries);
+                if(parseInt(d.entries) >= App.Application.Maps.Config.count_entries.max) {
+                  App.Application.Maps.Config.count_entries.max = parseInt(d.entries);
                 }
               });
-            }
+            // }
 
             // Set colors from data
             $.each(geoCountries.features, function(index, value) {
               if (App.Application.Maps.Config.curr_layer_active === null) {
                 value.properties.color = 'transparent';
               } else {
-                var maxVal = App.Application.Maps.Config.curr_layer_active.data.max;
-                var minVal = App.Application.Maps.Config.curr_layer_active.data.min;
-                var currVal = (App.Application.Maps.Config.curr_layer_active.data.counts[value.properties.iso2] !== undefined) ? parseInt(App.Application.Maps.Config.curr_layer_active.data.counts[value.properties.iso2].entries) : 0;
+                var maxVal = App.Application.Maps.Config.count_entries.max;
+                var minVal = App.Application.Maps.Config.count_entries.min;
+                var currVal = (App.Application.Maps.Config.count_entries.counts[value.properties.iso2] !== undefined) ? parseInt(App.Application.Maps.Config.count_entries.counts[value.properties.iso2].entries) : 0;
                 var color_base = App.Application.Maps.Config.color_styles[App.Application.Maps.Config.curr_layer_active.style];
 
                 value.properties.color = App.Application.Maps.Functions.choropleth(color_base, currVal, minVal, maxVal);
