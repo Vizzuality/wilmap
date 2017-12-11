@@ -30,10 +30,20 @@
     @include trim();
   }
 
+  .field {
+    .field {
+      @include trim();
+    }
+  }
+
   .picker {
     @include transition(all .3s ease);
     @include bg-image ($img-path + 'te_ctrl3.gif', 84px, 19px);
     background-position: -65px 48%;
+    width: 85px;
+    padding: $dp - 2 $dp * 3 $dp - 2 $dp * 2.5;
+    background-color: transparent;
+    border-left: none;
 
     &.__big {
       width: 140px;
@@ -71,7 +81,7 @@
 
     &::after {
       background-color: transparent;
-      top: 6px;
+      top: 50%;
       color: $fourth-color;
     }
   }

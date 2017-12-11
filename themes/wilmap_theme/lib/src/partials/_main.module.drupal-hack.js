@@ -358,7 +358,7 @@ console.log('in updateAdvancedFilters');
 
             var styles = ['blue','forest','olive','bronze','maroon','purple'];
             var fields_to_check = ['title', 'claim','document','section','issuing','issues_addressed','liability','law','service','osp_obligation','general_immunity','general_liability','fromyear','toyear','country'];
-            var desc_output = ''
+            var desc_output = 'Filtered by ';
             var serialize_row = App.DrupalHack.entriesFilterList.serializeForm('/map');
             var serialize_out = serialize_row.split('?')[0] + '?';
             var serialize_list = serialize_row.split('?')[1].split('&');
@@ -396,8 +396,58 @@ console.log('in updateAdvancedFilters');
             //generate layer desc
             if(total_fields == 0) {
               desc_output = 'Not filtered';
+            } else {
+              // Title
+              var tit = $('input[name="title"]').val();
+              if (tit !== '') {
+                desc_output += 'keyword "'+tit+'"';
+              }
+
+              // Selects
+              var tt = '';
+              $(runON + ' .form--filter select option:selected').each(function(i, k){
+                console.log(k);
+                console.log($(k).parent().attr('name'));
+                var is_country = ($(k).parent().attr('name') === 'country');
+                if($(k).val() !== 'All') {
+                  if(tt === '' && tit !== '') {
+                    var t = (is_country)? ' in ' + $(k).text():' and ' + $(k).text();
+                    tt = t;
+                  } else if(tt === '' && tit === '') {
+                    var t = (is_country)? 'in ' + $(k).text():$(k).text();
+                    tt = t;
+                  } else {
+                    var t = (is_country)? ' in ' + $(k).text():', ' + $(k).text();
+                    tt +=  t;
+                  }
+                }
+              });
+              desc_output += tt + '. ';
+
+              // Advanced
+              var tt = '';
+              $(runON + ' .form--advanced .advanced-tag').each(function(i, k) {
+                // console.log($(k).text());
+                // var is_country = ($(k).parent().attr('name') === 'country');
+                if($(k).text().indexOf('year') > -1) {
+                  tt +=  ' ' + $(k).text().replace(' X','');
+                } else {
+                  var is_last = (i === $(runON + ' .form--advanced .advanced-tag').length - 1);
+                  var is_first = (i === 0);
+
+                  if(is_last) {
+                    tt += ' and ' + $(k).text().replace(' X','') + '.';
+                  } else if(is_first){
+                    tt += $(k).text().replace(' X','');
+                  } else {
+                    tt += ', ' + $(k).text().replace(' X','');
+                  }
+                }
+              });
+              desc_output += tt;
             }
 
+            console.log(desc_output);
 
             //add fromform, random style, title and desc
             serialize_out = serialize_out + '&layerid=fromform';
@@ -405,7 +455,7 @@ console.log('in updateAdvancedFilters');
             serialize_out = serialize_out + '&layertitle=' + escape('Explore in Map');
             serialize_out = serialize_out + '&layerdesc=' + escape(desc_output);
 
-            console.log(serialize_out)
+            console.log(serialize_out);
             location.href = serialize_out;
           });
 
@@ -688,53 +738,59 @@ console.log('in updateAdvancedFilters');
         };
 
         if($(dom).length > 0) {
-          setTimeout(function(){
-            // console.log($(dom + ' .picker').length);
-            // if(!$(dom + ' .picker').length > 0) {
-            //   $(dom_google).wrap('<div class="picker"></div>');
-            // }
-            App.Gumbyfy.methods.formsUI();
+          if(!$( 'body' ).hasClass( 'theme-started' )) {
+            setTimeout(function(){
+              $( 'select.goog-te-combo' )
+              .parent().addClass( 'picker' )
+              .parent().addClass( '__small' );
 
-            if($(dom_google).length > 0) {
-              var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':google.translate.TranslateElement().c;
-              var css_class = App.DrupalHack.google_translator.setData(idlang);
-
-              $(dom_google_picker).addClass(css_class);
-              $(dom).addClass('__processed').addClass('__show');
-
-              //Event
-              $(dom_google_select).on('focus', function(){
+              if($(dom_google).length > 0) {
                 var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':google.translate.TranslateElement().c;
-                var option = (idlang === '')?$(dom_google_select + ' option:first-child'):$(dom_google_select + ' option[value="' + idlang + '"]');
+                var css_class = App.DrupalHack.google_translator.setData(idlang);
 
-                option.text(option.data('original'));
+                $(dom_google_picker).addClass(css_class);
+                $(dom).addClass('__processed').addClass('__show');
 
-                $(dom_google_picker).removeClass('__small').addClass('__big');
-              });
+                //Event
+                $(dom_google_select).on('focus', function(){
+                  var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':google.translate.TranslateElement().c;
+                  var option = (idlang === '')?$(dom_google_select + ' option:first-child'):$(dom_google_select + ' option[value="' + idlang + '"]');
 
-              $(dom_google_select).on('blur', function(e){
-                var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':google.translate.TranslateElement().c;
-                var option = (idlang === '')?$(dom_google_select + ' option:first-child'):$(dom_google_select + ' option[value="' + idlang + '"]');
+                  option.text(option.data('original'));
 
-                if(idlang === '') {
-                  option.text('eng');
-                } else {
-                  option.text(option.data('original').substring(0, 3));
-                }
+                  $(dom_google_picker).removeClass('__small').addClass('__big');
+                });
 
-                $(dom_google_picker).removeClass('__big').addClass('__small');
-              });
+                $(dom_google_select).on('blur', function(e){
+                  var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':google.translate.TranslateElement().c;
+                  var option = (idlang === '')?$(dom_google_select + ' option:first-child'):$(dom_google_select + ' option[value="' + idlang + '"]');
 
-              $(dom_google_select).on('change', function(e){
-                setTimeout(function(){
-                  var idlang = google.translate.TranslateElement().c;
-                  var css_class = App.DrupalHack.google_translator.setData(idlang);
+                  if(idlang === '') {
+                    option.text('eng');
+                  } else {
+                    option.text(option.data('original').substring(0, 3));
+                  }
 
-                  $(dom_google_picker).removeClass('__small').removeClass('__big').addClass(css_class);
-                }, 2000);
-              });
-            }
-          }, 10000);
+                  $(dom_google_picker).removeClass('__big').addClass('__small');
+                });
+
+                $(dom_google_select).on('change', function(e){
+                  setTimeout(function(){
+                    var idlang = google.translate.TranslateElement().c;
+                    var css_class = App.DrupalHack.google_translator.setData(idlang);
+
+                    $(dom_google_picker).removeClass('__small').removeClass('__big').addClass(css_class);
+                  }, 2000);
+                });
+              }
+            }, 10000);
+
+          } else {
+            setTimeout(function(){
+              $('.__small').removeClass('__small');
+              $( '.picker' ).addClass( '__small' );
+            }, 50);
+          }
         }
 
       },
@@ -758,6 +814,7 @@ console.log('in updateAdvancedFilters');
         // If page reload
         this.methods.contributorFilterList();
         this.methods.entriesFilterList();
+        this.methods.google_translator();
         App.DrupalHack.entriesFilterList.updateAdvancedFilters();
       }
 

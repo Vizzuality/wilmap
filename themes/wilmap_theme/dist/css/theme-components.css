@@ -1355,7 +1355,13 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
       display: none; }
       @media only screen and (min-width: 900px) and (max-width: 1124px) {
         body.node-map .ui-autocomplete.ui-widget.ui-widget-content.__hide #back {
-          display: block; } }
+          -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+          display: block;
+          position: fixed !important;
+          top: 55px;
+          left: auto;
+          right: 15px; } }
       @media only screen and (max-width: 899px) {
         body.node-map .ui-autocomplete.ui-widget.ui-widget-content.__hide #back {
           display: none; } }
@@ -1374,18 +1380,30 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
       display: none; }
       @media only screen and (min-width: 900px) and (max-width: 1124px) {
         body.node-map .ui-autocomplete.ui-widget.ui-widget-content.__insearch #back {
-          display: block; } }
+          -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+          display: block;
+          position: fixed !important;
+          top: 55px;
+          left: auto;
+          right: 282px; } }
       @media only screen and (max-width: 899px) {
         body.node-map .ui-autocomplete.ui-widget.ui-widget-content.__insearch #back {
           display: none; } }
     @media only screen and (max-width: 899px) {
       body.node-map .ui-autocomplete.ui-widget.ui-widget-content.__insearch.__calllist {
-        top: 65px !important; } }
+        padding-top: 20px !important; } }
     body.node-map .ui-autocomplete.ui-widget.ui-widget-content.__insearch.__calllist #back {
       display: none; }
       @media only screen and (min-width: 900px) and (max-width: 1124px) {
         body.node-map .ui-autocomplete.ui-widget.ui-widget-content.__insearch.__calllist #back {
-          display: block; } }
+          -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+          display: block;
+          position: fixed !important;
+          top: 55px;
+          left: auto;
+          right: 282px; } }
       @media only screen and (max-width: 899px) {
         body.node-map .ui-autocomplete.ui-widget.ui-widget-content.__insearch.__calllist #back {
           display: block; } }
@@ -1714,6 +1732,9 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
 
 .leaflet-container {
   background-color: #f7f6f2; }
+  .leaflet-container .leaflet-bar {
+    -webkit-box-shadow: none;
+    box-shadow: none; }
   .leaflet-container .leaflet-control-zoom {
     position: relative;
     top: 70px;
@@ -1975,16 +1996,18 @@ body.node-map .ui-autocomplete {
     display: none; }
     @media only screen and (min-width: 900px) and (max-width: 1124px) {
       body.node-map .ui-autocomplete li#back {
-        position: absolute;
-        top: 0;
-        left: -7px;
+        position: fixed !important;
+        top: 55px;
+        left: auto;
+        right: 15px;
         background-color: #b3001e;
-        display: block; } }
+        display: block;
+        width: 18px; } }
     @media only screen and (max-width: 899px) {
       body.node-map .ui-autocomplete li#back {
-        position: absolute;
-        top: 10px;
-        left: -5px;
+        position: relative;
+        top: 0;
+        margin-bottom: 20px;
         display: block; } }
     body.node-map .ui-autocomplete li#back h3 {
       margin: 0;
@@ -2006,7 +2029,8 @@ body.node-map .ui-autocomplete {
           font-size: 18px;
           font-size: 1.125rem;
           position: relative;
-          top: -6px; }
+          top: -6px;
+          left: -5px; }
         body.node-map .ui-autocomplete li#back h3 a span {
           display: inline-block; }
           @media only screen and (min-width: 900px) and (max-width: 1124px) {
@@ -2262,6 +2286,9 @@ body.node-map .ui-autocomplete {
   #block-googletranslate .text-formatted {
     margin: 0;
     padding: 0; }
+  #block-googletranslate .field .field {
+    margin: 0;
+    padding: 0; }
   #block-googletranslate .picker {
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
@@ -2269,7 +2296,11 @@ body.node-map .ui-autocomplete {
     background-repeat: no-repeat;
     background-position: 0 0;
     background-size: 84px 19px;
-    background-position: -65px 48%; }
+    background-position: -65px 48%;
+    width: 85px;
+    padding: 8px 30px 8px 25px;
+    background-color: transparent;
+    border-left: none; }
     #block-googletranslate .picker.__big {
       width: 140px;
       padding: 8px 50px 8px 25px;
@@ -2296,7 +2327,7 @@ body.node-map .ui-autocomplete {
           display: none; } }
     #block-googletranslate .picker::after {
       background-color: transparent;
-      top: 6px;
+      top: 50%;
       color: #968f7e; }
 
 #google_translate_element .goog-te-gadget {

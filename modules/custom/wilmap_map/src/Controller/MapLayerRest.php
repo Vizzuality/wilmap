@@ -104,7 +104,8 @@ class MapLayerRest extends ControllerBase
 
         $query_params=[];
         foreach ($params as $param => $values){
-            $query_params[]=$param.'='.join(',', $values);
+            $valuesOK = (gettype($values) === 'string') ? $values : join(',', $values);
+            $query_params[]=$param.'='.$valuesOK;
         }
 
         $response['query'] = join('&', $query_params);

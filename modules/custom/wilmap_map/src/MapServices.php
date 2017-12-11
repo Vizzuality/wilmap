@@ -377,7 +377,6 @@ class MapServices implements ContainerInjectionInterface
 
                 // Get field mapped with param
                 $field = self::$parameter_field_mapping[$param];
-
                 // Fields special treatments
                 switch ($field) {
                     case 'title':
@@ -429,6 +428,8 @@ class MapServices implements ContainerInjectionInterface
     ) {
         $conditions = $this->layerService->getLayerConditions($nid);
 
+// var_dump($conditions);
+
         /* A condition has this structure:
          array(
           'field_name' => $condition_field,
@@ -442,6 +443,7 @@ class MapServices implements ContainerInjectionInterface
         $params = new ParameterBag();
         foreach ($conditions as $condition) {
             $key = array_search ($condition['field_name'], self::$parameter_field_mapping);
+
             if($key){
                 $params->set($key, $condition['values']);
             }

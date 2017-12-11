@@ -7,6 +7,10 @@
 .leaflet-container {
   background-color: #f7f6f2;
 
+  .leaflet-bar {
+    @include box-shadow(none);
+  }
+
   .leaflet-control-zoom {
     @include position(relative, 70px null null null);
     @include border-radius($metro-radius);

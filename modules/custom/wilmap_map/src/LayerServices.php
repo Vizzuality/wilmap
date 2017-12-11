@@ -83,17 +83,25 @@ class LayerServices
         if ($layer = $this->getLayer($nid)) {
 
             // Get node fields definitions and get only fields with name "field_"
-            $fields = array_filter($layer->getFieldDefinitions(),
-              function ($key) {
-                  return strpos($key, 'field_') === 0;
-              },
-              ARRAY_FILTER_USE_KEY);
+            // NOT RUNS IN PHP 5.5
+            // $fields = array_filter($layer->getFieldDefinitions(),
+            //   function ($key) {
+            //       return strpos($key, 'field_') === 0;
+            //   },
+            //   ARRAY_FILTER_USE_KEY);
+
+            $fields = array();
+            foreach ($layer->getFieldDefinitions() as $key => $value) {
+              if(strpos($key, 'field_') === 0) {
+                $fields[$key] = $value;
+              }
+            }
 
             // Get non empty fields
             foreach ($fields as $field_name => $field_definition) {
                 if ($value = $layer->get($field_name)->getValue()) {
-//                    var_dump($field_name);
-//                    var_dump(array_column($value, 'target_id'));
+                   // var_dump($field_name);
+                   // var_dump(array_column($value, 'target_id'));
 
                     // field_year and field_year_to have special treatment
                     switch ($field_name) {
@@ -103,7 +111,7 @@ class LayerServices
                             $condition_operator = '>=';
                             break;
                         case 'field_year_to':
-                            $condition_field = 'field_year';
+                            $condition_field = 'field_year_to';
                             $condition_value = $value[0]['value'];
                             $condition_operator = '<=';
                             break;

@@ -385,6 +385,9 @@
 
           if (App.Application.Maps.CountryData[iso2]) {
             $.getJSON( API, function( data ) {
+              var realCount = parseInt(App.Application.Maps.Config.curr_layer_active.data.counts[iso2].entries);
+              realCount = (realCount < 10) ? '0' + realCount : realCount;
+
               var total = 0;
               // console.log('al montar esto: ' + App.Application.Maps.Config.is_embed);
               var target_button = (App.Application.Maps.Config.is_embed)?' target="_blank"':'';
@@ -398,10 +401,11 @@
                 info_popup += '<li><span class="count">' + val.count + '</span> ' + val.label + '</li>';
               });
 
+              var other_total = parseInt(realCount) - total;
+              info_popup += '<li><span class="count">' + other_total + '</span> Other</li>';
               info_popup += '</ul>';
 
-              total = (total < 10) ? '0' + total : total;
-              var output = '<div class="popup-inner"><div class="popup-inner-left"><span>'+total+'</span>Entries</div><div class="popup-inner-right"><div class="popup-info">' + info_popup + '</div><div class="popup-actions">' + goto_button + '</div></div></div>';
+              var output = '<div class="popup-inner"><div class="popup-inner-left"><span>'+realCount+'</span>Entries</div><div class="popup-inner-right"><div class="popup-info">' + info_popup + '</div><div class="popup-actions">' + goto_button + '</div></div></div>';
 
               if(App.Application.Maps.Config.isPhone && !App.Application.Maps.Config.is_embed) {
                 $('#mobile-popup .inner').empty().html(output);
@@ -922,6 +926,8 @@ console.log('first_layer_load -> ' + first_layer_load);
           $('#calllist').on('click', function(e){
             $(dom_sidebar).addClass('__insearch').addClass('__calllist').removeClass('__hide');
             $(dom_header).addClass('active');
+            $(dom_header + ' .region-primary-menu').addClass('active');
+            $(dom_header + ' span.str').parent().addClass('active');
             $(dom_header + ' span.str').text('Close');
 
             // hide google translator
@@ -1547,11 +1553,11 @@ console.log('first_layer_load -> ' + first_layer_load);
 
               // hide google translator
               App.DrupalHack.google_translator.show(false);
+            }
 
-              //If list map is open
-              if(!$(dom_list_countries).hasClass('__hide')){
-                $(dom_list_countries).addClass('__hide').removeClass('__insearch').removeClass('__calllist');
-              }
+            //If list map is open
+            if(!$(dom_list_countries).hasClass('__hide')){
+              $(dom_list_countries).addClass('__hide').removeClass('__insearch').removeClass('__calllist');
             }
           });
         }
