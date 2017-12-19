@@ -273,8 +273,10 @@ body.node-map {
       background: $third-color;
 
       @include respond(tablets) {
-        background: $third-color;
+        // background: $third-color;
         @include box-shadow(none);
+        background: transparent;
+        @include background-image(linear-gradient(left, rgba($third-color,0) 0%, rgba($third-color,0) 5%, rgba($third-color,1) 5%, rgba($third-color,1) 100%));
       }
 
       @include respond(all-phones) {
@@ -302,6 +304,14 @@ body.node-map {
           &::placeholder {
             color: $second-color;
           }
+        }
+      }
+    }
+
+    &.active {
+      .field {
+        @include respond(tablets) {
+          border-left: none;
         }
       }
     }

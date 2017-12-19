@@ -22,12 +22,37 @@
       @include margin(null null $dp * 2 null);
 
       li.layer-item {
+        @include position(relative, null null null null);
+
         &:nth-child(even) {
           @include column(7, center, collapse, false);
         }
 
         &:nth-child(odd) {
           @include column(7);
+        }
+
+        label {
+          @include padding(null null null $dp * 3);
+
+          span {
+            @include position(absolute, 0 null null 0);
+          }
+        }
+      }
+    }
+
+    .modal-actions {
+      a.btn {
+        margin-left: $dp / 2;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &.modal-clear {
+          @include button-white();
+          border: 1px solid $third-color !important;
         }
       }
     }

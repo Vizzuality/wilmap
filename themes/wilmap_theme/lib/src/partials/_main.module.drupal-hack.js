@@ -115,7 +115,9 @@
         }
 
         App.DrupalHack.entriesFilterList.autoSubmit = function() {
-          if(App.DrupalHack.entriesFilterList.last_active_checkbox_in_advanced) {
+          var page = (App.Utils.getUrlVar('page') === undefined)?0:App.Utils.getUrlVar('page');
+
+          if(App.DrupalHack.entriesFilterList.last_active_checkbox_in_advanced || page > 0) {
             console.log('Recarga Form');
 
             // Reload url for preventing bug of last item in advanced search.
@@ -130,9 +132,11 @@
         }
 
         App.DrupalHack.entriesFilterList.serializeForm = function(href) {
+          var isPhone = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
           var href = typeof href !== 'undefined' ? href : location.href.split('?')[0];
           var serialize = $(runON + ' .views-exposed-form').serialize();
-          var out = href + '?' + serialize;
+          var listtype = (isPhone) ? '':'&listtype=' + $('.listswitch ._active').text().toLowerCase();
+          var out = href + '?' + serialize + listtype;
 
           return out;
         }
@@ -322,7 +326,6 @@ console.log('in updateAdvancedFilters');
             // AutoSubmit
             App.DrupalHack.entriesFilterList.autoSubmit();
           });
-
 
           // close modal button
           $(runON + ' .views-exposed-form .form--modal a.close').on('click', function(e){

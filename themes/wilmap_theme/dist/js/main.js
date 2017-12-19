@@ -422,7 +422,9 @@
         }
 
         App.DrupalHack.entriesFilterList.autoSubmit = function() {
-          if(App.DrupalHack.entriesFilterList.last_active_checkbox_in_advanced) {
+          var page = (App.Utils.getUrlVar('page') === undefined)?0:App.Utils.getUrlVar('page');
+
+          if(App.DrupalHack.entriesFilterList.last_active_checkbox_in_advanced || page > 0) {
             console.log('Recarga Form');
 
             // Reload url for preventing bug of last item in advanced search.
@@ -437,9 +439,11 @@
         }
 
         App.DrupalHack.entriesFilterList.serializeForm = function(href) {
+          var isPhone = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
           var href = typeof href !== 'undefined' ? href : location.href.split('?')[0];
           var serialize = $(runON + ' .views-exposed-form').serialize();
-          var out = href + '?' + serialize;
+          var listtype = (isPhone) ? '':'&listtype=' + $('.listswitch ._active').text().toLowerCase();
+          var out = href + '?' + serialize + listtype;
 
           return out;
         }
@@ -629,7 +633,6 @@ console.log('in updateAdvancedFilters');
             // AutoSubmit
             App.DrupalHack.entriesFilterList.autoSubmit();
           });
-
 
           // close modal button
           $(runON + ' .views-exposed-form .form--modal a.close').on('click', function(e){
@@ -1393,7 +1396,7 @@ console.log('in updateAdvancedFilters');
         App.Application.Maps.Config.curr_continent_active       = null;
         App.Application.Maps.Config.curr_country_active         = null;
         App.Application.Maps.Config.curr_layer_active           = null;
-        App.Application.Maps.Config.count_entries               = {min:0, max:0, counts:''};
+        App.Application.Maps.Config.count_entries               = {min:0, max:0, counts:{}};
         App.Application.Maps.Config.color_active                = '#b3001e';
         App.Application.Maps.Config.color_border                = '#f7f6f2';
         App.Application.Maps.Config.color_inactive              = '#e4dfd3';
@@ -1412,6 +1415,8 @@ console.log('in updateAdvancedFilters');
         App.Application.Maps.Functions.choropleth = function(color, currVal, minVal, maxVal, steps) {
           var steps = typeof steps !== 'undefined' ? steps : 5;
           var output_color = '';
+
+console.log(color, currVal, minVal, maxVal, steps);
 
           // calculates the percent of value
           var percentValue = Math.floor((currVal - minVal) / (maxVal - minVal) * 100);
@@ -1513,7 +1518,7 @@ console.log('in updateAdvancedFilters');
               output += output_layers;
               output += '         </section>';
               output += '      </div>';
-              output += '      <div class="modal-actions"><a href="#" class="btn modal-done">APPLY</a></div>';
+              output += '      <div class="modal-actions"><a href="#" class="btn modal-clear">Clear</a><a href="#" class="btn modal-done">Apply</a></div>';
               output += '  </div>';
               output += '</div>';
 
@@ -1533,6 +1538,18 @@ console.log('in updateAdvancedFilters');
                 }
               });
 
+              //Close
+              $('#' + DOM + ' a.close').on('click', function(e) {
+                var layerid = App.Utils.getUrlVar('layerid');
+
+
+                if(layerid !== 'fromform' || layerid !== '') {
+                  $('#' + DOM + ' label.checkbox[data-layerid="'+layerid+'"] input').prop('checked', true);
+                  $('#' + DOM + ' label.checkbox[data-layerid="'+layerid+'"] span').append('<i class="icon-check"></i>');
+                  $('#' + DOM + ' label.checkbox[data-layerid="'+layerid+'"]').addClass('checked');
+                }
+              });
+
               // done button
               $('#' + DOM + ' .modal-actions a.modal-done').on('click', function(e) {
                 e.preventDefault();
@@ -1540,6 +1557,21 @@ console.log('in updateAdvancedFilters');
 
                 App.Application.Maps.Functions.resetActiveMap()
                 App.Application.Maps.Functions.loadLayer(layer, true);
+
+                $('#' + DOM + '  a.close').click();
+              });
+
+              // clear button
+              $('#' + DOM + ' .modal-actions a.modal-clear').on('click', function(e) {
+                e.preventDefault();
+
+                //clear
+                $('#' + DOM + ' label.checkbox.checked i.icon-check').remove();
+                $('#' + DOM + ' label.checkbox.checked input').prop('checked', false); ;
+                $('#' + DOM + ' label.checkbox.checked').removeClass('checked');
+
+                App.Application.Maps.Functions.resetActiveMap()
+                App.Application.Maps.Functions.loadLayer('none', true);
 
                 $('#' + DOM + '  a.close').click();
               });
@@ -1924,10 +1956,13 @@ console.log(App.Application.Maps);
             // Prepare data
             // console.log(query);
             // if (App.Application.Maps.Config.curr_layer_active !== null) {
+              App.Application.Maps.Config.count_entries.min = 0;
+              App.Application.Maps.Config.count_entries.max = 0;
               App.Application.Maps.Config.count_entries.counts = data;
 
               // get max and min
               $.each(App.Application.Maps.Config.count_entries.counts, function(e, d) {
+                console.log(parseInt(d.entries), App.Application.Maps.Config.count_entries.min, App.Application.Maps.Config.count_entries.max);
                 if(parseInt(d.entries) <= App.Application.Maps.Config.count_entries.min) {
                   App.Application.Maps.Config.count_entries.min = parseInt(d.entries);
                 }
@@ -2628,6 +2663,10 @@ console.log('first_layer_load -> ' + first_layer_load);
             ref: '.node__title a'
           },
           {
+            bigitem: '.panel-block .view-content .views-row',
+            ref: '.node__title a'
+          },
+          {
             bigitem: '.block-views-blockcontributors-block-1 .view-content .views-row',
             ref: '.contributor-info-holder .views-field-name a'
           },
@@ -2646,10 +2685,6 @@ console.log('first_layer_load -> ' + first_layer_load);
           {
             bigitem: '.item-list .search-results li',
             ref: '.search-result__title a'
-          },
-          {
-            bigitem: '.panel-block .view-content .views-row',
-            ref: '.node__title a'
           },
         ];
 
@@ -3195,6 +3230,7 @@ console.log('first_layer_load -> ' + first_layer_load);
             insert_position: 'bottom', // top or bottom
             strings: 'Grid|List',
             default_active: 'on', //on is first position, off second position
+            url_param: 'listtype', //empty for not active
           }
         ];
 
@@ -3209,9 +3245,9 @@ console.log('first_layer_load -> ' + first_layer_load);
             var active_off = (curr_state === 'off')? 'class="_active" ' : '';
 
             outputHTML += '<div class="' + switch_class + '">';
-            outputHTML += '<a href="#" ' + active_on + 'data-switch="on" data-target="' + value.element + '">' + value.strings.split('|')[0] + '</a>';
+            outputHTML += '<a href="#" ' + active_on + 'data-switch="on" data-urlparam="' + value.url_param + '" data-target="' + value.element + '">' + value.strings.split('|')[0] + '</a>';
             outputHTML += ' / ';
-            outputHTML += '<a href="#" ' + active_off + 'data-switch="off" data-target="' + value.element + '">' + value.strings.split('|')[1] + '</a>';
+            outputHTML += '<a href="#" ' + active_off + 'data-switch="off" data-urlparam="' + value.url_param + '" data-target="' + value.element + '">' + value.strings.split('|')[1] + '</a>';
             outputHTML += '</div>';
 
             if(!$(value.insert_dom + ' .' + switch_class).length > 0) {
@@ -3236,6 +3272,15 @@ console.log('first_layer_load -> ' + first_layer_load);
 
             $($(this).data('target')).removeClass(switch_onoff + 'on').removeClass(switch_onoff + 'off');
             $($(this).data('target')).addClass(switch_onoff + $(this).data('switch'));
+
+            if($(this).data('urlparam') !== ''){
+              var url_param = $(this).data('urlparam');
+              var url = location.href;
+              url = (url.indexOf('?') > -1)?url:url + '?';
+              url = url.split('&'+url_param)[0]+'&'+url_param+'='+$(this).text().toLowerCase();
+
+              App.Utils.setBrowserURL(url);
+            }
           }
 
           e.preventDefault();

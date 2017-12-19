@@ -95,12 +95,22 @@ body.node-map {
         color: $second-color;
         text-decoration: none;
 
+        @include respond(tablets) {
+          margin-left: 15px;
+          padding-left: 20px;
+        }
+
         &:hover,
         &.active,
         &.hover {
           color: $second-color;
           text-decoration: none;
           background-color: rgba($white, 0.16);
+
+          @include respond(tablets) {
+            margin-left: 15px;
+            padding-left: 20px;
+          }
         }
       }
     }
