@@ -5,14 +5,19 @@
 // ============================================================================
 
 #block-googletranslate {
-  @include hide-before-dom-alter();
+  //@include hide-before-dom-alter();
+  @include transition(all .1s ease);
+  opacity: 0;
 
   &.__show {
-    display: block;
+    // display: block;
+    @include transition(all .8s ease);
+    opacity: 1;
   }
 
   &.__hide {
-    display: none;
+    // display: none;
+    opacity: 0;
   }
 
   @include position(absolute, 8px 265px null auto);
@@ -35,8 +40,18 @@
       @include trim();
     }
   }
+}
 
-  .picker {
+#google_translate_element {
+  .goog-te-gadget {
+    @include font(0px, 1, $regular, $heading-font);
+
+    > span {
+      display: none;
+    }
+  }
+
+  &.picker {
     @include transition(all .3s ease);
     @include bg-image ($img-path + 'te_ctrl3.gif', 84px, 19px);
     background-position: -65px 48%;
@@ -46,8 +61,8 @@
     border-left: none;
 
     &.__big {
-      width: 160px;
-      padding: $dp - 2 $dp * 5 $dp - 2 $dp * 2.5;
+      width: 180px;
+      padding: $dp - 2 $dp * 5.5 $dp - 2 $dp * 2.5;
       background-color: $white;
       border-left: 10px solid $white;
 
@@ -62,7 +77,7 @@
 
     &.__small {
       width: 85px;
-      padding: $dp - 2 $dp * 3 $dp - 2 $dp * 2.5;
+      padding: $dp - 2 $dp * 3.2 $dp - 2 $dp * 2.5;
       background-color: transparent;
       border-left: none;
     }
@@ -81,31 +96,33 @@
 
     &::after {
       background-color: transparent;
-      top: 50%;
+      top: 6px;
       color: $fourth-color;
     }
+
+    .picker {
+      padding: 0;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    .field {
+      overflow: visible;
+    }
   }
-}
 
-#google_translate_element {
-  .goog-te-gadget {
-    @include font(0px, 1, $regular, $heading-font);
-
-    > span {
-      display: none;
-    }
-
-    select.goog-te-combo {
-      @include font($normal, 1, $regular, $heading-font);
-      letter-spacing: 0.9px;
-      display: inline-block;
-      text-decoration: none;
-      text-transform: uppercase !important;
-      color: $first-color;
-      -moz-appearance: none;
-      text-indent: 0.01px;
-      text-overflow: '';
-    }
+  select.goog-te-combo {
+    @include font($normal, 1, $regular, $heading-font);
+    letter-spacing: 0.9px;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase !important;
+    color: $first-color;
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
   }
 }
 

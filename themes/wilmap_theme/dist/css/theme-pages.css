@@ -1335,17 +1335,12 @@ article.node--type-topics.node--view-mode-full > .node__content .node-body > .te
     border: 0;
     background: transparent; }
   article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted blockquote {
-    padding: 0 0 0 45px;
-    margin: 0 0 20px; }
-    article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted blockquote:before {
-      font-size: 80px;
-      font-size: 5rem;
-      position: absolute;
-      top: 20px;
-      left: 0;
-      content: '\201C';
-      display: block;
-      color: #b3001e; }
+    padding: 0 0 0 15px;
+    border-left: 5px solid rgba(150, 143, 126, 0.5);
+    float: none;
+    clear: both;
+    margin-top: 30px !important;
+    margin-bottom: 30px !important; }
   article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted cite {
     font-size: 14px;
     font-size: 0.875rem;

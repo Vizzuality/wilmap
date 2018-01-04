@@ -329,6 +329,7 @@ body.node-map {
     display: block !important;
     background: $third-color;
 
+
     @include respond(tablets) {
       @include transition(all .3s ease);
       background: transparent;
@@ -340,6 +341,7 @@ body.node-map {
       min-height: 1200px !important;
     }
 
+    &,
     &.__hide {
       right: -90px !important;
 

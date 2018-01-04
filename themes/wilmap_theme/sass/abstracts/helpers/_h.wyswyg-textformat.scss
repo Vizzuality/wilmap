@@ -75,16 +75,20 @@
   }
 
   blockquote {
-    @include padding(0 0 0 $dp * 4.5);
-    @include margin(0 0 $dp * 2 0);
+    @include padding(0 0 0 $dp * 1.5);
+    border-left: $dp / 2 solid rgba($body-em-color, 0.5);
+    float: none;
+    clear: both;
+    margin-top: $dp * 3 !important;
+    margin-bottom: $dp * 3 !important;
 
-    &:before {
-      @include fs(80px);
-      @include position(absolute, $dp * 2 null null 0);
-      content: '\201C';
-      display: block;
-      color: $third-color;
-    }
+    // &:before {
+    //   @include fs(80px);
+    //   @include position(absolute, $dp * 2 null null 0);
+    //   content: '\201C';
+    //   display: block;
+    //   color: $third-color;
+    // }
   }
 
   cite {

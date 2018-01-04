@@ -667,7 +667,7 @@ console.log(App.Application.Maps);
 
               // get max and min
               $.each(App.Application.Maps.Config.count_entries.counts, function(e, d) {
-                console.log(parseInt(d.entries), App.Application.Maps.Config.count_entries.min, App.Application.Maps.Config.count_entries.max);
+                //console.log(parseInt(d.entries), App.Application.Maps.Config.count_entries.min, App.Application.Maps.Config.count_entries.max);
                 if(parseInt(d.entries) <= App.Application.Maps.Config.count_entries.min) {
                   App.Application.Maps.Config.count_entries.min = parseInt(d.entries);
                 }
@@ -1924,7 +1924,6 @@ console.log('first_layer_load -> ' + first_layer_load);
        * Lists Switch
        */
       listSwitch: function() {
-
         var switch_class = 'listswitch';
         var switch_onoff = '_switch-';
         var outputHTML   = '';
@@ -1945,7 +1944,9 @@ console.log('first_layer_load -> ' + first_layer_load);
           if ( $(value.element).length > 0 && $(value.insert_dom).length > 0 ) {
             var re = new RegExp( "(" + switch_onoff + ")(\\w+)", "g" );
             re = $(value.element).attr('class').match(re);
-            var curr_state = (re !== null)?re[0].split('-')[1]:value.default_active;
+            var curr_state = (value.url_param !== '' && App.Utils.getUrlVar(value.url_param) !== undefined)
+                             ? App.Utils.getUrlVar(value.url_param)
+                             : (re !== null)?re[0].split('-')[1] : value.default_active;
             var active_on = (curr_state === 'on')? 'class="_active" ' : '';
             var active_off = (curr_state === 'off')? 'class="_active" ' : '';
 
@@ -1964,7 +1965,8 @@ console.log('first_layer_load -> ' + first_layer_load);
             }
 
             if($(value.element).attr('class').indexOf(switch_onoff) === -1) {
-              $(value.element).addClass(switch_onoff + value.default_active);
+              // $(value.element).addClass(switch_onoff + value.default_active);
+              $(value.element).addClass(switch_onoff + curr_state);
             }
           }
         });
@@ -1982,7 +1984,7 @@ console.log('first_layer_load -> ' + first_layer_load);
               var url_param = $(this).data('urlparam');
               var url = location.href;
               url = (url.indexOf('?') > -1)?url:url + '?';
-              url = url.split('&'+url_param)[0]+'&'+url_param+'='+$(this).text().toLowerCase();
+              url = url.split('&'+url_param)[0]+'&'+url_param+'='+$(this).data('switch').toLowerCase();
 
               App.Utils.setBrowserURL(url);
             }
@@ -2067,8 +2069,9 @@ console.log('first_layer_load -> ' + first_layer_load);
                                      'responsive-mobile-tablet':'responsive-desktop');
 
 
-          // If Desktop resize, reload page for initialize mobile
-          if( App.Utils.isDesktop() && App.curResponsiveClass !== nextResponsiveClass ) {
+          // If reload page for initialize mobile
+          // if( App.Utils.isDesktop() && App.curResponsiveClass !== nextResponsiveClass ) {
+          if( App.curResponsiveClass !== nextResponsiveClass ) {
             location.reload();
             console.log('Responsive Reloaded')
           }

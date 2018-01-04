@@ -101,8 +101,18 @@
 
         //Init
         App.DrupalHack.entriesFilterList = {};
-        App.DrupalHack.entriesFilterList.advancedChanges = [];
+        App.DrupalHack.entriesFilterList.state_advanced_form = [];
         App.DrupalHack.entriesFilterList.last_active_checkbox_in_advanced = false;
+
+        App.DrupalHack.entriesFilterList.isProcessing = function() {
+          var ajaxSpinnerDOM = '.ajax-progress.ajax-progress-fullscreen';
+
+          if ($(ajaxSpinnerDOM).length > 0) {
+            return true;
+          } else {
+            return false;
+          }
+        }
 
         App.DrupalHack.entriesFilterList.checkLastActiveCheckbox = function() {
           var out_total = $(runON + ' .views-exposed-form .form--advanced .content .advanced-tag[data-type="checkbox"]').length;
@@ -135,14 +145,87 @@
           var isPhone = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
           var href = typeof href !== 'undefined' ? href : location.href.split('?')[0];
           var serialize = $(runON + ' .views-exposed-form').serialize();
-          var listtype = (isPhone) ? '':'&listtype=' + $('.listswitch ._active').text().toLowerCase();
+          var listtype = (isPhone) ? '':'&listtype=' + $('.listswitch ._active').data('switch').toLowerCase();
           var out = href + '?' + serialize + listtype;
 
           return out;
         }
 
-        App.DrupalHack.entriesFilterList.closeAdvancedFilters = function() {
+        App.DrupalHack.entriesFilterList.saveStateAdvancedFilters = function() {
+          console.log('saveStateAdvancedFilters');
+          App.DrupalHack.entriesFilterList.state_advanced_form = [];
 
+          // Save state fields
+          $(runON + ' .views-exposed-form .form--modal .content-inner .form-item input').each(function(item, value) {
+            var v_value = "";
+            var v_text = "";
+            var v_target = "";
+            var v_type = "";
+            var ok = false;
+
+            switch ($(value).attr('type')) {
+              case 'text':
+                if($(value).val() !== '') {
+                  ok = true;
+                  v_value = $(value).val();
+                  v_text = $(value).parent().find('label').text() + ': ' + $(value).val();
+                  v_target = $(value).attr('id');
+                  v_type = $(value).attr('type');
+                  break;
+                }
+              case 'checkbox':
+                if($(value).is(':checked')) {
+                  ok = true;
+                  v_value = $(value).val();
+                  v_text = $(value).parents('label').text();
+                  v_target = $(value).attr('id');
+                  v_type = $(value).attr('type');
+                  break;
+                }
+              default:
+                ok = false;
+                break;
+            }
+
+            if(ok){
+              var obj = {'v_value':v_value, 'v_text':v_text, 'v_target':v_target, 'v_type':v_type};
+              App.DrupalHack.entriesFilterList.state_advanced_form.push(obj);
+            }
+          });
+        }
+
+        App.DrupalHack.entriesFilterList.revokesChangesAdvancedFilters = function() {
+          console.log('revokesChangesAdvancedFilters');
+
+          // Reset all fields
+          //text
+          $(runON + ' .views-exposed-form .form--modal .content-inner .form-item input[type="text"]').val('');
+
+          //checkbox
+          $(runON + ' .views-exposed-form .form--modal .content-inner .form-item input[type="checkbox"]').parent().find('span i').remove();
+          $(runON + ' .views-exposed-form .form--modal .content-inner .form-item input[type="checkbox"]').parent().removeClass('checked');
+          $(runON + ' .views-exposed-form .form--modal .content-inner .form-item input[type="checkbox"]').prop('checked', false).removeAttr('checked');
+
+          //Apply saved State
+          $(App.DrupalHack.entriesFilterList.state_advanced_form).each(function(item, value) {
+            console.log(value);
+
+            switch (value.v_type) {
+              case 'text':
+                $('#' + value.v_target).val(value.v_value);
+                break;
+              case 'checkbox':
+                // if($(value).is(':checked')) {
+                //   v_value = $(value).val();
+                //   v_text = $(value).parents('label').text();
+                //   v_target = $(value).attr('id');
+                //   v_type = $(value).attr('type');
+                  break;
+                // }
+              default:
+                break;
+            }
+          });
         }
 
         App.DrupalHack.entriesFilterList.updateAdvancedFilters = function() {
@@ -209,30 +292,36 @@ console.log('in updateAdvancedFilters');
           $(advancedContentDOM + ' .advanced-tag a.delete').on('click', function(e){
             e.preventDefault();
 
-            var type = $(this).parent().data('type');
-            var target = $(this).parent().data('target')
+            if(!App.DrupalHack.entriesFilterList.isProcessing()) {
+              console.log('elimina porque no esta procesando');
 
-            // console.log('#'+target, type);
-            // console.log($('#'+target).parent());
+              var type = $(this).parent().data('type');
+              var target = $(this).parent().data('target')
 
-            switch (type) {
-              case 'text':
+              // console.log('#'+target, type);
+              // console.log($('#'+target).parent());
+
+              switch (type) {
+                case 'text':
                 $('#'+target).val('');
                 break;
-              case 'checkbox':
+                case 'checkbox':
                 $('#'+target).prop('checked', false).removeAttr('checked');
                 $('#'+target).parent().removeClass('checked');
                 $('#'+target).parent().find('span i').remove();
                 break;
-              default:
+                default:
                 break;
+              }
+
+              // Update
+              App.DrupalHack.entriesFilterList.updateAdvancedFilters();
+
+              // Submit
+              App.DrupalHack.entriesFilterList.autoSubmit();
+            } else {
+              console.log('NO elimina porque esta procesando');
             }
-
-            // Update
-            App.DrupalHack.entriesFilterList.updateAdvancedFilters();
-
-            // Submit
-            App.DrupalHack.entriesFilterList.autoSubmit();
           });
 
           if(cont) {
@@ -244,7 +333,7 @@ console.log('in updateAdvancedFilters');
 
         if ($(runON).length > 0) {
           if(!$(runON + ' .form--modal').length > 0) {
-            $(runON + ' .views-exposed-form').append('<div id="modal-advanced-filter" class="form--modal modal"><div class="content"><a class="close switch" gumby-trigger="|#modal-advanced-filter">CLOSE</a><h3>Advanced - Search</h3><div class="content-inner"><div class="date-selectors"></div></div><div class="modal-actions"><a href="#" class="btn modal-done">APPLY</a></div></div></div>');
+            $(runON + ' .views-exposed-form').append('<div id="modal-advanced-filter" class="form--modal modal"><div class="content"><a class="close switch" gumby-trigger="|#modal-advanced-filter">CLOSE</a><a style="display:none;" class="close_hidden switch" gumby-trigger="|#modal-advanced-filter">CLOSE_HIDDEN</a><h3>Advanced - Search</h3><div class="content-inner"><div class="date-selectors"></div></div><div class="modal-actions"><a href="#" class="btn modal-done">APPLY</a></div></div></div>');
             $(runON + ' .views-exposed-form').append('<div class="form--advanced" style="display: none;"><fieldset><legend>Advanced filters:</legend></fieldset><div class="content"></div></div>');
 
             $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .form--inline > .js-form-item').remove().wrap());
@@ -264,7 +353,8 @@ console.log('in updateAdvancedFilters');
             $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-claim').remove().wrap());
             $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-document').remove().wrap());
             $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-country').remove().wrap());
-            $(runON + ' .views-exposed-form .form--inline .form--filter').append('<a href="#" class="switch btn" gumby-trigger="#modal-advanced-filter">Advanced</a></p>');
+            $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-region').remove().wrap());
+            $(runON + ' .views-exposed-form .form--inline .form--filter').append('<a href="#" id="advanced-btn" class="switch btn" gumby-trigger="#modal-advanced-filter">Advanced</a></p>');
 
             // Selects
             $(runON + '  .views-exposed-form .form--inline .form--filter .js-form-type-select').each(function(item, value){
@@ -327,10 +417,23 @@ console.log('in updateAdvancedFilters');
             App.DrupalHack.entriesFilterList.autoSubmit();
           });
 
+          // advanced button
+          $(runON + ' .views-exposed-form a#advanced-btn').on('click', function(e){
+            e.preventDefault();
+
+            //Save state in advanced form
+            App.DrupalHack.entriesFilterList.saveStateAdvancedFilters();
+          });
+
           // close modal button
           $(runON + ' .views-exposed-form .form--modal a.close').on('click', function(e){
             e.preventDefault();
-            console.log('cierra advanced');
+
+            //Revokes last changes in advanced form
+            App.DrupalHack.entriesFilterList.revokesChangesAdvancedFilters();
+
+            // Update
+            App.DrupalHack.entriesFilterList.updateAdvancedFilters();
           });
 
           // done button
@@ -341,7 +444,7 @@ console.log('in updateAdvancedFilters');
             App.DrupalHack.entriesFilterList.updateAdvancedFilters();
 
             // Close modal
-            $(runON + ' .views-exposed-form .form--modal a.close').click();
+            $(runON + ' .views-exposed-form .form--modal a.close_hidden').click();
 
             // AutoSubmit
             App.DrupalHack.entriesFilterList.autoSubmit();
@@ -704,10 +807,24 @@ console.log('in updateAdvancedFilters');
         var dom_google = '#google_translate_element';
         var dom_google_picker = dom + ' .picker';
         var dom_google_select = dom_google + ' select.goog-te-combo';
-        console.log('entra');
+        var dom_google_gadget = dom_google + ' .goog-te-gadget';
 
         //Init
         App.DrupalHack.google_translator = {};
+        App.DrupalHack.google_translator.getGoogleObjLang = function(){
+          var out = '';
+          try {
+            console.log('Intenta: google.translate.TranslateElement().c');
+            out = google.translate.TranslateElement().c;
+          } catch (err) {
+            console.log(err);
+            out = '';
+          }
+
+          console.log('App.DrupalHack.google_translator.getGoogleObjLang:' + out);
+          return out;
+        };
+
         App.DrupalHack.google_translator.show = function(arg) {
           if (arg === true) {
             $(dom).removeClass('__hide').addClass('__show');
@@ -742,30 +859,31 @@ console.log('in updateAdvancedFilters');
 
         if($(dom).length > 0) {
           if(!$( 'body' ).hasClass( 'theme-started' )) {
+            //console.log('pasa por aqui porque no hay theme-started');
             setTimeout(function(){
-              $( 'select.goog-te-combo' )
-              .parent().addClass( 'picker' )
-              .parent().addClass( '__small' );
 
               if($(dom_google).length > 0) {
-                var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':google.translate.TranslateElement().c;
+                //console.log('HAY GOOGLE DOM, HAY SELECT? ' + $(dom_google_gadget).length);
+                $(dom_google).addClass( 'picker' ).addClass( '__small' );
+
+                var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':App.DrupalHack.google_translator.getGoogleObjLang();
                 var css_class = App.DrupalHack.google_translator.setData(idlang);
 
-                $(dom_google_picker).addClass(css_class);
+                //$(dom_google).addClass(css_class);
                 $(dom).addClass('__processed').addClass('__show');
 
                 //Event
                 $(dom_google_select).on('focus', function(){
-                  var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':google.translate.TranslateElement().c;
+                  var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':App.DrupalHack.google_translator.getGoogleObjLang();
                   var option = (idlang === '')?$(dom_google_select + ' option:first-child'):$(dom_google_select + ' option[value="' + idlang + '"]');
 
                   option.text(option.data('original'));
 
-                  $(dom_google_picker).removeClass('__small').addClass('__big');
+                  $(dom_google).removeClass('__small').addClass('__big');
                 });
 
                 $(dom_google_select).on('blur', function(e){
-                  var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':google.translate.TranslateElement().c;
+                  var idlang = ($(dom_google_select + ' option:first-child').attr('value') === '')?'':App.DrupalHack.google_translator.getGoogleObjLang();
                   var option = (idlang === '')?$(dom_google_select + ' option:first-child'):$(dom_google_select + ' option[value="' + idlang + '"]');
 
                   if(idlang === '') {
@@ -774,25 +892,25 @@ console.log('in updateAdvancedFilters');
                     option.text(option.data('original').substring(0, 3));
                   }
 
-                  $(dom_google_picker).removeClass('__big').addClass('__small');
+                  $(dom_google).removeClass('__big').addClass('__small');
                 });
 
                 $(dom_google_select).on('change', function(e){
                   setTimeout(function(){
-                    var idlang = google.translate.TranslateElement().c;
+                    var idlang = App.DrupalHack.google_translator.getGoogleObjLang();
                     var css_class = App.DrupalHack.google_translator.setData(idlang);
 
-                    $(dom_google_picker).removeClass('__small').removeClass('__big').addClass(css_class);
+                    $(dom_google).removeClass('__small').removeClass('__big').addClass(css_class);
                   }, 2000);
                 });
               }
-            }, 4000);
-
+            }, 3800);
           } else {
+            //console.log('pasa por aqui porque HAY theme-started');
             setTimeout(function(){
-              $('.__small').removeClass('__small');
-              $( '.picker' ).addClass( '__small' );
-            }, 50);
+              $(dom_google_gadget + ' .picker').removeClass('picker');
+              $(dom_google_gadget + ' .field').removeClass('field');
+            }, 500);
           }
         }
 
