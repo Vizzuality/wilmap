@@ -1,0 +1,36 @@
+/* Publishing options */
+fieldset.publishing-group {
+  border: none;
+  background: transparent;
+  margin: 0 !important;
+  padding: 0 !important;
+  clear: both;
+  float: none;
+  top: 0 !important;
+}
+
+fieldset.publishing-group legend {
+  padding: 10px;
+  background: rgba(227, 222, 211, 0.3) !important;
+  width: 100%;
+  display: block;
+  clear: both;
+  float: none;
+  margin: 0 !important;
+  height: auto;
+  position: relative !important;
+  top: 0 !important;
+  margin-bottom: 10px;
+  letter-spacing: 0px !important;
+}
+
+fieldset.publishing-group .fieldset-wrapper {
+  clear: both;
+  display: block;
+  float: none;
+  width: 100%;
+  height: auto;
+  position: relative !important;
+  top: 10px !important;
+  left: 0;
+}

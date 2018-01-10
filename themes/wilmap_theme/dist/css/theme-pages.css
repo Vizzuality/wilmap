@@ -4243,7 +4243,10 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors:after {
       clear: both; }
     .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors .js-form-item {
-      width: 49.11111%; }
+      width: 49.11111%;
+      clear: none;
+      float: left;
+      border: none; }
       @media only screen and (max-width: 899px) {
         .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors .js-form-item {
           float: left;
@@ -4252,7 +4255,24 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors .js-form-item:first-child {
         margin-left: 0; }
   .block-views-blocklist-entries-block-1 .view-filters .form--modal .form-item {
-    margin-bottom: 50px; }
+    margin-bottom: 50px;
+    overflow: visible;
+    clear: both;
+    float: none; }
+    .block-views-blocklist-entries-block-1 .view-filters .form--modal .form-item .picker {
+      padding: 13px 50px 13px 10px;
+      border: 1px solid #e6e6e6; }
+      .block-views-blocklist-entries-block-1 .view-filters .form--modal .form-item .picker::after {
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 12px;
+        right: 10px;
+        left: auto;
+        font-size: 20px;
+        font-size: 1.25rem;
+        color: #968f7e;
+        border: 0; }
   .block-views-blocklist-entries-block-1 .view-filters .form--modal details {
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -4320,6 +4340,9 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       @media only screen and (max-width: 899px) {
         .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper {
           padding: 10px; } }
+      .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes .form-item {
+        clear: none;
+        float: left; }
       .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes .checkbox {
         padding-left: 30px; }
         .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes .checkbox span {
@@ -4386,7 +4409,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       position: absolute;
-      top: 5px;
+      top: 10px;
       right: 5px;
       left: auto;
       font-size: 16px;

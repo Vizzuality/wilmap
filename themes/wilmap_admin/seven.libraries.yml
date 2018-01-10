@@ -33,6 +33,7 @@ global-styling:
       css/components/custom.css: {}
     layout:
       css/layout/layout.css: {}
+      css/layout/override.css: {}
   dependencies:
     - system/admin
 

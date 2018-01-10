@@ -108,7 +108,7 @@
         App.Application.Maps.Config.bounds                      = new L.LatLngBounds(new L.LatLng(83.6567687988283, 180.00000000000034), new L.LatLng(-90, -179.99999999999994));
         App.Application.Maps.Config.initial_view                = [51.505, -0.09];
         App.Application.Maps.Config.is_embed                    = (window.location.href.indexOf('/widgets/map' || App.Utils.isIframe()) > -1);
-        App.Application.Maps.Config.color_styles                = {'blue':'#035e7e','forest':'#325735','olive':'#484d0c','bronze':'#554324','maroon':'#5b1717','purple':'#31244a'};
+        App.Application.Maps.Config.color_styles                = {'blue':'#035e7e','forest':'#325735','olive':'#484d0c','bronze':'#554324','maroon':'#5b1717','purple':'#31244a','red':'#790000'};
         App.Application.Maps.Config.click_on_map                = false;
         App.Application.Maps.Config.isPhone                     = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
         App.Application.Maps.Config.isTable                     = (App.Utils.isMobile.Tablet() || App.Utils.isMobile.Tablet( 'desktop' ));
@@ -607,8 +607,9 @@ console.log(color, currVal, minVal, maxVal, steps);
 
           var redraw = typeof redraw !== 'undefined' ? redraw : false;
 
-          if (layer !== 'none') {
-            layer = { layerid:layer, query:'', title:'', description:'', style:'', colorscale:{} };
+          layer = { layerid:layer, query:'', title:'', description:'', style:'red', colorscale:{} };
+
+          if (layer.layerid !== 'none') {
             App.Application.Maps.Config.curr_layer_active = layer;
 
             if (App.Application.Maps.Config.curr_layer_active.layerid === 'fromform') {
@@ -643,7 +644,9 @@ console.log(color, currVal, minVal, maxVal, steps);
               App.Utils.setBrowserURL('/map', document.title);
             }
 
-            App.Application.Maps.Config.curr_layer_active = null;
+            // Paint default data
+            // App.Application.Maps.Config.curr_layer_active = null;
+            App.Application.Maps.Config.curr_layer_active = layer;
             App.Application.Maps.Functions.applyLayerOverMap();
           }
         };
@@ -1983,8 +1986,11 @@ console.log('first_layer_load -> ' + first_layer_load);
             if($(this).data('urlparam') !== ''){
               var url_param = $(this).data('urlparam');
               var url = location.href;
+              var curr_param = (App.Utils.getUrlVars()[url_param] !== undefined)?'&' + url_param + '=' + App.Utils.getUrlVars()[url_param]:url_param;
+              var new_param = '&' + url_param + '=' + $(this).data('switch').toLowerCase();
+
               url = (url.indexOf('?') > -1)?url:url + '?';
-              url = url.split('&'+url_param)[0]+'&'+url_param+'='+$(this).data('switch').toLowerCase();
+              url = url.split(curr_param)[0] + new_param + ((url.split(curr_param)[1] !== undefined)?url.split(curr_param)[1]:'');
 
               App.Utils.setBrowserURL(url);
             }

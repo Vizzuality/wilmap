@@ -463,7 +463,8 @@
           App.DrupalHack.entriesFilterList.state_advanced_form = [];
 
           // Save state fields
-          $(runON + ' .views-exposed-form .form--modal .content-inner .form-item input').each(function(item, value) {
+          $(runON + ' .views-exposed-form .form--modal .content-inner .form-item input, ' +
+            runON + ' .views-exposed-form .form--modal .content-inner .form-item select').each(function(item, value) {
             var v_value = "";
             var v_text = "";
             var v_target = "";
@@ -478,8 +479,8 @@
                   v_text = $(value).parent().find('label').text() + ': ' + $(value).val();
                   v_target = $(value).attr('id');
                   v_type = $(value).attr('type');
-                  break;
                 }
+                break;
               case 'checkbox':
                 if($(value).is(':checked')) {
                   ok = true;
@@ -487,10 +488,23 @@
                   v_text = $(value).parents('label').text();
                   v_target = $(value).attr('id');
                   v_type = $(value).attr('type');
-                  break;
                 }
+                break;
               default:
-                ok = false;
+                // Select
+                if($(value).prop('tagName').toLowerCase() === 'select') {
+                  if($(value).val() !== 'All') {
+                    ok = true;
+                    v_value = $(value).val();
+                    v_text = $(value).find('option:selected').text();
+                    v_target = $(value).attr('id');
+                    v_type = $(value).prop('tagName').toLowerCase();
+                  } else {
+                    ok = false;
+                  }
+                } else {
+                  ok = false;
+                }
                 break;
             }
 
@@ -501,9 +515,7 @@
           });
         }
 
-        App.DrupalHack.entriesFilterList.revokesChangesAdvancedFilters = function() {
-          console.log('revokesChangesAdvancedFilters');
-
+        App.DrupalHack.entriesFilterList.resetAdvancedFilters = function() {
           // Reset all fields
           //text
           $(runON + ' .views-exposed-form .form--modal .content-inner .form-item input[type="text"]').val('');
@@ -512,6 +524,16 @@
           $(runON + ' .views-exposed-form .form--modal .content-inner .form-item input[type="checkbox"]').parent().find('span i').remove();
           $(runON + ' .views-exposed-form .form--modal .content-inner .form-item input[type="checkbox"]').parent().removeClass('checked');
           $(runON + ' .views-exposed-form .form--modal .content-inner .form-item input[type="checkbox"]').prop('checked', false).removeAttr('checked');
+
+          //select
+          $(runON + ' .views-exposed-form .form--modal .content-inner .form-item select').val($(runON + ' .views-exposed-form .form--modal .content-inner .form-item select option:first').val());
+        }
+
+        App.DrupalHack.entriesFilterList.revokesChangesAdvancedFilters = function() {
+          console.log('revokesChangesAdvancedFilters');
+
+          //Reset advanced form
+          App.DrupalHack.entriesFilterList.resetAdvancedFilters();
 
           //Apply saved State
           $(App.DrupalHack.entriesFilterList.state_advanced_form).each(function(item, value) {
@@ -522,13 +544,13 @@
                 $('#' + value.v_target).val(value.v_value);
                 break;
               case 'checkbox':
-                // if($(value).is(':checked')) {
-                //   v_value = $(value).val();
-                //   v_text = $(value).parents('label').text();
-                //   v_target = $(value).attr('id');
-                //   v_type = $(value).attr('type');
-                  break;
-                // }
+                $('#' + value.v_target).prop('checked', true);;
+                $('#' + value.v_target).parents('label').addClass('checked');
+                $('#' + value.v_target).parents('label span').append('<i class="icon-dot"></i>');
+                break;
+              case 'select':
+                $('#' + value.v_target + ' option[value="'+value.v_value+'"]').prop('selected', true);
+                break;
               default:
                 break;
             }
@@ -550,7 +572,9 @@ console.log('in updateAdvancedFilters');
           $(runON + ' .views-exposed-form .form--modal .content-inner details.form-item summary').text('NONE SELECTED');
 
           // Update contents
-          $(runON + ' .views-exposed-form .form--modal .content-inner .form-item input').each(function(item, value) {
+          $(runON + ' .views-exposed-form .form--modal .content-inner .form-item input, ' +
+            runON + ' .views-exposed-form .form--modal .content-inner .form-item select').each(function(item, value) {
+
             var v_text = "";
             var v_target = "";
             var v_type = "";
@@ -564,8 +588,8 @@ console.log('in updateAdvancedFilters');
                   v_text = $(value).parent().find('label').text() + ': ' + $(value).val();
                   v_target = $(value).attr('id');
                   v_type = $(value).attr('type');
-                  break;
                 }
+                break;
               case 'checkbox':
                 if($(value).is(':checked')) {
                   ok = true;
@@ -581,11 +605,26 @@ console.log('in updateAdvancedFilters');
                   output = output + comma + v_text;
 
                   $(this).parents('details.form-item').find('summary').text(output);
-
-                  break;
                 }
+                break;
               default:
-                ok = false;
+                // Select
+                if($(value).prop('tagName').toLowerCase() === 'select') {
+                  if($(value).val() !== 'All') {
+                    ok = true;
+                    v_text = $(value).find('option:selected').text();
+                    v_target = $(value).attr('id');
+                    v_type = $(value).prop('tagName').toLowerCase();
+
+                    if(v_target.indexOf('edit-region') > -1) {
+                      v_text = 'Region: ' + v_text;
+                    }
+                  } else {
+                    ok = false;
+                  }
+                } else {
+                  ok = false;
+                }
                 break;
             }
 
@@ -610,15 +649,18 @@ console.log('in updateAdvancedFilters');
 
               switch (type) {
                 case 'text':
-                $('#'+target).val('');
-                break;
+                  $('#'+target).val('');
+                  break;
                 case 'checkbox':
-                $('#'+target).prop('checked', false).removeAttr('checked');
-                $('#'+target).parent().removeClass('checked');
-                $('#'+target).parent().find('span i').remove();
-                break;
+                  $('#'+target).prop('checked', false).removeAttr('checked');
+                  $('#'+target).parent().removeClass('checked');
+                  $('#'+target).parent().find('span i').remove();
+                  break;
+                case 'select':
+                  $('#' + target).val($('#' + target + ' option:first').val());
+                  break;
                 default:
-                break;
+                  break;
               }
 
               // Update
@@ -648,7 +690,7 @@ console.log('in updateAdvancedFilters');
             $(runON + ' .views-exposed-form .form--modal .content-inner .date-selectors').append($(runON + ' .views-exposed-form .js-form-item-fromyear').remove().wrap());
             $(runON + ' .views-exposed-form .form--modal .content-inner .date-selectors').append($(runON + ' .views-exposed-form .js-form-item-toyear').remove().wrap());
 
-            $(runON + ' .views-exposed-form .form--modal .content-inner details.form-item').each(function (item, value) {
+            $(runON + ' .views-exposed-form .content-inner details.form-item').each(function (item, value) {
               var summary_text = $(value).find('summary').text();
               $(value).find('summary').text('NONE SELECTED');
               $('<label>' + summary_text + '</label>').insertBefore(value);
@@ -660,7 +702,7 @@ console.log('in updateAdvancedFilters');
             $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-claim').remove().wrap());
             $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-document').remove().wrap());
             $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-country').remove().wrap());
-            $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-region').remove().wrap());
+            //$(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-region').remove().wrap());
             $(runON + ' .views-exposed-form .form--inline .form--filter').append('<a href="#" id="advanced-btn" class="switch btn" gumby-trigger="#modal-advanced-filter">Advanced</a></p>');
 
             // Selects
@@ -699,13 +741,13 @@ console.log('in updateAdvancedFilters');
 
           // Events
           // checkboxes
-          // $(runON + ' .views-exposed-form .form--modal .content-inner details .form-type-checkbox').on('click', function(){
+          $(runON + ' .views-exposed-form .content-inner details .form-type-checkbox').on('click', function(){
           //   var advancedContentDOM = runON + ' .views-exposed-form .form--advanced .content';
           //   App.DrupalHack.entriesFilterList.active_checkbox_in_advanced = $(advancedContentDOM + ' .advanced-tag[data-type="checkbox"]').length;
           //
-          //   // Update
-          //   App.DrupalHack.entriesFilterList.updateAdvancedFilters();
-          // });
+            // Update
+            App.DrupalHack.entriesFilterList.updateAdvancedFilters();
+          });
 
           // Inputs
           // $(runON + ' .views-exposed-form .form--modal input.form-text').on('blur', function(t){
@@ -1521,7 +1563,7 @@ console.log('in updateAdvancedFilters');
         App.Application.Maps.Config.bounds                      = new L.LatLngBounds(new L.LatLng(83.6567687988283, 180.00000000000034), new L.LatLng(-90, -179.99999999999994));
         App.Application.Maps.Config.initial_view                = [51.505, -0.09];
         App.Application.Maps.Config.is_embed                    = (window.location.href.indexOf('/widgets/map' || App.Utils.isIframe()) > -1);
-        App.Application.Maps.Config.color_styles                = {'blue':'#035e7e','forest':'#325735','olive':'#484d0c','bronze':'#554324','maroon':'#5b1717','purple':'#31244a'};
+        App.Application.Maps.Config.color_styles                = {'blue':'#035e7e','forest':'#325735','olive':'#484d0c','bronze':'#554324','maroon':'#5b1717','purple':'#31244a','red':'#790000'};
         App.Application.Maps.Config.click_on_map                = false;
         App.Application.Maps.Config.isPhone                     = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
         App.Application.Maps.Config.isTable                     = (App.Utils.isMobile.Tablet() || App.Utils.isMobile.Tablet( 'desktop' ));
@@ -2020,8 +2062,9 @@ console.log(color, currVal, minVal, maxVal, steps);
 
           var redraw = typeof redraw !== 'undefined' ? redraw : false;
 
-          if (layer !== 'none') {
-            layer = { layerid:layer, query:'', title:'', description:'', style:'', colorscale:{} };
+          layer = { layerid:layer, query:'', title:'', description:'', style:'red', colorscale:{} };
+
+          if (layer.layerid !== 'none') {
             App.Application.Maps.Config.curr_layer_active = layer;
 
             if (App.Application.Maps.Config.curr_layer_active.layerid === 'fromform') {
@@ -2056,7 +2099,9 @@ console.log(color, currVal, minVal, maxVal, steps);
               App.Utils.setBrowserURL('/map', document.title);
             }
 
-            App.Application.Maps.Config.curr_layer_active = null;
+            // Paint default data
+            // App.Application.Maps.Config.curr_layer_active = null;
+            App.Application.Maps.Config.curr_layer_active = layer;
             App.Application.Maps.Functions.applyLayerOverMap();
           }
         };
@@ -3396,8 +3441,11 @@ console.log('first_layer_load -> ' + first_layer_load);
             if($(this).data('urlparam') !== ''){
               var url_param = $(this).data('urlparam');
               var url = location.href;
+              var curr_param = (App.Utils.getUrlVars()[url_param] !== undefined)?'&' + url_param + '=' + App.Utils.getUrlVars()[url_param]:url_param;
+              var new_param = '&' + url_param + '=' + $(this).data('switch').toLowerCase();
+
               url = (url.indexOf('?') > -1)?url:url + '?';
-              url = url.split('&'+url_param)[0]+'&'+url_param+'='+$(this).data('switch').toLowerCase();
+              url = url.split(curr_param)[0] + new_param + ((url.split(curr_param)[1] !== undefined)?url.split(curr_param)[1]:'');
 
               App.Utils.setBrowserURL(url);
             }

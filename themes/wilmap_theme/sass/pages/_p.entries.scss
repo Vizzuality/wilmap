@@ -158,6 +158,9 @@
 
         .js-form-item {
           @include column(7);
+          clear: none;
+          float: left;
+          border: none;
 
           &:first-child {
             @include margin(null null null 0);
@@ -167,6 +170,22 @@
 
       .form-item {
         @include margin(null null $dp * 5 null);
+        overflow: visible;
+        clear: both;
+        float: none;
+
+        .picker {
+          @include padding($dp + 3 $dp * 5 $dp + 3 $dp);
+          border: 1px solid $gray-10;
+
+          &::after {
+            @include trim();
+            @include position(absolute, 12px 10px null auto);
+            @include fs(20px);
+            color: $fourth-color;
+            border: 0;
+          }
+        }
       }
 
       details {
@@ -215,6 +234,11 @@
           }
 
           >.form-checkboxes {
+
+            .form-item {
+              clear: none;
+              float: left;
+            }
 
             .checkbox {
               @include padding(null null null $dp * 3);
@@ -282,7 +306,7 @@
         a {
           @include trim();
           @include icon-insert('icon-cancel', before);
-          @include position(absolute, $dp / 2 $dp / 2 null auto);
+          @include position(absolute, $dp $dp / 2 null auto);
           @include font($normal, 1.2, $semibold, $body-font);
           @include size($dp * 2);
           color: $fourth-color;
