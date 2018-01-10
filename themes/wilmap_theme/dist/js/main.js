@@ -682,6 +682,11 @@ console.log('in updateAdvancedFilters');
 
         if ($(runON).length > 0) {
           if(!$(runON + ' .form--modal').length > 0) {
+            //Prepare class-id for checkboxes
+            $(runON + ' .form--inline > details.form-item').each(function(k, v){
+              $(v).find('.form-checkboxes').parent().parent().addClass($(v).find('.form-checkboxes').attr('data-drupal-selector'));
+            });
+
             $(runON + ' .views-exposed-form').append('<div id="modal-advanced-filter" class="form--modal modal"><div class="content"><a class="close switch" gumby-trigger="|#modal-advanced-filter">CLOSE</a><a style="display:none;" class="close_hidden switch" gumby-trigger="|#modal-advanced-filter">CLOSE_HIDDEN</a><h3>Advanced - Search</h3><div class="content-inner"><div class="date-selectors"></div></div><div class="modal-actions"><a href="#" class="btn modal-done">APPLY</a></div></div></div>');
             $(runON + ' .views-exposed-form').append('<div class="form--advanced" style="display: none;"><fieldset><legend>Advanced filters:</legend></fieldset><div class="content"></div></div>');
 
@@ -689,19 +694,16 @@ console.log('in updateAdvancedFilters');
             $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .form--inline > details.form-item').remove().wrap());
             $(runON + ' .views-exposed-form .form--modal .content-inner .date-selectors').append($(runON + ' .views-exposed-form .js-form-item-fromyear').remove().wrap());
             $(runON + ' .views-exposed-form .form--modal .content-inner .date-selectors').append($(runON + ' .views-exposed-form .js-form-item-toyear').remove().wrap());
-
-            $(runON + ' .views-exposed-form .content-inner details.form-item').each(function (item, value) {
-              var summary_text = $(value).find('summary').text();
-              $(value).find('summary').text('NONE SELECTED');
-              $('<label>' + summary_text + '</label>').insertBefore(value);
-            });
           }
 
           if(!$(runON + ' .form--inline .form--filter').length > 0) {
             $(runON + ' .views-exposed-form .form--inline').append('<div class="form--filter"><fieldset class="tit"><legend>Filter by:</legend></fieldset></div>');
-            $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-claim').remove().wrap());
-            $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-document').remove().wrap());
-            $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-country').remove().wrap());
+            $(runON + ' .views-exposed-form .form--modal .edit-claim').clone().appendTo(runON + ' .views-exposed-form .form--inline .form--filter');
+            $(runON + ' .views-exposed-form .form--modal .edit-document').clone().appendTo(runON + ' .views-exposed-form .form--inline .form--filter');
+            $(runON + ' .views-exposed-form .form--modal .form-item-country').clone().appendTo(runON + ' .views-exposed-form .form--inline .form--filter');
+            // $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-claim').remove().wrap());
+            // $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-document').remove().wrap());
+            // $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-country').remove().wrap());
             //$(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-region').remove().wrap());
             $(runON + ' .views-exposed-form .form--inline .form--filter').append('<a href="#" id="advanced-btn" class="switch btn" gumby-trigger="#modal-advanced-filter">Advanced</a></p>');
 
@@ -717,6 +719,14 @@ console.log('in updateAdvancedFilters');
               $(this).find('select option:first').text(label);
             });
           }
+
+          //Checkboxes selects
+          $(runON + ' .views-exposed-form .content-inner details.form-item').each(function (item, value) {
+            var summary_text = $(value).find('summary').text();
+            $(value).find('summary').text('NONE SELECTED');
+            $('<label>' + summary_text + '</label>').insertBefore(value);
+          });
+
 
           if(!$(runON + ' .form--inline .form--sort').length > 0) {
             $(runON + ' .views-exposed-form .form--inline').append('<div class="form--sort"></div>');
@@ -1563,7 +1573,7 @@ console.log('in updateAdvancedFilters');
         App.Application.Maps.Config.bounds                      = new L.LatLngBounds(new L.LatLng(83.6567687988283, 180.00000000000034), new L.LatLng(-90, -179.99999999999994));
         App.Application.Maps.Config.initial_view                = [51.505, -0.09];
         App.Application.Maps.Config.is_embed                    = (window.location.href.indexOf('/widgets/map' || App.Utils.isIframe()) > -1);
-        App.Application.Maps.Config.color_styles                = {'blue':'#035e7e','forest':'#325735','olive':'#484d0c','bronze':'#554324','maroon':'#5b1717','purple':'#31244a','red':'#790000'};
+        App.Application.Maps.Config.color_styles                = {'blue':'#035e7e','forest':'#325735','olive':'#484d0c','bronze':'#554324','maroon':'#5b1717','purple':'#31244a','base':'#676156'};
         App.Application.Maps.Config.click_on_map                = false;
         App.Application.Maps.Config.isPhone                     = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
         App.Application.Maps.Config.isTable                     = (App.Utils.isMobile.Tablet() || App.Utils.isMobile.Tablet( 'desktop' ));
@@ -2062,7 +2072,7 @@ console.log(color, currVal, minVal, maxVal, steps);
 
           var redraw = typeof redraw !== 'undefined' ? redraw : false;
 
-          layer = { layerid:layer, query:'', title:'', description:'', style:'red', colorscale:{} };
+          layer = { layerid:layer, query:'', title:'', description:'', style:'base', colorscale:{} };
 
           if (layer.layerid !== 'none') {
             App.Application.Maps.Config.curr_layer_active = layer;

@@ -375,6 +375,11 @@ console.log('in updateAdvancedFilters');
 
         if ($(runON).length > 0) {
           if(!$(runON + ' .form--modal').length > 0) {
+            //Prepare class-id for checkboxes
+            $(runON + ' .form--inline > details.form-item').each(function(k, v){
+              $(v).find('.form-checkboxes').parent().parent().addClass($(v).find('.form-checkboxes').attr('data-drupal-selector'));
+            });
+
             $(runON + ' .views-exposed-form').append('<div id="modal-advanced-filter" class="form--modal modal"><div class="content"><a class="close switch" gumby-trigger="|#modal-advanced-filter">CLOSE</a><a style="display:none;" class="close_hidden switch" gumby-trigger="|#modal-advanced-filter">CLOSE_HIDDEN</a><h3>Advanced - Search</h3><div class="content-inner"><div class="date-selectors"></div></div><div class="modal-actions"><a href="#" class="btn modal-done">APPLY</a></div></div></div>');
             $(runON + ' .views-exposed-form').append('<div class="form--advanced" style="display: none;"><fieldset><legend>Advanced filters:</legend></fieldset><div class="content"></div></div>');
 
@@ -382,19 +387,16 @@ console.log('in updateAdvancedFilters');
             $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .form--inline > details.form-item').remove().wrap());
             $(runON + ' .views-exposed-form .form--modal .content-inner .date-selectors').append($(runON + ' .views-exposed-form .js-form-item-fromyear').remove().wrap());
             $(runON + ' .views-exposed-form .form--modal .content-inner .date-selectors').append($(runON + ' .views-exposed-form .js-form-item-toyear').remove().wrap());
-
-            $(runON + ' .views-exposed-form .content-inner details.form-item').each(function (item, value) {
-              var summary_text = $(value).find('summary').text();
-              $(value).find('summary').text('NONE SELECTED');
-              $('<label>' + summary_text + '</label>').insertBefore(value);
-            });
           }
 
           if(!$(runON + ' .form--inline .form--filter').length > 0) {
             $(runON + ' .views-exposed-form .form--inline').append('<div class="form--filter"><fieldset class="tit"><legend>Filter by:</legend></fieldset></div>');
-            $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-claim').remove().wrap());
-            $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-document').remove().wrap());
-            $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-country').remove().wrap());
+            $(runON + ' .views-exposed-form .form--modal .edit-claim').clone().appendTo(runON + ' .views-exposed-form .form--inline .form--filter');
+            $(runON + ' .views-exposed-form .form--modal .edit-document').clone().appendTo(runON + ' .views-exposed-form .form--inline .form--filter');
+            $(runON + ' .views-exposed-form .form--modal .form-item-country').clone().appendTo(runON + ' .views-exposed-form .form--inline .form--filter');
+            // $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-claim').remove().wrap());
+            // $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-document').remove().wrap());
+            // $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-country').remove().wrap());
             //$(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-region').remove().wrap());
             $(runON + ' .views-exposed-form .form--inline .form--filter').append('<a href="#" id="advanced-btn" class="switch btn" gumby-trigger="#modal-advanced-filter">Advanced</a></p>');
 
@@ -410,6 +412,14 @@ console.log('in updateAdvancedFilters');
               $(this).find('select option:first').text(label);
             });
           }
+
+          //Checkboxes selects
+          $(runON + ' .views-exposed-form .content-inner details.form-item').each(function (item, value) {
+            var summary_text = $(value).find('summary').text();
+            $(value).find('summary').text('NONE SELECTED');
+            $('<label>' + summary_text + '</label>').insertBefore(value);
+          });
+
 
           if(!$(runON + ' .form--inline .form--sort').length > 0) {
             $(runON + ' .views-exposed-form .form--inline').append('<div class="form--sort"></div>');

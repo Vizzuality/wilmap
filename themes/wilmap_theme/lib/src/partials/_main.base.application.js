@@ -108,7 +108,7 @@
         App.Application.Maps.Config.bounds                      = new L.LatLngBounds(new L.LatLng(83.6567687988283, 180.00000000000034), new L.LatLng(-90, -179.99999999999994));
         App.Application.Maps.Config.initial_view                = [51.505, -0.09];
         App.Application.Maps.Config.is_embed                    = (window.location.href.indexOf('/widgets/map' || App.Utils.isIframe()) > -1);
-        App.Application.Maps.Config.color_styles                = {'blue':'#035e7e','forest':'#325735','olive':'#484d0c','bronze':'#554324','maroon':'#5b1717','purple':'#31244a','red':'#790000'};
+        App.Application.Maps.Config.color_styles                = {'blue':'#035e7e','forest':'#325735','olive':'#484d0c','bronze':'#554324','maroon':'#5b1717','purple':'#31244a','base':'#676156'};
         App.Application.Maps.Config.click_on_map                = false;
         App.Application.Maps.Config.isPhone                     = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
         App.Application.Maps.Config.isTable                     = (App.Utils.isMobile.Tablet() || App.Utils.isMobile.Tablet( 'desktop' ));
@@ -607,7 +607,7 @@ console.log(color, currVal, minVal, maxVal, steps);
 
           var redraw = typeof redraw !== 'undefined' ? redraw : false;
 
-          layer = { layerid:layer, query:'', title:'', description:'', style:'red', colorscale:{} };
+          layer = { layerid:layer, query:'', title:'', description:'', style:'base', colorscale:{} };
 
           if (layer.layerid !== 'none') {
             App.Application.Maps.Config.curr_layer_active = layer;

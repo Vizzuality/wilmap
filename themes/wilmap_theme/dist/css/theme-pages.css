@@ -7,7 +7,7 @@
   #block-wilmap-theme-blockwelcomehome .content:after, #block-wilmap-theme-blockmaphome .content:after, #block-wilmap-theme-blockexplorehome .content:after, #block-wilmap-theme-blocknewshome .content:after {
     clear: both; }
 
-#block-wilmap-theme-blockwelcomehome .text, #block-wilmap-theme-blockwelcomehome .text .description, #block-wilmap-theme-blockmaphome .text, #block-wilmap-theme-blockexplorehome .text, #block-wilmap-theme-blocknewshome .text, .block-views-blocktopics-block-1 .views-row, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe iframe, article.node--type-topics.node--view-mode-full .node-header, article.node--type-topics.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, .block-views-blockentries-block-1 .views-row, .block-views-blockentries-block-1 .view-highlighted-entries .views-row, article.node--type-news.node--view-mode-full .node-header, article.node--type-news.node--view-mode-full .field--name-field-original-source, article.node--type-news.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items > .field__item, .block-views-blockcontributors-block-1 .view-filters, .block-views-blockcontributors-block-1 .view-filters .js-form-item-country, .block-views-blockcontributors-block-1 .view-filters .js-form-item-expertise, .block-views-blockcontributors-block-1 .view-filters .js-form-item-name, .block-views-blockcontributors-block-1 .view-filters .form-actions, .block-views-blockcontributors-block-1 .view-content, .block-views-blockcontributors-block-1 .view-content .views-row, .path-user article.profile .contributor-sheet, .path-user article.profile .contributor-info, .path-user .block-views-blockcontributions-block-1 .view-contributions .views-row, .block-views-blocklist-entries-block-1 .views-row, .block-views-blocklist-entries-block-1._switch-on .views-row, .block-views-blocklist-entries-block-1._switch-off .views-row, .block-views-blocklist-entries-block-1 .view-filters .form--filter, .block-views-blocklist-entries-block-1 .view-filters .form--filter .js-form-type-select, .block-views-blocklist-entries-block-1 .view-filters .form--filter .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--sort, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors .js-form-item, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > .form-type-checkbox, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield, .block-views-blocklist-entries-block-1 .view-filters .form--bottom > .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .form-actions, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .listswitch, article.node--type-entry.node--view-mode-full .node-header, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items > .field__item, .search-page-form .form-type-search, .search-page-form .site-btn, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest, body.page-node-type-country #content-content section.block-system-main-block .text-formatted,
+#block-wilmap-theme-blockwelcomehome .text, #block-wilmap-theme-blockwelcomehome .text .description, #block-wilmap-theme-blockmaphome .text, #block-wilmap-theme-blockexplorehome .text, #block-wilmap-theme-blocknewshome .text, .block-views-blocktopics-block-1 .views-row, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe iframe, article.node--type-topics.node--view-mode-full .node-header, article.node--type-topics.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, .block-views-blockentries-block-1 .views-row, .block-views-blockentries-block-1 .view-highlighted-entries .views-row, article.node--type-news.node--view-mode-full .node-header, article.node--type-news.node--view-mode-full .field--name-field-original-source, article.node--type-news.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items > .field__item, .block-views-blockcontributors-block-1 .view-filters, .block-views-blockcontributors-block-1 .view-filters .js-form-item-country, .block-views-blockcontributors-block-1 .view-filters .js-form-item-expertise, .block-views-blockcontributors-block-1 .view-filters .js-form-item-name, .block-views-blockcontributors-block-1 .view-filters .form-actions, .block-views-blockcontributors-block-1 .view-content, .block-views-blockcontributors-block-1 .view-content .views-row, .path-user article.profile .contributor-sheet, .path-user article.profile .contributor-info, .path-user .block-views-blockcontributions-block-1 .view-contributions .views-row, .block-views-blocklist-entries-block-1 .views-row, .block-views-blocklist-entries-block-1._switch-on .views-row, .block-views-blocklist-entries-block-1._switch-off .views-row, .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > .form-type-checkbox, .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li, .block-views-blocklist-entries-block-1 .view-filters .form--filter, .block-views-blocklist-entries-block-1 .view-filters .form--filter .js-form-type-select, .block-views-blocklist-entries-block-1 .view-filters .form--filter .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--sort, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors .js-form-item, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield, .block-views-blocklist-entries-block-1 .view-filters .form--bottom > .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .form-actions, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .listswitch, article.node--type-entry.node--view-mode-full .node-header, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items > .field__item, .search-page-form .form-type-search, .search-page-form .site-btn, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest, body.page-node-type-country #content-content section.block-system-main-block .text-formatted,
 body.page-node-type-region #content-content section.block-system-main-block .text-formatted, body.page-node-type-country #content-content section:not(.block-system-main-block) .views-row,
 body.page-node-type-region #content-content section:not(.block-system-main-block) .views-row, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content,
 body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content,
@@ -4100,6 +4100,111 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     @media only screen and (max-width: 899px) {
       .block-views-blocklist-entries-block-1 .view-filters .picker {
         width: 100%; } }
+  .block-views-blocklist-entries-block-1 .view-filters details {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-family: 'entypo';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    position: relative;
+    zoom: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    border: 1px solid #e6e6e6; }
+    .block-views-blocklist-entries-block-1 .view-filters details:after {
+      content: "▾";
+      text-decoration: none !important;
+      font-family: 'entypo';
+      padding: 0px 5px 5px 0px;
+      position: relative;
+      top: 1px;
+      left: 1px; }
+    .block-views-blocklist-entries-block-1 .view-filters details::after {
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 12px;
+      right: 10px;
+      left: auto;
+      font-size: 20px;
+      font-size: 1.25rem;
+      color: #968f7e;
+      border: 0; }
+    .block-views-blocklist-entries-block-1 .view-filters details[open] {
+      -webkit-box-shadow: #e6e6e6 0px 2px 5px;
+      box-shadow: #e6e6e6 0px 2px 5px; }
+      .block-views-blocklist-entries-block-1 .view-filters details[open]:after {
+        content: "▴"; }
+      .block-views-blocklist-entries-block-1 .view-filters details[open] summary {
+        border-bottom: 1px solid #e6e6e6; }
+    .block-views-blocklist-entries-block-1 .view-filters details summary {
+      padding: 13px 50px 13px 10px;
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 19.2px;
+      line-height: 1.2rem;
+      font-weight: 600;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
+      color: #968f7e;
+      cursor: pointer;
+      outline: none; }
+      .block-views-blocklist-entries-block-1 .view-filters details summary::-webkit-details-marker {
+        display: none; }
+    .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper {
+      padding: 10px 0;
+      *zoom: 1;
+      display: block;
+      clear: both; }
+      .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper:before, .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper:after {
+        content: "";
+        display: table; }
+      .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper:after {
+        clear: both; }
+      @media only screen and (max-width: 899px) {
+        .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper {
+          padding: 10px; } }
+      .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes .form-item {
+        clear: none;
+        float: left; }
+      .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes .checkbox {
+        padding-left: 30px; }
+        .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes .checkbox span {
+          position: absolute;
+          left: 0;
+          display: block; }
+      .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > .form-type-checkbox {
+        width: 41.84127%;
+        margin-right: 25px;
+        margin-bottom: 5px;
+        min-height: 50px; }
+        @media only screen and (max-width: 899px) {
+          .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > .form-type-checkbox {
+            float: left;
+            margin-left: 0;
+            width: 100%; } }
+      .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li {
+        width: 41.84127%;
+        margin-right: 25px;
+        margin-bottom: 5px;
+        min-height: 320px; }
+        @media only screen and (max-width: 899px) {
+          .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li {
+            float: left;
+            margin-left: 0;
+            width: 100%; } }
+        .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li .form-item {
+          margin-bottom: 10px; }
+          .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li .form-item label {
+            font-weight: 600; }
+        .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li ul li .form-type-checkbox {
+          margin-bottom: 5px;
+          min-height: 40px; }
+          .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li ul li .form-type-checkbox label {
+            font-weight: 400; }
   .block-views-blocklist-entries-block-1 .view-filters .form--filter {
     width: 85.46032%; }
     @media only screen and (max-width: 899px) {
@@ -4273,111 +4378,6 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         font-size: 1.25rem;
         color: #968f7e;
         border: 0; }
-  .block-views-blocklist-entries-block-1 .view-filters .form--modal details {
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    font-family: 'entypo';
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    position: relative;
-    zoom: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    border: 1px solid #e6e6e6; }
-    .block-views-blocklist-entries-block-1 .view-filters .form--modal details:after {
-      content: "▾";
-      text-decoration: none !important;
-      font-family: 'entypo';
-      padding: 0px 5px 5px 0px;
-      position: relative;
-      top: 1px;
-      left: 1px; }
-    .block-views-blocklist-entries-block-1 .view-filters .form--modal details::after {
-      margin: 0;
-      padding: 0;
-      position: absolute;
-      top: 12px;
-      right: 10px;
-      left: auto;
-      font-size: 20px;
-      font-size: 1.25rem;
-      color: #968f7e;
-      border: 0; }
-    .block-views-blocklist-entries-block-1 .view-filters .form--modal details[open] {
-      -webkit-box-shadow: #e6e6e6 0px 2px 5px;
-      box-shadow: #e6e6e6 0px 2px 5px; }
-      .block-views-blocklist-entries-block-1 .view-filters .form--modal details[open]:after {
-        content: "▴"; }
-      .block-views-blocklist-entries-block-1 .view-filters .form--modal details[open] summary {
-        border-bottom: 1px solid #e6e6e6; }
-    .block-views-blocklist-entries-block-1 .view-filters .form--modal details summary {
-      padding: 13px 50px 13px 10px;
-      font-size: 16px;
-      font-size: 1rem;
-      line-height: 19.2px;
-      line-height: 1.2rem;
-      font-weight: 600;
-      font-family: "Raleway", "Mplus 1p", sans-serif;
-      color: #968f7e;
-      cursor: pointer;
-      outline: none; }
-      .block-views-blocklist-entries-block-1 .view-filters .form--modal details summary::-webkit-details-marker {
-        display: none; }
-    .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper {
-      padding: 10px 0;
-      *zoom: 1;
-      display: block;
-      clear: both; }
-      .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper:before, .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper:after {
-        content: "";
-        display: table; }
-      .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper:after {
-        clear: both; }
-      @media only screen and (max-width: 899px) {
-        .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper {
-          padding: 10px; } }
-      .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes .form-item {
-        clear: none;
-        float: left; }
-      .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes .checkbox {
-        padding-left: 30px; }
-        .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes .checkbox span {
-          position: absolute;
-          left: 0;
-          display: block; }
-      .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > .form-type-checkbox {
-        width: 41.84127%;
-        margin-right: 25px;
-        margin-bottom: 5px;
-        min-height: 50px; }
-        @media only screen and (max-width: 899px) {
-          .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > .form-type-checkbox {
-            float: left;
-            margin-left: 0;
-            width: 100%; } }
-      .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li {
-        width: 41.84127%;
-        margin-right: 25px;
-        margin-bottom: 5px;
-        min-height: 320px; }
-        @media only screen and (max-width: 899px) {
-          .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li {
-            float: left;
-            margin-left: 0;
-            width: 100%; } }
-        .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li .form-item {
-          margin-bottom: 10px; }
-          .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li .form-item label {
-            font-weight: 600; }
-        .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li ul li .form-type-checkbox {
-          margin-bottom: 5px;
-          min-height: 40px; }
-          .block-views-blocklist-entries-block-1 .view-filters .form--modal details .details-wrapper > .form-checkboxes > ul > li ul li .form-type-checkbox label {
-            font-weight: 400; }
   .block-views-blocklist-entries-block-1 .view-filters .form--advanced fieldset {
     margin-bottom: 10px;
     max-height: 20px; }

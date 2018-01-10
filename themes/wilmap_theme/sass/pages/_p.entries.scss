@@ -51,6 +51,105 @@
       }
     }
 
+    details {
+      @include box-shadow(none);
+      @include icon-insert('icon-down-dir', after);
+      border: 1px solid $gray-10;
+
+      &::after {
+        @include trim();
+        @include position(absolute, 12px 10px null auto);
+        @include fs(20px);
+        color: $fourth-color;
+        border: 0;
+      }
+
+      &[open] {
+        @include box-shadow($gray-10 0px 2px 5px);
+        @include icon-change('icon-up-dir', after);
+
+        summary {
+          border-bottom: 1px solid $gray-10;
+        }
+      }
+
+      summary {
+        @include padding($dp + 3 $dp * 5 $dp + 3 $dp);
+        @include font($normal, 1.2, $semibold, $body-font);
+        color: $fourth-color;
+        cursor: pointer;
+
+        outline: none;
+
+        &::-webkit-details-marker {
+          display:none;
+        }
+      }
+
+      .details-wrapper {
+        @include padding($dp 0);
+        @include clearfix();
+        display: block;
+        clear:both;
+
+        @include respond(all-phones) {
+          @include padding($dp);
+        }
+
+        >.form-checkboxes {
+
+          .form-item {
+            clear: none;
+            float: left;
+          }
+
+          .checkbox {
+            @include padding(null null null $dp * 3);
+
+            span {
+              @include position(absolute, null null null 0);
+              display: block;
+            }
+          }
+
+          >.form-type-checkbox {
+            @include column(6);
+            @include margin(null $dp * 2.5 $dp / 2 null);
+            min-height: $dp * 5;
+          }
+
+          >ul {
+            >li {
+              @include column(6);
+              @include margin(null $dp * 2.5 $dp / 2 null);
+              min-height: $dp * 32;
+
+              .form-item {
+                @include margin(null null $dp null);
+
+                label {
+                  font-weight: $semibold;
+                }
+              }
+
+              ul {
+                li {
+                  .form-type-checkbox {
+                    @include margin(null null $dp / 2 null);
+                    min-height: $dp * 4;
+
+                    label {
+                      font-weight: $regular;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
     .form--filter {
       @include column(12, false, collapse, false);
 
@@ -184,105 +283,6 @@
             @include fs(20px);
             color: $fourth-color;
             border: 0;
-          }
-        }
-      }
-
-      details {
-        @include box-shadow(none);
-        @include icon-insert('icon-down-dir', after);
-        border: 1px solid $gray-10;
-
-        &::after {
-          @include trim();
-          @include position(absolute, 12px 10px null auto);
-          @include fs(20px);
-          color: $fourth-color;
-          border: 0;
-        }
-
-        &[open] {
-          @include box-shadow($gray-10 0px 2px 5px);
-          @include icon-change('icon-up-dir', after);
-
-          summary {
-            border-bottom: 1px solid $gray-10;
-          }
-        }
-
-        summary {
-          @include padding($dp + 3 $dp * 5 $dp + 3 $dp);
-          @include font($normal, 1.2, $semibold, $body-font);
-          color: $fourth-color;
-          cursor: pointer;
-
-          outline: none;
-
-          &::-webkit-details-marker {
-            display:none;
-          }
-        }
-
-        .details-wrapper {
-          @include padding($dp 0);
-          @include clearfix();
-          display: block;
-          clear:both;
-
-          @include respond(all-phones) {
-            @include padding($dp);
-          }
-
-          >.form-checkboxes {
-
-            .form-item {
-              clear: none;
-              float: left;
-            }
-
-            .checkbox {
-              @include padding(null null null $dp * 3);
-
-              span {
-                @include position(absolute, null null null 0);
-                display: block;
-              }
-            }
-
-            >.form-type-checkbox {
-              @include column(6);
-              @include margin(null $dp * 2.5 $dp / 2 null);
-              min-height: $dp * 5;
-            }
-
-            >ul {
-              >li {
-                @include column(6);
-                @include margin(null $dp * 2.5 $dp / 2 null);
-                min-height: $dp * 32;
-
-                .form-item {
-                  @include margin(null null $dp null);
-
-                  label {
-                    font-weight: $semibold;
-                  }
-                }
-
-                ul {
-                  li {
-                    .form-type-checkbox {
-                      @include margin(null null $dp / 2 null);
-                      min-height: $dp * 4;
-
-                      label {
-                        font-weight: $regular;
-                      }
-                    }
-                  }
-                }
-              }
-            }
           }
         }
       }
