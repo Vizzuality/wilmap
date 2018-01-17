@@ -510,6 +510,7 @@
 
             if(ok){
               var obj = {'v_value':v_value, 'v_text':v_text, 'v_target':v_target, 'v_type':v_type};
+              console.log('save: ' + obj);
               App.DrupalHack.entriesFilterList.state_advanced_form.push(obj);
             }
           });
@@ -541,14 +542,17 @@
 
             switch (value.v_type) {
               case 'text':
+              console.log($('#' + value.v_target));
                 $('#' + value.v_target).val(value.v_value);
                 break;
               case 'checkbox':
+                console.log($('#' + value.v_target));
                 $('#' + value.v_target).prop('checked', true);;
                 $('#' + value.v_target).parents('label').addClass('checked');
                 $('#' + value.v_target).parents('label span').append('<i class="icon-dot"></i>');
                 break;
               case 'select':
+              console.log($('#' + value.v_target + ' option[value="'+value.v_value+'"]'));
                 $('#' + value.v_target + ' option[value="'+value.v_value+'"]').prop('selected', true);
                 break;
               default:
@@ -701,6 +705,8 @@ console.log('in updateAdvancedFilters');
             $(runON + ' .views-exposed-form .form--modal .edit-claim').clone().appendTo(runON + ' .views-exposed-form .form--inline .form--filter');
             $(runON + ' .views-exposed-form .form--modal .edit-document').clone().appendTo(runON + ' .views-exposed-form .form--inline .form--filter');
             $(runON + ' .views-exposed-form .form--modal .form-item-country').clone().appendTo(runON + ' .views-exposed-form .form--inline .form--filter');
+
+
             // $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-claim').remove().wrap());
             // $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-document').remove().wrap());
             // $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-country').remove().wrap());
@@ -718,14 +724,15 @@ console.log('in updateAdvancedFilters');
               // Label in option
               $(this).find('select option:first').text(label);
             });
-          }
 
-          //Checkboxes selects
-          $(runON + ' .views-exposed-form .content-inner details.form-item').each(function (item, value) {
-            var summary_text = $(value).find('summary').text();
-            $(value).find('summary').text('NONE SELECTED');
-            $('<label>' + summary_text + '</label>').insertBefore(value);
-          });
+            //Checkboxes selects
+            $(runON + ' .views-exposed-form .content-inner details.form-item').each(function (item, value) {
+              var summary_text = $(value).find('summary').text();
+              $(value).find('summary').text('NONE SELECTED');
+              console.log('PASA ChECK');
+              $('<label>' + summary_text + '</label>').insertBefore(value);
+            });
+          }
 
 
           if(!$(runON + ' .form--inline .form--sort').length > 0) {
@@ -750,8 +757,16 @@ console.log('in updateAdvancedFilters');
 
 
           // Events
-          // checkboxes
-          $(runON + ' .views-exposed-form .content-inner details .form-type-checkbox').on('click', function(){
+          // filter select-checkbox and checkboxes
+          $(runON + ' .views-exposed-form .form--inline .form--filter .form-item summary[role="button"]').on('click', function(e){
+            $('summary[role="button"]').each(function(i, v){
+              console.log(v);
+            });
+          });
+
+          // modal checkboxes
+          $(runON + ' .views-exposed-form .content-inner details .form-type-checkbox').on('click', function(e){
+            console.log(e);
           //   var advancedContentDOM = runON + ' .views-exposed-form .form--advanced .content';
           //   App.DrupalHack.entriesFilterList.active_checkbox_in_advanced = $(advancedContentDOM + ' .advanced-tag[data-type="checkbox"]').length;
           //

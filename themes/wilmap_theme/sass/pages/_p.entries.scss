@@ -97,8 +97,12 @@
         }
 
         >.form-checkboxes {
+          overflow: visible;
+          @include clearfix();
 
           .form-item {
+            @include clearfix();
+            overflow: visible;
             clear: none;
             float: left;
           }
@@ -178,11 +182,106 @@
           width: columns(3.4);
           margin-left: $gutter;
         }
+      }
 
-        &.js-form-item-claim {
+      //checkboxes - select (override)
+      details.form-item {
+        @include position(relative, -3px null null null);
+        @include column(3.8);
+        margin-left: $gutter * 1.5;
+        border: none;
+
+        &.edit-claim {
           margin-left: 0;
         }
+
+        @include respond(tablets) {
+          width: columns(3.4);
+          margin-left: $gutter;
+
+          &.edit-claim {
+            margin-left: 0;
+          }
+        }
+
+        @include respond(all-phones) {
+          margin-left: 0;
+        }
+
+        // Gradient right
+        @include image-overlay(rgba($second-color, 0), rgba($second-color, 1), 1, 90deg);
+        &::before {
+          top: 0;
+          left: auto;
+          right: 0;
+          width: $dp * 4;
+          height: $dp * 3;
+          z-index: 100;
+          display: block;
+          pointer-events: none;
+          border-right: $dp * 1.5 solid $second-color;
+        }
+
+        &::after {
+          @include position(absolute, 12px 10px null auto);
+          @include fs(22px);
+          color: darken($gray-10, 10);
+          z-index: 101;
+
+          @include respond(tablets) {
+            @include position(absolute, 9px 10px null auto);
+          }
+
+          @include respond(all-phones) {
+            @include position(absolute, 12px 5px null auto);
+          }
+        }
+
+
+        summary {
+          @include padding($dp + 3 $dp * 5 $dp + 3 0);
+          white-space: nowrap;
+          overflow: hidden;
+
+          @include respond(all-phones) {
+            @include padding($dp + 3 0 $dp + 3 0);
+          }
+        }
+
+        &[open] {
+          @include box-shadow(none);
+          @include icon-change('icon-up-dir', after);
+
+          summary {
+            border-bottom: none;
+          }
+        }
+
+        .details-wrapper {
+          @include box-shadow($gray-10 0px 2px 5px);
+          @include position(absolute, 50px null null 0);
+          background-color: $second-color;
+          width: 700px;
+          z-index: 102;
+
+          @include respond(tablets) {
+            width: 580px;
+          }
+
+          @include respond(all-phones) {
+            width: 95%;
+          }
+
+          .form-checkboxes {
+            .form-item {
+              label {
+                display: block;
+              }
+            }
+          }
+        }
       }
+
 
       .site-btn {
         @include column(2.2);

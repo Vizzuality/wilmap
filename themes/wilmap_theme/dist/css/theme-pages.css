@@ -7,7 +7,7 @@
   #block-wilmap-theme-blockwelcomehome .content:after, #block-wilmap-theme-blockmaphome .content:after, #block-wilmap-theme-blockexplorehome .content:after, #block-wilmap-theme-blocknewshome .content:after {
     clear: both; }
 
-#block-wilmap-theme-blockwelcomehome .text, #block-wilmap-theme-blockwelcomehome .text .description, #block-wilmap-theme-blockmaphome .text, #block-wilmap-theme-blockexplorehome .text, #block-wilmap-theme-blocknewshome .text, .block-views-blocktopics-block-1 .views-row, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe iframe, article.node--type-topics.node--view-mode-full .node-header, article.node--type-topics.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, .block-views-blockentries-block-1 .views-row, .block-views-blockentries-block-1 .view-highlighted-entries .views-row, article.node--type-news.node--view-mode-full .node-header, article.node--type-news.node--view-mode-full .field--name-field-original-source, article.node--type-news.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items > .field__item, .block-views-blockcontributors-block-1 .view-filters, .block-views-blockcontributors-block-1 .view-filters .js-form-item-country, .block-views-blockcontributors-block-1 .view-filters .js-form-item-expertise, .block-views-blockcontributors-block-1 .view-filters .js-form-item-name, .block-views-blockcontributors-block-1 .view-filters .form-actions, .block-views-blockcontributors-block-1 .view-content, .block-views-blockcontributors-block-1 .view-content .views-row, .path-user article.profile .contributor-sheet, .path-user article.profile .contributor-info, .path-user .block-views-blockcontributions-block-1 .view-contributions .views-row, .block-views-blocklist-entries-block-1 .views-row, .block-views-blocklist-entries-block-1._switch-on .views-row, .block-views-blocklist-entries-block-1._switch-off .views-row, .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > .form-type-checkbox, .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li, .block-views-blocklist-entries-block-1 .view-filters .form--filter, .block-views-blocklist-entries-block-1 .view-filters .form--filter .js-form-type-select, .block-views-blocklist-entries-block-1 .view-filters .form--filter .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--sort, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors .js-form-item, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield, .block-views-blocklist-entries-block-1 .view-filters .form--bottom > .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .form-actions, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .listswitch, article.node--type-entry.node--view-mode-full .node-header, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items > .field__item, .search-page-form .form-type-search, .search-page-form .site-btn, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest, body.page-node-type-country #content-content section.block-system-main-block .text-formatted,
+#block-wilmap-theme-blockwelcomehome .text, #block-wilmap-theme-blockwelcomehome .text .description, #block-wilmap-theme-blockmaphome .text, #block-wilmap-theme-blockexplorehome .text, #block-wilmap-theme-blocknewshome .text, .block-views-blocktopics-block-1 .views-row, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted div iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ul iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted ol iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted p iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h2 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h3 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h4 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h5 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted h6 iframe, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe div, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe ul, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe ol, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe p, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h2, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h3, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h4, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h5, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe h6, article.node--type-topics.node--view-mode-full > .node__content .node-body > .text-formatted iframe iframe, article.node--type-topics.node--view-mode-full .node-header, article.node--type-topics.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, .block-views-blockentries-block-1 .views-row, .block-views-blockentries-block-1 .view-highlighted-entries .views-row, article.node--type-news.node--view-mode-full .node-header, article.node--type-news.node--view-mode-full .field--name-field-original-source, article.node--type-news.node--view-mode-full .field--name-field-related-topics .field__items > .field__item, article.node--type-news.node--view-mode-full .field--name-field-related-news .field__items > .field__item, .block-views-blockcontributors-block-1 .view-filters, .block-views-blockcontributors-block-1 .view-filters .js-form-item-country, .block-views-blockcontributors-block-1 .view-filters .js-form-item-expertise, .block-views-blockcontributors-block-1 .view-filters .js-form-item-name, .block-views-blockcontributors-block-1 .view-filters .form-actions, .block-views-blockcontributors-block-1 .view-content, .block-views-blockcontributors-block-1 .view-content .views-row, .path-user article.profile .contributor-sheet, .path-user article.profile .contributor-info, .path-user .block-views-blockcontributions-block-1 .view-contributions .views-row, .block-views-blocklist-entries-block-1 .views-row, .block-views-blocklist-entries-block-1._switch-on .views-row, .block-views-blocklist-entries-block-1._switch-off .views-row, .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > .form-type-checkbox, .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li, .block-views-blocklist-entries-block-1 .view-filters .form--filter, .block-views-blocklist-entries-block-1 .view-filters .form--filter .js-form-type-select, .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item, .block-views-blocklist-entries-block-1 .view-filters .form--filter .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--sort, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors, .block-views-blocklist-entries-block-1 .view-filters .form--modal .date-selectors .js-form-item, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .js-form-type-textfield, .block-views-blocklist-entries-block-1 .view-filters .form--bottom > .site-btn, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .form-actions, .block-views-blocklist-entries-block-1 .view-filters .form--bottom .listswitch, article.node--type-entry.node--view-mode-full .node-header, article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items > .field__item, .search-page-form .form-type-search, .search-page-form .site-btn, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group, body.updates-report .layout-main-wrapper .layout-main .node-main .node-body .text-formatted .digest-group .node--view-mode-digest, body.page-node-type-country #content-content section.block-system-main-block .text-formatted,
 body.page-node-type-region #content-content section.block-system-main-block .text-formatted, body.page-node-type-country #content-content section:not(.block-system-main-block) .views-row,
 body.page-node-type-region #content-content section:not(.block-system-main-block) .views-row, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content,
 body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content,
@@ -4167,44 +4167,59 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
       @media only screen and (max-width: 899px) {
         .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper {
           padding: 10px; } }
-      .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes .form-item {
-        clear: none;
-        float: left; }
-      .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes .checkbox {
-        padding-left: 30px; }
-        .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes .checkbox span {
-          position: absolute;
-          left: 0;
-          display: block; }
-      .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > .form-type-checkbox {
-        width: 41.84127%;
-        margin-right: 25px;
-        margin-bottom: 5px;
-        min-height: 50px; }
-        @media only screen and (max-width: 899px) {
-          .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > .form-type-checkbox {
-            float: left;
-            margin-left: 0;
-            width: 100%; } }
-      .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li {
-        width: 41.84127%;
-        margin-right: 25px;
-        margin-bottom: 5px;
-        min-height: 320px; }
-        @media only screen and (max-width: 899px) {
-          .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li {
-            float: left;
-            margin-left: 0;
-            width: 100%; } }
-        .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li .form-item {
-          margin-bottom: 10px; }
-          .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li .form-item label {
-            font-weight: 600; }
-        .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li ul li .form-type-checkbox {
+      .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes {
+        overflow: visible;
+        *zoom: 1; }
+        .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes:before, .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes:after {
+          content: "";
+          display: table; }
+        .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes:after {
+          clear: both; }
+        .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes .form-item {
+          *zoom: 1;
+          overflow: visible;
+          clear: none;
+          float: left; }
+          .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes .form-item:before, .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes .form-item:after {
+            content: "";
+            display: table; }
+          .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes .form-item:after {
+            clear: both; }
+        .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes .checkbox {
+          padding-left: 30px; }
+          .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes .checkbox span {
+            position: absolute;
+            left: 0;
+            display: block; }
+        .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > .form-type-checkbox {
+          width: 41.84127%;
+          margin-right: 25px;
           margin-bottom: 5px;
-          min-height: 40px; }
-          .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li ul li .form-type-checkbox label {
-            font-weight: 400; }
+          min-height: 50px; }
+          @media only screen and (max-width: 899px) {
+            .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > .form-type-checkbox {
+              float: left;
+              margin-left: 0;
+              width: 100%; } }
+        .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li {
+          width: 41.84127%;
+          margin-right: 25px;
+          margin-bottom: 5px;
+          min-height: 320px; }
+          @media only screen and (max-width: 899px) {
+            .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li {
+              float: left;
+              margin-left: 0;
+              width: 100%; } }
+          .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li .form-item {
+            margin-bottom: 10px; }
+            .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li .form-item label {
+              font-weight: 600; }
+          .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li ul li .form-type-checkbox {
+            margin-bottom: 5px;
+            min-height: 40px; }
+            .block-views-blocklist-entries-block-1 .view-filters details .details-wrapper > .form-checkboxes > ul > li ul li .form-type-checkbox label {
+              font-weight: 400; }
   .block-views-blocklist-entries-block-1 .view-filters .form--filter {
     width: 85.46032%; }
     @media only screen and (max-width: 899px) {
@@ -4236,8 +4251,99 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
         .block-views-blocklist-entries-block-1 .view-filters .form--filter .js-form-type-select {
           width: 22.93968%;
           margin-left: 1.77778%; } }
-      .block-views-blocklist-entries-block-1 .view-filters .form--filter .js-form-type-select.js-form-item-claim {
+    .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item {
+      position: relative;
+      top: -3px;
+      width: 25.84762%;
+      margin-left: 2.66667%;
+      border: none;
+      position: relative; }
+      @media only screen and (max-width: 899px) {
+        .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item {
+          float: left;
+          margin-left: 0;
+          width: 100%; } }
+      .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item.edit-claim {
         margin-left: 0; }
+      @media only screen and (min-width: 900px) and (max-width: 1124px) {
+        .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item {
+          width: 22.93968%;
+          margin-left: 1.77778%; }
+          .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item.edit-claim {
+            margin-left: 0; } }
+      @media only screen and (max-width: 899px) {
+        .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item {
+          margin-left: 0; } }
+      .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: '';
+        background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(#ffffff));
+        background-image: linear-gradient(90deg, rgba(255, 255, 255, 0), #ffffff);
+        opacity: 1; }
+      .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item::before {
+        top: 0;
+        left: auto;
+        right: 0;
+        width: 40px;
+        height: 30px;
+        z-index: 100;
+        display: block;
+        pointer-events: none;
+        border-right: 15px solid #fff; }
+      .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item::after {
+        position: absolute;
+        top: 12px;
+        right: 10px;
+        left: auto;
+        font-size: 22px;
+        font-size: 1.375rem;
+        color: #cdcdcd;
+        z-index: 101; }
+        @media only screen and (min-width: 900px) and (max-width: 1124px) {
+          .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item::after {
+            position: absolute;
+            top: 9px;
+            right: 10px;
+            left: auto; } }
+        @media only screen and (max-width: 899px) {
+          .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item::after {
+            position: absolute;
+            top: 12px;
+            right: 5px;
+            left: auto; } }
+      .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item summary {
+        padding: 13px 50px 13px 0;
+        white-space: nowrap;
+        overflow: hidden; }
+        @media only screen and (max-width: 899px) {
+          .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item summary {
+            padding: 13px 0; } }
+      .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item[open] {
+        -webkit-box-shadow: none;
+        box-shadow: none; }
+        .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item[open]:after {
+          content: "▴"; }
+        .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item[open] summary {
+          border-bottom: none; }
+      .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item .details-wrapper {
+        -webkit-box-shadow: #e6e6e6 0px 2px 5px;
+        box-shadow: #e6e6e6 0px 2px 5px;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        background-color: #fff;
+        width: 700px;
+        z-index: 102; }
+        @media only screen and (min-width: 900px) and (max-width: 1124px) {
+          .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item .details-wrapper {
+            width: 580px; } }
+        @media only screen and (max-width: 899px) {
+          .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item .details-wrapper {
+            width: 95%; } }
+        .block-views-blocklist-entries-block-1 .view-filters .form--filter details.form-item .details-wrapper .form-checkboxes .form-item label {
+          display: block; }
     .block-views-blocklist-entries-block-1 .view-filters .form--filter .site-btn {
       width: 14.21587%;
       margin-left: 2.66667%; }
