@@ -44,10 +44,12 @@
           }
 
           // Date
-          if (date_on_page.length > 0) {
-            text_output = text_output + date_on_page.wrap().html();
-            date_on_page.remove();
-          }
+          // if (date_on_page.length > 0) {
+          //   text_output = text_output + date_on_page.wrap().html();
+          //   date_on_page.remove();
+          // }
+
+          text_output = text_output + '<br />';
 
           // Thumbnails
           num_contrib.each(function(item, value){
@@ -62,6 +64,7 @@
           if(!$(runON + '.dph').lenght > 0) {
             $(runON).empty().addClass('dph');
             $(runON).append('<div class="thumbnails' + class_single + '">' + thumb_output + '</div><div class="info">' + text_output + '</div>');
+            $(runON).parent().addClass('--with-contributors');
           }
         }
       },
@@ -104,6 +107,27 @@
         App.DrupalHack.entriesFilterList.state_advanced_form = [];
         App.DrupalHack.entriesFilterList.last_active_checkbox_in_advanced = false;
 
+
+        App.DrupalHack.entriesFilterList.separatorLayerShow = function(arg) {
+          var filterDOM     = '.view-list-entries .view-filters';
+          var fakeModalDOM  = '.fake-modal';
+
+          if(arg === true) {
+            if($(filterDOM).length > 0) {
+              $(fakeModalDOM).addClass('invisible').addClass('active');
+            }
+          } else {
+            if($(filterDOM).length > 0) {
+              $(filterDOM + ' details.form-item').removeAttr('open');
+              $(fakeModalDOM).removeClass('invisible').removeClass('active');
+
+              if($(filterDOM + ' details.form-item.--changed').length > 0) {
+                App.DrupalHack.entriesFilterList.autoSubmit();
+              }
+            }
+          }
+        }
+
         App.DrupalHack.entriesFilterList.isProcessing = function() {
           var ajaxSpinnerDOM = '.ajax-progress.ajax-progress-fullscreen';
 
@@ -114,20 +138,25 @@
           }
         }
 
-        App.DrupalHack.entriesFilterList.checkLastActiveCheckbox = function() {
-          var out_total = $(runON + ' .views-exposed-form .form--advanced .content .advanced-tag[data-type="checkbox"]').length;
-          var in_total = $(runON + ' .views-exposed-form .form--modal .content-inner .form-item input[type="checkbox"]:checked').length;
+        App.DrupalHack.entriesFilterList.checkLastActiveCheckbox = function(target) {
+          var active_checbox_in_group = $('#' + target).parents('.details-wrapper').find('input:checked').length;
 
-          if (in_total === 0 && out_total !== 0) {
-            App.DrupalHack.entriesFilterList.last_active_checkbox_in_advanced = true;
+          if (active_checbox_in_group === 0) {
+            return true;
+          } else {
+            return false;
           }
-
         }
 
-        App.DrupalHack.entriesFilterList.autoSubmit = function() {
+        App.DrupalHack.entriesFilterList.autoSubmit = function(forze_reload) {
+          var forze_reload = typeof forze_reload !== 'undefined' ? forze_reload : false;
           var page = (App.Utils.getUrlVar('page') === undefined)?0:App.Utils.getUrlVar('page');
+          //App.DrupalHack.entriesFilterList.last_active_checkbox_in_advanced = true;
 
-          if(App.DrupalHack.entriesFilterList.last_active_checkbox_in_advanced || page > 0) {
+
+          console.log(forze_reload, page);
+
+          if(forze_reload || page > 0) {
             console.log('Recarga Form');
 
             // Reload url for preventing bug of last item in advanced search.
@@ -261,9 +290,6 @@
 
 console.log('in updateAdvancedFilters');
 
-          // Check if is last active checkbox in advanced form
-          App.DrupalHack.entriesFilterList.checkLastActiveCheckbox();
-
           // Reset contents
           $(advancedContentDOM).empty();
           $(runON + ' .views-exposed-form .form--modal .content-inner details.form-item summary').text('NONE SELECTED');
@@ -313,9 +339,9 @@ console.log('in updateAdvancedFilters');
                     v_target = $(value).attr('id');
                     v_type = $(value).prop('tagName').toLowerCase();
 
-                    if(v_target.indexOf('edit-region') > -1) {
-                      v_text = 'Region: ' + v_text;
-                    }
+                    // if(v_target.indexOf('edit-region') > -1) {
+                    //   v_text = 'Region: ' + v_text;
+                    // }
                   } else {
                     ok = false;
                   }
@@ -339,7 +365,8 @@ console.log('in updateAdvancedFilters');
               console.log('elimina porque no esta procesando');
 
               var type = $(this).parent().data('type');
-              var target = $(this).parent().data('target')
+              var target = $(this).parent().data('target');
+              var forze_reload_form = false;
 
               // console.log('#'+target, type);
               // console.log($('#'+target).parent());
@@ -349,9 +376,19 @@ console.log('in updateAdvancedFilters');
                   $('#'+target).val('');
                   break;
                 case 'checkbox':
+                // $('.form--filter details .form-type-checkbox input').prop('checked', false).removeAttr('checked');
+                // $('.form--filter details .form-type-checkbox input').parent().removeClass('checked');
+                // $('.form--filter details .form-type-checkbox input').parent().find('span i').remove();
+                //
+                // $('.form--modal #'+target).click();
+
                   $('#'+target).prop('checked', false).removeAttr('checked');
                   $('#'+target).parent().removeClass('checked');
                   $('#'+target).parent().find('span i').remove();
+
+                  // Check if is last active checkbox in a group for reload.
+                  forze_reload_form = App.DrupalHack.entriesFilterList.checkLastActiveCheckbox(target);
+
                   break;
                 case 'select':
                   $('#' + target).val($('#' + target + ' option:first').val());
@@ -364,7 +401,7 @@ console.log('in updateAdvancedFilters');
               App.DrupalHack.entriesFilterList.updateAdvancedFilters();
 
               // Submit
-              App.DrupalHack.entriesFilterList.autoSubmit();
+              App.DrupalHack.entriesFilterList.autoSubmit(forze_reload_form);
             } else {
               console.log('NO elimina porque esta procesando');
             }
@@ -385,7 +422,7 @@ console.log('in updateAdvancedFilters');
             });
 
             $(runON + ' .views-exposed-form').append('<div id="modal-advanced-filter" class="form--modal modal"><div class="content"><a class="close switch" gumby-trigger="|#modal-advanced-filter">CLOSE</a><a style="display:none;" class="close_hidden switch" gumby-trigger="|#modal-advanced-filter">CLOSE_HIDDEN</a><h3>Advanced - Search</h3><div class="content-inner"><div class="date-selectors"></div></div><div class="modal-actions"><a href="#" class="btn modal-done">APPLY</a></div></div></div>');
-            $(runON + ' .views-exposed-form').append('<div class="form--advanced" style="display: none;"><fieldset><legend>Advanced filters:</legend></fieldset><div class="content"></div></div>');
+            $(runON + ' .views-exposed-form').append('<div class="form--advanced" style="display: none;"><fieldset><legend>Active filters:</legend></fieldset><div class="content"></div></div>');
 
             $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .form--inline > .js-form-item').remove().wrap());
             $(runON + ' .views-exposed-form .form--modal .content-inner').append($(runON + ' .form--inline > details.form-item').remove().wrap());
@@ -395,10 +432,19 @@ console.log('in updateAdvancedFilters');
 
           if(!$(runON + ' .form--inline .form--filter').length > 0) {
             $(runON + ' .views-exposed-form .form--inline').append('<div class="form--filter"><fieldset class="tit"><legend>Filter by:</legend></fieldset></div>');
+
+            // Clone external filters
+            console.log('clona filtros');
             $(runON + ' .views-exposed-form .form--modal .edit-claim').clone().appendTo(runON + ' .views-exposed-form .form--inline .form--filter');
             $(runON + ' .views-exposed-form .form--modal .edit-document').clone().appendTo(runON + ' .views-exposed-form .form--inline .form--filter');
             $(runON + ' .views-exposed-form .form--modal .form-item-country').clone().appendTo(runON + ' .views-exposed-form .form--inline .form--filter');
 
+            // Modify external filters for avoid conficts
+            $(runON + ' .views-exposed-form .form--filter .form-type-checkbox input, ' +
+              runON + ' .views-exposed-form .form--filter select').each(function (i, v) {
+              $(v).attr('name', 'clone--' + $(v).attr('name'));
+              $(v).attr('id', 'clone--' + $(v).attr('id'));
+            });
 
             // $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-claim').remove().wrap());
             // $(runON + ' .views-exposed-form .form--inline .form--filter').append($(runON + ' .views-exposed-form .js-form-item-document').remove().wrap());
@@ -422,11 +468,9 @@ console.log('in updateAdvancedFilters');
             $(runON + ' .views-exposed-form .content-inner details.form-item').each(function (item, value) {
               var summary_text = $(value).find('summary').text();
               $(value).find('summary').text('NONE SELECTED');
-              console.log('PASA ChECK');
               $('<label>' + summary_text + '</label>').insertBefore(value);
             });
           }
-
 
           if(!$(runON + ' .form--inline .form--sort').length > 0) {
             $(runON + ' .views-exposed-form .form--inline').append('<div class="form--sort"></div>');
@@ -450,11 +494,30 @@ console.log('in updateAdvancedFilters');
 
 
           // Events
-          // filter select-checkbox and checkboxes
+          // filter select-checkbox
           $(runON + ' .views-exposed-form .form--inline .form--filter .form-item summary[role="button"]').on('click', function(e){
-            $('summary[role="button"]').each(function(i, v){
-              console.log(v);
-            });
+            if(!App.DrupalHack.entriesFilterList.isProcessing()) {
+              App.DrupalHack.entriesFilterList.separatorLayerShow(true);
+            } else {
+              e.preventDefault();
+              return false;
+            }
+          });
+
+          // filter checkboxes
+          $(runON + ' .views-exposed-form .form--filter details .form-type-checkbox').on('click', function(e){
+            // Sync with modal checkbox
+            var target = $(this).find('input').attr('id').split('edit-')[1];
+            var state = $(this).find('input').prop('checked');
+
+            $('.form--modal input#edit-'+target).prop('checked', state);
+
+            // Indicates dropdown checkboxes are changed to reload form
+            $(this).parents('details.form-item').addClass('--changed');
+
+            setTimeout(function(){
+              App.DrupalHack.entriesFilterList.updateAdvancedFilters();
+            }, 50);
           });
 
           // modal checkboxes
@@ -467,15 +530,27 @@ console.log('in updateAdvancedFilters');
             App.DrupalHack.entriesFilterList.updateAdvancedFilters();
           });
 
-          // Inputs
-          // $(runON + ' .views-exposed-form .form--modal input.form-text').on('blur', function(t){
-          //   // Update
-          //   App.DrupalHack.entriesFilterList.updateAdvancedFilters();
-          // });
-
           // Selects
-          $(runON + '  .views-exposed-form .form--inline .form--filter select, ' + runON + '  .views-exposed-form .form--inline .form--sort select').on('change', function(t){
-            // aqui tendré que sincronizar la selección con el select de la modal
+          $(runON + '  .views-exposed-form .form--inline .form--filter select, ' +
+            runON + '  .views-exposed-form .form--inline .form--sort select').on('mouseenter', function(e){
+
+            // Enable/Disable if is processing
+            if(!App.DrupalHack.entriesFilterList.isProcessing()) {
+              $(this).prop('disabled', false);
+            } else {
+              $(this).prop('disabled', true);
+            }
+          });
+
+          $(runON + '  .views-exposed-form .form--inline .form--filter select, ' +
+            runON + '  .views-exposed-form .form--inline .form--sort select').on('change', function(e){
+            // Sync with modal
+            if($(this).parents('.form--filter').length > 0) {
+              var target = $(this).attr('id').split('edit-')[1];
+              var value = $(this).find('option:selected').attr('value');
+
+              $('.form--modal select#edit-' + target + ' option[value="' + value + '"]').prop('selected', true);
+            }
 
             // Update
             App.DrupalHack.entriesFilterList.updateAdvancedFilters();

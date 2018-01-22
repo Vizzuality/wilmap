@@ -104,11 +104,11 @@
         {{ content.group_datasheet.field_tax_document_type }}
         {{ content.group_datasheet.field_region }}
         {{ content.group_datasheet.field_location_entry }}
+        <div class="node-date" style="display:none;">{{ node.getChangedTime()|date("F j, Y") }}</div>
       </div>
 
       <div class="node-header">
         {{ content.field_contributors }}
-        <div class="node-date">{{ node.getChangedTime()|date("F j, Y") }}</div>
         {{ content.field_external_link }}
       </div>
 
@@ -116,18 +116,14 @@
         {{ content.field_body_entry }}
       </div>
 
-      <div class="user-actions multi-blocks">
-        <div class="attachments">
+      <div class="user-actions single-block --constraint">
+        <div class="attachments block --left">
           {% if content.field_attachments|length > 5 %}
             <a class="toggle" gumby-trigger="#download-attachments" href="#">Download files</a>
             <div class="drawer" id="download-attachments">
               {{ content.field_attachments }}
             </div>
           {% endif %}
-        </div>
-        <div class="action multi-action">
-          <a class="btn" href="#" data-action="share">Share</a>
-          <a class="btn gotocountry" href="#" style="display:none;">Go to #target# page</a>
         </div>
       </div>
     </div>
@@ -140,9 +136,13 @@
       {{ content.field_related_entries }}
     </div>
 
-    <div class="user-actions single-block">
-      <div class="action single-action">
+    <div class="user-actions multi-blocks">
+      <div class="action single-action block --right">
         <a class="btn" href="/entries">Explore more entries</a>
+      </div>
+      <div class="action multi-action block --left">
+        <a class="btn" href="#" data-action="share">Share</a>
+        <a class="btn gotocountry" href="#" style="display:none;">Go to #target# page</a>
       </div>
     </div>
   </div>

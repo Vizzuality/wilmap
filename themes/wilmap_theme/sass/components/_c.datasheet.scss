@@ -41,7 +41,7 @@
     padding: 0 !important;
     width: 50%;
     float: left;
-    min-height: $dp * 12;
+    min-height: $dp * 10;
 
     @include respond(all-phones) {
       width: 100%;
@@ -71,8 +71,8 @@
       a,
       a:hover {
         margin: 0 !important;
-        padding: $dp * 2 $dp * 1.5 $dp * 2 $dp * 1.5 !important;
-        min-height: $dp * 11;
+        padding: $dp $dp * 1.5 $dp $dp * 1.5 !important;
+        min-height: $dp * 5;
         text-decoration: none;
         color: $first-color;
         cursor: default;

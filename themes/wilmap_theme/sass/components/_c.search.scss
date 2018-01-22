@@ -106,14 +106,21 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
-  background: $light-overlayer;
+  z-index: 107;
+  background: transparent;
   opacity: 0;
   visibility: hidden;
 
   &.active {
     opacity: 1;
     visibility: visible;
+    background: $light-overlayer;
+
+    &.invisible {
+      opacity: 1;
+      visibility: visible;
+      background: transparent;
+    }
   }
 }
 

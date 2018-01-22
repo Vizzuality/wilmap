@@ -15,6 +15,11 @@
 
 article.node--view-mode-full {
   > .node__content {
+
+    .node-main {
+      @include clearfix();
+    }
+
     .node-body {
       @include column(14, false, collapse, false);
       @include clearfix();
@@ -22,7 +27,7 @@ article.node--view-mode-full {
       > .text-formatted {
         @include wyswyg-textformat();
 
-        div, ul, ol, p, h2, h3, h4, h5, h6, iframe, blockquote {
+        div, ul, ol, p, h2, h3, h4, h5, h6, blockquote {
           @include column(10);
           @include clearfix();
           @include margin(null null $dp * 1.5 columns(2.45));
@@ -31,7 +36,23 @@ article.node--view-mode-full {
             @include margin(null null $dp columns(2.8));
           }
 
-          div, ul, ol, p, h2, h3, h4, h5, h6, iframe, blockquote {
+          div, ul, ol, p, h2, h3, h4, h5, h6, blockquote {
+            @include trim();
+            @include column(14);
+          }
+        }
+
+        iframe {
+          @include trim();
+          @include column(14);
+          @include clearfix();
+          @include margin(null null $dp * 1.5 null);
+
+          @include respond(tablets) {
+            @include margin(null null $dp null);
+          }
+
+          iframe {
             @include trim();
             @include column(14);
           }

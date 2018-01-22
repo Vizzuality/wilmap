@@ -27,6 +27,11 @@
           // Generate bg separator
           if (!$('.fake-modal').length > 0) {
             $('body').append('<div class="fake-modal"></div>');
+
+            // click on fake-modal to close filters
+            $(".fake-modal").on('click', function(e){
+              App.DrupalHack.entriesFilterList.separatorLayerShow(false);
+            });
           }
 
           // DOM processed
@@ -41,6 +46,8 @@
           });
 
           $(dom + ' input[type="search"]').on('focus', function() {
+            App.DrupalHack.entriesFilterList.separatorLayerShow(false);
+
             $(dom).addClass('active');
             $(bgseparator).addClass('active');
             $(dom_autocomplete).removeClass('__kill');
@@ -995,11 +1002,18 @@ console.log('first_layer_load -> ' + first_layer_load);
        */
       fieldDatasheet: function() {
         var dom = '.fields-datasheet';
+        var dom_datenode = '.node-date';
         var items_group = 2;
 
         if ($(dom).length > 0) {
           // Reset field
           $(dom + ' .field').removeClass().addClass('field');
+
+          // add date if exists
+          if ($(dom_datenode).length > 0) {
+            var t_datenode = $(dom_datenode).remove().text();
+            $(dom).append('<div class="field field-node-date"><div class="field__label">Date updated</div><div class="field__item">' + t_datenode + '</div></div>');
+          }
 
           // Group fields
           if (!$(dom + ' .fields-group').length > 0) {

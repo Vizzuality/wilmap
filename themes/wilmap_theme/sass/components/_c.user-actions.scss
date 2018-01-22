@@ -7,7 +7,7 @@
 .user-actions {
   @include column(14);
   @include clearfix();
-  @include margin($dp * 4 null null columns(2.45));
+  @include margin($dp * 4 null null 0);
   clear: both;
   float: none;
 
@@ -16,8 +16,66 @@
     float: none;
   }
 
+  &.--constraint {
+    width: columns(10) !important;
+    @include margin($dp * 4 null null columns(2.45));
+
+    @include respond(tablets) {
+      @include margin($dp * 4 null null columns(2.8));
+    }
+  }
+
+  &.single-block {
+    @include column(14, false, collapse, false);
+    text-align: center;
+
+    .block {
+      @include trim();
+      @include column(14, false, collapse, false);
+      text-align: left;
+
+      @include respond(all-phones) {
+        margin-bottom: $dp;
+      }
+
+      &.--left {
+        text-align: left;
+      }
+
+      &.--right {
+        text-align: right;
+      }
+    }
+  }
+
+  &.multi-blocks {
+    @include column(14, false, collapse, false);
+    text-align: left;
+
+    .block {
+      @include column(7);
+      text-align: center;
+
+      &:first-child {
+        @include column(7, false, collapse, false);
+      }
+
+      @include respond(all-phones) {
+        margin-bottom: $dp;
+      }
+
+      &.--left {
+        text-align: left;
+      }
+
+      &.--right {
+        text-align: right;
+      }
+    }
+  }
+
   .attachments {
-    @include column(5, false, collapse, false);
+    @include column(12, false, collapse, false);
 
     a.toggle {
       @include button-download-files();
@@ -39,32 +97,34 @@
   }
 
   .action {
-    @include column(6);
-    @include push(1);
-
-    @include respond(tablets) {
-      @include push(0);
-    }
-
-    .site-btn {
-      @include respond(all-phones) {
-        clear:both;
-        float: none;
-        width: 100%;
-      }
-
-      a {
-        @include respond(all-phones) {
-          width: 100%;
-        }
-      }
-    }
+    // border: 1px solid green;
+    // @include column(6);
+    // @include push(1);
+    //
+    // @include respond(tablets) {
+    //   @include push(0);
+    // }
+    //
+    // .site-btn {
+    //   @include respond(all-phones) {
+    //     clear:both;
+    //     float: none;
+    //     width: 100%;
+    //   }
+    //
+    //   a {
+    //     @include respond(all-phones) {
+    //       width: 100%;
+    //     }
+    //   }
+    // }
   }
 }
 
 //Topics
-.action {
-  @include column(14);
-  @include margin($dp null $dp * 5 null);
-  text-align: center;
-}
+// .action {
+//   border: 1px solid pink;
+//   @include column(14);
+//   @include margin($dp null $dp * 5 null);
+//   text-align: center;
+// }
