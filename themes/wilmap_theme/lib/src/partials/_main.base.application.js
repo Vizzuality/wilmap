@@ -1910,6 +1910,10 @@ console.log('first_layer_load -> ' + first_layer_load);
 
                     $(dom_contentsections+id+' .content').html($(el).unwrap());
                     App.Application.methods.bigLinkAreas();
+
+                    // Mark as processed
+                    $(dom_sidemenu).addClass('__processed')
+                    $(dom_content).parents('#content-content').addClass('__processed')
                   });
               });
             });
@@ -1932,6 +1936,40 @@ console.log('first_layer_load -> ' + first_layer_load);
           $('#block-pagetitle').prepend('<a href="/map" class="btn">Go to Map</a>');
 
           // map
+          // var iso = $('.metadata .field--name-field-iso2').text();
+          // console.log('pinta mapa y centra en ' + iso);
+          // $('#block-pagetitle div.image').attr('id', 'mapbanner');
+          // var mapBanner = L.map('mapbanner', { zoomControl:false }).setView([51.505, -0.09], 4);
+          // L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+          //   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+          // }).addTo(mapBanner);
+
+          // L.geoJson(geoContinents,
+          // {
+          //   style: function(feature) {
+          //     return {
+          //       fillColor: '#e4dfd3',
+          //       fillOpacity: 1,
+          //       color: '#e4dfd3',
+          //       weight: 1,
+          //       opacity: 1
+          //     }
+          //   }
+          // }).addTo(mapBanner);
+          //
+          // L.geoJson(geoCountries,
+          // {
+          //   style: function(feature) {
+          //     return {
+          //       fillColor: '#e4dfd3',
+          //       fillOpacity: 1,
+          //       color: '#fff',
+          //       weight: 2,
+          //       opacity: 0.5
+          //     }
+          //   }
+          // }).addTo(mapBanner);
+
 
         }
       },

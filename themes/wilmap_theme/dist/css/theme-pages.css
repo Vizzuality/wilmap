@@ -5810,9 +5810,26 @@ body.page-node-type-region .panel-block {
   body.page-node-type-country .panel-block.__active,
   body.page-node-type-region .panel-block.__active {
     display: block; }
+body.page-node-type-country .content-sidenav,
+body.page-node-type-region .content-sidenav {
+  visibility: hidden; }
+  body.page-node-type-country .content-sidenav.__processed,
+  body.page-node-type-region .content-sidenav.__processed {
+    visibility: visible; }
 body.page-node-type-country .content-sidenav .views-row.__disabled,
 body.page-node-type-region .content-sidenav .views-row.__disabled {
   display: none; }
+@media only screen and (min-width: 900px) and (max-width: 1124px) {
+  body.page-node-type-country .content-sidenav .site-btn,
+  body.page-node-type-region .content-sidenav .site-btn {
+    width: 100%;
+    text-align: center; } }
+@media only screen and (min-width: 900px) and (max-width: 1124px) {
+  body.page-node-type-country .content-sidenav .site-btn .searchinexplore,
+  body.page-node-type-region .content-sidenav .site-btn .searchinexplore {
+    font-size: 12px;
+    font-size: 0.75rem;
+    padding: 10px !important; } }
 body.page-node-type-country #block-pagetitle .node-top,
 body.page-node-type-region #block-pagetitle .node-top {
   top: 75px;
@@ -5830,10 +5847,20 @@ body.page-node-type-region #block-pagetitle a.btn {
 body.page-node-type-country #content-content,
 body.page-node-type-region #content-content {
   min-height: 500px; }
+  body.page-node-type-country #content-content,
+  body.page-node-type-region #content-content {
+    visibility: hidden; }
+    body.page-node-type-country #content-content.__processed,
+    body.page-node-type-region #content-content.__processed {
+      visibility: visible; }
   @media only screen and (max-width: 899px) {
     body.page-node-type-country #content-content,
     body.page-node-type-region #content-content {
       min-height: auto; } }
+  @media only screen and (max-width: 899px) {
+    body.page-node-type-country #content-content.with-sidenav::before,
+    body.page-node-type-region #content-content.with-sidenav::before {
+      top: -20px; } }
   body.page-node-type-country #content-content section.block-system-main-block .field__label,
   body.page-node-type-region #content-content section.block-system-main-block .field__label {
     font-size: 40px;
@@ -5917,10 +5944,10 @@ body.page-node-type-region #content-content {
           line-height: 2.84375rem;
           font-weight: 200;
           font-family: "Raleway", "Mplus 1p", sans-serif; } }
-    body.page-node-type-country #content-content section:not(.block-system-main-block) h3,
-    body.page-node-type-country #content-content section:not(.block-system-main-block) h3 a,
-    body.page-node-type-region #content-content section:not(.block-system-main-block) h3,
-    body.page-node-type-region #content-content section:not(.block-system-main-block) h3 a {
+    body.page-node-type-country #content-content section:not(.block-system-main-block) .view-content > h3,
+    body.page-node-type-country #content-content section:not(.block-system-main-block) .view-content > h3 a,
+    body.page-node-type-region #content-content section:not(.block-system-main-block) .view-content > h3,
+    body.page-node-type-region #content-content section:not(.block-system-main-block) .view-content > h3 a {
       font-size: 30px;
       font-size: 1.875rem;
       line-height: 30px;
@@ -5933,12 +5960,13 @@ body.page-node-type-region #content-content {
       text-decoration: none;
       text-transform: none;
       color: rgba(34, 34, 34, 0.8);
-      margin-bottom: 10px; }
+      margin-bottom: 10px;
+      display: none; }
       @media only screen and (min-width: 900px) and (max-width: 1124px) {
-        body.page-node-type-country #content-content section:not(.block-system-main-block) h3,
-        body.page-node-type-country #content-content section:not(.block-system-main-block) h3 a,
-        body.page-node-type-region #content-content section:not(.block-system-main-block) h3,
-        body.page-node-type-region #content-content section:not(.block-system-main-block) h3 a {
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .view-content > h3,
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .view-content > h3 a,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .view-content > h3,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .view-content > h3 a {
           font-size: 20px;
           font-size: 1.25rem;
           line-height: 20px;
@@ -5946,10 +5974,10 @@ body.page-node-type-region #content-content {
           font-weight: 200;
           font-family: "Raleway", "Mplus 1p", sans-serif; } }
       @media only screen and (max-width: 899px) {
-        body.page-node-type-country #content-content section:not(.block-system-main-block) h3,
-        body.page-node-type-country #content-content section:not(.block-system-main-block) h3 a,
-        body.page-node-type-region #content-content section:not(.block-system-main-block) h3,
-        body.page-node-type-region #content-content section:not(.block-system-main-block) h3 a {
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .view-content > h3,
+        body.page-node-type-country #content-content section:not(.block-system-main-block) .view-content > h3 a,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .view-content > h3,
+        body.page-node-type-region #content-content section:not(.block-system-main-block) .view-content > h3 a {
           font-size: 45.5px;
           font-size: 2.84375rem;
           line-height: 45.5px;

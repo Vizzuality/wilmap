@@ -566,7 +566,8 @@ body.path-frontpage.both-sidebars #sidebar-second {
     .main-content-inner .content-sidenav .views-row {
       margin: 0;
       padding: 0;
-      *zoom: 1; }
+      *zoom: 1;
+      outline: none; }
       .main-content-inner .content-sidenav .views-row:before, .main-content-inner .content-sidenav .views-row:after {
         content: "";
         display: table; }
@@ -594,7 +595,8 @@ body.path-frontpage.both-sidebars #sidebar-second {
         text-decoration: none;
         text-align: left;
         border-right: none;
-        border-bottom: none; }
+        border-bottom: none;
+        outline: none; }
         @media only screen and (min-width: 900px) and (max-width: 1124px) {
           .main-content-inner .content-sidenav .views-row a {
             font-size: 13px;

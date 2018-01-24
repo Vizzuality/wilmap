@@ -1,12 +1,21 @@
 // --------------
 // Hide before loading (js)
 // --------------
-@mixin hide-before-dom-alter {
+@mixin hide-before-dom-alter($visibility: false){
   & {
-    display: none;
+    @if $visibility {
+      visibility: hidden;
+    } @else {
+      display: none;
+    }
+
 
     &.__processed {
-      display: block;
+      @if $visibility {
+        visibility: visible;
+      } @else {
+        display: block;
+      }
     }
   }
 }
