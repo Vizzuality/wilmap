@@ -5960,8 +5960,7 @@ body.page-node-type-region #content-content {
       text-decoration: none;
       text-transform: none;
       color: rgba(34, 34, 34, 0.8);
-      margin-bottom: 10px;
-      display: none; }
+      margin-bottom: 10px; }
       @media only screen and (min-width: 900px) and (max-width: 1124px) {
         body.page-node-type-country #content-content section:not(.block-system-main-block) .view-content > h3,
         body.page-node-type-country #content-content section:not(.block-system-main-block) .view-content > h3 a,

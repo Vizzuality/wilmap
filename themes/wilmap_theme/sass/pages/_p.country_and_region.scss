@@ -119,7 +119,7 @@ body.page-node-type-region {
         > h3 a {
           @include text-secondary-header(rgba($first-color, 0.8), 30px);
           @include margin(null null $dp null);
-          display: none;
+          // display: none;
         }
       }
 
