@@ -161,7 +161,7 @@
 
             // Reload url for preventing bug of last item in advanced search.
             $('body').after($('<div class="ajax-progress ajax-progress-fullscreen">&nbsp;</div>'));
-            location.href = App.DrupalHack.entriesFilterList.serializeForm();
+            location.href = App.DrupalHack.entriesFilterList.serializeForm() + '&page=0';
           } else {
             console.log('Hace submit');
 
@@ -594,7 +594,7 @@ console.log('in updateAdvancedFilters');
 
           // submit
           $(runON + ' .views-exposed-form input.form-submit').on('click', function(e){
-            var out = App.DrupalHack.entriesFilterList.serializeForm();
+            var out = App.DrupalHack.entriesFilterList.serializeForm() + '&page=0';
             console.log('SUBMIT -> ' + out);
 
             App.Utils.setBrowserURL(out);

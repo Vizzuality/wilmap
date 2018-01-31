@@ -25,7 +25,7 @@
         @include position(relative, null null null null);
 
         &:nth-child(even) {
-          @include column(7, center, collapse, false);
+          @include column(7, false, collapse, false);
         }
 
         &:nth-child(odd) {
@@ -33,7 +33,7 @@
         }
 
         label {
-          @include padding(null null null $dp * 3);
+          @include padding(null $dp * 1.5 null $dp * 3);
 
           span {
             @include position(absolute, 0 null null 0);

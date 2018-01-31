@@ -12,6 +12,86 @@
     methods: {
 
       /**
+       * title + map country/region detail
+       */
+      countryAndRegionHeader: function() {
+        var dom = '.page-node-type-country, .page-node-type-region';
+
+        if ($(dom).length > 0 && !$('#block-pagetitle .node-top').length > 0) {
+          // country name
+          var country = ($('body').hasClass('page-node-type-country')) ? $('.field--name-field-continent-country').text():$('.field--name-field-continent').text();
+          $('#block-pagetitle').prepend('<div class="node-top"><div class="field--name-field-location-entry">'+country+'</div></div>');
+
+          // goto map
+          $('#block-pagetitle').prepend('<a href="/map" class="btn">Go to Map</a>');
+
+          // Draw map
+          var iso = $('.metadata .field--name-field-iso2').text();
+
+          if (iso !== '') {
+            $('#block-pagetitle div.image').attr('id', 'mapbanner');
+
+            App.Application.BannerMaps                            = {};
+            App.Application.BannerMaps.Config                     = {};
+            App.Application.BannerMaps.Functions                  = {};
+            App.Application.BannerMaps.CountryData                = {};
+            App.Application.BannerMaps.ContinentData              = {};
+            App.Application.BannerMaps.Config.wilmap              = null;
+            App.Application.BannerMaps.Config.color_border        = '#f7f6f2';
+            App.Application.BannerMaps.Config.color_inactive      = '#e4dfd3';
+
+            App.Application.BannerMaps.Config.wilmap = L.map('mapbanner', {
+              zoomControl:false
+            });
+
+            App.Application.BannerMaps.Config.wilmap.createPane('labels');
+            App.Application.BannerMaps.Config.wilmap.getPane('labels').style.zIndex = 640;
+            App.Application.BannerMaps.Config.wilmap.getPane('labels').style.pointerEvents = 'none';
+            App.Application.BannerMaps.Config.positron_labels = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png', {
+              attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+              pane: 'labels'
+            }).addTo(App.Application.BannerMaps.Config.wilmap);
+
+            App.Application.BannerMaps.Config.basemapcontinents = L.geoJson(geoContinents,
+              {
+                style: function(feature) {
+                  return {
+                    fillColor: App.Application.BannerMaps.Config.color_inactive,
+                    fillOpacity: 1,
+                    color: App.Application.BannerMaps.Config.color_inactive,
+                    weight: 1,
+                    opacity: 1
+                  }
+                }
+              }).addTo(App.Application.BannerMaps.Config.wilmap);
+
+              App.Application.BannerMaps.Config.basemapcountries = L.geoJson(geoCountries,
+                {
+                  style: function(feature) {
+                    return {
+                      fillColor: App.Application.BannerMaps.Config.color_inactive,
+                      fillOpacity: 1,
+                      color: App.Application.BannerMaps.Config.color_border,
+                      weight: 2,
+                      opacity: 0.5
+                    }
+                  }
+                }).addTo(App.Application.BannerMaps.Config.wilmap);
+
+              // center
+              App.Application.BannerMaps.Config.basemapcountries.eachLayer(function (layer) {
+                if (layer.feature.properties.iso2 == iso) {
+                  console.log('BannerMap: ' + layer.feature.properties.iso2);
+                  App.Application.BannerMaps.Config.wilmap.fitBounds(layer.getBounds());
+                  //App.Application.BannerMaps.Config.wilmap.setView(layer.getBounds().getCenter(), 4);
+                }
+              });
+          }
+        }
+      },
+
+
+      /**
        * Main search
        */
       mainSearch: function() {
@@ -1919,61 +1999,6 @@ console.log('first_layer_load -> ' + first_layer_load);
             });
         }
       },
-
-
-      /**
-       * title + map country/region detail
-       */
-      countryAndRegionHeader: function() {
-        var dom = '.page-node-type-country, .page-node-type-region';
-
-        if ($(dom).length > 0 && !$('#block-pagetitle .node-top').length > 0) {
-          // country name
-          var country = ($('body').hasClass('page-node-type-country')) ? $('.field--name-field-continent-country').text():$('.field--name-field-continent').text();
-          $('#block-pagetitle').prepend('<div class="node-top"><div class="field--name-field-location-entry">'+country+'</div></div>');
-
-          // goto map
-          $('#block-pagetitle').prepend('<a href="/map" class="btn">Go to Map</a>');
-
-          // map
-          // var iso = $('.metadata .field--name-field-iso2').text();
-          // console.log('pinta mapa y centra en ' + iso);
-          // $('#block-pagetitle div.image').attr('id', 'mapbanner');
-          // var mapBanner = L.map('mapbanner', { zoomControl:false }).setView([51.505, -0.09], 4);
-          // L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
-          //   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
-          // }).addTo(mapBanner);
-
-          // L.geoJson(geoContinents,
-          // {
-          //   style: function(feature) {
-          //     return {
-          //       fillColor: '#e4dfd3',
-          //       fillOpacity: 1,
-          //       color: '#e4dfd3',
-          //       weight: 1,
-          //       opacity: 1
-          //     }
-          //   }
-          // }).addTo(mapBanner);
-          //
-          // L.geoJson(geoCountries,
-          // {
-          //   style: function(feature) {
-          //     return {
-          //       fillColor: '#e4dfd3',
-          //       fillOpacity: 1,
-          //       color: '#fff',
-          //       weight: 2,
-          //       opacity: 0.5
-          //     }
-          //   }
-          // }).addTo(mapBanner);
-
-
-        }
-      },
-
 
       /**
        * Lists Switch

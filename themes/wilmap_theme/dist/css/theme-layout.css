@@ -1542,15 +1542,17 @@ button.btn,
             padding: 22px 0 20px 0; } }
       .site-header .main-header .site-name .beta {
         position: absolute;
-        bottom: -17px;
-        left: 0;
+        top: 61%;
+        left: 50%;
         font-size: 15px;
         font-size: 0.9375rem;
         line-height: 16.5px;
         line-height: 1.03125rem;
         font-weight: 700;
         font-family: "Raleway", "Mplus 1p", sans-serif;
-        color: #968f7e; }
+        -webkit-transform: translate(-100%, 0);
+        transform: translate(-100%, 0);
+        color: rgba(255, 255, 255, 0.3); }
   .site-header .region-primary-menu {
     position: relative;
     top: 0;
@@ -2134,7 +2136,8 @@ body.node-map .site-footer {
     z-index: -1;
     background-size: cover;
     background-position: 50%;
-    background-repeat: no-repeat; }
+    background-repeat: no-repeat;
+    background-color: #f7f5f2; }
     @media only screen and (min-width: 900px) and (max-width: 1124px) {
       .block-page-title-block .image {
         height: 166.66667px;
@@ -2143,6 +2146,30 @@ body.node-map .site-footer {
       .block-page-title-block .image {
         height: 80px;
         width: 78.19048%; } }
+  .block-page-title-block #mapbanner.image {
+    position: "absolute";
+    background-image: none !important; }
+    .block-page-title-block #mapbanner.image::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: '';
+      background-image: linear-gradient(45deg, #f7f5f2, rgba(247, 245, 242, 0));
+      opacity: 1; }
+    .block-page-title-block #mapbanner.image::before {
+      position: absolute;
+      top: auto;
+      right: auto;
+      bottom: 0;
+      left: 0;
+      height: 100%;
+      width: 45%;
+      z-index: 700; }
+    .block-page-title-block #mapbanner.image .leaflet-control-attribution {
+      margin-top: -10px; }
+      @media only screen and (max-width: 899px) {
+        .block-page-title-block #mapbanner.image .leaflet-control-attribution {
+          margin-top: -3px; } }
   .block-page-title-block .backtolink {
     position: absolute;
     top: 30px;

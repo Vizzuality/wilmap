@@ -15,7 +15,7 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-.user-actions.single-block, .user-actions.single-block .block, .user-actions.multi-blocks, .user-actions.multi-blocks .block:first-child, .user-actions .attachments {
+#modal-maplayer .content ul li.layer-item:nth-child(even), .user-actions.single-block, .user-actions.single-block .block, .user-actions.multi-blocks, .user-actions.multi-blocks .block:first-child, .user-actions .attachments {
   margin-left: 0; }
 
 .pager {
@@ -851,14 +851,10 @@
     #modal-maplayer .content ul li.layer-item {
       position: relative; }
       #modal-maplayer .content ul li.layer-item:nth-child(even) {
-        float: none;
-        margin-left: auto !important;
-        margin-right: auto !important;
         width: 49.11111%; }
         @media only screen and (max-width: 899px) {
           #modal-maplayer .content ul li.layer-item:nth-child(even) {
             float: left;
-            margin-left: 0;
             width: 100%; } }
       #modal-maplayer .content ul li.layer-item:nth-child(odd) {
         width: 49.11111%; }
@@ -868,6 +864,7 @@
             margin-left: 0;
             width: 100%; } }
       #modal-maplayer .content ul li.layer-item label {
+        padding-right: 15px;
         padding-left: 30px; }
         #modal-maplayer .content ul li.layer-item label span {
           position: absolute;

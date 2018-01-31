@@ -139,6 +139,13 @@ function wilmap_theme_preprocess_page_title(&$variables) {
 
         break;
 
+      case 'country':
+        $variables['title'] = $node->label();
+        $variables['title_background'] = '';
+        $variables['title_back_link'] = '';
+
+        break;
+
       default:
         $variables['title'] = $node->label();
         $variables['title_background'] = '/themes/wilmap_theme/images/title/default-title-bg.png';
