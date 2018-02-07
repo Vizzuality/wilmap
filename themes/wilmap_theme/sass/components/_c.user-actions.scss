@@ -7,7 +7,7 @@
 .user-actions {
   @include column(14);
   @include clearfix();
-  @include margin($dp * 4 null null 0);
+  @include margin($dp * 4 null $dp * 3 0);
   clear: both;
   float: none;
 
@@ -32,7 +32,7 @@
     .block {
       @include trim();
       @include column(14, false, collapse, false);
-      text-align: left;
+      text-align: center;
 
       @include respond(all-phones) {
         margin-bottom: $dp;
@@ -118,6 +118,14 @@
     //     }
     //   }
     // }
+
+    .--space-left {
+      margin-left: $dp;
+    }
+
+    .--space-right {
+      margin-right: $dp;
+    }
   }
 }
 

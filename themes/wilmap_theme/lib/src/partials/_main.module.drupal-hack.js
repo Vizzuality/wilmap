@@ -592,12 +592,25 @@ console.log('in updateAdvancedFilters');
             App.DrupalHack.entriesFilterList.autoSubmit();
           });
 
+          // keyevent keywords input
+          $(runON + ' .views-exposed-form .form-item-title input.form-text').bind("keyup", function (e) {
+            var submit_dom = runON + ' .views-exposed-form input.form-submit';
+
+            $(submit_dom).addClass('__forze_reload');
+          });
+
           // submit
           $(runON + ' .views-exposed-form input.form-submit').on('click', function(e){
-            var out = App.DrupalHack.entriesFilterList.serializeForm() + '&page=0';
-            console.log('SUBMIT -> ' + out);
+            if ( $(this).hasClass('__forze_reload') ) {
+              console.log('SUBMIT -> Forze reload on click');
+              App.DrupalHack.entriesFilterList.autoSubmit(true);
+            } else {
+              var out = App.DrupalHack.entriesFilterList.serializeForm() + '&page=0';
+              console.log('SUBMIT -> ' + out);
 
-            App.Utils.setBrowserURL(out);
+              App.Utils.setBrowserURL(out);
+            }
+
           });
 
           // show in map button

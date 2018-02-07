@@ -1528,6 +1528,7 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
   width: 100%;
   *zoom: 1;
   margin-top: 40px;
+  margin-bottom: 30px;
   margin-left: 0;
   clear: both;
   float: none; }
@@ -1564,7 +1565,7 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
       margin: 0;
       padding: 0;
       width: 100%;
-      text-align: left; }
+      text-align: center; }
       @media only screen and (max-width: 899px) {
         .user-actions.single-block .block {
           float: left;
@@ -1672,6 +1673,10 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
       background: none; }
       .user-actions .attachments .drawer .file {
         background-position: 0% 5px; }
+  .user-actions .action .--space-left {
+    margin-left: 10px; }
+  .user-actions .action .--space-right {
+    margin-right: 10px; }
 
 .view .view-empty {
   padding: 30px;

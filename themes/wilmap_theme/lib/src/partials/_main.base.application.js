@@ -16,6 +16,7 @@
        */
       countryAndRegionHeader: function() {
         var dom = '.page-node-type-country, .page-node-type-region';
+        var metadata_dom = '.metadata';
 
         if ($(dom).length > 0 && !$('#block-pagetitle .node-top').length > 0) {
           // country name
@@ -79,13 +80,23 @@
                 }).addTo(App.Application.BannerMaps.Config.wilmap);
 
               // center
-              App.Application.BannerMaps.Config.basemapcountries.eachLayer(function (layer) {
-                if (layer.feature.properties.iso2 == iso) {
-                  console.log('BannerMap: ' + layer.feature.properties.iso2);
-                  App.Application.BannerMaps.Config.wilmap.fitBounds(layer.getBounds());
-                  //App.Application.BannerMaps.Config.wilmap.setView(layer.getBounds().getCenter(), 4);
-                }
-              });
+              if ( $(metadata_dom + ' .field--name-field-latitude').length > 0 ) {
+                //Centered by node fields
+                var lat = ($(metadata_dom + ' .field--name-field-latitude').text() !== '')?$(metadata_dom + ' .field--name-field-latitude').text():'0';
+                var long = ($(metadata_dom + ' .field--name-field-longitude').text() !== '')?$(metadata_dom + ' .field--name-field-longitude').text():'0';
+                var zoom = ($(metadata_dom + ' .field--name-field-zoom').text() !== '')?$(metadata_dom + ' .field--name-field-zoom').text():'1';
+
+                console.log(lat, long, zoom);
+                App.Application.BannerMaps.Config.wilmap.setView([lat, long], zoom);
+              } else {
+                //Autocentered
+                App.Application.BannerMaps.Config.basemapcountries.eachLayer(function (layer) {
+                  if (layer.feature.properties.iso2 == iso) {
+                    console.log('BannerMap: ' + layer.feature.properties.iso2);
+                    App.Application.BannerMaps.Config.wilmap.fitBounds(layer.getBounds());
+                  }
+                });
+              }
           }
         }
       },

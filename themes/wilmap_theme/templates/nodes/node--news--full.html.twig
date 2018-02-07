@@ -108,33 +108,41 @@
         {{ content.field_summary }}
       </div>
 
-      <div class="user-actions multi-blocks">
-        <div class="attachments">
-          {% if content.field_attachments|length > 5 %}
-            <a class="toggle" gumby-trigger="#download-attachments" href="#">Download files</a>
-            <div class="drawer" id="download-attachments">
-              {{ content.field_attachments }}
-            </div>
-          {% endif %}
+      {% if content.field_attachments|length > 5 or content.field_download_original|length > 5 %}
+      <div class="user-actions multi-blocks --constraint">
+        {% if content.field_attachments|length > 5 %}
+        <div class="block attachments --left">
+          <a class="toggle" gumby-trigger="#download-attachments" href="#">Download files</a>
+          <div class="drawer" id="download-attachments">
+            {{ content.field_attachments }}
+          </div>
         </div>
-        <div class="action single-action">
-          <a class="btn" href="#" data-action="share">Share this</a>
+        {% endif %}
+        {% if content.field_download_original|length > 5 %}
+        <div class="block attachments --right">
+          <a class="toggle" gumby-trigger="#download-attachments-original" href="#">Download original files</a>
+          <div class="drawer" id="download-attachments-original">
+            {{ content.field_download_original }}
+          </div>
         </div>
+        {% endif %}
       </div>
+      {% endif %}
     </div>
 
     {{ content.field_original_source }}
 
     {{ content.group_datasheet }}
-    
+
 
     <div class="related">
       {{ content.field_related_news }}
     </div>
 
     <div class="user-actions single-block">
-      <div class="action single-action">
+      <div class="action multi-action block">
         <a class="btn" href="/news">More news</a>
+        <a class="btn --space-left" href="#" data-action="share">Share this</a>
       </div>
     </div>
   </div>

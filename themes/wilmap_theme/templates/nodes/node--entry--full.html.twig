@@ -116,16 +116,26 @@
         {{ content.field_body_entry }}
       </div>
 
-      <div class="user-actions single-block --constraint">
-        <div class="attachments block --left">
-          {% if content.field_attachments|length > 5 %}
-            <a class="toggle" gumby-trigger="#download-attachments" href="#">Download files</a>
-            <div class="drawer" id="download-attachments">
-              {{ content.field_attachments }}
-            </div>
-          {% endif %}
+      {% if content.field_attachments|length > 5 or content.field_download_original|length > 5 %}
+      <div class="user-actions multi-blocks --constraint">
+        {% if content.field_attachments|length > 5 %}
+        <div class="block attachments --left">
+          <a class="toggle" gumby-trigger="#download-attachments" href="#">Download files</a>
+          <div class="drawer" id="download-attachments">
+            {{ content.field_attachments }}
+          </div>
         </div>
+        {% endif %}
+        {% if content.field_download_original|length > 5 %}
+        <div class="block attachments --right">
+          <a class="toggle" gumby-trigger="#download-attachments-original" href="#">Download original files</a>
+          <div class="drawer" id="download-attachments-original">
+            {{ content.field_download_original }}
+          </div>
+        </div>
+        {% endif %}
       </div>
+      {% endif %}
     </div>
 
 
@@ -140,7 +150,7 @@
       <div class="action multi-action block">
         <a class="btn gotocountry" href="#" style="display:none;">Go to #target# page</a>
         <a class="btn" href="/entries">Explore more entries</a>
-        <a class="btn" href="#" data-action="share">Share</a>
+        <a class="btn --space-left" href="#" data-action="share">Share</a>
       </div>
     </div>
   </div>

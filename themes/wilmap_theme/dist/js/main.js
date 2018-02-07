@@ -899,12 +899,25 @@ console.log('in updateAdvancedFilters');
             App.DrupalHack.entriesFilterList.autoSubmit();
           });
 
+          // keyevent keywords input
+          $(runON + ' .views-exposed-form .form-item-title input.form-text').bind("keyup", function (e) {
+            var submit_dom = runON + ' .views-exposed-form input.form-submit';
+
+            $(submit_dom).addClass('__forze_reload');
+          });
+
           // submit
           $(runON + ' .views-exposed-form input.form-submit').on('click', function(e){
-            var out = App.DrupalHack.entriesFilterList.serializeForm() + '&page=0';
-            console.log('SUBMIT -> ' + out);
+            if ( $(this).hasClass('__forze_reload') ) {
+              console.log('SUBMIT -> Forze reload on click');
+              App.DrupalHack.entriesFilterList.autoSubmit(true);
+            } else {
+              var out = App.DrupalHack.entriesFilterList.serializeForm() + '&page=0';
+              console.log('SUBMIT -> ' + out);
 
-            App.Utils.setBrowserURL(out);
+              App.Utils.setBrowserURL(out);
+            }
+
           });
 
           // show in map button
@@ -1571,6 +1584,7 @@ console.log('in updateAdvancedFilters');
        */
       countryAndRegionHeader: function() {
         var dom = '.page-node-type-country, .page-node-type-region';
+        var metadata_dom = '.metadata';
 
         if ($(dom).length > 0 && !$('#block-pagetitle .node-top').length > 0) {
           // country name
@@ -1634,13 +1648,23 @@ console.log('in updateAdvancedFilters');
                 }).addTo(App.Application.BannerMaps.Config.wilmap);
 
               // center
-              App.Application.BannerMaps.Config.basemapcountries.eachLayer(function (layer) {
-                if (layer.feature.properties.iso2 == iso) {
-                  console.log('BannerMap: ' + layer.feature.properties.iso2);
-                  App.Application.BannerMaps.Config.wilmap.fitBounds(layer.getBounds());
-                  //App.Application.BannerMaps.Config.wilmap.setView(layer.getBounds().getCenter(), 4);
-                }
-              });
+              if ( $(metadata_dom + ' .field--name-field-latitude').length > 0 ) {
+                //Centered by node fields
+                var lat = ($(metadata_dom + ' .field--name-field-latitude').text() !== '')?$(metadata_dom + ' .field--name-field-latitude').text():'0';
+                var long = ($(metadata_dom + ' .field--name-field-longitude').text() !== '')?$(metadata_dom + ' .field--name-field-longitude').text():'0';
+                var zoom = ($(metadata_dom + ' .field--name-field-zoom').text() !== '')?$(metadata_dom + ' .field--name-field-zoom').text():'1';
+
+                console.log(lat, long, zoom);
+                App.Application.BannerMaps.Config.wilmap.setView([lat, long], zoom);
+              } else {
+                //Autocentered
+                App.Application.BannerMaps.Config.basemapcountries.eachLayer(function (layer) {
+                  if (layer.feature.properties.iso2 == iso) {
+                    console.log('BannerMap: ' + layer.feature.properties.iso2);
+                    App.Application.BannerMaps.Config.wilmap.fitBounds(layer.getBounds());
+                  }
+                });
+              }
           }
         }
       },
