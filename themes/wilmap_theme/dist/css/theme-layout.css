@@ -2163,7 +2163,7 @@ body.node-map .site-footer {
       bottom: 0;
       left: 0;
       height: 100%;
-      width: 45%;
+      width: 100%;
       z-index: 700; }
     .block-page-title-block #mapbanner.image .leaflet-control-attribution {
       margin-top: -10px; }

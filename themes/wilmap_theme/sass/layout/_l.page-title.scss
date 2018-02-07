@@ -79,7 +79,7 @@ $image-height:        $dp * 20;
     // gradient left
     &::before {
       @include position(absolute, auto auto 0 0);
-      @include size(45% 100%);
+      @include size(100% 100%);
       z-index: 700;
     }
 
