@@ -1544,12 +1544,25 @@ console.log('in updateAdvancedFilters');
      */
     run: function() {
 
-      // Execute all functions
-      var m = this.methods;
-      for ( var key in this.methods ) {
-        //console.log(key);
-        m[key]();
+      if ( !$( 'body' ).hasClass( 'theme-started' ) ) {
+        // Execute all functions
+        var m = this.methods;
+        for ( var key in this.methods ) {
+          //console.log(key);
+          m[key]();
+        }
+      } else {
+        // If page reload
+        // this.methods.bigLinkAreas();
+        // this.methods.listSwitch();
       }
+
+      // // Execute all functions
+      // var m = this.methods;
+      // for ( var key in this.methods ) {
+      //   //console.log(key);
+      //   m[key]();
+      // }
 
       // Gumby Events
 
@@ -2510,6 +2523,23 @@ console.log(App.Application.Maps);
               $(dom_sidebar).height($(window).height() - $(dom_footer).height() - $(dom_header).height() - App.Application.Maps.Config.sidebar_offset_v);
               $(dom_sidebar).addClass('__hide');
             }
+
+            // User logged in
+            setTimeout(function(){
+              if ($('body.user-logged-in').length > 0 && !App.Application.Maps.Config.isPhone) {
+                var map_offset = 80;
+                var side_offset = (map_offset / 2) + 3;
+
+                if ($('body.toolbar-tray-open.toolbar-vertical').length > 0) {
+                  map_offset = 55;
+                  side_offset = (map_offset / 2) + 1;
+                }
+
+                $(dom).height($(dom).height() - map_offset);
+                $(dom_sidebar).height($(dom).height() - side_offset - App.Application.Maps.Config.sidebar_offset_v);
+                console.log($(dom).height(), map_offset, side_offset);
+              }
+            }, 500);
           }
 
           // Resize trigger
@@ -3789,7 +3819,7 @@ console.log('first_layer_load -> ' + first_layer_load);
       App.Gumbyfy.run();
       App.Application.run();
 
-
+console.log('aplica theme-started');
       // Flag to avoid DOM modification more than one time
       $( 'body' ).addClass( 'theme-started' );
 

@@ -942,6 +942,23 @@ console.log(App.Application.Maps);
               $(dom_sidebar).height($(window).height() - $(dom_footer).height() - $(dom_header).height() - App.Application.Maps.Config.sidebar_offset_v);
               $(dom_sidebar).addClass('__hide');
             }
+
+            // User logged in
+            setTimeout(function(){
+              if ($('body.user-logged-in').length > 0 && !App.Application.Maps.Config.isPhone) {
+                var map_offset = 80;
+                var side_offset = (map_offset / 2) + 3;
+
+                if ($('body.toolbar-tray-open.toolbar-vertical').length > 0) {
+                  map_offset = 55;
+                  side_offset = (map_offset / 2) + 1;
+                }
+
+                $(dom).height($(dom).height() - map_offset);
+                $(dom_sidebar).height($(dom).height() - side_offset - App.Application.Maps.Config.sidebar_offset_v);
+                console.log($(dom).height(), map_offset, side_offset);
+              }
+            }, 500);
           }
 
           // Resize trigger

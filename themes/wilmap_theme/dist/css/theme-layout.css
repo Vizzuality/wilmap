@@ -233,10 +233,6 @@ body .layout-main-wrapper {
       body .layout-main-wrapper .layout-main .text-formatted table[align="right"] {
         margin-right: 0;
         margin-left: auto; }
-body.user-logged-in .site-header {
-  top: 80px !important; }
-body.user-logged-in .layout-main-wrapper {
-  margin-top: 80px !important; }
 body.path-frontpage .layout-main-wrapper {
   margin: 0;
   padding: 0;
@@ -439,10 +435,6 @@ body.path-frontpage .layout-main-wrapper {
       body.path-frontpage .layout-main-wrapper .layout-main .text-formatted table[align="right"] {
         margin-right: 0;
         margin-left: auto; }
-  body.path-frontpage .layout-main-wrapper.user-logged-in .site-header {
-    top: 80px !important; }
-  body.path-frontpage .layout-main-wrapper.user-logged-in .layout-main-wrapper {
-    margin-top: 80px !important; }
 body.path-frontpage.no-sidebar .main-content {
   width: 85.46032%;
   *zoom: 1; }

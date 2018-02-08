@@ -12,7 +12,7 @@
       App.Gumbyfy.run();
       App.Application.run();
 
-
+console.log('aplica theme-started');
       // Flag to avoid DOM modification more than one time
       $( 'body' ).addClass( 'theme-started' );
 

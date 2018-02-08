@@ -133,12 +133,25 @@
      */
     run: function() {
 
-      // Execute all functions
-      var m = this.methods;
-      for ( var key in this.methods ) {
-        //console.log(key);
-        m[key]();
+      if ( !$( 'body' ).hasClass( 'theme-started' ) ) {
+        // Execute all functions
+        var m = this.methods;
+        for ( var key in this.methods ) {
+          //console.log(key);
+          m[key]();
+        }
+      } else {
+        // If page reload
+        // this.methods.bigLinkAreas();
+        // this.methods.listSwitch();
       }
+
+      // // Execute all functions
+      // var m = this.methods;
+      // for ( var key in this.methods ) {
+      //   //console.log(key);
+      //   m[key]();
+      // }
 
       // Gumby Events
 
