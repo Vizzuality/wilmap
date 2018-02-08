@@ -78,11 +78,18 @@ body.user-logged-in {
 
   // Node Preview mode
   .node-preview-container {
-    top: 140px;
-    left: 20px;
+    top: 134px;
+    left: 0px;
+    padding: 0;
 
     .node-preview-backlink {
-      font-weight: bold; 
+      font-weight: bold;
+      background-color: lighten($third-color, 63);
+      padding: 10px 10px 10px 15px;
+      display: block;
+      width: 98%;
+      margin: auto;
+      text-align: left;
     }
 
     .form-item,

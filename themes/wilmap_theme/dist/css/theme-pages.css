@@ -7256,10 +7256,17 @@ body.user-logged-in .contextual-region .contextual .contextual-links a {
 body.user-logged-in .toolbar-toggle-orientation {
   display: none !important; }
 body.user-logged-in .node-preview-container {
-  top: 140px;
-  left: 20px; }
+  top: 134px;
+  left: 0px;
+  padding: 0; }
   body.user-logged-in .node-preview-container .node-preview-backlink {
-    font-weight: bold; }
+    font-weight: bold;
+    background-color: #fff5f7;
+    padding: 10px 10px 10px 15px;
+    display: block;
+    width: 98%;
+    margin: auto;
+    text-align: left; }
   body.user-logged-in .node-preview-container .form-item,
   body.user-logged-in .node-preview-container .site-btn {
     display: none; }
