@@ -75,4 +75,20 @@ body.user-logged-in {
   .toolbar-toggle-orientation {
     display: none !important;
   }
+
+  // Node Preview mode
+  .node-preview-container {
+    top: 140px;
+    left: 20px;
+
+    .node-preview-backlink {
+      font-weight: bold; 
+    }
+
+    .form-item,
+    .site-btn {
+      display: none;
+    }
+  }
+
 }

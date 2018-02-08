@@ -2917,7 +2917,6 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
   .block-views-blockcontributors-block-1 .view-filters label {
     display: none; }
   .block-views-blockcontributors-block-1 .view-filters input.form-text {
-    padding: 20px 0 !important;
     border-top: none;
     border-left: none;
     border-right: none; }
@@ -7256,5 +7255,13 @@ body.user-logged-in .contextual-region .contextual .contextual-links a {
     background: #f7fcff !important; }
 body.user-logged-in .toolbar-toggle-orientation {
   display: none !important; }
+body.user-logged-in .node-preview-container {
+  top: 140px;
+  left: 20px; }
+  body.user-logged-in .node-preview-container .node-preview-backlink {
+    font-weight: bold; }
+  body.user-logged-in .node-preview-container .form-item,
+  body.user-logged-in .node-preview-container .site-btn {
+    display: none; }
 
 /*# sourceMappingURL=theme-pages.css.map */

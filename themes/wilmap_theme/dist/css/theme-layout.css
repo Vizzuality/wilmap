@@ -2081,6 +2081,35 @@ body.node-map .site-footer {
       .block-page-title-block .page-title {
         padding-top: 8.88889%;
         width: 92.73016%; } }
+    .block-page-title-block .page-title span.quickedit-field {
+      font-size: 50px;
+      font-size: 3.125rem;
+      line-height: 50px;
+      line-height: 3.125rem;
+      font-weight: 200;
+      font-family: "Raleway", "Mplus 1p", sans-serif;
+      padding: 0;
+      margin: 0;
+      display: block;
+      text-decoration: none;
+      text-transform: none;
+      color: #222; }
+      @media only screen and (min-width: 900px) and (max-width: 1124px) {
+        .block-page-title-block .page-title span.quickedit-field {
+          font-size: 33.33333px;
+          font-size: 2.08333rem;
+          line-height: 33.33333px;
+          line-height: 2.08333rem;
+          font-weight: 200;
+          font-family: "Raleway", "Mplus 1p", sans-serif; } }
+      @media only screen and (max-width: 899px) {
+        .block-page-title-block .page-title span.quickedit-field {
+          font-size: 45.5px;
+          font-size: 2.84375rem;
+          line-height: 45.5px;
+          line-height: 2.84375rem;
+          font-weight: 200;
+          font-family: "Raleway", "Mplus 1p", sans-serif; } }
     .block-page-title-block .page-title .secondary-page-title {
       font-size: 50px;
       font-size: 3.125rem;

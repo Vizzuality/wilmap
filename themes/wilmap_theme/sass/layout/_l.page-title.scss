@@ -4,9 +4,9 @@
 //
 // ============================================================================
 
-// -------------------------------------
-// Specific Settings: Vars & Mixins
-// -------------------------------------
+  // -------------------------------------
+  // Specific Settings: Vars & Mixins
+  // -------------------------------------
 $image-height:        $dp * 20;
 
 // -------------------------------------
@@ -42,6 +42,10 @@ $image-height:        $dp * 20;
     @include respond(all-phones) {
       @include padding($gutter * 5 null null null);
       width: columns(13);
+    }
+
+    span.quickedit-field {
+      @include text-secondary-header();
     }
 
     .secondary-page-title {
