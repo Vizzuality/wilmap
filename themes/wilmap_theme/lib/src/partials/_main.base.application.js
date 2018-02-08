@@ -161,12 +161,21 @@
       * page search
       */
       pageSearch: function() {
-        var dom = '.content-content .search-page-form';
+        var dom = '.content-content .search-form';
         var dom_autocomplete = 'ul.ui-autocomplete.ui-widget.ui-widget-content';
 
         if ($(dom).length > 0) {
 
-          $(dom).parent().find('h2').addClass('title-result');
+          $('h1.page-title').text($(dom).parent().find('h2').remove().text()).show();
+
+          if (!$(dom + ' .search_in_explore_link').length > 0) {
+            $(dom + ' .form-wrapper').append('<a href="#" class="search_in_explore_link">Search in explore</a>');
+
+            $(dom + ' .search_in_explore_link').on('click', function(e) {
+              e.preventDefault();
+              location.href = '/explore?title=' + $(dom + ' .form-search.input').val();
+            });
+          }
 
           $(dom + ' input[type="search"]').on('focus', function() {
             $(dom_autocomplete).addClass('__kill');
