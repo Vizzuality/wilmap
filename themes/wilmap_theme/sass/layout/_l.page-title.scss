@@ -158,13 +158,13 @@ body.node-about {
         @include text-main-header();
 
         @include respond(tablets) {
-          @include padding($gutter * 5.5 null null null);
+          @include padding(0 null null null);
           @include font($xxlarge, 1, $extra-light, $heading-font);
           width: columns(12);
         }
 
         @include respond(all-phones) {
-          @include padding($gutter * 5 null null null);
+          @include padding(0 null null null);
           width: columns(13);
         }
       }

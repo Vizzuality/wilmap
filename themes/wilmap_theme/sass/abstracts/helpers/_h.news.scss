@@ -170,9 +170,65 @@ $news-gradient-dir:     180deg;
       .node__links {
         position: relative;
         z-index: 10;
-        
+
         a {
           @include default-button();
+        }
+      }
+
+      .digest-group {
+        > h3 {
+          padding-top: $dp * 1.5 !important;
+          margin-bottom: $dp * 2;
+          border-top: 2px solid lighten($fourth-color, 10);
+        }
+
+        &:first-child {
+          > h3 {
+            margin-top: 0;
+          }
+        }
+
+        .node--view-mode-digest {
+          @include margin($dp * 2 null null null);
+          @include padding($dp * 2 0 0 0 );
+          width: columns(14);
+          margin-left: 0;
+          border-top: 2px solid $fourth-color;
+          background: transparent;
+
+          &:hover {
+            background: transparent;
+          }
+
+          &:first-child {
+            border-top: none;
+          }
+
+          h2.node__title {
+            @include news--header(small);
+            @include trim();
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
+            border-top: none;
+          }
+
+          .node__content {
+            .field--name-field-date-published {
+              @include news--date();
+              @include trim();
+              margin-bottom: 0 !important;
+            }
+
+            .text-formatted {
+              @include margin($dp null null null);
+              overflow: visible;
+            }
+
+            a.See.details {
+              @include margin(null null null $dp / 2);
+            }
+          }
         }
       }
     }

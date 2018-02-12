@@ -2309,7 +2309,7 @@ body.node-map .site-footer {
         font-family: "Raleway", "Mplus 1p", sans-serif; } }
     @media only screen and (min-width: 900px) and (max-width: 1124px) {
       .updates-report .block-page-title-block .page-title .secondary-page-title {
-        padding-top: 9.77778%;
+        padding-top: 0;
         font-size: 80px;
         font-size: 5rem;
         line-height: 80px;
@@ -2319,7 +2319,7 @@ body.node-map .site-footer {
         width: 85.46032%; } }
     @media only screen and (max-width: 899px) {
       .updates-report .block-page-title-block .page-title .secondary-page-title {
-        padding-top: 8.88889%;
+        padding-top: 0;
         width: 92.73016%; } }
 
 article.node--view-mode-full > .node__content .node-main {
