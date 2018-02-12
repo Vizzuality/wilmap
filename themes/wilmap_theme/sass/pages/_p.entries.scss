@@ -223,9 +223,11 @@
         }
 
         &::after {
+          @include trim();
           @include position(absolute, 12px 10px null auto);
           @include fs(22px);
-          color: darken($gray-10, 10);
+          color: lighten($fourth-color, 22);
+          border: 0;
           z-index: 101;
 
           @include respond(tablets) {
@@ -245,6 +247,16 @@
 
           @include respond(all-phones) {
             @include padding($dp + 3 0 $dp + 3 0);
+          }
+        }
+
+        & {
+          @include position(relative, null null null null);
+          @include box-shadow(none);
+          @include icon-change('icon-down-dir', after);
+
+          summary {
+            border-bottom: none;
           }
         }
 

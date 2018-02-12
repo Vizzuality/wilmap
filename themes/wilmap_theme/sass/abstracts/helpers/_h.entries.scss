@@ -129,6 +129,19 @@ $entry-gradient-dir:     180deg;
 
     .node {
       @include topic--gradient(relative, true, $highlight);
+      @include margin(null null 0 null);
+      height: auto;
+      max-height: $dp * 37;
+
+      &::before {
+        @include size(150% $dp * 5);
+      }
+
+      &.__short-text {
+        &::before {
+          display: none;
+        }
+      }
     }
   }
 }
@@ -153,6 +166,12 @@ $entry-gradient-dir:     180deg;
 
       &:hover {
         background-color: $entry-color-hover;
+      }
+
+      &.__short-text {
+        &::before {
+          display: none;
+        }
       }
     }
   }
@@ -179,6 +198,11 @@ $entry-gradient-dir:     180deg;
 
       .node__title {
         @include entry--title();
+      }
+
+      .field--name-field-subtitle {
+        @include entry--date();
+        @include fw($regular !important);
       }
 
       .field--name-field-date-published {

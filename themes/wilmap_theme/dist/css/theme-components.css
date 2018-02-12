@@ -1718,7 +1718,8 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
   .fields-datasheet .datasheet-actions {
     padding: 20px 0;
     text-align: center; }
-    .fields-datasheet .datasheet-actions .btn {
+    .fields-datasheet .datasheet-actions .btn,
+    .fields-datasheet .datasheet-actions .site-btn a {
       margin: 0;
       padding: 0;
       font-size: inherit;
@@ -1745,23 +1746,30 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
       text-decoration: none;
       text-transform: uppercase;
       font-style: normal; }
-      .fields-datasheet .datasheet-actions .btn .field {
+      .fields-datasheet .datasheet-actions .btn .field,
+      .fields-datasheet .datasheet-actions .site-btn a .field {
         margin: 0;
         padding: 0; }
-      .fields-datasheet .datasheet-actions .btn:hover {
+      .fields-datasheet .datasheet-actions .btn:hover,
+      .fields-datasheet .datasheet-actions .site-btn a:hover {
         text-decoration: none; }
-      .fields-datasheet .datasheet-actions .btn:hover {
+      .fields-datasheet .datasheet-actions .btn:hover,
+      .fields-datasheet .datasheet-actions .site-btn a:hover {
         background-color: #d9d2c3; }
-      .fields-datasheet .datasheet-actions .btn:active {
+      .fields-datasheet .datasheet-actions .btn:active,
+      .fields-datasheet .datasheet-actions .site-btn a:active {
         background-color: #d3cbba; }
-      .fields-datasheet .datasheet-actions .btn.disabled, .fields-datasheet .datasheet-actions .btn[disabled] {
+      .fields-datasheet .datasheet-actions .btn.disabled, .fields-datasheet .datasheet-actions .btn[disabled],
+      .fields-datasheet .datasheet-actions .site-btn a.disabled,
+      .fields-datasheet .datasheet-actions .site-btn a[disabled] {
         filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
         opacity: 0.6;
         background: false;
         cursor: default;
         -webkit-box-shadow: none;
         box-shadow: none; }
-      .fields-datasheet .datasheet-actions .btn::-moz-focus-inner {
+      .fields-datasheet .datasheet-actions .btn::-moz-focus-inner,
+      .fields-datasheet .datasheet-actions .site-btn a::-moz-focus-inner {
         padding: 0 !important;
         margin: -1px !important; }
   .fields-datasheet .field {

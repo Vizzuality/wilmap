@@ -56,6 +56,17 @@ function wilmap_theme_preprocess_html(&$variables) {
     $variables['attributes']['class'][] = 'developer-mode-css';
   }
 
+  if ($user = \Drupal::currentUser()){
+    $roles = $user->getRoles();
+
+    $variables['attributes']['class'][] = 'user-'.$user->getUsername();
+
+    foreach ($roles as $role) {
+      $variables['attributes']['class'][] = 'role-' . $role;
+    }
+  } else {
+    $variables['attributes']['class'][] = 'role-anonymous';
+  }
 }
 
 /**
@@ -191,6 +202,21 @@ function wilmap_theme_preprocess_views_view_fields(&$variables) {
  * Implements hook_preprocess_HOOK() for node.html.twig.
  */
 function wilmap_theme_preprocess_node(&$variables) {
+    $node = $variables['node'];
+    $bundle = $node->bundle();
+    $mode = $variables['view_mode'];
+    $total_len = 0;
+
+    if($mode == 'teaser' && $bundle == 'entry') {
+      $total_len = $total_len + strlen($node->get('title')->value);
+      $total_len = $total_len + strlen($node->get('field_body_entry')->getString());
+      $total_len = $total_len + strlen($node->get('field_subtitle')->getString());
+
+      if($total_len < 490) {
+      // if(strlen($node->get('field_body_entry')->getString()) < 384) {
+        $variables['attributes']['class'][] = '__short-text';
+      }
+    }
 }
 
 /**

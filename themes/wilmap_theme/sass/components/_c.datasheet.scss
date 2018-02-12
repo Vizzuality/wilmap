@@ -30,7 +30,8 @@
     @include padding($dp * 2 0);
     text-align: center;
 
-    .btn {
+    .btn,
+    .site-btn a {
       @include button-second();
     }
   }
