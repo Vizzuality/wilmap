@@ -27,17 +27,34 @@ article.node--type-topics.node--view-mode-full {
       > .text-formatted {
         @include wyswyg-textformat();
 
-        div, ul, ol, p, h2, h3, h4, h5, h6, iframe {
+        div, ul, ol, p, h2, h3, h4, h5, h6, blockquote {
           @include column(12);
+          @include clearfix();
           @include margin(null null null columns(1.45));
 
           @include respond(tablets) {
             @include margin(null null null columns(1.8));
           }
 
-          div, ul, ol, p, h2, h3, h4, h5, h6, iframe {
+          div, ul, ol, p, h2, h3, h4, h5, h6, blockquote {
             @include trim();
             @include column(14);
+          }
+        }
+
+        iframe {
+          @include trim();
+          @include column(12);
+          @include clearfix();
+          @include margin(null null $dp * 1.5 null);
+
+          @include respond(tablets) {
+            @include margin(null null $dp null);
+          }
+
+          iframe {
+            @include trim();
+            @include column(12);
           }
         }
       }

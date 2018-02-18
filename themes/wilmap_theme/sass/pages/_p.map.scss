@@ -78,7 +78,8 @@
         text-align: center;
       }
 
-      .btn {
+      .btn,
+      .site-btn {
         @include margin(null null null $dp);
 
         &:first-child {
@@ -86,7 +87,7 @@
         }
       }
 
-      #calllist.btn {
+      #calllist {
         @include button-white();
         border: 1px solid $third-color !important;
         display: none;

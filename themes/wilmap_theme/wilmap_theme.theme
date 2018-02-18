@@ -56,6 +56,17 @@ function wilmap_theme_preprocess_html(&$variables) {
     $variables['attributes']['class'][] = 'developer-mode-css';
   }
 
+  if ($user = \Drupal::currentUser()){
+    $roles = $user->getRoles();
+
+    $variables['attributes']['class'][] = 'user-'.$user->getUsername();
+
+    foreach ($roles as $role) {
+      $variables['attributes']['class'][] = 'role-' . $role;
+    }
+  } else {
+    $variables['attributes']['class'][] = 'role-anonymous';
+  }
 }
 
 /**
@@ -126,7 +137,7 @@ function wilmap_theme_preprocess_page_title(&$variables) {
         $variables['title_background'] = ($node->get('field_image')->getValue()) ?
                                          file_create_url($node->get('field_image')->entity->uri->value) :
                                          '/themes/wilmap_theme/images/title/news-title-bg.png';
-        $variables['title_back_link'] = '<a href="/news" class="backtolink">Back to news</a>';
+        $variables['title_back_link'] = '<a href="/news?show=all" class="backtolink">Back to news</a>';
 
         break;
 
@@ -136,6 +147,13 @@ function wilmap_theme_preprocess_page_title(&$variables) {
                                          file_create_url($node->get('field_image_entry')->entity->uri->value) :
                                          '/themes/wilmap_theme/images/title/news-title-bg.png';
         $variables['title_back_link'] = '<div class="node-top"></div>';
+
+        break;
+
+      case 'country':
+        $variables['title'] = $node->label();
+        $variables['title_background'] = '';
+        $variables['title_back_link'] = '';
 
         break;
 
@@ -184,6 +202,21 @@ function wilmap_theme_preprocess_views_view_fields(&$variables) {
  * Implements hook_preprocess_HOOK() for node.html.twig.
  */
 function wilmap_theme_preprocess_node(&$variables) {
+    $node = $variables['node'];
+    $bundle = $node->bundle();
+    $mode = $variables['view_mode'];
+    $total_len = 0;
+
+    if($mode == 'teaser' && $bundle == 'entry') {
+      $total_len = $total_len + strlen($node->get('title')->value);
+      $total_len = $total_len + strlen($node->get('field_body_entry')->getString());
+      $total_len = $total_len + strlen($node->get('field_subtitle')->getString());
+
+      if($total_len < 490) {
+      // if(strlen($node->get('field_body_entry')->getString()) < 384) {
+        $variables['attributes']['class'][] = '__short-text';
+      }
+    }
 }
 
 /**

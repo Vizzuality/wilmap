@@ -36,17 +36,6 @@ body {
     }
   }
 
-  &.user-logged-in {
-    .site-header {
-      top: $dp * 8 !important;
-    }
-
-    .layout-main-wrapper {
-      margin-top: $dp * 8 !important;
-    }
-  }
-
-
   // -------------------------------------
   // Home 100% width
   // -------------------------------------
@@ -73,16 +62,6 @@ body {
 
       .text-formatted {
         @include wyswyg-textformat();
-      }
-    }
-
-    &.user-logged-in {
-      .site-header {
-        top: $dp * 8 !important;
-      }
-
-      .layout-main-wrapper {
-        margin-top: $dp * 8 !important;
       }
     }
   }

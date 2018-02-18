@@ -223,9 +223,11 @@
         }
 
         &::after {
+          @include trim();
           @include position(absolute, 12px 10px null auto);
           @include fs(22px);
-          color: darken($gray-10, 10);
+          color: lighten($fourth-color, 22);
+          border: 0;
           z-index: 101;
 
           @include respond(tablets) {
@@ -248,6 +250,16 @@
           }
         }
 
+        & {
+          @include position(relative, null null null null);
+          @include box-shadow(none);
+          @include icon-change('icon-down-dir', after);
+
+          summary {
+            border-bottom: none;
+          }
+        }
+
         &[open] {
           @include box-shadow(none);
           @include icon-change('icon-up-dir', after);
@@ -262,7 +274,7 @@
           @include position(absolute, 50px null null 0);
           background-color: $second-color;
           width: 700px;
-          z-index: 102;
+          z-index: 110;
 
           @include respond(tablets) {
             width: 580px;
@@ -591,10 +603,21 @@ article.node--type-entry.node--view-mode-full {
     display: none;
   }
 
+  .field--name-field-subtitle {
+    @include column(10);
+    @include clearfix();
+    @include position(relative, null null null null);
+    @include text-secondary-header($fourth-color, 40px);
+    @include margin(null null $dp * 2 columns(2.45));
+    clear: both;
+    float: none;
+  }
+
   .node-header {
     @include column(10);
     @include clearfix();
     @include margin(null null $dp * 2 columns(2.45));
+    @include position(relative, null null null null);
     clear: both;
     float: none;
 
@@ -604,26 +627,38 @@ article.node--type-entry.node--view-mode-full {
     }
 
     .field--name-field-contributors {
-      @include fancytiles(2,2,2);
       @include trim();
+      @include column(7);
+      margin-left: 0;
+      // @include fancytiles(2,2,2);
     }
 
     .node-date {
-      @include fancytiles(2,2,2);
-      @include entry--date();
+      // @include fancytiles(2,2,2);
       @include trim();
+      @include column(14);
+      @include entry--date();
+      display: none;
     }
 
     .field--name-field-external-link {
-      @include entry--external-link();
-      @include fancytiles(2,2,2);
       @include trim();
+      @include column(14);
+      @include entry--external-link();
+      // @include fancytiles(2,2,2);
       text-align: right;
+      padding-top: 8px;
 
       a {
         @include bg-image ($img-path + 'link_arrow.svg', 19px, 15px);
         padding-right: $dp * 3;
         background-position: 100% 50%;
+      }
+    }
+
+    &.--with-contributors {
+      .field--name-field-external-link {
+        @include column(7, false, collapse, false);
       }
     }
   }

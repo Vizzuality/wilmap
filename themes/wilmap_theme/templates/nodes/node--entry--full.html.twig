@@ -104,11 +104,11 @@
         {{ content.group_datasheet.field_tax_document_type }}
         {{ content.group_datasheet.field_region }}
         {{ content.group_datasheet.field_location_entry }}
+        <div class="node-date" style="display:none;">{{ node.getChangedTime()|date("F j, Y") }}</div>
       </div>
 
       <div class="node-header">
         {{ content.field_contributors }}
-        <div class="node-date">{{ node.getChangedTime()|date("F j, Y") }}</div>
         {{ content.field_external_link }}
       </div>
 
@@ -116,20 +116,26 @@
         {{ content.field_body_entry }}
       </div>
 
-      <div class="user-actions multi-blocks">
-        <div class="attachments">
-          {% if content.field_attachments|length > 5 %}
-            <a class="toggle" gumby-trigger="#download-attachments" href="#">Download files</a>
-            <div class="drawer" id="download-attachments">
-              {{ content.field_attachments }}
-            </div>
-          {% endif %}
+      {% if content.field_attachments|length > 5 or content.field_download_original|length > 5 %}
+      <div class="user-actions multi-blocks --constraint">
+        {% if content.field_attachments|length > 5 %}
+        <div class="block attachments --left">
+          <a class="toggle" gumby-trigger="#download-attachments" href="#">Download files</a>
+          <div class="drawer" id="download-attachments">
+            {{ content.field_attachments }}
+          </div>
         </div>
-        <div class="action multi-action">
-          <a class="btn" href="#" data-action="share">Share</a>
-          <a class="btn gotocountry" href="#" style="display:none;">Go to #target# page</a>
+        {% endif %}
+        {% if content.field_download_original|length > 5 %}
+        <div class="block attachments --right">
+          <a class="toggle" gumby-trigger="#download-attachments-original" href="#">Download original files</a>
+          <div class="drawer" id="download-attachments-original">
+            {{ content.field_download_original }}
+          </div>
         </div>
+        {% endif %}
       </div>
+      {% endif %}
     </div>
 
 
@@ -141,8 +147,10 @@
     </div>
 
     <div class="user-actions single-block">
-      <div class="action single-action">
+      <div class="action multi-action block">
+        <a class="btn gotocountry" href="#" style="display:none;">Go to #target# page</a>
         <a class="btn" href="/entries">Explore more entries</a>
+        <a class="btn --space-left" href="#" data-action="share">Share</a>
       </div>
     </div>
   </div>

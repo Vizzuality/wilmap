@@ -1,0 +1,104 @@
+// =================================================
+//
+// LOGGED OVERRIDE PARTIAL
+//
+// ==================================================
+// -------------------------------------
+// Specific Settings: Vars & Mixins
+// -------------------------------------
+@mixin layout-override($open_tray:true) {
+  .site-header {
+    @if $open_tray {
+      top: $dp * 8 !important;
+      position: fixed;
+    } @else {
+      top: $dp * 3.9 !important;
+      position: fixed;
+    }
+
+    @include respond(all-phones) {
+      top: 0 !important;
+      position: relative;
+    }
+  }
+
+  .layout-main-wrapper {
+    margin-top: $dp * 12 !important;
+
+    @include respond(all-phones) {
+      margin-top: $dp * 4 !important;
+    }
+  }
+
+  .ui-autocomplete.ui-widget.ui-widget-content {
+    @if $open_tray {
+      top: $dp * 12 !important;
+    } @else {
+      top: $dp * 8 !important;
+    }
+  }
+}
+
+
+
+// -------------------------------------
+// Overrides
+// -------------------------------------
+body.user-logged-in {
+  @include layout-override(false);
+
+  &.toolbar-tray-open {
+    &.toolbar-horizontal {
+      @include layout-override(true);
+    }
+
+    &.toolbar-vertical {
+      @include layout-override(false);
+
+      .site-header {
+        position: sticky;
+      }
+
+      .layout-main-wrapper {
+        margin-top: 0 !important;
+      }
+    }
+  }
+
+  //Map page
+  &.node-map {
+    padding-top: 0 !important;
+
+    .layout-main-wrapper {
+      margin-top: $dp * 4 !important;
+    }
+
+    .ui-autocomplete.ui-widget.ui-widget-content {
+      #back {
+        @include respond(tablets) {
+          top: 94px;
+        }
+      }
+    }
+
+    &.toolbar-tray-open {
+      &.toolbar-horizontal {
+        .layout-main-wrapper {
+          margin-top: $dp * 8 !important;
+        }
+
+        .ui-autocomplete.ui-widget.ui-widget-content {
+          #back {
+            @include respond(tablets) {
+              top: 135px;
+            }
+          }
+        }
+      }
+    }
+
+    #block-tabs {
+      display: none;
+    }
+  }
+}

@@ -4,9 +4,9 @@
 //
 // ============================================================================
 
-// -------------------------------------
-// Specific Settings: Vars & Mixins
-// -------------------------------------
+  // -------------------------------------
+  // Specific Settings: Vars & Mixins
+  // -------------------------------------
 $image-height:        $dp * 20;
 
 // -------------------------------------
@@ -44,6 +44,10 @@ $image-height:        $dp * 20;
       width: columns(13);
     }
 
+    span.quickedit-field {
+      @include text-secondary-header();
+    }
+
     .secondary-page-title {
       @include text-secondary-header();
 
@@ -61,6 +65,7 @@ $image-height:        $dp * 20;
     background-size: cover;
     background-position: 50%;
     background-repeat: no-repeat;
+    background-color: lighten($fifth-color, 10);
 
     @include respond(tablets) {
       @include size(columns(11.5) $image-height / 1.2);
@@ -68,6 +73,27 @@ $image-height:        $dp * 20;
 
     @include respond(all-phones) {
       @include size(columns(11) $image-height / 2.5);
+    }
+  }
+
+  #mapbanner.image {
+    @include image-overlay(rgba(lighten($fifth-color, 10), 1), rgba(lighten($fifth-color, 10), 0), 1, 45deg, 'absolute');
+    background-image: none !important;
+
+    // gradient left
+    &::before {
+      @include position(absolute, auto auto 0 0);
+      @include size(100% 100%);
+      z-index: 700;
+    }
+
+
+    .leaflet-control-attribution {
+      margin-top: -10px;
+
+      @include respond(all-phones) {
+        margin-top: -3px;
+      }
     }
   }
 
@@ -132,13 +158,13 @@ body.node-about {
         @include text-main-header();
 
         @include respond(tablets) {
-          @include padding($gutter * 5.5 null null null);
+          @include padding(0 null null null);
           @include font($xxlarge, 1, $extra-light, $heading-font);
           width: columns(12);
         }
 
         @include respond(all-phones) {
-          @include padding($gutter * 5 null null null);
+          @include padding(0 null null null);
           width: columns(13);
         }
       }

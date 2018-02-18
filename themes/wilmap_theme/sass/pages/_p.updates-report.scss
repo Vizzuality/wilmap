@@ -16,9 +16,14 @@
 
 
 body.updates-report {
+  .block-page-title-block {
+    margin-bottom: 0;
+  }
+
   .layout-main-wrapper .layout-main {
     .node-main {
-      .node-date {
+      .node-date,
+      .node-header {
         display: none;
       }
 
@@ -31,18 +36,37 @@ body.updates-report {
 
             > h3 {
               @include header-block-separator();
+
+              @include respond(all-phones) {
+                padding-top: $dp * 2;
+                margin-bottom: $dp * 2;
+              }
+            }
+
+            &:first-child {
+              > h3 {
+                margin-top: 0;
+              }
             }
 
             .node--view-mode-digest {
-              @include column(10, false, collapse, false);
-              @include push(4);
               @include margin($dp * 2 null null null);
               @include padding($dp * 2 null null null);
+              width: columns(10);
+              margin-left: push_x(4);
               border-top: 2px solid $fifth-color;
 
+              @include respond(tablets) {
+                width: columns(10);
+                margin-left: push_x(2.5);
+              }
+
+              @include respond(all-phones) {
+                width: columns(14);
+                margin-left: 0;
+              }
+
               &:first-child {
-                @include margin(0 null null null);
-                @include padding(0 null null null);
                 border-top: none;
               }
 
@@ -58,10 +82,12 @@ body.updates-report {
                 .field--name-field-date-published {
                   @include news--date();
                   @include trim();
+                  margin-bottom: 0 !important;
                 }
 
                 .text-formatted {
-                  @include margin($dp * 2 null null null);
+                  @include margin($dp null null null);
+                  overflow: visible;
                 }
 
                 a.See.details {

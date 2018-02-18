@@ -106,14 +106,21 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
-  background: $light-overlayer;
+  z-index: 107;
+  background: transparent;
   opacity: 0;
   visibility: hidden;
 
   &.active {
     opacity: 1;
     visibility: visible;
+    background: $light-overlayer;
+
+    &.invisible {
+      opacity: 1;
+      visibility: visible;
+      background: transparent;
+    }
   }
 }
 
@@ -125,7 +132,7 @@
   right: 0 !important;
   left: auto !important;
   height: 100%;
-  z-index: 104;
+  z-index: 108;
   overflow-x: hidden;
   overflow-y: scroll;
   border: none !important;

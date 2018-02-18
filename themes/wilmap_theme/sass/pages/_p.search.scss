@@ -17,26 +17,29 @@ $search-color-hover:      $fifth-color;
 // -------------------------------------
 
 .path-search {
+  h1.page-title,
+  .block-system h2,
   .messages--error {
     display: none;
   }
 }
 
 
-.search-page-form {
+.search-form {
   @include hide-before-dom-alter();
   @include clearfix();
   width: 100%;
   display: block;
   clear: both;
   float: none;
+  margin-bottom: $dp * 5;
 
   .search-help-link {
     display: none;
   }
 
   .form-type-search {
-    @include column(12, false, collapse, false);
+    @include column(8, false, collapse, false);
 
     label {
       @include margin(null null $dp * 2 null);
@@ -53,9 +56,9 @@ $search-color-hover:      $fifth-color;
   }
 
   .site-btn {
-    @include column(2);
+    @include column(3);
     @include margin(null null 0 null);
-    @include position(relative, $dp * 2 null null null);
+    @include position(relative, $dp * 2.8 null null null);
 
     @include respond(all-phones) {
       @include position(relative, 0 null null null);
@@ -65,16 +68,23 @@ $search-color-hover:      $fifth-color;
       width: 100%;
     }
   }
+
+  .search_in_explore_link {
+    @include button-white();
+    @include column(3);
+    @include margin(null null 0 $gutter);
+    @include padding($dp * 1.4 0 !important);
+    @include position(relative, $dp * 2.8 null null null);
+    text-align: center;
+
+    @include respond(all-phones) {
+      @include margin(null null 0 0);
+      @include position(relative, $dp null null null);
+    }
+  }
 }
 
 // Lists
-h2.title-result {
-  @include header-block-separator();
-  @include margin(0 null null null);
-  @include padding($dp * 3 null null null);
-  border-top: none;
-}
-
 .item-list {
   @include margin($dp * 3 null null null);
 

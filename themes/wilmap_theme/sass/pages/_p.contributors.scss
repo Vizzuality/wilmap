@@ -32,7 +32,7 @@
     }
 
     input.form-text {
-      @include padding($dp * 2 0 !important);
+      // @include padding($dp * 2 0 !important);
       border-top: none;
       border-left: none;
       border-right: none;

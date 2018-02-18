@@ -211,9 +211,10 @@ $nav-item-bgcolor-active:               $white;
       }
 
       .beta {
-        @include position(absolute, null null -17px 0);
+        @include position(absolute, 61% null null 50%);
         @include font($normal - 1, 1.1, $bold, $body-font);
-        color: $fourth-color;
+        @include translate(-100%, 0);
+        color: rgba($white, 0.3);
       }
     }
 

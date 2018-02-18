@@ -12,6 +12,97 @@
     methods: {
 
       /**
+       * title + map country/region detail
+       */
+      countryAndRegionHeader: function() {
+        var dom = '.page-node-type-country, .page-node-type-region';
+        var metadata_dom = '.metadata';
+
+        if ($(dom).length > 0 && !$('#block-pagetitle .node-top').length > 0) {
+          // country name
+          var country = ($('body').hasClass('page-node-type-country')) ? $('.field--name-field-continent-country').text():$('.field--name-field-continent').text();
+          $('#block-pagetitle').prepend('<div class="node-top"><div class="field--name-field-location-entry">'+country+'</div></div>');
+
+          // goto map
+          $('#block-pagetitle').prepend('<a href="/map" class="btn">Go to Map</a>');
+
+          // Draw map
+          var iso = $('.metadata .field--name-field-iso2').text();
+
+          if (iso !== '') {
+            $('#block-pagetitle div.image').attr('id', 'mapbanner');
+
+            App.Application.BannerMaps                            = {};
+            App.Application.BannerMaps.Config                     = {};
+            App.Application.BannerMaps.Functions                  = {};
+            App.Application.BannerMaps.CountryData                = {};
+            App.Application.BannerMaps.ContinentData              = {};
+            App.Application.BannerMaps.Config.wilmap              = null;
+            App.Application.BannerMaps.Config.color_border        = '#f7f6f2';
+            App.Application.BannerMaps.Config.color_inactive      = '#e4dfd3';
+
+            App.Application.BannerMaps.Config.wilmap = L.map('mapbanner', {
+              zoomControl:false
+            });
+
+            App.Application.BannerMaps.Config.wilmap.createPane('labels');
+            App.Application.BannerMaps.Config.wilmap.getPane('labels').style.zIndex = 640;
+            App.Application.BannerMaps.Config.wilmap.getPane('labels').style.pointerEvents = 'none';
+            App.Application.BannerMaps.Config.positron_labels = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png', {
+              attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+              pane: 'labels'
+            }).addTo(App.Application.BannerMaps.Config.wilmap);
+
+            App.Application.BannerMaps.Config.basemapcontinents = L.geoJson(geoContinents,
+              {
+                style: function(feature) {
+                  return {
+                    fillColor: App.Application.BannerMaps.Config.color_inactive,
+                    fillOpacity: 1,
+                    color: App.Application.BannerMaps.Config.color_inactive,
+                    weight: 1,
+                    opacity: 1
+                  }
+                }
+              }).addTo(App.Application.BannerMaps.Config.wilmap);
+
+              App.Application.BannerMaps.Config.basemapcountries = L.geoJson(geoCountries,
+                {
+                  style: function(feature) {
+                    return {
+                      fillColor: App.Application.BannerMaps.Config.color_inactive,
+                      fillOpacity: 1,
+                      color: App.Application.BannerMaps.Config.color_border,
+                      weight: 2,
+                      opacity: 0.5
+                    }
+                  }
+                }).addTo(App.Application.BannerMaps.Config.wilmap);
+
+              // center
+              if ( $(metadata_dom + ' .field--name-field-latitude').length > 0 ) {
+                //Centered by node fields
+                var lat = ($(metadata_dom + ' .field--name-field-latitude').text() !== '')?$(metadata_dom + ' .field--name-field-latitude').text():'0';
+                var long = ($(metadata_dom + ' .field--name-field-longitude').text() !== '')?$(metadata_dom + ' .field--name-field-longitude').text():'0';
+                var zoom = ($(metadata_dom + ' .field--name-field-zoom').text() !== '')?$(metadata_dom + ' .field--name-field-zoom').text():'1';
+
+                console.log(lat, long, zoom);
+                App.Application.BannerMaps.Config.wilmap.setView([lat, long], zoom);
+              } else {
+                //Autocentered
+                App.Application.BannerMaps.Config.basemapcountries.eachLayer(function (layer) {
+                  if (layer.feature.properties.iso2 == iso) {
+                    console.log('BannerMap: ' + layer.feature.properties.iso2);
+                    App.Application.BannerMaps.Config.wilmap.fitBounds(layer.getBounds());
+                  }
+                });
+              }
+          }
+        }
+      },
+
+
+      /**
        * Main search
        */
       mainSearch: function() {
@@ -27,6 +118,11 @@
           // Generate bg separator
           if (!$('.fake-modal').length > 0) {
             $('body').append('<div class="fake-modal"></div>');
+
+            // click on fake-modal to close filters
+            $(".fake-modal").on('click', function(e){
+              App.DrupalHack.entriesFilterList.separatorLayerShow(false);
+            });
           }
 
           // DOM processed
@@ -41,6 +137,8 @@
           });
 
           $(dom + ' input[type="search"]').on('focus', function() {
+            App.DrupalHack.entriesFilterList.separatorLayerShow(false);
+
             $(dom).addClass('active');
             $(bgseparator).addClass('active');
             $(dom_autocomplete).removeClass('__kill');
@@ -63,12 +161,21 @@
       * page search
       */
       pageSearch: function() {
-        var dom = '.content-content .search-page-form';
+        var dom = '.content-content .search-form';
         var dom_autocomplete = 'ul.ui-autocomplete.ui-widget.ui-widget-content';
 
         if ($(dom).length > 0) {
 
-          $(dom).parent().find('h2').addClass('title-result');
+          $('h1.page-title').text($(dom).parent().find('h2').remove().text()).show();
+
+          if (!$(dom + ' .search_in_explore_link').length > 0) {
+            $(dom + ' .form-wrapper').append('<a href="#" class="search_in_explore_link">Search in explore</a>');
+
+            $(dom + ' .search_in_explore_link').on('click', function(e) {
+              e.preventDefault();
+              location.href = '/explore?title=' + $(dom + ' .form-search.input').val();
+            });
+          }
 
           $(dom + ' input[type="search"]').on('focus', function() {
             $(dom_autocomplete).addClass('__kill');
@@ -844,6 +951,23 @@ console.log(App.Application.Maps);
               $(dom_sidebar).height($(window).height() - $(dom_footer).height() - $(dom_header).height() - App.Application.Maps.Config.sidebar_offset_v);
               $(dom_sidebar).addClass('__hide');
             }
+
+            // User logged in
+            setTimeout(function(){
+              if ($('body.user-logged-in').length > 0 && !App.Application.Maps.Config.isPhone) {
+                var map_offset = 80;
+                var side_offset = (map_offset / 2) + 3;
+
+                if ($('body.toolbar-tray-open.toolbar-vertical').length > 0) {
+                  map_offset = 55;
+                  side_offset = (map_offset / 2) + 1;
+                }
+
+                $(dom).height($(dom).height() - map_offset);
+                $(dom_sidebar).height($(dom).height() - side_offset - App.Application.Maps.Config.sidebar_offset_v);
+                console.log($(dom).height(), map_offset, side_offset);
+              }
+            }, 500);
           }
 
           // Resize trigger
@@ -995,11 +1119,18 @@ console.log('first_layer_load -> ' + first_layer_load);
        */
       fieldDatasheet: function() {
         var dom = '.fields-datasheet';
+        var dom_datenode = '.node-date';
         var items_group = 2;
 
         if ($(dom).length > 0) {
           // Reset field
           $(dom + ' .field').removeClass().addClass('field');
+
+          // add date if exists
+          if ($(dom_datenode).length > 0) {
+            var t_datenode = $(dom_datenode).remove().text();
+            $(dom).append('<div class="field field-node-date"><div class="field__label">Date updated</div><div class="field__item">' + t_datenode + '</div></div>');
+          }
 
           // Group fields
           if (!$(dom + ' .fields-group').length > 0) {
@@ -1896,32 +2027,15 @@ console.log('first_layer_load -> ' + first_layer_load);
 
                     $(dom_contentsections+id+' .content').html($(el).unwrap());
                     App.Application.methods.bigLinkAreas();
+
+                    // Mark as processed
+                    $(dom_sidemenu).addClass('__processed')
+                    $(dom_content).parents('#content-content').addClass('__processed')
                   });
               });
             });
         }
       },
-
-
-      /**
-       * title + map country/region detail
-       */
-      countryAndRegionHeader: function() {
-        var dom = '.page-node-type-country, .page-node-type-region';
-
-        if ($(dom).length > 0 && !$('#block-pagetitle .node-top').length > 0) {
-          // country name
-          var country = ($('body').hasClass('page-node-type-country')) ? $('.field--name-field-continent-country').text():$('.field--name-field-continent').text();
-          $('#block-pagetitle').prepend('<div class="node-top"><div class="field--name-field-location-entry">'+country+'</div></div>');
-
-          // goto map
-          $('#block-pagetitle').prepend('<a href="/map" class="btn">Go to Map</a>');
-
-          // map
-
-        }
-      },
-
 
       /**
        * Lists Switch

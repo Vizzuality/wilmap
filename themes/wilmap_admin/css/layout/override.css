@@ -1,3 +1,9 @@
+/* Toolbar direction switch */
+.toolbar-toggle-orientation {
+  display: none !important;
+}
+
+
 /* Publishing options */
 fieldset.publishing-group {
   border: none;

@@ -229,7 +229,9 @@ function wilmap_contributors_node_grants(AccountInterface $account, $op)
 
         // Give contributor all her regions grants/keys
         foreach ($user->field_region->getValue() as $delta => $value) {
-            $grants[WILMAP_CONTRIBUTORS_TO_REGION_REALM][] = $value['target_id'];
+            if (in_array('target_id', $value)) {
+                $grants[WILMAP_CONTRIBUTORS_TO_REGION_REALM][] = $value['target_id'];
+            }
         }
     }
 
