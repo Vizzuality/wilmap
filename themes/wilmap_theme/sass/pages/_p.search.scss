@@ -19,7 +19,8 @@ $search-color-hover:      $fifth-color;
 .path-search {
   h1.page-title,
   .block-system h2,
-  .messages--error {
+  .messages--error,
+  #edit-advanced {
     display: none;
   }
 }
@@ -65,6 +66,11 @@ $search-color-hover:      $fifth-color;
     }
 
     input {
+      width: 100%;
+    }
+
+    & > .site-btn {
+      @include position(relative, 0 null null null);
       width: 100%;
     }
   }

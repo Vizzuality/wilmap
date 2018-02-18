@@ -425,6 +425,10 @@ $nav-item-bgcolor-active:               $white;
             text-transform: capitalize;
           }
         }
+
+        &.menu-item--active-trail > a {
+          @extend a.is-active;
+        }
       }
     }
   }

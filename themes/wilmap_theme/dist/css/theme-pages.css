@@ -132,7 +132,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
     height: 600px;
     width: 800px;
     display: block;
-    z-index: 0;
+    z-index: -1;
     background-size: contain;
     background-repeat: no-repeat; }
     @media only screen and (min-width: 900px) and (max-width: 1124px) {
@@ -390,7 +390,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
     height: 600px;
     width: 800px;
     display: block;
-    z-index: 0;
+    z-index: -1;
     background-size: contain;
     background-repeat: no-repeat; }
     @media only screen and (min-width: 900px) and (max-width: 1124px) {
@@ -595,7 +595,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
     height: 600px;
     width: 800px;
     display: block;
-    z-index: 0;
+    z-index: -1;
     background-size: contain;
     background-repeat: no-repeat; }
     @media only screen and (min-width: 900px) and (max-width: 1124px) {
@@ -944,7 +944,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
     height: 600px;
     width: 800px;
     display: block;
-    z-index: 0;
+    z-index: -1;
     background-size: contain;
     background-repeat: no-repeat; }
     @media only screen and (min-width: 900px) and (max-width: 1124px) {
@@ -5730,7 +5730,8 @@ body.node-map .footer_first_wrap {
 
 .path-search h1.page-title,
 .path-search .block-system h2,
-.path-search .messages--error {
+.path-search .messages--error,
+.path-search #edit-advanced {
   display: none; }
 
 .search-form {
@@ -5781,6 +5782,10 @@ body.node-map .footer_first_wrap {
         position: relative;
         top: 0; } }
     .search-form .site-btn input {
+      width: 100%; }
+    .search-form .site-btn > .site-btn {
+      position: relative;
+      top: 0;
       width: 100%; }
   .search-form .search_in_explore_link {
     margin: 0;

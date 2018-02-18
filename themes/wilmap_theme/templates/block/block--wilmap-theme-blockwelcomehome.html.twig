@@ -46,7 +46,6 @@
   {{ title_suffix }}
   {% block content %}
   <div{{ content_attributes.addClass('content') }}>
-    <div class="image" style="background-image:url('{{ content.field_image[0]['#markup'] }}');"></div>
     <div class="text">
       <h1 class="title-section">
         {% if content.field_secondary_title %}
@@ -62,6 +61,7 @@
         <a class="btn" href="{{ content.field_link[0]['#url_title'] }}">{{ content.field_link[0]['#title'] }}</a>
       </div>
     </div>
+    <div class="image" style="background-image:url('{{ content.field_image[0]['#markup'] }}');"></div>
   </div>
   {% endblock %}
 </article>
