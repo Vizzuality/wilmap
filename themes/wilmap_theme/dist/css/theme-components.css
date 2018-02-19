@@ -1173,7 +1173,7 @@
   overflow-y: scroll;
   border: none !important;
   background: #fff;
-  padding: 10px 30px 80px 20px; }
+  padding: 10px 30px 10px 20px; }
   @media only screen and (min-width: 900px) and (max-width: 1124px) {
     .ui-autocomplete.ui-widget.ui-widget-content {
       width: 300px !important;
@@ -1278,7 +1278,8 @@
     .ui-autocomplete.ui-widget.ui-widget-content .ui-menu-item-first .ui-autocomplete-field-created {
       display: none; }
   .ui-autocomplete.ui-widget.ui-widget-content .ui-menu-item-first:last-child {
-    margin-top: 20px; }
+    margin-top: 20px;
+    margin-bottom: 140px; }
     .ui-autocomplete.ui-widget.ui-widget-content .ui-menu-item-first:last-child a {
       margin: 0;
       padding: 0;
@@ -1843,7 +1844,8 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
     @media only screen and (max-width: 899px) {
       .leaflet-container .leaflet-control-zoom {
         position: relative;
-        top: 15px; } }
+        top: 15px;
+        display: none; } }
     .leaflet-container .leaflet-control-zoom a {
       text-shadow: none;
       width: 40px;

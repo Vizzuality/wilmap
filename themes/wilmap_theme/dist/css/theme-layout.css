@@ -1678,6 +1678,13 @@ button.btn,
               color: #fff; }
             .site-header .navbar a.toggle:active i:before, .site-header .navbar a.toggle.active i:before {
               content: "✕"; } }
+    .site-header .navbar ul.menu li:hover a:hover,
+    .site-header .navbar ul.menu li a:hover, .site-header .navbar ul.menu li:hover a.is-active,
+    .site-header .navbar ul.menu li a.is-active, .site-header .navbar ul.menu li.menu-item--active-trail > a {
+      color: #000;
+      background-color: transparent;
+      text-decoration: none;
+      border-bottom: 5px solid #b3001e; }
     .site-header .navbar ul.menu {
       margin: 0;
       padding: 0;
@@ -1756,19 +1763,6 @@ button.btn,
           color: #000;
           background-color: transparent;
           border-bottom: 5px solid transparent; }
-          .site-header .navbar ul.menu li:hover a:hover,
-          .site-header .navbar ul.menu li a:hover {
-            color: #000;
-            background-color: transparent;
-            text-decoration: none;
-            border-bottom: 5px solid #b3001e; }
-          .site-header .navbar ul.menu li:hover a.is-active, .site-header .navbar ul.menu li:hover li.menu-item--active-trail > a,
-          .site-header .navbar ul.menu li a.is-active,
-          .site-header .navbar ul.menu li.menu-item--active-trail > a {
-            color: #000;
-            background-color: transparent;
-            text-decoration: none;
-            border-bottom: 5px solid #b3001e; }
           @media only screen and (min-width: 900px) and (max-width: 1124px) {
             .site-header .navbar ul.menu li:hover a,
             .site-header .navbar ul.menu li a {

@@ -937,7 +937,7 @@ console.log(App.Application.Maps);
           } else {
             if (App.Application.Maps.Config.isPhone) {
               $(dom).width($(window).width());
-              $(dom).height($(window).height() - $(dom_footer).height() - $(dom_header).height());
+              $(dom).height($(window).height() - $(dom_header).height());
               $(dom_sidebar).height('1000px');
               $(dom_sidebar).addClass('__hide');
             } else if(App.Application.Maps.Config.isTable){
@@ -1070,7 +1070,7 @@ console.log('first_layer_load -> ' + first_layer_load);
           $(dom).append('<div id="mobile-popup" class="drawer"><div class="content"><a class="close switch" gumby-trigger="#mobile-popup"><i class="icon-close"></i></a><div class="inner"></div></div></div><div class="actions"' + style_actions + '></div>');
 //            $(dom + ' .actions').append('<a href="#" class="btn" id="randomcolor">SIMULATE LOAD LAYER COLOR</a>');
 //            $(dom + ' .actions').append('<a href="#" class="btn" id="resetcolor">REMOVE COLOR</a>');
-          $(dom + ' .actions').append('<a class="btn" id="calllist" href="#">List</a>');
+          $(dom + ' .actions').append('<a class="btn" id="calllist" href="#">Country<br />List</a>');
           $(dom + ' .actions').append('<a class="btn" href="#" data-action="share" data-embed="true">Share</a>');
 
 

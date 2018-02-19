@@ -23,6 +23,7 @@
 
     @include respond(all-phones) {
       @include position(relative, 15px null null null);
+      display: none;
     }
 
     a {

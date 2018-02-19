@@ -336,6 +336,12 @@ $nav-item-bgcolor-active:               $white;
       }
     }
 
+    %item_menu_active {
+      color: $nav-item-color-active;
+      background-color: transparent;
+      text-decoration: none;
+      border-bottom: 5px solid $third-color;
+    }
 
     //Menu
     ul.menu {
@@ -395,17 +401,11 @@ $nav-item-bgcolor-active:               $white;
           border-bottom: 5px solid transparent;
 
           &:hover {
-            color: $nav-item-color-active;
-            background-color: transparent;
-            text-decoration: none;
-            border-bottom: 5px solid $third-color;
+            @extend %item_menu_active;
           }
 
           &.is-active {
-            color: $nav-item-color-active;
-            background-color: transparent;
-            text-decoration: none;
-            border-bottom: 5px solid $third-color;
+            @extend %item_menu_active;
           }
 
           @include respond(tablets) {
@@ -427,7 +427,7 @@ $nav-item-bgcolor-active:               $white;
         }
 
         &.menu-item--active-trail > a {
-          @extend a.is-active;
+          @extend %item_menu_active;
         }
       }
     }

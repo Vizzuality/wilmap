@@ -5514,7 +5514,7 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
         top: 5px;
         right: 5px;
         display: block;
-        boder: 1px solid green;
+        border: 1px solid green;
         height: 20px;
         width: 20px; }
   .block-wilmap-map .wilmap .actions {
@@ -5587,7 +5587,10 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
         margin: -1px !important; }
       @media only screen and (max-width: 899px) {
         .block-wilmap-map .wilmap .actions #calllist {
-          display: inline-block; } }
+          position: relative;
+          top: 7px;
+          display: inline-block;
+          padding: 6px 16px !important; } }
   .block-wilmap-map .wilmap #map-legend {
     position: absolute;
     bottom: 20px;
@@ -5596,8 +5599,11 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
     @media only screen and (max-width: 899px) {
       .block-wilmap-map .wilmap #map-legend {
         position: absolute;
-        top: 120px;
-        left: 10px; } }
+        top: 0;
+        right: auto;
+        bottom: auto;
+        left: 0;
+        width: 100%; } }
     .block-wilmap-map .wilmap #map-legend a.toggle {
       margin: 0;
       padding: 0;
@@ -5605,6 +5611,9 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
       clear: both;
       float: none;
       cursor: pointer !important; }
+      @media only screen and (max-width: 899px) {
+        .block-wilmap-map .wilmap #map-legend a.toggle {
+          display: none; } }
       .block-wilmap-map .wilmap #map-legend a.toggle i {
         margin: 0;
         padding: 0;
@@ -5624,10 +5633,17 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
       width: 220px;
       background-color: #fff;
       border: 0px solid transparent; }
+      @media only screen and (max-width: 899px) {
+        .block-wilmap-map .wilmap #map-legend .drawer {
+          width: 100%; } }
       .block-wilmap-map .wilmap #map-legend .drawer.active {
         margin-top: 10px;
         background-color: #fff;
         border: 1px solid #e6e6e6; }
+        @media only screen and (max-width: 899px) {
+          .block-wilmap-map .wilmap #map-legend .drawer.active {
+            margin-top: 0;
+            width: 100%; } }
       .block-wilmap-map .wilmap #map-legend .drawer .drawer-inner {
         padding: 15px; }
       .block-wilmap-map .wilmap #map-legend .drawer h3 {
@@ -5641,6 +5657,23 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
         font-weight: 700;
         font-family: "Raleway", "Mplus 1p", sans-serif;
         color: #222; }
+        @media only screen and (max-width: 899px) {
+          .block-wilmap-map .wilmap #map-legend .drawer h3 {
+            position: relative;
+            top: -20px;
+            right: auto;
+            bottom: auto;
+            left: auto;
+            font-size: 13px;
+            font-size: 0.8125rem;
+            line-height: 14.3px;
+            line-height: 0.89375rem;
+            font-weight: 700;
+            font-family: "Raleway", "Mplus 1p", sans-serif;
+            display: inline-block;
+            width: 46%;
+            margin-right: 2%;
+            display: inline-block; } }
       .block-wilmap-map .wilmap #map-legend .drawer .description,
       .block-wilmap-map .wilmap #map-legend .drawer .description p {
         margin: 0;
@@ -5653,10 +5686,18 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
         font-family: "Raleway", "Mplus 1p", sans-serif;
         color: #968f7e;
         font-style: normal; }
+        @media only screen and (max-width: 899px) {
+          .block-wilmap-map .wilmap #map-legend .drawer .description,
+          .block-wilmap-map .wilmap #map-legend .drawer .description p {
+            display: none; } }
       .block-wilmap-map .wilmap #map-legend .drawer .color-ranges {
         margin: 0;
         padding: 0;
         margin-top: 15px; }
+        @media only screen and (max-width: 899px) {
+          .block-wilmap-map .wilmap #map-legend .drawer .color-ranges {
+            display: inline-block;
+            width: 50%; } }
         .block-wilmap-map .wilmap #map-legend .drawer .color-ranges ul {
           margin: 0;
           padding: 0; }
@@ -5724,6 +5765,9 @@ body.node-map .layout-main-wrapper {
     width: 100%; }
 body.node-map .footer_first_wrap {
   display: none; }
+@media only screen and (max-width: 899px) {
+  body.node-map .footer_second_wrap {
+    display: none; } }
 
 .path-contact form .form-actions {
   text-align: right; }

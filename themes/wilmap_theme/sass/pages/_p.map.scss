@@ -60,7 +60,7 @@
         a.close {
           @include position(absolute, 5px 5px null null);
           display: block;
-          boder: 1px solid green;
+          border: 1px solid green;
           @include size(20px);
         }
       }
@@ -93,7 +93,9 @@
         display: none;
 
         @include respond(all-phones) {
+          @include position(relative, 7px null null null);
           display: inline-block;
+          padding: 6px 16px !important;
         }
       }
     }
@@ -103,7 +105,8 @@
       z-index: 660;
 
       @include respond(all-phones) {
-        @include position(absolute, $dp * 12 null null $dp);
+        @include position(absolute, 0 auto auto 0);
+        width: 100%;
       }
 
       a.toggle {
@@ -112,6 +115,10 @@
         clear: both;
         float: none;
         cursor: pointer !important;
+
+        @include respond(all-phones) {
+          display: none;
+        }
 
         i {
           @include trim();
@@ -139,10 +146,19 @@
         background-color: $second-color;
         border: 0px solid transparent;
 
+        @include respond(all-phones) {
+          width: 100%;
+        }
+
         &.active {
           @include margin($dp null null null);
           background-color: $second-color;
           border: 1px solid $hr-color;
+
+          @include respond(all-phones) {
+            @include margin(0 null null null);
+            width: 100%;
+          }
         }
 
         .drawer-inner {
@@ -154,6 +170,15 @@
           @include margin(null null $dp / 2 null);
           @include font($normal - 1, 1.1, $bold, $body-font);
           color: $first-color;
+
+          @include respond(all-phones) {
+            @include position(relative, -$dp * 2 auto auto auto);
+            @include font($normal - 3, 1.1, $bold, $body-font);
+            display: inline-block;
+            width: 46%;
+            margin-right: 2%;
+            display: inline-block;
+          }
         }
 
         .description,
@@ -162,11 +187,20 @@
           @include font($normal - 1, 1.1, $regular, $body-font);
           color: $fourth-color;
           font-style: normal;
+
+          @include respond(all-phones) {
+            display: none;
+          }
         }
 
         .color-ranges {
           @include trim();
           margin-top: $dp * 1.5;
+
+          @include respond(all-phones) {
+            display: inline-block;
+            width: 50%;
+          }
 
           ul {
             @include trim();
@@ -245,5 +279,11 @@ body.node-map {
 
   .footer_first_wrap {
     display: none;
+  }
+
+  .footer_second_wrap {
+    @include respond(all-phones) {
+      display: none;
+    }
   }
 }

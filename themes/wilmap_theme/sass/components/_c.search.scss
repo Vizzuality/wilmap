@@ -137,7 +137,8 @@
   overflow-y: scroll;
   border: none !important;
   background: $second-color;
-  padding: $dp $dp * 3 $dp * 8 $dp * 2;
+  // padding: $dp $dp * 3 $dp * 8 $dp * 2;
+  padding: $dp $dp * 3 $dp $dp * 2;
 
   @include respond(tablets) {
     width: $dp * 30 !important;
@@ -231,7 +232,7 @@
   }
 
   .ui-menu-item-first:last-child {
-    @include margin($dp * 2 null null null);
+    @include margin($dp * 2 null $dp * 14 null);
     a {
       @include default-button();
     }
