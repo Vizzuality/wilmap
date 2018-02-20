@@ -48,6 +48,10 @@
     .picker {
       padding-left: 0;
       top: 4px;
+
+      @include respond(all-phones) {
+        width: 100%;
+      }
     }
 
     // Scaffold
@@ -58,10 +62,10 @@
         width: columns(2);
       }
 
-      @include respond(all-phones) {
-        width: columns(4.2);
-        margin-right: $dp * 1.2;
-      }
+      // @include respond(all-phones) {
+      //   width: columns(4.2);
+      //   margin-right: $dp * 1.2;
+      // }
     }
 
     .js-form-item-expertise {
@@ -71,9 +75,9 @@
         width: columns(4);
       }
 
-      @include respond(all-phones) {
-        width: columns(9);
-      }
+      // @include respond(all-phones) {
+      //   width: columns(9);
+      // }
     }
 
     .js-form-item-name {
@@ -83,17 +87,27 @@
         width: columns(6);
       }
 
-      @include respond(all-phones) {
-        width: columns(10);
-        margin-right: $dp * 1.2;
-      }
+      // @include respond(all-phones) {
+      //   width: columns(10);
+      //   margin-right: $dp * 1.2;
+      // }
     }
 
     .form-actions {
       @include column(2);
 
       @include respond(all-phones) {
-        width: columns(2);
+        width: 100%;
+      //   width: columns(2);
+      }
+
+      .site-btn {
+        width: 100%;
+
+        input {
+          width: 100%;
+
+        }
       }
     }
   }
