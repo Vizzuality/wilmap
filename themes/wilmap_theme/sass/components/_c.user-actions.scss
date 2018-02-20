@@ -105,26 +105,36 @@
     //   @include push(0);
     // }
     //
-    // .site-btn {
-    //   @include respond(all-phones) {
-    //     clear:both;
-    //     float: none;
-    //     width: 100%;
-    //   }
-    //
-    //   a {
-    //     @include respond(all-phones) {
-    //       width: 100%;
-    //     }
-    //   }
-    // }
+    .site-btn {
+      @include respond(all-phones) {
+        clear:both;
+        float: none;
+        width: 100%;
+      }
+
+      a {
+        @include respond(all-phones) {
+          width: 100%;
+        }
+      }
+    }
 
     .--space-left {
       margin-left: $dp;
+
+      @include respond(all-phones) {
+        margin-left: 0;
+        margin-top: $dp;
+      }
     }
 
     .--space-right {
       margin-right: $dp;
+
+      @include respond(all-phones) {
+        margin-right: 0;
+        margin-top: $dp;
+      }
     }
   }
 }

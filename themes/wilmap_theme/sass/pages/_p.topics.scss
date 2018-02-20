@@ -98,6 +98,10 @@ article.node--type-topics.node--view-mode-full {
   h3 {
     @include text-secondary-header(rgba($first-color, 0.8), 30px);
     @include margin(null null $dp null);
+
+    @include respond(all-phones) {
+      @include fs(28px);
+    }
   }
 
   @include entry(list, '.views-row');

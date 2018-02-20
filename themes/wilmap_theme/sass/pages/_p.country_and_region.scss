@@ -46,10 +46,20 @@ body.page-node-type-region {
         text-align: center;
       }
 
+      @include respond(all-phones) {
+        width: 100%;
+        text-align: center;
+      }
+
       .searchinexplore {
         @include respond(tablets) {
           @include fs(12px);
+          @include position(relative, null null null (-$dp / 2));
           padding: 10px !important;
+        }
+
+        @include respond(all-phones) {
+          margin-top: $dp * 2;
         }
       }
     }
@@ -71,6 +81,7 @@ body.page-node-type-region {
       position: absolute;
       top: 0;
       right: 0;
+      z-index: 10;
     }
   }
 
@@ -86,7 +97,7 @@ body.page-node-type-region {
     &.with-sidenav {
       &::before {
         @include respond(all-phones) {
-          top: (-$dp * 2);
+          top: (-$dp * 12.7);
         }
       }
     }
@@ -121,6 +132,10 @@ body.page-node-type-region {
           @include text-secondary-header(rgba($first-color, 0.8), 30px);
           @include margin(null null $dp null);
           // display: none;
+
+          @include respond(all-phones) {
+            @include fs(28px);
+          }
         }
       }
 

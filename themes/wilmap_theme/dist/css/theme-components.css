@@ -613,6 +613,13 @@
   margin-bottom: 30px; }
 #modal-share .content {
   min-height: 48%; }
+  @media only screen and (max-width: 899px) {
+    #modal-share .content {
+      top: 0%;
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      max-height: 100%; } }
 #modal-share .tabs {
   margin-top: 0 !important; }
 #modal-share .tab-nav {
@@ -829,6 +836,13 @@
     display: table; }
   #modal-maplayer .content:after {
     clear: both; }
+  @media only screen and (max-width: 899px) {
+    #modal-maplayer .content {
+      top: 0%;
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      max-height: 100%; } }
   #modal-maplayer .content ul {
     margin: 0;
     padding: 0;
@@ -940,10 +954,14 @@
       max-height: 80%; } }
   @media only screen and (max-width: 899px) {
     .contact-message-personal-form.modal .content {
-      top: 10%;
-      width: 80%;
+      top: 0%;
+      width: 100%;
+      height: 100%;
       min-height: 0;
-      max-height: 92.5%; } }
+      max-height: 100%; } }
+  @media only screen and (max-width: 899px) {
+    .contact-message-personal-form.modal .content h3 {
+      margin-bottom: 50px; } }
   .contact-message-personal-form.modal .content .inner-content {
     overflow-y: auto;
     min-height: 90%; }
@@ -1674,10 +1692,26 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
       background: none; }
       .user-actions .attachments .drawer .file {
         background-position: 0% 5px; }
+  @media only screen and (max-width: 899px) {
+    .user-actions .action .site-btn {
+      clear: both;
+      float: none;
+      width: 100%; } }
+  @media only screen and (max-width: 899px) {
+    .user-actions .action .site-btn a {
+      width: 100%; } }
   .user-actions .action .--space-left {
     margin-left: 10px; }
+    @media only screen and (max-width: 899px) {
+      .user-actions .action .--space-left {
+        margin-left: 0;
+        margin-top: 10px; } }
   .user-actions .action .--space-right {
     margin-right: 10px; }
+    @media only screen and (max-width: 899px) {
+      .user-actions .action .--space-right {
+        margin-right: 0;
+        margin-top: 10px; } }
 
 .view .view-empty {
   padding: 30px;

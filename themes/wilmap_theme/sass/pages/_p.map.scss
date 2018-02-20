@@ -43,25 +43,47 @@
 
     #mobile-popup {
       @include position(absolute, null null 50% 0);
-      display: block;
+      display: none;
       width: 100%;
       z-index: 650;
       text-align: center;
       background: transparent;
 
+      &.drawer.active {
+        display: none;
+
+        @include respond(all-phones) {
+          display: block;
+        }
+      }
+
       .content {
         width: 301px;
         min-height: 30px;
         display: block;
-        border: 1px solid red;
         position: relative;
         margin: 0 auto;
 
         a.close {
           @include position(absolute, 5px 5px null null);
-          display: block;
-          border: 1px solid green;
           @include size(20px);
+          display: block;
+          z-index: 10;
+
+          i {
+            @include icon-change('icon-cancel', before);
+
+            &::before {
+              @include fs(16px);
+              color: $gray-30;
+            }
+          }
+        }
+
+        .inner {
+          @include map-popup();
+          overflow: hidden;
+          background-color: $third-color;
         }
       }
     }
@@ -252,7 +274,7 @@
     &.__embed {
       #map-legend {
         @include respond(all-phones) {
-          @include position(absolute, auto null $dp $dp);
+          @include position(absolute, auto null 0 0);
         }
       }
     }

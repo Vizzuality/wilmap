@@ -1,0 +1,77 @@
+@mixin map-popup() {
+  & {
+    position: relative;
+    top: -1px;
+    right: -1px;
+    width: $dp * 30;
+
+    .popup-inner-left {
+      @include padding($dp);
+      @include font($normal - 1, 1, $regular, $body-font);
+      color: $second-color;
+      text-align: center;
+      width: 30%;
+      float: left;
+      display: block;
+
+      span {
+        @include font($large - 8, 1, $extra-light, $body-font);
+        @include margin(null null $dp / 2 null);
+        display: block;
+      }
+    }
+
+    .popup-inner-right {
+      position: relative;
+      background-color: $second-color;
+      width: 70%;
+      float: right;
+      display: block;
+      min-height: $dp * 9;
+
+      .popup-info {
+        @include padding($dp * 1.5 $dp * 2.5 $dp * 5 $dp * 2.5);
+
+        p {
+          @include trim();
+          @include margin(null null $dp null);
+          @include font($normal - 1, 1.1, $regular, $body-font);
+          color: $fourth-color;
+
+          strong {
+            @include font($normal - 1, 1.1, $bold, $body-font);
+            color: $first-color;
+          }
+        }
+
+        ul {
+          li {
+            @include margin(null null $dp / 2 null);
+            @include padding(null null null $dp * 2.5);
+            @include position(relative);
+            @include font($normal - 1, 1.1, $regular, $body-font);
+            color: $fourth-color;
+
+            span {
+              @include position(absolute, 0 null null 0);
+              @include fw($bold);
+              width: $dp * 2;
+              text-align: center;
+            }
+          }
+        }
+      }
+
+      .popup-actions {
+        @include position(absolute, auto null -2px 0);
+        width: 100%;
+
+        a.btn {
+          @include button-second();
+          display: block;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

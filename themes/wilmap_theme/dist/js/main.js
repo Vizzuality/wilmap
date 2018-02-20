@@ -2635,7 +2635,7 @@ console.log('first_layer_load -> ' + first_layer_load);
 
           // Action buttons && mobile tooltip placeholder
           var style_actions = (App.Application.Maps.Config.is_embed) ? ' style="display:none;"' : ' style="display:block;"';
-          $(dom).append('<div id="mobile-popup" class="drawer"><div class="content"><a class="close switch" gumby-trigger="#mobile-popup"><i class="icon-close"></i></a><div class="inner"></div></div></div><div class="actions"' + style_actions + '></div>');
+          $(dom).append('<div id="mobile-popup" class="drawer"><div class="content"><a class="close switch" gumby-trigger="|#mobile-popup"><i class="icon-close"></i></a><div class="inner"></div></div></div><div class="actions"' + style_actions + '></div>');
 //            $(dom + ' .actions').append('<a href="#" class="btn" id="randomcolor">SIMULATE LOAD LAYER COLOR</a>');
 //            $(dom + ' .actions').append('<a href="#" class="btn" id="resetcolor">REMOVE COLOR</a>');
           $(dom + ' .actions').append('<a class="btn" id="calllist" href="#">Country<br />List</a>');
