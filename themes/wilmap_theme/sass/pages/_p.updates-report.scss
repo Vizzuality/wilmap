@@ -26,75 +26,75 @@ body.updates-report {
       .node-header {
         display: none;
       }
+    }
+  }
+}
 
-      .node-body {
-        .text-formatted {
-          .digest-group {
-            @include column(14, false, collapse, false);
-            @include clearfix();
-            @include margin(null null $dp * 2 null);
+.node--view-mode-full {
+  .node__content .node-body .text-formatted {
+    .digest-group {
+      @include column(14, false, collapse, false);
+      @include clearfix();
+      @include margin(null null $dp * 2 null);
 
-            > h3 {
-              @include header-block-separator();
+      > h3.digest-header {
+        @include header-block-separator();
 
-              @include respond(all-phones) {
-                padding-top: $dp * 2;
-                margin-bottom: $dp * 2;
-              }
-            }
+        @include respond(all-phones) {
+          padding-top: $dp * 2;
+          margin-bottom: $dp * 2;
+        }
+      }
 
-            &:first-child {
-              > h3 {
-                margin-top: 0;
-              }
-            }
+      &:first-child {
+        > h3.digest-header {
+          margin-top: 0;
+        }
+      }
 
-            .node--view-mode-digest {
-              @include margin($dp * 2 null null null);
-              @include padding($dp * 2 null null null);
-              width: columns(10);
-              margin-left: push_x(4);
-              border-top: 2px solid $fifth-color;
+      .node--view-mode-digest {
+        @include margin($dp * 2 null null null);
+        @include padding($dp * 2 null null null);
+        width: columns(10);
+        margin-left: push_x(4);
+        border-top: 2px solid $fifth-color;
 
-              @include respond(tablets) {
-                width: columns(10);
-                margin-left: push_x(2.5);
-              }
+        @include respond(tablets) {
+          width: columns(10);
+          margin-left: push_x(2.5);
+        }
 
-              @include respond(all-phones) {
-                width: columns(14);
-                margin-left: 0;
-              }
+        @include respond(all-phones) {
+          width: columns(14);
+          margin-left: 0;
+        }
 
-              &:first-child {
-                border-top: none;
-              }
+        &:first-child {
+          border-top: none;
+        }
 
-              h2.node__title {
-                @include news--header(small);
-                @include trim();
-                margin-bottom: 0 !important;
-                padding-bottom: 0 !important;
-                border-top: none;
-              }
+        h2.node__title {
+          @include news--header(small);
+          @include trim();
+          margin-bottom: 0 !important;
+          padding-bottom: 0 !important;
+          border-top: none;
+        }
 
-              .node__content {
-                .field--name-field-date-published {
-                  @include news--date();
-                  @include trim();
-                  margin-bottom: 0 !important;
-                }
+        .node__content {
+          .field--name-field-date-published {
+            @include news--date();
+            @include trim();
+            margin-bottom: 0 !important;
+          }
 
-                .text-formatted {
-                  @include margin($dp null null null);
-                  overflow: visible;
-                }
+          .text-formatted {
+            @include margin($dp null null null);
+            overflow: visible;
+          }
 
-                a.See.details {
-                  @include margin(null null null $dp / 2);
-                }
-              }
-            }
+          a.See.details {
+            @include margin(null null null $dp / 2);
           }
         }
       }
