@@ -169,7 +169,7 @@
           $('h1.page-title').text($(dom).parent().find('h2').remove().text()).show();
 
           if (!$(dom + ' .search_in_explore_link').length > 0) {
-            $(dom + ' .form-wrapper').append('<a href="#" class="search_in_explore_link">Search in explore</a>');
+            $(dom + ' .form-wrapper').append('<a href="#" class="search_in_explore_link">Explore entries</a>');
 
             $(dom + ' .search_in_explore_link').on('click', function(e) {
               e.preventDefault();
