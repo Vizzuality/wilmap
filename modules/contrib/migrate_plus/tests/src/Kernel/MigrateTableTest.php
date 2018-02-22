@@ -4,7 +4,6 @@ namespace Drupal\Tests\migrate_plus\Kernel;
 
 use Drupal\Core\Database\Database;
 use Drupal\migrate\MigrateExecutable;
-use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\Tests\migrate\Kernel\MigrateTestBase;
 
 /**
@@ -110,7 +109,7 @@ class MigrateTableTest extends MigrateTestBase {
   public function testTableRollback() {
     $this->testTableDestination();
 
-    /** @var MigrationInterface $migration */
+    /** @var \Drupal\migrate\Plugin\MigrationInterface $migration */
     $migration = \Drupal::service('plugin.manager.migration')->createStubMigration($this->getTableDestinationMigration());
     $executable = new MigrateExecutable($migration, $this);
     $executable->import();

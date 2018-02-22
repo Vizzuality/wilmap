@@ -18,9 +18,9 @@ class BeerComment extends SqlBase {
    */
   public function query() {
     $query = $this->select('migrate_example_beer_comment', 'mec')
-                 ->fields('mec', ['cid', 'cid_parent', 'name', 'mail', 'aid',
+      ->fields('mec', ['cid', 'cid_parent', 'name', 'mail', 'aid',
                    'body', 'bid', 'subject'])
-                 ->orderBy('cid_parent', 'ASC');
+      ->orderBy('cid_parent', 'ASC');
     return $query;
   }
 

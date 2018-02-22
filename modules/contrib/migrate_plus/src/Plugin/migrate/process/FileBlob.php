@@ -39,9 +39,9 @@ class FileBlob extends ProcessPluginBase implements ContainerFactoryPluginInterf
    *   The file system service.
    */
   public function __construct(array $configuration, $plugin_id, array $plugin_definition, FileSystemInterface $file_system) {
-    $configuration += array(
+    $configuration += [
       'reuse' => FALSE,
-    );
+    ];
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->fileSystem = $file_system;
   }

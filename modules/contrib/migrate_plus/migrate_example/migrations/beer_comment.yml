@@ -8,11 +8,11 @@ destination:
   plugin: entity:comment
 process:
   pid:
-    plugin: migration
+    plugin: migration_lookup
     migration: beer_comment
     source: cid_parent
   entity_id:
-    plugin: migration
+    plugin: migration_lookup
     migration: beer_node
     source: bid
   entity_type:
@@ -26,7 +26,7 @@ process:
     default_value: node_comments
   subject: subject
   uid:
-    plugin: migration
+    plugin: migration_lookup
     migration: beer_user
     source: aid
   name: name

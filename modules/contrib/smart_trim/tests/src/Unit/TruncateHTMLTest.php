@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\smart_trim|Tests\TruncateHTMLTest.
- */
-
 namespace Drupal\smart_trim\Tests;
 
 use Drupal\smart_trim\Truncate\TruncateHTML;

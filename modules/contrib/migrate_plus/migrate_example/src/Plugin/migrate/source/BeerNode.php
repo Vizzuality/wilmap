@@ -30,7 +30,7 @@ class BeerNode extends SqlBase {
      * below.
      */
     $query = $this->select('migrate_example_beer_node', 'b')
-                 ->fields('b', ['bid', 'name', 'body', 'excerpt', 'aid',
+      ->fields('b', ['bid', 'name', 'body', 'excerpt', 'aid',
                    'countries', 'image', 'image_alt', 'image_title',
                    'image_description']);
     return $query;
@@ -82,7 +82,7 @@ class BeerNode extends SqlBase {
      * the beer_term migration).
      */
     $terms = $this->select('migrate_example_beer_topic_node', 'bt')
-                 ->fields('bt', ['style'])
+      ->fields('bt', ['style'])
       ->condition('bid', $row->getSourceProperty('bid'))
       ->execute()
       ->fetchCol();

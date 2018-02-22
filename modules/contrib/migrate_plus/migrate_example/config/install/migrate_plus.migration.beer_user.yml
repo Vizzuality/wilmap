@@ -90,7 +90,7 @@ process:
   # when that migration runs it knows that each incoming beer should overwrite
   # its stub instead of creating a new node.
   field_migrate_example_favbeers:
-    plugin: migration
+    plugin: migration_lookup
     source: beers
     migration: beer_node
 

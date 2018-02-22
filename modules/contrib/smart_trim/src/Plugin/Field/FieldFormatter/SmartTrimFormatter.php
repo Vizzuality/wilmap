@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\smart_trim\Plugin\Field\FieldFormatter\SmartTrimFormatter.
- */
-
 namespace Drupal\smart_trim\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\FormatterBase;
@@ -23,7 +18,9 @@ use Drupal\smart_trim\Truncate\TruncateHTML;
  *   field_types = {
  *     "text",
  *     "text_long",
- *     "text_with_summary"
+ *     "text_with_summary",
+ *     "string",
+ *     "string_long"
  *   },
  *   settings = {
  *     "trim_length" = "300",
@@ -46,6 +43,8 @@ class SmartTrimFormatter extends FormatterBase {
       'trim_length' => '600',
       'trim_type' => 'chars',
       'trim_suffix' => '',
+      'wrap_output' => 0,
+      'wrap_class' => 'trimmed',
       'more_link' => 0,
       'more_class' => 'more-link',
       'more_text' => 'More',
@@ -61,7 +60,7 @@ class SmartTrimFormatter extends FormatterBase {
     $element = parent::settingsForm($form, $form_state);
 
     $element['trim_length'] = array(
-      '#title' => t('Trim length'),
+      '#title' => $this->t('Trim length'),
       '#type' => 'textfield',
       '#size' => 10,
       '#default_value' => $this->getSetting('trim_length'),
@@ -70,49 +69,83 @@ class SmartTrimFormatter extends FormatterBase {
     );
 
     $element['trim_type'] = array(
-      '#title' => t('Trim units'),
+      '#title' => $this->t('Trim units'),
       '#type' => 'select',
       '#options' => array(
-        'chars' => t("Characters"),
-        'words' => t("Words"),
+        'chars' => $this->t("Characters"),
+        'words' => $this->t("Words"),
       ),
       '#default_value' => $this->getSetting('trim_type'),
     );
 
     $element['trim_suffix'] = array(
-      '#title' => t('Suffix'),
+      '#title' => $this->t('Suffix'),
       '#type' => 'textfield',
       '#size' => 10,
       '#default_value' => $this->getSetting('trim_suffix'),
     );
 
-    $element['more_link'] = array(
-      '#title' => t('Display more link?'),
-      '#type' => 'select',
-      '#options' => array(
-        0 => t("No"),
-        1 => t("Yes"),
+    $element['wrap_output'] = array(
+      '#title' => $this->t('Wrap trimmed content?'),
+      '#type' => 'checkbox',
+      '#default_value' => $this->getSetting('wrap_output'),
+      '#description' => $this->t('Adds a wrapper div to trimmed content.'),
+    );
+
+    $element['wrap_class'] = array(
+      '#title' => $this->t('Wrapped content class.'),
+      '#type' => 'textfield',
+      '#size' => 20,
+      '#default_value' => $this->getSetting('wrap_class'),
+      '#description' => $this->t('If wrapping, define the class name here.'),
+      '#states' => array(
+        'visible' => array(
+          ':input[name="fields[body][settings_edit_form][settings][wrap_output]"]' => array('checked' => TRUE),
+        ),
       ),
+    );
+
+    $element['more_link'] = array(
+      '#title' => $this->t('Display more link?'),
+      '#type' => 'checkbox',
       '#default_value' => $this->getSetting('more_link'),
-      '#description' => t('Displays a link to the entity (if one exists)'),
+      '#description' => $this->t('Displays a link to the entity (if one exists)'),
     );
 
     $element['more_text'] = array(
-      '#title' => t('More link text'),
+      '#title' => $this->t('More link text'),
       '#type' => 'textfield',
       '#size' => 20,
       '#default_value' => $this->getSetting('more_text'),
-      '#description' => t('If displaying more link, enter the text for the link.'),
+      '#description' => $this->t('If displaying more link, enter the text for the link.'),
+      '#states' => array(
+        'visible' => array(
+          ':input[name="fields[body][settings_edit_form][settings][more_link]"]' => array('checked' => TRUE),
+        ),
+      ),
+    );
+
+    $element['more_class'] = array(
+      '#title' => $this->t('More link class'),
+      '#type' => 'textfield',
+      '#size' => 20,
+      '#default_value' => $this->getSetting('more_class'),
+      '#description' => $this->t('If displaying more link, add a custom class for formatting.'),
+      '#states' => array(
+        'visible' => array(
+          ':input[name="fields[body][settings_edit_form][settings][more_link]"]' => array('checked' => TRUE),
+        ),
+      ),
     );
 
     if ($this->fieldDefinition->getType() == 'text_with_summary') {
       $element['summary_handler'] = array(
-        '#title' => t('Summary'),
+        '#title' => $this->t('Summary'),
         '#type' => 'select',
         '#options' => array(
-          'full' => t("Use summary if present, and do not trim"),
-          'trim' => t("Use summary if present, honor trim settings"),
-          'ignore' => t("Do not use summary"),
+          'full' => $this->t("Use summary if present, and do not trim"),
+          'trim' => $this->t("Use summary if present, honor trim settings"),
+          'ignore' => $this->t("Do not use summary"),
         ),
         '#default_value' => $this->getSetting('summary_handler'),
       );
@@ -120,10 +153,11 @@ class SmartTrimFormatter extends FormatterBase {
 
     $trim_options_value = $this->getSetting('trim_options');
     $element['trim_options'] = array(
-      '#title' => t('Additional options'),
+      '#title' => $this->t('Additional options'),
       '#type' => 'checkboxes',
       '#options' => array(
-        'text' => t('Strip HTML'),
+        'text' => $this->t('Strip HTML'),
+        'trim_zero' => t('Honor a zero trim length'),
       ),
       '#default_value' => empty($trim_options_value) ? array() : $trim_options_value,
     );
@@ -137,17 +171,17 @@ class SmartTrimFormatter extends FormatterBase {
   public function settingsSummary() {
     $unicode = new Unicode();
     $summary = array();
-    $type = t('words');
+    $type = $this->t('words');
     if ($this->getSetting('trim_type') == 'chars') {
-      $type = t('characters');
+      $type = $this->t('characters');
     }
     $trim_string = $this->getSetting('trim_length') . ' ' . $type;
 
     if ($unicode->strlen((trim($this->getSetting('trim_suffix'))))) {
-      $trim_string .= " " . t("with suffix");
+      $trim_string .= " " . $this->t("with suffix");
     }
     if ($this->getSetting('more_link')) {
-      $trim_string .= ", " . t("with more link");
+      $trim_string .= ", " . $this->t("with more link");
     }
     $summary[] = $trim_string;
 
@@ -168,12 +202,26 @@ class SmartTrimFormatter extends FormatterBase {
       if ($settings_summary_handler != 'ignore' && !empty($item->summary)) {
         $output = $item->summary_processed;
       }
-      else {
+      elseif($item->processed != NULL) {
         $output = $item->processed;
+      }
+      else {
+        $output = $item->value;
       }
 
       // Process additional options (currently only HTML on/off).
       if (!empty($setting_trim_options)) {
+        // Allow a zero length trim
+        if (!empty($setting_trim_options['trim_zero']) && $this->getSetting('trim_length') == 0) {
+          // If the summary is empty, trim to zero length.
+          if (empty($item->summary)) {
+            $output = '';
+          }
+          else if ($settings_summary_handler != 'full') {
+            $output = '';
+          }
+        }
+
         if (!empty($setting_trim_options['text'])) {
           // Strip tags.
           $output = strip_tags(str_replace('<', ' <', $output));
@@ -203,22 +251,36 @@ class SmartTrimFormatter extends FormatterBase {
         }
       }
 
+      // Wrap content in container div.
+      if ($this->getSetting('wrap_output')) {
+        $output = '<div class="' . $this->getSetting('wrap_class') . '">' . $output . '</div>';
+      }
+
       // Add the link, if there is one!
       $link = '';
-      $uri = $entity->toUrl();
-      // But wait! Don't add a more link if the field ends in <!--break-->.
-      if ($uri && $this->getSetting('more_link') && strpos(strrev($output), strrev('<!--break-->')) !== 0) {
-        $more = $this->getSetting('more_text');
-        $class = $this->getSetting('more_text');
+      // The entity must have an id already. Content entities usually get their
+      // IDs by saving them. In some cases, eg: Inline Entity Form preview there
+      // is no ID until everything is saved.
+      // https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Entity!Entity.php/function/Entity%3A%3AtoUrl/8.2.x
+      if ($entity->id()) {
+        $uri = $entity->hasLinkTemplate('canonical') ? $entity->toUrl() : NULL;
 
-        $project_link = Link::fromTextAndUrl($more, $uri);
-        $project_link = $project_link->toRenderable();
-        $project_link['#attributes'] = array(
-          'class' => array(
-            $class,
-          ),
-        );
-        $link = render($project_link);
+        // But wait! Don't add a more link if the field ends in <!--break-->.
+        if ($uri && $this->getSetting('more_link') && strpos(strrev($output), strrev('<!--break-->')) !== 0) {
+          $more = $this->t($this->getSetting('more_text'));
+          $class = $this->getSetting('more_class');
+
+          $project_link = Link::fromTextAndUrl($more, $uri);
+          $project_link = $project_link->toRenderable();
+          $project_link['#attributes'] = array(
+            'class' => array(
+              $class,
+            ),
+          );
+          $project_link['#prefix'] = '<div class="' . $class . '">';
+          $project_link['#suffix'] = '</div>';
+          $link = render($project_link);
+        }
       }
       $output .= $link;
       $element[$delta] = array('#markup' => $output);
