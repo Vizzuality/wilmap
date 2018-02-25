@@ -46,10 +46,11 @@ function wilmap_news_cron()
 
     $config = \Drupal::config('wilmap_news.digest');
     $last_run = \Drupal::state()->get('wilmap_news.last_run', 0);
+    $config_days_seconds = $config->get('days') * 86400;
 
     // Check if auto-digest is enabled and current time since last digest.
     if ($config->get('enabled') && (\Drupal::time()
-          ->getRequestTime() - $last_run) > $config->get('days')
+          ->getRequestTime() - $last_run) > $config_days_seconds;
     ) {
 
         // New digest from last run
