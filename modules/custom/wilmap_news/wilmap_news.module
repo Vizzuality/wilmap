@@ -50,7 +50,7 @@ function wilmap_news_cron()
 
     // Check if auto-digest is enabled and current time since last digest.
     if ($config->get('enabled') && (\Drupal::time()
-          ->getRequestTime() - $last_run) > $config_days_seconds;
+          ->getRequestTime() - $last_run) > $config_days_seconds
     ) {
 
         // New digest from last run
