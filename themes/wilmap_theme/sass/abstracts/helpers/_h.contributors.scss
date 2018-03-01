@@ -142,20 +142,33 @@
 @mixin contributors-grid($structure:'.views-row', $break-margin: '4n+1') {
   // Structure wrapper
   @include content-listings-wrapper($structure, $break-margin) {
+    // $color_bg: rgba($fifth-color, 0.5);
+    $color_bg: lighten($fifth-color, 8);
+
     @include column(3.5);
     @include margin(null null $dp * 2 null);
     @include clearfix();
+    @include image-overlay(rgba($color_bg, 0), rgba($color_bg, 1), 1, 180deg, relative);
     overflow: hidden;
-    background-color: rgba($fifth-color, 0.5);
+    background-color: $color_bg;
     min-height: 250px;
+    max-height: 250px;
 
     @include respond(tablets) {
       width: columns(4.6);
       min-height: 270px;
+      max-height: 270px;
     }
 
     @include respond(all-phones) {
       min-height: 400px;
+      max-height: 400px;
+    }
+
+
+    &:before {
+      @include position(absolute, auto auto 0 0);
+      @include size(100% $dp * 2.5);
     }
 
     &:nth-child(#{$break-margin}) {
