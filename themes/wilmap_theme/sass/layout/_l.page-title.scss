@@ -102,7 +102,7 @@ $image-height:        $dp * 20;
     @include red-caps-link();
 
     @include respond(all-phones) {
-      @include position(absolute, $dp null null $dp);
+      @include position(absolute, $dp null null 0);
     }
   }
 }

@@ -5792,6 +5792,11 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
             width: 100%; } }
       .block-wilmap-map .wilmap #map-legend .drawer .drawer-inner {
         padding: 15px; }
+        @media only screen and (max-width: 899px) {
+          .block-wilmap-map .wilmap #map-legend .drawer .drawer-inner {
+            padding: 18px 15px;
+            display: table;
+            width: 100%; } }
       .block-wilmap-map .wilmap #map-legend .drawer h3 {
         margin: 0;
         padding: 0;
@@ -5806,7 +5811,7 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
         @media only screen and (max-width: 899px) {
           .block-wilmap-map .wilmap #map-legend .drawer h3 {
             position: relative;
-            top: -20px;
+            top: 0;
             right: auto;
             bottom: auto;
             left: auto;
@@ -5817,9 +5822,10 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
             font-weight: 700;
             font-family: "Raleway", "Mplus 1p", sans-serif;
             display: inline-block;
-            width: 46%;
-            margin-right: 2%;
-            display: inline-block; } }
+            width: 50%;
+            padding-right: 2%;
+            display: table-cell;
+            vertical-align: top; } }
       .block-wilmap-map .wilmap #map-legend .drawer .description,
       .block-wilmap-map .wilmap #map-legend .drawer .description p {
         margin: 0;
@@ -5842,8 +5848,10 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
         margin-top: 15px; }
         @media only screen and (max-width: 899px) {
           .block-wilmap-map .wilmap #map-legend .drawer .color-ranges {
-            display: inline-block;
-            width: 50%; } }
+            margin-top: 0;
+            width: 50%;
+            display: table-cell;
+            vertical-align: middle; } }
         .block-wilmap-map .wilmap #map-legend .drawer .color-ranges ul {
           margin: 0;
           padding: 0; }

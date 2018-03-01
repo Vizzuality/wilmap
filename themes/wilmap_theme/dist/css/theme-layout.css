@@ -2222,7 +2222,7 @@ body.node-map .site-footer {
       .block-page-title-block .backtolink {
         position: absolute;
         top: 10px;
-        left: 10px; } }
+        left: 0; } }
 
 @media only screen and (max-width: 899px) {
   body.node-about .block-page-title-block .image {

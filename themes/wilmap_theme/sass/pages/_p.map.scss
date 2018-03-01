@@ -185,6 +185,12 @@
 
         .drawer-inner {
           @include padding($dp * 1.5);
+
+          @include respond(all-phones) {
+            @include padding($dp * 1.8 $dp * 1.5);
+            display: table;
+            width: 100%;
+          }
         }
 
         h3 {
@@ -194,12 +200,13 @@
           color: $first-color;
 
           @include respond(all-phones) {
-            @include position(relative, -$dp * 2 auto auto auto);
+            @include position(relative, 0 auto auto auto);
             @include font($normal - 3, 1.1, $bold, $body-font);
             display: inline-block;
-            width: 46%;
-            margin-right: 2%;
-            display: inline-block;
+            width: 50%;
+            padding-right: 2%;
+            display: table-cell;
+            vertical-align: top;
           }
         }
 
@@ -220,8 +227,10 @@
           margin-top: $dp * 1.5;
 
           @include respond(all-phones) {
-            display: inline-block;
+            margin-top: 0;
             width: 50%;
+            display: table-cell;
+            vertical-align: middle;
           }
 
           ul {
