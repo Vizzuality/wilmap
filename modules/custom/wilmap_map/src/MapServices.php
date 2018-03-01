@@ -38,9 +38,11 @@ class MapServices implements ContainerInjectionInterface
       'toyear'            => 'field_year_to',
       'section'           => 'field_tax_section',
       'issuing'           => 'field_tax_issuing_entity',
+      'issues_addressed'  => 'field_tax_issues_addressed',
       'liability'         => 'field_tax_type_liability',
       'law'               => 'field_tax_type_law',
       'service'           => 'field_tax_type_service_provider',
+      'osp_obligation'    => 'field_tax_osp_obligation',
       'general_immunity'  => 'field_tax_general_immunity',
       'general_liability' => 'field_tax_general_liability',
       'title'             => 'title'
