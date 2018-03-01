@@ -31,22 +31,22 @@ class VarietyItems extends ResourceBase {
     $varieties = [
       'retsina' => [
         'name' => 'Retsina',
-        'parent' => 1,  // categoryid for 'white'.
+        'parent' => 1, // categoryid for 'white'.
         'details' => 'Greek',
       ],
       'trebbiano' => [
         'name' => 'Trebbiano',
-        'parent' => 1,  // categoryid for 'white'.
+        'parent' => 1, // categoryid for 'white'.
         'details' => 'Italian',
       ],
       'valpolicella' => [
         'name' => 'Valpolicella',
-        'parent' => 3,  // categoryid for 'red'.
+        'parent' => 3, // categoryid for 'red'.
         'details' => 'Italian Venoto region',
       ],
       'bardolino' => [
         'name' => 'Bardolino',
-        'parent' => 3,  // categoryid for 'red'.
+        'parent' => 3, // categoryid for 'red'.
         'details' => 'Italian Venoto region',
       ],
     ];

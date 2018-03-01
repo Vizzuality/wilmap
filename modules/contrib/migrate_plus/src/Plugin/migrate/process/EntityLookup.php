@@ -51,34 +51,74 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class EntityLookup extends ProcessPluginBase implements ContainerFactoryPluginInterface {
 
-  /** @var \Drupal\Core\Entity\EntityManagerInterface */
+  /**
+   * The entity manager.
+   *
+   * @var \Drupal\Core\Entity\EntityManagerInterface
+   */
   protected $entityManager;
 
-  /** @var \Drupal\migrate\Plugin\MigrationInterface */
+  /**
+   * The migration.
+   *
+   * @var \Drupal\migrate\Plugin\MigrationInterface
+   */
   protected $migration;
 
-  /** @var \Drupal\Core\Entity\EntityReferenceSelection\SelectionPluginManagerInterface */
+  /**
+   * The selection plugin.
+   *
+   * @var \Drupal\Core\Entity\EntityReferenceSelection\SelectionPluginManagerInterface
+   */
   protected $selectionPluginManager;
 
-  /** @var string */
+  /**
+   * The destination type.
+   *
+   * @var string
+   */
   protected $destinationEntityType;
 
-  /** @var string|bool */
+  /**
+   * The destination bundle.
+   *
+   * @var string|bool
+   */
   protected $destinationBundleKey;
 
-  /** @var string */
+  /**
+   * The lookup value's key.
+   *
+   * @var string
+   */
   protected $lookupValueKey;
 
-  /** @var string */
+  /**
+   * The lookup bundle's key.
+   *
+   * @var string
+   */
   protected $lookupBundleKey;
 
-  /** @var string */
+  /**
+   * The lookup bundle.
+   *
+   * @var string
+   */
   protected $lookupBundle;
 
-  /** @var string */
+  /**
+   * The lookup entity type.
+   *
+   * @var string
+   */
   protected $lookupEntityType;
 
-  /** @var string */
+  /**
+   * The destination property or field.
+   *
+   * @var string
+   */
   protected $destinationProperty;
 
   /**
@@ -178,7 +218,7 @@ class EntityLookup extends ProcessPluginBase implements ContainerFactoryPluginIn
 
           default:
             throw new MigrateException('Destination field type ' .
-              $fieldConfig->getType(). 'is not a recognized reference type.');
+              $fieldConfig->getType() . 'is not a recognized reference type.');
         }
       }
     }

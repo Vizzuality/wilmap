@@ -60,7 +60,7 @@ process:
   # IDs in map tables, and the migration plugin is the means of performing a
   # lookup in those map tables during processing.
   parent:
-    plugin: migration
+    plugin: migration_lookup
     # Here we reference the migration whose map table we're performing a lookup
     # against. You'll note that in this case we're actually referencing this
     # migration itself, since category parents are imported by the same

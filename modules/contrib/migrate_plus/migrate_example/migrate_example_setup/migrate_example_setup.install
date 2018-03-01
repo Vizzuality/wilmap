@@ -27,270 +27,272 @@ function migrate_example_setup_install() {
 }
 
 function migrate_example_beer_schema_node() {
-  return array(
+  return [
     'description' => 'Beers of the world.',
-    'fields' => array(
-      'bid'  => array(
+    'fields' => [
+      'bid'  => [
         'type' => 'serial',
         'not null' => TRUE,
         'description' => 'Beer ID.',
-      ),
-      'name'  => array(
+      ],
+      'name'  => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
-      ),
-      'body' => array(
+      ],
+      'body' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
         'description' => 'Full description of the beer.',
-      ),
-      'excerpt' => array(
+      ],
+      'excerpt' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
         'description' => 'Abstract for this beer.',
-      ),
-      'countries' => array(
+      ],
+      'countries' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
         'description' => 'Countries of origin. Multiple values, delimited by pipe',
-      ),
-      'aid' => array(
+      ],
+      'aid' => [
         'type' => 'int',
         'not null' => FALSE,
         'description' => 'Account Id of the author.',
-      ),
-      'image' => array(
+      ],
+      'image' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
         'description' => 'Image path',
-      ),
-      'image_alt' => array(
+      ],
+      'image_alt' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
         'description' => 'Image ALT',
-      ),
-      'image_title' => array(
+      ],
+      'image_title' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
         'description' => 'Image title',
-      ),
-      'image_description' => array(
+      ],
+      'image_description' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
         'description' => 'Image description',
-      ),
-    ),
-    'primary key' => array('bid'),
-  );
+      ],
+    ],
+    'primary key' => ['bid'],
+  ];
 }
 
 function migrate_example_beer_schema_topic() {
-  return array(
+  return [
     'description' => 'Categories',
-    'fields' => array(
-      'style'  => array(
+    'fields' => [
+      'style'  => [
         'type' => 'varchar_ascii',
         'length' => 255,
         'not null' => TRUE,
-      ),
-      'details' => array(
+      ],
+      'details' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
-      ),
-      'style_parent' => array(
+      ],
+      'style_parent' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
         'description' => 'Parent topic, if any',
-      ),
-      'region' => array(
+      ],
+      'region' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
         'description' => 'Region first associated with this style',
-      ),
-      'hoppiness' => array(
+      ],
+      'hoppiness' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
         'description' => 'Relative hoppiness of the beer',
-      ),
-    ),
-    'primary key' => array('style'),
-  );
+      ],
+    ],
+    'primary key' => ['style'],
+  ];
 }
 
 function migrate_example_beer_schema_topic_node() {
-  return array(
+  return [
     'description' => 'Beers topic pairs.',
-    'fields' => array(
-      'bid'  => array(
+    'fields' => [
+      'bid'  => [
         'type' => 'int',
         'not null' => TRUE,
         'description' => 'Beer ID.',
-      ),
-      'style'  => array(
+      ],
+      'style'  => [
         'type' => 'varchar_ascii',
         'length' => 255,
         'not null' => TRUE,
         'description' => 'Topic name',
-      ),
-    ),
-    'primary key' => array('style', 'bid'),
-  );
+      ],
+    ],
+    'primary key' => ['style', 'bid'],
+  ];
 }
 
 function migrate_example_beer_schema_comment() {
-  return array(
+  return [
     'description' => 'Beers comments.',
-    'fields' => array(
-      'cid'  => array(
+    'fields' => [
+      'cid'  => [
         'type' => 'serial',
         'not null' => TRUE,
         'description' => 'Comment ID.',
-      ),
-      'bid'  => array(
+      ],
+      'bid'  => [
         'type' => 'int',
         'not null' => TRUE,
         'description' => 'Beer ID that is being commented upon',
-      ),
-      'cid_parent' => array(
+      ],
+      'cid_parent' => [
         'type' => 'int',
         'not null' => FALSE,
         'description' => 'Parent comment ID in case of comment replies.',
-      ),
-      'subject' => array(
+      ],
+      'subject' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
         'description' => 'Comment subject',
-      ),
-      'body' => array(
+      ],
+      'body' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
         'description' => 'Comment body',
-      ),
-      'name' => array(
+      ],
+      'name' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
         'description' => 'Comment name (if anon)',
-      ),
-      'mail' => array(
+      ],
+      'mail' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
         'description' => 'Comment email (if anon)',
-      ),
-      'aid' => array(
+      ],
+      'aid' => [
         'type' => 'int',
         'not null' => FALSE,
         'description' => 'Account ID (if any).',
-      ),
-    ),
-    'primary key' => array('cid'),
-  );
+      ],
+    ],
+    'primary key' => ['cid'],
+  ];
 }
 
 function migrate_example_beer_schema_account() {
-  return array(
+  return [
     'description' => 'Beers accounts.',
-    'fields' => array(
-      'aid'  => array(
+    'fields' => [
+      'aid'  => [
         'type' => 'serial',
         'not null' => TRUE,
         'description' => 'Account ID',
-      ),
-      'status'  => array(
+      ],
+      'status'  => [
         'type' => 'int',
         'not null' => TRUE,
         'description' => 'Blocked_Allowed',
-      ),
-      'registered' => array(
+      ],
+      'registered' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
         'description' => 'Registration date',
-      ),
-      'username' => array(
+      ],
+      'username' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
         'description' => 'Account name (for login)',
-      ),
-      'nickname' => array(
+      ],
+      'nickname' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
         'description' => 'Account name (for display)',
-      ),
-      'password' => array(
+      ],
+      'password' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
         'description' => 'Account password (raw)',
-      ),
-      'email' => array(
+      ],
+      'email' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
         'description' => 'Account email',
-      ),
-      'sex' => array(
+      ],
+      'sex' => [
         'type' => 'int',
         'not null' => FALSE,
         'description' => 'Gender (0 for male, 1 for female)',
-      ),
-      'beers' => array(
+      ],
+      'beers' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
         'description' => 'Favorite Beers',
-      ),
-    ),
-    'primary key' => array('aid'),
-  );
+      ],
+    ],
+    'primary key' => ['aid'],
+  ];
 }
 
 function migrate_example_beer_data_node() {
-  $fields = array('bid', 'name', 'body', 'excerpt', 'countries', 'aid', 'image',
-    'image_alt', 'image_title', 'image_description');
+  $fields = ['bid', 'name', 'body', 'excerpt', 'countries', 'aid', 'image',
+    'image_alt', 'image_title', 'image_description'];
   $query = db_insert('migrate_example_beer_node')
-           ->fields($fields);
+    ->fields($fields);
   // Use high bid numbers to avoid overwriting an existing node id.
-  $data = array(
-    array(99999999, 'Heineken', 'Blab Blah Blah Green', 'Green', 'Netherlands|Belgium', 0, 'heineken.jpg', 'Heinekin alt', 'Heinekin title', 'Heinekin description'), // comes with migrate_example project.
-    array(99999998, 'Miller Lite', 'We love Miller Brewing', 'Tasteless', 'USA|Canada', 1, NULL, NULL, NULL, NULL),
-    array(99999997, 'Boddington', 'English occasionally get something right', 'A treat', 'United Kingdom', 1, NULL, NULL, NULL, NULL),
-  );
+  $data = [
+    [99999999, 'Heineken', 'Blab Blah Blah Green', 'Green', 'Netherlands|Belgium', 0, 'heineken.jpg', 'Heinekin alt', 'Heinekin title', 'Heinekin description'], // comes with migrate_example project.
+    [99999998, 'Miller Lite', 'We love Miller Brewing', 'Tasteless', 'USA|Canada', 1, NULL, NULL, NULL, NULL],
+    [99999997, 'Boddington', 'English occasionally get something right', 'A treat', 'United Kingdom', 1, NULL, NULL, NULL, NULL],
+  ];
   foreach ($data as $row) {
     $query->values(array_combine($fields, $row));
   }
   $query->execute();
 }
 
-// Note that alice has duplicate username. Exercises dedupe_entity plugin.
-// @TODO duplicate email also.
+/**
+ * Note that alice has duplicate username. Exercises dedupe_entity plugin.
+ *@TODO duplicate email also.
+ */
 function migrate_example_beer_data_account() {
-  $fields = array('status', 'registered', 'username', 'nickname', 'password', 'email', 'sex', 'beers');
+  $fields = ['status', 'registered', 'username', 'nickname', 'password', 'email', 'sex', 'beers'];
   $query = db_insert('migrate_example_beer_account')
     ->fields($fields);
-  $data = array(
-    array(1, '2010-03-30 10:31:05', 'alice', 'alice in beerland', 'alicepass', 'alice@example.com', '1', '99999999|99999998|99999997'),
-    array(1, '2010-04-04 10:31:05', 'alice', 'alice in aleland', 'alicepass', 'alice2@example.com', '1', '99999999|99999998|99999997'),
-    array(0, '2007-03-15 10:31:05', 'bob', 'rebob', 'bobpass', 'bob@example.com', '0', '99999999|99999997'),
-    array(1, '2004-02-29 10:31:05', 'charlie', 'charlie chocolate', 'mykids', 'charlie@example.com', '0', '99999999|99999998'),
-  );
+  $data = [
+    [1, '2010-03-30 10:31:05', 'alice', 'alice in beerland', 'alicepass', 'alice@example.com', '1', '99999999|99999998|99999997'],
+    [1, '2010-04-04 10:31:05', 'alice', 'alice in aleland', 'alicepass', 'alice2@example.com', '1', '99999999|99999998|99999997'],
+    [0, '2007-03-15 10:31:05', 'bob', 'rebob', 'bobpass', 'bob@example.com', '0', '99999999|99999997'],
+    [1, '2004-02-29 10:31:05', 'charlie', 'charlie chocolate', 'mykids', 'charlie@example.com', '0', '99999999|99999998'],
+  ];
   foreach ($data as $row) {
     $query->values(array_combine($fields, $row));
   }
@@ -298,16 +300,16 @@ function migrate_example_beer_data_account() {
 }
 
 function migrate_example_beer_data_comment() {
-  $fields = array('bid', 'cid_parent', 'subject', 'body', 'name', 'mail', 'aid');
+  $fields = ['bid', 'cid_parent', 'subject', 'body', 'name', 'mail', 'aid'];
   $query = db_insert('migrate_example_beer_comment')
     ->fields($fields);
-  $data = array(
-    array(99999998, NULL, 'im first', 'full body', 'alice', 'alice@example.com', 0),
-    array(99999998, NULL, 'im second', 'aromatic', 'alice', 'alice@example.com', 0),
-    array(99999999, NULL, 'im parent', 'malty', 'alice', 'alice@example.com', 0),
-    array(99999999, 1, 'im child', 'cold body', 'bob', NULL, 1),
-    array(99999999, 4, 'im grandchild', 'bitter body', 'charlie@example.com', NULL, 1),
-  );
+  $data = [
+    [99999998, NULL, 'im first', 'full body', 'alice', 'alice@example.com', 0],
+    [99999998, NULL, 'im second', 'aromatic', 'alice', 'alice@example.com', 0],
+    [99999999, NULL, 'im parent', 'malty', 'alice', 'alice@example.com', 0],
+    [99999999, 1, 'im child', 'cold body', 'bob', NULL, 1],
+    [99999999, 4, 'im grandchild', 'bitter body', 'charlie@example.com', NULL, 1],
+  ];
   foreach ($data as $row) {
     $query->values(array_combine($fields, $row));
   }
@@ -315,14 +317,14 @@ function migrate_example_beer_data_comment() {
 }
 
 function migrate_example_beer_data_topic() {
-  $fields = array('style', 'details', 'style_parent', 'region', 'hoppiness');
+  $fields = ['style', 'details', 'style_parent', 'region', 'hoppiness'];
   $query = db_insert('migrate_example_beer_topic')
     ->fields($fields);
-  $data = array(
-    array('ale', 'traditional', NULL, 'Medieval British Isles', 'Medium'),
-    array('red ale', 'colorful', 'ale', NULL, NULL),
-    array('pilsner', 'refreshing', NULL, 'Pilsen, Bohemia (now Czech Republic)', 'Low'),
-  );
+  $data = [
+    ['ale', 'traditional', NULL, 'Medieval British Isles', 'Medium'],
+    ['red ale', 'colorful', 'ale', NULL, NULL],
+    ['pilsner', 'refreshing', NULL, 'Pilsen, Bohemia (now Czech Republic)', 'Low'],
+  ];
   foreach ($data as $row) {
     $query->values(array_combine($fields, $row));
   }
@@ -330,14 +332,14 @@ function migrate_example_beer_data_topic() {
 }
 
 function migrate_example_beer_data_topic_node() {
-  $fields = array('bid', 'style');
+  $fields = ['bid', 'style'];
   $query = db_insert('migrate_example_beer_topic_node')
     ->fields($fields);
-  $data = array(
-    array(99999999, 'pilsner'),
-    array(99999999, 'red ale'),
-    array(99999998, 'red ale'),
-  );
+  $data = [
+    [99999999, 'pilsner'],
+    [99999999, 'red ale'],
+    [99999998, 'red ale'],
+  ];
   foreach ($data as $row) {
     $query->values(array_combine($fields, $row));
   }

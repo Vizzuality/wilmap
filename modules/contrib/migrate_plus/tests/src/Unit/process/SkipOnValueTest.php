@@ -2,6 +2,9 @@
 
 namespace Drupal\Tests\migrate_plus\Unit\process;
 
+use Drupal\migrate\MigrateException;
+use Drupal\migrate\MigrateSkipProcessException;
+use Drupal\migrate\MigrateSkipRowException;
 use Drupal\migrate_plus\Plugin\migrate\process\SkipOnValue;
 use Drupal\Tests\migrate\Unit\process\MigrateProcessTestCase;
 
@@ -15,22 +18,22 @@ class SkipOnValueTest extends MigrateProcessTestCase {
 
   /**
    * @covers ::process
-   * @expectedException \Drupal\migrate\MigrateSkipProcessException
    */
   public function testProcessSkipsOnValue() {
     $configuration['method'] = 'process';
     $configuration['value'] = 86;
+    $this->setExpectedException(MigrateSkipProcessException::class);
     (new SkipOnValue($configuration, 'skip_on_value', []))
       ->transform('86', $this->migrateExecutable, $this->row, 'destinationproperty');
   }
 
   /**
    * @covers ::process
-   * @expectedException \Drupal\migrate\MigrateSkipProcessException
    */
   public function testProcessSkipsOnMultipleValue() {
     $configuration['method'] = 'process';
     $configuration['value'] = [1, 1, 2, 3, 5, 8];
+    $this->setExpectedException(MigrateSkipProcessException::class);
     (new SkipOnValue($configuration, 'skip_on_value', []))
       ->transform('5', $this->migrateExecutable, $this->row, 'destinationproperty');
   }
@@ -64,11 +67,11 @@ class SkipOnValueTest extends MigrateProcessTestCase {
 
   /**
    * @covers ::row
-   * @expectedException \Drupal\migrate\MigrateSkipRowException
    */
   public function testRowSkipsOnValue() {
     $configuration['method'] = 'row';
     $configuration['value'] = 86;
+    $this->setExpectedException(MigrateSkipRowException::class);
     (new SkipOnValue($configuration, 'skip_on_value', []))
       ->transform('86', $this->migrateExecutable, $this->row, 'destinationproperty');
   }
@@ -91,20 +94,20 @@ class SkipOnValueTest extends MigrateProcessTestCase {
 
   /**
    * @covers ::row
-   * @expectedException \Drupal\migrate\MigrateException
    */
   public function testRequiredRowConfiguration() {
     $configuration['method'] = 'row';
+    $this->setExpectedException(MigrateException::class);
     (new SkipOnValue($configuration, 'skip_on_value', []))
       ->transform('sourcevalue', $this->migrateExecutable, $this->row, 'destinationproperty');
   }
 
   /**
    * @covers ::process
-   * @expectedException \Drupal\migrate\MigrateException
    */
   public function testRequiredProcessConfiguration() {
     $configuration['method'] = 'process';
+    $this->setExpectedException(MigrateException::class);
     (new SkipOnValue($configuration, 'skip_on_value', []))
       ->transform('sourcevalue', $this->migrateExecutable, $this->row, 'destinationproperty');
   }

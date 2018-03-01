@@ -8,7 +8,6 @@ use Drupal\field\Tests\EntityReference\EntityReferenceTestTrait;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\migrate\MigrateExecutable;
 use Drupal\migrate\MigrateMessageInterface;
-use Drupal\migrate\Plugin\Migration;
 use Drupal\node\Entity\NodeType;
 use Drupal\taxonomy\Entity\Vocabulary;
 
@@ -128,7 +127,7 @@ class EntityGenerateTest extends KernelTestBase implements MigrateMessageInterfa
       $entity->save();
     }
 
-    /** @var Migration $migration */
+    /** @var \Drupal\migrate\Plugin\Migration $migration */
     $migration = $this->migrationPluginManager->createStubMigration($definition);
     /** @var EntityStorageBase $storage */
     $storage = $this->readAttribute($migration->getDestinationPlugin(), 'storage');
@@ -153,7 +152,7 @@ class EntityGenerateTest extends KernelTestBase implements MigrateMessageInterfa
           }
         }
         else {
-          $this->assertNotEmpty($entity, 'Entity with label ' . $row[$property] .' is empty');
+          $this->assertNotEmpty($entity, 'Entity with label ' . $row[$property] . ' is empty');
           $this->assertEquals($row[$property], $entity->label());
         }
       }

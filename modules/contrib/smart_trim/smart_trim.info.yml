@@ -8,8 +8,8 @@ dependencies:
   - filter
   - text
 
-# Information added by Drupal.org packaging script on 2016-05-13
-version: '8.x-1.0'
+# Information added by Drupal.org packaging script on 2018-01-18
+version: '8.x-1.1'
 core: '8.x'
 project: 'smart_trim'
-datestamp: 1463159295
+datestamp: 1516301289

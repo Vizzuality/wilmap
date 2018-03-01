@@ -32,7 +32,7 @@ class OAuth2 extends AuthenticationPluginBase implements ContainerFactoryPluginI
   public function getAuthenticationOptions() {
     $handlerStack = HandlerStack::create();
     $client = new Client([
-      'handler'=> $handlerStack,
+      'handler' => $handlerStack,
       'base_uri' => $this->configuration['base_uri'],
       'auth' => 'oauth2',
     ]);
@@ -55,7 +55,7 @@ class OAuth2 extends AuthenticationPluginBase implements ContainerFactoryPluginI
         break;
       default:
         throw new MigrateException("Unrecognized grant_type {$this->configuration['grant_type']}.");
-        break;
+      break;
     }
     $middleware = new OAuthMiddleware($client, $grant_type);
 

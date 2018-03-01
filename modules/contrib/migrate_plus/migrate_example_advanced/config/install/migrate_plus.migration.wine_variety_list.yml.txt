@@ -46,7 +46,7 @@ process:
   name: category_name
   description: category_details
   parent:
-    plugin: migration
+    plugin: migration_lookup
     migration: wine_terms
     source: category_parent
 destination:

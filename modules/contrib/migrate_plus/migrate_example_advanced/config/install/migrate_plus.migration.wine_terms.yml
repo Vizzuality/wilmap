@@ -26,7 +26,7 @@ process:
       region: migrate_example_wine_regions
       variety: migrate_example_wine_varieties
   parent:
-    plugin: migration
+    plugin: migration_lookup
     migration: wine_terms
     source: category_parent
   weight: ordering
