@@ -7,20 +7,25 @@
 // Specific Settings: Vars & Mixins
 // -------------------------------------
 @mixin layout-override($open_tray:true) {
-  .site-header {
-    @if $open_tray {
-      top: $dp * 8 !important;
-      position: fixed;
-    } @else {
-      top: $dp * 3.9 !important;
-      position: fixed;
-    }
+  &.role-administrator,
+  &.role-contributors,
+  &.role-content-administrator {
+    .site-header {
+      @if $open_tray {
+        top: $dp * 8 !important;
+        position: fixed;
+      } @else {
+        top: $dp * 3.9 !important;
+        position: fixed;
+      }
 
-    @include respond(all-phones) {
-      top: 0 !important;
-      position: relative;
+      @include respond(all-phones) {
+        top: 0 !important;
+        position: relative;
+      }
     }
   }
+
 
   .layout-main-wrapper {
     margin-top: $dp * 12 !important;

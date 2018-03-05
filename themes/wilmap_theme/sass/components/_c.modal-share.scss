@@ -71,6 +71,16 @@
 
   .tab-content {
     text-align: center;
+
+    > .site-btn {
+      margin-bottom: 0;
+      width: 45%;
+
+      .sharebutton {
+        margin: $dp * 2 0 $dp * 2 0 !important;
+        width: 100%;
+      }
+    }
   }
 
   .sharebutton {

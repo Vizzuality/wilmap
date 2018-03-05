@@ -686,6 +686,12 @@
       height: 35px; }
 #modal-share .tab-content {
   text-align: center; }
+  #modal-share .tab-content > .site-btn {
+    margin-bottom: 0;
+    width: 45%; }
+    #modal-share .tab-content > .site-btn .sharebutton {
+      margin: 20px 0 20px 0 !important;
+      width: 100%; }
 #modal-share .sharebutton {
   width: 45%;
   margin: 20px 0 20px 30px !important; }
@@ -884,11 +890,16 @@
           position: absolute;
           top: 0;
           left: 0; }
-  #modal-maplayer .content .modal-actions a.btn {
+  #modal-maplayer .content .modal-actions a.btn,
+  #modal-maplayer .content .modal-actions .site-btn {
     margin-left: 5px; }
-    #modal-maplayer .content .modal-actions a.btn:first-child {
+    #modal-maplayer .content .modal-actions a.btn:first-child,
+    #modal-maplayer .content .modal-actions .site-btn:first-child {
       margin-left: 0; }
-    #modal-maplayer .content .modal-actions a.btn.modal-clear {
+    #modal-maplayer .content .modal-actions a.btn.modal-clear,
+    #modal-maplayer .content .modal-actions a.btn .modal-clear,
+    #modal-maplayer .content .modal-actions .site-btn.modal-clear,
+    #modal-maplayer .content .modal-actions .site-btn .modal-clear {
       margin: 0;
       padding: 0;
       font-size: inherit;
@@ -916,23 +927,44 @@
       text-transform: uppercase;
       font-style: normal;
       border: 1px solid #b3001e !important; }
-      #modal-maplayer .content .modal-actions a.btn.modal-clear .field {
+      #modal-maplayer .content .modal-actions a.btn.modal-clear .field,
+      #modal-maplayer .content .modal-actions a.btn .modal-clear .field,
+      #modal-maplayer .content .modal-actions .site-btn.modal-clear .field,
+      #modal-maplayer .content .modal-actions .site-btn .modal-clear .field {
         margin: 0;
         padding: 0; }
-      #modal-maplayer .content .modal-actions a.btn.modal-clear:hover {
+      #modal-maplayer .content .modal-actions a.btn.modal-clear:hover,
+      #modal-maplayer .content .modal-actions a.btn .modal-clear:hover,
+      #modal-maplayer .content .modal-actions .site-btn.modal-clear:hover,
+      #modal-maplayer .content .modal-actions .site-btn .modal-clear:hover {
         text-decoration: none; }
-      #modal-maplayer .content .modal-actions a.btn.modal-clear:hover {
+      #modal-maplayer .content .modal-actions a.btn.modal-clear:hover,
+      #modal-maplayer .content .modal-actions a.btn .modal-clear:hover,
+      #modal-maplayer .content .modal-actions .site-btn.modal-clear:hover,
+      #modal-maplayer .content .modal-actions .site-btn .modal-clear:hover {
         background-color: #f2f2f2; }
-      #modal-maplayer .content .modal-actions a.btn.modal-clear:active {
+      #modal-maplayer .content .modal-actions a.btn.modal-clear:active,
+      #modal-maplayer .content .modal-actions a.btn .modal-clear:active,
+      #modal-maplayer .content .modal-actions .site-btn.modal-clear:active,
+      #modal-maplayer .content .modal-actions .site-btn .modal-clear:active {
         background-color: #ebebeb; }
-      #modal-maplayer .content .modal-actions a.btn.modal-clear.disabled, #modal-maplayer .content .modal-actions a.btn.modal-clear[disabled] {
+      #modal-maplayer .content .modal-actions a.btn.modal-clear.disabled, #modal-maplayer .content .modal-actions a.btn.modal-clear[disabled],
+      #modal-maplayer .content .modal-actions a.btn .modal-clear.disabled,
+      #modal-maplayer .content .modal-actions a.btn .modal-clear[disabled],
+      #modal-maplayer .content .modal-actions .site-btn.modal-clear.disabled,
+      #modal-maplayer .content .modal-actions .site-btn.modal-clear[disabled],
+      #modal-maplayer .content .modal-actions .site-btn .modal-clear.disabled,
+      #modal-maplayer .content .modal-actions .site-btn .modal-clear[disabled] {
         filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
         opacity: 0.6;
         background: false;
         cursor: default;
         -webkit-box-shadow: none;
         box-shadow: none; }
-      #modal-maplayer .content .modal-actions a.btn.modal-clear::-moz-focus-inner {
+      #modal-maplayer .content .modal-actions a.btn.modal-clear::-moz-focus-inner,
+      #modal-maplayer .content .modal-actions a.btn .modal-clear::-moz-focus-inner,
+      #modal-maplayer .content .modal-actions .site-btn.modal-clear::-moz-focus-inner,
+      #modal-maplayer .content .modal-actions .site-btn .modal-clear::-moz-focus-inner {
         padding: 0 !important;
         margin: -1px !important; }
 
@@ -2036,6 +2068,19 @@ body.node-map .ui-autocomplete.ui-widget.ui-widget-content {
               .leaflet-container .leaflet-popup-pane .leaflet-popup .leaflet-popup-content-wrapper .popup-inner .popup-inner-right .popup-actions a.btn::-moz-focus-inner {
                 padding: 0 !important;
                 margin: -1px !important; }
+      .leaflet-container .leaflet-popup-pane .leaflet-popup .leaflet-popup-content-wrapper .popup-inner.no-data .popup-inner-right {
+        float: left;
+        width: 100%;
+        min-height: auto; }
+        .leaflet-container .leaflet-popup-pane .leaflet-popup .leaflet-popup-content-wrapper .popup-inner.no-data .popup-inner-right .popup-info {
+          font-size: 15px;
+          font-size: 0.9375rem;
+          line-height: 16.5px;
+          line-height: 1.03125rem;
+          font-weight: 700;
+          font-family: "Raleway", "Mplus 1p", sans-serif;
+          color: #222;
+          padding: 25px 14px; }
     .leaflet-container .leaflet-popup-pane .leaflet-popup .leaflet-popup-tip-container {
       left: 0;
       bottom: 1px; }

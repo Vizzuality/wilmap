@@ -96,16 +96,24 @@ function wilmap_theme_preprocess_page_title(&$variables) {
   if ($user = \Drupal::routeMatch()->getParameter('user')){
     $account = \Drupal\user\Entity\User::load($user->id());
 
-    if ($file = $account->get('field_banner_image')->getValue()) {
-      $file = \Drupal\file\Entity\File::load($file[0]['target_id']);
-      $file_url = file_create_url($file->getFileUri());
+    if(stripos(\Drupal::request()->getRequestUri(), 'edit') === false) {
+      if ($file = $account->get('field_banner_image')->getValue()) {
+        $file = \Drupal\file\Entity\File::load($file[0]['target_id']);
+        $file_url = file_create_url($file->getFileUri());
+      } else {
+        $file_url = '/themes/wilmap_theme/images/title/default-title-bg.png';
+      }
+
+      $variables['title'] = $account->get('name')->value;
+      $variables['title_background'] = $file_url;
+      $variables['title_back_link'] = '<a href="/contributors" class="backtolink">Back to contributors</a>';
     } else {
       $file_url = '/themes/wilmap_theme/images/title/default-title-bg.png';
-    }
 
-    $variables['title'] = $account->get('name')->value;
-    $variables['title_background'] = $file_url;
-    $variables['title_back_link'] = '<a href="/contributors" class="backtolink">Back to contributors</a>';
+      $variables['title'] = $account->get('name')->value;
+      $variables['title_background'] = $file_url;
+      $variables['title_back_link'] = '';
+    }
   }
 
   // Node pages

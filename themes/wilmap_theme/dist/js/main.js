@@ -2118,7 +2118,7 @@ console.log(color, currVal, minVal, maxVal, steps);
               var output = '<div class="popup-inner"><div class="popup-inner-left"><span>'+realCount+'</span>Entries</div><div class="popup-inner-right"><div class="popup-info">' + info_popup + '</div><div class="popup-actions">' + goto_button + '</div></div></div>';
 
               if(App.Application.Maps.Config.isPhone && !App.Application.Maps.Config.is_embed) {
-                $('#mobile-popup .inner').empty().html(output);
+                $('#mobile-popup .inner').empty().html(output).removeClass().addClass('inner');
                 $('#mobile-popup').addClass('active');
               } else {
                 App.Application.Maps.Config.popup = L.popup();
@@ -2134,7 +2134,7 @@ console.log(color, currVal, minVal, maxVal, steps);
               var output = '<div class="popup-inner"><div class="popup-inner-right"><div class="popup-info"><i class="icon-attention"></i> No data available for this country</div></div></div>';
 
               if(App.Application.Maps.Config.isPhone) {
-                $('#mobile-popup .inner').empty().html(output);
+                $('#mobile-popup .inner').empty().html(output).removeClass().addClass('inner no-data');
                 $('#mobile-popup').addClass('active');
               } else {
                 App.Application.Maps.Config.popup = L.popup();

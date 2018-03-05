@@ -51,14 +51,16 @@
     }
 
     .modal-actions {
-      a.btn {
+      a.btn,
+      .site-btn {
         margin-left: $dp / 2;
 
         &:first-child {
           margin-left: 0;
         }
 
-        &.modal-clear {
+        &.modal-clear,
+        .modal-clear {
           @include button-white();
           border: 1px solid $third-color !important;
         }

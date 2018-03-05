@@ -74,4 +74,18 @@
       }
     }
   }
+
+  &.no-data {
+    .popup-inner-right {
+      float: left;
+      width: 100%;
+      min-height: auto;
+
+      .popup-info {
+        @include font($normal - 1, 1.1, $bold, $body-font);
+        color: $first-color;
+        padding: 25px 14px;
+      }
+    }
+  }
 }
