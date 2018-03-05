@@ -2221,8 +2221,12 @@ console.log(color, currVal, minVal, maxVal, steps);
                 });
 
                 if (center){
-                  // App.Application.Maps.Functions.centerMap(layer.getBounds());
-                  App.Application.Maps.Functions.centerMap(continent);
+                  if(App.Application.Maps.Config.isPhone) {
+                    App.Application.Maps.Functions.centerMap(layer.getBounds());
+                    App.Application.Maps.Config.wilmap.setZoom(4);
+                  } else {
+                    App.Application.Maps.Functions.centerMap(continent);
+                  }
                 }
 
                 if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
@@ -2486,8 +2490,13 @@ console.log(App.Application.Maps);
                  if (App.Application.Maps.CountryData[l.feature.properties.iso2]) {
                    App.Application.Maps.Config.click_on_map = true;
 
-                   App.Application.Maps.Functions.activeContinent(App.Application.Maps.CountryData[l.feature.properties.iso2].continent, true, true);
-                   App.Application.Maps.Functions.activeCountry(l.feature.properties.iso2, true, false);
+                   if(App.Application.Maps.Config.isPhone) {
+                     App.Application.Maps.Functions.activeContinent(App.Application.Maps.CountryData[l.feature.properties.iso2].continent, true, false);
+                     App.Application.Maps.Functions.activeCountry(l.feature.properties.iso2, true, true);
+                   } else {
+                     App.Application.Maps.Functions.activeContinent(App.Application.Maps.CountryData[l.feature.properties.iso2].continent, true, true);
+                     App.Application.Maps.Functions.activeCountry(l.feature.properties.iso2, true, false);
+                   }
                    App.Application.Maps.Functions.showPopup(l.feature.properties.iso2, '', e.latlng);
                  } else {
                    App.Application.Maps.Functions.showPopup('empty', '', e.latlng);
