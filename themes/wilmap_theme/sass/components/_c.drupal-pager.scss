@@ -80,7 +80,8 @@ $paginator-radius:                      $metro-radius;
     }
 
     &.pager__item--ellipsis {
-      @include position(relative, -$dp * 1.2 null null null);
+      // @include position(relative, -$dp * 1.2 null null null);
+      padding: 24px 3px;
 
       &:hover {
         color: $paginator-color-text;

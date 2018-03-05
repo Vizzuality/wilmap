@@ -96,8 +96,7 @@
         font-weight: 600;
         border-bottom: 4px solid #b3001e; }
     .pager .pager__item.pager__item--ellipsis {
-      position: relative;
-      top: -12px; }
+      padding: 24px 3px; }
       .pager .pager__item.pager__item--ellipsis:hover {
         color: #b8b4a8; }
   .pager ul {
