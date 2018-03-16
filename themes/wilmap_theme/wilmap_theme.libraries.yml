@@ -12,8 +12,10 @@ global-styling:
   js:
     dist/source/continent.js: {}
     dist/source/gadm28_countries.js: {}
-#    node_modules/npm-gumby/js/libs/jquery.mobile.custom.min.js: {}
-    node_modules/npm-gumby/js/libs/modernizr-2.6.2.min.js: {}
+    #node_modules/npm-gumby/js/libs/modernizr-2.6.2.min.js: {}
+    #node_modules/npm-gumby/js/libs/jquery.mobile.custom.min.js: {}
+    dist/js/modernizr-custom.min.js: {}
+    dist/js/jquery.mobile.custom.min.js: {}
     node_modules/simple-scrollbar/simple-scrollbar.min.js: {}
     node_modules/leaflet/dist/leaflet-src.js: {}
     node_modules/slick-carousel/slick/slick.min.js: {}
