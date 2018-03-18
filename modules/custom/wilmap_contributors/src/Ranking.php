@@ -54,11 +54,12 @@ class Ranking
      */
     public function getUserContributions($uid)
     {
+
         // Get node revisions done by user
         $result = $this->database->query(
           'SELECT count(*) as total FROM {node_revision} WHERE revision_uid = :uid',
           [':uid' => $uid]
-        )->fetchField()[0];
+        )->fetchField();
 
         return (int) $result;
 
