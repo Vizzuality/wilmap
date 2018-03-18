@@ -10,7 +10,7 @@ use Drupal\Core\Database\Connection;
  * Provides a 'Active contributors' block.
  *
  * Drupal\Core\Block\BlockBase gives us a very useful set of basic functionality
- * for this configurable block. 
+ * for this configurable block.
  *
  * @Block(
  *   id = "ActiveContributors",
@@ -32,7 +32,7 @@ class ActiveContributors extends BlockBase {
 
     //Get the uids who has made a revision of the conuntry/region
     $connection = \Drupal::database();
-        
+
     $query = $connection->select('node_revision', 'e')
       ->fields('e', array('revision_uid'))
       ->distinct()
@@ -40,13 +40,18 @@ class ActiveContributors extends BlockBase {
       //the user must be active
       $query->join('users_field_data','b','e.revision_uid = b.uid AND b.status = :status', array(':status' => 1));
       //the user must have the rol of contributor
-      $query->join('user__roles','c','e.revision_uid = c.entity_id AND c.roles_target_id = :rol_user', array(':rol_user' => 'contributors')); 
-         
+      $query->join('user__roles','c','e.revision_uid = c.entity_id AND c.roles_target_id = :rol_user', array(':rol_user' => 'contributors'));
+
     $revision_uids = $query->execute()->fetchAll();
-    $keys = array_keys($revision_uids);
-    
-    $contributors = User::loadMultiple($keys);
-    
+    $r_uids = array();
+
+    foreach ($revision_uids as $key => $value)
+    {
+      array_push($r_uids, $value -> revision_uid);
+    }
+
+    $contributors = User::loadMultiple($r_uids);
+
     if($contributors){
       // Render each user using 'avatar' display
       return user_view_multiple($contributors, 'teaser');
@@ -55,7 +60,7 @@ class ActiveContributors extends BlockBase {
         '#markup' => $this->t('<div class="view-empty">No results in this category</div>'),
       );
     }
-    
+
     //        // Render each user using 'teaser' display
     //        $items = [];
     //        foreach ($contributors as $key => $contributor) {
