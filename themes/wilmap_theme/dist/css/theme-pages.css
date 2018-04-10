@@ -8028,5 +8028,36 @@ body.user-logged-in .node-preview-container {
   body.user-logged-in .node-preview-container .form-item,
   body.user-logged-in .node-preview-container .site-btn {
     display: none; }
+body.user-logged-in .node--unpublished {
+  background: transparent; }
+  body.user-logged-in .node--unpublished span.field--name-title {
+    border: 1px solid red;
+    font-size: 91px;
+    font-size: 5.6875rem;
+    line-height: 91px;
+    line-height: 5.6875rem;
+    font-weight: 200;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    text-transform: none;
+    color: #222; }
+    @media only screen and (min-width: 900px) and (max-width: 1124px) {
+      body.user-logged-in .node--unpublished span.field--name-title {
+        font-size: 60.66667px;
+        font-size: 3.79167rem;
+        line-height: 60.66667px;
+        line-height: 3.79167rem;
+        font-weight: 200;
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
+    @media only screen and (max-width: 899px) {
+      body.user-logged-in .node--unpublished span.field--name-title {
+        font-size: 45.5px;
+        font-size: 2.84375rem;
+        line-height: 45.5px;
+        line-height: 2.84375rem;
+        font-weight: 200;
+        font-family: "Raleway", "Mplus 1p", sans-serif; } }
 
 /*# sourceMappingURL=theme-pages.css.map */

@@ -44,7 +44,8 @@ $image-height:        $dp * 20;
       width: columns(13);
     }
 
-    span.quickedit-field {
+    span.quickedit-field,
+    span.field--name-title.field--type-string {
       @include text-secondary-header();
     }
 
@@ -158,7 +159,8 @@ body.node-about {
 
 .updates-report {
   .block-page-title-block {
-    .page-title {
+    .page-title,
+    .page-title span.field--name-title {
       @include padding($gutter * 5 null null null);
 
       .secondary-page-title {

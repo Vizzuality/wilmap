@@ -1,0 +1,89 @@
+// ============================================================================
+//
+// COMPONENTS: CONTRIBUTOR ADMIN TOOLBAR
+//
+// ============================================================================
+
+.toolbar-item.is-active {
+  position: relative;
+  background-image: none !important;
+}
+
+.toolbar-item.is-active::after {
+  content: '';
+  display: block;
+  height: 5px;
+  width: 100%;
+  background-color: #b3001e;
+  bottom: 0px;
+  position: absolute;
+  left: 0;
+}
+
+.toolbar .toolbar-bar {
+  background-color: #222 !important;
+  box-shadow: none !important;
+  color: #fff !important;
+  font-size: 15px !important;
+  letter-spacing: 0.9px !important;
+  text-transform: uppercase !important;
+  padding-left: 40px;
+}
+
+.toolbar-tab a {
+  font-weight: 100;
+}
+
+toolbar-icon:first-of-type {
+  padding-left: 2.75em;
+}
+
+.toolbar-icon {
+  padding-left: 1.3333em !important;
+  line-height: 1.5 !important;
+}
+
+.toolbar-icon::before {
+  display: none !important;
+}
+
+.toolbar-lining {
+  padding-left: 40px;
+  background-color: #fff;
+}
+
+.toolbar-tray-vertical > .toolbar-lining {
+  padding-top: 30px !important;
+}
+
+.toolbar-toggle-orientation {
+  background-color: #fff !important;
+}
+
+.toolbar .toolbar-tray-vertical {
+  background-color: #fff;
+  box-shadow: none !important;
+  border-right: 5px #e3ded3 solid !important;
+}
+
+.menu-item {
+  border-top: 0px !important;
+  border-bottom: 0px !important;
+}
+
+.menu-item--active {
+  font-size: 15px !important;
+  letter-spacing: 0.5px !important;
+  font-weight: 800;
+  color: #b3001e !important;
+  font-family: 'Raleway', sans-serif !important;
+}
+
+.menu-item--collapsed > .toolbar-menu a{
+  font-size: 12px !important;
+  font-weight: 400 !important;
+}
+
+.menu-item--collapsed > .toolbar-menu{
+  padding-left: 20px;
+}
