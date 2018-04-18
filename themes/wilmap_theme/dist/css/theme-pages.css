@@ -7282,9 +7282,9 @@ body.page-node-type-region #content-content {
           height: 25px;
           width: 100%; }
         @media only screen and (min-width: 900px) and (max-width: 1124px) {
-          body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content .views-row:nth-child(4n+1), body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content .views-row:nth-child(4n+1),
-          body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content .views-row:nth-child(4n+1),
-          body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content .views-row:nth-child(4n+1) {
+          body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content .views-row:nth-child(3n+1), body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content .views-row:nth-child(3n+1),
+          body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content .views-row:nth-child(3n+1),
+          body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content .views-row:nth-child(3n+1) {
             margin-left: 1.77778% !important; } }
         @media only screen and (min-width: 900px) and (max-width: 1124px) {
           body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content .views-row:nth-child(3n+1), body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content .views-row:nth-child(3n+1),
@@ -7526,9 +7526,9 @@ body.page-node-type-region #content-content {
             font-family: "Raleway", "Mplus 1p", sans-serif;
             text-decoration: none;
             color: #968f7e; }
-        body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content .views-row:nth-child(4n+1), body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content .views-row:nth-child(4n+1),
-        body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content .views-row:nth-child(4n+1),
-        body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content .views-row:nth-child(4n+1) {
+        body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content .views-row:nth-child(3n+1), body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content .views-row:nth-child(3n+1),
+        body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content .views-row:nth-child(3n+1),
+        body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content .views-row:nth-child(3n+1) {
           margin-left: 0; }
       body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content .views-row, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-content .views-row,
       body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-content .views-row,
@@ -7635,9 +7635,9 @@ body.page-node-type-region #content-content {
             height: 25px;
             width: 100%; }
           @media only screen and (min-width: 900px) and (max-width: 1124px) {
-            body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-footer .content .views-row:nth-child(4n+1), body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-footer .content .views-row:nth-child(4n+1),
-            body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-footer .content .views-row:nth-child(4n+1),
-            body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-footer .content .views-row:nth-child(4n+1) {
+            body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-footer .content .views-row:nth-child(3n+1), body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-footer .content .views-row:nth-child(3n+1),
+            body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-footer .content .views-row:nth-child(3n+1),
+            body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-footer .content .views-row:nth-child(3n+1) {
               margin-left: 1.77778% !important; } }
           @media only screen and (min-width: 900px) and (max-width: 1124px) {
             body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-footer .content .views-row:nth-child(3n+1), body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-footer .content .views-row:nth-child(3n+1),
@@ -7879,9 +7879,9 @@ body.page-node-type-region #content-content {
               font-family: "Raleway", "Mplus 1p", sans-serif;
               text-decoration: none;
               color: #968f7e; }
-          body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-footer .content .views-row:nth-child(4n+1), body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-footer .content .views-row:nth-child(4n+1),
-          body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-footer .content .views-row:nth-child(4n+1),
-          body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-footer .content .views-row:nth-child(4n+1) {
+          body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-footer .content .views-row:nth-child(3n+1), body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-footer .content .views-row:nth-child(3n+1),
+          body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-footer .content .views-row:nth-child(3n+1),
+          body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-footer .content .views-row:nth-child(3n+1) {
             margin-left: 0; }
         body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-footer .content .views-row, body.page-node-type-country #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-region-contributors .view-footer .content .views-row,
         body.page-node-type-region #content-content section:not(.block-system-main-block).block-views-blockcontributors-block-country-contributors .view-footer .content .views-row,

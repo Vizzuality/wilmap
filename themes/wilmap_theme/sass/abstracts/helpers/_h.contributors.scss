@@ -283,6 +283,12 @@
   // Layouts
   // Grid
   @if $target == grid {
-    @include contributors-grid($structure, '4n+1');
+    $break: '4n+1';
+
+    @if $break-margin {
+      $break: $break-margin;
+    }
+
+    @include contributors-grid($structure, $break);
   }
 }

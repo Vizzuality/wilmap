@@ -158,7 +158,7 @@ body.page-node-type-region {
       &.block-views-blockcontributors-block-region-contributors {
         .view-content {
           @include column(14, false, collapse, false);
-          @include contributors(grid, '.views-row');
+          @include contributors(grid, '.views-row', '3n+1');
           display: block;
           clear: both;
 
@@ -177,7 +177,7 @@ body.page-node-type-region {
 
           .content {
             @include column(14, false, collapse, false);
-            @include contributors(grid, '.views-row');
+            @include contributors(grid, '.views-row', '3n+1');
             display: block;
             clear: both;
 

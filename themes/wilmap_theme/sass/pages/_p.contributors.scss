@@ -115,7 +115,7 @@
   // Content
   .view-content {
     @include column(14, false, collapse, false);
-    @include contributors(grid, '.views-row');
+    @include contributors(grid, '.views-row', '4n+1');
     display: block;
     clear: both;
   }

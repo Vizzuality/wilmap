@@ -297,7 +297,7 @@ console.log(color, currVal, minVal, maxVal, steps);
 
         App.Application.Maps.Functions.generateLayerModal = function() {
           var DOM = 'modal-maplayer';
-          var API = '/api/layers';
+          var API = '/api/layers?_format=json';
           var output_layers = '';
           var output = '';
           var layer_in_url = (window.location.href.indexOf('layerid=') > -1) ? App.Utils.getUrlVar('layerid') : false;
@@ -715,7 +715,7 @@ console.log(color, currVal, minVal, maxVal, steps);
         };
 
         App.Application.Maps.Functions.loadLayer = function(layer, redraw) {
-          var API_LAYER = '/api/layer/' + layer + '/filters';
+          var API_LAYER = '/api/layer/' + layer + '/filters?_format=json';
           var DOM_LAYERS = '#modal-maplayer';
 
           var redraw = typeof redraw !== 'undefined' ? redraw : false;
@@ -766,7 +766,7 @@ console.log(color, currVal, minVal, maxVal, steps);
 
         App.Application.Maps.Functions.applyLayerOverMap = function() {
           var query = (App.Application.Maps.Config.curr_layer_active !== null) ? App.Application.Maps.Config.curr_layer_active.query : '';
-          var API_QUERY = '/api/countries/entries/count?' + query;
+          var API_QUERY = '/api/countries/entries/count?_format=json&' + query;
 
 console.log(">>>>>>>");
 console.log(App.Application.Maps);
@@ -993,7 +993,7 @@ console.log(App.Application.Maps);
         var dom_footer = '.site-footer';
         var dom_header = '.site-header';
         var dom_search = 'body.node-map .site-header .search-block-form';
-        var api_countries = '/api/map/browse';
+        var api_countries = '/api/map/browse?_format=json';
         var offset_sidebar = 116;
 
 
@@ -1187,7 +1187,7 @@ console.log('first_layer_load -> ' + first_layer_load);
       countryListMap: function() {
         var dom = 'body.node-map .ui-autocomplete';
         var dom_search = 'body.node-map .site-header .search-block-form';
-        var api = '/api/map/browse';
+        var api = '/api/map/browse?_format=json';
 
         // Init
         App.Application.ListMaps = {};
@@ -1922,7 +1922,7 @@ console.log('first_layer_load -> ' + first_layer_load);
         var dom_contentsections =  dom_content + ' > section';
         var dom_search_in_explore =  dom_content + ' .metadata .site-btn';
         var nid = $('.node-id').text();
-        var api_section_list = '/api/section';
+        var api_section_list = '/api/section?_format=json';
         var node_type = $(dom).hasClass('page-node-type-region')?'region':'country';
         var api_section = '/api/' + node_type + '-entries/' + node_type + '/' + nid + '/section/';
         var isPhone = (App.Utils.isMobile.Phone() || App.Utils.isMobile.Phone( 'desktop' ));
