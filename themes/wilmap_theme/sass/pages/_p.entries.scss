@@ -632,7 +632,7 @@ article.node--type-entry.node--view-mode-full {
 
     .field--name-field-contributors {
       @include trim();
-      @include column(7);
+      @include column(14);
       margin-left: 0;
       // @include fancytiles(2,2,2);
     }
@@ -647,7 +647,7 @@ article.node--type-entry.node--view-mode-full {
 
     .field--name-field-external-link {
       @include trim();
-      @include column(14);
+      @include column(7);
       @include entry--external-link();
       // @include fancytiles(2,2,2);
       text-align: right;
@@ -660,10 +660,14 @@ article.node--type-entry.node--view-mode-full {
       }
     }
 
-    &.--with-contributors {
-      .field--name-field-external-link {
-        @include column(7, false, collapse, false);
-      }
+    .field--name-field-date-published {
+      @include font($normal, 1.2, $semibold, $body-font);
+      @include column(7);
+      @include trim();
+      text-align: left;
+      padding-top: 8px;
+      color: $fourth-color;
+      margin-top: 4px;
     }
   }
 
