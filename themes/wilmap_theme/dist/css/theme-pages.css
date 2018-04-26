@@ -2189,7 +2189,41 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
 .block-views-blockentries-block-1 .node .field--name-field-date-published {
   margin-bottom: 5px;
 }
-.block-views-blockentries-block-1 .node .field--name-field-tax-section,
+.block-views-blockentries-block-1 .node .field--name-field-tax-section {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 27.2px;
+  line-height: 1.7rem;
+  font-weight: 400;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
+  margin-bottom: 5px;
+  color: #968f7e;
+  text-decoration: none;
+}
+.block-views-blockentries-block-1 .node .field--name-field-tax-section a {
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 23.8px;
+  line-height: 1.4875rem;
+  font-weight: 400;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
+  color: #968f7e;
+  text-decoration: none;
+}
+.block-views-blockentries-block-1 .node .field--name-field-tax-section a:hover {
+  text-decoration: underline;
+}
+.block-views-blockentries-block-1 .node .field--name-field-tax-document-type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
 .block-views-blockentries-block-1 .node .field--name-field-tax-document-type {
   font-size: 16px;
   font-size: 1rem;
@@ -2201,7 +2235,6 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
   color: #968f7e;
   text-decoration: none;
 }
-.block-views-blockentries-block-1 .node .field--name-field-tax-section a,
 .block-views-blockentries-block-1 .node .field--name-field-tax-document-type a {
   font-size: 14px;
   font-size: 0.875rem;
@@ -2212,9 +2245,14 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
   color: #968f7e;
   text-decoration: none;
 }
-.block-views-blockentries-block-1 .node .field--name-field-tax-section a:hover,
 .block-views-blockentries-block-1 .node .field--name-field-tax-document-type a:hover {
   text-decoration: underline;
+}
+.block-views-blockentries-block-1 .node .field--name-field-tax-document-type .field__item:not(:last-child) {
+  margin-right: 5px;
+}
+.block-views-blockentries-block-1 .node .field--name-field-tax-document-type .field__item:not(:last-child)::after {
+  content: ", ";
 }
 .block-views-blockentries-block-1 .node .locations .field--name-field-location-entry,
 .block-views-blockentries-block-1 .node .locations .field--name-field-region.field--type-entity-reference,
@@ -2476,7 +2514,41 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
 .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-date-published {
   margin-bottom: 5px;
 }
-.block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section,
+.block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 27.2px;
+  line-height: 1.7rem;
+  font-weight: 400;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
+  margin-bottom: 5px;
+  color: #968f7e;
+  text-decoration: none;
+}
+.block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section a {
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 23.8px;
+  line-height: 1.4875rem;
+  font-weight: 400;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
+  color: #968f7e;
+  text-decoration: none;
+}
+.block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section a:hover {
+  text-decoration: underline;
+}
+.block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-document-type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
 .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-document-type {
   font-size: 16px;
   font-size: 1rem;
@@ -2488,7 +2560,6 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
   color: #968f7e;
   text-decoration: none;
 }
-.block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section a,
 .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-document-type a {
   font-size: 14px;
   font-size: 0.875rem;
@@ -2499,9 +2570,14 @@ article.node--type-topics.node--view-mode-full .field--name-field-related-topics
   color: #968f7e;
   text-decoration: none;
 }
-.block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-section a:hover,
 .block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-document-type a:hover {
   text-decoration: underline;
+}
+.block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-document-type .field__item:not(:last-child) {
+  margin-right: 5px;
+}
+.block-views-blockentries-block-1 .view-highlighted-entries .node .field--name-field-tax-document-type .field__item:not(:last-child)::after {
+  content: ", ";
 }
 .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-location-entry,
 .block-views-blockentries-block-1 .view-highlighted-entries .node .locations .field--name-field-region.field--type-entity-reference,
@@ -4848,9 +4924,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
 .block-views-blocklist-entries-block-1 .node .field--name-field-date-published, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-date-published {
   margin-bottom: 5px;
 }
-.block-views-blocklist-entries-block-1 .node .field--name-field-tax-section,
-.block-views-blocklist-entries-block-1 .node .field--name-field-tax-document-type, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-section,
-.block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-document-type {
+.block-views-blocklist-entries-block-1 .node .field--name-field-tax-section, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-section {
   font-size: 16px;
   font-size: 1rem;
   line-height: 27.2px;
@@ -4861,9 +4935,7 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
   color: #968f7e;
   text-decoration: none;
 }
-.block-views-blocklist-entries-block-1 .node .field--name-field-tax-section a,
-.block-views-blocklist-entries-block-1 .node .field--name-field-tax-document-type a, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-section a,
-.block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-document-type a {
+.block-views-blocklist-entries-block-1 .node .field--name-field-tax-section a, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-section a {
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 23.8px;
@@ -4873,10 +4945,49 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
   color: #968f7e;
   text-decoration: none;
 }
-.block-views-blocklist-entries-block-1 .node .field--name-field-tax-section a:hover,
-.block-views-blocklist-entries-block-1 .node .field--name-field-tax-document-type a:hover, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-section a:hover,
-.block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-document-type a:hover {
+.block-views-blocklist-entries-block-1 .node .field--name-field-tax-section a:hover, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-section a:hover {
   text-decoration: underline;
+}
+.block-views-blocklist-entries-block-1 .node .field--name-field-tax-document-type, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-document-type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.block-views-blocklist-entries-block-1 .node .field--name-field-tax-document-type, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-document-type {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 27.2px;
+  line-height: 1.7rem;
+  font-weight: 400;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
+  margin-bottom: 5px;
+  color: #968f7e;
+  text-decoration: none;
+}
+.block-views-blocklist-entries-block-1 .node .field--name-field-tax-document-type a, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-document-type a {
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 23.8px;
+  line-height: 1.4875rem;
+  font-weight: 400;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
+  color: #968f7e;
+  text-decoration: none;
+}
+.block-views-blocklist-entries-block-1 .node .field--name-field-tax-document-type a:hover, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-document-type a:hover {
+  text-decoration: underline;
+}
+.block-views-blocklist-entries-block-1 .node .field--name-field-tax-document-type .field__item:not(:last-child), .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-document-type .field__item:not(:last-child) {
+  margin-right: 5px;
+}
+.block-views-blocklist-entries-block-1 .node .field--name-field-tax-document-type .field__item:not(:last-child)::after, .block-views-blocklist-entries-block-1._switch-on .node .field--name-field-tax-document-type .field__item:not(:last-child)::after {
+  content: ", ";
 }
 .block-views-blocklist-entries-block-1 .node .locations .field--name-field-location-entry,
 .block-views-blocklist-entries-block-1 .node .locations .field--name-field-region.field--type-entity-reference,
@@ -5136,7 +5247,41 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
 .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-date-published {
   margin-bottom: 5px;
 }
-.block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-section,
+.block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-section {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 27.2px;
+  line-height: 1.7rem;
+  font-weight: 400;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
+  margin-bottom: 5px;
+  color: #968f7e;
+  text-decoration: none;
+}
+.block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-section a {
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 23.8px;
+  line-height: 1.4875rem;
+  font-weight: 400;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
+  color: #968f7e;
+  text-decoration: none;
+}
+.block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-section a:hover {
+  text-decoration: underline;
+}
+.block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-document-type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
 .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-document-type {
   font-size: 16px;
   font-size: 1rem;
@@ -5148,7 +5293,6 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
   color: #968f7e;
   text-decoration: none;
 }
-.block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-section a,
 .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-document-type a {
   font-size: 14px;
   font-size: 0.875rem;
@@ -5159,9 +5303,14 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
   color: #968f7e;
   text-decoration: none;
 }
-.block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-section a:hover,
 .block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-document-type a:hover {
   text-decoration: underline;
+}
+.block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-document-type .field__item:not(:last-child) {
+  margin-right: 5px;
+}
+.block-views-blocklist-entries-block-1._switch-off .node .field--name-field-tax-document-type .field__item:not(:last-child)::after {
+  content: ", ";
 }
 .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-location-entry,
 .block-views-blocklist-entries-block-1._switch-off .node .locations .field--name-field-region.field--type-entity-reference,
@@ -6098,12 +6247,44 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
     left: 0;
   }
 }
-.node-top .field--name-field-tax-section,
+.node-top .field--name-field-tax-section {
+  margin: 0;
+  padding: 0;
+}
+.node-top .field--name-field-tax-section {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 27.2px;
+  line-height: 1.7rem;
+  font-weight: 400;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
+  margin-bottom: 5px;
+  color: #968f7e;
+  text-decoration: none;
+}
+.node-top .field--name-field-tax-section a {
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 23.8px;
+  line-height: 1.4875rem;
+  font-weight: 400;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
+  color: #968f7e;
+  text-decoration: none;
+}
+.node-top .field--name-field-tax-section a:hover {
+  text-decoration: underline;
+}
+.node-top .field--name-field-tax-section .field__label {
+  display: none;
+}
+.node-top .field--name-field-tax-section::after {
+  display: none;
+}
 .node-top .field--name-field-tax-document-type {
   margin: 0;
   padding: 0;
 }
-.node-top .field--name-field-tax-section,
 .node-top .field--name-field-tax-document-type {
   font-size: 16px;
   font-size: 1rem;
@@ -6115,7 +6296,6 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
   color: #968f7e;
   text-decoration: none;
 }
-.node-top .field--name-field-tax-section a,
 .node-top .field--name-field-tax-document-type a {
   font-size: 14px;
   font-size: 0.875rem;
@@ -6126,17 +6306,28 @@ article.node--type-news.node--view-mode-full .field--name-field-related-news .fi
   color: #968f7e;
   text-decoration: none;
 }
-.node-top .field--name-field-tax-section a:hover,
 .node-top .field--name-field-tax-document-type a:hover {
   text-decoration: underline;
 }
-.node-top .field--name-field-tax-section .field__label,
 .node-top .field--name-field-tax-document-type .field__label {
   display: none;
 }
-.node-top .field--name-field-tax-section::after,
-.node-top .field--name-field-tax-document-type::after {
-  display: none;
+.node-top .field--name-field-tax-document-type .field__item:not(:last-child) {
+  margin-right: 5px;
+}
+.node-top .field--name-field-tax-document-type .field__item:not(:last-child)::after {
+  content: ", ";
+}
+.node-top .field--name-field-tax-document-type .field__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .node-top .field--name-field-location-entry,
 .node-top .field--name-field-region.field--type-entity-reference {
@@ -6523,7 +6714,41 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
 article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-date-published {
   margin-bottom: 5px;
 }
-article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-section,
+article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-section {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 27.2px;
+  line-height: 1.7rem;
+  font-weight: 400;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
+  margin-bottom: 5px;
+  color: #968f7e;
+  text-decoration: none;
+}
+article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-section a {
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 23.8px;
+  line-height: 1.4875rem;
+  font-weight: 400;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
+  color: #968f7e;
+  text-decoration: none;
+}
+article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-section a:hover {
+  text-decoration: underline;
+}
+article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-document-type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
 article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-document-type {
   font-size: 16px;
   font-size: 1rem;
@@ -6535,7 +6760,6 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
   color: #968f7e;
   text-decoration: none;
 }
-article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-section a,
 article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-document-type a {
   font-size: 14px;
   font-size: 0.875rem;
@@ -6546,9 +6770,14 @@ article.node--type-entry.node--view-mode-full .field--name-field-related-entries
   color: #968f7e;
   text-decoration: none;
 }
-article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-section a:hover,
 article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-document-type a:hover {
   text-decoration: underline;
+}
+article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-document-type .field__item:not(:last-child) {
+  margin-right: 5px;
+}
+article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .field--name-field-tax-document-type .field__item:not(:last-child)::after {
+  content: ", ";
 }
 article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-location-entry,
 article.node--type-entry.node--view-mode-full .field--name-field-related-entries .field__items .node .locations .field--name-field-region.field--type-entity-reference,
@@ -7936,8 +8165,53 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
   }
 }
 body.page-node-type-country #content-content section:not(.block-system-main-block) .view-content > h3,
+body.page-node-type-region #content-content section:not(.block-system-main-block) .view-content > h3 {
+  font-size: 30px;
+  font-size: 1.875rem;
+  line-height: 30px;
+  line-height: 1.875rem;
+  font-weight: 200;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
+  padding: 0;
+  margin: 0;
+  display: block;
+  text-decoration: none;
+  text-transform: none;
+  color: rgba(34, 34, 34, 0.8);
+  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+@media only screen and (min-width: 900px) and (max-width: 1124px) {
+  body.page-node-type-country #content-content section:not(.block-system-main-block) .view-content > h3,
+  body.page-node-type-region #content-content section:not(.block-system-main-block) .view-content > h3 {
+    font-size: 20px;
+    font-size: 1.25rem;
+    line-height: 20px;
+    line-height: 1.25rem;
+    font-weight: 200;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
+  }
+}
+@media only screen and (max-width: 899px) {
+  body.page-node-type-country #content-content section:not(.block-system-main-block) .view-content > h3,
+  body.page-node-type-region #content-content section:not(.block-system-main-block) .view-content > h3 {
+    font-size: 45.5px;
+    font-size: 2.84375rem;
+    line-height: 45.5px;
+    line-height: 2.84375rem;
+    font-weight: 200;
+    font-family: "Raleway", "Mplus 1p", sans-serif;
+  }
+}
 body.page-node-type-country #content-content section:not(.block-system-main-block) .view-content > h3 a,
-body.page-node-type-region #content-content section:not(.block-system-main-block) .view-content > h3,
 body.page-node-type-region #content-content section:not(.block-system-main-block) .view-content > h3 a {
   font-size: 30px;
   font-size: 1.875rem;
@@ -7951,12 +8225,9 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
   text-decoration: none;
   text-transform: none;
   color: rgba(34, 34, 34, 0.8);
-  margin-bottom: 10px;
 }
 @media only screen and (min-width: 900px) and (max-width: 1124px) {
-  body.page-node-type-country #content-content section:not(.block-system-main-block) .view-content > h3,
   body.page-node-type-country #content-content section:not(.block-system-main-block) .view-content > h3 a,
-  body.page-node-type-region #content-content section:not(.block-system-main-block) .view-content > h3,
   body.page-node-type-region #content-content section:not(.block-system-main-block) .view-content > h3 a {
     font-size: 20px;
     font-size: 1.25rem;
@@ -7967,9 +8238,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
   }
 }
 @media only screen and (max-width: 899px) {
-  body.page-node-type-country #content-content section:not(.block-system-main-block) .view-content > h3,
   body.page-node-type-country #content-content section:not(.block-system-main-block) .view-content > h3 a,
-  body.page-node-type-region #content-content section:not(.block-system-main-block) .view-content > h3,
   body.page-node-type-region #content-content section:not(.block-system-main-block) .view-content > h3 a {
     font-size: 45.5px;
     font-size: 2.84375rem;
@@ -7980,13 +8249,15 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
   }
 }
 @media only screen and (max-width: 899px) {
-  body.page-node-type-country #content-content section:not(.block-system-main-block) .view-content > h3,
   body.page-node-type-country #content-content section:not(.block-system-main-block) .view-content > h3 a,
-  body.page-node-type-region #content-content section:not(.block-system-main-block) .view-content > h3,
   body.page-node-type-region #content-content section:not(.block-system-main-block) .view-content > h3 a {
     font-size: 28px;
     font-size: 1.75rem;
   }
+}
+body.page-node-type-country #content-content section:not(.block-system-main-block) .view-content > h3 a:not(:first-child),
+body.page-node-type-region #content-content section:not(.block-system-main-block) .view-content > h3 a:not(:first-child) {
+  margin-left: 5px;
 }
 body.page-node-type-country #content-content section:not(.block-system-main-block) .node,
 body.page-node-type-region #content-content section:not(.block-system-main-block) .node {
@@ -8101,9 +8372,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
   margin-bottom: 5px;
 }
 body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section,
-body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type,
-body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section,
-body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type {
+body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section {
   font-size: 16px;
   font-size: 1rem;
   line-height: 27.2px;
@@ -8115,9 +8384,7 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
   text-decoration: none;
 }
 body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section a,
-body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type a,
-body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section a,
-body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type a {
+body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section a {
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 23.8px;
@@ -8128,10 +8395,55 @@ body.page-node-type-region #content-content section:not(.block-system-main-block
   text-decoration: none;
 }
 body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section a:hover,
+body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section a:hover {
+  text-decoration: underline;
+}
+body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type,
+body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type,
+body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 27.2px;
+  line-height: 1.7rem;
+  font-weight: 400;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
+  margin-bottom: 5px;
+  color: #968f7e;
+  text-decoration: none;
+}
+body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type a,
+body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type a {
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 23.8px;
+  line-height: 1.4875rem;
+  font-weight: 400;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
+  color: #968f7e;
+  text-decoration: none;
+}
 body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type a:hover,
-body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-section a:hover,
 body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type a:hover {
   text-decoration: underline;
+}
+body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type .field__item:not(:last-child),
+body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type .field__item:not(:last-child) {
+  margin-right: 5px;
+}
+body.page-node-type-country #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type .field__item:not(:last-child)::after,
+body.page-node-type-region #content-content section:not(.block-system-main-block) .node .field--name-field-tax-document-type .field__item:not(:last-child)::after {
+  content: ", ";
 }
 body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-location-entry,
 body.page-node-type-country #content-content section:not(.block-system-main-block) .node .locations .field--name-field-region.field--type-entity-reference,

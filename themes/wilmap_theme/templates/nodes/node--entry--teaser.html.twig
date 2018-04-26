@@ -94,7 +94,13 @@
       <a href="{{ url }}" rel="bookmark">{{ label }}</a>
     </h2>
     {{ content.field_subtitle }}
-    {{ content.field_date_published }}
+    <div class="field field--name-field-date-published field--type-datetime field--label-hidden field__item">
+      {% if node.field_show_only_year_for_date_pu.value == false %}
+        <time class="datetime">{{ node.field_date_published.value | date("F d, Y") }}</time>
+      {% else %}
+        <time class="datetime">{{ node.field_date_published.value | date("Y") }}</time>
+      {% endif %}
+    </div>
     {{ content.field_body_entry }}
   </div>
 </article>

@@ -209,9 +209,29 @@ $entry-gradient-dir:     180deg;
         @include entry--date();
       }
 
-      .field--name-field-tax-section,
-      .field--name-field-tax-document-type {
+      .field--name-field-tax-section {
         @include entry--taxonomy();
+      }
+
+      .field--name-field-tax-document-type {
+        //@include entry--taxonomy();
+
+        .field__items {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+        }
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .field__item:not(:last-child) {
+          margin-right: 5px;
+          &::after {
+            content: ", ";
+          }
+        }
       }
 
       .locations {

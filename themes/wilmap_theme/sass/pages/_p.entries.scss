@@ -578,8 +578,7 @@
     @include position(absolute, -$dp null null 0);
   }
 
-  .field--name-field-tax-section,
-  .field--name-field-tax-document-type {
+  .field--name-field-tax-section {
     @include entry--taxonomy();
     @include trim();
 
@@ -589,6 +588,28 @@
 
     &::after {
       display: none;
+    }
+  }
+
+  .field--name-field-tax-document-type {
+    @include entry--taxonomy();
+    @include trim();
+
+    .field__label {
+      display: none;
+    }
+
+    .field__item:not(:last-child) {
+      margin-right: 5px;
+      &::after {
+        content: ", ";
+      }
+    }
+
+    .field__items {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
     }
   }
 
