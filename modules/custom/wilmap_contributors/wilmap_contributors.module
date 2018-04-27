@@ -224,7 +224,9 @@ function wilmap_contributors_node_grants(AccountInterface $account, $op)
 
         // Give contributor all her countries grants/keys
         foreach ($user->field_country->getValue() as $delta => $value) {
+          if (in_array('target_id', $value)) {
             $grants[WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM][] = $value['target_id'];
+          }
         }
 
         // Give contributor all her regions grants/keys
