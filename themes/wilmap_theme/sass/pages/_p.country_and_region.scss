@@ -131,6 +131,7 @@ body.page-node-type-region {
           @include text-secondary-header(rgba($first-color, 0.8), 30px);
           @include margin(null null $dp*2 null);
 
+          width: 100%;
           display: flex;
           justify-content: flex-start;
           align-items: center;
