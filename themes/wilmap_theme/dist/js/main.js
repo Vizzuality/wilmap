@@ -3154,7 +3154,7 @@ console.log('first_layer_load -> ' + first_layer_load);
         var url_to_share = window.location.href;
         var facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' + escape(url_to_share);
         var twitter_url = 'https://twitter.com/share?url=' + escape(url_to_share);
-        var url_to_embed = 'http://dev-wilmap.pantheonsite.io/widgets/map/' + ((url_to_share.indexOf('?') > -1) ? '?' + url_to_share.split('?')[1] : '');
+        var url_to_embed = 'https://wilmap.law.stanford.edu//widgets/map/' + ((url_to_share.indexOf('?') > -1) ? '?' + url_to_share.split('?')[1] : '');
         var embed_code = '<iframe width="600" height="400" src="'+ url_to_embed +'"></iframe>';
         var title_to_share = document.title;
 
@@ -3187,7 +3187,7 @@ console.log('first_layer_load -> ' + first_layer_load);
           output += '           <div class="tab-content">';
           output += '             <p>' + Drupal.t('Copy and Paste this code in your website in the HTML editor view.') + '</p>';
           output += '             <div id="share-textarea" class="copy-url field">';
-          // output += '               <textarea class="js-text-full text-full form-textarea input textarea"><iframe width="600" height="400" src="http://dev-wilmap.pantheonsite.io/widgets/map/?'+unescape(url_to_share.split('%3Fck')[1])+'"></iframe></textarea><br />';
+          // output += '               <textarea class="js-text-full text-full form-textarea input textarea"><iframe width="600" height="400" src="https://wilmap.law.stanford.edu//widgets/map/?'+unescape(url_to_share.split('%3Fck')[1])+'"></iframe></textarea><br />';
           output += '               <textarea class="js-text-full text-full form-textarea input textarea">'+ embed_code +'</textarea><br />';
           output += '               <a class="btn" href="#">COPY EMBED CODE</a>';
           output += '               <div class="result"></div>';
@@ -3211,7 +3211,7 @@ console.log('first_layer_load -> ' + first_layer_load);
             var url_to_share = window.location.href;
             var facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' + escape(url_to_share);
             var twitter_url = 'https://twitter.com/share?url=' + escape(url_to_share);
-            var url_to_embed = 'http://dev-wilmap.pantheonsite.io/widgets/map/' + ((url_to_share.indexOf('?') > -1) ? '?' + url_to_share.split('?')[1] : '');
+            var url_to_embed = 'https://wilmap.law.stanford.edu//widgets/map/' + ((url_to_share.indexOf('?') > -1) ? '?' + url_to_share.split('?')[1] : '');
             var embed_code = '<iframe width="600" height="400" src="'+ url_to_embed +'"></iframe>';
             var is_map = (App.Application.Maps.Config.wilmap === null) ? false : true;
 
@@ -3229,7 +3229,7 @@ console.log('first_layer_load -> ' + first_layer_load);
 
               facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' + escape(url_to_share);
               twitter_url = 'https://twitter.com/share?url=' + escape(url_to_share);
-              url_to_embed = 'http://dev-wilmap.pantheonsite.io/widgets/map/' + ((url_to_share.indexOf('?') > -1) ? '?' + url_to_share.split('?')[1] : '');
+              url_to_embed = 'https://wilmap.law.stanford.edu//widgets/map/' + ((url_to_share.indexOf('?') > -1) ? '?' + url_to_share.split('?')[1] : '');
               embed_code = '<iframe width="600" height="400" src="'+ url_to_embed +'"></iframe>';
 
               $(modal + ' .sharebutton.fb').attr('href', facebook_url);
