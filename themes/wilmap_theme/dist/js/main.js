@@ -319,17 +319,6 @@
     methods: {
 
       /**
-       * Beta
-       */
-      betaVersion: function() {
-        var runON = '.site-name';
-
-        if ($(runON).length > 0) {
-          $(runON).append('<span class="beta">Beta</span>');
-        }
-      },
-
-      /**
        * Contributor/s Field profiles
        */
       contributorFieldProfile: function() {
