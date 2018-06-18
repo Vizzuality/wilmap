@@ -11,9 +11,9 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Form\FormState;
 use Drupal\user\Entity\User;
+use Drupal\Core\Access\AccessResult;
 
-define('WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM',
-  'wilmap_contributors_to_country');
+define('WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM', 'wilmap_contributors_to_country');
 define('WILMAP_CONTRIBUTORS_TO_REGION_REALM', 'wilmap_contributors_to_region');
 define('WILMAP_CONTRIBUTORS_TO_TOPICS_REALM', 'wilmap_contributors_to_topic');
 define('WILMAP_CONTRIBUTORS_ADMIN_REALM', 'wilmap_admin');
@@ -188,6 +188,79 @@ function wilmap_contributors_node_access_records(NodeInterface $node)
     return $grants;
 }
 
+/**
+ * Implements hook__node_access().
+ *
+ * Now by default all contributors can edit all entry nodes.
+ * This hook determines if a contributor can edit or not by country.
+ */
+function wilmap_contributors_node_access(NodeInterface $node, $op, AccountInterface $account)
+{
+    $bundle = $node->bundle();
+    
+    $uri_array = explode('/', \Drupal::request()->getRequestUri());
+    $last_uri_param = array_pop($uri_array);
+    $is_edit_mode = ($last_uri_param == 'edit' || $op == 'update')?true:false;
+
+    // Entry
+    if ($bundle == 'entry' && $is_edit_mode) {
+      if ($node->hasField('field_location_entry')) {
+        $node_country = $node->get('field_location_entry')->getString();
+
+        $user = \Drupal::entityTypeManager()
+                ->getStorage('user')
+                ->load($account->id());
+
+        $allow_access = false;
+        
+        foreach ($user->field_country->getValue() as $delta => $value) {
+          if (in_array($node_country, $value)) {
+            $allow_access = true;
+          }
+        }
+
+        if (!$allow_access) {
+          return AccessResult::forbidden();
+        }
+      }
+    }
+}
+
+/**
+ * Implements hook_preprocess_views_view_field().
+ *
+ * Allow/Disallow edit action in admin.
+ */
+function wilmap_contributors_preprocess_views_view_field(&$variables) {
+    $view = $variables['view'];
+    $view_bundle = $view->id();
+
+    $user = \Drupal::entityTypeManager()
+    ->getStorage('user')
+    ->load(\Drupal::currentUser()->id());
+
+    // Scope workbench_recent_content view. 
+    if($view_bundle === 'workbench_recent_content') {
+        $node = \Drupal\node\Entity\Node::load($variables['row']->nid);
+        $node_bundle = $node->bundle();
+
+        // Entry node.
+        if ($variables['field']->field == 'edit_node' && $node_bundle === 'entry') {
+            $node_country = $node->get('field_location_entry')->getString();
+            $allow_access = false;
+
+            foreach ($user->field_country->getValue() as $delta => $value) {
+              if (in_array($node_country, $value)) {
+                $allow_access = true;
+              }
+            }
+
+            if (!$allow_access) {
+                $variables['output'] = "";
+            }
+        }
+    }
+}
 
 /**
  * Implements hook_node_grants().
@@ -225,7 +298,7 @@ function wilmap_contributors_node_grants(AccountInterface $account, $op)
         // Give contributor all her countries grants/keys
         foreach ($user->field_country->getValue() as $delta => $value) {
           if (in_array('target_id', $value)) {
-            $grants[WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM][] = $value['target_id'];
+              $grants[WILMAP_CONTRIBUTORS_TO_COUNTRY_REALM][] = $value['target_id'];
           }
         }
 
@@ -234,7 +307,7 @@ function wilmap_contributors_node_grants(AccountInterface $account, $op)
             if (in_array('target_id', $value)) {
                 $grants[WILMAP_CONTRIBUTORS_TO_REGION_REALM][] = $value['target_id'];
             }
-        }
+       } 
     }
 
     // If user has authenticated role give user Authenticated grant/key
@@ -285,8 +358,7 @@ function wilmap_contributors_entity_bundle_field_info_alter(
     if ($entity_type->id() == 'node' && $bundle === 'entry') {
         // Adds 'allowed_country' constraint to field_location_entry field in Entry
         if (isset($fields['field_location_entry'])) {
-            $fields['field_location_entry']->addConstraint('allowed_country',
-              []);
+            $fields['field_location_entry']->addConstraint('allowed_country', []);
         }
         // Adds 'allowed_region' constraint to field_region field in Entry
         if (isset($fields['field_region'])) {
@@ -415,19 +487,20 @@ function wilmap_contributors_node_presave(EntityInterface $node)
     // News, Entries
     if ($node->getType() == "news" || $node->getType() == "entry") {
 
+        $user_id = \Drupal::currentUser()->id();
+        $own = $node->getOwnerId();
+
         // Get all node Contributors
         $test = $node->field_contributors->getValue();
 
         // Adds author to field_contributors if not exist excluding uid=1, already has all permissions
-        if ($node->getOwnerId() != 1 && !array_search($node->getOwnerId(),
-            array_column($test, 'target_id'))) {
+        if ($user_id != 1 && !array_search($user_id, array_column($test, 'target_id'))) {
             // Add author with status not visible
             $node->field_contributors[] = [
-              'target_id' => $node->getOwnerId(),
+              'target_id' => $user_id,
               'status'    => 0
             ];
         }
-
     }
 }
 
