@@ -498,7 +498,7 @@ function wilmap_contributors_node_presave(EntityInterface $node)
             // Add author with status not visible
             $node->field_contributors[] = [
               'target_id' => $user_id,
-              'status'    => 0
+              'status'    => 1
             ];
         }
     }
