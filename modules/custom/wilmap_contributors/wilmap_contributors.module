@@ -462,12 +462,11 @@ function wilmap_contributors_user_login_submit(&$form, FormState $form_state)
  */
 function wilmap_contributors_preprocess_user(&$variables)
 {
-
     $account = $variables['user'];
 
     $ranking_service = \Drupal::service('wilmap_contributors.ranking');
-    $contributors = intval($ranking_service->getUserContributions($account->id()));
-    $ranking = intval($ranking_service->getUserRanking($account->id()));
+    $contributors = (int) $ranking_service->getUserContributions($account->id());
+    $ranking = (int) $ranking_service->getUserRanking($account->id());
 
     $variables['ranking'] = ($ranking < 10 && $ranking != 0) ? '0' . $ranking : $ranking;
     $variables['contributions'] = ($contributors < 10 && $contributors != 0) ? '0' . $contributors : $contributors;
@@ -493,7 +492,7 @@ function wilmap_contributors_node_presave(EntityInterface $node)
         $test = $node->field_contributors->getValue();
 
         // Adds author to field_contributors if not exist excluding uid=1, already has all permissions
-        if ($user_id != 1 && !array_search($user_id, array_column($test, 'target_id'))) {
+        if ($user_id != 1 && !in_array($user_id, array_column($test, 'target_id'), true)) {
             // Add author with status not visible
             $node->field_contributors[] = [
               'target_id' => $user_id,
