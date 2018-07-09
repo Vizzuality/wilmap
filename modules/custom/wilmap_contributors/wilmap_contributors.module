@@ -157,15 +157,14 @@ function wilmap_contributors_node_access_records(NodeInterface $node)
       'grant_delete' => 1
     );
 
-    //    Not needed, core checks owner permission, presumably in hook_node_access()
-//    // Add grant/key for owners with owner uid as gid
-//    $grants[] = array(
-//      'realm'        => WILMAP_CONTRIBUTORS_OWNER_REALM,
-//      'gid'          => $node->getOwnerId(),
-//      'grant_view'   => (int) $node->isPublished(),
-//      'grant_update' => 1,
-//      'grant_delete' => 1
-//    );
+    // Add grant/key for owners with owner uid as gid
+    $grants[] = array(
+      'realm'        => WILMAP_CONTRIBUTORS_OWNER_REALM,
+      'gid'          => $node->getOwnerId(),
+      'grant_view'   => 1,
+      'grant_update' => 1,
+      'grant_delete' => 1
+    );
 
     // Add grant/key for authenticated
     $grants[] = array(
