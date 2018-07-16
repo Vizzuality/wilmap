@@ -15,16 +15,16 @@ use Drupal\Core\Link;
  */
 function wilmap_entries_help($route_name, RouteMatchInterface $route_match)
 {
-    switch ($route_name) {
-        // Main module help for the wilmap_entries module.
-        case 'help.page.wilmap_entries':
-            $output = '';
-            $output .= '<h3>' . t('About') . '</h3>';
-            $output .= '<p>' . t('WILMap Entries functionality') . '</p>';
-            return $output;
+  switch ($route_name) {
+    // Main module help for the wilmap_entries module.
+    case 'help.page.wilmap_entries':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('WILMap Entries functionality') . '</p>';
+      return $output;
 
-        default:
-    }
+    default:
+  }
 }
 
 /**
@@ -34,23 +34,24 @@ function wilmap_entries_form_views_exposed_form_alter(
   &$form,
   \Drupal\Core\Form\FormStateInterface $form_state,
   $form_id
-) {
+)
+{
 
-    // Add 'Show in map' link to exposed form
-    if ($form['#id'] == 'views-exposed-form-list-entries-block-1') {
+  // Add 'Show in map' link to exposed form
+  if ($form['#id'] == 'views-exposed-form-list-entries-block-1') {
 
-        // Map page node id: 28185
-        $url = Url::fromRoute('entity.node.canonical', ['node' => 28185]);
+    // Map page node id: 28185
+    $url = Url::fromRoute('entity.node.canonical', ['node' => 28185]);
 
-        $project_link = Link::fromTextAndUrl(t('Show in map'), $url);
-        $project_link = $project_link->toRenderable();
-        $project_link['#attributes'] = array(
-          'class' => array('btn', 'button-map'),
-          'id'    => 'show-map'
-        );
+    $project_link = Link::fromTextAndUrl(t('Show in map'), $url);
+    $project_link = $project_link->toRenderable();
+    $project_link['#attributes'] = array(
+      'class' => array('btn', 'button-map'),
+      'id' => 'show-map'
+    );
 
-        $form['show_in_map'] = $project_link;
-    }
+    $form['show_in_map'] = $project_link;
+  }
 }
 
 /**
@@ -64,14 +65,64 @@ function wilmap_entries_form_views_exposed_form_alter(
 function wilmap_entries_field_views_data_alter(
   array &$data,
   FieldStorageConfigInterface $field_storage
-) {
-    if ($field_storage->getType() == 'entity_reference' && $field_storage->getSetting('target_type') == 'node') {
-        foreach ($data as $table_name => $table_data) {
-            foreach ($table_data as $field_name => $field_data) {
-                if (isset($field_data['filter']) && $field_name != 'delta') {
-                    $data[$table_name][$field_name]['filter']['id'] = 'node_index_nid';
-                }
-            }
+)
+{
+  if ($field_storage->getType() == 'entity_reference' && $field_storage->getSetting('target_type') == 'node') {
+    foreach ($data as $table_name => $table_data) {
+      foreach ($table_data as $field_name => $field_data) {
+        if (isset($field_data['filter']) && $field_name != 'delta') {
+          $data[$table_name][$field_name]['filter']['id'] = 'node_index_nid';
         }
+      }
     }
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function wilmap_entries_entity_presave(Drupal\Core\Entity\EntityInterface $entity)
+{
+  if ($entity->bundle() !== 'entry') {
+    return;
+  }
+
+  $externalLinkValue = $entity->get('field_external_link')->getValue();
+  $testValue = $externalLinkValue[0]['uri'];
+
+  if (preg_match('/(.*)\/\/perma-archives.org(.*)/', $testValue) === 1 || preg_match('/^http/', $testValue) === 0) {
+    return;
+  }
+
+  $config = \Drupal::config('wilmap_entries.adminsettings');
+  $permaccApiKey = $config->get('permacc_api_key');
+
+  if (empty($permaccApiKey)) {
+    return;
+  }
+
+  $client = \Drupal::httpClient();
+  $request = $client->post('https://api.perma.cc/v1/archives/?api_key=' . $permaccApiKey, [
+    'json' => [
+      'url' => $testValue
+    ]
+  ]);
+
+  $permaUrl = null;
+  if ($request->getStatusCode() < 300) {
+    $response = json_decode($request->getBody());
+
+    foreach ($response->captures as $capture) {
+      if ($capture->role === 'primary') {
+        $permaUrl = $capture->playback_url;
+        break;
+      }
+    }
+
+    if ($permaUrl !== null) {
+      $externalLinkValue[0]['uri'] = $permaUrl;
+      $entity->set('field_external_link', $externalLinkValue);
+    }
+  }
+
 }

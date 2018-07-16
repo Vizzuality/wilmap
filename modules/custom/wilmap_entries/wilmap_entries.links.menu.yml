@@ -1,0 +1,6 @@
+wilmap_entries.admin_settings_form:
+  title: 'WILMap entries configuration'
+  route_name: wilmap_entries.admin_settings_form
+  description: 'WILMap entries configuration'
+  parent: system.admin_config_system
+  weight: 99
