@@ -88,6 +88,10 @@ function wilmap_entries_entity_presave(Drupal\Core\Entity\EntityInterface $entit
   }
 
   $externalLinkValue = $entity->get('field_external_link')->getValue();
+  if (count($externalLinkValue) === 0) {
+    return;
+  }
+
   $testValue = $externalLinkValue[0]['uri'];
 
   if (preg_match('/(.*)\/\/perma-archives.org(.*)/', $testValue) === 1 || preg_match('/^http/', $testValue) === 0) {
@@ -126,3 +130,7 @@ function wilmap_entries_entity_presave(Drupal\Core\Entity\EntityInterface $entit
   }
 
 }
+
+//function wilmap_entries_form_node_entry_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+//    $foo = strtolower($form);
+//}

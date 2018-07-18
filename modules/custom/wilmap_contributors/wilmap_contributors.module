@@ -368,6 +368,15 @@ function wilmap_contributors_entity_bundle_field_info_alter(
 }
 
 /**
+ * Implements hook_entity_type_alter().
+ */
+function wilmap_contributors_entity_type_alter(array &$entity_types) {
+  $node = $entity_types['node'];
+
+  $node->addConstraint('requires_location_info', []);
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  */
 function wilmap_contributors_form_user_login_form_alter(
