@@ -130,7 +130,3 @@ function wilmap_entries_entity_presave(Drupal\Core\Entity\EntityInterface $entit
   }
 
 }
-
-//function wilmap_entries_form_node_entry_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-//    $foo = strtolower($form);
-//}
