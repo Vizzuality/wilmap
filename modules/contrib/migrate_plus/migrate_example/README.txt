@@ -65,7 +65,7 @@ read the files in the following order:
 5. BeerUser.php
 6. migrate_plus.migration.beer_node.yml
 7. BeerNode.php
-8. migrate_plus.migration.beer_comment.yml
+8. beer_comment.yml
 9. BeerComment.php
 
 RUNNING THE MIGRATIONS

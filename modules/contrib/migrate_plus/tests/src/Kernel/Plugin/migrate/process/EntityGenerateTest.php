@@ -58,9 +58,9 @@ class EntityGenerateTest extends KernelTestBase implements MigrateMessageInterfa
   protected $vocabulary = 'fruit';
 
   /**
-   * @var \Drupal\migrate\Plugin\MigrationPluginManager $migrationManager
-   *
    * The migration plugin manager.
+   *
+   * @var \Drupal\migrate\Plugin\MigrationPluginManager
    */
   protected $migrationPluginManager;
 

@@ -75,7 +75,7 @@ class EntityGenerate extends EntityLookup {
    * This is intended to be extended by implementing classes to provide for more
    * dynamic default values, rather than just static ones.
    *
-   * @param $value
+   * @param mixed $value
    *   Primary value to use in creation of the entity.
    *
    * @return array

@@ -83,7 +83,7 @@ class MessageController extends ControllerBase {
   public function overview($migration_group, $migration) {
     $rows = [];
     $classes = static::getLogLevelClassMap();
-    /** @var MigrationInterface $migration */
+    /** @var \Drupal\migrate\Plugin\MigrationInterface $migration */
     $migration = $this->migrationPluginManager->createInstance($migration);
     $source_id_field_names = array_keys($migration->getSourcePlugin()->getIds());
     $column_number = 1;

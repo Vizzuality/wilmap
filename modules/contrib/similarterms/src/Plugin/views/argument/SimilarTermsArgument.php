@@ -143,7 +143,7 @@ class SimilarTermsArgument extends NumericArgument implements ContainerFactoryPl
   /**
    * Add filter(s).
    */
-  public function query($group_by = FALSE) {
+  public function query() {
     $this->ensureMyTable();
 
     $this->query->addTable('taxonomy_index', NULL, NULL, 'similarterms_taxonomy_index');

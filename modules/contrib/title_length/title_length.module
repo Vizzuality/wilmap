@@ -8,7 +8,7 @@
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Site\Settings;
 
-define('TITLE_LENGTH_CHARS', 600);
+define('TITLE_LENGTH_CHARS', 8000);
 
 /**
  * Implements hook_entity_base_field_info_alter().

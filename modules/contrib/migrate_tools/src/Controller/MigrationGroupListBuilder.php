@@ -34,13 +34,13 @@ class MigrationGroupListBuilder extends ConfigEntityListBuilder {
   /**
    * Builds a row for an entity in the entity listing.
    *
-   * @param EntityInterface $entity
+   * @param \Drupal\Core\Entity\EntityInterface $entity
    *   The entity for which to build the row.
    *
    * @return array
    *   A render array of the table row for displaying the entity.
    *
-   * @see Drupal\Core\Entity\EntityListController::render()
+   * @see \Drupal\Core\Entity\EntityListController::render()
    */
   public function buildRow(EntityInterface $entity) {
     $row['label'] = $entity->label();

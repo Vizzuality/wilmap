@@ -7,7 +7,7 @@ use Drupal\Component\Annotation\Plugin;
 /**
  * Defines an authentication annotation object.
  *
- * Plugin Namespace: Plugin\migrate_plus\authentication
+ * Plugin namespace: Plugin\migrate_plus\authentication.
  *
  * @see \Drupal\migrate_plus\AuthenticationPluginBase
  * @see \Drupal\migrate_plus\AuthenticationPluginInterface

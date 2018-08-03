@@ -7,7 +7,7 @@ use Drupal\Core\Url;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Class MigrationDeleteForm.
+ * Provides the delete form for our Migration entity.
  *
  * @package Drupal\migrate_tools\Form
  *
@@ -23,7 +23,7 @@ class MigrationDeleteForm extends EntityConfirmFormBase {
    */
   public function getQuestion() {
     return $this->t('Are you sure you want to delete migration %label?', [
-        '%label' => $this->entity->label(),
+      '%label' => $this->entity->label(),
     ]);
   }
 

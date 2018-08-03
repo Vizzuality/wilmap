@@ -6,7 +6,7 @@ use Drupal\taxonomy\Entity\Vocabulary;
 use Drupal\Tests\BrowserTestBase;
 
 /**
- * Execution form test
+ * Execution form test.
  *
  * @group migrate_tools
  */

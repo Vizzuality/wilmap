@@ -17,6 +17,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class MigrationGroupFormBase extends EntityForm {
 
   /**
+   * The query factory service.
+   *
    * @var \Drupal\Core\Entity\Query\QueryFactory
    */
   protected $entityQueryFactory;
@@ -24,10 +26,10 @@ class MigrationGroupFormBase extends EntityForm {
   /**
    * Construct the MigrationGroupFormBase.
    *
-   * For simple entity forms, there's no need for a constructor. Our migration group form
-   * base, however, requires an entity query factory to be injected into it
-   * from the container. We later use this query factory to build an entity
-   * query for the exists() method.
+   * For simple entity forms, there's no need for a constructor. Our migration
+   * group form base, however, requires an entity query factory to be injected
+   * into it from the container. We later use this query factory to build an
+   * entity query for the exists() method.
    *
    * @param \Drupal\Core\Entity\Query\QueryFactory $query_factory
    *   An entity query factory for the migration group entity type.
@@ -37,12 +39,7 @@ class MigrationGroupFormBase extends EntityForm {
   }
 
   /**
-   * Factory method for MigrationGroupFormBase.
-   *
-   * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
-   *   A container interface service.
-   *
-   * @return \Drupal\migrate_tools\Form\MigrationFormBase
+   * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
     return new static($container->get('entity.query'));
@@ -112,7 +109,7 @@ class MigrationGroupFormBase extends EntityForm {
    *   The entity ID.
    * @param array $element
    *   The form element.
-   * @param FormStateInterface $form_state
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The form state.
    *
    * @return bool
@@ -153,14 +150,7 @@ class MigrationGroupFormBase extends EntityForm {
   }
 
   /**
-   * Overrides Drupal\Core\Entity\EntityFormController::save().
-   *
-   * @param array $form
-   *   An associative array containing the structure of the form.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
-   *   An associative array containing the current state of the form.
-   *
-   * @return $this
+   * {@inheritdoc}
    */
   public function save(array $form, FormStateInterface $form_state) {
     $migration_group = $this->getEntity();

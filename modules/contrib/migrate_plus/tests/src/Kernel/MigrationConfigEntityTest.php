@@ -15,15 +15,23 @@ class MigrationConfigEntityTest extends KernelTestBase {
   public static $modules = ['migrate', 'migrate_plus'];
 
   /**
+   * The plugin manager.
+   *
    * @var \Drupal\migrate\Plugin\MigrationPluginManager
    */
   protected $pluginManager;
 
+  /**
+   * {@inheritdoc}
+   */
   protected function setUp() {
     parent::setUp();
     $this->pluginManager = \Drupal::service('plugin.manager.migration');
   }
 
+  /**
+   * Tests cache invalidation.
+   */
   public function testCacheInvalidation() {
     $config = Migration::create([
       'id' => 'test',

@@ -122,3 +122,12 @@ migrate_tools.execute:
     _title: 'Execute migration'
   requirements:
     _permission: 'administer migrations'
+
+migrate_tools.source_csv:
+  path: '/admin/structure/migrate/manage/{migration_group}/migrations/{migration}/source/edit'
+  defaults:
+    _form: 'Drupal\migrate_tools\Form\SourceCsvForm'
+  requirements:
+    _permission: 'administer migrations'
+    _module_dependencies: 'migrate_source_csv'
+    _custom_access: 'Drupal\migrate_tools\Form\SourceCsvForm::access'

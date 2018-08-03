@@ -767,12 +767,14 @@ Title Desc|Z -> A</pre> Leave the replacement text blank to remove an option alt
         // Leave sort_by and sort_order as separate elements.
         if ('bef' == $settings['sort']['bef_format']) {
           foreach (['sort_by', 'sort_order'] as $field) {
-            $form[$field]['#theme'] = 'bef_radios';
-            $form[$field]['#type'] = 'radios';
-            if (empty($form[$field]['#process'])) {
-              $form[$field]['#process'] = array();
+            if (!empty($form[$field])) {
+              $form[$field]['#theme'] = 'bef_radios';
+              $form[$field]['#type'] = 'radios';
+              if (empty($form[$field]['#process'])) {
+                $form[$field]['#process'] = array();
+              }
+              $form[$field]['#process'][] = ['\Drupal\Core\Render\Element\Radios', 'processRadios'];
             }
-            $form[$field]['#process'][] = ['\Drupal\Core\Render\Element\Radios', 'processRadios'];
           }
         }
         elseif ('bef_links' == $settings['sort']['bef_format']) {
@@ -1110,8 +1112,36 @@ Title Desc|Z -> A</pre> Leave the replacement text blank to remove an option alt
 
           // Use filter label as checkbox label.
           $form[$field_id]['#title'] = $filters[$label]->options['expose']['label'];
-          $form[$field_id]['#return_value'] = 1;
           $form[$field_id]['#type'] = 'checkbox';
+          // Views populates missing values in $form_state['input'] with the
+          // defaults and a checkbox does not appear in $_GET (or $_POST) so it
+          // will appear to be missing when a user submits a form. Because of
+          // this, instead of unchecking the checkbox value will revert to the
+          // default. More, the default value for select values is reused which
+          // results in the checkbox always checked. So we need to add a form
+          // element to see whether the form is submitted or not and then we
+          // need to look at $_GET directly to see whether the checkbox is
+          // there. For security reasons, we must not copy the $_GET value.
+
+          // First, let's figure out a short name for the signal element and
+          // then add it.
+          if (empty($signal)) {
+            for ($signal = 'a'; isset($form[$signal]); $signal++);
+            // This is all the signal element needs.
+            $form[$signal]['#type'] = 'hidden';
+          }
+          $input = $form_state->getUserInput();
+          $value = \Drupal::request()->query->get($field_id);
+          $checked = isset($input[$signal]) ? isset($value) : $form[$field_id]['#default_value'];
+          // For security, we check if value is valid and exist.
+          if ($checked) {
+            if (!in_array($value, array_keys($form[$field_id]['#options']))) {
+              $checked = FALSE;
+            }
+          }
+          // Now we know whether the checkbox is checked or not, set #value
+          // accordingly.
+          $form[$field_id]['#value'] = $checked ? $value : 0;
           break;
 
         case 'bef':
@@ -1187,9 +1217,11 @@ Title Desc|Z -> A</pre> Leave the replacement text blank to remove an option alt
         $form['#info']["filter-$label"]['description'] = '';
 
         // Check if the operator is exposed for this filter.
-        if ($this->view->getHandlers('filter')[$field_id]['expose']['use_operator']) {
+        if (isset($this->view->getHandlers('filter')[$label])
+          && $this->view->getHandlers('filter')[$label]['expose']['use_operator']
+        ) {
           // Include the exposed operator with the filter.
-          $operator_id = $this->view->getHandlers('filter')[$field_id]['expose']['operator_id'];
+          $operator_id = $this->view->getHandlers('filter')[$label]['expose']['operator_id'];
           $form[$field_id][$operator_id] = $form[$operator_id];
           unset($form[$operator_id]);
         }
@@ -1215,6 +1247,7 @@ Title Desc|Z -> A</pre> Leave the replacement text blank to remove an option alt
           $secondary[$identifier] = $form[$identifier];
           unset($form[$identifier]);
           $secondary[$identifier]['#title'] = $form['#info'][$filter_info_name]['label'];
+          $secondary[$identifier]['#description'] = $form['#info'][$filter_info_name]['description'];
           unset($form['#info'][$filter_info_name]);
         }
       }
@@ -1342,7 +1375,8 @@ Title Desc|Z -> A</pre> Leave the replacement text blank to remove an option alt
         }
         else {
           if ($return[$index] instanceof \stdClass) {
-            list($tid, $text) = each($return[$index]->option);
+            $tid = key($return[$index]->option);
+            $text = current($return[$index]->option);
             $return[$index]->option[$tid] = $rewrites[$text];
           }
           else {
@@ -1377,7 +1411,8 @@ Title Desc|Z -> A</pre> Leave the replacement text blank to remove an option alt
       // need to be converted to text.
       if (is_object($value) && !is_a($value, 'Drupal\Core\StringTranslation\TranslatableMarkup')) {
         reset($value->option);
-        list($key, $val) = each($value->option);
+        $key = key($value->option);
+        $val = current($value->option);
         $clean[$key] = $val;
       }
       else {

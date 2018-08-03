@@ -16,7 +16,8 @@ final class MigrateEvents {
    * has read the inital source data into a Row object. Typically, this would be
    * used to add data to the row, manipulate the data into a canonical form, or
    * signal by exception that the row should be skipped. The event listener
-   * method receives a \Drupal\migrate_plus\Event\MigratePrepareRowEvent instance.
+   * method receives a \Drupal\migrate_plus\Event\MigratePrepareRowEvent
+   * instance.
    *
    * @Event
    *

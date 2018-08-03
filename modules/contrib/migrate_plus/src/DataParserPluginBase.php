@@ -127,7 +127,7 @@ abstract class DataParserPluginBase extends PluginBase implements DataParserPlug
   /**
    * Opens the specified URL.
    *
-   * @param $url
+   * @param string $url
    *   URL to open.
    *
    * @return bool
@@ -136,8 +136,9 @@ abstract class DataParserPluginBase extends PluginBase implements DataParserPlug
   abstract protected function openSourceUrl($url);
 
   /**
-   * Retrieves the next row of data from the open source URL, populating
-   * currentItem.
+   * Retrieves the next row of data. populating currentItem.
+   *
+   * Retrieves from the open source URL.
    */
   abstract protected function fetchNextRow();
 

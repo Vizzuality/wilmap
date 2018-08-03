@@ -1,22 +1,13 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\migrate_tools\Form\MigrationExecuteForm
- */
-
 namespace Drupal\migrate_tools\Form;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Form\FormBase;
-use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\MigrateMessage;
-use Drupal\migrate\MigrateMessageInterface;
-use Drupal\migrate\Plugin\Migration;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Plugin\MigrationPluginManagerInterface;
 use Drupal\migrate_tools\MigrateBatchExecutable;
-use Drupal\migrate_tools\MigrateExecutable;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -68,7 +59,6 @@ class MigrationExecuteForm extends FormBase {
 
     return $form;
   }
-
 
   /**
    * Get Operations.
@@ -129,16 +119,9 @@ class MigrationExecuteForm extends FormBase {
       completed.'),
     ];
     // @TODO: Limit is not working. Perhaps because of batch? See
-    // https://www.drupal.org/project/migrate_tools/issues/2924298
-//    $form['options']['limit'] = [
-//      '#type' => 'textfield',
-//      '#title' => t('Limit to:'),
-//      '#size' => 10,
-//      '#description' => t('Set a limit of how many items to process for each migration task.'),
-//    ];
+    // https://www.drupal.org/project/migrate_tools/issues/2924298.
     return $form;
   }
-
 
   /**
    * {@inheritdoc}
@@ -181,7 +164,7 @@ class MigrationExecuteForm extends FormBase {
 
     if ($migration_name) {
 
-      /** @var MigrationInterface $migration */
+      /** @var \Drupal\migrate\Plugin\MigrationInterface $migration */
       $migration = $this->migrationPluginManager->createInstance($migration_name);
       $migrateMessage = new MigrateMessage();
 
@@ -204,7 +187,7 @@ class MigrationExecuteForm extends FormBase {
           $options = [
             'limit' => $limit,
             'update' => $update,
-            'force' => $force
+            'force' => $force,
           ];
 
           $executable = new MigrateBatchExecutable($migration, $migrateMessage, $options);

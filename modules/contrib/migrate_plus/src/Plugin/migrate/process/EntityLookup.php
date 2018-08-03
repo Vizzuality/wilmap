@@ -185,7 +185,7 @@ class EntityLookup extends ProcessPluginBase implements ContainerFactoryPluginIn
     }
 
     if (empty($this->lookupValueKey) || empty($this->lookupBundleKey) || empty($this->lookupBundle) || empty($this->lookupEntityType)) {
-      // See if we can introspect the lookup properties from the destination field.
+      // See if we can introspect the lookup properties from destination field.
       if (!empty($this->migration->getProcess()[$this->destinationBundleKey][0]['default_value'])) {
         $destinationEntityBundle = $this->migration->getProcess()[$this->destinationBundleKey][0]['default_value'];
         $fieldConfig = $this->entityManager->getFieldDefinitions($this->destinationEntityType, $destinationEntityBundle)[$destinationProperty]->getConfig($destinationEntityBundle);
@@ -203,8 +203,8 @@ class EntityLookup extends ProcessPluginBase implements ContainerFactoryPluginIn
               }
             }
 
-            // Make an assumption that if the selection handler can target more than
-            // one type of entity that we will use the first entity type.
+            // Make an assumption that if the selection handler can target more
+            // than one type of entity that we will use the first entity type.
             $this->lookupEntityType = $this->lookupEntityType ?: reset($this->selectionPluginManager->createInstance($fieldConfig->getSetting('handler'))->getPluginDefinition()['entity_types']);
             $this->lookupValueKey = $this->lookupValueKey ?: $this->entityManager->getDefinition($this->lookupEntityType)->getKey('label');
             $this->lookupBundleKey = $this->lookupBundleKey ?: $this->entityManager->getDefinition($this->lookupEntityType)->getKey('bundle');
@@ -238,8 +238,8 @@ class EntityLookup extends ProcessPluginBase implements ContainerFactoryPluginIn
   /**
    * Checks for the existence of some value.
    *
-   * @param $value
-   * The value to query.
+   * @param mixed $value
+   *   The value to query.
    *
    * @return mixed|null
    *   Entity id if the queried entity exists. Otherwise NULL.

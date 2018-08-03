@@ -25,14 +25,18 @@ class MigrationGroupTest extends KernelTestBase {
     $group_configuration = [
       'id' => $group_id,
       'shared_configuration' => [
-        'migration_tags' => ['Drupal 6'], // In migration, so will be overridden.
+        // In migration, so will be overridden.
+        'migration_tags' => ['Drupal 6'],
         'source' => [
           'constants' => [
-            'type' => 'image', // Not in migration, so will be added.
-            'cardinality' => '1', // In migration, so will be overridden.
+            // Not in migration, so will be added.
+            'type' => 'image',
+            // In migration, so will be overridden.
+            'cardinality' => '1',
           ],
         ],
-        'destination' => ['plugin' => 'field_storage_config'], // Not in migration, so will be added.
+        // Not in migration, so will be added.
+        'destination' => ['plugin' => 'field_storage_config'],
       ],
     ];
     $this->container->get('entity_type.manager')->getStorage('migration_group')
@@ -41,21 +45,25 @@ class MigrationGroupTest extends KernelTestBase {
     /** @var \Drupal\migrate_plus\Entity\MigrationInterface $migration */
     $migration = $this->container->get('entity_type.manager')
       ->getStorage('migration')->create([
-      'id' => 'specific_migration',
-      'load' => [],
-      'migration_group' => $group_id,
-      'label' => 'Unaffected by the group',
-      'migration_tags' => ['Drupal 7'], // Overrides group.
-      'destination' => [],
-      'source' => [],
-      'process' => [],
-      'migration_dependencies' => [],
-    ]);
+        'id' => 'specific_migration',
+        'load' => [],
+        'migration_group' => $group_id,
+        'label' => 'Unaffected by the group',
+          // Overrides group.
+        'migration_tags' => ['Drupal 7'],
+        'destination' => [],
+        'source' => [],
+        'process' => [],
+        'migration_dependencies' => [],
+      ]);
     $migration->set('source', [
-      'plugin' => 'empty', // Not in group, persists.
+      // Not in group, persists.
+      'plugin' => 'empty',
       'constants' => [
-        'entity_type' => 'user', // Not in group, persists.
-        'cardinality' => '3', // Overrides group.
+        // Not in group, persists.
+        'entity_type' => 'user',
+        // Overrides group.
+        'cardinality' => '3',
       ],
     ]);
     $migration->save();
@@ -98,14 +106,14 @@ class MigrationGroupTest extends KernelTestBase {
     /** @var \Drupal\migrate_plus\Entity\MigrationInterface $migration */
     $migration = $this->container->get('entity_type.manager')
       ->getStorage('migration')->create([
-      'id' => 'specific_migration',
-      'migration_group' => 'test_group',
-      'migration_tags' => [],
-      'load' => [],
-      'destination' => [],
-      'source' => [],
-      'migration_dependencies' => [],
-    ]);
+        'id' => 'specific_migration',
+        'migration_group' => 'test_group',
+        'migration_tags' => [],
+        'load' => [],
+        'destination' => [],
+        'source' => [],
+        'migration_dependencies' => [],
+      ]);
     $migration->save();
 
     /** @var \Drupal\migrate_plus\Entity\MigrationGroupInterface $loaded_migration_group */

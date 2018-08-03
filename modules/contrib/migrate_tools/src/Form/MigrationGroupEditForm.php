@@ -5,8 +5,6 @@ namespace Drupal\migrate_tools\Form;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Class MigrationGroupEditForm
- *
  * Provides the edit form for our Migration Group entity.
  *
  * @package Drupal\migrate_tools\Form

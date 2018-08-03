@@ -9,10 +9,9 @@ use Drupal\Component\Utility\Unicode;
 use Drupal\migrate\Exception\RequirementsException;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Plugin\RequirementsInterface;
-use Drupal\migrate_tools\MigrateExecutable;
-use Drupal\migrate_tools\DrushLogMigrateMessage;
-use Drupal\Core\Datetime\DateFormatter;
 use Drupal\migrate_plus\Entity\MigrationGroup;
+use Drupal\migrate_tools\DrushLogMigrateMessage;
+use Drupal\migrate_tools\MigrateExecutable;
 
 /**
  * Implements hook_drush_command().
@@ -68,27 +67,27 @@ function migrate_tools_drush_command() {
     'aliases' => ['mi', 'mim'],
   ];
 
-  $items['migrate-rollback'] = array(
+  $items['migrate-rollback'] = [
     'description' => 'Rollback one or more migrations.',
-    'options' => array(
+    'options' => [
       'all' => 'Process all migrations.',
       'group' => 'A comma-separated list of migration groups to rollback',
       'tag' => 'ID of the migration tag to rollback',
       'feedback' => 'Frequency of progress messages, in items processed',
-    ),
-    'arguments' => array(
+    ],
+    'arguments' => [
       'migration' => 'Name of migration(s) to rollback. Delimit multiple using commas.',
-    ),
-    'examples' => array(
+    ],
+    'examples' => [
       'migrate-rollback --all' => 'Perform all migrations',
       'migrate-rollback --group=beer' => 'Rollback all migrations in the beer group',
       'migrate-rollback --tag=user' => 'Rollback all migrations with the user tag',
       'migrate-rollback --group=beer --tag=user' => 'Rollback all migrations in the beer group and with the user tag',
       'migrate-rollback beer_term,beer_node' => 'Rollback imported terms and nodes',
-    ),
-    'drupal dependencies' => array('migrate_tools'),
-    'aliases' => array('mr'),
-  );
+    ],
+    'drupal dependencies' => ['migrate_tools'],
+    'aliases' => ['mr'],
+  ];
 
   $items['migrate-stop'] = [
     'description' => 'Stop an active migration operation.',
@@ -114,7 +113,7 @@ function migrate_tools_drush_command() {
       'migration' => 'ID of the migration',
     ],
     'options' => [
-      'csv' => 'Export messages as a CSV'
+      'csv' => 'Export messages as a CSV',
     ],
     'examples' => [
       'migrate-messages MyNode' => 'Show all messages for the MyNode migration',
@@ -139,7 +138,10 @@ function migrate_tools_drush_command() {
 }
 
 /**
+ * Display migration status.
+ *
  * @param string $migration_names
+ *   The migration names.
  */
 function drush_migrate_tools_migrate_status($migration_names = '') {
   $names_only = drush_get_option('names-only');
@@ -153,12 +155,12 @@ function drush_migrate_tools_migrate_status($migration_names = '') {
     $group_name = !empty($group) ? "{$group->label()} ({$group->id()})" : $group_id;
     if ($names_only) {
       $table[] = [
-        dt('Group: @name', array('@name' => $group_name))
+        dt('Group: @name', ['@name' => $group_name]),
       ];
     }
     else {
       $table[] = [
-        dt('Group: @name', array('@name' => $group_name)),
+        dt('Group: @name', ['@name' => $group_name]),
         dt('Status'),
         dt('Total'),
         dt('Imported'),
@@ -204,7 +206,7 @@ function drush_migrate_tools_migrate_status($migration_names = '') {
         $migrate_last_imported_store = \Drupal::keyValue('migrate_last_imported');
         $last_imported = $migrate_last_imported_store->get($migration->id(), FALSE);
         if ($last_imported) {
-          /** @var DateFormatter $date_formatter */
+          /** @var \Drupal\Core\Datetime\DateFormatter $date_formatter */
           $date_formatter = \Drupal::service('date.formatter');
           $last_imported = $date_formatter->format($last_imported / 1000,
             'custom', 'Y-m-d H:i:s');
@@ -212,7 +214,14 @@ function drush_migrate_tools_migrate_status($migration_names = '') {
         else {
           $last_imported = '';
         }
-        $table[] = [$migration_id, $status, $source_rows, $imported, $unprocessed, $last_imported];
+        $table[] = [
+          $migration_id,
+          $status,
+          $source_rows,
+          $imported,
+          $unprocessed,
+          $last_imported,
+        ];
       }
     }
   }
@@ -220,7 +229,10 @@ function drush_migrate_tools_migrate_status($migration_names = '') {
 }
 
 /**
+ * Import a migration.
+ *
  * @param string $migration_names
+ *   The migration names.
  */
 function drush_migrate_tools_migrate_import($migration_names = '') {
   $group_names = drush_get_option('group');
@@ -257,17 +269,19 @@ function drush_migrate_tools_migrate_import($migration_names = '') {
 }
 
 /**
- * Executes a single migration. If the --execute-dependencies option was given,
- * the migration's dependencies will also be executed first.
+ * Executes a single migration.
+ *
+ * If the --execute-dependencies option was given, the migration's dependencies
+ * will also be executed first.
  *
  * @param \Drupal\migrate\Plugin\MigrationInterface $migration
- *  The migration to execute.
+ *   The migration to execute.
  * @param string $migration_id
- *  The migration ID (not used, just an artifact of array_walk()).
+ *   The migration ID (not used, just an artifact of array_walk()).
  * @param array $options
- *  Additional options for the migration.
+ *   Additional options for the migration.
  */
-function _drush_migrate_tools_execute_migration(MigrationInterface $migration, $migration_id,  array $options = []) {
+function _drush_migrate_tools_execute_migration(MigrationInterface $migration, $migration_id, array $options = []) {
   $log = new DrushLogMigrateMessage();
 
   if (drush_get_option('execute-dependencies')) {
@@ -285,16 +299,22 @@ function _drush_migrate_tools_execute_migration(MigrationInterface $migration, $
     $migration->getIdMap()->prepareUpdate();
   }
   $executable = new MigrateExecutable($migration, $log, $options);
-  // drush_op() provides --simulate support
-  drush_op(array($executable, 'import'));
+  // Function drush_op() provides --simulate support.
+  drush_op([$executable, 'import']);
   if ($count = $executable->getFailedCount()) {
     // Nudge Drush to use a non-zero exit code.
-    drush_set_error('MIGRATE_ERROR', dt('!name Migration - !count failed.', array('!name' => $migration_id, '!count' => $count)));
+    drush_set_error('MIGRATE_ERROR', dt('!name Migration - !count failed.', [
+      '!name' => $migration_id,
+      '!count' => $count,
+    ]));
   }
 }
 
 /**
+ * Rollback migrations.
+ *
  * @param string $migration_names
+ *   The migration names.
  */
 function drush_migrate_tools_migrate_rollback($migration_names = '') {
   $group_names = drush_get_option('group');
@@ -324,17 +344,21 @@ function drush_migrate_tools_migrate_rollback($migration_names = '') {
     foreach ($migration_list as $migration_id => $migration) {
       $executable = new MigrateExecutable($migration, $log, $options);
       // drush_op() provides --simulate support.
-      drush_op(array($executable, 'rollback'));
+      drush_op([$executable, 'rollback']);
     }
   }
 }
 
 /**
+ * Stop a migration.
+ *
  * @param string $migration_id
+ *   The migration id.
  */
 function drush_migrate_tools_migrate_stop($migration_id = '') {
-  /** @var MigrationInterface $migration */
-  $migration = \Drupal::service('plugin.manager.migration')->createInstance($migration_id);
+  /** @var \Drupal\migrate\Plugin\MigrationInterface $migration */
+  $migration = \Drupal::service('plugin.manager.migration')
+    ->createInstance($migration_id);
   if ($migration) {
     $status = $migration->getStatus();
     switch ($status) {
@@ -359,11 +383,15 @@ function drush_migrate_tools_migrate_stop($migration_id = '') {
 }
 
 /**
+ * Reset status.
+ *
  * @param string $migration_id
+ *   The migration id.
  */
 function drush_migrate_tools_migrate_reset_status($migration_id = '') {
-  /** @var MigrationInterface $migration */
-  $migration = \Drupal::service('plugin.manager.migration')->createInstance($migration_id);
+  /** @var \Drupal\migrate\Plugin\MigrationInterface $migration */
+  $migration = \Drupal::service('plugin.manager.migration')
+    ->createInstance($migration_id);
   if ($migration) {
     $status = $migration->getStatus();
     if ($status == MigrationInterface::STATUS_IDLE) {
@@ -380,11 +408,15 @@ function drush_migrate_tools_migrate_reset_status($migration_id = '') {
 }
 
 /**
+ * Print messages.
+ *
  * @param string $migration_id
+ *   The migration id.
  */
 function drush_migrate_tools_migrate_messages($migration_id) {
-  /** @var MigrationInterface $migration */
-  $migration = \Drupal::service('plugin.manager.migration')->createInstance($migration_id);
+  /** @var \Drupal\migrate\Plugin\MigrationInterface $migration */
+  $migration = \Drupal::service('plugin.manager.migration')
+    ->createInstance($migration_id);
   if ($migration) {
     $map = $migration->getIdMap();
     $first = TRUE;
@@ -399,7 +431,7 @@ function drush_migrate_tools_migrate_messages($migration_id) {
         }
         $first = FALSE;
       }
-      $table[] = (array)$row;
+      $table[] = (array) $row;
     }
     if (empty($table)) {
       drush_log(dt('No messages for this migration'), 'status');
@@ -425,11 +457,15 @@ function drush_migrate_tools_migrate_messages($migration_id) {
 }
 
 /**
+ * Print source fields.
+ *
  * @param string $migration_id
+ *   The migration id.
  */
 function drush_migrate_tools_migrate_fields_source($migration_id) {
-  /** @var MigrationInterface $migration */
-  $migration = \Drupal::service('plugin.manager.migration')->createInstance($migration_id);
+  /** @var \Drupal\migrate\Plugin\MigrationInterface $migration */
+  $migration = \Drupal::service('plugin.manager.migration')
+    ->createInstance($migration_id);
   if ($migration) {
     $source = $migration->getSourcePlugin();
     $table = [];
@@ -447,9 +483,10 @@ function drush_migrate_tools_migrate_fields_source($migration_id) {
  * Retrieve a list of active migrations.
  *
  * @param string $migration_ids
- *  Comma-separated list of migrations - if present, return only these migrations.
+ *   Comma-separated list of migrations - if present, return only these
+ *   migrations.
  *
- * @return MigrationInterface[][]
+ * @return \Drupal\migrate\Plugin\MigrationInterface[][]
  *   An array keyed by migration group, each value containing an array of
  *   migrations or an empty array if no migrations match the input criteria.
  */

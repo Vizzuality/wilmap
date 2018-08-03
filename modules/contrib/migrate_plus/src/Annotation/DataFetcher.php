@@ -7,7 +7,7 @@ use Drupal\Component\Annotation\Plugin;
 /**
  * Defines a data fetcher annotation object.
  *
- * Plugin Namespace: Plugin\migrate_plus\data_fetcher
+ * Plugin namespace: Plugin\migrate_plus\data_fetcher.
  *
  * @see \Drupal\migrate_plus\DataFetcherPluginBase
  * @see \Drupal\migrate_plus\DataFetcherPluginInterface

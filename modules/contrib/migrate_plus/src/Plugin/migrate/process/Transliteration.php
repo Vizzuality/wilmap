@@ -11,7 +11,7 @@ use Drupal\migrate\Row;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Transliterates text from Unicode to US-ASCII
+ * Transliterates text from Unicode to US-ASCII.
  *
  * The transliteration process plugin takes the source value and runs it through
  * the transliteration service. Letters will have language decorations and
@@ -26,8 +26,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *     source: foo
  * @endcode
  *
- * If the value of foo in the source is 'áéí!' then the destination value of bar
- * will be 'aei!'.
+ * If the value of foo in the source is 'áéí!' then the destination value of
+ * bar will be 'aei!'.
  *
  * @see \Drupal\migrate\Plugin\MigrateProcessInterface
  *
@@ -81,4 +81,3 @@ class Transliteration extends ProcessPluginBase implements ContainerFactoryPlugi
   }
 
 }
-

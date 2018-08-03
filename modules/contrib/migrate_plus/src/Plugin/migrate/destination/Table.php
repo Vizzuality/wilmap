@@ -51,6 +51,20 @@ class Table extends DestinationBase implements ContainerFactoryPluginInterface {
    */
   protected $dbConnection;
 
+  /**
+   * Constructs a new Table.
+   *
+   * @param array $configuration
+   *   A configuration array containing information about the plugin instance.
+   * @param string $plugin_id
+   *   The plugin_id for the plugin instance.
+   * @param mixed $plugin_definition
+   *   The plugin implementation definition.
+   * @param \Drupal\migrate\Plugin\MigrationInterface $migration
+   *   The migration.
+   * @param \Drupal\Core\Database\Connection $connection
+   *   The database connection.
+   */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, MigrationInterface $migration, Connection $connection) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $migration);
     $this->dbConnection = $connection;

@@ -65,11 +65,11 @@ class SkipOnValue extends ProcessPluginBase {
   /**
    * Compare values to see if they are equal.
    *
-   * @param $value
-   *   Actual value
-   * @param $skipValue
+   * @param mixed $value
+   *   Actual value.
+   * @param mixed $skipValue
    *   Value to compare against.
-   * @param $equal
+   * @param bool $equal
    *   Compare as equal or not equal.
    *
    * @return bool

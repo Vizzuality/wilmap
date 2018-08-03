@@ -66,8 +66,9 @@ class MigrateBatchExecutable extends MigrateExecutable {
    * Sets the current batch content so listeners can update the messages.
    *
    * @param array $context
+   *   The batch context.
    */
-  public function setBatchContext(&$context) {
+  public function setBatchContext(array &$context) {
     $this->batchContext = &$context;
   }
 
@@ -75,6 +76,7 @@ class MigrateBatchExecutable extends MigrateExecutable {
    * Gets a reference to the current batch context.
    *
    * @return array
+   *   The batch context.
    */
   public function &getBatchContext() {
     return $this->batchContext;
@@ -90,7 +92,7 @@ class MigrateBatchExecutable extends MigrateExecutable {
     $operations = $this->batchOperations([$this->migration], 'import', [
       'limit' => $this->itemLimit,
       'update' => $this->updateExistingRows,
-      'force' => $this->checkDependencies
+      'force' => $this->checkDependencies,
     ]);
 
     if (count($operations) > 0) {
@@ -110,20 +112,18 @@ class MigrateBatchExecutable extends MigrateExecutable {
   /**
    * Helper to generate the batch operations for importing migrations.
    *
-   * @param array $migrations
-   * @param array $operation
+   * @param \Drupal\migrate\Plugin\MigrationInterface[] $migrations
+   *   The migrations.
+   * @param string $operation
+   *   The batch operation to perform.
    * @param array $options
+   *   The migration options.
    *
    * @return array
+   *   The batch operations to perform.
    */
-  protected function batchOperations($migrations, $operation, $options = []) {
-
+  protected function batchOperations(array $migrations, $operation, array $options = []) {
     $operations = [];
-
-    /**
-     * @var string $id
-     * @var Migration $migration
-     */
     foreach ($migrations as $id => $migration) {
 
       if (!empty($options['update'])) {
@@ -143,14 +143,14 @@ class MigrateBatchExecutable extends MigrateExecutable {
           $operations += $this->batchOperations($required_migrations, $operation, [
             'limit' => 0,
             'update' => $options['update'],
-            'force' => $options['force']
+            'force' => $options['force'],
           ]);
         }
       }
 
       $operations[] = [
         '\Drupal\migrate_tools\MigrateBatchExecutable::batchProcessImport',
-        [$migration->id(), $options]
+        [$migration->id(), $options],
       ];
     }
 
@@ -158,15 +158,16 @@ class MigrateBatchExecutable extends MigrateExecutable {
   }
 
   /**
-   * Batch 'operation' callback
+   * Batch 'operation' callback.
    *
    * @param string $migration_id
+   *   The migration id.
    * @param array $options
+   *   The batch executable options.
    * @param array $context
-   *
+   *   The sandbox context.
    */
-  static public function batchProcessImport($migration_id, $options, &$context) {
-
+  public static function batchProcessImport($migration_id, array $options, array &$context) {
     if (empty($context['sandbox'])) {
       $context['finished'] = 0;
       $context['sandbox'] = [];
@@ -178,7 +179,7 @@ class MigrateBatchExecutable extends MigrateExecutable {
 
     // Prepare the migration executable.
     $message = new MigrateMessage();
-    /** @var MigrationInterface $migration */
+    /** @var \Drupal\migrate\Plugin\MigrationInterface $migration */
     $migration = \Drupal::getContainer()->get('plugin.manager.migration')->createInstance($migration_id);
     $executable = new MigrateBatchExecutable($migration, $message, $options);
 
@@ -191,7 +192,7 @@ class MigrateBatchExecutable extends MigrateExecutable {
         '@updated' => 0,
         '@failures' => 0,
         '@ignored' => 0,
-        '@name' => $migration->id()
+        '@name' => $migration->id(),
       ];
     }
 
@@ -204,14 +205,14 @@ class MigrateBatchExecutable extends MigrateExecutable {
     // Do the import.
     $result = $executable->import();
 
-    // Store the result, we will need to combine the results of all our iterations.
+    // Store the result; will need to combine the results of all our iterations.
     $context['results'][$migration->id()] = [
       '@numitems' => $context['results'][$migration->id()]['@numitems'] + $executable->getProcessedCount(),
       '@created' => $context['results'][$migration->id()]['@created'] + $executable->getCreatedCount(),
       '@updated' => $context['results'][$migration->id()]['@updated'] + $executable->getUpdatedCount(),
       '@failures' => $context['results'][$migration->id()]['@failures'] + $executable->getFailedCount(),
       '@ignored' => $context['results'][$migration->id()]['@ignored'] + $executable->getIgnoredCount(),
-      '@name' => $migration->id()
+      '@name' => $migration->id(),
     ];
 
     // Do some housekeeping.
@@ -226,7 +227,7 @@ class MigrateBatchExecutable extends MigrateExecutable {
         $context['finished'] = ((float) $context['sandbox']['counter'] / (float) $context['sandbox']['total']);
         $context['message'] = t('Importing %migration (@percent%).', [
           '%migration' => $migration->label(),
-          '@percent' => (int) ($context['finished'] * 100)
+          '@percent' => (int) ($context['finished'] * 100),
         ]);
       }
     }
@@ -236,12 +237,14 @@ class MigrateBatchExecutable extends MigrateExecutable {
   /**
    * Finished callback for import batches.
    *
-   * @param $success
-   * @param $results
-   * @param $operations
-   * @param $elapsed
+   * @param bool $success
+   *   A boolean indicating whether the batch has completed successfully.
+   * @param array $results
+   *   The value set in $context['results'] by callback_batch_operation().
+   * @param array $operations
+   *   If $success is FALSE, contains the operations that remained unprocessed.
    */
-  static public function batchFinishedImport($success, $results, $operations, $elapsed) {
+  public static function batchFinishedImport($success, array $results, array $operations) {
     if ($success) {
       foreach ($results as $migration_id => $result) {
         $singular_message = "Processed 1 item (@created created, @updated updated, @failures failed, @ignored ignored) - done with '@name'";
@@ -255,7 +258,7 @@ class MigrateBatchExecutable extends MigrateExecutable {
   }
 
   /**
-   * @inheritdoc
+   * {@inheritdoc}
    */
   public function checkStatus() {
     $status = parent::checkStatus();
@@ -278,11 +281,13 @@ class MigrateBatchExecutable extends MigrateExecutable {
   /**
    * Calculates how much a single batch iteration will handle.
    *
-   * @param $context
+   * @param array $context
+   *   The sandbox context.
    *
    * @return float
+   *   The batch limit.
    */
-  public function calculateBatchLimit($context) {
+  public function calculateBatchLimit(array $context) {
     // TODO Maybe we need some other more sophisticated logic here?
     return ceil($context['sandbox']['total'] / 100);
   }

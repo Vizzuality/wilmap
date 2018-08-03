@@ -4,4 +4,4 @@ core: 8.x
 type: module
 package: Views
 dependencies:
-  - views
+  - drupal:views

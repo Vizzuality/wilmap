@@ -6,8 +6,6 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 
 /**
- * Class MigrationEditForm
- *
  * Provides the edit form for our Migration entity.
  *
  * @package Drupal\migrate_tools\Form
@@ -37,10 +35,11 @@ class MigrationEditForm extends MigrationFormBase {
   }
 
   /**
+   * Add group route parameter.
+   *
    * @param \Drupal\Core\Url $url
    *   The URL associated with an operation.
-   *
-   * @param $migration_group
+   * @param string $migration_group
    *   The migration's parent group.
    */
   protected function addGroupParameter(Url $url, $migration_group) {

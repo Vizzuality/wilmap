@@ -17,44 +17,44 @@ use Drupal\migrate\Row;
  * To do a simple hardcoded string replace use the following:
  *
  * @code
- *   field_text:
- *     plugin: str_replace
- *     source: text
- *     search: foo
- *     replace: bar
+ * field_text:
+ *   plugin: str_replace
+ *   source: text
+ *   search: foo
+ *   replace: bar
  * @endcode
  *
- * If the value of text is "vero eos et accusam et justo vero"
- * in source, foo is "et" in search and bar is "that" in replace,
- * field_text will be "vero eos that accusam that justo vero".
+ * If the value of text is "vero eos et accusam et justo vero" in source, foo is
+ * "et" in search and bar is "that" in replace, field_text will be "vero eos
+ * that accusam that justo vero".
  *
  * Case insensitive searches can be achieved using the following:
  * @code
- *   field_text:
- *     plugin: str_replace
- *     case_insensitive: true
- *     source: text
- *     search: foo
- *     replace: bar
+ * field_text:
+ *   plugin: str_replace
+ *   case_insensitive: true
+ *   source: text
+ *   search: foo
+ *   replace: bar
  * @endcode
  *
- * If the value of text is "VERO eos et accusam et justo vero"
- * in source, foo is "vero" in search and bar is "that" in replace,
- * field_text will be "that eos et accusam et justo that".
+ * If the value of text is "VERO eos et accusam et justo vero" in source, foo is
+ * "vero" in search and bar is "that" in replace, field_text will be "that eos
+ * et accusam et justo that".
  *
  * Also regular expressions can be matched using:
  * @code
- *   field_text:
- *     plugin: str_replace
- *     regex: true
- *     source: text
- *     search: foo
- *     replace: bar
+ * field_text:
+ *   plugin: str_replace
+ *   regex: true
+ *   source: text
+ *   search: foo
+ *   replace: bar
  * @endcode
  *
- * If the value of text is "vero eos et 123 accusam et justo 123 duo"
- * in source, foo is "/[0-9]{3}/" in search and bar is "the" in replace,
- * field_text will be "vero eos et the accusam et justo the duo".
+ * If the value of text is "vero eos et 123 accusam et justo 123 duo" in source,
+ * foo is "/[0-9]{3}/" in search and bar is "the" in replace, field_text will be
+ * "vero eos et the accusam et justo the duo".
  *
  * All the rules for
  * @link http://php.net/manual/function.str-replace.php str_replace @endlink

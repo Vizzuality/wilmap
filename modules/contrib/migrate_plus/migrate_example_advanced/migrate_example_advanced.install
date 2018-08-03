@@ -2,20 +2,20 @@
 
 /**
  * @file
- * Install, update and uninstall functions for the migrate_example_advanced module.
+ * Install, update and uninstall functions for migrate_example_advanced module.
  */
 
 use Drupal\migrate_plus\Entity\Migration;
 
 /**
  * Implements hook_install().
+ *
+ * We need the urls to be absolute for the XML source plugin to read them, but
+ * the static configuration files on disk can't know the server and port to
+ * use. So, in the .yml files we provide the REST resources relative to the
+ * site root and here rewrite them to fully-qualified paths.
  */
 function migrate_example_advanced_install() {
-  // We need the urls to be absolute for the XML source plugin to read them, but
-  // the static configuration files on disk can't know the server and port to
-  // use. So, in the .yml files we provide the REST resources relative to the
-  // site root and here rewrite them to fully-qualified paths.
-
   /** @var \Drupal\migrate_plus\Entity\MigrationInterface $wine_role_xml_migration */
   $wine_role_xml_migration = Migration::load('wine_role_xml');
   if ($wine_role_xml_migration) {

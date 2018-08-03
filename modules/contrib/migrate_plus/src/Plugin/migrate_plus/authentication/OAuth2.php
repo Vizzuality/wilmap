@@ -16,7 +16,7 @@ use Sainsburys\Guzzle\Oauth2\Middleware\OAuthMiddleware;
 
 /**
  * Provides OAuth2 authentication for the HTTP resource.
- * 
+ *
  * @link https://packagist.org/packages/sainsburys/guzzle-oauth2-plugin
  *
  * @Authentication(

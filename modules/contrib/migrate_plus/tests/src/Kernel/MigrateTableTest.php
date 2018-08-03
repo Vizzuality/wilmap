@@ -16,12 +16,17 @@ class MigrateTableTest extends MigrateTestBase {
   const TABLE_NAME = 'migrate_test_destination_table';
 
   /**
+   * The database connection.
+   *
    * @var \Drupal\Core\Database\Connection
    */
   protected $connection;
 
   public static $modules = ['migrate_plus'];
 
+  /**
+   * {@inheritdoc}
+   */
   protected function setUp() {
     parent::setUp();
 
@@ -50,22 +55,42 @@ class MigrateTableTest extends MigrateTestBase {
     ]);
   }
 
+  /**
+   * {@inheritdoc}
+   */
   protected function tearDown() {
     $this->connection->schema()->dropTable(static::TABLE_NAME);
     parent::tearDown();
   }
 
+  /**
+   * Create a minimally valid migration with some source data.
+   *
+   * @return array
+   *   The migration definition.
+   */
   protected function getTableDestinationMigration() {
-    // Create a minimally valid migration with some source data.
     $definition = [
       'id' => 'migration_table_test',
       'migration_tags' => ['Testing'],
       'source' => [
         'plugin' => 'embedded_data',
         'data_rows' => [
-          ['data' => 'dummy value', 'data2' => 'dummy2 value', 'data3' => 'dummy3 value'],
-          ['data' => 'dummy value2', 'data2' => 'dummy2 value2', 'data3' => 'dummy3 value2'],
-          ['data' => 'dummy value3', 'data2' => 'dummy2 value3', 'data3' => 'dummy3 value3'],
+          [
+            'data' => 'dummy value',
+            'data2' => 'dummy2 value',
+            'data3' => 'dummy3 value',
+          ],
+          [
+            'data' => 'dummy value2',
+            'data2' => 'dummy2 value2',
+            'data3' => 'dummy3 value2',
+          ],
+          [
+            'data' => 'dummy value3',
+            'data2' => 'dummy2 value3',
+            'data3' => 'dummy3 value3',
+          ],
         ],
         'ids' => [
           'data' => ['type' => 'string'],
@@ -106,6 +131,9 @@ class MigrateTableTest extends MigrateTestBase {
     $this->assertEquals(3, count($values));
   }
 
+  /**
+   * Tests table rollback.
+   */
   public function testTableRollback() {
     $this->testTableDestination();
 

@@ -7,7 +7,7 @@ use Drupal\Component\Annotation\Plugin;
 /**
  * Defines a data parser annotation object.
  *
- * Plugin Namespace: Plugin\migrate_plus\data_parser
+ * Plugin namespace: Plugin\migrate_plus\data_parser.
  *
  * @see \Drupal\migrate_plus\DataParserPluginBase
  * @see \Drupal\migrate_plus\DataParserPluginInterface

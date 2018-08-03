@@ -15,7 +15,7 @@ interface DataFetcherPluginInterface {
   /**
    * Set the client headers.
    *
-   * @param $headers
+   * @param array $headers
    *   An array of the headers to set on the HTTP request.
    */
   public function setRequestHeaders(array $headers);
@@ -28,7 +28,7 @@ interface DataFetcherPluginInterface {
   /**
    * Return content.
    *
-   * @param $url
+   * @param string $url
    *   URL to retrieve from.
    *
    * @return string
@@ -39,10 +39,11 @@ interface DataFetcherPluginInterface {
   /**
    * Return Http Response object for a given url.
    *
-   * @param $url
+   * @param string $url
    *   URL to retrieve from.
    *
    * @return \Psr\Http\Message\ResponseInterface
+   *   The HTTP response message.
    */
   public function getResponse($url);
 

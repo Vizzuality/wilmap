@@ -12,10 +12,8 @@ use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Plugin\MigrationPluginManager;
 use Drupal\migrate\Plugin\RequirementsInterface;
 use Drupal\migrate_tools\Drush9LogMigrateMessage;
-use Drupal\migrate_tools\DrushLogMigrateMessage;
 use Drupal\migrate_tools\MigrateExecutable;
 use Drush\Commands\DrushCommands;
-use Drush\Drush;
 
 /**
  * Migrate Tools drush commands.
@@ -69,12 +67,7 @@ class MigrateToolsCommands extends DrushCommands {
    * @param \Drupal\Core\KeyValueStore\KeyValueFactoryInterface $keyValue
    *   Key-value store service.
    */
-  public function __construct(
-    MigrationPluginManager $migrationPluginManager,
-    DateFormatter $dateFormatter,
-    EntityTypeManagerInterface $entityTypeManager,
-    KeyValueFactoryInterface $keyValue
-  ) {
+  public function __construct(MigrationPluginManager $migrationPluginManager, DateFormatter $dateFormatter, EntityTypeManagerInterface $entityTypeManager, KeyValueFactoryInterface $keyValue) {
     parent::__construct();
     $this->migrationPluginManager = $migrationPluginManager;
     $this->dateFormatter = $dateFormatter;
@@ -125,14 +118,7 @@ class MigrateToolsCommands extends DrushCommands {
    * @return \Consolidation\OutputFormatters\StructuredData\RowsOfFields
    *   Migrations status formatted as table.
    */
-  public function status(
-    $migration_names = '',
-    array $options = [
-      'group' => NULL,
-      'tag' => NULL,
-      'names-only' => NULL,
-    ]
-  ) {
+  public function status($migration_names = '', array $options = ['group' => NULL, 'tag' => NULL, 'names-only' => NULL]) {
     $names_only = $options['names-only'];
 
     $migrations = $this->migrationsList($migration_names, $options);
@@ -273,20 +259,7 @@ class MigrateToolsCommands extends DrushCommands {
    * @throws \Exception
    *   If there are not enough parameters to the command.
    */
-  public function import(
-    $migration_names = '',
-    array $options = [
-      'all' => NULL,
-      'group' => NULL,
-      'tag' => NULL,
-      'limit' => NULL,
-      'feedback' => NULL,
-      'idlist' => NULL,
-      'update' => NULL,
-      'force' => NULL,
-      'execute-dependencies' => NULL,
-    ]
-  ) {
+  public function import($migration_names = '', array $options = ['all' => NULL, 'group' => NULL, 'tag' => NULL, 'limit' => NULL, 'feedback' => NULL, 'idlist' => NULL, 'update' => NULL, 'force' => NULL, 'execute-dependencies' => NULL]) {
     $group_names = $options['group'];
     $tag_names = $options['tag'];
     $all = $options['all'];
@@ -295,7 +268,7 @@ class MigrateToolsCommands extends DrushCommands {
       throw new \Exception(dt('You must specify --all, --group, --tag or one or more migration names separated by commas'));
     }
 
-    foreach (['limit', 'feedback', 'idlist', 'update', 'force'] as $option) {
+    foreach (['limit', 'feedback', 'idlist', 'update', 'force', 'execute-dependencies'] as $option) {
       if ($options[$option]) {
         $additional_options[$option] = $options[$option];
       }
@@ -348,15 +321,7 @@ class MigrateToolsCommands extends DrushCommands {
    * @throws \Exception
    *   If there are not enough parameters to the command.
    */
-  public function rollback(
-    $migration_names = '',
-    array $options = [
-      'all' => NULL,
-      'group' => NULL,
-      'tag' => NULL,
-      'feedback' => NULL,
-    ]
-  ) {
+  public function rollback($migration_names = '', array $options = ['all' => NULL, 'group' => NULL, 'tag' => NULL, 'feedback' => NULL]) {
     $group_names = $options['group'];
     $tag_names = $options['tag'];
     $all = $options['all'];
@@ -498,52 +463,47 @@ class MigrateToolsCommands extends DrushCommands {
    * @validate-module-enabled migrate_tools
    *
    * @aliases mmsg,migrate-messages
+   *
+   * @field-labels
+   *   source_ids_hash: Source IDs Hash
+   *   level: Level
+   *   message: Message
+   * @default-fields source_ids_hash,level,message
+   *
+   * @return \Consolidation\OutputFormatters\StructuredData\RowsOfFields
+   *   Source fields of the given migration formatted as a table.
    */
   public function messages($migration_id, array $options = ['csv' => NULL]) {
     /** @var \Drupal\migrate\Plugin\MigrationInterface $migration */
     $migration = $this->migrationPluginManager->createInstance(
       $migration_id
     );
-    if ($migration) {
-      $map = $migration->getIdMap();
-      $first = TRUE;
-      $table = [];
-      foreach ($map->getMessageIterator() as $row) {
-        unset($row->msgid);
-        if ($first) {
-          // @todo: Ideally, replace sourceid* with source key names. Or, should
-          // getMessageIterator() do that?
-          foreach ($row as $column => $value) {
-            $table[0][] = $column;
-          }
-          $first = FALSE;
-        }
-        $table[] = (array) $row;
-      }
-      if (empty($table)) {
-        $this->logger()->notice(dt('No messages for this migration'));
-      }
-      else {
-        if ($options['csv']) {
-          foreach ($table as $row) {
-            fputcsv(STDOUT, $row);
-          }
-        }
-        else {
-          $widths = [];
-          foreach ($table[0] as $header) {
-            $widths[] = strlen($header) + 1;
-          }
-
-          drush_print_table($table);
-        }
-      }
-    }
-    else {
+    if (!$migration) {
       $this->logger()->error(
         dt('Migration @id does not exist', ['@id' => $migration_id])
       );
+      return NULL;
     }
+
+    $map = $migration->getIdMap();
+    $table = [];
+    foreach ($map->getMessageIterator() as $row) {
+      unset($row->msgid);
+      $table[] = (array) $row;
+    }
+    if (empty($table)) {
+      $this->logger()->notice(dt('No messages for this migration'));
+      return NULL;
+    }
+
+    if ($options['csv']) {
+      fputcsv(STDOUT, array_keys($table[0]));
+      foreach ($table as $row) {
+        fputcsv(STDOUT, $row);
+      }
+      return NULL;
+    }
+    return new RowsOfFields($table);
   }
 
   /**
@@ -560,6 +520,14 @@ class MigrateToolsCommands extends DrushCommands {
    * @validate-module-enabled migrate_tools
    *
    * @aliases mfs, migrate-fields-source
+   *
+   * @field-labels
+   *   machine_name: Machine Name
+   *   description: Description
+   * @default-fields machine_name,description
+   *
+   * @return \Consolidation\OutputFormatters\StructuredData\RowsOfFields
+   *   Source fields of the given migration formatted as a table.
    */
   public function fieldsSource($migration_id) {
     /** @var \Drupal\migrate\Plugin\MigrationInterface $migration */
@@ -570,9 +538,12 @@ class MigrateToolsCommands extends DrushCommands {
       $source = $migration->getSourcePlugin();
       $table = [];
       foreach ($source->fields() as $machine_name => $description) {
-        $table[] = [strip_tags($description), $machine_name];
+        $table[] = [
+          'machine_name' => $machine_name,
+          'description' => strip_tags($description),
+        ];
       }
-      drush_print_table($table);
+      return new RowsOfFields($table);
     }
     else {
       $this->logger()->error(
@@ -692,17 +663,23 @@ class MigrateToolsCommands extends DrushCommands {
    * @throws \Exception
    *   If some migrations failed during execution.
    */
-  protected function executeMigration(
-    MigrationInterface $migration,
-    $migration_id,
-    array $options = []
-  ) {
+  protected function executeMigration(MigrationInterface $migration, $migration_id, array $options = []) {
+    // Keep track of all migrations run during this command so the same
+    // migration is not run multiple times.
+    static $executed_migrations = [];
+
     if (isset($options['execute-dependencies'])) {
-      if ($required_IDS = $migration->get('requirements')) {
+      $required_migrations = $migration->get('requirements');
+      $required_migrations = array_filter($required_migrations, function ($value) use ($executed_migrations) {
+        return !isset($executed_migrations[$value]);
+      });
+
+      if (!empty($required_migrations)) {
         $manager = $this->migrationPluginManager;
-        $required_migrations = $manager->createInstances($required_IDS);
+        $required_migrations = $manager->createInstances($required_migrations);
         $dependency_options = array_merge($options, ['is_dependency' => TRUE]);
-        array_walk($required_migrations, __FUNCTION__, $dependency_options);
+        array_walk($required_migrations, [$this, __FUNCTION__], $dependency_options);
+        $executed_migrations += $required_migrations;
       }
     }
     if (!empty($options['force'])) {
@@ -714,6 +691,7 @@ class MigrateToolsCommands extends DrushCommands {
     $executable = new MigrateExecutable($migration, $this->getMigrateMessage(), $options);
     // drush_op() provides --simulate support.
     drush_op([$executable, 'import']);
+    $executed_migrations += [$migration_id => $migration_id];
     if ($count = $executable->getFailedCount()) {
       // Nudge Drush to use a non-zero exit code.
       throw new \Exception(
