@@ -43,6 +43,7 @@ class RequiresLocationInfoValidator extends ConstraintValidator
           $data->field_transnational->value === 0
           && \count($data->field_region) === 0
           && \count($data->field_location_entry) === 0
+          && \count($data->field_location) === 0
         ) {
           return $this->context->buildViolation(
             $constraint->message, array()
