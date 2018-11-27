@@ -127,10 +127,13 @@ class ModerationStateWidget extends OptionsSelectWidget implements ContainerFact
     $transitions = $this->validator->getValidTransitions($entity, $this->currentUser);
 
     $transition_labels = [];
-    $default_value = NULL;
+    $default_value = $items->value;
     foreach ($transitions as $transition) {
       $transition_to_state = $transition->to();
       $transition_labels[$transition_to_state->id()] = $transition_to_state->label();
+      if ($default->id() === $transition_to_state->id()) {
+        $default_value = $default->id();
+      }
     }
 
     $element += [

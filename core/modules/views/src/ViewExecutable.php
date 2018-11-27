@@ -114,7 +114,7 @@ class ViewExecutable {
   /**
    * Attachments to place before the view.
    *
-   * @var array()
+   * @var array
    */
   public $attachment_before = [];
 
@@ -1096,7 +1096,8 @@ class ViewExecutable {
           $argument->is_default = TRUE;
         }
 
-        // Set the argument, which will also validate that the argument can be set.
+        // Set the argument, which ensures that the argument is valid and
+        // possibly transforms the value.
         if (!$argument->setArgument($arg)) {
           $status = $argument->validateFail($arg);
           break;
@@ -1110,9 +1111,11 @@ class ViewExecutable {
           $argument->query($this->display_handler->useGroupBy());
         }
 
-        // Add this argument's substitution
+        // Add this argument's substitution.
         $substitutions["{{ arguments.$id }}"] = $arg_title;
-        $substitutions["{{ raw_arguments.$id }}"] = strip_tags(Html::decodeEntities($arg));
+        // Since argument validator plugins can potentially transform the value,
+        // use whatever value the argument handler now has, not the raw value.
+        $substitutions["{{ raw_arguments.$id }}"] = strip_tags(Html::decodeEntities($argument->getValue()));
 
         // Test to see if we should use this argument's title
         if (!empty($argument->options['title_enable']) && !empty($argument->options['title'])) {
@@ -1519,7 +1522,7 @@ class ViewExecutable {
     // Let modules modify the view just prior to rendering it.
     $module_handler->invokeAll('views_pre_render', [$this]);
 
-    // Let the themes play too, because pre render is a very themey thing.
+    // Let the themes play too, because prerender is a very themey thing.
     foreach ($themes as $theme_name) {
       $function = $theme_name . '_views_pre_render';
       if (function_exists($function)) {

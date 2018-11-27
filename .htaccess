@@ -2,11 +2,6 @@
 # Apache/PHP/Drupal settings:
 #
 
-RewriteEngine On
-RewriteCond %{HTTPS} off
-RewriteCond %{REQUEST_URI} ^/user/login$
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
 # Protect files and directories from prying eyes.
 <FilesMatch "\.(engine|inc|install|make|module|profile|po|sh|.*sql|theme|twig|tpl(\.php)?|xtmpl|yml)(~|\.sw[op]|\.bak|\.orig|\.save)?$|^(\.(?!well-known).*|Entries.*|Repository|Root|Tag|Template|composer\.(json|lock))$|^#.*#$|\.php(~|\.sw[op]|\.bak|\.orig|\.save)$">
   <IfModule mod_authz_core.c>
